@@ -289,13 +289,16 @@ h2.section-title {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem 0.75rem;
+  flex-wrap: wrap;
 }
 
 .item-title-badge {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-width: 0;
+  flex-shrink: 1;
 }
 
 .item-title-link {
@@ -656,6 +659,17 @@ html.dark .tag-filter-btn.active {
   .contact-card-box {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .item-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .item-title-badge {
+    flex-wrap: wrap;
+  }
+  .item-date-text {
+    font-size: 0.78rem;
   }
 }
 
