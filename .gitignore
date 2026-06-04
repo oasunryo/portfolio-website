@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node (빌드 도구 사용 시)
+node_modules/
+npm-debug.log*
+
+# 환경 변수
+.env
+.env.local
+
+# Vercel
+.vercel

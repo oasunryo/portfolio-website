@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+<title>undefined</title>
+<meta name="description" content="undefined">
+<link rel="stylesheet" href="../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../en/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+<section class="flex flex-col gap-6 pt-6 md:pt-12">
+  <h1 class="name-title">오준서</h1>
+  <div class="meta-info-row">
+    <span class="inline-flex items-center gap-1.5">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span>대한민국 서울</span>
+    </span>
+  </div>
+  
+  <div class="intro-paragraph">
+    
+      <p>
+        안녕하세요. 광운대학교에서 전기공학을 전공하고 있으며, 반도체 전/후공정 이론 및 회로 설계에 깊은 관심을 가진 학부생 오준서입니다. 
+        2026년 7월, 글로벌 OSAT 기업인 <strong>앰코테크놀로지(Amkor Technology)</strong>의 후공정(Packaging & Test) 분야 엔지니어로 합류할 예정입니다.
+      </p>
+      <br>
+      <p>
+        본 포트폴리오는 학부생 오준서가 실무 현장의 주니어 엔지니어로 성장하기까지 수행한 9대 핵심 프로젝트와 기술적 여정을 담고 있습니다. 
+        각 프로젝트에 관한 세부 실증 분석 데이터와 SEM 비교표, 설계 시뮬레이션 결과 등은 <a href="../ko/projects/index.html" style="color: var(--accent-color); font-weight: 500;">프로젝트 탭</a>에서 시각적으로 열람하실 수 있습니다.
+      </p>
+    
+  </div>
+
+  <div class="social-row-container">
+    <div class="social-icons-group">
+      <a href="https://linkedin.com/in/junseo-oh" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="LinkedIn" data-tooltip="LinkedIn 프로필 방문">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <a href="mailto:junseo.oh.kr@gmail.com" class="social-icon-link" aria-label="Email" data-tooltip="이메일 보내기">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+      <a href="https://junseo.site" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Website" data-tooltip="개인 웹사이트 방문">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </a>
+    </div>
+    <a href="./blog/index.html" class="blog-text-link">
+      블로그 읽기 →
+    </a>
+  </div>
+</section>
+
+<section class="space-y-6" style="margin-top: 4rem;">
+  <h2 class="section-title">Career & Education</h2>
+  <div class="list-container">
+    
+      <div class="list-item">
+        <div class="item-header-row">
+          <div class="item-title-badge">
+            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">Amkor Technology</span>
+            <span class="status-badge">OSAT</span>
+          </div>
+          <span class="item-date-text">2026.07 ~ (합류 예정)</span>
+        </div>
+        <p class="item-role-subtitle">Packaging & Test Engineer (후공정 엔지니어)</p>
+        <p class="item-description">
+          글로벌 반도체 패키징 및 테스트 전문 OSAT 기업인 앰코테크놀로지 코리아에 후공정 엔지니어로 입사할 예정입니다.
+        </p>
+      </div>
+
+      <div class="list-item">
+        <div class="item-header-row">
+          <div class="item-title-badge">
+            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">광운대학교 (Kwangwoon University)</span>
+            <span class="status-badge">학사 (B.S.)</span>
+          </div>
+          <span class="item-date-text">2020.03 ~ 2027.02 (졸업 예정)</span>
+        </div>
+        <p class="item-role-subtitle">전기공학과 학사</p>
+        <p class="item-description">
+          전기공학을 주전공으로 이수하였으며, 반도체 소자, 후공정 패키징 메커니즘, FPGA Verilog 논리 설계 및 시뮬레이션을 깊이 탐구했습니다.
+        </p>
+      </div>
+    
+  </div>
+</section>
+
+</section>
+
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

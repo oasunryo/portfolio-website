@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+<title>블로그</title>
+<meta name="description" content="반도체 패키징 및 테스트 엔지니어 오준서의 기술 블로그입니다.">
+<link rel="stylesheet" href="../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+  <div class="py-8">
+    <a href="../index.html" class="blog-back-link">
+      ← 홈으로 돌아가기
+    </a>
+    <header class="mb-10" style="margin-bottom: 2.5rem;">
+      <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; margin-bottom: 0.5rem;">Blog</h1>
+      <p style="font-size: 1.1rem; color: var(--text-secondary);">반도체 전/후공정 기술 연구 및 엔지니어로서 기록하는 유용한 경험과 깊은 생각들</p>
+    </header>
+    
+    <input type="text" id="blog-search" class="search-input-box" placeholder="글 검색..." style="margin-bottom: 1.25rem;">
+    
+    <div class="blog-controls-row">
+      <div class="blog-tags-container">
+        <button class="tag-filter-btn active" data-category="all">All</button>
+        <button class="tag-filter-btn" data-category="Architecture">Architecture</button>
+        <button class="tag-filter-btn" data-category="Insight">Insight</button>
+        <button class="tag-filter-btn" data-category="Hardware">Hardware</button>
+      </div>
+      <div class="blog-sort-container">
+        <select id="blog-sort" class="sort-select-box" aria-label="Sort blog posts">
+          <option value="latest">최신순</option>
+          <option value="oldest">오래된순</option>
+          <option value="alphabetical">제목순</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="list-container" id="blog-posts-list">
+      
+    <div class="list-item" data-category="Architecture" data-date="2026-06-03" data-title="이력서를 시스템 아키텍처로 엔지니어링하다" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./semiconductor-packaging-whitepaper/index.html" class="item-title-link">이력서를 시스템 아키텍처로 엔지니어링하다</a>
+          <span class="status-badge">Architecture</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-03</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">Figma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Insight" data-date="2026-05-20" data-title="글로벌 osat 앰코테크놀로지 합류를 준비하며" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./amkor-technology-joining-2026/index.html" class="item-title-link">글로벌 OSAT 앰코테크놀로지 합류를 준비하며</a>
+          <span class="status-badge">Insight</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-05-20</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">2026년 7월 앰코테크놀로지 코리아 후공정(Packaging & Test) 분야에 입사하기 전, 학부생으로서 쌓아온 전/후공정 전공 지식과 성장 목표를 되돌아봅니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Hardware" data-date="2026-04-18" data-title="verilog hdl 디바운싱 필터 설계와 게이트 딜레이 검증" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./fpga-verilog-digital-design/index.html" class="item-title-link">Verilog HDL 디바운싱 필터 설계와 게이트 딜레이 검증</a>
+          <span class="status-badge">Hardware</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-04-18</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">FPGA 보드 실습 시 기계적 노이즈인 Bouncing/Glitch 현상을 다단 시프트 플립플롭 Debouncer로 원천 제어하고 5ns의 배선 게이트 전파 지연을 ModelSim으로 검증해 봅니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Architecture" data-date="2026-06-04" data-title="바이브 코딩에서 하네스 엔지니어링으로: ai 개발의 한계 뚫기" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./vibe-coding-to-harness-engineering/index.html" class="item-title-link">바이브 코딩에서 하네스 엔지니어링으로: AI 개발의 한계 뚫기</a>
+          <span class="status-badge">Architecture</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-04</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">자연어로 대충 부탁하는 "바이브 코딩"을 넘어, AI 에이전트가 안전하고 정확하게 동작할 수밖에 없도록 통제 환경(Harness)을 만드는 패러다임을 제안합니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Insight" data-date="2026-06-03" data-title="생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./thinking-vs-understanding-karpathy/index.html" class="item-title-link">생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다</a>
+          <span class="status-badge">Insight</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-03</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">AI가 생각의 과정을 대신해주는 소프트웨어 3.0 시대, 인간 엔지니어에게 남아있는 대체 불가능한 역량이 무엇인지에 대해.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Architecture" data-date="2026-06-01" data-title="ai 에이전트의 효율을 극대화하는 "도구 다이어트" 설계 전략" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./agent-tool-diet-strategy/index.html" class="item-title-link">AI 에이전트의 효율을 극대화하는 "도구 다이어트" 설계 전략</a>
+          <span class="status-badge">Architecture</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-01</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">에이전트에게 너무 많은 스킬과 권한을 주면 왜 망가지는지, 왜 도구를 덜 쥐어주는 미니멀리즘이 작동하는지 알아봅니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Architecture" data-date="2026-05-29" data-title="깨진 유리창 이론과 ai 코딩: 폴더 구조 자체가 거대한 프롬프트다" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./clean-folder-structure-as-prompt/index.html" class="item-title-link">깨진 유리창 이론과 AI 코딩: 폴더 구조 자체가 거대한 프롬프트다</a>
+          <span class="status-badge">Architecture</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-05-29</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">지저분한 파일 구조에서는 AI도 쓰레기 코드를 뱉습니다. 프로젝트의 물리적 환경을 정돈해야 하는 진짜 이유.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Insight" data-date="2026-06-01" data-title="8gb 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 "notebooklm" 구축기" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./private-notebooklm-safari-obsidian/index.html" class="item-title-link">8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 "NotebookLM" 구축기</a>
+          <span class="status-badge">Insight</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-01</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">Zotero 7 + Safari + Obsidian (Copilot + Gemini API) 연동을 통해 리소스를 쓰지 않고 완벽한 개인 지식 데이터 분석 파이프라인을 구축하는 방법.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Insight" data-date="2026-06-02" data-title="ai 시대의 진로 멘토 브랜드: "반도체 신입의 ai 생존기" 기획기" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./creator-business-strategy-roadmap/index.html" class="item-title-link">AI 시대의 진로 멘토 브랜드: "반도체 신입의 AI 생존기" 기획기</a>
+          <span class="status-badge">Insight</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-06-02</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">AI가 일자리를 없앤다는 막연한 불안감 속에서, 2030 대학생 및 취준생들에게 현실적인 엔지니어 생존법을 제시하는 브랜드 포지셔닝 전략을 공유합니다.</p>
+    </div>
+    
+
+    <div class="list-item" data-category="Insight" data-date="2026-05-28" data-title=""build with, not for" — 사람 중심의 공학 철학이 중요한 이유" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+      <div class="item-header-row">
+        <div class="item-title-badge">
+          <a href="./build-with-not-for-philosophy/index.html" class="item-title-link">"Build with, not for" — 사람 중심의 공학 철학이 중요한 이유</a>
+          <span class="status-badge">Insight</span>
+        </div>
+        <span class="item-date-text tabular-nums">2026-05-28</span>
+      </div>
+      <p class="item-description" style="margin-top: 0.5rem;">어떤 제품이나 아키텍처를 설계할 때 기술 자체의 화려함보다 실제 사용자의 가려운 곳을 긁어주는 공학적 태도에 대하여.</p>
+    </div>
+    
+    </div>
+  </div>
+  
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>
