@@ -650,6 +650,31 @@ html.dark .tag-filter-btn.active {
   transform: translate(-50%, 0) scale(1);
 }
 
+/* Avoid tooltip clipping on the right edge of the screen */
+#theme-toggle-btn[data-tooltip]::after,
+#lang-switch-btn[data-tooltip]::after {
+  left: auto;
+  right: 0;
+  transform: translate(0, 4px) scale(0.95);
+}
+
+#theme-toggle-btn[data-tooltip]::before,
+#lang-switch-btn[data-tooltip]::before {
+  left: auto;
+  right: 12px;
+  transform: translate(0, 4px) scale(0.95);
+}
+
+#theme-toggle-btn[data-tooltip]:hover::after,
+#lang-switch-btn[data-tooltip]:hover::after {
+  transform: translate(0, 0) scale(1);
+}
+
+#theme-toggle-btn[data-tooltip]:hover::before,
+#lang-switch-btn[data-tooltip]:hover::before {
+  transform: translate(0, 0) scale(1);
+}
+
 /* Design Projects Grid Page Layout */
 .design-grid-container {
   display: grid;
