@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="/logo/favicon.svg">
 <title>이력서를 시스템 아키텍처로 엔지니어링하다  | 오준서</title>
 <meta name="description" content="Figma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.">
 <link rel="stylesheet" href="../../../index.css">
@@ -127,6 +127,7 @@
             <li><strong>Case 1. 중첩 트리 뷰 붕괴 버그</strong>: 하위 계층을 접었을 때 글자가 화면 밖으로 밀려나오는 심각한 레이아웃 버그가 있었습니다. CSS의 자손 선택자가 문제였는데, 직계 자식 결합자(&gt;)로 교체해 하위 상자의 overflow 상태 전이를 완벽하게 차단하면서 끝냈습니다.</li>
             <li><strong>Case 2. 다국어 번역 누수</strong>: KO/EN 전환 시 일부 피그마 컴포넌트의 라벨 번역이 누락되었습니다. 탐색 범위를 특정 탭 영역에서 document 전체([data-ko])로 풀면서 해결했습니다.</li>
             <li><strong>Case 3. 상세 패널 스크롤 캐싱</strong>: 긴 상세 설명을 스크롤해서 읽은 다음 닫고 다른 카드를 열면 이전 스크롤 깊이가 그대로 남아있었습니다. 모달이 열릴 때 scrollTop = 0으로 매번 리셋 코드를 명시해 깔끔하게 원천 초기화시켰습니다.</li>
+            <li><strong>Case 4. Safari 뷰포트 안전영역 및 오버레이 끊김 버그</strong>: iOS Safari에서 헤더 상단이 뚫려 보이거나 모달 개방 시 상/하단 툴바에 흰색 여백이 분리되어 뒷배경이 노출되는 버그가 있었습니다. `viewport-fit=cover` 설정과 safe-area 패딩 연산을 가미하고, 모달 개방 시 body 배경을 블랙(`background-color: #000000 !important`)으로 강제 전이시키는 JS-CSS 동기화를 거쳐 사파리 특유의 여백 끊김 현상을 원천 방지했습니다.</li>
           </ul>
         
         </div>
@@ -140,7 +141,7 @@
 
         <!-- Embedded markdown database for LLM text copying -->
         <script type="application/json" id="markdown-semiconductor-packaging-whitepaper">
-          "# 이력서를 시스템 아키텍처로 엔지니어링하다\n\nFigma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.\n\n이력서도 결국엔 하나의 제품이어야 하니까 맨날 똑같은 스크롤 방식이나 이력서 템플릿 양식은 정말 재미도 없고 한계도 명확해요. 특히 나처럼 반도체 후공정(Packaging & Test)처럼 입체적인 공정 설계 데이터를 보여줘야 하는 사람한테는 더 그렇죠. 그래서 고민을 하다가 \"나의 기술적 커리어와 학부 프로젝트 기록들을 피그마 컴포넌트 설계판처럼 구성해보면 어떨까?\"라는 질문에서 이 프로젝트가 시작되었습니다. 가장 중요한 설계 원칙은 프레임워크(React, Vue 등)의 도움 없이 Zero-Dependency(Pure HTML5, Vanilla CSS, Clientside JavaScript)로만 핵심 뷰포트와 줌-스케일링 렌더러를 만드는 것이었습니다. 괜히 무거운 프레임워크 얹어서 초기 로딩 무겁게 하거나 불필요한 번들링 과정을 다 빼고, 코드로 직접 성능과 크로스 브라우징을 제어하고 싶었습니다. Figma 3-Stage Layout & 오토 줌 엔진 단순 나열을 버리고 Stage 1(아날로그/HW), Stage 2(디지털/Verilog), Stage 3(OSAT/후공정 실무)로 구획을 나눠 피그마 특유의 보라색 컴포넌트 세트(border: 2px dashed #9333EA) 안에 집어넣었습니다. 뷰포트 크기에 따라 화면이 깨지거나 잘리는 현상을 방지하기 위해 가로폭과 세로폭을 조율해 정비율로 리사이징하는 축척 엔진을 main.js에 구현해서, 어느 기기에서 접속하든 마치 피그마 캔버스를 들여다보는 듯한 느낌을 줍니다. 치열했던 트러블슈팅 세 가지 Case 1. 중첩 트리 뷰 붕괴 버그: 하위 계층을 접었을 때 글자가 화면 밖으로 밀려나오는 심각한 레이아웃 버그가 있었습니다. CSS의 자손 선택자가 문제였는데, 직계 자식 결합자(&gt;)로 교체해 하위 상자의 overflow 상태 전이를 완벽하게 차단하면서 끝냈습니다. Case 2. 다국어 번역 누수: KO/EN 전환 시 일부 피그마 컴포넌트의 라벨 번역이 누락되었습니다. 탐색 범위를 특정 탭 영역에서 document 전체([data-ko])로 풀면서 해결했습니다. Case 3. 상세 패널 스크롤 캐싱: 긴 상세 설명을 스크롤해서 읽은 다음 닫고 다른 카드를 열면 이전 스크롤 깊이가 그대로 남아있었습니다. 모달이 열릴 때 scrollTop = 0으로 매번 리셋 코드를 명시해 깔끔하게 원천 초기화시켰습니다."
+          "# 이력서를 시스템 아키텍처로 엔지니어링하다\n\nFigma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.\n\n이력서도 결국엔 하나의 제품이어야 하니까 맨날 똑같은 스크롤 방식이나 이력서 템플릿 양식은 정말 재미도 없고 한계도 명확해요. 특히 나처럼 반도체 후공정(Packaging & Test)처럼 입체적인 공정 설계 데이터를 보여줘야 하는 사람한테는 더 그렇죠. 그래서 고민을 하다가 \"나의 기술적 커리어와 학부 프로젝트 기록들을 피그마 컴포넌트 설계판처럼 구성해보면 어떨까?\"라는 질문에서 이 프로젝트가 시작되었습니다. 가장 중요한 설계 원칙은 프레임워크(React, Vue 등)의 도움 없이 Zero-Dependency(Pure HTML5, Vanilla CSS, Clientside JavaScript)로만 핵심 뷰포트와 줌-스케일링 렌더러를 만드는 것이었습니다. 괜히 무거운 프레임워크 얹어서 초기 로딩 무겁게 하거나 불필요한 번들링 과정을 다 빼고, 코드로 직접 성능과 크로스 브라우징을 제어하고 싶었습니다. Figma 3-Stage Layout & 오토 줌 엔진 단순 나열을 버리고 Stage 1(아날로그/HW), Stage 2(디지털/Verilog), Stage 3(OSAT/후공정 실무)로 구획을 나눠 피그마 특유의 보라색 컴포넌트 세트(border: 2px dashed #9333EA) 안에 집어넣었습니다. 뷰포트 크기에 따라 화면이 깨지거나 잘리는 현상을 방지하기 위해 가로폭과 세로폭을 조율해 정비율로 리사이징하는 축척 엔진을 main.js에 구현해서, 어느 기기에서 접속하든 마치 피그마 캔버스를 들여다보는 듯한 느낌을 줍니다. 치열했던 트러블슈팅 세 가지 Case 1. 중첩 트리 뷰 붕괴 버그: 하위 계층을 접었을 때 글자가 화면 밖으로 밀려나오는 심각한 레이아웃 버그가 있었습니다. CSS의 자손 선택자가 문제였는데, 직계 자식 결합자(&gt;)로 교체해 하위 상자의 overflow 상태 전이를 완벽하게 차단하면서 끝냈습니다. Case 2. 다국어 번역 누수: KO/EN 전환 시 일부 피그마 컴포넌트의 라벨 번역이 누락되었습니다. 탐색 범위를 특정 탭 영역에서 document 전체([data-ko])로 풀면서 해결했습니다. Case 3. 상세 패널 스크롤 캐싱: 긴 상세 설명을 스크롤해서 읽은 다음 닫고 다른 카드를 열면 이전 스크롤 깊이가 그대로 남아있었습니다. 모달이 열릴 때 scrollTop = 0으로 매번 리셋 코드를 명시해 깔끔하게 원천 초기화시켰습니다. Case 4. Safari 뷰포트 안전영역 및 오버레이 끊김 버그: iOS Safari에서 헤더 상단이 뚫려 보이거나 모달 개방 시 상/하단 툴바에 흰색 여백이 분리되어 뒷배경이 노출되는 버그가 있었습니다. `viewport-fit=cover` 설정과 safe-area 패딩 연산을 가미하고, 모달 개방 시 body 배경을 블랙(`background-color: #000000 !important`)으로 강제 전이시키는 JS-CSS 동기화를 거쳐 사파리 특유의 여백 끊김 현상을 원천 방지했습니다."
         </script>
 
         <script>

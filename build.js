@@ -222,7 +222,9 @@ const localeDict = {
     emailTooltip: "이메일 보내기",
     websiteTooltip: "개인 웹사이트 방문",
     githubTooltip: "GitHub 레포지토리 방문",
-    shareTooltip: "글 공유 및 마크다운 복사"
+    shareTooltip: "글 공유 및 마크다운 복사",
+    homeTitle: "오준서 | 전기공학 & 반도체 엔지니어 포트폴리오",
+    homeDesc: "광운대학교 전기공학 전공 및 반도체 패키징/테스트 엔지니어 오준서의 학부 핵심 프로젝트 및 기술 블로그 포트폴리오 사이트입니다."
   },
   en: {
     navHomeLabel: "Home",
@@ -256,7 +258,9 @@ const localeDict = {
     emailTooltip: "Send an Email",
     websiteTooltip: "Visit Personal Website",
     githubTooltip: "Visit GitHub Repository",
-    shareTooltip: "Share & Copy Markdown"
+    shareTooltip: "Share & Copy Markdown",
+    homeTitle: "Junseo Oh | Electrical Engineering & Semiconductor Packaging Portfolio",
+    homeDesc: "Personal engineering portfolio and technical blog of Junseo Oh, an Electrical Engineering student and incoming Packaging & Test engineer."
   }
 };
 
@@ -570,6 +574,7 @@ languages.forEach(lang => {
             <li><strong>Case 1. 중첩 트리 뷰 붕괴 버그</strong>: 하위 계층을 접었을 때 글자가 화면 밖으로 밀려나오는 심각한 레이아웃 버그가 있었습니다. CSS의 자손 선택자가 문제였는데, 직계 자식 결합자(&gt;)로 교체해 하위 상자의 overflow 상태 전이를 완벽하게 차단하면서 끝냈습니다.</li>
             <li><strong>Case 2. 다국어 번역 누수</strong>: KO/EN 전환 시 일부 피그마 컴포넌트의 라벨 번역이 누락되었습니다. 탐색 범위를 특정 탭 영역에서 document 전체([data-ko])로 풀면서 해결했습니다.</li>
             <li><strong>Case 3. 상세 패널 스크롤 캐싱</strong>: 긴 상세 설명을 스크롤해서 읽은 다음 닫고 다른 카드를 열면 이전 스크롤 깊이가 그대로 남아있었습니다. 모달이 열릴 때 scrollTop = 0으로 매번 리셋 코드를 명시해 깔끔하게 원천 초기화시켰습니다.</li>
+            <li><strong>Case 4. Safari 뷰포트 안전영역 및 오버레이 끊김 버그</strong>: iOS Safari에서 헤더 상단이 뚫려 보이거나 모달 개방 시 상/하단 툴바에 흰색 여백이 분리되어 뒷배경이 노출되는 버그가 있었습니다. \`viewport-fit=cover\` 설정과 safe-area 패딩 연산을 가미하고, 모달 개방 시 body 배경을 블랙(\`background-color: #000000 !important\`)으로 강제 전이시키는 JS-CSS 동기화를 거쳐 사파리 특유의 여백 끊김 현상을 원천 방지했습니다.</li>
           </ul>
         `
       },
@@ -593,6 +598,7 @@ languages.forEach(lang => {
             <li><strong>Case 1. Nested Tree Collapses</strong>: Collapsed child tree elements leaked text. Using child combinators (&gt;) instead of broad sibling rules kept overflow states localized.</li>
             <li><strong>Case 2. Dynamic Translation Leaks</strong>: Canvas labels missed KO/EN locale updates. Broadening the query selector to document-wide [data-ko] targets solved it.</li>
             <li><strong>Case 3. Detail Peek Scroll Cash</strong>: Reopening peek panels kept scrolled offset positions. Forcing a clear scrollTop = 0 trigger reset it clean.</li>
+            <li><strong>Case 4. Safari Viewport Gap & Overlay Cutoff</strong>: In iOS Safari, the top of the header appeared hollow, and opening modals left white borders at the top/bottom bars. By injecting \`viewport-fit=cover\`, safe-area-inset padding calculations, and forcing a black body background (\`background-color: #000000 !important\`) during modal active states, we resolved Safari's safe area layout clipping and achieved seamless glassmorphic overlays.</li>
           </ul>
         `
       }

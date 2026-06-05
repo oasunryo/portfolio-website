@@ -112,7 +112,7 @@ html.dark body::before {
 }
 
 .pt-24 {
-  padding-top: 6rem;
+  padding-top: calc(6rem + env(safe-area-inset-top, 0px));
 }
 
 .pb-12 {
@@ -134,7 +134,7 @@ header.sticky-nav {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: none;
-  padding: 1.25rem 0;
+  padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 0 1.25rem 0;
   transition: background-color 0.3s, padding 0.3s;
 }
 
@@ -914,6 +914,7 @@ article.prose-article {
   inset: 0;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1000;
   opacity: 0;
   pointer-events: none;
@@ -935,6 +936,7 @@ article.prose-article {
   max-height: calc(100vh - 4rem);
   background-color: var(--peek-bg);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   box-shadow: var(--shadow-md);
@@ -1512,4 +1514,38 @@ html.dark .status-badge[data-cat="Career"] {
   border-color: rgba(129, 140, 248, 0.2);
   color: #818cf8;
 }
+
+/* Global Custom Scrollbar to make scrolling highly visible and premium */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--bg-secondary);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border: 2px solid var(--bg-secondary);
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Modal Open state to prevent background body scrolling and paint Safari's safe areas black */
+html.modal-open,
+body.modal-open {
+  overflow: hidden;
+  background-color: #000000 !important;
+}
+
 

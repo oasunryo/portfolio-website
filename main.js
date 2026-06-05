@@ -204,19 +204,19 @@ function zeroGravityScrollTo(element) {
   const elementPosition = element.getBoundingClientRect().top;
   const target = start + elementPosition - headerOffset;
   const distance = target - start;
-  const duration = 1200; // 1.2s for slow, floating zero-gravity feel
+  const duration = 1600; // 1.6s for highly pronounced, floating zero-gravity kinetic glide
   let startTime = null;
 
-  // Quartic ease-out timing function for smooth deceleration
-  function easeOutQuart(t) {
-    return 1 - Math.pow(1 - t, 4);
+  // Quintic ease-out timing function for extremely smooth, floating deceleration
+  function easeOutQuint(t) {
+    return 1 - Math.pow(1 - t, 5);
   }
 
   function animation(currentTime) {
     if (startTime === null) startTime = currentTime;
     const timeElapsed = currentTime - startTime;
     const progress = Math.min(timeElapsed / duration, 1);
-    const run = easeOutQuart(progress) * distance + start;
+    const run = easeOutQuint(progress) * distance + start;
     window.scrollTo(0, run);
     if (timeElapsed < duration) {
       requestAnimationFrame(animation);
@@ -441,6 +441,8 @@ function openProjectDetail(projectId) {
   // Open overlay & panel
   overlay.classList.add('open');
   panel.classList.add('open');
+  document.documentElement.classList.add('modal-open');
+  document.body.classList.add('modal-open');
 
   // Trigger MathJax rendering
   if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
@@ -461,6 +463,8 @@ function closeProjectDetail() {
     overlay.classList.remove('open');
     panel.classList.remove('open');
   }
+  document.documentElement.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
 }
 
 // Make functions global for inline events
@@ -511,3 +515,10 @@ document.addEventListener('click', () => {
 
 window.toggleAiDropdown = toggleAiDropdown;
 window.copyPostMarkdown = copyPostMarkdown;
+
+// Global Escape key event listener to close modal peek view
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeProjectDetail();
+  }
+});
