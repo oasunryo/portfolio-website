@@ -201,6 +201,8 @@ function initBlogSearch() {
   const paginationWrapper = document.getElementById('blog-pagination-wrapper');
   if (!searchInput || !postsList) return;
 
+  const blogHeader = document.querySelector('.py-8 header') || searchInput;
+
   const allPosts = Array.from(postsList.children);
   let currentPage = 1;
 
@@ -321,8 +323,8 @@ function initBlogSearch() {
         if (!isNaN(page) && page !== currentPage) {
           currentPage = page;
           renderPage();
-          // Smooth scroll to top of search input
-          searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Smooth scroll to top of blog header
+          blogHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
