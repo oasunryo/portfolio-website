@@ -650,19 +650,43 @@ html.dark .tag-filter-btn.active {
   transform: translate(-50%, 0) scale(1);
 }
 
-/* Avoid tooltip clipping on the right edge of the screen */
+/* Display tooltips below for header elements to prevent clipping above the viewport */
+.sticky-nav [data-tooltip]::after {
+  bottom: auto;
+  top: 125%;
+  left: 50%;
+  transform: translate(-50%, -4px) scale(0.95);
+}
+
+.sticky-nav [data-tooltip]::before {
+  bottom: auto;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -4px) scale(0.95);
+  border-color: transparent transparent var(--border-color) transparent;
+}
+
+.sticky-nav [data-tooltip]:hover::after {
+  transform: translate(-50%, 0) scale(1);
+}
+
+.sticky-nav [data-tooltip]:hover::before {
+  transform: translate(-50%, 0) scale(1);
+}
+
+/* Also right-align the rightmost header tooltips to prevent right-edge clipping */
 #theme-toggle-btn[data-tooltip]::after,
 #lang-switch-btn[data-tooltip]::after {
   left: auto;
   right: 0;
-  transform: translate(0, 4px) scale(0.95);
+  transform: translate(0, -4px) scale(0.95);
 }
 
 #theme-toggle-btn[data-tooltip]::before,
 #lang-switch-btn[data-tooltip]::before {
   left: auto;
   right: 12px;
-  transform: translate(0, 4px) scale(0.95);
+  transform: translate(0, -4px) scale(0.95);
 }
 
 #theme-toggle-btn[data-tooltip]:hover::after,
