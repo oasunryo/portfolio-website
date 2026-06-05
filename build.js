@@ -364,7 +364,7 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
   // Dynamic template translations
   let head = headTpl
     .replace('href="/index.css"', `href="${relPath}index.css"`)
-    .replace('href="/logo/favicon.svg"', `href="${relPath}logo/favicon.svg"`)
+    .replace('href="/logo/favicon.svg?v=1.0.1"', `href="${relPath}logo/favicon.svg?v=1.0.1"`)
     .replace('{{title}}', title)
     .replace('{{description}}', description);
   
@@ -430,6 +430,8 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
 const rootIndexContent = `<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="./logo/favicon.svg?v=1.0.1">
   <meta http-equiv="refresh" content="0; url=./ko/index.html">
   <script>window.location.replace("./ko/index.html");</script>
 </head>
@@ -576,7 +578,7 @@ languages.forEach(lang => {
             <li><strong>Case 2. 다국어 번역 누수</strong>: KO/EN 전환 시 일부 피그마 컴포넌트의 라벨 번역이 누락되었습니다. 탐색 범위를 특정 탭 영역에서 document 전체([data-ko])로 풀면서 해결했습니다.</li>
             <li><strong>Case 3. 상세 패널 스크롤 캐싱</strong>: 긴 상세 설명을 스크롤해서 읽은 다음 닫고 다른 카드를 열면 이전 스크롤 깊이가 그대로 남아있었습니다. 모달이 열릴 때 scrollTop = 0으로 매번 리셋 코드를 명시해 깔끔하게 원천 초기화시켰습니다.</li>
             <li><strong>Case 4. Safari 뷰포트 안전영역 및 오버레이 끊김 버그</strong>: iOS Safari에서 헤더 상단이 뚫려 보이거나 모달 개방 시 상/하단 툴바에 흰색 여백이 분리되어 뒷배경이 노출되는 버그가 있었습니다. \`viewport-fit=cover\` 설정과 safe-area 패딩 연산을 가미하고, 모달 개방 시 body 배경을 블랙(\`background-color: #000000 !important\`)으로 강제 전이시키는 JS-CSS 동기화를 거쳐 사파리 특유의 여백 끊김 현상을 원천 방지했습니다.</li>
-            <li><strong>Case 5. 소셜 웹 링크 연동 및 파비콘 다국어 크로스 브라우징 버그</strong>: 포트폴리오 메인 화면의 지구본 아이콘 툴팁을 '동적 포트폴리오 방문'으로 수정하고 전용 도메인 배포 링크(\`https://portfolio-tau-five-85.vercel.app\`)로 연동을 업데이트했습니다. 추가적으로 영문 버전에서는 파비콘(Favicon.svg)이 노출되나 한글 버전 하위 경로 및 특정 로컬 환경에서 노출되지 않는 절대 경로 버그가 있어, 빌드 스크립트(build.js)에서 파비콘을 상대 경로(\`\${relPath}logo/favicon.svg\`)로 치환 컴파일하도록 수정하여 다국어 페이지 전반의 파비콘 정합성을 완전히 맞췄습니다.</li>
+            <li><strong>Case 5. 소셜 웹 링크 연동 및 파비콘 다국어 크로스 브라우징 버그</strong>: 포트폴리오 메인 화면의 지구본 아이콘 툴팁을 '동적 포트폴리오 방문'으로 수정하고 전용 도메인 배포 링크(\`https://portfolio-tau-five-85.vercel.app\`)로 연동을 업데이트했습니다. 추가적으로 영문 버전에서는 파비콘(Favicon.svg)이 노출되나 한글 버전 하위 경로 및 특정 로컬 환경에서 노출되지 않는 절대 경로 버그가 있어, 빌드 스크립트(build.js)에서 파비콘을 상대 경로(\`\${relPath}logo/favicon.svg?v=1.0.1\`)로 치환 컴파일하도록 수정했습니다. 또한 Safari 브라우저의 파비콘 캐시 고착 현상을 우회하도록 캐시 무력화(Cache Busting) 버전을 추가하여 다국어 페이지 전반의 파비콘 정합성을 완전히 맞췄습니다.</li>
           </ul>
         `
       },
@@ -601,7 +603,7 @@ languages.forEach(lang => {
             <li><strong>Case 2. Dynamic Translation Leaks</strong>: Canvas labels missed KO/EN locale updates. Broadening the query selector to document-wide [data-ko] targets solved it.</li>
             <li><strong>Case 3. Detail Peek Scroll Cash</strong>: Reopening peek panels kept scrolled offset positions. Forcing a clear scrollTop = 0 trigger reset it clean.</li>
             <li><strong>Case 4. Safari Viewport Gap & Overlay Cutoff</strong>: In iOS Safari, the top of the header appeared hollow, and opening modals left white borders at the top/bottom bars. By injecting \`viewport-fit=cover\`, safe-area-inset padding calculations, and forcing a black body background (\`background-color: #000000 !important\`) during modal active states, we resolved Safari's safe area layout clipping and achieved seamless glassmorphic overlays.</li>
-            <li><strong>Case 5. Social Website Link Integration & Favicon Path Optimization</strong>: Updated the globe social icon tooltip to 'Visit Dynamic Portfolio' and pointed its link to the new production deployment (\`https://portfolio-tau-five-85.vercel.app\`). Additionally, solved an issue where the favicon (favicon.svg) would not display on Korean locale pages or specific localized subpaths due to absolute path references. By programmatically converting the favicon URL to a relative path (\`\${relPath}logo/favicon.svg\`) during compile time in build.js, we ensured robust favicon cross-browser rendering across all subfolders and local file protocol contexts.</li>
+            <li><strong>Case 5. Social Website Link Integration & Favicon Path Optimization</strong>: Updated the globe social icon tooltip to 'Visit Dynamic Portfolio' and pointed its link to the new production deployment (\`https://portfolio-tau-five-85.vercel.app\`). Additionally, solved an issue where the favicon (favicon.svg) would not display on Korean locale pages or specific localized subpaths due to absolute path references. By programmatically converting the favicon URL to a relative path with cache busting query (\`\${relPath}logo/favicon.svg?v=1.0.1\`) during compile time in build.js, we bypassed Safari's aggressive favicon cache and ensured robust rendering across all subfolders.</li>
           </ul>
         `
       }
