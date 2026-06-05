@@ -33,6 +33,7 @@
   --font-serif: 'Source Serif 4', Georgia, serif;
   --overlay-bg: rgba(252, 251, 249, 0.8);
   --peek-bg: rgba(252, 251, 249, 0.95);
+  --nav-bg: rgba(252, 251, 249, 0.85);
   --shadow-sm: 0 1px 2px 0 rgba(28, 25, 23, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(28, 25, 23, 0.05), 0 2px 4px -1px rgba(28, 25, 23, 0.03);
 }
@@ -48,6 +49,7 @@ html.dark {
   --accent-hover: #fdba74; /* Soft peach glow */
   --overlay-bg: rgba(15, 14, 13, 0.8);
   --peek-bg: rgba(23, 21, 20, 0.96);
+  --nav-bg: rgba(15, 14, 13, 0.85);
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
   --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
@@ -123,11 +125,17 @@ html.dark body::before {
 
 /* Header & Nav */
 header.sticky-nav {
-  position: absolute;
-  top: 3rem;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 50;
+  background-color: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1.25rem 0;
+  transition: background-color 0.3s, border-color 0.3s, padding 0.3s;
 }
 
 .nav-container {
