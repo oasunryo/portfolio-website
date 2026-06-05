@@ -1322,3 +1322,137 @@ article.prose-article {
   opacity: 0.5;
 }
 
+/* ==========================================================================
+   BLOG PAGINATION
+   ========================================================================== */
+.blog-pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.blog-post-count {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.02em;
+}
+
+.blog-pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  height: 2.1rem;
+  padding: 0 0.5rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.page-btn:hover:not(:disabled) {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.page-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.page-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.page-btn.active {
+  background-color: var(--text-primary);
+  border-color: var(--text-primary);
+  color: var(--bg-primary);
+  font-weight: 600;
+}
+
+html.dark .page-btn.active {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.page-btn.page-prev,
+.page-btn.page-next {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-tertiary);
+}
+
+.page-btn.page-prev:hover:not(:disabled),
+.page-btn.page-next:hover:not(:disabled) {
+  color: var(--text-primary);
+}
+
+.page-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.1rem;
+  height: 2.1rem;
+  font-size: 0.875rem;
+  color: var(--text-tertiary);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Animate-in on page change */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-page-transition {
+  animation: fadeInUp 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Category badge color variants */
+.status-badge[data-cat="Semiconductor"] {
+  background-color: rgba(22, 163, 74, 0.08);
+  border-color: rgba(22, 163, 74, 0.25);
+  color: #15803d;
+}
+html.dark .status-badge[data-cat="Semiconductor"] {
+  background-color: rgba(74, 222, 128, 0.08);
+  border-color: rgba(74, 222, 128, 0.2);
+  color: #4ade80;
+}
+.status-badge[data-cat="Career"] {
+  background-color: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.25);
+  color: #4f46e5;
+}
+html.dark .status-badge[data-cat="Career"] {
+  background-color: rgba(129, 140, 248, 0.08);
+  border-color: rgba(129, 140, 248, 0.2);
+  color: #818cf8;
+}
+

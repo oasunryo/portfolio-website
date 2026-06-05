@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const newBlogPosts = require('./newBlogPosts');
 
 // Ensure output directories exist for both Korean (ko) and English (en)
 const languages = ['ko', 'en'];
@@ -897,8 +898,10 @@ languages.forEach(lang => {
     }
   ];
 
+  const allBlogPosts = [...blogPosts, ...newBlogPosts];
+
   // Generate individual blog post pages for this language
-  blogPosts.forEach(post => {
+  allBlogPosts.forEach(post => {
     const postDir = path.join(dirBlog, post.slug);
     if (!fs.existsSync(postDir)) {
       fs.mkdirSync(postDir, { recursive: true });
@@ -963,7 +966,7 @@ languages.forEach(lang => {
 
         <script>
           document.addEventListener('DOMContentLoaded', () => {
-            const allPosts = ${JSON.stringify(blogPosts.map(p => ({
+            const allPosts = ${JSON.stringify(allBlogPosts.map(p => ({
               slug: p.slug,
               date: p.date,
               category: p.category,
@@ -999,7 +1002,7 @@ languages.forEach(lang => {
   });
 
   // Generate /lang/blog/index.html (Blog listing page)
-  let blogListings = blogPosts.map(post => {
+  let blogListings = allBlogPosts.map(post => {
     const trans = post[lang];
     return `
     <div class="list-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
@@ -1033,6 +1036,8 @@ languages.forEach(lang => {
         <button class="tag-filter-btn" data-category="Architecture">Architecture</button>
         <button class="tag-filter-btn" data-category="Insight">Insight</button>
         <button class="tag-filter-btn" data-category="Hardware">Hardware</button>
+        <button class="tag-filter-btn" data-category="Semiconductor">Semiconductor</button>
+        <button class="tag-filter-btn" data-category="Career">Career</button>
       </div>
       <div class="blog-sort-container">
         <select id="blog-sort" class="sort-select-box" aria-label="Sort blog posts">
@@ -1046,6 +1051,7 @@ languages.forEach(lang => {
     <div class="list-container" id="blog-posts-list">
       ${blogListings}
     </div>
+    <div id="blog-pagination-wrapper" class="blog-pagination-wrapper"></div>
   </div>
   `;
 

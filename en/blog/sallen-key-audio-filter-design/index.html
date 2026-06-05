@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+<title>Designing a 2nd-Order Sallen-Key Active Low-Pass Filter with Op-Amps  | Junseo Oh</title>
+<meta name="description" content="Deriving cut-off frequency formulations and analyzing component tolerance effects on transfer functions in audio signal paths.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/blog/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Blog list
+        </a>
+        <header class="article-header">
+          <div class="article-meta-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="article-meta-info" style="margin-bottom: 0;">
+              <span class="article-category-badge">Hardware</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-05-02">2026-05-02</time>
+            </div>
+            
+            <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
+              <button class="icon-btn ai-dropdown-trigger" style="font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer;" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu" style="display: none; position: absolute; right: 0; top: 110%; z-index: 100; min-width: 14rem; background: var(--peek-bg); backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: 0.5rem; box-shadow: var(--shadow-md); padding: 0.35rem; flex-direction: column; gap: 0.15rem;">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'sallen-key-audio-filter-design')" style="width: 100%; text-align: left; background: transparent; border: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fblog%2Fsallen-key-audio-filter-design%2F" target="_blank" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Designing%20a%202nd-Order%20Sallen-Key%20Active%20Low-Pass%20Filter%20with%20Op-Amps&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fblog%2Fsallen-key-audio-filter-design%2F" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h1 class="article-main-title">Designing a 2nd-Order Sallen-Key Active Low-Pass Filter with Op-Amps</h1>
+        </header>
+        <div class="article-body-content">
+          
+        <h2>Filtering Out-of-Band Audio Noise</h2>
+        <p>To roll off high-frequency noise from audio DAC outputs, engineers choose active filters. The **Sallen-Key topology** balances low component counts with customizable gain settings.</p>
+        <hr>
+        <h2>Mathematical Modeling and Q-Factor Control</h2>
+        <p>Cutoff points follow $F_c = 1 / (2\pi \sqrt{R_1 R_2 C_1 C_2})$. Using matching resistor and capacitor values simplifies component sourcing, but requires careful tuning of feed-forward ratios to secure flat Butterworth passbands (Q=0.707).</p>
+      
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Articles</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-sallen-key-audio-filter-design">
+          "# Designing a 2nd-Order Sallen-Key Active Low-Pass Filter with Op-Amps\n\nDeriving cut-off frequency formulations and analyzing component tolerance effects on transfer functions in audio signal paths.\n\nFiltering Out-of-Band Audio Noise To roll off high-frequency noise from audio DAC outputs, engineers choose active filters. The **Sallen-Key topology** balances low component counts with customizable gain settings. Mathematical Modeling and Q-Factor Control Cutoff points follow $F_c = 1 / (2\\pi \\sqrt{R_1 R_2 C_1 C_2})$. Using matching resistor and capacitor values simplifies component sourcing, but requires careful tuning of feed-forward ratios to secure flat Butterworth passbands (Q=0.707)."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allPosts = [{"slug":"semiconductor-packaging-whitepaper","date":"2026-06-03","category":"Architecture","title":"Engineering a Resume into a System Architecture","description":"A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio."},{"slug":"amkor-technology-joining-2026","date":"2026-05-20","category":"Insight","title":"Preparing to Join Global OSAT Amkor Technology","description":"Reflecting on backend process packaging and testing knowledge built as an undergraduate before joining Amkor Technology Korea in July 2026."},{"slug":"fpga-verilog-digital-design","date":"2026-04-18","category":"Hardware","title":"Verilog HDL Debouncer Design & Gate Propagation Delay Verification","description":"Using a multi-stage shift register debouncer to eliminate switch bounce noise on a Cyclone II FPGA board and verifying a 5ns gate propagation delay with ModelSim."},{"slug":"vibe-coding-to-harness-engineering","date":"2026-06-04","category":"Architecture","title":"From Vibe Coding to Harness Engineering: Pushing AI Coding Limits","description":"Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably."},{"slug":"thinking-vs-understanding-karpathy","date":"2026-06-03","category":"Insight","title":"Thinking Can Be Outsourced, But Understanding Cannot","description":"In the Software 3.0 era where LLMs handle coding logistics, what is the irreplaceable value of a human engineer?"},{"slug":"agent-tool-diet-strategy","date":"2026-06-01","category":"Architecture","title":"Maximizing AI Agent Efficiency via the \"Tool Diet\" Strategy","description":"Why overloading LLM agents with too many APIs degrades performance, and how minimalist toolkits build smarter assistants."},{"slug":"clean-folder-structure-as-prompt","date":"2026-05-29","category":"Architecture","title":"Folder Structure is a Giant Prompt: The Broken Windows Theory in AI Coding","description":"Dirty workspace directories breed messy code generations. Why neat physical architectures dictate AI quality."},{"slug":"private-notebooklm-safari-obsidian","date":"2026-06-01","category":"Insight","title":"Building a Private Local \"NotebookLM\" on an 8GB RAM MacBook","description":"How to build a low-resource private research pipeline by integrating Zotero 7, Safari, and Obsidian (Copilot + Gemini API)."},{"slug":"creator-business-strategy-roadmap","date":"2026-06-02","category":"Insight","title":"Building \"A Semiconductor Rookie's AI Survival Log\" Brand Strategy","description":"Positioning a mentoring brand for tech students by leveraging career counseling backgrounds and real-world engineer reality."},{"slug":"build-with-not-for-philosophy","date":"2026-05-28","category":"Insight","title":"\"Build with, not for\": Why Human-Centered Engineering Matters","description":"Focusing on solving real user inconveniences rather than showing off technical complexity."},{"slug":"tsv-hbm-technology","date":"2026-05-15","category":"Semiconductor","title":"TSV Process Mechanisms and Defect Modes in HBM Stacking","description":"An analysis of Through Silicon Via (TSV) etching, deposition, plating, and bonding processes critical for High Bandwidth Memory (HBM) stacking."},{"slug":"wire-bonding-capillary-mechanism","date":"2026-05-10","category":"Semiconductor","title":"Capillary Geometry and Defect Mechanisms in Wire Bonding","description":"Analyzing capillary design parameters and thermosonic bonding process conditions for gold and copper wire interconnects."},{"slug":"bga-vs-wlcsp-packaging","date":"2026-05-05","category":"Semiconductor","title":"BGA vs WLCSP: Packaging Architectures for Mobile AP and IoT Chips","description":"Comparing Ball Grid Array (BGA) and Wafer-Level Chip Scale Package (WLCSP) architectures in terms of signal routing, thermal transfer, and footprint."},{"slug":"yield-analysis-spotfire","date":"2026-04-28","category":"Semiconductor","title":"Wafer Test Yield Optimization Using TIBCO Spotfire Data Analytics","description":"Using statistical visualization and bin maps in Spotfire to trace semiconductor production outliers back to faulty inline equipment steps."},{"slug":"euv-photoresist-mechanism","date":"2026-04-20","category":"Semiconductor","title":"EUV Photolithography & Photoresist Molecular Processing Mechanisms","description":"Comparing Chemically Amplified Resists (CAR) and Tin-based Metal Oxide Resists (MOR) for high-resolution 13.5nm EUV patterning."},{"slug":"warpage-thermo-analysis","date":"2026-04-12","category":"Semiconductor","title":"Thermo-Mechanical Warpage Failure Modes and Material Engineering","description":"Analyzing warpage behavior in packages due to Coefficient of Thermal Expansion (CTE) mismatch and using Shadow Moire profiling."},{"slug":"si-pi-impedance-basics","date":"2026-04-05","category":"Semiconductor","title":"Signal & Power Integrity (SI-PI) Design Foundations in High-Speed Packaging","description":"Understanding high-speed transmission lines, impedance matching, decoupling capacitor loops, and crosstalk reduction on package substrates."},{"slug":"osat-industry-overview","date":"2026-03-25","category":"Semiconductor","title":"Global OSAT Market Trends and 2.5D/3D Advanced Stacking Solutions","description":"Analyzing the OSAT supply chain landscape and 2.5D silicon interposer scaling critical for high-performance computing cards."},{"slug":"advanced-packaging-roadmap","date":"2026-03-18","category":"Semiconductor","title":"IRDS Roadmap: Emerging Packaging Milestones Towards 2030","description":"Understanding Hybrid Cu-to-Cu bonding integrations and the shift to Glass Substrates for ultra-dense packaging layers."},{"slug":"chiplet-disaggregation-trend","date":"2026-03-08","category":"Semiconductor","title":"De-aggregating Monolithic Silicon: Chiplet Design and UCIe Interconnect Standard","description":"Dividing silicon into optimized modular dies (chiplets) connected via the Universal Chiplet Interconnect Express (UCIe) standard."},{"slug":"cc-cv-charger-adc-precision","date":"2026-05-12","category":"Hardware","title":"CC-CV Battery Charger Control Loops & Precision Current Sensing","description":"Designing constant-current constant-voltage switching algorithms and differential shunt amplifier layouts for Li-ion battery chargers."},{"slug":"sallen-key-audio-filter-design","date":"2026-05-02","category":"Hardware","title":"Designing a 2nd-Order Sallen-Key Active Low-Pass Filter with Op-Amps","description":"Deriving cut-off frequency formulations and analyzing component tolerance effects on transfer functions in audio signal paths."},{"slug":"battery-soc-ocv-ccv","date":"2026-04-25","category":"Hardware","title":"State of Charge (SoC) Calculation: Hybrid OCV and Coulomb Counting","description":"Solving current sensor drift errors by combining Open-Circuit Voltage profiling with time-based charge integration."},{"slug":"ac-power-sensing-calibration","date":"2026-04-10","category":"Hardware","title":"AC Power Sensing: Non-Contact CT Sensor Circuits and Analog Calibration","description":"Designing current transformer bias networks for single-supply microcontrollers to measure high-voltage alternating currents safely."},{"slug":"fpga-bcd-counter-clock-divider","date":"2026-03-30","category":"Hardware","title":"FPGA Logic Foundations: Clock Dividers and BCD Counters in Verilog","description":"Slowing down 50MHz board clocks to 1Hz pulses using counter registers to drive a seven-segment digital display."},{"slug":"analog-filter-frequency-separation","date":"2026-03-15","category":"Hardware","title":"Analog Frequency Crossover Networks and Load Impedance Correction","description":"Designing passive LC crossover filters and matching Zobel networks to compensate for dynamic speaker impedance shifts."},{"slug":"mcu-firmware-optimization","date":"2026-03-02","category":"Hardware","title":"MCU Firmware Optimization: Implementing Interrupt-Driven Deep Sleep States","description":"Structuring firmware loops around low-power wake-up interrupts rather than polling delays to extend battery lifetimes."},{"slug":"kwangwoon-ee-semiconductor-focus","date":"2026-05-18","category":"Career","title":"Focusing on Semiconductor Packaging Engineering at Kwangwoon University","description":"Navigating through electrical engineering paths to target packaging technology inside the semiconductor supply chain."},{"slug":"amkor-osat-interview-prep","date":"2026-05-08","category":"Career","title":"Amkor Technology Interview Preparation and Job-Specific Q&A Guidelines","description":"Organizing packaging and test engineer interview topics including bonding failures, warpage, and statistical analysis."},{"slug":"ai-tools-study-efficiency","date":"2026-04-30","category":"Career","title":"Study Hack: Learning Complex Engineering Concepts 10x Faster with AI Agents","description":"How to use AI assistants to generate dynamic Q&As and run active recall loops for solid-state physics and packaging tests."},{"slug":"new-engineer-first-90-days","date":"2026-04-15","category":"Career","title":"First 90 Days: Habits for Rookie Engineers to Build Credibility","description":"Practical advice for newly hired engineers to manage task logs, structure questions, and optimize documentation."},{"slug":"portfolio-seo-for-engineers","date":"2026-03-28","category":"Career","title":"SEO Strategy for Engineers: Getting Recruited via Organic Google Searches","description":"Configuring metadata, structured headers, and specific keyword taglines on your technical blog to attract engineering recruiters."},{"slug":"creator-brand-semiconductor-rookie","date":"2026-03-10","category":"Career","title":"Building a Personal Brand After Hours: Junior Engineer Strategies","description":"Creating a digital presence beyond your day job title by archiving your learning curves and tech notes online."},{"slug":"community-manager-engineer-story","date":"2026-03-01","category":"Career","title":"How Non-Profit Community Management Enhanced My EE Collaboration Skills","description":"Translating human feedback into system requirements: Lessons learned from community coordinating roles."},{"slug":"zero-dependency-portfolio-zoom-engine","date":"2026-05-24","category":"Architecture","title":"Building a Zero-Dependency Zoom-Scaling Canvas Renderer from Scratch","description":"Implementing custom aspect-ratio scaling and transform-matrix properties using vanilla JavaScript without external web-flow engines."},{"slug":"ai-design-harness-4-documents","date":"2026-05-14","category":"Architecture","title":"The AI Design Harness: Using 4-Document Frameworks to Contain LLMs","description":"Structuring execution steps in implementation plans, tasks, and walkthroughs to prevent context drifts and coding errors."},{"slug":"gemini-api-personal-assistant","date":"2026-04-24","category":"Architecture","title":"Designing an Obsidian Knowledge Dashboard via Gemini API Integration","description":"Leveraging Gemini's million-token context windows to read and summarize entire markdown vaults without RAG pipelines."},{"slug":"dark-mode-fouc-prevention","date":"2026-04-08","category":"Architecture","title":"Eliminating Dark-Mode Flash (FOUC) via Blocking Head Scripts","description":"Injecting inline system theme checks before browser render trees compile to prevent irritating white flashes on startup."},{"slug":"obsidian-second-brain-tips","date":"2026-03-22","category":"Architecture","title":"Building a Developers Second Brain in Obsidian: Principles and Tips","description":"Moving away from hierarchical folder structures to link-based associative memory structures in local markdown vaults."},{"slug":"prompt-vs-harness-engineering-diff","date":"2026-03-05","category":"Architecture","title":"Prompt Engineering vs Harness Engineering: Architectural Control of LLMs","description":"Differentiating between soft natural language instructions and hard software constraints configured inside agent sandboxes."}];
+            const currentSlug = "sallen-key-audio-filter-design";
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allPosts.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

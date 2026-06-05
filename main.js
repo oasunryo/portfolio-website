@@ -146,21 +146,82 @@ function initCopyHandlers() {
   });
 }
 
-// 4. Blog Search Engine
+// 4. Blog Search Engine + Pagination (usePagination pattern)
+const POSTS_PER_PAGE = 10;
+const PAGINATION_ITEMS_TO_DISPLAY = 5;
+
+function usePagination({ currentPage, totalPages, paginationItemsToDisplay }) {
+  const showLeftEllipsis = currentPage - 1 > paginationItemsToDisplay / 2;
+  const showRightEllipsis = totalPages - currentPage + 1 > paginationItemsToDisplay / 2;
+
+  function calculatePaginationRange() {
+    if (totalPages <= paginationItemsToDisplay) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+
+    const halfDisplay = Math.floor(paginationItemsToDisplay / 2);
+    const initialRange = {
+      start: currentPage - halfDisplay,
+      end: currentPage + halfDisplay,
+    };
+
+    const adjustedRange = {
+      start: Math.max(1, initialRange.start),
+      end: Math.min(totalPages, initialRange.end),
+    };
+
+    if (adjustedRange.start === 1) {
+      adjustedRange.end = paginationItemsToDisplay;
+    }
+    if (adjustedRange.end === totalPages) {
+      adjustedRange.start = totalPages - paginationItemsToDisplay + 1;
+    }
+
+    if (showLeftEllipsis) adjustedRange.start++;
+    if (showRightEllipsis) adjustedRange.end--;
+
+    return Array.from(
+      { length: adjustedRange.end - adjustedRange.start + 1 },
+      (_, i) => adjustedRange.start + i,
+    );
+  }
+
+  return {
+    pages: calculatePaginationRange(),
+    showLeftEllipsis,
+    showRightEllipsis,
+  };
+}
+
 function initBlogSearch() {
   const searchInput = document.getElementById('blog-search');
   const postsList = document.getElementById('blog-posts-list');
   const tagButtons = document.querySelectorAll('.tag-filter-btn');
   const sortSelect = document.getElementById('blog-sort');
+  const paginationWrapper = document.getElementById('blog-pagination-wrapper');
   if (!searchInput || !postsList) return;
 
-  const posts = Array.from(postsList.children);
+  const allPosts = Array.from(postsList.children);
+  let currentPage = 1;
 
-  function sortAndFilterPosts() {
+  function getFilteredSortedPosts() {
+    const query = searchInput.value.toLowerCase().trim();
+    const activeTagBtn = document.querySelector('.tag-filter-btn.active');
+    const activeCategory = activeTagBtn ? activeTagBtn.getAttribute('data-category') : 'all';
     const sortBy = sortSelect ? sortSelect.value : 'latest';
-    
-    // Sort posts
-    const sortedPosts = [...posts].sort((a, b) => {
+
+    // Filter
+    let filtered = allPosts.filter(post => {
+      const title = post.querySelector('.item-title-link')?.textContent.toLowerCase() || '';
+      const desc = post.querySelector('.item-description')?.textContent.toLowerCase() || '';
+      const postCategory = post.getAttribute('data-category') || '';
+      const matchesQuery = !query || title.includes(query) || desc.includes(query);
+      const matchesCategory = activeCategory === 'all' || postCategory === activeCategory;
+      return matchesQuery && matchesCategory;
+    });
+
+    // Sort
+    filtered.sort((a, b) => {
       if (sortBy === 'latest') {
         return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
       } else if (sortBy === 'oldest') {
@@ -173,45 +234,122 @@ function initBlogSearch() {
       return 0;
     });
 
-    // Re-append to parent in sorted order and apply filter
-    const query = searchInput.value.toLowerCase().trim();
-    const activeTagBtn = document.querySelector('.tag-filter-btn.active');
-    const activeCategory = activeTagBtn ? activeTagBtn.getAttribute('data-category') : 'all';
+    return filtered;
+  }
 
-    sortedPosts.forEach(post => {
-      postsList.appendChild(post);
+  function renderPage() {
+    const filtered = getFilteredSortedPosts();
+    const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
 
-      const title = post.querySelector('.item-title-link')?.textContent.toLowerCase() || '';
-      const desc = post.querySelector('.item-description')?.textContent.toLowerCase() || '';
-      const postCategory = post.getAttribute('data-category') || '';
+    // Clamp currentPage
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
 
-      const matchesQuery = title.includes(query) || desc.includes(query);
-      const matchesCategory = activeCategory === 'all' || postCategory === activeCategory;
+    const startIdx = (currentPage - 1) * POSTS_PER_PAGE;
+    const pageItems = new Set(filtered.slice(startIdx, startIdx + POSTS_PER_PAGE));
 
-      if (matchesQuery && matchesCategory) {
-        post.style.display = 'block';
-      } else {
-        post.style.display = 'none';
+    // Show/hide all posts
+    allPosts.forEach(post => {
+      post.style.display = pageItems.has(post) ? 'block' : 'none';
+    });
+
+    // Re-append visible posts in sorted order (preserves DOM order = sorted order)
+    filtered.forEach(post => postsList.appendChild(post));
+
+    // Trigger fade-in animation on list container
+    postsList.classList.remove('blog-page-transition');
+    void postsList.offsetWidth; // force reflow
+    postsList.classList.add('blog-page-transition');
+
+    // Render pagination UI
+    renderPagination(filtered.length, totalPages);
+  }
+
+  function renderPagination(totalCount, totalPages) {
+    if (!paginationWrapper) return;
+
+    const isKo = document.documentElement.lang === 'ko';
+    const countLabel = isKo
+      ? `총 ${totalCount}개 · ${currentPage} / ${totalPages} 페이지`
+      : `${totalCount} posts · Page ${currentPage} of ${totalPages}`;
+
+    const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
+      currentPage,
+      totalPages,
+      paginationItemsToDisplay: PAGINATION_ITEMS_TO_DISPLAY,
+    });
+
+    // Build pagination HTML
+    let html = `<div class="blog-post-count">${countLabel}</div>`;
+
+    if (totalPages > 1) {
+      html += `<nav class="blog-pagination" aria-label="Blog pagination">`;
+
+      // Prev button
+      html += `<button class="page-btn page-prev" ${currentPage === 1 ? 'disabled' : ''} data-page="${currentPage - 1}" aria-label="Previous page">‹</button>`;
+
+      // First page + left ellipsis
+      if (showLeftEllipsis) {
+        html += `<button class="page-btn" data-page="1" aria-label="Page 1">1</button>`;
+        html += `<span class="page-ellipsis" aria-hidden="true">…</span>`;
       }
+
+      // Page number buttons
+      pages.forEach(page => {
+        const isActive = page === currentPage;
+        html += `<button class="page-btn${isActive ? ' active' : ''}" data-page="${page}" aria-label="Page ${page}" ${isActive ? 'aria-current="page"' : ''}>${page}</button>`;
+      });
+
+      // Right ellipsis + last page
+      if (showRightEllipsis) {
+        html += `<span class="page-ellipsis" aria-hidden="true">…</span>`;
+        html += `<button class="page-btn" data-page="${totalPages}" aria-label="Page ${totalPages}">${totalPages}</button>`;
+      }
+
+      // Next button
+      html += `<button class="page-btn page-next" ${currentPage === totalPages ? 'disabled' : ''} data-page="${currentPage + 1}" aria-label="Next page">›</button>`;
+
+      html += `</nav>`;
+    }
+
+    paginationWrapper.innerHTML = html;
+
+    // Bind click events to pagination buttons
+    paginationWrapper.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const page = parseInt(btn.getAttribute('data-page'), 10);
+        if (!isNaN(page) && page !== currentPage) {
+          currentPage = page;
+          renderPage();
+          // Smooth scroll to top of blog list
+          postsList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
   }
 
-  // Search input event
-  searchInput.addEventListener('input', sortAndFilterPosts);
+  // Reset to page 1 on filter/search/sort change
+  function resetAndRender() {
+    currentPage = 1;
+    renderPage();
+  }
 
-  // Tag filter button events
+  searchInput.addEventListener('input', resetAndRender);
+
   tagButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tagButtons.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      sortAndFilterPosts();
+      resetAndRender();
     });
   });
 
-  // Sort select event
   if (sortSelect) {
-    sortSelect.addEventListener('change', sortAndFilterPosts);
+    sortSelect.addEventListener('change', resetAndRender);
   }
+
+  // Initial render
+  renderPage();
 }
 
 // 5. Side Peek Detail View (Design Tab)

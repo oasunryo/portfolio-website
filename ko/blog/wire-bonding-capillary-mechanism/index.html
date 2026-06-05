@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/logo/favicon.ico">
+<title>와이어 본딩 공정에서 캐필러리 형상과 불량 제어 매커니즘  | 오준서</title>
+<meta name="description" content="금(Au) 또는 구리(Cu) 와이어를 본딩 패드에 접합할 때 사용되는 초음파 열압착 캐필러리(Capillary) 형상 변수와 본드 신뢰성 분석.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <div class="article-meta-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="article-meta-info" style="margin-bottom: 0;">
+              <span class="article-category-badge">Semiconductor</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-05-10">2026-05-10</time>
+            </div>
+            
+            <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
+              <button class="icon-btn ai-dropdown-trigger" style="font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer;" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu" style="display: none; position: absolute; right: 0; top: 110%; z-index: 100; min-width: 14rem; background: var(--peek-bg); backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: 0.5rem; box-shadow: var(--shadow-md); padding: 0.35rem; flex-direction: column; gap: 0.15rem;">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'wire-bonding-capillary-mechanism')" style="width: 100%; text-align: left; background: transparent; border: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fwire-bonding-capillary-mechanism%2F" target="_blank" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=%EC%99%80%EC%9D%B4%EC%96%B4%20%EB%B3%B8%EB%94%A9%20%EA%B3%B5%EC%A0%95%EC%97%90%EC%84%9C%20%EC%BA%90%ED%95%84%EB%9F%AC%EB%A6%AC%20%ED%98%95%EC%83%81%EA%B3%BC%20%EB%B6%88%EB%9F%89%20%EC%A0%9C%EC%96%B4%20%EB%A7%A4%EC%BB%A4%EB%8B%88%EC%A6%98&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fwire-bonding-capillary-mechanism%2F" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <h1 class="article-main-title">와이어 본딩 공정에서 캐필러리 형상과 불량 제어 매커니즘</h1>
+        </header>
+        <div class="article-body-content">
+          
+        <h2>와이어 본딩의 핵심 툴, 캐필러리(Capillary)</h2>
+        <p>전통적인 반도체 패키징에서 와이어 본딩은 여전히 넓은 영역을 차지하고 있습니다. 이때 초음파 진동과 열, 압력을 동시에 전달하며 금속 와이어를 패드에 비벼 붙이는 정밀 세라믹 노즐을 <strong>캐필러리(Capillary)</strong>라고 부릅니다. 캐필러리의 내부 직경(Hole size), 챔퍼(Chamfer) 각도, 면면 반경 등 아주 미세한 기하학적 치수가 접합 신뢰성을 결정짓는 핵심 변수입니다.</p>
+        <hr>
+        <h2>초음파 열압착(Thermosonic) 접합 원리</h2>
+        <p>본딩 루프는 먼저 높은 전압으로 와이어 끝을 녹여 둥근 공 모양(Free Air Ball, FAB)을 만든 뒤, 캐필러리로 이를 누르며 초음파를 인가하여 패드의 Al 박막과 원자 간 확산(Intermetallic Compound, IMC) 접합을 형성합니다. 이를 First Bond(Ball Bond)라고 하며, 반대편 리드프레임에 와이어를 칼날 모양으로 끊어내 붙이는 과정을 Second Bond(Stitch Bond)라고 합니다.</p>
+        <hr>
+        <h2>캐필러리 마모와 불량 제어</h2>
+        <p>캐필러리가 마모되면 초음파 에너지가 FAB에 고르게 전달되지 않아 접합 강도가 약해지는 <strong>Non-Stick on Pad (NSOP)</strong> 불량이 생깁니다. 또한 챔퍼 내부 각도가 마모되면 루프 형상이 변형되어 인접 와이어끼리 쇼트(Short)를 일으킬 수 있습니다. 정기적인 캐필러리 팁 청소와 교체 주기 최적화, 그리고 공정 파라미터(Force, Time, Power)의 미세 조정이 수율 향상에 매우 직관적인 영향을 줍니다.</p>
+      
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-wire-bonding-capillary-mechanism">
+          "# 와이어 본딩 공정에서 캐필러리 형상과 불량 제어 매커니즘\n\n금(Au) 또는 구리(Cu) 와이어를 본딩 패드에 접합할 때 사용되는 초음파 열압착 캐필러리(Capillary) 형상 변수와 본드 신뢰성 분석.\n\n와이어 본딩의 핵심 툴, 캐필러리(Capillary) 전통적인 반도체 패키징에서 와이어 본딩은 여전히 넓은 영역을 차지하고 있습니다. 이때 초음파 진동과 열, 압력을 동시에 전달하며 금속 와이어를 패드에 비벼 붙이는 정밀 세라믹 노즐을 캐필러리(Capillary)라고 부릅니다. 캐필러리의 내부 직경(Hole size), 챔퍼(Chamfer) 각도, 면면 반경 등 아주 미세한 기하학적 치수가 접합 신뢰성을 결정짓는 핵심 변수입니다. 초음파 열압착(Thermosonic) 접합 원리 본딩 루프는 먼저 높은 전압으로 와이어 끝을 녹여 둥근 공 모양(Free Air Ball, FAB)을 만든 뒤, 캐필러리로 이를 누르며 초음파를 인가하여 패드의 Al 박막과 원자 간 확산(Intermetallic Compound, IMC) 접합을 형성합니다. 이를 First Bond(Ball Bond)라고 하며, 반대편 리드프레임에 와이어를 칼날 모양으로 끊어내 붙이는 과정을 Second Bond(Stitch Bond)라고 합니다. 캐필러리 마모와 불량 제어 캐필러리가 마모되면 초음파 에너지가 FAB에 고르게 전달되지 않아 접합 강도가 약해지는 Non-Stick on Pad (NSOP) 불량이 생깁니다. 또한 챔퍼 내부 각도가 마모되면 루프 형상이 변형되어 인접 와이어끼리 쇼트(Short)를 일으킬 수 있습니다. 정기적인 캐필러리 팁 청소와 교체 주기 최적화, 그리고 공정 파라미터(Force, Time, Power)의 미세 조정이 수율 향상에 매우 직관적인 영향을 줍니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allPosts = [{"slug":"semiconductor-packaging-whitepaper","date":"2026-06-03","category":"Architecture","title":"이력서를 시스템 아키텍처로 엔지니어링하다","description":"Figma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다."},{"slug":"amkor-technology-joining-2026","date":"2026-05-20","category":"Insight","title":"글로벌 OSAT 앰코테크놀로지 합류를 준비하며","description":"2026년 7월 앰코테크놀로지 코리아 후공정(Packaging & Test) 분야에 입사하기 전, 학부생으로서 쌓아온 전/후공정 전공 지식과 성장 목표를 되돌아봅니다."},{"slug":"fpga-verilog-digital-design","date":"2026-04-18","category":"Hardware","title":"Verilog HDL 디바운싱 필터 설계와 게이트 딜레이 검증","description":"FPGA 보드 실습 시 기계적 노이즈인 Bouncing/Glitch 현상을 다단 시프트 플립플롭 Debouncer로 원천 제어하고 5ns의 배선 게이트 전파 지연을 ModelSim으로 검증해 봅니다."},{"slug":"vibe-coding-to-harness-engineering","date":"2026-06-04","category":"Architecture","title":"바이브 코딩에서 하네스 엔지니어링으로: AI 개발의 한계 뚫기","description":"자연어로 대충 부탁하는 \"바이브 코딩\"을 넘어, AI 에이전트가 안전하고 정확하게 동작할 수밖에 없도록 통제 환경(Harness)을 만드는 패러다임을 제안합니다."},{"slug":"thinking-vs-understanding-karpathy","date":"2026-06-03","category":"Insight","title":"생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다","description":"AI가 생각의 과정을 대신해주는 소프트웨어 3.0 시대, 인간 엔지니어에게 남아있는 대체 불가능한 역량이 무엇인지에 대해."},{"slug":"agent-tool-diet-strategy","date":"2026-06-01","category":"Architecture","title":"AI 에이전트의 효율을 극대화하는 \"도구 다이어트\" 설계 전략","description":"에이전트에게 너무 많은 스킬과 권한을 주면 왜 망가지는지, 왜 도구를 덜 쥐어주는 미니멀리즘이 작동하는지 알아봅니다."},{"slug":"clean-folder-structure-as-prompt","date":"2026-05-29","category":"Architecture","title":"깨진 유리창 이론과 AI 코딩: 폴더 구조 자체가 거대한 프롬프트다","description":"지저분한 파일 구조에서는 AI도 쓰레기 코드를 뱉습니다. 프로젝트의 물리적 환경을 정돈해야 하는 진짜 이유."},{"slug":"private-notebooklm-safari-obsidian","date":"2026-06-01","category":"Insight","title":"8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 \"NotebookLM\" 구축기","description":"Zotero 7 + Safari + Obsidian (Copilot + Gemini API) 연동을 통해 리소스를 쓰지 않고 완벽한 개인 지식 데이터 분석 파이프라인을 구축하는 방법."},{"slug":"creator-business-strategy-roadmap","date":"2026-06-02","category":"Insight","title":"AI 시대의 진로 멘토 브랜드: \"반도체 신입의 AI 생존기\" 기획기","description":"AI가 일자리를 없앤다는 막연한 불안감 속에서, 2030 대학생 및 취준생들에게 현실적인 엔지니어 생존법을 제시하는 브랜드 포지셔닝 전략을 공유합니다."},{"slug":"build-with-not-for-philosophy","date":"2026-05-28","category":"Insight","title":"\"Build with, not for\" — 사람 중심의 공학 철학이 중요한 이유","description":"어떤 제품이나 아키텍처를 설계할 때 기술 자체의 화려함보다 실제 사용자의 가려운 곳을 긁어주는 공학적 태도에 대하여."},{"slug":"tsv-hbm-technology","date":"2026-05-15","category":"Semiconductor","title":"HBM 적층의 핵심, TSV(관통전극) 공정 매커니즘과 불량 유형","description":"고대역폭 메모리(HBM)에서 D램을 수직으로 쌓아 올리는 실리콘관통전극(TSV)의 전공정 에칭부터 후공정 본딩 단계까지의 핵심 공정 및 불량 이슈를 해부합니다."},{"slug":"wire-bonding-capillary-mechanism","date":"2026-05-10","category":"Semiconductor","title":"와이어 본딩 공정에서 캐필러리 형상과 불량 제어 매커니즘","description":"금(Au) 또는 구리(Cu) 와이어를 본딩 패드에 접합할 때 사용되는 초음파 열압착 캐필러리(Capillary) 형상 변수와 본드 신뢰성 분석."},{"slug":"bga-vs-wlcsp-packaging","date":"2026-05-05","category":"Semiconductor","title":"BGA vs WLCSP: 모바일 AP와 IoT 칩 패키징 설계 비교","description":"볼 그리드 어레이(BGA)와 웨이퍼 레벨 칩 스케일 패키지(WLCSP)의 구조적 차이와 열전도, 전기적 특성 비교 분석."},{"slug":"yield-analysis-spotfire","date":"2026-04-28","category":"Semiconductor","title":"Spotfire와 통계 분석을 활용한 웨이퍼 테스트 수율(Yield) 개선 사례","description":"단위 엔지니어가 생산 데이터 분석 도구인 TIBCO Spotfire를 활용하여 EDS 테스트 원시 데이터를 분석하고 이상 수율의 패턴을 추적한 방법."},{"slug":"euv-photoresist-mechanism","date":"2026-04-20","category":"Semiconductor","title":"EUV 노광 공정과 극미세 패턴 해상도를 위한 포토레지스트(PR) 메커니즘","description":"13.5nm 극자외선(EUV) 파장을 이용한 미세 패터닝 시 광학 한계 극복을 위한 화학 증폭형 PR(CAR)과 금속 산화물 PR(MOR)의 발전 방향."},{"slug":"warpage-thermo-analysis","date":"2026-04-12","category":"Semiconductor","title":"온도 변화에 따른 패키지 Warpage(휨) 현상과 대책 설계","description":"반도체 패키지 재료(Silicon, Substrate, EMC) 간의 열팽창계수(CTE) 불일치로 인한 Warpage 메커니즘과 Shadow Moire 계측 분석법."},{"slug":"si-pi-impedance-basics","date":"2026-04-05","category":"Semiconductor","title":"고주파 반도체 패키지의 Signal & Power Integrity (SI-PI) 입문","description":"반도체 동작 주파수가 GHz 영역에 접어들며 발생하는 신호 왜곡(Crosstalk)과 전원 노이즈(PDN Impedance)를 억제하는 PCB 패키지 설계 이론."},{"slug":"osat-industry-overview","date":"2026-03-25","category":"Semiconductor","title":"글로벌 OSAT 산업 생태계와 2.5D/3D 첨단 패키징 최신 동향","description":"ASE, Amkor, JCET 등 주요 OSAT 업체의 포지셔닝과 인공지능 가속기 칩 양산에 핵심이 된 CoWoS 형태의 이종 집적(Heterogeneous Integration) 트렌드."},{"slug":"advanced-packaging-roadmap","date":"2026-03-18","category":"Semiconductor","title":"국제 반도체 로드맵(IRDS)으로 읽는 2030 후공정 기술 로드맵","description":"미세 피치 축소 한계와 이를 극복하기 위한 하이브리드 본딩(Hybrid Bonding)의 도입 일정 및 패키징 기판의 차세대 유리 기판(Glass Substrate) 전환 연구."},{"slug":"chiplet-disaggregation-trend","date":"2026-03-08","category":"Semiconductor","title":"모놀리식 다이의 해체: 칩렛(Chiplet) 아키텍처와 UCIe 표준 규격","description":"거대한 단일 칩 대신 저렴하고 수율이 우수한 소형 기능별 칩 조각(Chiplets)을 패키지 레벨에서 엮는 설계 기법과 다이 간 상호 연결 표준 UCIe의 중요성."},{"slug":"cc-cv-charger-adc-precision","date":"2026-05-12","category":"Hardware","title":"리튬이온 배터리 충전기 설계를 위한 CC-CV 루프 제어와 ADC 정밀도","description":"배터리 관리 시스템(BMS)에서 정전류(CC)에서 정전압(CV) 충전 모드로 안전하게 전환하기 위한 고해상도 ADC 전류 측정 회로 설계."},{"slug":"sallen-key-audio-filter-design","date":"2026-05-02","category":"Hardware","title":"Op-Amp를 활용한 2차 Sallen-Key 액티브 로우패스 필터 설계 매뉴얼","description":"오디오 신호 전처리 단에서 고주파 노이즈를 커팅하기 위한 차단 주파수(Fc) 공식 도출과 패시브 소자(R, C) 오차값에 따른 전달함수 변화 검증."},{"slug":"battery-soc-ocv-ccv","date":"2026-04-25","category":"Hardware","title":"배터리 잔량 측정(SoC): OCV 방식과 쿨롱 카운팅 알고리즘의 결합","description":"배터리 무부하 개방 전압(OCV) 측정의 히스테리시스 문제를 극복하기 위해 전류 적산법(Coulomb Counting)을 함께 혼합하는 하이브리드 보정 방법."},{"slug":"ac-power-sensing-calibration","date":"2026-04-10","category":"Hardware","title":"AC 교류 전력량 측정을 위한 비접촉 CT 센서 회로 및 ADC 캘리브레이션","description":"송전선이나 가전제품 교류 전류 측정을 위해 변류기(CT) 센서를 연동하고 오프셋 바이어스 회로를 설계해 MCU로 계측하는 과정."},{"slug":"fpga-bcd-counter-clock-divider","date":"2026-03-30","category":"Hardware","title":"FPGA FSM 설계 기초: 클럭 분주기(Clock Divider)와 BCD 카운터","description":"50MHz 기본 고속 클럭을 나누어 1Hz 타이머 이벤트를 발생시키고, 이를 7세그먼트 LED에 출력하기 위한 BCD 디코더 로직 설계 및 타이밍 시뮬레이션."},{"slug":"analog-filter-frequency-separation","date":"2026-03-15","category":"Hardware","title":"아날로그 주파수 분할 필터(Crossover)의 임피던스 임팩트 분석","description":"스피커 유닛 조합 시 저음역(Woofer)과 고음역(Tweeter) 신호를 가르는 패시브 L-C 크로스오버 네트워킹과 로드 임피던스 틀어짐 대응책."},{"slug":"mcu-firmware-optimization","date":"2026-03-02","category":"Hardware","title":"MCU 펌웨어 최적화: 정밀 오버클럭 없는 초절전 슬립 모드와 인터럽트 설계","description":"배터리 구동 센서 하드웨어에서 전력 소모를 최소화하기 위해 CPU를 절전(Deep Sleep) 모드로 두고, 하드웨어 타이머와 외부 핀 인터럽트(ISR)로 구동하는 저전력 설계 기법."},{"slug":"kwangwoon-ee-semiconductor-focus","date":"2026-05-18","category":"Career","title":"광운대 전자공학과에서 반도체 후공정 엔지니어로 타겟 진로를 정한 여정","description":"전자공학 전공생으로서 무수한 갈래(회로 설계, 통신, 임베디드) 속에서 반도체 후공정(OSAT) 패키징 분야를 타겟팅하게 된 커리어 스토리."},{"slug":"amkor-osat-interview-prep","date":"2026-05-08","category":"Career","title":"글로벌 1티어 OSAT 앰코코리아 취업 준비와 직무 면접 기출 정리","description":"반도체 패키징 전문 기업 면접을 준비하며 분석한 주요 직무 질문들과 학부 수준에서 대답할 수 있는 모범 가이드라인."},{"slug":"ai-tools-study-efficiency","date":"2026-04-30","category":"Career","title":"전공 공부의 치트키: AI 에이전트와 함께 10배 속도로 논문 공부하는 법","description":"단순 질답을 넘어 AI 에이전트에게 전공 텍스트북 피드들을 학습시키고, 가상 인터뷰 질문을 받으며 고체물리 학과 시험을 돌파한 비결."},{"slug":"new-engineer-first-90-days","date":"2026-04-15","category":"Career","title":"신입 엔지니어가 회사 입사 직후 첫 90일 동안 존재감을 드러내는 3가지 습관","description":"부서 배치 이후 눈치만 보며 잡무에 지치기 쉬운 초년생들에게 현업 선배들이 강조하는 셀프 트래킹 업무법."},{"slug":"portfolio-seo-for-engineers","date":"2026-03-28","category":"Career","title":"취업 프리패스를 위한 엔지니어용 포트폴리오 웹사이트 SEO 최적화 가이드","description":"단순 링크 복사 전달용이 아닌, 채용 담당자가 구글 검색을 통해 내 기술 블로그와 포트폴리오를 직접 찾아 들어오게 만드는 SEO 기술."},{"slug":"creator-brand-semiconductor-rookie","date":"2026-03-10","category":"Career","title":"퇴근 후 퍼스널 브랜드 구축: 주니어 엔지니어의 1인 미디어 생존 전략","description":"회사 명함 안의 직함에 갇히지 않고, 반도체 분야 콘텐츠 크리에이터이자 주니어 멘토로서 내 이름 석 자를 알리는 디지털 채널 기획."},{"slug":"community-manager-engineer-story","date":"2026-03-01","category":"Career","title":"비영리 단체 커뮤니티 매니저 활동이 엔지니어 협업 역량에 미친 영향","description":"계단뿌셔클럽 등 시민 참여 커뮤니티에서 활동하며 배운 비개발 팀원들과의 소통 문법과 공학적 트러블슈팅의 교차점."},{"slug":"zero-dependency-portfolio-zoom-engine","date":"2026-05-24","category":"Architecture","title":"Zero-Dependency 포트폴리오 줌-스케일링 캔버스 렌더러 설계 백서","description":"React나 외부 캔버스 엔진 없이, 바닐라 Javascript와 CSS transform-matrix 연산만으로 피그마 스타일 줌 엔진을 브라우저에 이식한 과정."},{"slug":"ai-design-harness-4-documents","date":"2026-05-14","category":"Architecture","title":"AI 에이전트의 완전 폭주를 제어하는 \"하네스 통제설계 4대 문서\"","description":"구조화된 가이드 문서(implementation_plan, task, walkthrough)가 에이전트의 맥락을 어떻게 가이드하고 버그율을 낮추는지 분석합니다."},{"slug":"gemini-api-personal-assistant","date":"2026-04-24","category":"Architecture","title":"구글 Gemini API를 활용한 옵시디언 개인 리서치 대시보드 설계","description":"API 키 하나로 내 지식창고를 긁어 연동하고, 질문에 따라 최적의 지식 노트를 발굴 및 추천해주는 지식 매니저 구현 방법."},{"slug":"dark-mode-fouc-prevention","date":"2026-04-08","category":"Architecture","title":"다크모드 적용 시 깜빡임(FOUC) 현상을 원천 방지하는 렌더링 최적화","description":"웹페이지 첫 로드 시 시스템 설정 다크모드 값이 DOM 파싱 전에 적용되지 않아 흰 화면이 잠깐 보였다 사라지는 레이아웃 깜빡임 제어 기법."},{"slug":"obsidian-second-brain-tips","date":"2026-03-22","category":"Architecture","title":"옵시디언(Obsidian)을 활용한 개발자 세컨드 브레인 구축의 핵심 노하우","description":"수많은 폴더 분류의 덫에서 탈피해, 태그(#)와 문서 간 링크([[Link]])만으로 유기적인 지식 네트워크 메모리를 확장하는 방법."},{"slug":"prompt-vs-harness-engineering-diff","date":"2026-03-05","category":"Architecture","title":"프롬프트 엔지니어링 vs 하네스 엔지니어링: 기술적 깊이의 차이","description":"단순히 프롬프트 문구를 조절해 결과를 유도하는 방식과 AI 에이전트의 구동 환경에 물리적 경계를 짓는 소프트웨어 아키텍처적 통제 기술 비교."}];
+            const currentSlug = "wire-bonding-capillary-mechanism";
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allPosts.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>
