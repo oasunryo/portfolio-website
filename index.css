@@ -130,10 +130,8 @@ header.sticky-nav {
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: none;
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
   padding: calc(1.25rem + env(safe-area-inset-top, 0px)) 0 1.25rem 0;
   transition: background-color 0.3s, padding 0.3s;
 }
@@ -911,7 +909,10 @@ article.prose-article {
 /* NOTION-STYLE SIDE PEEK PANEL */
 .side-peek-overlay {
   position: fixed;
-  inset: 0;
+  top: -10vh;
+  bottom: -10vh;
+  left: -10vw;
+  right: -10vw;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -1541,11 +1542,10 @@ html {
   background-color: var(--accent-hover);
 }
 
-/* Modal Open state to prevent background body scrolling and paint Safari's safe areas black */
+/* Modal Open state to prevent background body scrolling */
 html.modal-open,
 body.modal-open {
   overflow: hidden;
-  background-color: #000000 !important;
 }
 
 

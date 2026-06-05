@@ -30,13 +30,19 @@
        padding-top: calc(6rem + env(safe-area-inset-top, 0px)); /* 헤더 팽창 대응 */
      }
      ```
-3. **JS-CSS 동기화 기반 body 배경색 블랙 강제 전환**
-   * 상세 모달 오픈 시 브라우저가 시스템 바의 배경색을 블랙으로 인식하여 칠하게 만들기 위해, 모달 개방 시 `html`과 `body` 태그에 `.modal-open` 클래스를 추가하고 이를 강제 지정했습니다.
+3. **오버레이 영역의 뷰포트 물리 경계 밖 팽창 확장 (Negative Margin Spanning)**
+   * 모달 뒷배경을 흐리게 채우는 오버레이 요소(`.side-peek-overlay`)의 물리적 상하좌우 크기를 스크린 가로세로 범위 밖인 `-10vh` / `-10vw` 수준으로 대폭 연장하여, Safari 브라우저 내부 스크롤 바운스나 노치 등으로 인해 발생하는 흰색 투명 틈새가 원천적으로 모달 뒷배경 오버레이에 의해 다 가려지도록 처리했습니다.
    * `CSS`
      ```css
-     html.modal-open, body.modal-open {
-       overflow: hidden; /* 스크롤 고정 */
-       background-color: #000000 !important; /* Safari 시스템 바를 블랙으로 페인팅 */
+     .side-peek-overlay {
+       position: fixed;
+       top: -10vh;
+       bottom: -10vh;
+       left: -10vw;
+       right: -10vw;
+       background-color: rgba(0, 0, 0, 0.8);
+       backdrop-filter: blur(8px);
+       -webkit-backdrop-filter: blur(8px);
      }
      ```
 
