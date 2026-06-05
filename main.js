@@ -321,8 +321,8 @@ function initBlogSearch() {
         if (!isNaN(page) && page !== currentPage) {
           currentPage = page;
           renderPage();
-          // Smooth scroll to top of blog list
-          postsList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Smooth scroll to top of search input
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
