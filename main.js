@@ -197,6 +197,35 @@ function usePagination({ currentPage, totalPages, paginationItemsToDisplay }) {
   };
 }
 
+function zeroGravityScrollTo(element) {
+  if (!element) return;
+  const start = window.pageYOffset || document.documentElement.scrollTop;
+  const headerOffset = 90; // height of fixed header + safety margin
+  const elementPosition = element.getBoundingClientRect().top;
+  const target = start + elementPosition - headerOffset;
+  const distance = target - start;
+  const duration = 1200; // 1.2s for slow, floating zero-gravity feel
+  let startTime = null;
+
+  // Quartic ease-out timing function for smooth deceleration
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const run = easeOutQuart(progress) * distance + start;
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  }
+
+  requestAnimationFrame(animation);
+}
+
 function initBlogSearch() {
   const searchInput = document.getElementById('blog-search');
   const postsList = document.getElementById('blog-posts-list');
@@ -327,8 +356,8 @@ function initBlogSearch() {
         if (!isNaN(page) && page !== currentPage) {
           currentPage = page;
           renderPage();
-          // Smooth scroll to top of blog header
-          blogHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Zero-gravity kinetic smooth scroll to top of blog header
+          zeroGravityScrollTo(blogHeader);
         }
       });
     });
