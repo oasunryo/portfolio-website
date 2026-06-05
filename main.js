@@ -151,14 +151,18 @@ const POSTS_PER_PAGE = 10;
 const PAGINATION_ITEMS_TO_DISPLAY = 5;
 
 function usePagination({ currentPage, totalPages, paginationItemsToDisplay }) {
+  if (totalPages <= paginationItemsToDisplay) {
+    return {
+      pages: Array.from({ length: totalPages }, (_, i) => i + 1),
+      showLeftEllipsis: false,
+      showRightEllipsis: false,
+    };
+  }
+
   const showLeftEllipsis = currentPage - 1 > paginationItemsToDisplay / 2;
   const showRightEllipsis = totalPages - currentPage + 1 > paginationItemsToDisplay / 2;
 
   function calculatePaginationRange() {
-    if (totalPages <= paginationItemsToDisplay) {
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-    }
-
     const halfDisplay = Math.floor(paginationItemsToDisplay / 2);
     const initialRange = {
       start: currentPage - halfDisplay,
