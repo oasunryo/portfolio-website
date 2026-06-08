@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/buck-converter-ringing-noise/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,17 +111,22 @@
           </div>
           <h1 class="article-main-title">벅 컨버터(Buck Converter) 스위칭 노드 링잉(Ringing) 노이즈 저감 설계</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>스위칭 노드에서 발산되는 고주파 진동 노이즈</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">스위칭 노드에서 발산되는 고주파 진동 노이즈</h2>
         <p>벅 컨버터(Buck Converter) 스위칭 레귤레이터는 모스펫(MOSFET)의 온/오프 스위칭을 고속 반복하며 전압을 강하합니다. 이때 스위치 노드(SW Node)의 급격한 전압 하강/상승 에지($dV/dt$)에서 모스펫 기생 캐패시턴스와 PCB 배선의 기생 인덕턴스가 결합하여 날카로운 고주파 <strong>링잉(Ringing)</strong> 노이즈를 만듭니다.</p>
         <hr>
-        <h2>링잉이 하드웨어에 미치는 영향</h2>
+        <h2 id="toc-heading-1">링잉이 하드웨어에 미치는 영향</h2>
         <p>스위칭 노드 링잉은 스위치 모스펫의 정격 전압 허용치를 초과하여 소자를 영구 파괴시킬 수 있으며, 주변 신호 배선으로 강력한 전자기 노이즈(EMI)를 방출해 고주파 안테나나 고감도 ADC 신호 정밀도를 망가뜨립니다.</p>
         <hr>
-        <h2>RC 스너버(Snubber) 회로 설계 공식</h2>
+        <h2 id="toc-heading-2">RC 스너버(Snubber) 회로 설계 공식</h2>
         <p>링잉 주파수 $f_{ring}$을 측정해 기생 소자 성분을 추정한 뒤, 스위치 단자와 그라운드 사이에 기생 캐패시턴스의 2배에 달하는 $C_{snub}$과 임피던스 매칭 저항 $R_{snub}$을 직렬로 연결하는 <strong>RC Snubber 네트워크</strong>를 접합합니다. 이 감쇠 저항이 스위칭 에지의 고주파 에너지를 열로 방출 소멸시켜 링잉 피크 전압을 30% 이상 경감시킵니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">스위칭 노드에서 발산되는 고주파 진동 노이즈</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">링잉이 하드웨어에 미치는 영향</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">RC 스너버(Snubber) 회로 설계 공식</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

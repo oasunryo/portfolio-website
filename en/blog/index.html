@@ -88,11 +88,11 @@
     <div class="blog-controls-row">
       <div class="blog-tags-container">
         <button class="tag-filter-btn active" data-category="all">All</button>
-        <button class="tag-filter-btn" data-category="Architecture">Architecture</button>
-        <button class="tag-filter-btn" data-category="Insight">Insight</button>
-        <button class="tag-filter-btn" data-category="Hardware">Hardware</button>
-        <button class="tag-filter-btn" data-category="Semiconductor">Semiconductor</button>
-        <button class="tag-filter-btn" data-category="Career">Career</button>
+<button class="tag-filter-btn" data-category="Architecture">Architecture</button>
+<button class="tag-filter-btn" data-category="Career">Career</button>
+<button class="tag-filter-btn" data-category="Hardware">Hardware</button>
+<button class="tag-filter-btn" data-category="Insight">Insight</button>
+<button class="tag-filter-btn" data-category="Semiconductor">Semiconductor</button>
       </div>
       <div class="blog-sort-container">
         <select id="blog-sort" class="sort-select-box" aria-label="Sort blog posts">
@@ -105,1201 +105,1991 @@
     
     <div class="list-container" id="blog-posts-list">
       
-    <div class="list-item" data-category="Architecture" data-date="2026-06-03" data-title="engineering a resume into a system architecture" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-03" data-title="engineering a resume into a system architecture" data-search-content="
+           a resume is ultimately a product to be engineered 
+           standard chronological resumes are boring and cannot show multi-dimensional structures. for semiconductor packaging engineers who need to show complex 3-stage process flow configurations, it is even worse. this portfolio was born with a single question:  &quot;what if i package my entire undergrad engineering career into a visual figma-blueprint workspace?&quot;  
+           my primary rule was to build a  zero-dependency core (pure html, css, client-side js)  without depending on heavy modern frameworks (react or vue). this kept initial load speeds instant and removed build complexities, putting rendering performance directly under vanilla control. 
+          
+           
+          
+           figma 3-stage layout & auto-zoom engine 
+           i structured projects into stage 1 (analog & hw core), stage 2 (digital & data), and stage 3 (osat & packaging), enclosing them in border: 2px dashed #9333ea component blocks. to prevent layout clip errors, i coded a dynamic scaling formula in main.js to keep aspect ratios pixel-perfect on any device. 
+          
+           
+          
+           resolving visual bugs 
+           
+              case 1. nested tree collapses : collapsed child tree elements leaked text. using child combinators (&gt;) instead of broad sibling rules kept overflow states localized. 
+              case 2. dynamic translation leaks : canvas labels missed ko/en locale updates. broadening the query selector to document-wide [data-ko] targets solved it. 
+              case 3. detail peek scroll cash : reopening peek panels kept scrolled offset positions. forcing a clear scrolltop = 0 trigger reset it clean. 
+              case 4. safari viewport gap & overlay cutoff : in ios safari, the top of the header appeared hollow, and opening modals left white borders at the top/bottom bars. by injecting `viewport-fit=cover`, safe-area-inset padding calculations, and forcing a black body background (`background-color: #000000 !important`) during modal active states, we resolved safari's safe area layout clipping and achieved seamless glassmorphic overlays. 
+              case 5. social website link integration & favicon path optimization : updated the globe social icon tooltip to 'visit dynamic portfolio' and pointed its link to the new production deployment (`https://portfolio-tau-five-85.vercel.app`). additionally, solved an issue where the favicon (favicon.svg) would not display on korean locale pages or specific localized subpaths due to absolute path references. by programmatically converting the favicon url to a relative path with cache busting query (`${relpath}logo/favicon.svg?v=1.0.1`) during compile time in build.js, we bypassed safari's aggressive favicon cache and ensured robust rendering across all subfolders. 
+           
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./semiconductor-packaging-whitepaper/index.html" class="item-title-link">Engineering a Resume into a System Architecture</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-03</span>
+        <span class="item-date-text tabular-nums">2026-06-03 &middot; 2 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-20" data-title="preparing to join global osat amkor technology" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-20" data-title="preparing to join global osat amkor technology" data-search-content="
+           semiconductor packaging is now leading performance scaling 
+           as front-end lithography hits physical boundaries, packaging technologies hold the key to performance boosts. i chose to join amkor technology korea, a premier global osat leader, and have focused on laying down practical backend fundamentals. 
+           i researched capillary dimensions in wire bonding to see how variables affect first-bond reliability, studied tsv interconnections for hbm, and modeled high-frequency signal integrity impedance matchings on pcbs. 
+          
+           
+          
+           my mission at amkor 
+           i will target defect rates in ultra-fine pitch bond lines under 50μm. by utilizing statistics and data tools like spotfire and originpro, i aim to map parameter correlations to improve manufacturing yields, growing into a data-driven troubleshooter. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./amkor-technology-joining-2026/index.html" class="item-title-link">Preparing to Join Global OSAT Amkor Technology</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-20</span>
+        <span class="item-date-text tabular-nums">2026-05-20 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Reflecting on backend process packaging and testing knowledge built as an undergraduate before joining Amkor Technology Korea in July 2026.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-04-18" data-title="verilog hdl debouncer design & gate propagation delay verification" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-04-18" data-title="verilog hdl debouncer design & gate propagation delay verification" data-search-content="
+           physical switches are incredibly noisy 
+           when you press a tactile switch, the metal contacts bounce rapidly for milliseconds. on a 50mhz fpga, this mechanical chatter is read as hundreds of rapid inputs. an analog-to-digital filtering buffer is required. 
+          
+           
+          
+           debouncer architecture & modelsim timing 
+           i designed a 3-stage d-ff shift register debouncer in verilog hdl. it delays the switch logic until the signal remains stable for a set clock duration, suppressing mechanical bounce. 
+           using gate-level simulations in modelsim, i verified a 5ns wire propagation delay, confirming how physical lines affect digital signals. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./fpga-verilog-digital-design/index.html" class="item-title-link">Verilog HDL Debouncer Design & Gate Propagation Delay Verification</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-18</span>
+        <span class="item-date-text tabular-nums">2026-04-18 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Using a multi-stage shift register debouncer to eliminate switch bounce noise on a Cyclone II FPGA board and verifying a 5ns gate propagation delay with ModelSim.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-04" data-title="from vibe coding to harness engineering: pushing ai coding limits" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-04" data-title="from vibe coding to harness engineering: pushing ai coding limits" data-search-content="
+           natural language pleas have clear limits 
+           asking an llm chat screen to &quot;write this code&quot; is what andrej karpathy calls  &quot;vibe coding.&quot;  vibe coding lifts the entry floor for non-developers, but fails to raise the execution ceiling when engineering large-scale enterprise systems, as agents repeatedly commit logic bugs. 
+           this is where we need  &quot;harness engineering.&quot;  
+          
+           
+          
+           force ai agents to stay on course 
+           a harness acts like a horse's reins, locking the ai agent within a controlled execution sandbox. instead of giving agents unlimited scope and vague requests, we must build automated test runners (tdd) and strict code structure guidelines. designing constraint architectures is the modern software developer's real role. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./vibe-coding-to-harness-engineering/index.html" class="item-title-link">From Vibe Coding to Harness Engineering: Pushing AI Coding Limits</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-04</span>
+        <span class="item-date-text tabular-nums">2026-06-04 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-03" data-title="thinking can be outsourced, but understanding cannot" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-03" data-title="thinking can be outsourced, but understanding cannot" data-search-content="
+           outsource the coding logistics, keep the system vision 
+           andrej karpathy delivered a powerful quote:  &quot;thinking can be outsourced, but understanding cannot.&quot;  the heavy cognitive load of writing boilerplate, fixing logic errors, and compiling data can now be shifted to ai. in 2026, ai coders write syntax faster than humans. 
+          
+           
+          
+           the core of real engineering 
+           what is left for the human engineer? it is  &quot;systemic understanding.&quot;  why this architecture fits the business logic, how real-world safety policies map to database schemas—this cannot be delegated. engineers who master this understanding will orchestrate teams of ai agents. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./thinking-vs-understanding-karpathy/index.html" class="item-title-link">Thinking Can Be Outsourced, But Understanding Cannot</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-03</span>
+        <span class="item-date-text tabular-nums">2026-06-03 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">In the Software 3.0 era where LLMs handle coding logistics, what is the irreplaceable value of a human engineer?</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-01" data-title="maximizing ai agent efficiency via the "tool diet" strategy" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-01" data-title="maximizing ai agent efficiency via the "tool diet" strategy" data-search-content="
+           ai agents suffer from choice overload too 
+           giving a developer agent terminal access, web searching, file editing, and databases all at once seems optimal, but it is counter-productive. with too many tool choices, agents waste tokens choosing which tools to use rather than thinking about the coding task. decisional paralysis happens in silicon too. 
+          
+           
+          
+           fewer tools yield smarter reasoning 
+           applying a  &quot;tool diet&quot;  improves success rates. by provisioning only 2 or 3 critical apis needed for the immediate sub-task, we keep decision trees small. this focuses the llm's reasoning purely on logical verification and output quality. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./agent-tool-diet-strategy/index.html" class="item-title-link">Maximizing AI Agent Efficiency via the "Tool Diet" Strategy</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-01</span>
+        <span class="item-date-text tabular-nums">2026-06-01 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Why overloading LLM agents with too many APIs degrades performance, and how minimalist toolkits build smarter assistants.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-29" data-title="folder structure is a giant prompt: the broken windows theory in ai coding" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-29" data-title="folder structure is a giant prompt: the broken windows theory in ai coding" data-search-content="
+           a messy workspace guides ai to generate messy code 
+           if your project root is littered with temp files and inconsistent naming conventions, the ai agent will follow suit and generate poor quality code. the  broken windows theory  applies directly to ai development. agents absorb the workspace layout as context before beginning their task. 
+          
+           
+          
+           clean files drive high-quality outputs 
+           keeping directory structures logical acts as a continuous silent prompt. when an agent reads clean components and unified css variables, it mimics that neat coding style. tidying up your directories is the highest leverage prompt engineering. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./clean-folder-structure-as-prompt/index.html" class="item-title-link">Folder Structure is a Giant Prompt: The Broken Windows Theory in AI Coding</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-29</span>
+        <span class="item-date-text tabular-nums">2026-05-29 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Dirty workspace directories breed messy code generations. Why neat physical architectures dictate AI quality.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-01" data-title="building a private local "notebooklm" on an 8gb ram macbook" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-01" data-title="building a private local "notebooklm" on an 8gb ram macbook" data-search-content="
+           no need to exhaust your local gpu for llm inference 
+           running heavy offline models on an 8gb ram mac causes thermal throttling and lags your workflow. alternatively, uploading intellectual property to third-party web apps is tedious. the solution is integrating  zotero 7, safari, and obsidian with gemini apis . 
+          
+           
+          
+           the 3-step research loop 
+           
+              zotero 7 & stoplight reading : save articles in safari directly to zotero, highlighting critical sections in red (foundational), yellow (citation candidate), or green (context). 
+              obsidian sync : pull annotations dynamically using zotero integration and local css snippets, syncing highlighted notes directly into neat callouts. 
+              gemini reasoning : wire your free gemini 2.0 api key to obsidian copilot. with a 1-to-2 million token context window, gemini reads your entire note library, generating outlines in seconds without using local memory. 
+           
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./private-notebooklm-safari-obsidian/index.html" class="item-title-link">Building a Private Local "NotebookLM" on an 8GB RAM MacBook</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-01</span>
+        <span class="item-date-text tabular-nums">2026-06-01 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to build a low-resource private research pipeline by integrating Zotero 7, Safari, and Obsidian (Copilot + Gemini API).</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-02" data-title="building "a semiconductor rookie's ai survival log" brand strategy" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-02" data-title="building "a semiconductor rookie's ai survival log" brand strategy" data-search-content="
+           the advantage of positioning as a rookie engineer 
+           vague declarations by tech prophets often alienate engineering students. in contrast, hearing a career mentor who recently entered amkor technology share their day-to-day ai toolsets is practical. i created  &quot;a semiconductor rookie's ai survival log&quot;  around this approach. 
+          
+           
+          
+           merging engineering with storytelling 
+           my strength is combining electrical engineering with my background at stairs crusher club and experiences founding a career clinic. i will structure content around 1-minute career solutions, guiding students on surviving in the ai era. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./creator-business-strategy-roadmap/index.html" class="item-title-link">Building "A Semiconductor Rookie's AI Survival Log" Brand Strategy</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-02</span>
+        <span class="item-date-text tabular-nums">2026-06-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Positioning a mentoring brand for tech students by leveraging career counseling backgrounds and real-world engineer reality.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-28" data-title=""build with, not for": why human-centered engineering matters" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-28" data-title=""build with, not for": why human-centered engineering matters" data-search-content="
+           speed of solving pain points beats technology hype 
+           my guiding rule is:  &quot;build with, not for.&quot;  developers often fall in love with complex algorithms, ignoring the user's friction. technology holds value only when complexity is hidden, delivering a fast solution to the operator. 
+          
+           
+          
+           the engineer's true mindset 
+           whether tracing defect trends or visualizing yield diagnostics on a factory line, creating a dashboard that machine operators can action instantly is far more impactful than pitching deep neural networks. engineering is always about human utility. 
+        " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./build-with-not-for-philosophy/index.html" class="item-title-link">"Build with, not for": Why Human-Centered Engineering Matters</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-28</span>
+        <span class="item-date-text tabular-nums">2026-05-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Focusing on solving real user inconveniences rather than showing off technical complexity.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-05-15" data-title="tsv process mechanisms and defect modes in hbm stacking" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-05-15" data-title="tsv process mechanisms and defect modes in hbm stacking" data-search-content="
+         3d stacking and tsv dictating hbm performance 
+         high bandwidth memory (hbm) stacks dram dies vertically to maximize data transfer bandwidth. through silicon via (tsv) technology etches thousands of micro-channels through these dies to connect them. compared to traditional wire bonding, tsv shortens signal paths, enabling low-power and high-speed operation. 
+         
+         key tsv process flow 
+         
+            via etching:  deep reactive ion etching (drie) is used to drill high-aspect-ratio micro-holes uniformly into silicon. 
+            insulation & barrier layer:  depositing insulation oxide (sio2) to prevent current leakage and barrier metal (ti/tin) to block copper diffusion. 
+            cu filling:  filling vias with copper using electroplating. precise chemistry control is required to prevent void formation. 
+            cmp & reveal:  backside thinning grinds the wafer down to expose the buried copper vias. 
+         
+         
+         defect modes and process challenges 
+         common failures include  cu voids  in plated vias and uneven protrusion heights after cmp. voids cause impedance mismatches at high frequencies, leading to return losses or thermo-mechanical cracking due to coefficient of thermal expansion (cte) mismatches. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./tsv-hbm-technology/index.html" class="item-title-link">TSV Process Mechanisms and Defect Modes in HBM Stacking</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-15</span>
+        <span class="item-date-text tabular-nums">2026-05-15 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">An analysis of Through Silicon Via (TSV) etching, deposition, plating, and bonding processes critical for High Bandwidth Memory (HBM) stacking.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-05-10" data-title="capillary geometry and defect mechanisms in wire bonding" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-05-10" data-title="capillary geometry and defect mechanisms in wire bonding" data-search-content="
+         the core tool: capillary ceramic nozzle 
+         in traditional semiconductor packaging, wire bonding remains widely utilized. the  capillary  is a ceramic nozzle that transfers ultrasonic energy, force, and heat to bond wire onto metal pads. geometric tolerances like hole size, inner chamfer, and face angle dictate contact quality. 
+         
+         thermosonic bonding mechanism 
+         the wire bonder fires an electric flame-off to melt the wire tip into a free air ball (fab). the capillary presses the fab onto the pad while applying ultrasonic vibration to form an intermetallic compound (imc) junction. this is the first bond. the wire is then dragged and sheared onto the leadframe to form the second bond. 
+         
+         defect control & capillary wear 
+         wear on the capillary tip degrades ultrasonic energy transfer, causing  non-stick on pad (nsop)  failures. worn chamfer angles alter looping heights, risking short circuits. monitoring capillary life cycles and tuning force, time, and power parameters is critical for production yields. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./wire-bonding-capillary-mechanism/index.html" class="item-title-link">Capillary Geometry and Defect Mechanisms in Wire Bonding</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-10</span>
+        <span class="item-date-text tabular-nums">2026-05-10 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Analyzing capillary design parameters and thermosonic bonding process conditions for gold and copper wire interconnects.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-05-05" data-title="bga vs wlcsp: packaging architectures for mobile ap and iot chips" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-05-05" data-title="bga vs wlcsp: packaging architectures for mobile ap and iot chips" data-search-content="
+         substrate elimination reshaping the footprint 
+         form factor constraints in mobile devices and iot sensors have driven packaging minimization.  ball grid array (bga)  and  wafer level chip scale package (wlcsp)  differ fundamentally on substrate use. 
+         
+            bga:  mounts the silicon die onto a laminated pcb substrate, connecting them via wire bonding or flip-chip bumps, encapsulated in mold compound (emc). ideal for high i/o density application processors (ap). 
+            wlcsp:  routes signals directly on the wafer using redistributed layers (rdl) and solder bumps without a substrate. offers the smallest footprint for pmics and rf ics. 
+         
+         
+         thermal & electrical integrity 
+         bga design offers flexible routing through substrate layers but introduces higher parasitic inductance. wlcsp minimizes trace loops for lower insertion loss but exposes bare silicon edges, making it fragile to dynamic drops and thermo-mechanical stress on printed boards. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./bga-vs-wlcsp-packaging/index.html" class="item-title-link">BGA vs WLCSP: Packaging Architectures for Mobile AP and IoT Chips</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-05</span>
+        <span class="item-date-text tabular-nums">2026-05-05 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Comparing Ball Grid Array (BGA) and Wafer-Level Chip Scale Package (WLCSP) architectures in terms of signal routing, thermal transfer, and footprint.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-04-28" data-title="wafer test yield optimization using tibco spotfire data analytics" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-04-28" data-title="wafer test yield optimization using tibco spotfire data analytics" data-search-content="
+         the power of yield data analytics 
+         foundries generate millions of parametric test values (wat) and electrical die sorting (eds) bin maps daily. analyzing this data via spreadsheets is impossible. yield engineers leverage  spotfire  dashboards to stack wafer maps and uncover anomalous patterns. 
+         
+         root-cause tracing workflow 
+         
+            stacked bin maps:  overlaying bin coordinates reveals spatial failure modes, such as edge rings or radial damage. 
+            multi-vari anova analysis:  splitting wafer data by tool chambers and photolithography scanners checks if specific assets correlate with defect outliers. 
+            inline correlation:  mapping electrical failures against physical measurements (gate oxide thickness, trace width) isolates critical process parameters. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./yield-analysis-spotfire/index.html" class="item-title-link">Wafer Test Yield Optimization Using TIBCO Spotfire Data Analytics</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-28</span>
+        <span class="item-date-text tabular-nums">2026-04-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Using statistical visualization and bin maps in Spotfire to trace semiconductor production outliers back to faulty inline equipment steps.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-04-20" data-title="euv photolithography & photoresist molecular processing mechanisms" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-04-20" data-title="euv photolithography & photoresist molecular processing mechanisms" data-search-content="
+         euv lithography photon shot noise limits 
+         transitioning from 193nm duv to 13.5nm extreme ultraviolet (euv) light enabled sub-10nm circuit features. however, higher photon energy means fewer photons land per unit area, exacerbating photon shot noise and causing line edge roughness (ler) anomalies. 
+         
+         limits of chemically amplified resists (car) 
+         car relies on photoacid generators (pag) to trigger a chemical reaction cascade. but as pattern sizes shrink below the acid diffusion length, the borders blur, hindering fine resolution. 
+         
+         metal oxide resists (mor) resolution 
+         tin (sn)-based metal oxide resists (mor) offer a solution. lacking acid diffusion steps, mor molecules resolve finer boundaries, acting as a sturdy mask for vertical etching profiles. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./euv-photoresist-mechanism/index.html" class="item-title-link">EUV Photolithography & Photoresist Molecular Processing Mechanisms</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-20</span>
+        <span class="item-date-text tabular-nums">2026-04-20 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Comparing Chemically Amplified Resists (CAR) and Tin-based Metal Oxide Resists (MOR) for high-resolution 13.5nm EUV patterning.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-04-12" data-title="thermo-mechanical warpage failure modes and material engineering" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-04-12" data-title="thermo-mechanical warpage failure modes and material engineering" data-search-content="
+         unraveling thermal warpage in layered materials 
+         a semiconductor package aggregates disparate materials: silicon (cte ~3 ppm/°c), organic substrates (~15 ppm/°c), and mold compound (~10 ppm/°c). thermal cycling through 260°c reflow ovens triggers differential expansion, resulting in bow and twist warpage. 
+         
+         measuring warpage: shadow moire interferometry 
+         we trace out-of-plane displacement using shadow moire. projecting grating patterns onto packages at high temperatures extracts real-time thermal profiles, charting smile (concave) and cry (convex) transitions. 
+         
+         engineering solutions for flat packages 
+         to curb warpage, layout engineers balance copper distribution within substrate layers. selecting low-shrinkage underfill epoxies and step-curing emc reduces residual stress. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./warpage-thermo-analysis/index.html" class="item-title-link">Thermo-Mechanical Warpage Failure Modes and Material Engineering</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-12</span>
+        <span class="item-date-text tabular-nums">2026-04-12 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Analyzing warpage behavior in packages due to Coefficient of Thermal Expansion (CTE) mismatch and using Shadow Moire profiling.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-04-05" data-title="signal & power integrity (si-pi) design foundations in high-speed packaging" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-04-05" data-title="signal & power integrity (si-pi) design foundations in high-speed packaging" data-search-content="
+         traces are transmission lines at ghz speeds 
+         when system clocks scale into ghz bands, copper lines cease to act as simple wires; they behave as distributed  transmission lines . any impedance mismatch reflects signals, degrading signal integrity (si). 
+         
+         resolving si & pi issues 
+         
+            signal integrity (si):  focuses on securing high eye diagram margins. guard traces and matching 50-ohm impedances limit crosstalk. 
+            power integrity (pi):  suppresses transient ir drop from simultaneous switching. placing decoupling capacitors (decaps) near the die lowers power distribution network (pdn) impedance. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./si-pi-impedance-basics/index.html" class="item-title-link">Signal & Power Integrity (SI-PI) Design Foundations in High-Speed Packaging</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-05</span>
+        <span class="item-date-text tabular-nums">2026-04-05 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Understanding high-speed transmission lines, impedance matching, decoupling capacitor loops, and crosstalk reduction on package substrates.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-03-25" data-title="global osat market trends and 2.5d/3d advanced stacking solutions" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-03-25" data-title="global osat market trends and 2.5d/3d advanced stacking solutions" data-search-content="
+         the semiconductor value chain and osat 
+         as idms and foundries offload final processing steps,  osat (outsourced semiconductor assembly and test)  suppliers have grown vital. integrating multi-die modules inside a single package is key to ai scaling. 
+         
+         2.5d stacking and silicon interposers 
+         2.5d packaging stacks functional chiplets and hbms side-by-side over a micro-routed silicon interposer. by linking micro-bumps with high spatial density, physical routing delays drop, powering high-performance hardware. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./osat-industry-overview/index.html" class="item-title-link">Global OSAT Market Trends and 2.5D/3D Advanced Stacking Solutions</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-25</span>
+        <span class="item-date-text tabular-nums">2026-03-25 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Analyzing the OSAT supply chain landscape and 2.5D silicon interposer scaling critical for high-performance computing cards.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-03-18" data-title="irds roadmap: emerging packaging milestones towards 2030" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-03-18" data-title="irds roadmap: emerging packaging milestones towards 2030" data-search-content="
+         continuing moore's law via packaging innovation 
+         with front-end lithography scaling costs soaring, the international roadmap for devices and systems (irds) highlights advanced packaging. key inflection points are  hybrid bonding  and  glass substrates . 
+         
+         bumpless connectivity: hybrid bonding 
+         solder ball connections fail when scaled below a 10μm pitch. hybrid bonding directly joins dielectric oxide and copper surfaces atomically, bringing pitches sub-1μm for maximum density. 
+         
+         the case for glass substrates 
+         organic substrates suffer from warp deflections at scale. glass offers excellent flatness and low thermal expansion coefficient (cte), enabling ultra-fine line routing and thin, high-performance designs. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./advanced-packaging-roadmap/index.html" class="item-title-link">IRDS Roadmap: Emerging Packaging Milestones Towards 2030</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-18</span>
+        <span class="item-date-text tabular-nums">2026-03-18 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Understanding Hybrid Cu-to-Cu bonding integrations and the shift to Glass Substrates for ultra-dense packaging layers.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-03-08" data-title="de-aggregating monolithic silicon: chiplet design and ucie interconnect standard" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-03-08" data-title="de-aggregating monolithic silicon: chiplet design and ucie interconnect standard" data-search-content="
+         yield challenges of large monolithic dies 
+         in traditional monolithic designs, yield decreases exponentially as the die area expands. manufacturing dies exceeding 800mm² is highly cost-inefficient due to defect distribution. 
+         
+         the chiplet disaggregation strategy 
+         by routing core compute blocks on expensive 3nm nodes and keeping auxiliary i/o interfaces on cheaper 7nm processes, designers cut costs and boost production reliability. 
+         
+         universal chiplet interconnect express (ucie) 
+         for chiplets from different fabs to talk, a common communication standard is needed.  ucie  defines die-to-die signals inside the package, ensuring seamless, low-latency interoperability. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./chiplet-disaggregation-trend/index.html" class="item-title-link">De-aggregating Monolithic Silicon: Chiplet Design and UCIe Interconnect Standard</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-08</span>
+        <span class="item-date-text tabular-nums">2026-03-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Dividing silicon into optimized modular dies (chiplets) connected via the Universal Chiplet Interconnect Express (UCIe) standard.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-05-12" data-title="cc-cv battery charger control loops & precision current sensing" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-05-12" data-title="cc-cv battery charger control loops & precision current sensing" data-search-content="
+         preventing thermal runaways via cc-cv staging 
+         li-ion batteries require rigorous charge profiling to avoid explosions. charge ics drive high currents in  constant current (cc)  mode, switching to  constant voltage (cv)  mode as cells approach maximum terminal voltages (4.2v), ramping current down. 
+         
+         analog-to-digital current sensing layout 
+         this threshold transition relies on tracking small millivolt drops across a low-resistance shunt. differentially amplifying this voltage and filtering out switching noise with passive rc networks allows microcontrollers to read stable values. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./cc-cv-charger-adc-precision/index.html" class="item-title-link">CC-CV Battery Charger Control Loops & Precision Current Sensing</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-12</span>
+        <span class="item-date-text tabular-nums">2026-05-12 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing constant-current constant-voltage switching algorithms and differential shunt amplifier layouts for Li-ion battery chargers.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-05-02" data-title="designing a 2nd-order sallen-key active low-pass filter with op-amps" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-05-02" data-title="designing a 2nd-order sallen-key active low-pass filter with op-amps" data-search-content="
+         filtering out-of-band audio noise 
+         to roll off high-frequency noise from audio dac outputs, engineers choose active filters. the  sallen-key topology  balances low component counts with customizable gain settings. 
+         
+         mathematical modeling and q-factor control 
+         cutoff points follow $f_c = 1 / (2\pi \sqrt{r_1 r_2 c_1 c_2})$. using matching resistor and capacitor values simplifies component sourcing, but requires careful tuning of feed-forward ratios to secure flat butterworth passbands (q=0.707). 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./sallen-key-audio-filter-design/index.html" class="item-title-link">Designing a 2nd-Order Sallen-Key Active Low-Pass Filter with Op-Amps</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-02</span>
+        <span class="item-date-text tabular-nums">2026-05-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Deriving cut-off frequency formulations and analyzing component tolerance effects on transfer functions in audio signal paths.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-04-25" data-title="state of charge (soc) calculation: hybrid ocv and coulomb counting" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-04-25" data-title="state of charge (soc) calculation: hybrid ocv and coulomb counting" data-search-content="
+         challenges of real-time soc estimation 
+         estimating a cell's state of charge (soc) is tricky. voltage drops dynamically under load, corrupting raw voltage readings. engineers combine  open circuit voltage (ocv)  lookup and  coulomb counting . 
+         
+         implementing hybrid correction loops 
+         integrating current over time tracks short-term capacity changes but drifts due to sensor resolution. when cells rest, the system measures stable ocv to reset the current accumulator, preventing offset drifts. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./battery-soc-ocv-ccv/index.html" class="item-title-link">State of Charge (SoC) Calculation: Hybrid OCV and Coulomb Counting</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-25</span>
+        <span class="item-date-text tabular-nums">2026-04-25 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Solving current sensor drift errors by combining Open-Circuit Voltage profiling with time-based charge integration.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-04-10" data-title="ac power sensing: non-contact ct sensor circuits and analog calibration" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-04-10" data-title="ac power sensing: non-contact ct sensor circuits and analog calibration" data-search-content="
+         safe measurement of high-voltage alternating currents 
+         tapping directly into ac power lines is hazardous. using a  current transformer (ct) sensor  leverages induction fields to scale down alternating currents proportionally, without stripping wires. 
+         
+         dc biasing & adc sample routines 
+         because ct outputs are sinusoidal, they swing below 0v. standard 3.3v microcontrollers cannot process negative inputs. an offset bias network shifts the ac wave midpoint to 1.65v, keeping the signal within safe boundaries. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ac-power-sensing-calibration/index.html" class="item-title-link">AC Power Sensing: Non-Contact CT Sensor Circuits and Analog Calibration</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-10</span>
+        <span class="item-date-text tabular-nums">2026-04-10 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing current transformer bias networks for single-supply microcontrollers to measure high-voltage alternating currents safely.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-03-30" data-title="fpga logic foundations: clock dividers and bcd counters in verilog" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-03-30" data-title="fpga logic foundations: clock dividers and bcd counters in verilog" data-search-content="
+         scaling mhz down to human time 
+         fpga oscillators run in the megahertz range, but humans interact with seconds. a  clock divider  counts system pulses up to a threshold to emit a slower 1hz trigger. 
+         
+         verilog bcd decoder & seven-segment pin maps 
+         we build a 4-bit binary coded decimal (bcd) counter that increments on 1hz signals. a combinational decoder routes the output to the cathode pins of seven-segment displays. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./fpga-bcd-counter-clock-divider/index.html" class="item-title-link">FPGA Logic Foundations: Clock Dividers and BCD Counters in Verilog</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-30</span>
+        <span class="item-date-text tabular-nums">2026-03-30 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Slowing down 50MHz board clocks to 1Hz pulses using counter registers to drive a seven-segment digital display.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-03-15" data-title="analog frequency crossover networks and load impedance correction" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-03-15" data-title="analog frequency crossover networks and load impedance correction" data-search-content="
+         splitting audio frequencies in analog 
+         speakers combine multi-driver arrays: woofers for bass and tweeters for treble. a passive  crossover network  utilizing inductors (l) and capacitors (c) splits the source signal. 
+         
+         dynamic impedance & zobel compensation 
+         loudspeakers are not static resistors; their impedance spikes at high frequencies due to voice coil inductance. this shifts filter cutoff points. adding a parallel  zobel network  flattens the load curve for smooth frequency transitions. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./analog-filter-frequency-separation/index.html" class="item-title-link">Analog Frequency Crossover Networks and Load Impedance Correction</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-15</span>
+        <span class="item-date-text tabular-nums">2026-03-15 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing passive LC crossover filters and matching Zobel networks to compensate for dynamic speaker impedance shifts.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-03-02" data-title="mcu firmware optimization: implementing interrupt-driven deep sleep states" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-03-02" data-title="mcu firmware optimization: implementing interrupt-driven deep sleep states" data-search-content="
+         constant cpu polling drains battery life 
+         in low-power iot hardware, running a busy-wait loop inside `while(1)` keeps the mcu core drawing milliamperes constantly, draining cells in days. the solution is sleeping. 
+         
+         interrupt-driven execution cycles 
+         the mcu spends 99% of its runtime in a microampere deep sleep state. on internal low-power timer overflows or gpio events, hardware triggers an interrupt service routine (isr) to wake up the system briefly. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./mcu-firmware-optimization/index.html" class="item-title-link">MCU Firmware Optimization: Implementing Interrupt-Driven Deep Sleep States</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-02</span>
+        <span class="item-date-text tabular-nums">2026-03-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Structuring firmware loops around low-power wake-up interrupts rather than polling delays to extend battery lifetimes.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-05-18" data-title="focusing on semiconductor packaging engineering at kwangwoon university" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-05-18" data-title="focusing on semiconductor packaging engineering at kwangwoon university" data-search-content="
+         navigating career paths in electrical engineering 
+         ee students face choices: circuit design, wireless communications, embedded systems, etc. i found my focus when studying the physics behind  semiconductor advanced packaging . 
+         
+         the multidisciplinary appeal of packaging 
+         advanced packaging deals with signal routing, thermal expansion, and mechanical stresses. applying classroom electrical physics directly to cleanroom process yield analysis drove my choice. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./kwangwoon-ee-semiconductor-focus/index.html" class="item-title-link">Focusing on Semiconductor Packaging Engineering at Kwangwoon University</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-18</span>
+        <span class="item-date-text tabular-nums">2026-05-18 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Navigating through electrical engineering paths to target packaging technology inside the semiconductor supply chain.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-05-08" data-title="amkor technology interview preparation and job-specific q&a guidelines" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-05-08" data-title="amkor technology interview preparation and job-specific q&a guidelines" data-search-content="
+         key selection criteria for osat process engineers 
+         interviews at major osat firms test real troubleshooting skill. they look for logical diagnostics rather than simple definitions of front-end steps. 
+         
+         core technical interview q&as 
+         
+            q. how do you resolve non-stick on pad (nsop) issues?  - mention looking beyond ultrasonic power to check pad oxidation levels, capillary degradation, and thermal intermetallic growth profiles. 
+            q. how is reflow warpage reduced?  - contrast substrate/die cte mismatches and outline how balancing copper traces across substrate layers prevents deformations. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./amkor-osat-interview-prep/index.html" class="item-title-link">Amkor Technology Interview Preparation and Job-Specific Q&A Guidelines</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-08</span>
+        <span class="item-date-text tabular-nums">2026-05-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Organizing packaging and test engineer interview topics including bonding failures, warpage, and statistical analysis.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-04-30" data-title="study hack: learning complex engineering concepts 10x faster with ai agents" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-04-30" data-title="study hack: learning complex engineering concepts 10x faster with ai agents" data-search-content="
+         ditch the passive reading mentality 
+         highlighting textbook pages blindly is inefficient. instead, transform ai agents into personal interactive professors using structured prompts. 
+         
+         the ai pair learning routine 
+         provide the ai with your course syllabus and ask: &quot;act as a strict professor. probe my knowledge on chapter 3, flag my logical gaps, and challenge my answers.&quot; this active recall loop builds solid mental models fast. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ai-tools-study-efficiency/index.html" class="item-title-link">Study Hack: Learning Complex Engineering Concepts 10x Faster with AI Agents</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-30</span>
+        <span class="item-date-text tabular-nums">2026-04-30 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to use AI assistants to generate dynamic Q&As and run active recall loops for solid-state physics and packaging tests.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-04-15" data-title="first 90 days: habits for rookie engineers to build credibility" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-04-15" data-title="first 90 days: habits for rookie engineers to build credibility" data-search-content="
+         survival guide for the critical onboarding phase 
+         new engineers often get bogged down in simple file formatting. however, the first 90 days establish your reputation in the team. 
+         
+         three rules for early career success 
+         
+            organized repositories:  keep your internal project logs clean. being able to retrieve references instantly signals competence. 
+            structure questions with options:  don't just ask &quot;what do i do?&quot; present options: &quot;i evaluated options a and b. i recommend a because of reason x. do you agree?&quot; 
+            document a daily worklog:  spend 10 minutes recording parameters adjusted or errors resolved. this becomes your personal handbook. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./new-engineer-first-90-days/index.html" class="item-title-link">First 90 Days: Habits for Rookie Engineers to Build Credibility</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-15</span>
+        <span class="item-date-text tabular-nums">2026-04-15 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Practical advice for newly hired engineers to manage task logs, structure questions, and optimize documentation.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-03-28" data-title="seo strategy for engineers: getting recruited via organic google searches" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-03-28" data-title="seo strategy for engineers: getting recruited via organic google searches" data-search-content="
+         turn your portfolio into an inbound job funnel 
+         instead of cold-emailing links, optimize your tech blog so managers looking for solutions to niche errors find your write-ups. 
+         
+         technical keyword optimization 
+         avoid generic titles like &quot;my project.&quot; use exact terms such as &quot;cyclone ii fpga verilog debouncing filter design&quot; in h1 headers and meta descriptions. registering a sitemap.xml ensures search bots crawl your write-ups. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./portfolio-seo-for-engineers/index.html" class="item-title-link">SEO Strategy for Engineers: Getting Recruited via Organic Google Searches</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-28</span>
+        <span class="item-date-text tabular-nums">2026-03-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Configuring metadata, structured headers, and specific keyword taglines on your technical blog to attract engineering recruiters.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-03-10" data-title="building a personal brand after hours: junior engineer strategies" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-03-10" data-title="building a personal brand after hours: junior engineer strategies" data-search-content="
+         your brand beyond your corporate business card 
+         employment is temporary; your professional brand is permanent. documenting your learning curves and engineering notes creates a digital paper trail that opens doors outside standard corporate ladders. 
+         
+         low-friction tech content creation 
+         don't wait until you are an expert. summarize hbm papers or detail a hardware debugging case study. publishing this logs your expertise, attracting peers and future collaborators. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./creator-brand-semiconductor-rookie/index.html" class="item-title-link">Building a Personal Brand After Hours: Junior Engineer Strategies</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-10</span>
+        <span class="item-date-text tabular-nums">2026-03-10 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Creating a digital presence beyond your day job title by archiving your learning curves and tech notes online.</p>
     </div>
     
 
-    <div class="list-item" data-category="Career" data-date="2026-03-01" data-title="how non-profit community management enhanced my ee collaboration skills" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Career" data-date="2026-03-01" data-title="how non-profit community management enhanced my ee collaboration skills" data-search-content="
+         collaboration languages beyond code and circuits 
+         engineering doesn't happen in a vacuum. projects succeed when we translate technical specs to clients, line operators, and business partners. coordinating volunteers in non-profits honed my human-centric problem-solving skills. 
+         
+         translating human feedback into systems 
+         converting chaotic field feedback into structured system requirements for development teams taught me clear communication, a trait that makes engineers invaluable on cross-functional factory teams. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./community-manager-engineer-story/index.html" class="item-title-link">How Non-Profit Community Management Enhanced My EE Collaboration Skills</a>
           <span class="status-badge">Career</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-01</span>
+        <span class="item-date-text tabular-nums">2026-03-01 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Translating human feedback into system requirements: Lessons learned from community coordinating roles.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-24" data-title="building a zero-dependency zoom-scaling canvas renderer from scratch" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-24" data-title="building a zero-dependency zoom-scaling canvas renderer from scratch" data-search-content="
+         discarding framework bloat for clean performance 
+         instead of loading third-party layout libraries that bloat your bundle size, writing a custom  zero-dependency scaling engine  yields instant page loads. 
+         
+         mathematical resizing and center proportions 
+         by mapping layout coordinates against a virtual 1440x960 canvas and applying `scaleratio = math.min(width/1440, height/960)`, we dynamically compute css transforms in main.js, keeping the visual board aligned on any monitor. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./zero-dependency-portfolio-zoom-engine/index.html" class="item-title-link">Building a Zero-Dependency Zoom-Scaling Canvas Renderer from Scratch</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-24</span>
+        <span class="item-date-text tabular-nums">2026-05-24 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Implementing custom aspect-ratio scaling and transform-matrix properties using vanilla JavaScript without external web-flow engines.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-14" data-title="the ai design harness: using 4-document frameworks to contain llms" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-14" data-title="the ai design harness: using 4-document frameworks to contain llms" data-search-content="
+         preventing llm hallucinations via documentation anchors 
+         without structured guardrails, ai agents write messy code. a  4-document harness  establishes strict boundaries, forcing predictable completions. 
+         
+         roles of the four control documents 
+         the `implementation_plan.md` locks down the code architecture. the `task.md` serves as a real-time progress tracker. the `walkthrough.md` documents verification tests. isolating dataset files like `newblogposts.js` preserves token counts, reducing api timeouts. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ai-design-harness-4-documents/index.html" class="item-title-link">The AI Design Harness: Using 4-Document Frameworks to Contain LLMs</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-14</span>
+        <span class="item-date-text tabular-nums">2026-05-14 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Structuring execution steps in implementation plans, tasks, and walkthroughs to prevent context drifts and coding errors.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-04-24" data-title="designing an obsidian knowledge dashboard via gemini api integration" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-04-24" data-title="designing an obsidian knowledge dashboard via gemini api integration" data-search-content="
+         creating your private external brain 
+         generic web chatbots lack access to your personal study logs. feeding your obsidian markdown notes into  gemini api  instances creates a localized knowledge retrieval assistant. 
+         
+         harnessing 2m token window scaling 
+         rag pipelines are complex to set up. with gemini's 2-million-token window, you can upload your entire semester's engineering notes as context. asking for cross-references between class notes yields instantaneous results. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./gemini-api-personal-assistant/index.html" class="item-title-link">Designing an Obsidian Knowledge Dashboard via Gemini API Integration</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-24</span>
+        <span class="item-date-text tabular-nums">2026-04-24 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Leveraging Gemini's million-token context windows to read and summarize entire markdown vaults without RAG pipelines.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-04-08" data-title="eliminating dark-mode flash (fouc) via blocking head scripts" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-04-08" data-title="eliminating dark-mode flash (fouc) via blocking head scripts" data-search-content="
+         the white flash of unstyled content (fouc) 
+         waiting for domcontentloaded to check dark mode classes causes the browser to render a white screen first, followed by a sudden black inversion. this flash harms the ux. 
+         
+         the solution: inline blocking class injections 
+         to eliminate this, place a tiny, dependency-free inline script at the top of your ` `. it reads localstorage and media preferences, applying classes to documentelement before rendering the body. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./dark-mode-fouc-prevention/index.html" class="item-title-link">Eliminating Dark-Mode Flash (FOUC) via Blocking Head Scripts</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-08</span>
+        <span class="item-date-text tabular-nums">2026-04-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Injecting inline system theme checks before browser render trees compile to prevent irritating white flashes on startup.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-03-22" data-title="building a developers second brain in obsidian: principles and tips" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-03-22" data-title="building a developers second brain in obsidian: principles and tips" data-search-content="
+         the trap of complex folder structures 
+         structuring notes into rigid nested folders breeds friction: &quot;which directory does this note belong in?&quot; this hesitation halts the writing flow. 
+         
+         associative backlinks over folders 
+         reduce folders to an inbox and archive. instead, use double bracket `[[backlinks]]` to tie relevant notes together. this builds a web of concepts that mirrors cognitive thinking. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./obsidian-second-brain-tips/index.html" class="item-title-link">Building a Developers Second Brain in Obsidian: Principles and Tips</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-22</span>
+        <span class="item-date-text tabular-nums">2026-03-22 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Moving away from hierarchical folder structures to link-based associative memory structures in local markdown vaults.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-03-05" data-title="prompt engineering vs harness engineering: architectural control of llms" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-03-05" data-title="prompt engineering vs harness engineering: architectural control of llms" data-search-content="
+         vague prompts cannot control large repositories 
+         adding phrases like &quot;be concise&quot; is what we call  prompt engineering . it lacks the teeth needed to control autonomous agents that modify enterprise codebases. 
+         
+         harness engineering as hard architectural constraints 
+         harness engineering constructs the execution environment itself. it sets up strict workspace sandboxes, ties real-time compilers to the agent loop, and runs automatic linters after edits. harnesses act as physical boundaries, keeping ai actions safe. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./prompt-vs-harness-engineering-diff/index.html" class="item-title-link">Prompt Engineering vs Harness Engineering: Architectural Control of LLMs</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-05</span>
+        <span class="item-date-text tabular-nums">2026-03-05 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Differentiating between soft natural language instructions and hard software constraints configured inside agent sandboxes.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-04" data-title="the limits of vibe coding and the necessity of harness engineering" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-04" data-title="the limits of vibe coding and the necessity of harness engineering" data-search-content="
+         the pitfalls of vibe coding 
+         simply asking an llm to &quot;write this code&quot; works for tiny scripts, but fails on enterprise codebases. ai agents lose track of deep contexts and break existing structures. 
+         
+         what is harness engineering? 
+         harness engineering means designing a strict runtime execution sandbox for ai. by narrowing down file access scopes and restricting available tools, we keep ai actions predictable. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./harness-vs-vibe-coding/index.html" class="item-title-link">The Limits of Vibe Coding and the Necessity of Harness Engineering</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-04</span>
+        <span class="item-date-text tabular-nums">2026-06-04 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Moving beyond conversational code generation to design environment constraints (Harnesses) that force AI agents to perform reliably.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-03" data-title="extreme scoping for ai agents via project rules" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-03" data-title="extreme scoping for ai agents via project rules" data-search-content="
+         the shadow of massive context windows 
+         allowing an ai agent to read your entire directory wastes tokens and dilutes reasoning power. keep the scope targeted on the task at hand. 
+         
+         setting hard sandbox rules 
+         define rules in a configuration file like .antigravity/rules.md to block reading bulky logs, node_modules, or build directories. focus the agent strictly on 1 to 3 files to edit. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./antigravity-scoping-rules/index.html" class="item-title-link">Extreme Scoping for AI Agents via Project Rules</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-03</span>
+        <span class="item-date-text tabular-nums">2026-06-03 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Limiting context sizes and reducing token consumption to dramatically increase agent precision and coding success rates.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-02" data-title="tdd and automated test guardrails for ai self-correction" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-02" data-title="tdd and automated test guardrails for ai self-correction" data-search-content="
+         eliminating human-in-the-loop overhead 
+         telling an agent to fix a bug after running the code manually wastes developer time. ai needs a self-verifying feedback loop to correct itself. 
+         
+         automated feedback loop 
+         instruct the agent to write test definitions first and execute them using the terminal. the agent analyzes test failure logs and fixes its own logic, eliminating manual verification cycles. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./tdd-agent-guardrails/index.html" class="item-title-link">TDD and Automated Test Guardrails for AI Self-Correction</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-02</span>
+        <span class="item-date-text tabular-nums">2026-06-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Forcing AI agents to write and run unit tests inside the terminal, creating a closed self-debugging loop before declaring completion.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-06-01" data-title="andrej karpathy-style rules for communicating with ai agents" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-06-01" data-title="andrej karpathy-style rules for communicating with ai agents" data-search-content="
+         define the interface, do not beg 
+         polite prompts like &quot;please do your best&quot; add token noise. ai agents respond far better to clear, mathematical constraints. 
+         
+         three core rules 
+         
+            hard constraints:  specify max code lines or forbidden libraries in bullet points. 
+            single-responsibility goal:  tackle one feature at a time to prevent compound logical mistakes. 
+            orchestrate, do not query:  ask for summaries and options instead of letting the ai make architect decisions. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./karpathy-agent-rules/index.html" class="item-title-link">Andrej Karpathy-Style Rules for Communicating with AI Agents</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-01</span>
+        <span class="item-date-text tabular-nums">2026-06-01 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Stripping away conversational filler to command LLM agents via clean, structured, and predictable interfaces.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-30" data-title="single-responsibility tasking: splitting large coding missions" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-30" data-title="single-responsibility tasking: splitting large coding missions" data-search-content="
+         the disaster of massive multi-tasking prompts 
+         commanding an agent to build a login page, integrate payment gateways, and setup notification hooks all in one go leads to bugs and messy outputs. 
+         
+         isolate and clean context 
+         divide tasks logically. make the agent complete the ui mock-up first, run a compiler check, and reset the chat thread before introducing the backend integration. this saves token overhead and guarantees clean results. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./single-responsibility-tasking/index.html" class="item-title-link">Single-Responsibility Tasking: Splitting Large Coding Missions</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-30</span>
+        <span class="item-date-text tabular-nums">2026-05-30 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to divide complex developer requirements into isolated milestones, helping AI perform perfectly on each turn.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-28" data-title="a decision tree for choosing modern css layout modes" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-28" data-title="a decision tree for choosing modern css layout modes" data-search-content="
+         leveraging the browser native engines 
+         avoid heavy media query calculations and hardcoded pixel sizes. let the browser layout engines handle responsiveness dynamically. 
+         
+         layout selection decision tree 
+         
+            1d single axis flows?  ➡️  flexbox  (content-first distribution). 
+            align nested elements across different columns/rows?  ➡️  subgrid  (reconciles card contents). 
+            2d structural layouts?  ➡️  grid  (skeleton-first definition). 
+            flowing text like a newspaper?  ➡️  multi-column . 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./choosing-css-layout-mode/index.html" class="item-title-link">A Decision Tree for Choosing Modern CSS Layout Modes</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-28</span>
+        <span class="item-date-text tabular-nums">2026-05-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">When to choose Flexbox, Grid, Subgrid, or Multi-column architectures for responsive and performant web interfaces.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-27" data-title="eliminating hardcoded widths: modern css intrinsic sizing rules" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-27" data-title="eliminating hardcoded widths: modern css intrinsic sizing rules" data-search-content="
+         the danger of hardcoded pixel dimensions 
+         fixing layout widths to static pixels triggers clips and overlaps when responsive viewports shrink. intrinsic sizing solves this dynamically. 
+         
+         key intrinsic keywords 
+         
+            min-content:  the narrowest bounds content can compress without breaking words. 
+            max-content:  the widest size content takes if allowed to stretch inline without wrapping. 
+            fit-content:  fills available space but caps its growth exactly at max-content. 
+            aspect-ratio:  locks aspect boxes to prevent cumulative layout shifts (cls) before media files load. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./intrinsic-sizing-css/index.html" class="item-title-link">Eliminating Hardcoded Widths: Modern CSS Intrinsic Sizing Rules</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-27</span>
+        <span class="item-date-text tabular-nums">2026-05-27 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Using min-content, max-content, fit-content, and aspect-ratio to build fluid interfaces determined by the browser.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-26" data-title="component-driven layouts via modern css container queries" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-26" data-title="component-driven layouts via modern css container queries" data-search-content="
+         the limit of global media queries 
+         viewport queries measure whole-screen widths. they cannot detect local width shifts, such as when a main article column narrows due to sidebar toggles. 
+         
+         container queries (baseline 2023) 
+         declaring  container-type: inline-size  on a wrapper enables descendants to query its local width via  @container . components become self-contained units that style themselves correctly wherever they are dropped. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./container-queries-fluid/index.html" class="item-title-link">Component-Driven Layouts via Modern CSS Container Queries</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-26</span>
+        <span class="item-date-text tabular-nums">2026-05-26 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing modular elements that adapt their styles based on parent box widths instead of global viewport media queries.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-25" data-title="escaping z-index hell with native html dialog and popovers" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-25" data-title="escaping z-index hell with native html dialog and popovers" data-search-content="
+         ending the z-index arms race 
+         floating menus or modals traditionally suffered from parent overflow clipping and nested stacking context collisions, hiding under other content. 
+         
+         the native top layer 
+         
+            &lt;dialog&gt; and showmodal():  renders modal panels in the top layer, trapping focus and setting backdrop filters without manual dom sorting. 
+            popover attribute:  floating tooltips and menus that display over the layout, handling light-dismiss events automatically. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./native-dialog-popover/index.html" class="item-title-link">Escaping z-index Hell with Native HTML Dialog and Popovers</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-25</span>
+        <span class="item-date-text tabular-nums">2026-05-25 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Leveraging top-layer rendering primitives to float overlay elements cleanly, bypassing complex nesting and parent overflow clips.</p>
     </div>
     
 
-    <div class="list-item" data-category="Architecture" data-date="2026-05-24" data-title="preventing cumulative layout shifts via scrollbar-gutter: stable" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Architecture" data-date="2026-05-24" data-title="preventing cumulative layout shifts via scrollbar-gutter: stable" data-search-content="
+         the layout shift caused by dynamic scrollbars 
+         when page content scales vertically, the scrollbar appears, shrinking the available viewport width and nudging centered elements sideways. 
+         
+         the solution: scrollbar-gutter: stable 
+         declaring  scrollbar-gutter: stable  forces browsers to reserve empty scrollbar tracks. layout columns remain locked, ensuring zero layout shift when users load long articles. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./layout-stability-scrollbar/index.html" class="item-title-link">Preventing Cumulative Layout Shifts via scrollbar-gutter: stable</a>
           <span class="status-badge">Architecture</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-24</span>
+        <span class="item-date-text tabular-nums">2026-05-24 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Reserving dedicated scrollbar tracks in modern CSS to stop annoying page jumps when dynamic content triggers overflow.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-22" data-title="the ultimate macos research pipeline: zotero 7 ⇄ safari ⇄ obsidian" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-22" data-title="the ultimate macos research pipeline: zotero 7 ⇄ safari ⇄ obsidian" data-search-content="
+         zeroing out research friction 
+         a high-performance research workflow requires seamless transitions between gathering papers and compiling study vaults. here is our setup. 
+         
+         the 3-step pipeline 
+         
+            safari zotero connector:  save preprints and articles with metadata directly into local libraries via a single click. 
+            zotero 7 annotation:  read pdfs locally, highlighting concepts via categorized color tags. 
+            obsidian ingestion:  fetch highlights and bibliographic markdown formatted neatly through automated zotero integration rules. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ultimate-macos-research-pipeline/index.html" class="item-title-link">The Ultimate macOS Research Pipeline: Zotero 7 ⇄ Safari ⇄ Obsidian</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-22</span>
+        <span class="item-date-text tabular-nums">2026-05-22 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Bridging source collection, structured metadata indexing, and local markdown formatting into a zero-friction knowledge loop.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-20" data-title="standardizing obsidian links via better bibtex citekey formulae" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-20" data-title="standardizing obsidian links via better bibtex citekey formulae" data-search-content="
+         the fragility of file-name links 
+         if your markdown references change filenames when a title gets corrected, links break. we need permanent citation keys (citekeys) to anchor references. 
+         
+         configuring better bibtex patterns 
+         in zotero, set better bibtex's citation formula to:  auth.lower + year . this automatically yields clean slugs like  @vaswani2017 , preserving stable cross-references. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./citekey-standardization-bibtex/index.html" class="item-title-link">Standardizing Obsidian Links via Better BibTeX Citekey Formulae</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-20</span>
+        <span class="item-date-text tabular-nums">2026-05-20 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Configuring immutable citation keys in Zotero to prevent link rot when editing metadata or switching vaults.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-18" data-title="the stoplight annotation method: speed reading pdfs via color taxonomy" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-18" data-title="the stoplight annotation method: speed reading pdfs via color taxonomy" data-search-content="
+         the trap of monolithic highlighting 
+         using a single yellow marker makes it hard to distinguish core thesis statements from baseline background context when reviewing notes. 
+         
+         stoplight color classifications 
+         
+            🔴 red (stop & process):  core thesis statements, novel findings, and fundamental mathematical formulas. 
+            🟡 yellow (slow down):  complex definitions, questions for follow-ups, and raw quotes for citation. 
+            🟢 green (smooth reading):  background literature reviews, historical context, and supporting examples. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./stoplight-highlighting-method/index.html" class="item-title-link">The Stoplight Annotation Method: Speed Reading PDFs via Color Taxonomy</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-18</span>
+        <span class="item-date-text tabular-nums">2026-05-18 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Mapping Red, Yellow, and Green highlighting markers to logical paper constructs for instant knowledge retrieval.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-16" data-title="building zotero integration templates for obsidian vaults" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-16" data-title="building zotero integration templates for obsidian vaults" data-search-content="
+         ingesting images and text simultaneously 
+         copy-pasting formulas and sem images manually wastes precious study cycles. automated templating solves this import step. 
+         
+         how the template works 
+         using jinja2 loops inside obsidian, the zotero integration plug-in grabs pdf area crops as local png files and embeds them via  ![[imagerelativepath]] . appending the  {{zoteroselecturi}}  parameter lets you click any quote to jump directly back to that exact line in zotero. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./zotero-integration-template/index.html" class="item-title-link">Building Zotero Integration Templates for Obsidian Vaults</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-16</span>
+        <span class="item-date-text tabular-nums">2026-05-16 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Injecting crop images directly into markdown and mapping selective PDF page URI links to jump back to sources.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-14" data-title="visual callout syncing via custom css highlight snippets" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-14" data-title="visual callout syncing via custom css highlight snippets" data-search-content="
+         enhancing visual hierarchies 
+         importing annotated text as generic quotes leaves files looking unreadable. categorizing them visually boosts scanning efficiency. 
+         
+         zotero-colors css design 
+         create a  callout[data-callout=&quot;red-highlight&quot;]  configuration using css styling. mapping custom rgb values and warning icons ensures critical red annotations draw the eyes first. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./visual-callout-color-sync/index.html" class="item-title-link">Visual Callout Syncing via Custom CSS Highlight Snippets</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-14</span>
+        <span class="item-date-text tabular-nums">2026-05-14 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Wiring raw HTML highlight colors to match custom Obsidian callouts with colored borders and relevant icons.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-12" data-title="building a private local "notebooklm" on an 8gb ram macbook" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-12" data-title="building a private local "notebooklm" on an 8gb ram macbook" data-search-content="
+         the physical limits of local llm hardware 
+         hosting models locally on an 8gb memory macbook causes thermal throttling. we need a low-impact hybrid architecture. 
+         
+         obsidian copilot + gemini api 
+         wire your free gemini api key into the obsidian copilot plugin. offloading computing to google cloud servers saves your macbook ram while executing fast qa search across your entire vault. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./private-notebooklm-obsidian/index.html" class="item-title-link">Building a Private Local "NotebookLM" on an 8GB RAM MacBook</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-12</span>
+        <span class="item-date-text tabular-nums">2026-05-12 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Linking your Obsidian knowledge base to free Gemini API endpoints to build a resource-friendly private brain.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-10" data-title="context window scaling: outperforming rag in personal vaults" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-10" data-title="context window scaling: outperforming rag in personal vaults" data-search-content="
+         the fragmented limits of rag pipelines 
+         chunking notes into vectorized bits misses global cross-references, failing when you ask to synthesize key concepts across all notebooks. 
+         
+         harnessing massive context windows 
+         gemini's 2-million-token window lets you append dozens of markdown files as raw context directly. this ensures halluncination-free reasoning across your semester logs. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./token-window-scaling/index.html" class="item-title-link">Context Window Scaling: Outperforming RAG in Personal Vaults</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-10</span>
+        <span class="item-date-text tabular-nums">2026-05-10 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Leveraging Gemini million-token context windows to upload complete markdown notes for holistic and accurate synthesis.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-08" data-title="from literature ingestion to technical drafting: a complete workflow" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-08" data-title="from literature ingestion to technical drafting: a complete workflow" data-search-content="
+         preventing the orphan note problem 
+         dozens of collected summaries are useless if they remain stored in isolated directories. we need to merge reading with immediate writing. 
+         
+         the ingestion-to-draft protocol 
+         
+            extract:  pull structured literature notes directly into your obsidian database. 
+            link:  open your working draft and place bidirectional wiki-links like  [[@vaswani2017]]  to tie ideas together. 
+            synthesize:  command copilot: &quot;read these references and outline a draft on semiconductor packaging trends.&quot; copy the output and polish. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./local-synthesis-drafting/index.html" class="item-title-link">From Literature Ingestion to Technical Drafting: A Complete Workflow</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-08</span>
+        <span class="item-date-text tabular-nums">2026-05-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">A 3-step writing protocol integrating bibliography notes and Obsidian Copilot to draft polished technical posts.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-06" data-title="hardware optimization for ai coders: preventing ssd swap wearout" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-06" data-title="hardware optimization for ai coders: preventing ssd swap wearout" data-search-content="
+         the threat of extreme ssd swapping 
+         running llms locally on basic hardware forces macos to swap ram data to the ssd, degrading your drive's life expectancy (tbw) through relentless writes. 
+         
+         api integration as a hardware shield 
+         keeping the editor lightweight while delegating reasoning to gemini api endpoints keeps local cpu utilization near 0%, shielding your ssd from swap wearing. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./resource-saving-local-ai/index.html" class="item-title-link">Hardware Optimization for AI Coders: Preventing SSD Swap Wearout</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-06</span>
+        <span class="item-date-text tabular-nums">2026-05-06 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How cloud API integrations shield low-RAM MacBooks from excessive virtual memory swapping and thermal wear.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-04" data-title="ditching folders for backlinks: neuro-associative personal vaults" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-04" data-title="ditching folders for backlinks: neuro-associative personal vaults" data-search-content="
+         the friction of complex folder systems 
+         choosing where to file a note is mental friction. it causes you to hesitate to write, ultimately halting your record-keeping loop. 
+         
+         associative memory webs 
+         reduce your folder hierarchy to an inbox and archive. instead, use double brackets like  [[tsv bonding]]  to connect notes. the graph view visualizes these links, creating concept bridges. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./obsidian-graph-pkm/index.html" class="item-title-link">Ditching Folders for Backlinks: Neuro-Associative Personal Vaults</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-04</span>
+        <span class="item-date-text tabular-nums">2026-05-04 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Building a web of notes inside Obsidian using double brackets and tags, mapping ideas like cognitive synapses.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-05-02" data-title="designing a bidirectional google sheets sync ai financial assistant" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-05-02" data-title="designing a bidirectional google sheets sync ai financial assistant" data-search-content="
+         the friction of manual ledger updates 
+         logging transactions inside cell rows gets annoying after long work shifts. we want an assistant that updates the sheet for us. 
+         
+         bidirectional synchronization bridge 
+         wiring google sheets api credentials to a python bridge module enables real-time edits. saying &quot;bought 10 tsmc shares at 150&quot; updates the holdings and cash reserves instantly. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ai-wealth-manager-intro/index.html" class="item-title-link">Designing a Bidirectional Google Sheets Sync AI Financial Assistant</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-05-02</span>
+        <span class="item-date-text tabular-nums">2026-05-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to build an automated asset ledger updated via interactive chat inputs, keeping spreadsheets synchronized.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-30" data-title="orchestrating 4 specialized financial sub-agents parallelized" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-30" data-title="orchestrating 4 specialized financial sub-agents parallelized" data-search-content="
+         the need for multi-faceted market research 
+         trading based purely on news headlines is risky. we need concurrent pipelines checking technical and macro variables simultaneously. 
+         
+         orchestrator and sub-agent systems 
+         we trigger a  financial analyst ,  sentiment analyst , and  industry researcher  in parallel. the aggregate results route to the  trading strategist , calculating rebalancing orders. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./financial-sub-agents-orchestrator/index.html" class="item-title-link">Orchestrating 4 Specialized Financial Sub-agents Parallelized</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-30</span>
+        <span class="item-date-text tabular-nums">2026-04-30 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How a financial orchestrator triggers financial, news sentiment, semiconductor industry, and trading strategy sub-agents.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-28" data-title="solving google sheets api 404 errors via spreadsheet id recovery" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-28" data-title="solving google sheets api 404 errors via spreadsheet id recovery" data-search-content="
+         the published web hash trap 
+         linking python engines to a published spreadsheet link results in 404 api exceptions because web-publish urls contain randomized hash ids. 
+         
+         targeting the original document id 
+         find the key located between  /d/  and  /edit  in your url. register this key in your scripts and invite your gcp service account email as an editor. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./google-sheets-api-404-fix/index.html" class="item-title-link">Solving Google Sheets API 404 Errors via Spreadsheet ID Recovery</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-28</span>
+        <span class="item-date-text tabular-nums">2026-04-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Bypassing web-publish hash traps by extracting the actual spreadsheet ID and provisioning service accounts.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-26" data-title="resolving google finance #n/a errors on special active etfs" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-26" data-title="resolving google finance #n/a errors on special active etfs" data-search-content="
+         the cascading #n/a cell error 
+         using  =googlefinance(&quot;krx:0051a0&quot;)  on korean active etfs fails, outputting #n/a errors that break sum totals. 
+         
+         building the formula shield 
+         use  substitute  functions to strip the &quot;krx:&quot; prefix automatically. for unresponsive active etfs, we configure the sheet to accept manual pricing overrides via chat instructions. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./etf-google-finance-na-fix/index.html" class="item-title-link">Resolving Google Finance #N/A Errors on Special Active ETFs</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-26</span>
+        <span class="item-date-text tabular-nums">2026-04-26 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Fixing cell math crashes by writing fallback substitute formulas and implementing manual updates for recalcitrant ticker targets.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-24" data-title="manual asset overrides for unfetchable tickers" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-24" data-title="manual asset overrides for unfetchable tickers" data-search-content="
+         the challenge of locked pricing fields 
+         unfetchable active etfs distort current allocations, rendering automated rebalancing calculations useless. 
+         
+         custom parameter override mechanism 
+         we built a script listener. saying &quot;update broadcom price to 28150&quot; instructs the backend to target the exact cell and write a static integer value, bypassing api errors. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./koact-broadcom-manual-tracking/index.html" class="item-title-link">Manual Asset Overrides for Unfetchable Tickers</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-24</span>
+        <span class="item-date-text tabular-nums">2026-04-24 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Coding custom pricing updates into python scripts to override broken formulas with static cell data seamlessly.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-22" data-title="fixing division parsing errors in asset allocation columns" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-22" data-title="fixing division parsing errors in asset allocation columns" data-search-content="
+         the fragility of hardcoded division denominators 
+         if target weights are formatted as text string &quot;10.0%&quot; instead of decimal integers (0.10), subtraction equations fail with #value! errors. 
+         
+         dynamic sum denominator method 
+         we normalized weight targets to clean floating numbers. then, we updated the current weight column formula to divide by the vector sum  =j6/sum(j$6:j$23)  instead of pointing to static dashboard cells. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./sheet-formula-division-error/index.html" class="item-title-link">Fixing Division Parsing Errors in Asset Allocation Columns</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-22</span>
+        <span class="item-date-text tabular-nums">2026-04-22 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to redesign division formulas in Excel/Google Sheets using sum vectors instead of static dashboard total variables.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-20" data-title="filtering out unicode bom and whitespace from sheet parsers" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-20" data-title="filtering out unicode bom and whitespace from sheet parsers" data-search-content="
+         the ghost in the database: unicode bom 
+         importing columns into python pandas dataframes occasionally causes keyerror, even though text in cell blocks looks identical. invisible bom bytes hide inside cell headers. 
+         
+         implementing the sanitize function 
+         we deployed a header cleaning line:  [h.strip().replace('\ufeff', '') for h in raw_headers] . this cleans strings and stops value crashes. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./bom-unicode-strip-value-error/index.html" class="item-title-link">Filtering Out Unicode BOM and Whitespace from Sheet Parsers</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-20</span>
+        <span class="item-date-text tabular-nums">2026-04-20 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Stripping invisible BOM headers (feff) and whitespaces during dataframe conversion to avoid ValueError exceptions.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-18" data-title="six golden rules for operating spreadsheet portfolio sheets safely" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-18" data-title="six golden rules for operating spreadsheet portfolio sheets safely" data-search-content="
+         why sheet automation code breaks 
+         over 90% of database crashes occur when users overwrite calculation formulas or change raw column names on their phone screens. 
+         
+         the operational rules 
+         
+            k-column protection:  protect user-entered weight allocations from programmatic api overwrite runs. 
+            cash row is the anchor:  the cash row must sit at the absolute bottom to keep automatic summation formulas correct. 
+            trade via chat:  logging buying/selling through natural language prevents typing errors. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./six-golden-rules-portfolio/index.html" class="item-title-link">Six Golden Rules for Operating Spreadsheet Portfolio Sheets Safely</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-18</span>
+        <span class="item-date-text tabular-nums">2026-04-18 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Essential guidelines to prevent human modification errors from crashing backend synchronizer databases.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-16" data-title="keeping the cash row at the bottom for summation integrity" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-16" data-title="keeping the cash row at the bottom for summation integrity" data-search-content="
+         the boundary limits of sum ranges 
+         setting  =sum(j6:j22)  means inserting new stock holdings underneath page row 22 excludes them from total assets calculations. 
+         
+         dynamic range preservation 
+         the cash row acts as a permanent range anchor. always insert new stock lines directly above the cash row, forcing the sum boundaries to auto-expand. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./cash-row-last-position/index.html" class="item-title-link">Keeping the CASH Row at the Bottom for Summation Integrity</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-16</span>
+        <span class="item-date-text tabular-nums">2026-04-16 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Why inserts must occur above the cash baseline to preserve automatic Excel range calculations.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-14" data-title="future roadmap: dividend calendars and mobile ocr screenshot ingestion" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-14" data-title="future roadmap: dividend calendars and mobile ocr screenshot ingestion" data-search-content="
+         scaling the asset manager capabilities 
+         with basic ledger sync running, we layout the blueprints for next-generation automated finance modules. 
+         
+         two key roadmap milestones 
+         
+            dividend calendars:  processing payout records to plot monthly passive income dashboards automatically. 
+            mts screenshot ocr:  uploading account captures to chat, letting llama-vision parse stock values to run snapshot sync routines immediately. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./dividend-calendar-ocr-future/index.html" class="item-title-link">Future Roadmap: Dividend Calendars and Mobile OCR Screenshot Ingestion</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-14</span>
+        <span class="item-date-text tabular-nums">2026-04-14 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing automated dividend trackers and leveraging Llama-Vision to sync portfolios directly from MTS screenshots.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-12" data-title="simon squibb-style one-person business canvas blueprint" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-12" data-title="simon squibb-style one-person business canvas blueprint" data-search-content="
+         simon squibb's dream-driven startup philosophy 
+         simon squibb focuses on one rule: &quot;help people achieve their dreams, and solve their daily struggles through smart businesses.&quot; 
+         
+         the knowledge business canvas 
+         applying this model to an engineering career path: package study assets to solve career anxiety for juniors, building credit and monetization funnels. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./simon-squibb-business-canvas/index.html" class="item-title-link">Simon Squibb-Style One-Person Business Canvas Blueprint</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-12</span>
+        <span class="item-date-text tabular-nums">2026-04-12 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing knowledge business funnels by solving user career pain points and sharing the development process.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-10" data-title="branding "a semiconductor rookie's ai survival log" career funnel" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-10" data-title="branding "a semiconductor rookie's ai survival log" career funnel" data-search-content="
+         the fatigue of tech prophet predictions 
+         heavy industry talks leave students anxious. what students actually seek is raw advice from a junior peer who successfully landed a role. 
+         
+         the rookie persona 
+         establish &quot;a semiconductor rookie's ai survival log&quot;. sharing actual daily developer flows inside osat engineering builds relatable mentorship channels. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./rookie-engineer-ai-branding/index.html" class="item-title-link">Branding "A Semiconductor Rookie's AI Survival Log" Career Funnel</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-10</span>
+        <span class="item-date-text tabular-nums">2026-04-10 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Ditching broad AI theories to offer relatable, high-value career counseling for engineering students.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-08" data-title="benchmarking top tech creators: steve surfing, biz cafe, jay choi" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-08" data-title="benchmarking top tech creators: steve surfing, biz cafe, jay choi" data-search-content="
+         decoding successful content formulas 
+         to launch a tech channel, dissect established models and combine their visual and narrative hooks into your format. 
+         
+         dissecting the big three 
+         
+            steve surfing:  packages complex tools inside cozy, warm storytelling vlogs, reducing visual fatigue. 
+            biz cafe:  fast-paced edits demonstrating immediate roi from daily software utilities. 
+            jay choi:  minimalist desk aesthetics and authoritative career coaching style. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./creator-benchmarking-analysis/index.html" class="item-title-link">Benchmarking Top Tech Creators: Steve Surfing, Biz Cafe, Jay Choi</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-08</span>
+        <span class="item-date-text tabular-nums">2026-04-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Dissecting visual cues, visual desk setups, and storytelling methods to design a unique brand voice.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-06" data-title="warm tech storytelling: applying steve surfing cozy formats" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-06" data-title="warm tech storytelling: applying steve surfing cozy formats" data-search-content="
+         the enemy of tech content: dry screens 
+         reading code documentation over recorded screen captures causes viewers to bounce instantly. technical logs must carry emotional hooks. 
+         
+         cozy production variables 
+         use warm ambient background lights, low-volume lo-fi acoustic tracks, and a conversational narration style. frame learning as a relaxing ritual. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./stevesurfing-storytelling-productivity/index.html" class="item-title-link">Warm Tech Storytelling: Applying Steve Surfing Cozy Formats</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-06</span>
+        <span class="item-date-text tabular-nums">2026-04-06 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Transforming dry software tutorials into comforting storytelling blogs using warm studio lighting and relaxed narration.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-04" data-title="short-form content writing formulas for engineering students" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-04" data-title="short-form content writing formulas for engineering students" data-search-content="
+         the ruthless 1-second scrolling filter 
+         if your shorts do not address the viewer's personal pain points within the first 3 seconds, they swipe away instantly. 
+         
+         the video layout blueprint 
+         
+            3-second opening hook:  &quot;still letting chatgpt draft your cover letters? here is why recruiters bin them.&quot; 
+            15-second value show:  display the working ai tool ui running in real-time. 
+            caption chunk rules:  cap subtitle lengths under 10 characters per line, never exceeding two text lines on screen. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./shorts-production-formula-students/index.html" class="item-title-link">Short-form Content Writing Formulas for Engineering Students</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-04</span>
+        <span class="item-date-text tabular-nums">2026-04-04 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing high-retention 1-minute video templates with strong opening hooks and clean subtitle chunks.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-04-02" data-title="writing your first viral script around the ai attitude shift" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-04-02" data-title="writing your first viral script around the ai attitude shift" data-search-content="
+         sell the engineering attitude, not the manual 
+         tutorial channels are common. viewers subscribe when they receive a perspective shift that upgrades their operational lifestyle. 
+         
+         the paradigm shift script 
+         avoid syntax in your debut video. frame the theme: &quot;stop asking ai to think for you; engineer the environment that controls it.&quot; this positions you as an architect. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./first-viral-script-mindset/index.html" class="item-title-link">Writing Your First Viral Script around the AI Attitude Shift</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-04-02</span>
+        <span class="item-date-text tabular-nums">2026-04-02 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Focusing on mindset shifts—treating AI as a subordinate rather than a magical oracle—to hook premium audiences.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-03-30" data-title="crafting high-value free lead magnets for tech job seekers" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-03-30" data-title="crafting high-value free lead magnets for tech job seekers" data-search-content="
+         the golden rule of funnel entry: give first 
+         before asking viewers to register their email addresses, hand them an irresistible free resource (lead magnet). 
+         
+         the lead magnet package 
+         bundle your personal &quot;resume tuning prompts&quot; alongside your &quot;project ledger notion template&quot;. call to action: &quot;comment to receive the free template bundle instantly,&quot; converting viewers to subscribers. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./inbound-lead-magnet-strategy/index.html" class="item-title-link">Crafting High-Value Free Lead Magnets for Tech Job Seekers</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-30</span>
+        <span class="item-date-text tabular-nums">2026-03-30 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Building audience lists by offering free resumes tuning prompts and structured Notion templates.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-03-28" data-title="copywriting rules for threads and linkedin tech branding" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-03-28" data-title="copywriting rules for threads and linkedin tech branding" data-search-content="
+         the architecture of text-based feeds 
+         linkedin and threads audiences seek professional tips and career realities. adapt your copywriting tone to match their reading habits. 
+         
+         the copywriting rules 
+         
+            clean paragraph splits:  eliminate excessive emoji spam. keep lines spaced and tidy for mobile screens. 
+            raw real-world value:  share daily learnings—such as osat warpage troubleshooting—packaged as personal tech notes. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./threads-linkedin-text-branding/index.html" class="item-title-link">Copywriting Rules for Threads and LinkedIn Tech Branding</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-28</span>
+        <span class="item-date-text tabular-nums">2026-03-28 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Writing high-engagement text posts that combine career realities with practical engineering insights to drive organic shares.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-03-26" data-title="automating account audits: llama-vision to html email pipeline" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-03-26" data-title="automating account audits: llama-vision to html email pipeline" data-search-content="
+         ditching typing for pure computer vision 
+         manually keying in investment data blocks is a barrier. automating verification via screenshots maximizes user retention. 
+         
+         the vision to email architecture 
+         a folder listener detects screenshot uploads. a script triggers groq llama-3-vision to convert images to json holdings, running calculations to dispatch a dynamic html balance report straight to the user's inbox. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./vision-pipeline-html-report/index.html" class="item-title-link">Automating Account Audits: Llama-Vision to HTML Email Pipeline</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-26</span>
+        <span class="item-date-text tabular-nums">2026-03-26 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Parsing account screenshots using free Groq Llama-Vision APIs to trigger beautifully designed HTML financial diagnoses.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-03-24" data-title="humanizing tech content: the power of personal storytelling" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-03-24" data-title="humanizing tech content: the power of personal storytelling" data-search-content="
+         the story behind the circuits and code 
+         channels that list tech facts are commoditized. viewers do not connect with anonymous educational voices; they seek the human behind the keyboard. 
+         
+         the human storytelling pivot 
+         treat technology as a supporting actor. make the journey of a junior engineer balancing corporate life with midnight coding the main story. sharing raw growth struggles builds deep trust. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./human-pivot-storytelling/index.html" class="item-title-link">Humanizing Tech Content: The Power of Personal Storytelling</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-03-24</span>
+        <span class="item-date-text tabular-nums">2026-03-24 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Shifting from dry coding syntax to sharing real career struggles, building organic trust and authentic follower bases.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="fowlp stacking architectures and production yield optimization" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="fowlp stacking architectures and production yield optimization" data-search-content="
+         eliminating substrates for ultra-thin profiles 
+         fan-out wafer-level packaging (fowlp) displaces laminated pcb substrates. by molding silicon dies inside an epoxy wafer and routing electrical lines outward (fan-out) using fine redistribution layers (rdl), fowlp minimizes package heights and path parasitics. 
+         
+         the fowlp fabrication flow 
+         
+            die placement:  verified good silicon dies are pick-and-placed onto a carrier tape with micro-meter accuracy. 
+            molding:  liquid or granular epoxy mold compound (emc) encapsulates the discrete dies into a single reconstructed wafer. 
+            rdl formation:  removing the carrier exposes the contact terminals, where multi-level metalization runs establish interconnections. 
+            balling & dicing:  solder spheres are attached to the rdl terminals before singulation into discrete chips. 
+         
+         
+         curbing die shift and thermo-mechanical warp 
+         fowlp yield faces two main bottlenecks:  die shift  during molding compression and circular wafer  warpage  during emc cure cycles. die shift causes via alignment failures, leading to open connections. optimizing emc chemistries and balancing curing profiles are essential to suppress these issues. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./fan-out-wafer-level-packaging/index.html" class="item-title-link">FOWLP Stacking Architectures and Production Yield Optimization</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Understanding Fan-Out Wafer-Level Packaging (FOWLP) redistribution layer (RDL) processing steps and molding deflection control.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="hbm4 specifications: transitioning base dies to foundry logic nodes" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="hbm4 specifications: transitioning base dies to foundry logic nodes" data-search-content="
+         the evolution of the base die 
+         the  base die  at the bottom of the hbm stack acts as the communication interface between the host processor and the stacked dram memory. while hbm3e utilized standard dram processes, the hbm4 generation transitions to advanced logic foundry nodes (sub-5nm) for base die production. 
+         
+         physical bottlenecks of memory processes 
+         dram processes optimized for cell capacitors offer limited metal routing layers (typically 3 to 4). this architecture cannot accommodate complex built-in self-test (bist) circuits and high-speed multiplexers. foundry logic nodes, with 10+ ultra-fine copper layers, resolve this interconnect congestion. 
+         
+         heterogeneous integration trends 
+         using advanced logic foundries for hbm4 base dies transforms hbm from standard stacked memory into integrated system silicon. this shift lowers latency at the package boundary and requires tighter design integration between foundries and memory makers. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./hbm4-custom-dram-foundry/index.html" class="item-title-link">HBM4 Specifications: Transitioning Base Dies to Foundry Logic Nodes</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Why the foundational base die in High Bandwidth Memory (HBM) is shifting from DRAM processes to sub-5nm logic foundries.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="2.5d packaging substrates: silicon vs organic interposers" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="2.5d packaging substrates: silicon vs organic interposers" data-search-content="
+         the substrate medium shaping interconnect density 
+         2.5d packaging arrays utilize an  interposer  substrate to route sub-micron pitch traces between compute dies and hbms. designs select either silicon-based structures (e.g., tsmc's cowos-s) or organic build-up films (e.g., cowos-r). 
+         
+         silicon interposers: extreme density and cost 
+         silicon interposers employ sub-micron lithography tools, delivering routing densities for maximum bandwidth and impedance control. however, scaling interposer areas beyond the reticle limit requires stitching exposures, driving fabrication costs up. 
+         
+         organic interposers: elasticity and scaling 
+         organic interposers leverage build-up laminates and fine-line rdl. this medium lowers cost, removes complex tsv processes, and handles warp stress well. while layout pitch margins are wider than silicon, organic solutions serve as cost-effective options for large accelerators. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./silicon-interposer-vs-organic/index.html" class="item-title-link">2.5D Packaging Substrates: Silicon vs Organic Interposers</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Evaluating high-density Silicon interposers (CoWoS-S) against fine-pitch organic RDL interposers (CoWoS-R) on performance and cost.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="capillary underfill dynamics and void prevention in flip-chip stacking" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="capillary underfill dynamics and void prevention in flip-chip stacking" data-search-content="
+         capillary underfill (cuf) fluid dynamics 
+         in flip-chip packages, the narrow gap between the die and substrate is filled with epoxy resin to secure micro-bumps. this is  capillary underfill (cuf) , driven by capillary pressure that pulls liquid resins through micro-channels. 
+         
+         void formation mechanisms 
+         if the fluid flow front advances unevenly, it loops back and traps pockets of air, forming  voids . voids often form when high-density bump zones cause flow velocity imbalances, creating stagnation points. 
+         
+         mitigating void defects 
+         
+            dc substrate heating:  warming substrates lowers resin viscosity, improving flow speeds. 
+            dispense paths:  using i-shaped or l-shaped dispense patterns maintains a single, flat flow front. 
+            bump channel tuning:  layout designs align bump grids to keep capillary paths clear. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./underfill-void-capillary-flow/index.html" class="item-title-link">Capillary Underfill Dynamics and Void Prevention in Flip-Chip Stacking</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Analyzing fluid viscosities, dispensing patterns, and bump arrays to prevent micro-void formation during capillary underfill (CUF) processes.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="epoxy mold compound (emc) transfer molding: defect prevention and parameters" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="epoxy mold compound (emc) transfer molding: defect prevention and parameters" data-search-content="
+         encapsulating silicon via transfer molding 
+         semiconductor packaging uses epoxy mold compound (emc) to seal silicon chips. in  transfer molding , solid emc pellets are liquefied under high heat and injected under pressure into mold cavities. 
+         
+         key mold process parameters 
+         
+            transfer speed & pressure:  the rate at which liquid emc is pushed into the cavity. excessive speed causes wire deflection ( wire sweep ), while low speed risks pre-cure solidification. 
+            mold curing temperature:  typically set between 170°c and 180°c, managing emc cross-linking speeds and viscosity windows. 
+            clamping force:  high mechanical clamping forces hold mold halves closed to prevent resin leaks ( flash ). 
+         
+         
+         preventing sticking defects 
+         regular maintenance runs mold release pellets through cavities to clean metal surfaces, preventing epoxy adhesion failures during ejection cycles. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./emc-transfer-molding-parameters/index.html" class="item-title-link">Epoxy Mold Compound (EMC) Transfer Molding: Defect Prevention and Parameters</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Controlling pressure, clamp forces, and viscosity limits to suppress wire sweep and void failures in mold processes.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="advanced flip-chip interconnects: tcb vs mass reflow (mrb)" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="advanced flip-chip interconnects: tcb vs mass reflow (mrb)" data-search-content="
+         micro-bump stacking methods 
+         as micro-bump pitches scale down in hbm arrays, packaging houses choose between  mass reflow bonding (mrb)  and  thermal compression bonding (tcb) . 
+         
+         mass reflow (mrb): yield and alignment limits 
+         mrb places chips onto substrates and runs them through a reflow oven to melt all solder connections simultaneously. it offers high throughput but risks misalignment and solder bridging if substrate warpage occurs at peak reflow temperatures. 
+         
+         thermal compression bonding (tcb): precision profiling 
+         tcb uses a heated head to pick and place each die, applying precise mechanical force and thermal profiles. this prevents solder bridging on fine pitches, though the serial nature of tcb lowers throughput compared to mrb. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./tcb-vs-mrb-bonding/index.html" class="item-title-link">Advanced Flip-Chip Interconnects: TCB vs Mass Reflow (MRB)</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Comparing thermal compression bonding (TCB) accuracy against mass reflow bonding (MRB) output yields.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="hbm known good die (kgd) test methodologies and yield defenses" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="hbm known good die (kgd) test methodologies and yield defenses" data-search-content="
+         the yield mathematics of multi-die packages 
+         if you stack 12 dram dies, each with a 90% yield, the overall package yield drops to $0.90^{12} \approx 28.2\%$. ensuring each die is a  known good die (kgd)  before assembly is critical to prevent yield fallout. 
+         
+         the kgd test flow 
+         
+            wafer probing:  probe cards interface with wafer terminals to test electrical parameters and speed grades. 
+            thin-wafer probing:  dynamic tests are rerun after wafer thinning to verify chip performance. 
+            built-in self-test (bist):  internal test blocks detect failures, routing addresses to redundancy cells on-chip. 
+         
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./hbm-kgd-test-flow/index.html" class="item-title-link">HBM Known Good Die (KGD) Test Methodologies and Yield Defenses</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Implementing pre-stack probing, wafer thinning testing, and built-in self-test (BIST) sweeps to prevent stacked package losses.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="electromigration (em) reliability in copper pillar bumps" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="electromigration (em) reliability in copper pillar bumps" data-search-content="
+         high current density stress in micro-bumps 
+         shrinking bump dimensions increases current densities per unit area. when current density exceeds $10^4 \text{ a/cm}^2$, electron momentum transfers to metal ions, causing  electromigration (em) . 
+         
+         failure modes: voids and hillocks 
+         at the cathode, atom depletion forms  voids , reducing contact area and spiking path resistance. at the anode, metal accumulation forms  hillocks , risking short circuits. 
+         
+         engineering for em mitigation 
+         engineers design barrier metal stacks (e.g., nickel barriers) between the copper pillar and solder cap to limit imc growth and shape bump geometries to distribute current flows. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./copper-pillar-bump-electromigration/index.html" class="item-title-link">Electromigration (EM) Reliability in Copper Pillar Bumps</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How high current densities displace copper and tin atoms, leading to bump void failures under thermal load.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="panel level packaging (plp): warpage control in 600mm plates" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="panel level packaging (plp): warpage control in 600mm plates" data-search-content="
+         transitioning to square form factors for cost reduction 
+          panel level packaging (plp)  processes large 600mm square panels. this format utilizes 95%+ of the panel surface, eliminating edge wastage found on circular wafers and boosting chip counts over 3x. 
+         
+         the 600mm panel warpage challenge 
+         scaling packaging carriers to 600mm x 600mm amplifies cte mismatch stress, which can cause panel edges to warp by centimeters, hindering handling tools and lithography systems. 
+         
+         mitigating warpage 
+         process teams implement sequential pressure molding and apply post-mold flat curing. adding dummy copper patterns to balance metal density within the panel layers helps suppress thermal deflections. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./panel-level-packaging-panel-warpage/index.html" class="item-title-link">Panel Level Packaging (PLP): Warpage Control in 600mm Plates</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Overcoming the mechanical warpage limits of large square panels to capture 3x yield gains over 300mm wafer processes.</p>
     </div>
     
 
-    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="die attach film (daf) interface void control in thin multi-die stacking" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Semiconductor" data-date="2026-06-08" data-title="die attach film (daf) interface void control in thin multi-die stacking" data-search-content="
+         securing thin stacks with die attach film (daf) 
+         dram memory stacks require thin interface layers to manage package heights.  die attach film (daf)  is laminated onto wafer backfaces prior to dicing, acting as a solid adhesive interface between dies. 
+         
+         interface voiding and delamination risks 
+         if microscopic air pockets are trapped under the daf during die placement, they form interface  voids . thermal cycles expand these voids, risking delamination and open circuits. 
+         
+         optimizing force profiles 
+         to eliminate voids, die bonders use multistage force profiles that ramp pressure gradually, allowing trapped air to escape. high-pressure post-bond curing runs collapse residual micro-voids. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./die-attach-film-voids/index.html" class="item-title-link">Die Attach Film (DAF) Interface Void Control in Thin Multi-Die Stacking</a>
           <span class="status-badge">Semiconductor</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Managing bonding pressure profiles to eliminate interface voids and prevent delamination in thin memory stacks.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="mitigating switch-node ringing in buck converters" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="mitigating switch-node ringing in buck converters" data-search-content="
+         high-frequency oscillations on switching nodes 
+         buck regulators toggle mosfet transistors on and off. the steep voltage transitions ($dv/dt$) excite parasitic inductance and capacitance on the pcb, generating  ringing  noise on switching nodes. 
+         
+         consequences: emi and overvoltage risks 
+         switching node ringing can exceed mosfet voltage ratings, causing device failure. this high-frequency noise also emits electromagnetic interference (emi) that degrades nearby analog signals. 
+         
+         designing rc snubber circuits 
+         engineers suppress ringing by deploying an  rc snubber  network (resistor and capacitor in series) between the switch node and ground. this network absorbs high-speed energy spikes, dampening peak ringing voltages. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./buck-converter-ringing-noise/index.html" class="item-title-link">Mitigating Switch-Node Ringing in Buck Converters</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Designing RC Snubber networks to suppress high-frequency EMI ringing on switching regulator lines.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="managing intra-pair skew in high-speed differential signals" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="managing intra-pair skew in high-speed differential signals" data-search-content="
+         differential noise integrity constraints 
+         high-speed interfaces (pcie, usb, hdmi) utilize  differential signaling  (two lines with opposite phases) to suppress common-mode noise. maintaining phase alignment requires eliminating  intra-pair skew  (arrival time delta). 
+         
+         impacts of trace mismatches 
+         mismatched trace lengths disrupt phase symmetry, converting differential signals into common-mode noise. this closes the signal eye diagram, increasing bit error rates (ber) and electromagnetic emission levels. 
+         
+         pcb skew compensation layouts 
+         layout designers use  serpentine  or phase tuning serpentine traces on the shorter line of the pair. this matches trace lengths within picosecond arrival targets, securing signal integrity. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./differential-signaling-skew/index.html" class="item-title-link">Managing Intra-pair Skew in High-Speed Differential Signals</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Adjusting differential trace lengths on PCBs to prevent phase shifts and secure signal integrity margins.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="ldo vs buck converters: decoupling noise from sensitive analog rails" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="ldo vs buck converters: decoupling noise from sensitive analog rails" data-search-content="
+         the analog power supply dilemma 
+         power rail design balances efficiency and noise. designers select between high-efficiency  buck converters  and low-noise  ldo (linear regulators)  based on circuit sensitivity. 
+         
+            ldo regulators:  drop voltages via linear transistor resistance. while inefficient under high voltage differentials, they offer excellent power supply rejection ratio (psrr) and microvolt-level ripple. 
+            buck converters:  convert voltages using lc energy storage and switching circuits. they deliver 90%+ efficiency but introduce high-frequency switching ripple. 
+         
+         
+         implementing hybrid power trees 
+         to power low-noise analog stages, designers use a  buck + ldo hybrid  setup. the buck stage handles the primary voltage drop efficiently, while a downstream ldo filters out switching ripple for quiet analog rails. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./ldo-vs-buck-noise/index.html" class="item-title-link">LDO vs Buck Converters: Decoupling Noise from Sensitive Analog Rails</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Comparing the noise spectrum, efficiency tradeoffs, and PSRR of linear LDOs against high-efficiency buck switchers.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="op-amp input driver design for high-precision sar adcs" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="op-amp input driver design for high-precision sar adcs" data-search-content="
+         the mechanics of sar adc charge kickback 
+         high-resolution successive approximation register (sar) adcs utilize a capacitive dac (cdac) network to sample signals. toggling the sampling switch triggers a  charge kickback —a transient current spike that destabilizes the input voltage. 
+         
+         securing signal settling times 
+         the input signal must settle back to within 1/2 lsb of its true value before the conversion window closes. designers deploy an rc low-pass filter between the driver op-amp and the adc to absorb this current kickback and stabilize the signal. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./adc-input-driver-settling/index.html" class="item-title-link">OP-AMP Input Driver Design for High-Precision SAR ADCs</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Calculating Charge-Kickback filter parameters and OP-AMP bandwidths to secure complete voltage settling before conversion.</p>
     </div>
     
 
-    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="sizing pull-up resistors for reliable i2c bus communication" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Hardware" data-date="2026-06-08" data-title="sizing pull-up resistors for reliable i2c bus communication" data-search-content="
+         open-drain drivers and bus pull-ups 
+         the i2c protocol uses open-drain drivers to allow multi-device sharing of sda and scl lines. because devices only pull the bus low, external  pull-up resistors  pull the lines high when released. 
+         
+         the tradeoff between rise time and power 
+         a high pull-up resistance ($r_{pullup}$) slows signal rise times due to the bus capacitance ($c_{bus}$) rc time constant, causing bit errors. conversely, low resistance drives excessive sink currents that overload pins and waste power. 
+         
+         calculating resistor boundaries 
+         for fast-mode (400khz) i2c, max rise times are capped at 300ns. the upper limit follows $r_{max} = t_{r} / (0.8473 \times c_{bus})$. balances typically place resistors between 2.2kω and 4.7kω depending on trace lengths. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./i2c-pullup-resistor-sizing/index.html" class="item-title-link">Sizing Pull-up Resistors for Reliable I2C Bus Communication</a>
           <span class="status-badge">Hardware</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Calculating pull-up resistor boundaries using bus capacitance and I2C rise time limits.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="leveraging git worktree to handle emergency hotfixes seamlessly" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="leveraging git worktree to handle emergency hotfixes seamlessly" data-search-content="
+         the overhead of git stash context switching 
+         interrupting a long-running feature branch to fix an urgent production bug often involves running `git stash`, checking out branches, and reloading local setups. this flow is prone to manual errors. 
+         
+         parallel workspaces: git worktree 
+         using `git worktree` creates multiple checkout directories linked to the same local git repository. 
+          git worktree add ../hotfix-branch-dir hotfix-branch  
+         this command checks out the target branch to a parallel folder. you can fix the bug in a separate window, push the hotfix, and delete the worktree without stashing or disrupting your primary development workspace. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./git-worktree-multi-tasking/index.html" class="item-title-link">Leveraging Git Worktree to Handle Emergency Hotfixes Seamlessly</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How to create parallel working directories inside a single git repository to bypass git stash context-switching bottlenecks.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="version-controlled architecture: introducing mermaid.js in markdown" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="version-controlled architecture: introducing mermaid.js in markdown" data-search-content="
+         the maintenance pain of image diagrams 
+         updating architecture drawings in powerpoint and re-exporting image attachments for wiki pages is tedious. static images also block git diff tracking. 
+         
+         mermaid.js: diagrams as code 
+         we declare diagram layouts using plain text within markdown files, rendering vector svg charts via  mermaid.js . 
+          graph td
+  a[system client] -->|api request| b(api gateway)
+  b --> c{verify token}  
+         because these blocks are text, they show line diffs in git and can be modified directly in the code editor, keeping documentation simple and up to date. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./mermaid-diagrams-documentation/index.html" class="item-title-link">Version-Controlled Architecture: Introducing Mermaid.js in Markdown</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Ditching static image mockups to write live, auto-rendering vector charts directly in raw markdown code.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="building sub-second summary pipelines with groq llama-3 api" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="building sub-second summary pipelines with groq llama-3 api" data-search-content="
+         ux bottlenecks of slow llm inference 
+         even useful ai summaries degrade user experience if the interface locks up for 5 seconds waiting for standard cloud api responses. 
+         
+         groq lpu api integration 
+         by routing blog transcripts to the  groq lpu engine  running open-source llama-3, generation speeds scale to hundreds of tokens per second. complete text blocks are processed in  under 400ms , delivering near-instant summarization outputs. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./groq-llama3-fast-inference/index.html" class="item-title-link">Building Sub-Second Summary Pipelines with Groq Llama-3 API</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Connecting fast Groq LPU engine endpoints to parse text inputs and return abstract summaries under 500ms.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="split ergonomic keyboards: an engineering approach to rsi prevention" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="split ergonomic keyboards: an engineering approach to rsi prevention" data-search-content="
+         the chronic typing strain of engineers 
+         programming long hours on standard keyboards forces hands inward, causing shoulder rolling and ulnar deviation of the wrist. this stress accumulates as repetitive strain injury (rsi). 
+         
+         anatomy of a split layout 
+         split keyboards physically separate the left and right halves, allowing users to keep wrists straight and shoulders open. tenting angles elevate the inner edges to match natural forearm resting angles, relieving muscle strain. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./keyboard-ergonomics-split-layout/index.html" class="item-title-link">Split Ergonomic Keyboards: An Engineering Approach to RSI Prevention</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">How split board physical layouts and tenting angles prevent shoulder rolling and carpal tunnel syndrome.</p>
     </div>
     
 
-    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="continuous integration pipelines for static sites via github actions" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="Insight" data-date="2026-06-08" data-title="continuous integration pipelines for static sites via github actions" data-search-content="
+         the fragility of manual builds 
+         running code builds manually before staging and deploying risks pushing broken links or uncompiled html files to production servers. 
+         
+         automating the pipeline 
+         we define a `.github/workflows/deploy.yml` config. pushing to main prompts a github runner to install dependencies, run `node build.js` tests, and deploy verified files to the hosting server automatically. 
+      " style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./continuous-integration-static-pages/index.html" class="item-title-link">Continuous Integration Pipelines for Static Sites via GitHub Actions</a>
           <span class="status-badge">Insight</span>
         </div>
-        <span class="item-date-text tabular-nums">2026-06-08</span>
+        <span class="item-date-text tabular-nums">2026-06-08 &middot; 1 min read</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">Automating compile scripts and static file deployments through cloud runner workflows.</p>
     </div>

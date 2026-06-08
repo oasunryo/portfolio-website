@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/tdd-agent-guardrails/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-02">2026-06-02</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">TDD와 자동 테스트를 연동한 AI 에이전트 자기 보정 시스템</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>인간의 개입을 줄이는 Guardrail 설계</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">인간의 개입을 줄이는 Guardrail 설계</h2>
         <p>코드를 받고 나서 사람이 직접 실행해보고 에러를 발견한 뒤 다시 프롬프트를 작성하는 것은 많은 토큰과 시간의 낭비를 부릅니다. AI 스스로 검증할 수 있는 피드백 루프가 핵심입니다.</p>
         <hr>
-        <h2>TDD 기반의 에이전트 검증 루프</h2>
+        <h2 id="toc-heading-1">TDD 기반의 에이전트 검증 루프</h2>
         <p>에이전트에게 "기능 구현 전 단위 테스트 코드를 먼저 작성하고, 터미널 명령어를 통해 그 테스트가 완전하게 통과하는지 확인한 로그를 포함해 결과를 출력하라"는 하네스 제약을 줍니다. AI는 스스로 테스트 오류를 보고 스스로 리팩토링하는 과정을 반복해 무결점 코드를 제출하게 됩니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">인간의 개입을 줄이는 Guardrail 설계</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">TDD 기반의 에이전트 검증 루프</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

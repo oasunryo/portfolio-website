@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/prompt-vs-harness-engineering-diff/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-03-05">2026-03-05</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">프롬프트 엔지니어링 vs 하네스 엔지니어링: 기술적 깊이의 차이</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>프롬프트 튜닝만으로는 대규모 시스템을 통제할 수 없다</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">프롬프트 튜닝만으로는 대규모 시스템을 통제할 수 없다</h2>
         <p>"명확하게 대답해줘", "역할은 시니어 엔지니어야" 같은 마법의 프롬프트 문구를 찾는 <strong>프롬프트 엔지니어링(Prompt Engineering)</strong>은 단발성 답변 유도에는 유용하지만, 깃허브 저장소를 다루는 대규모 자율주행 코딩 에이전트를 안전하게 돌리기에는 역부족입니다. 에이전트의 폭주와 코어 코드 소실 위험이 항상 존재하기 때문입니다.</p>
         <hr>
-        <h2>소프트웨어 통제망으로서의 하네스 엔지니어링</h2>
+        <h2 id="toc-heading-1">소프트웨어 통제망으로서의 하네스 엔지니어링</h2>
         <p>하네스 엔지니어링은 AI 에이전트가 딛고 서는 '런타임 환경 자체를 프로그래밍'합니다. 파일 읽기/쓰기 샌드박스 설정, 자동 린터(Linter)와 테스트 파이프라인의 에이전트 연동, 에이전트가 수정 전후의 코드를 직접 diff 비교하게 강제하는 컴파일 통제 등을 수행합니다. 프롬프트가 '부드러운 권고'라면, 하네스는 '물리적 법칙'으로서 AI의 오작동 확률을 극단적으로 낮춥니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">프롬프트 튜닝만으로는 대규모 시스템을 통제할 수 없다</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">소프트웨어 통제망으로서의 하네스 엔지니어링</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

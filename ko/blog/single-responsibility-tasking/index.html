@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/single-responsibility-tasking/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-30">2026-05-30</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">단일 책임 원칙(SRP)에 기반한 테스크 분할 전략</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>거대한 지시가 불러오는 참사</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">거대한 지시가 불러오는 참사</h2>
         <p>에이전트에게 "로그인 화면을 만들고, 결제 모듈을 연동하고, 환영 메일 발송 로직까지 다 짜줘"라고 대형 태스크를 한 번에 지시하면 높은 확률로 중간 코드들이 다 깨지거나 엉성한 결과가 나옵니다.</p>
         <hr>
-        <h2>1단계 완벽 종결 후 리셋 루프</h2>
+        <h2 id="toc-heading-1">1단계 완벽 종결 후 리셋 루프</h2>
         <p>각 단계별로 하나의 명확한 목표만 쥐여주어야 합니다. "1단계: 로그인 UI 구성 및 Mocking 테스트 패스"를 완벽히 마친 뒤, 대화 문맥을 한 번 비우고(Context Reset) "2단계: 결제 모듈 API 연동"으로 넘어가는 것이 토큰을 80% 이상 아끼며 안전하게 굴리는 핵심 비결입니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">거대한 지시가 불러오는 참사</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">1단계 완벽 종결 후 리셋 루프</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

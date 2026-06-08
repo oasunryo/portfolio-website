@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/blog/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/blog/bga-vs-wlcsp-packaging/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-05">2026-05-05</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1 min read</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,18 +111,23 @@
           </div>
           <h1 class="article-main-title">BGA vs WLCSP: Packaging Architectures for Mobile AP and IoT Chips</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>Substrate Elimination Reshaping the Footprint</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">Substrate Elimination Reshaping the Footprint</h2>
         <p>Form factor constraints in mobile devices and IoT sensors have driven packaging minimization. <strong>Ball Grid Array (BGA)</strong> and <strong>Wafer Level Chip Scale Package (WLCSP)</strong> differ fundamentally on substrate use.</p>
         <ul>
           <li><strong>BGA:</strong> Mounts the silicon die onto a laminated PCB substrate, connecting them via wire bonding or flip-chip bumps, encapsulated in Mold Compound (EMC). Ideal for high I/O density application processors (AP).</li>
           <li><strong>WLCSP:</strong> Routes signals directly on the wafer using Redistributed Layers (RDL) and solder bumps without a substrate. Offers the smallest footprint for PMICs and RF ICs.</li>
         </ul>
         <hr>
-        <h2>Thermal & Electrical Integrity</h2>
+        <h2 id="toc-heading-1">Thermal & Electrical Integrity</h2>
         <p>BGA design offers flexible routing through substrate layers but introduces higher parasitic inductance. WLCSP minimizes trace loops for lower insertion loss but exposes bare silicon edges, making it fragile to dynamic drops and thermo-mechanical stress on printed boards.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">Substrate Elimination Reshaping the Footprint</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">Thermal & Electrical Integrity</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

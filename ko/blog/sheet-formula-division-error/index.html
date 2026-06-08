@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/sheet-formula-division-error/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-22">2026-04-22</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">실제비중(K열) 및 비중차이(M열) 수식 파싱 에러 격파 일지</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>사칙 연산에 텍스트가 섞일 때의 붕괴</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">사칙 연산에 텍스트가 섞일 때의 붕괴</h2>
         <p>구글 시트에서 비중을 뺄셈하는 수식을 가동할 때, 목표비중 셀에 숫자 대신 <code>"10.0%"</code>라는 텍스트 문자열이 들어가 있으면 스프레드시트는 계산을 포기하고 <code>#VALUE!</code> 에러를 유발합니다.</p>
         <hr>
-        <h2>절대 깨지지 않는 SUM 분모법 도입</h2>
+        <h2 id="toc-heading-1">절대 깨지지 않는 SUM 분모법 도입</h2>
         <p>첫째로, 모든 목표비중 데이터를 순수 소수점 실수(0.10, 0.15) 형태로 정규화했습니다. 둘째로, 실제비중 계산 시 대시보드 셀의 단독 총자산 좌표를 나누던 취약한 구조에서, <strong>현재 열려있는 모든 주식 평가합을 직접 계산하는 <code>=J6/SUM(J$6:J$23)</code> 수식으로 교체</strong>해 대시보드 병합이 어떻게 깨져도 평가비중 수식은 영원히 고장 나지 않는 무적 설계를 이룩했습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">사칙 연산에 텍스트가 섞일 때의 붕괴</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">절대 깨지지 않는 SUM 분모법 도입</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

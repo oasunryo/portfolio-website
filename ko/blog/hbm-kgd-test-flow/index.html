@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/hbm-kgd-test-flow/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,18 +111,23 @@
           </div>
           <h1 class="article-main-title">HBM KGD(Known Good Die) 테스트 플로우와 후공정 수율 방어선</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>적층형 반도체의 수학적 재앙과 수율</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">적층형 반도체의 수학적 재앙과 수율</h2>
         <p>만약 수율이 90%인 D램 칩 12개를 와이어나 TSV로 적층하여 패키징한다면, 단순 확률상 완제품 수율은 $0.90^{12} \approx 28.2\%$ 수준으로 폭락합니다. 적층 개수가 증가할수록 완제품 폐기율은 지수함수적으로 폭등합니다. 따라서 불량 다이를 적층 전에 완전히 배제하는 <strong>KGD(Known Good Die)</strong> 테스트 확보가 완제품 수율을 수호하기 위한 절대적 방어선입니다.</p>
         <hr>
-        <h2>KGD 주요 테스트 관문</h2>
+        <h2 id="toc-heading-1">KGD 주요 테스트 관문</h2>
         <ul>
           <li><strong>Wafer-Level Test:</strong> 프로브 카드(Probe Card) 바늘을 D램 웨이퍼 패드에 접속하여 고속 읽기/쓰기 동작 및 DC 파라미터를 계측합니다.</li>
           <li><strong>Thin-Wafer Probe Test:</strong> 배면 연삭(Thinning)을 마쳐 얇아진 웨이퍼에 초미세 피치 전용 프로브 팁을 대고 동적 응답을 다시 확인합니다.</li>
           <li><strong>Built-In Self-Test (BIST) 검사:</strong> HBM4 등에 탑재되는 내부 테스트 자가 진단 회로를 트리거하여 불량 메모리 셀 블록을 소프트웨어적으로 리던던시(Redundancy) 셀로 치환하는 공정을 가동합니다.</li>
         </ul>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">적층형 반도체의 수학적 재앙과 수율</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">KGD 주요 테스트 관문</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

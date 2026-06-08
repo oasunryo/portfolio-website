@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/ac-power-sensing-calibration/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-10">2026-04-10</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">AC 교류 전력량 측정을 위한 비접촉 CT 센서 회로 및 ADC 캘리브레이션</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>위험한 고압 AC 전력량의 비접촉 계측</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">위험한 고압 AC 전력량의 비접촉 계측</h2>
         <p>실제 교류 220V 송전 전선에 멀티미터 프롭을 대는 것은 위험합니다. 전류가 흐르면 그 전선 주변으로 비례적인 유도 자기장이 발생하는데, 이 전자기 유도 효과를 이용하는 <strong>CT(Current Transformer, 변류기) 센서</strong>를 감싸주면 전선을 단선시키지 않고도 2차측에 비례 전류를 만들어낼 수 있습니다.</p>
         <hr>
-        <h2>AC 전압 클램핑과 ADC 읽기 기법</h2>
+        <h2 id="toc-heading-1">AC 전압 클램핑과 ADC 읽기 기법</h2>
         <p>CT 센서 출력은 교류이므로 음(-)의 영역 전압도 포함하고 있습니다. 하지만 단일 전원(0~3.3V)을 쓰는 임베디드 MCU의 ADC 포트는 음의 전압이 인가되면 하드웨어적으로 손상되거나 값을 읽지 못합니다. 따라서 두 개의 저항으로 1.65V 중간 바이어스 전압(Offset Voltage) 분배기를 만들고, CT 출력을 여기에 실어 공중으로 띄운 뒤(AC Coupling) 샘플링하여 실시간 RMS 전압과 위상차를 역산합니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">위험한 고압 AC 전력량의 비접촉 계측</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">AC 전압 클램핑과 ADC 읽기 기법</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/etf-google-finance-na-fix/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-26">2026-04-26</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">국내 특수 액티브 ETF의 구글 파이낸스 N/A 에러와 계좌 오염 방지</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>구글 파이낸스 수식의 돌연사</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">구글 파이낸스 수식의 돌연사</h2>
         <p>국내 상장된 일부 특수 액티브 ETF(예: KoAct 브로드컴밸류체인액티브)는 구글 스프레드시트 내에서 <code>=GOOGLEFINANCE("KRX:0051A0")</code> 수식을 썼을 때 <code>#N/A</code> 에러를 유발하며, 이 에러가 전체 평가합 셀까지 전파되어 대시보드가 마비되는 문제가 생깁니다.</p>
         <hr>
-        <h2>수식 튜닝과 방어선 구축</h2>
+        <h2 id="toc-heading-1">수식 튜닝과 방어선 구축</h2>
         <p>일반 종목들은 <code>SUBSTITUTE</code> 수식을 가미해 <code>KRX:</code> 접두사를 실시간으로 떼어내고 주가를 수집하게 튜닝합니다. 하지만 그럼에도 응답하지 않는 악성 특수 종목의 경우, 구글 파이낸스 호출을 과감히 포기하고 챗봇과의 대화로 현재가를 상수로 직접 기입해 관리하는 '수동 갱신 방어벽'을 개조하여 정합성을 지켜냈습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">구글 파이낸스 수식의 돌연사</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">수식 튜닝과 방어선 구축</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/ldo-vs-buck-noise/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,18 +111,23 @@
           </div>
           <h1 class="article-main-title">LDO 레귤레이터 vs Buck 컨버터: 노이즈 저감 관점의 아날로그 전원 설계 비교</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>아날로그 센서단 전원의 딜레마</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">아날로그 센서단 전원의 딜레마</h2>
         <p>하드웨어 설계 시 전원 공급 회로는 장치의 수명과 성능을 가르는 핵심 요소입니다. 이때 고효율을 자랑하는 <strong>Buck Converter(스위칭 레귤레이터)</strong>와 리플 노이즈가 없는 <strong>LDO(Linear Regulator)</strong> 중 적합한 토폴로지를 선별 배치해야 합니다.</p>
         <ul>
           <li><strong>LDO:</strong> TR의 리니어 영역 저항 분배 방식으로 동작하여 효율은 전압 차에 비례해 나쁘나, 입력 노이즈를 차단하는 PSRR 성능이 우수하고 출력 리플 노이즈가 마이크로볼트 단위로 깨끗합니다.</li>
           <li><strong>Buck:</strong> LC 필터와 스위칭 듀티 제어로 전압을 강하하여 효율이 90% 이상으로 매우 우수하나, 스위칭 주파수 고조파 리플 노이즈가 수십 밀리볼트(mV) 규모로 항상 동반됩니다.</li>
         </ul>
         <hr>
-        <h2>노이즈 감도별 하이브리드 전원 체계 구축</h2>
+        <h2 id="toc-heading-1">노이즈 감도별 하이브리드 전원 체계 구축</h2>
         <p>고감도 아날로그 센서 앰프나 RF 무선 통신 칩 단에 전원을 바로 공급할 때는 LDO를 직렬 연결해 스위칭 리플을 제거하는 <strong>Buck + LDO 하이브리드</strong> 구성을 채택합니다. Buck 컨버터로 1차 전압 하강을 처리해 고효율을 챙긴 뒤, 2차 전열 LDO로 리플 노이즈만 골라내어 시스템 전체의 연산 효율과 신호 무결성을 동시에 달성합니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">아날로그 센서단 전원의 딜레마</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">노이즈 감도별 하이브리드 전원 체계 구축</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

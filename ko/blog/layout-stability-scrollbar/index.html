@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/layout-stability-scrollbar/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-24">2026-05-24</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">scrollbar-gutter를 활용한 레이아웃 깜빡임(Layout Shift) 방지 기법</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>스크롤바 탄생이 만드는 레이아웃 뒤틀림</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">스크롤바 탄생이 만드는 레이아웃 뒤틀림</h2>
         <p>본문 텍스트가 많아져 브라우저 우측에 스크롤바가 솟아나는 순간, 뷰포트의 실제 폭이 줄어들며 가운데 정렬되어 있던 헤더와 콘텐츠 박스들이 왼쪽으로 쿵 하고 밀리는 시각적 불쾌감을 줍니다.</p>
         <hr>
-        <h2>scrollbar-gutter: stable 선언</h2>
+        <h2 id="toc-heading-1">scrollbar-gutter: stable 선언</h2>
         <p>CSS 최신 속성인 <code>scrollbar-gutter: stable</code>을 html 또는 컨테이너에 심어두면, 스크롤바가 없는 상태여도 미리 스크롤바의 두께만큼 여백(Gutter)을 예약해 둡니다. 덕분에 글이 길어져 스크롤바가 튀어나와도 어떠한 미세한 레이아웃 밀림 현상도 없이 완벽한 정렬 상태를 유지하게 됩니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">스크롤바 탄생이 만드는 레이아웃 뒤틀림</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">scrollbar-gutter: stable 선언</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

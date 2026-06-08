@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/private-notebooklm-safari-obsidian/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-01">2026-06-01</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,15 +111,17 @@
           </div>
           <h1 class="article-main-title">8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 "NotebookLM" 구축기</h1>
         </header>
-        <div class="article-body-content">
-          
-          <h2>무겁게 로컬 LLM을 돌릴 필요가 없다</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+          <h2 id="toc-heading-0">무겁게 로컬 LLM을 돌릴 필요가 없다</h2>
           <p>연구 논문이나 전공 PDF 수백 장을 분석할 때 로컬 LLM(Ollama 등)을 직접 돌리면 맥북 쿨러가 폭발하고 8GB 램 기기에서는 시스템이 뻗어버리기 십상입니다. 그렇다고 브라우저로 매번 외부에 파일을 하나씩 업로드해서 질의하는 것은 보안 유출 문제도 있고 관리하기도 몹시 번거롭죠.</p>
           <p>이 한계를 극복하기 위해 <strong>Zotero 7(논문 수집) ➡️ Safari ➡️ Obsidian(Copilot 플러그인 + Gemini API)</strong>을 엮은 무부하 개인 리서치 파이프라인을 구성했습니다.</p>
           
           <hr>
           
-          <h2>수집부터 분석까지 끊김 없는 3단계 루프</h2>
+          <h2 id="toc-heading-1">수집부터 분석까지 끊김 없는 3단계 루프</h2>
           <ol>
             <li><strong>Zotero 7 수집 & Stoplight 하이라이트</strong>: Safari에서 마음에 드는 프리프린트나 자료를 원클릭 저장하고 Zotero 뷰어로 읽으면서 빨강(핵심), 노랑(의문), 초록(배경)으로 형광펜 칠을 해둡니다.</li>
             <li><strong>Obsidian 색상 동기화 호출</strong>: Zotero Integration 플러그인과 직접 짠 CSS 스니펫을 통해 Zotero의 형광펜 데이터가 옵시디언 문서 내에 예쁜 콜아웃(Callouts) 형태로 고스란히 끌려옵니다.</li>
@@ -125,6 +129,9 @@
           </ol>
           <p>이 구성이면 내 맥북의 로컬 램과 SSD 수명을 전혀 갉아먹지 않으면서도, 세상에서 가장 빠르고 안전한 나만의 개인 비서(NotebookLM)를 100% 무료로 가동할 수 있습니다.</p>
         
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">무겁게 로컬 LLM을 돌릴 필요가 없다</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">수집부터 분석까지 끊김 없는 3단계 루프</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

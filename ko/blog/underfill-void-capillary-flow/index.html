@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/underfill-void-capillary-flow/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,21 +111,26 @@
           </div>
           <h1 class="article-main-title">플립칩 본딩에서 언더필(Underfill) 모세관 유동 동역학 및 Void 억제책</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>칩 아랫공간을 채우는 모세관 언더필 (CUF)</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">칩 아랫공간을 채우는 모세관 언더필 (CUF)</h2>
         <p>플립칩(Flip-Chip) 패키징에서 칩 패드와 기판 사이의 미세 범프들을 외부 물리 충격 및 습기로부터 보호하기 위해, 그 미세 틈새를 고분자 수지로 채워 넣는 공정을 <strong>언더필(Underfill)</strong>이라고 합니다. 액체 토출 노즐을 칩 테두리에 도포하면 중력과 모세관 현상(Capillary Action)에 의해 용액이 칩 안쪽으로 빨려 들어가게 되는 흐름을 이용합니다.</p>
         <hr>
-        <h2>언더필 미세 기포 (Void) 발생 기작</h2>
+        <h2 id="toc-heading-1">언더필 미세 기포 (Void) 발생 기작</h2>
         <p>언더필 유동 전선(Flow Front)이 안쪽으로 균일하게 진입하지 못하고 특정 방향으로 먼저 빠르게 전진한 뒤 감싸 쥐는 형태가 되면, 내부에 미처 빠져나가지 못한 미세 공기가 갇혀 <strong>Void(기포)</strong>를 형성합니다. 특히 미세 범프가 조밀한 구역과 헐렁한 구역의 통과 유량 불균형으로 인해 공기 갇힘 현상이 집중됩니다.</p>
         <hr>
-        <h2>Void 예방을 위한 공정 및 물리 설계 변수</h2>
+        <h2 id="toc-heading-2">Void 예방을 위한 공정 및 물리 설계 변수</h2>
         <ul>
           <li><strong>Pre-heat Temperature:</strong> 기판 온도를 사전 가열하여 에폭시 점도를 최적화하고 유동성을 극대화합니다.</li>
           <li><strong>Dispensing Pattern:</strong> I자형 도포, L자형 도포 등 칩 형태에 맞는 도포 경로를 설계해 단방향 유동 전선을 유지시킵니다.</li>
           <li><strong>Bump Array Offset:</strong> 범프 배치 설계 시 모세관 유로를 가로막지 않도록 유속 병목 지점을 미리 차단하는 범프 레이아웃 배치를 수행합니다.</li>
         </ul>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">칩 아랫공간을 채우는 모세관 언더필 (CUF)</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">언더필 미세 기포 (Void) 발생 기작</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">Void 예방을 위한 공정 및 물리 설계 변수</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

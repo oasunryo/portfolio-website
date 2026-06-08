@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/antigravity-scoping-rules/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-03">2026-06-03</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">antigravity-rules를 이용한 에이전트 스코프 극단적 축소 기법</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>컨텍스트 윈도우의 그림자</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">컨텍스트 윈도우의 그림자</h2>
         <p>AI 에이전트에게 프로젝트 전체 폴더를 다 읽게 지시하면 토큰이 낭비될 뿐만 아니라 모델의 추론 정확도가 떨어집니다. 관련된 소수 파일만 집중적으로 다루게 해야 합니다.</p>
         <hr>
-        <h2>.antigravity/rules.md 가이드라인</h2>
+        <h2 id="toc-heading-1">.antigravity/rules.md 가이드라인</h2>
         <p>프로젝트 루트에 에이전트용 하네스 규칙 파일을 정의하여, 빌드 산출물 폴더(dist, node_modules)나 git 메타데이터 등 무의미한 경로를 절대로 분석하지 못하도록 강제해야 합니다. 이를 통해 토큰을 80% 이상 절약하면서 명확한 목표 지점의 코드만 안전하게 편집하도록 할 수 있습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">컨텍스트 윈도우의 그림자</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">.antigravity/rules.md 가이드라인</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

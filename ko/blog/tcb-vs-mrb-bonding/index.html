@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/tcb-vs-mrb-bonding/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,17 +111,22 @@
           </div>
           <h1 class="article-main-title">첨단 적층 본딩 비교: TCB(열압착) vs MRB(매스 리플로우)</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>미세 접합 피치가 요구하는 본딩 기술의 변화</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">미세 접합 피치가 요구하는 본딩 기술의 변화</h2>
         <p>HBM이나 칩렛 패키지처럼 본딩 범프 간격(Pitch)이 극도로 좁아질 때, 마운팅 및 접합 본더 장비의 스펙 결정은 수율의 핵심 요인입니다. 이 본딩 기법은 크게 <strong>MRB(Mass Reflow Bonding)</strong>와 <strong>TCB(Thermal Compression Bonding)</strong>로 구분됩니다.</p>
         <hr>
-        <h2>Mass Reflow (MRB)의 장점과 한계</h2>
+        <h2 id="toc-heading-1">Mass Reflow (MRB)의 장점과 한계</h2>
         <p>MRB는 칩을 범프 위에 단순히 얹어둔 채로 컨베이어 벨트를 태워 리플로우 노(Oven)를 통과시켜 모든 범프를 동시에 납땜 접합하는 고속 양산 방식입니다. 단위 시간당 칩 처리량(UPH)이 매우 뛰어나 대량 생산에 유리하지만, 고열 통과 중 기판 기하학적 휨(Warpage)이 발생하면 칩이 틀어지거나 미세 피치 범프 간 합선(Bridge)이 일어납니다.</p>
         <hr>
-        <h2>열압착 본딩 (TCB)의 정밀 제어</h2>
+        <h2 id="toc-heading-2">열압착 본딩 (TCB)의 정밀 제어</h2>
         <p>TCB는 본딩 헤드가 개별 칩을 집어 올린 뒤, 열과 수평 압력을 인가하여 정확한 수직 얼라인먼트 상태에서 범프를 물리적으로 눌러 접합합니다. 개별 칩마다 정밀 압력과 온도 제어가 가해지므로 50μm 이하 초미세 피치에서도 범프 짓눌림과 틀어짐을 최소화할 수 있습니다. 대신 칩을 하나씩 누르는 가열/냉각 시간이 필요하므로 MRB 대비 장비 처리량(UPH)이 매우 떨어집니다. 첨단 고단 HBM 적층 공정은 점차 TCB 및 그 개량 공정을 필수로 편입하는 양상입니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">미세 접합 피치가 요구하는 본딩 기술의 변화</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">Mass Reflow (MRB)의 장점과 한계</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">열압착 본딩 (TCB)의 정밀 제어</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/fpga-verilog-digital-design/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-18">2026-04-18</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,18 +111,23 @@
           </div>
           <h1 class="article-main-title">Verilog HDL 디바운싱 필터 설계와 게이트 딜레이 검증</h1>
         </header>
-        <div class="article-body-content">
-          
-          <h2>물리적 스위치와 디지털 시스템의 마찰</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+          <h2 id="toc-heading-0">물리적 스위치와 디지털 시스템의 마찰</h2>
           <p>하드웨어 푸시 버튼은 누를 때 우리 눈엔 깔끔하게 작동하는 것 같아도, 실제 회로상으로는 접점이 닿으며 수 밀리초(ms) 간 무수히 튀는 바운싱(Bouncing/Glitch) 잡음을 만들어냅니다. 클럭 주파수가 50MHz에 이르는 FPGA 보드에서는 이 찰나의 흔들림을 여러 번 입력한 것으로 오작동해버리죠.</p>
           <p>이를 막으려면 아날로그 노이즈를 걸러내는 디지털 필터링 회로가 필수적입니다.</p>
           
           <hr>
           
-          <h2>디바운서 설계 및 게이트 전파 지연 검증</h2>
+          <h2 id="toc-heading-1">디바운서 설계 및 게이트 전파 지연 검증</h2>
           <p>이 문제를 해결하기 위해 Verilog HDL로 D플립플롭(D-FF)을 3단으로 연결한 시프트 레지스터 기반의 Debouncer를 구현했습니다. 입력 신호가 50클럭 이상 안정된 상태를 유지할 때에만 신호 레벨을 전환하도록 필터링해 스위칭 오작동을 완전히 잡았습니다.</p>
           <p>Altera Cyclone II 보드와 ModelSim 환경에서 타이밍 시뮬레이션을 돌려, 물리적인 게이트와 배선 길이로 인해 발생하는 약 5ns의 게이트 전파 지연(Propagation Delay)을 포착하고 타이밍 마진을 정상 검증해냈습니다.</p>
         
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">물리적 스위치와 디지털 시스템의 마찰</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">디바운서 설계 및 게이트 전파 지연 검증</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

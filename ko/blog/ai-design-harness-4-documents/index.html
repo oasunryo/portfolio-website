@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/ai-design-harness-4-documents/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Architecture</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-14">2026-05-14</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,12 +111,14 @@
           </div>
           <h1 class="article-main-title">AI 에이전트의 완전 폭주를 제어하는 "하네스 통제설계 4대 문서"</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>AI에게 빈 텍스트창을 주지 마라</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">AI에게 빈 텍스트창을 주지 마라</h2>
         <p>AI 에이전트에게 복잡한 코딩 태스크를 아무 조율 문서 없이 던져주면 높은 확률로 엉뚱한 로직을 추가하거나 멀쩡한 코드를 지워버립니다. AI 모델의 자의적 해석 폭주를 막기 위해 우리 개발 환경에는 4대 통제 하네스 문서를 유지 관리해야 합니다.</p>
         <hr>
-        <h2>하네스 4대 문서의 역할 분담</h2>
+        <h2 id="toc-heading-1">하네스 4대 문서의 역할 분담</h2>
         <ul>
           <li><strong>implementation_plan.md:</strong> 작업 실행 전 설계 아키텍처와 수정 영역을 미리 조율하는 설계 승인 서류입니다.</li>
           <li><strong>task.md:</strong> 작업 중 실시간 TODO 리스트를 마크하며 진행 상황을 추적하는 동적 스케줄 보드입니다.</li>
@@ -122,6 +126,9 @@
           <li><strong>newBlogPosts.js 와 같은 데이터 파일 분리 가이드:</strong> 부피가 큰 코드 데이터를 분할 보관하여 AI가 읽고 쓰는 맥락 윈도우 크기를 절약하는 전략적 데이터 세그먼트입니다.</li>
         </ul>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">AI에게 빈 텍스트창을 주지 마라</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">하네스 4대 문서의 역할 분담</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

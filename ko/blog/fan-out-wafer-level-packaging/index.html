@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/fan-out-wafer-level-packaging/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,12 +111,14 @@
           </div>
           <h1 class="article-main-title">FOWLP(Fan-Out Wafer Level Packaging) 패키징의 구조와 수율 제어</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>서브스트레이트 기판이 사라진 차세대 패키징</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">서브스트레이트 기판이 사라진 차세대 패키징</h2>
         <p>FOWLP(Fan-Out Wafer Level Packaging)는 기존 패키징에서 필수적이었던 PCB 인쇄회로기판(Substrate)을 제거하고, 웨이퍼 상에 직접 재배선(RDL)을 증착하여 패키지 크기를 칩 자체보다 더 크게 확장(Fan-Out)하는 첨단 패키징 공정입니다. 기판이 없어 두께가 얇아지고 배선 경로가 극도로 줄어들어 전기적 저항과 인덕턴스가 대폭 개선됩니다.</p>
         <hr>
-        <h2>FOWLP 핵심 공정 순서</h2>
+        <h2 id="toc-heading-1">FOWLP 핵심 공정 순서</h2>
         <ul>
           <li><strong>Die Placement:</strong> 웨이퍼에서 양품 다이를 골라내어 캐리어 기판(Carrier Substrate) 위에 임시 접착 필름을 이용해 정밀 배치합니다.</li>
           <li><strong>Molding:</strong> 에폭시 몰드 수지(EMC)를 이용하여 개별 다이 사이의 빈 공간을 완전히 메워 원형 몰드 웨이퍼 형태로 만듭니다.</li>
@@ -122,9 +126,12 @@
           <li><strong>Solder Ball Mount:</strong> RDL 패드 위에 솔더볼을 마운팅한 뒤 리플로우로 융합하고 최종 다이싱하여 완성합니다.</li>
         </ul>
         <hr>
-        <h2>수율을 저해하는 공정 휨(Warpage)과 다이 시프트(Die Shift)</h2>
+        <h2 id="toc-heading-2">수율을 저해하는 공정 휨(Warpage)과 다이 시프트(Die Shift)</h2>
         <p>FOWLP 공정에서 가장 까다로운 불량 유형은 EMC 몰딩 후 열풍 수축 과정에서 원판 웨이퍼가 휘어버리는 <strong>Molded Wafer Warpage</strong>와 몰딩 가압 과정에서 칩이 미세하게 정렬 위치에서 밀려나는 <strong>Die Shift</strong> 현상입니다. 다이 시프트가 발생하면 상단 RDL 비아(Via)가 다이 패드의 중심 어긋난 곳을 뚫어 단락을 유발합니다. 이를 잡기 위해 몰드 수지의 수축률을 최소화하는 하이브리드 EMC 물질 배합과 고정밀 기계적 얼라인먼트 보정이 상용 공정의 핵심 역량입니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">서브스트레이트 기판이 사라진 차세대 패키징</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">FOWLP 핵심 공정 순서</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">수율을 저해하는 공정 휨(Warpage)과 다이 시프트(Die Shift)</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

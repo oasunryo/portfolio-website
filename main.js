@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlogSearch();
   initCarousel();
   checkProjectQueryParam();
+  initTocHighlight();
 });
 
 // Deep-link to project detail from query parameter
@@ -249,8 +250,9 @@ function initBlogSearch() {
     let filtered = allPosts.filter(post => {
       const title = post.querySelector('.item-title-link')?.textContent.toLowerCase() || '';
       const desc = post.querySelector('.item-description')?.textContent.toLowerCase() || '';
+      const bodyContent = post.getAttribute('data-search-content') || '';
       const postCategory = post.getAttribute('data-category') || '';
-      const matchesQuery = !query || title.includes(query) || desc.includes(query);
+      const matchesQuery = !query || title.includes(query) || desc.includes(query) || bodyContent.includes(query);
       const matchesCategory = activeCategory === 'all' || postCategory === activeCategory;
       return matchesQuery && matchesCategory;
     });
@@ -522,3 +524,36 @@ document.addEventListener('keydown', (e) => {
     closeProjectDetail();
   }
 });
+
+// Highlight Table of Contents links based on scroll position
+function initTocHighlight() {
+  const tocLinks = document.querySelectorAll('.toc-link');
+  const headings = Array.from(document.querySelectorAll('.article-body-content h2, .article-body-content h3'));
+  if (tocLinks.length === 0 || headings.length === 0) return;
+
+  function updateActiveToc() {
+    const scrollPosition = window.scrollY + 120; // offset for sticky header
+    let currentHeading = null;
+
+    for (let i = 0; i < headings.length; i++) {
+      if (headings[i].offsetTop <= scrollPosition) {
+        currentHeading = headings[i];
+      } else {
+        break;
+      }
+    }
+
+    if (currentHeading) {
+      const activeId = currentHeading.id;
+      tocLinks.forEach(link => {
+        const isCurrent = link.getAttribute('data-heading-id') === activeId;
+        link.classList.toggle('active', isCurrent);
+      });
+    } else {
+      tocLinks.forEach(link => link.classList.remove('active'));
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveToc);
+  updateActiveToc();
+}

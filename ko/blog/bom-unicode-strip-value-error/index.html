@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/bom-unicode-strip-value-error/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-20">2026-04-20</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">스프레드시트 파싱 중 유니코드 BOM 및 셀 미세 공백 제거 필터 설계</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>보이지 않는 유령 문자, BOM</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">보이지 않는 유령 문자, BOM</h2>
         <p>구글 스프레드시트를 파이썬 데이터프레임으로 로드하여 컬럼명을 대조할 때, 문자열이 눈에는 분명 똑같은 '평균단가'로 보여도 <code>KeyError</code> 또는 <code>ValueError</code>가 나는 경우가 있습니다. 파일의 가장 앞에 보이지 않는 유니코드 BOM(Byte Order Mark, <code>\ufeff</code>) 문자가 숨겨져 있기 때문입니다.</p>
         <hr>
-        <h2>전처리 살균 모듈 탑재</h2>
+        <h2 id="toc-heading-1">전처리 살균 모듈 탑재</h2>
         <p>스프레드시트에서 가공 데이터를 긁어오는 첫 로드 라인에 <code>[h.strip().replace('\ufeff', '').replace('﻿', '') for h in raw_headers]</code> 필터를 이식했습니다. 이 공백 및 특수 유령 문자 소독 장치를 통과하며 데이터 매칭 결함률을 제로로 고정시켰습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">보이지 않는 유령 문자, BOM</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">전처리 살균 모듈 탑재</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

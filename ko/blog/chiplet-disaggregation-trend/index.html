@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/chiplet-disaggregation-trend/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-03-08">2026-03-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,17 +111,22 @@
           </div>
           <h1 class="article-main-title">모놀리식 다이의 해체: 칩렛(Chiplet) 아키텍처와 UCIe 표준 규격</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>하나의 거대한 다이(Die)가 비효율적인 이유</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">하나의 거대한 다이(Die)가 비효율적인 이유</h2>
         <p>전체 회로를 단일 반도체 칩에 다 집어넣는 모놀리식(Monolithic) 공정은 칩 크기(Die Area)가 커질수록 결함 밀도에 따른 수율 저하가 지수함수적으로 늘어나는 심각한 물리적 단점이 있습니다. 칩 크기가 800mm²를 넘어가면 웨이퍼 한 장에서 건질 수 있는 정상 칩 개수가 급감합니다.</p>
         <hr>
-        <h2>칩렛(Chiplet) 분할 전략</h2>
+        <h2 id="toc-heading-1">칩렛(Chiplet) 분할 전략</h2>
         <p>성능에 민감한 코어(CPU) 부분만 최첨단 3nm 공정으로 칩을 작게 만들고, 성능 영향이 적은 I/O 컨트롤러나 메모리 채널은 가성비 좋은 7nm/14nm 공정으로 별도 칩렛을 구현한 뒤 이들을 후공정 패키지 레벨에서 엮으면 수율과 원가를 크게 개선할 수 있습니다.</p>
         <hr>
-        <h2>UCIe(Universal Chiplet Interconnect Express) 표준</h2>
+        <h2 id="toc-heading-2">UCIe(Universal Chiplet Interconnect Express) 표준</h2>
         <p>제조사가 다른 칩렛들을 조립 장난감처럼 끼워 맞추기 위해서는 다이 간 인터페이스 표준 규격이 절대적으로 필요합니다. Intel, AMD, TSMC, Samsung 등 거물들이 뭉쳐 확립한 <strong>UCIe</strong>는 패키지 내부 다이 간 통신 지연 시간을 줄이고 넓은 전송 대역폭을 저전력으로 확보할 수 있는 상호 동기화 전용 표준 규약입니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">하나의 거대한 다이(Die)가 비효율적인 이유</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">칩렛(Chiplet) 분할 전략</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">UCIe(Universal Chiplet Interconnect Express) 표준</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

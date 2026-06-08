@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/i2c-pullup-resistor-sizing/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,17 +111,22 @@
           </div>
           <h1 class="article-main-title">I2C 통신 신뢰성 확보를 위한 풀업 저항(Pull-up Resistor) 계산 가이드</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>오픈 드레인(Open-Drain) 통신의 물리적 구동 특성</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">오픈 드레인(Open-Drain) 통신의 물리적 구동 특성</h2>
         <p>I2C는 배선을 공유하는 마스터-슬레이브 구조에서 충돌을 막기 위해 핀을 접지와 붙이거나 끊기만 하는 오픈 드레인 방식으로 통신합니다. 하이(High) 신호 레벨 전압을 위로 팽팽하게 잡아당겨주는 물리적인 <strong>풀업 저항(Pull-up Resistor)</strong>이 버스 라인(SDA, SCL)마다 무조건 있어야 동작합니다.</p>
         <hr>
-        <h2>상승 시간(Rise Time)과 풀업 저항의 트레이드오프 관계</h2>
+        <h2 id="toc-heading-1">상승 시간(Rise Time)과 풀업 저항의 트레이드오프 관계</h2>
         <p>풀업 저항 $R_{pullup}$이 너무 크면, 라인 전체의 기생 캐패시턴스 $C_{bus}$와 반응하는 RC 필터 지연에 의해 전압이 솟아오르는 속도(Rise Time)가 느려져 하이 레벨을 인지하지 못해 데이터 패킷이 깨집니다. 반대로 저항이 너무 작으면, 로우(Low) 신호를 유도할 때 흐르는 싱크 전류가 폭증하여 칩 포트가 감당하지 못하고 손상되거나 전력 소모가 극대화됩니다.</p>
         <hr>
-        <h2>정량 계산식 매뉴얼</h2>
+        <h2 id="toc-heading-2">정량 계산식 매뉴얼</h2>
         <p>공식 규격 스펙상 Fast Mode(400kHz) 기준 최대 상승 시간 $t_{r} \le 300\text{ns}$을 달성하기 위한 최대 저항식 $R_{max} = t_{r} / (0.8473 \times C_{bus})$을 도출하여, 라인 배선 길이 기생용량 측정치에 매칭해 안전 마진 저항값(일반적으로 2.2k옴~4.7k옴)을 결정 설계합니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">오픈 드레인(Open-Drain) 통신의 물리적 구동 특성</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">상승 시간(Rise Time)과 풀업 저항의 트레이드오프 관계</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">정량 계산식 매뉴얼</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

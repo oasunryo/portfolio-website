@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/sallen-key-audio-filter-design/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Hardware</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-02">2026-05-02</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">Op-Amp를 활용한 2차 Sallen-Key 액티브 로우패스 필터 설계 매뉴얼</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>아날로그 오디오 잡음의 필터링</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">아날로그 오디오 잡음의 필터링</h2>
         <p>센서 신호 입력부나 오디오 출력단에서 가청주파수 바깥의 원치 않는 초고주파 잡음을 유연하게 깎아내기 위해 2차 능동 필터 회로가 널리 채택됩니다. 그 중 소자 수가 적고 전압 이득 제어가 용이한 <strong>Sallen-Key 토폴로지</strong>는 OP-AMP를 이용하여 설계 신뢰도가 높은 필터 모델을 확보하기에 최적입니다.</p>
         <hr>
-        <h2>필터 설계 공식 도출</h2>
+        <h2 id="toc-heading-1">필터 설계 공식 도출</h2>
         <p>차단 주파수 $F_c = 1 / (2\pi \sqrt{R_1 R_2 C_1 C_2})$에 따라 부품 용량을 결정합니다. 만약 회로 단순화를 위해 $R_1=R_2=R$, $C_1=C_2=C$로 설정하면 필터의 감쇠 응답 품질 계수(Q-factor)가 고정되므로, 버터워스(Butterworth) 응답(Q=0.707)을 얻기 위해서는 통과 대역 이득을 OP-AMP 궤환 저항비로 정밀 보상해주어야 리플 없는 부드러운 차단 곡선을 만들 수 있습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">아날로그 오디오 잡음의 필터링</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">필터 설계 공식 도출</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

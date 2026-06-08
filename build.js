@@ -357,7 +357,7 @@ const homeContentDict = {
 };
 
 // Unified dynamic page compiler
-function compilePage(content, title, description, activeNav, lang = 'ko', depth = 1) {
+function compilePage(content, title, description, activeNav, lang = 'ko', depth = 1, overrideLangSwitchHref = null) {
   const relPath = '../'.repeat(depth);
   const locale = localeDict[lang];
 
@@ -373,7 +373,9 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
   let switchTargetUrl = `./index.html`; // default fallback
   
   // Derive opposite language page target path
-  if (activeNav === 'home') {
+  if (overrideLangSwitchHref) {
+    switchTargetUrl = overrideLangSwitchHref;
+  } else if (activeNav === 'home') {
     switchTargetUrl = `${relPath}${targetOppositeLang}/index.html`;
   } else if (activeNav === 'blog') {
     switchTargetUrl = `${relPath}${targetOppositeLang}/blog/index.html`;
@@ -410,6 +412,8 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
     .replace(/href="\/en\/blog\/"/g, `href="${relPath}en/blog/index.html"`)
     .replace(/href="\/en\/projects\/"/g, `href="${relPath}en/projects/index.html"`);
 
+  const mainClass = depth === 3 ? 'max-w-5xl' : 'max-w-2xl';
+
   return `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -418,12 +422,70 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
 <body class="antialiased flex flex-col min-h-screen">
   ${noiseTpl}
   ${header}
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full ${mainClass} mx-auto px-6 pt-24 pb-12 flex-grow">
     ${resolvedContent}
   </main>
   ${footer}
 </body>
 </html>`;
+}
+
+// Calculate estimated reading time
+function calculateReadingTime(content, lang) {
+  const text = content.replace(/<[^>]*>/g, ' ');
+  if (lang === 'ko') {
+    const chars = text.replace(/\s/g, '').length;
+    const minutes = Math.max(1, Math.ceil(chars / 500));
+    return minutes;
+  } else {
+    const words = text.trim().split(/\s+/).filter(w => w.length > 0).length;
+    const minutes = Math.max(1, Math.ceil(words / 200));
+    return minutes;
+  }
+}
+
+// Generate Table of Contents (TOC) and inject heading IDs
+function generateTocAndProcessContent(content, lang) {
+  let tocItems = [];
+  let index = 0;
+  
+  const processedContent = content.replace(/<(h2|h3)([^>]*)>([\s\S]*?)<\/\1>/gi, (match, tag, attrs, text) => {
+    let id = `toc-heading-${index++}`;
+    const idMatch = attrs.match(/id="([^"]*)"/i);
+    if (idMatch) {
+      id = idMatch[1];
+    } else {
+      attrs = `${attrs} id="${id}"`.trim();
+    }
+    
+    const cleanText = text.replace(/<[^>]*>/g, '').trim();
+    
+    tocItems.push({
+      tag: tag.toLowerCase(),
+      id: id,
+      text: cleanText
+    });
+    
+    return `<${tag} ${attrs}>${text}</${tag}>`;
+  });
+  
+  if (tocItems.length === 0) {
+    return { content: processedContent, tocHtml: '' };
+  }
+  
+  let tocHtml = `<nav class="toc-sidebar-container" aria-label="Table of Contents">`;
+  tocHtml += `<div class="toc-title">${lang === 'ko' ? '목차' : 'Table of Contents'}</div>`;
+  tocHtml += `<ul class="toc-list">`;
+  
+  tocItems.forEach(item => {
+    const indentClass = item.tag === 'h3' ? 'toc-indent' : '';
+    tocHtml += `<li class="toc-item ${indentClass}"><a href="#${item.id}" class="toc-link" data-heading-id="${item.id}">${item.text}</a></li>`;
+  });
+  
+  tocHtml += `</ul>`;
+  tocHtml += `</nav>`;
+  
+  return { content: processedContent, tocHtml: tocHtml };
 }
 
 // 1. Root index.html redirector (redirects directly to Korean version)
@@ -441,6 +503,7 @@ const rootIndexContent = `<!DOCTYPE html>
 fs.writeFileSync(path.join(__dirname, 'index.html'), rootIndexContent);
 console.log('Generated /index.html');
 
+let globalAllBlogPosts = [];
 
 // Build all localized pages for both KO and EN
 languages.forEach(lang => {
@@ -915,6 +978,16 @@ languages.forEach(lang => {
   ];
 
   const allBlogPosts = [...blogPosts, ...newBlogPosts];
+  globalAllBlogPosts = allBlogPosts;
+
+  // Extract unique categories dynamically
+  const categories = Array.from(new Set(allBlogPosts.map(p => p.category))).filter(Boolean);
+  categories.sort();
+
+  const categoryButtons = [
+    `<button class="tag-filter-btn active" data-category="all">All</button>`,
+    ...categories.map(cat => `<button class="tag-filter-btn" data-category="${cat}">${cat}</button>`)
+  ].join('\n');
 
   // Generate individual blog post pages for this language
   allBlogPosts.forEach(post => {
@@ -928,6 +1001,20 @@ languages.forEach(lang => {
     const mdContent = `# ${langData.title}\n\n${langData.description}\n\n${cleanBody}`;
     const mdJson = JSON.stringify(mdContent);
 
+    // Reading time calculation
+    const readingTime = calculateReadingTime(langData.content, lang);
+    const readingTimeLabel = lang === 'ko' ? `${readingTime}분 분량` : `${readingTime} min read`;
+
+    // TOC and ID-processed content
+    const { content: processedContent, tocHtml } = generateTocAndProcessContent(langData.content, lang);
+
+    // Cross-language details mapping
+    const targetOppositeLang = (lang === 'ko') ? 'en' : 'ko';
+    const hasOppositePost = post[targetOppositeLang] ? true : false;
+    const oppositeLangSwitchHref = hasOppositePost 
+      ? `../../${targetOppositeLang}/blog/${post.slug}/index.html` 
+      : `../../${targetOppositeLang}/blog/index.html`;
+
     const postContent = `
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -939,6 +1026,8 @@ languages.forEach(lang => {
               <span class="article-category-badge">${post.category}</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="${post.date}">${post.date}</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">${readingTimeLabel}</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -964,8 +1053,13 @@ languages.forEach(lang => {
           </div>
           <h1 class="article-main-title">${langData.title}</h1>
         </header>
-        <div class="article-body-content">
-          ${langData.content}
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              ${processedContent}
+            </div>
+          </div>
+          ${tocHtml}
         </div>
         
         <!-- Recommended Posts Section -->
@@ -1013,21 +1107,24 @@ languages.forEach(lang => {
       </article>
     `;
 
-    fs.writeFileSync(path.join(postDir, 'index.html'), compilePage(postContent, `${langData.title} ${locale.titleSuffix}`, langData.description, 'blog', lang, 3));
+    fs.writeFileSync(path.join(postDir, 'index.html'), compilePage(postContent, `${langData.title} ${locale.titleSuffix}`, langData.description, 'blog', lang, 3, oppositeLangSwitchHref));
     console.log(`Generated /${lang}/blog/${post.slug}/index.html`);
   });
 
   // Generate /lang/blog/index.html (Blog listing page)
   let blogListings = allBlogPosts.map(post => {
     const trans = post[lang];
+    const cleanContent = trans.content.replace(/<[^>]*>/g, ' ').replace(/"/g, '&quot;').toLowerCase();
+    const readingTime = calculateReadingTime(trans.content, lang);
+    const readingTimeLabel = lang === 'ko' ? `${readingTime}분 분량` : `${readingTime} min read`;
     return `
-    <div class="list-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div class="list-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" data-search-content="${cleanContent}" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
       <div class="item-header-row">
         <div class="item-title-badge">
           <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
           <span class="status-badge">${post.category}</span>
         </div>
-        <span class="item-date-text tabular-nums">${post.date}</span>
+        <span class="item-date-text tabular-nums">${post.date} &middot; ${readingTimeLabel}</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">${trans.description}</p>
     </div>
@@ -1048,12 +1145,7 @@ languages.forEach(lang => {
     
     <div class="blog-controls-row">
       <div class="blog-tags-container">
-        <button class="tag-filter-btn active" data-category="all">All</button>
-        <button class="tag-filter-btn" data-category="Architecture">Architecture</button>
-        <button class="tag-filter-btn" data-category="Insight">Insight</button>
-        <button class="tag-filter-btn" data-category="Hardware">Hardware</button>
-        <button class="tag-filter-btn" data-category="Semiconductor">Semiconductor</button>
-        <button class="tag-filter-btn" data-category="Career">Career</button>
+        ${categoryButtons}
       </div>
       <div class="blog-sort-container">
         <select id="blog-sort" class="sort-select-box" aria-label="Sort blog posts">
@@ -1134,5 +1226,88 @@ languages.forEach(lang => {
   fs.writeFileSync(path.join(dirProjects, 'index.html'), compilePage(designIndexContent, locale.projectsTitle, locale.projectsDesc, 'projects', lang, 2));
   console.log(`Generated /${lang}/projects/index.html`);
 });
+
+// Sitemap Generator
+function generateSitemap(allPosts) {
+  const baseUrl = 'https://junseo.site';
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+  const staticPaths = [
+    '',
+    '/ko/index.html',
+    '/ko/blog/index.html',
+    '/ko/projects/index.html',
+    '/en/index.html',
+    '/en/blog/index.html',
+    '/en/projects/index.html'
+  ];
+
+  staticPaths.forEach(p => {
+    xml += `  <url>\n`;
+    xml += `    <loc>${baseUrl}${p}</loc>\n`;
+    xml += `    <changefreq>daily</changefreq>\n`;
+    xml += `    <priority>0.8</priority>\n`;
+    xml += `  </url>\n`;
+  });
+
+  allPosts.forEach(post => {
+    ['ko', 'en'].forEach(lang => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}/${lang}/blog/${post.slug}/index.html</loc>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.6</priority>\n`;
+      xml += `  </url>\n`;
+    });
+  });
+
+  xml += `</urlset>\n`;
+  fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), xml);
+  console.log('Generated /sitemap.xml');
+}
+
+// RSS Feed Generator
+function generateRss(allPosts) {
+  const baseUrl = 'https://junseo.site';
+  
+  ['ko', 'en'].forEach(lang => {
+    const isKo = lang === 'ko';
+    let xml = `<?xml version="1.0" encoding="UTF-8" ?>\n`;
+    xml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
+    xml += `<channel>\n`;
+    xml += `  <title>${isKo ? '오준서 기술 블로그' : 'Junseo Oh Tech Blog'}</title>\n`;
+    xml += `  <link>${baseUrl}/${lang}/blog/index.html</link>\n`;
+    xml += `  <description>${isKo ? '반도체 패키징 및 테스트 엔지니어 오준서의 기술 블로그' : 'Technical insights of Junseo Oh, Semiconductor Packaging & Test Engineer'}</description>\n`;
+    xml += `  <language>${isKo ? 'ko-KR' : 'en-US'}</language>\n`;
+    xml += `  <atom:link href="${baseUrl}/${lang}/blog/feed.xml" rel="self" type="application/rss+xml" />\n`;
+
+    const sortedPosts = [...allPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    sortedPosts.slice(0, 20).forEach(post => {
+      const trans = post[lang];
+      xml += `  <item>\n`;
+      xml += `    <title><![CDATA[${trans.title}]]></title>\n`;
+      xml += `    <link>${baseUrl}/${lang}/blog/${post.slug}/index.html</link>\n`;
+      xml += `    <guid>${baseUrl}/${lang}/blog/${post.slug}/index.html</guid>\n`;
+      xml += `    <pubDate>${new Date(post.date).toUTCString()}</pubDate>\n`;
+      xml += `    <description><![CDATA[${trans.description}]]></description>\n`;
+      xml += `  </item>\n`;
+    });
+
+    xml += `</channel>\n`;
+    xml += `</rss>\n`;
+    
+    const feedDir = path.join(__dirname, lang, 'blog');
+    if (!fs.existsSync(feedDir)) {
+      fs.mkdirSync(feedDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(feedDir, 'feed.xml'), xml);
+    console.log(`Generated /${lang}/blog/feed.xml`);
+  });
+}
+
+// Generate sitemap and RSS feeds
+generateSitemap(globalAllBlogPosts);
+generateRss(globalAllBlogPosts);
 
 console.log('Static site compilation complete!');

@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/koact-broadcom-manual-tracking/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-24">2026-04-24</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">구글 파이낸스 불통 종목 수동 갱신 보정 매커니즘</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>불통 종목의 실시간 관리 한계</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">불통 종목의 실시간 관리 한계</h2>
         <p>구글 파이낸스 조회가 차단된 특수 ETF는 방치할 경우 계좌 내 자산 비중이 옛날 데이터에 머물게 되어 실시간 자산 비중차가 뒤틀리게 됩니다.</p>
         <hr>
-        <h2>수동 보정 수식 설계</h2>
+        <h2 id="toc-heading-1">수동 보정 수식 설계</h2>
         <p>파라미터 입력 시 챗봇에게 "KoAct 브로드컴 현재 주가 28,150원으로 업데이트해줘"라고 명령하면, API 가동 스크립트가 해당 주식의 현재가 입력 셀을 찾아 수식 대신 상수를 즉시 덮어쓰도록(Override) 코딩했습니다. 덕분에 구글 파이낸스 오류에 구애받지 않고 계좌 총액을 1원 단위까지 정확히 일치시킬 수 있게 되었습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">불통 종목의 실시간 관리 한계</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">수동 보정 수식 설계</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

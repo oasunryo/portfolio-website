@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/citekey-standardization-bibtex/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-20">2026-05-20</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,14 +111,19 @@
           </div>
           <h1 class="article-main-title">Better BibTeX를 활용한 옵시디언 영구 링크용 Citekey 설계안</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>언제든 깨질 수 있는 취약한 링크들</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">언제든 깨질 수 있는 취약한 링크들</h2>
         <p>논문 제목이나 저자가 수정될 때마다 파일명이 바뀌면, 옵시디언에서 연결해두었던 링크가 모두 깨지는 대참사가 생깁니다. 이를 막기 위해 학술 규격화된 citation key(citekey)를 설계해야 합니다.</p>
         <hr>
-        <h2>Better BibTeX Formula 설정</h2>
+        <h2 id="toc-heading-1">Better BibTeX Formula 설정</h2>
         <p>Zotero 플러그인인 Better BibTeX의 Citation key formula 칸에 <code>auth.lower + year</code>를 입력합니다. 이리 하면 <code>@vaswani2017</code>처럼 영구적이고 고유한 알파벳 식별자가 생성되어, 논문 정보가 어떻게 바뀌어도 절대 깨지지 않는 영구적인 하이퍼링크 구조가 완성됩니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">언제든 깨질 수 있는 취약한 링크들</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">Better BibTeX Formula 설정</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

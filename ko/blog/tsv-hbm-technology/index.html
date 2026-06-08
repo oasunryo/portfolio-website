@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/tsv-hbm-technology/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-05-15">2026-05-15</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,12 +111,14 @@
           </div>
           <h1 class="article-main-title">HBM 적층의 핵심, TSV(관통전극) 공정 매커니즘과 불량 유형</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>HBM 성능을 좌우하는 3D 적층과 TSV</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">HBM 성능을 좌우하는 3D 적층과 TSV</h2>
         <p>HBM(High Bandwidth Memory)은 D램 다이(Die)를 수직으로 적층하여 데이터 전송 대역폭을 극대화한 메모리입니다. 이때 다이 간 신호를 주고받는 수천 개의 미세 통로를 뚫는 기술이 바로 TSV(Through Silicon Via, 실리콘관통전극)입니다. 전통적인 와이어 본딩 방식에 비해 경로가 극도로 단축되어 저전력 고속 동작이 가능해집니다.</p>
         <hr>
-        <h2>TSV 주요 공정 흐름</h2>
+        <h2 id="toc-heading-1">TSV 주요 공정 흐름</h2>
         <ul>
           <li><strong>Via Etching:</strong> DRIE(Deep Reactive Ion Etching) 기법을 사용하여 실리콘 웨이퍼에 높은 종횡비(Aspect Ratio)의 미세 구멍을 균일하게 뚫습니다.</li>
           <li><strong>Insulation & Barrier Layer:</strong> 구멍 내벽에 누설 전류를 막는 절연막(SiO2)과 구리(Cu) 확산을 방지하는 배리어 메탈(Ti/TiN)을 증착합니다.</li>
@@ -122,9 +126,12 @@
           <li><strong>CMP & Reveal:</strong> 웨이퍼 배면을 얇게 갈아내어(Backside Thinning) 내부에 묻혀있던 Cu 전극을 표면으로 노출(Via Reveal)시킵니다.</li>
         </ul>
         <hr>
-        <h2>불량 유형 및 극복 과제</h2>
+        <h2 id="toc-heading-2">불량 유형 및 극복 과제</h2>
         <p>가장 빈번하게 발생하는 불량은 도금 과정에서 발생하는 <strong>Cu Void</strong>와 CMP 후 돌출된 전극의 평탄도 불균형입니다. Void가 발생하면 고주파 신호 전송 시 임피던스 불연속성으로 인해 반사 손실이 생기거나, 열팽창계수(CTE) 차이로 인해 팽창 응력이 발생하여 칩 크랙의 원인이 됩니다. 이를 방지하기 위한 지속적인 공정 파라미터 튜닝이 필수적입니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">HBM 성능을 좌우하는 3D 적층과 TSV</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">TSV 주요 공정 흐름</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">불량 유형 및 극복 과제</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

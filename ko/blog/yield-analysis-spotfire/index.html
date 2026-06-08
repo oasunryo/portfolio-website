@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/yield-analysis-spotfire/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-28">2026-04-28</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,12 +111,14 @@
           </div>
           <h1 class="article-main-title">Spotfire와 통계 분석을 활용한 웨이퍼 테스트 수율(Yield) 개선 사례</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>엔지니어의 무기: 데이터 시각화와 상관관계 분석</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">엔지니어의 무기: 데이터 시각화와 상관관계 분석</h2>
         <p>반도체 양산 라인은 하루에도 수백만 건의 파라메트릭 데이터(WAT)와 EDS 테스트 계측 결과를 내놓습니다. 이 방대한 데이터를 엑셀로 정렬해서는 공정 이상 징후를 알아채기 어렵습니다. 수율 엔지니어는 <strong>Spotfire</strong>를 사용해 수십 매의 웨이퍼 맵(Wafer Map)을 시각화하고 통계적 이상치(Outliers)를 색출합니다.</p>
         <hr>
-        <h2>수율 저하 유발 인자 역추적 단계</h2>
+        <h2 id="toc-heading-1">수율 저하 유발 인자 역추적 단계</h2>
         <ol>
           <li><strong>Wafer Map Stacked Bin Analysis:</strong> 불량 발생 칩의 빈 좌표를 겹쳐서 불량이 집중된 영역(Edge 집중, Centered Ring 등)의 형태를 시각화합니다.</li>
           <li><strong>Multi-vari Analysis:</strong> 설비 교차 분석을 통해 특정 챔버(Chamber)나 특정 스텝의 포토 장비가 불량률과 인과관계가 있는지 ANOVA 기법으로 통계적 유의성을 검정합니다.</li>
@@ -122,6 +126,9 @@
         </ol>
         <p>실제 엣지(Edge) 영역의 링 모양 수율 저하 현상이 특정 식각 설비의 클램프 마모로 인한 플라즈마 밀도 불균형이었음을 규명하여 정기 교체 주기를 재조정한 바 있습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">엔지니어의 무기: 데이터 시각화와 상관관계 분석</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">수율 저하 유발 인자 역추적 단계</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

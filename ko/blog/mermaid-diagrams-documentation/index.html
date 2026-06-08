@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/mermaid-diagrams-documentation/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Insight</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-06-08">2026-06-08</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,18 +111,23 @@
           </div>
           <h1 class="article-main-title">기술 문서화의 혁신: 마크다운 내 Mermaid.js를 이용한 라이브 아키텍처 다이어그램</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>수정할 때마다 노가다가 되는 그림 파일 문서</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">수정할 때마다 노가다가 되는 그림 파일 문서</h2>
         <p>아키텍처 문서나 DB 스키마 구조도를 설명할 때 파워포인트나 드로우아이오(draw.io)로 그린 뒤 스크린샷 캡처본을 첨부하면, 구조가 조금이라도 바뀔 때마다 그림판 작업을 다시 해서 덮어씌워야 하는 극악의 비효율이 발생합니다. 이미지 파일은 Git Diff로 추적도 되지 않습니다.</p>
         <hr>
-        <h2>텍스트 코드로 쓰는 다이어그램, Mermaid</h2>
+        <h2 id="toc-heading-1">텍스트 코드로 쓰는 다이어그램, Mermaid</h2>
         <p>마크다운 문서 상에 텍스트 형태로 다이어그램 구조를 선언하면 웹 뷰어에서 SVG 벡터 다이어그램으로 동적 그려주는 <strong>Mermaid.js</strong>를 이식합니다.</p>
         <pre><code>graph TD
   A[System Client] -->|API Request| B(API Gateway)
   B --> C{Verify Token}</code></pre>
   <p>이 코드는 텍스트 그대로 보관되므로 깃 커밋 히스토리에 정확한 노드 변화가 기록되며, 브라우저 화면에서 리얼타임으로 렌더링되므로 텍스트 단어를 직접 수정하는 것만으로 단 1초 만에 깔끔한 다이어그램을 업데이트 완료할 수 있습니다.</p>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">수정할 때마다 노가다가 되는 그림 파일 문서</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">텍스트 코드로 쓰는 다이어그램, Mermaid</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->

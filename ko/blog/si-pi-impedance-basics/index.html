@@ -67,12 +67,12 @@
         <!-- Sun Icon (visible in light mode) -->
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       </button>
-      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/blog/si-pi-impedance-basics/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
     </div>
   </div>
 </header>
 
-  <main class="w-full max-w-2xl mx-auto px-6 pt-24 pb-12 flex-grow">
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
     
       <article class="prose-article">
         <a href="../index.html" class="blog-back-link">
@@ -84,6 +84,8 @@
               <span class="article-category-badge">Semiconductor</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="2026-04-05">2026-04-05</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
             </div>
             
             <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
@@ -109,17 +111,22 @@
           </div>
           <h1 class="article-main-title">고주파 반도체 패키지의 Signal & Power Integrity (SI-PI) 입문</h1>
         </header>
-        <div class="article-body-content">
-          
-        <h2>동작 속도가 올라갈 때 배선은 단순 도선이 아니다</h2>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">동작 속도가 올라갈 때 배선은 단순 도선이 아니다</h2>
         <p>신호 클럭 주파수가 수백 MHz를 넘어 GHz 급에 이르면, 메탈 패턴 배선은 단순한 전선의 개념을 벗어나 저항, 인덕턴스, 캐패시턴스가 분포된 고주파 <strong>전송선로(Transmission Line)</strong>로 취급되어야 합니다. 임피던스 매칭이 깨지면 신호가 리시버 단에서 반사되어 파형이 깨지는 신호 무결성(Signal Integrity, SI) 붕괴가 일어납니다.</p>
         <hr>
-        <h2>SI와 PI의 정의와 해결 방향</h2>
+        <h2 id="toc-heading-1">SI와 PI의 정의와 해결 방향</h2>
         <ul>
           <li><strong>Signal Integrity (SI):</strong> 인접 신호 라인 간의 전자기적 간섭(Crosstalk), 주파수 감쇠, 반사 노이즈를 억제해 수신 칩에 전송된 파형 눈 모양(Eye Diagram)의 마진을 확보하는 것입니다. 라우팅 배선 간격을 넓히고 50옴 임피던스 매칭을 준수합니다.</li>
           <li><strong>Power Integrity (PI):</strong> 수백만 개의 트랜지스터가 동시에 온/오프 스위칭할 때 발생하는 전류 변동(di/dt)으로 전원 라인이 출렁이는 동적 전압 강하(IR Drop)를 막는 것입니다. 타겟 임피던스를 낮추기 위해 다이 및 패키지 내부에 디커플링 캐패시터(Decap)를 밀집 배치합니다.</li>
         </ul>
       
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">동작 속도가 올라갈 때 배선은 단순 도선이 아니다</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">SI와 PI의 정의와 해결 방향</a></li></ul></nav>
         </div>
         
         <!-- Recommended Posts Section -->
