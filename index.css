@@ -38,6 +38,10 @@
   --shadow-md: 0 4px 6px -1px rgba(28, 25, 23, 0.05), 0 2px 4px -1px rgba(28, 25, 23, 0.03);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html.dark {
   --bg-primary: #0f0e0d; /* Deep obsidian stone-950, very premium */
   --bg-secondary: #171514; /* Muted stone dark gray */
@@ -861,12 +865,17 @@ article.prose-article {
 .article-body-content h1,
 .article-body-content h2,
 .article-body-content h3,
-.article-body-content h4 {
+.article-body-content h4,
+.journal-h2,
+.journal-h3,
+.journal-h4,
+[id^="toc-heading-"] {
   font-family: var(--font-serif);
   color: var(--text-primary);
   font-weight: 500;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  scroll-margin-top: calc(5.5rem + env(safe-area-inset-top, 0px));
 }
 
 .article-body-content h2 { font-size: 1.6rem; }
