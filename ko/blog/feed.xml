@@ -7,144 +7,144 @@
   <language>ko-KR</language>
   <atom:link href="https://junseo.site/ko/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title><![CDATA[FOWLP(Fan-Out Wafer Level Packaging) 패키징의 구조와 수율 제어]]></title>
-    <link>https://junseo.site/ko/blog/fan-out-wafer-level-packaging/index.html</link>
-    <guid>https://junseo.site/ko/blog/fan-out-wafer-level-packaging/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[전통적인 기판을 배제하고 칩 다이 바깥 영역까지 재배선(RDL)을 확장하여 I/O 밀도를 극대화하는 FOWLP 공정의 핵심 단계와 휨 제어 솔루션.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[HBM4 규격 대전환: 베이스 다이의 파운더리 공정 도입 배경]]></title>
-    <link>https://junseo.site/ko/blog/hbm4-custom-dram-foundry/index.html</link>
-    <guid>https://junseo.site/ko/blog/hbm4-custom-dram-foundry/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[HBM3e까지 메모리 공정으로 제조되던 최하단 베이스 다이(Base Die)가 HBM4에 이르러 TSMC/삼성 파운더리 선단 공정으로 전환되는 구조적 이유.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[2.5D 패키징 인터포저 비교: Silicon vs Organic (CoWoS-S vs CoWoS-R)]]></title>
-    <link>https://junseo.site/ko/blog/silicon-interposer-vs-organic/index.html</link>
-    <guid>https://junseo.site/ko/blog/silicon-interposer-vs-organic/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[실리콘관통비아(TSV) 기반의 Silicon Interposer와 미세 유기 재배선(RDL) 기반 Organic Interposer의 대역폭, 원가, 전기 성능 비교 분석.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[플립칩 본딩에서 언더필(Underfill) 모세관 유동 동역학 및 Void 억제책]]></title>
-    <link>https://junseo.site/ko/blog/underfill-void-capillary-flow/index.html</link>
-    <guid>https://junseo.site/ko/blog/underfill-void-capillary-flow/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[칩 아래에 액상 봉지재를 밀어 넣는 Capillary Underfill 공정 시, 범프 배치 레이아웃과 액상 점도에 의해 발생하는 미세 기포(Void) 원인 분석.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[EMC 트랜스퍼 몰딩(Transfer Molding) 주요 파라미터와 불량 해결 방안]]></title>
-    <link>https://junseo.site/ko/blog/emc-transfer-molding-parameters/index.html</link>
-    <guid>https://junseo.site/ko/blog/emc-transfer-molding-parameters/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[고온/고압 트랜스퍼 금형 장비에서 에폭시 몰드 수지(EMC) 충진 시 핀홀, 금형 오염, 와이어 쓸림(Wire Sweep)을 최소화하는 파라미터 제어 이론.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[첨단 적층 본딩 비교: TCB(열압착) vs MRB(매스 리플로우)]]></title>
-    <link>https://junseo.site/ko/blog/tcb-vs-mrb-bonding/index.html</link>
-    <guid>https://junseo.site/ko/blog/tcb-vs-mrb-bonding/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[50μm 이하 파인 피치 범프 접합을 형성할 때 쓰이는 열압착 본딩(TCB)과 대량 양산 리플로우 본딩(MRB)의 물리적 정밀도와 공정 처리량 차이.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[HBM KGD(Known Good Die) 테스트 플로우와 후공정 수율 방어선]]></title>
-    <link>https://junseo.site/ko/blog/hbm-kgd-test-flow/index.html</link>
-    <guid>https://junseo.site/ko/blog/hbm-kgd-test-flow/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[D램 칩렛 적층 전/후 단계에서 불량 다이를 사전에 분리하여 완제품 패키지 불량률을 예방하는 Known Good Die 선별 검사 구조.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[미세 구리 필러 범프(Cu Pillar Bump)의 일렉트로마이그레이션(Electromigration) 수명 분석]]></title>
-    <link>https://junseo.site/ko/blog/copper-pillar-bump-electromigration/index.html</link>
-    <guid>https://junseo.site/ko/blog/copper-pillar-bump-electromigration/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[고출력 칩 범프 배선에 고전류가 집중될 때 구리 및 주석(Sn) 원자가 이탈하여 접합부 보이드 및 단선 불량을 유발하는 물리 매커니즘.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[PLP(Panel Level Packaging) 생산성과 600mm 대형 패널 휨 제어]]></title>
-    <link>https://junseo.site/ko/blog/panel-level-packaging-panel-warpage/index.html</link>
-    <guid>https://junseo.site/ko/blog/panel-level-packaging-panel-warpage/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[원형 300mm 웨이퍼 공정 대비 3배 이상의 면적 생산성을 얻는 대형 사각형 패널 패키징(PLP)의 대면적 수축률 및 리플로우 휨 한계 극복 기법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[다이 부착 필름(DAF) 본딩 시 계면 미세 공기 갇힘(Voids) 예방 기법]]></title>
-    <link>https://junseo.site/ko/blog/die-attach-film-voids/index.html</link>
-    <guid>https://junseo.site/ko/blog/die-attach-film-voids/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[초박형 D램 다이를 다단 적층할 때 접착 매개체인 DAF 필름 내부 계면에 잔류 공기 방울이 생기는 원인 규명 및 압력 공정 튜닝.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[벅 컨버터(Buck Converter) 스위칭 노드 링잉(Ringing) 노이즈 저감 설계]]></title>
-    <link>https://junseo.site/ko/blog/buck-converter-ringing-noise/index.html</link>
-    <guid>https://junseo.site/ko/blog/buck-converter-ringing-noise/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[하드웨어 회로 PCB 설계 시 전원 스위칭 과정에서 모스펫 기생 인덕턴스로 유발되는 초고주파 링잉을 RC 스너버(Snubber) 회로로 제거하는 방법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[고속 차동 신호(Differential Signaling)의 스큐(Skew) 원인과 PCB 보정 기법]]></title>
-    <link>https://junseo.site/ko/blog/differential-signaling-skew/index.html</link>
-    <guid>https://junseo.site/ko/blog/differential-signaling-skew/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[PCIe, USB3.0 등 차동 페어 배선 설계 시 미세한 배선 길이 불일치(Intra-pair Skew)로 신호 동기가 틀어지는 불균형 예방 가이드.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[LDO 레귤레이터 vs Buck 컨버터: 노이즈 저감 관점의 아날로그 전원 설계 비교]]></title>
-    <link>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</link>
-    <guid>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[고감도 ADC 및 센서 앰프 구동 시, 스위칭 리플이 있는 벅 스위처와 효율은 낮으나 리플이 제로인 LDO의 전원 성능 및 배치 시나리오.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[고정밀 SAR ADC 드라이버 OP-AMP 설계: 침강 시간(Settling Time)과 Charge-Kickback 필터]]></title>
-    <link>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</link>
-    <guid>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[ADC의 내부 캐패시터 충전 스위칭 시 발생하는 역전류 노이즈를 억제하고 샘플링 시간 내 전압 평형을 유도하는 드라이브 필터 설계 기법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[I2C 통신 신뢰성 확보를 위한 풀업 저항(Pull-up Resistor) 계산 가이드]]></title>
-    <link>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</link>
-    <guid>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[버스 기생 정전용량(Cb)과 스펙상 상승 시간(Rise Time) 규격을 충족하여 통신 신호 왜곡을 방지하는 정량적 풀업 저항 계산 공식 및 검증.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Git Worktree 활용법: 개발 흐름 끊김 없는 핫픽스 멀티태스킹]]></title>
-    <link>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</link>
-    <guid>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[작업 중인 브랜치에서 git stash 대신, 별도의 작업 디렉토리 폴더를 동적으로 생성해 병렬로 핫픽스 코딩을 수행하는 모던 깃 명령어.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[기술 문서화의 혁신: 마크다운 내 Mermaid.js를 이용한 라이브 아키텍처 다이어그램]]></title>
-    <link>https://junseo.site/ko/blog/mermaid-diagrams-documentation/index.html</link>
-    <guid>https://junseo.site/ko/blog/mermaid-diagrams-documentation/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[이미지 파일 캡처 대신 텍스트 코드로 시스템 구조도를 정의하여 버전 관리가 가능한 마크다운 Mermaid 라이브 렌더링 도입기.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Groq Llama-3 API를 이용한 서브세컨드(Sub-Second) 문맥 요약 파이프라인 구축]]></title>
-    <link>https://junseo.site/ko/blog/groq-llama3-fast-inference/index.html</link>
-    <guid>https://junseo.site/ko/blog/groq-llama3-fast-inference/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[대용량 블로그 글이나 기사를 올렸을 때 LPU 하드웨어 가속 성능을 통해 0.5초 이내에 핵심 요약 텍스트를 추출하는 백엔드 연동 가이드.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[장시간 타이핑 코더를 위한 인체공학 스플릿(Split) 키보드의 정형외과적 효과]]></title>
-    <link>https://junseo.site/ko/blog/keyboard-ergonomics-split-layout/index.html</link>
-    <guid>https://junseo.site/ko/blog/keyboard-ergonomics-split-layout/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[어깨 말림 현상과 손목 터널 증후군(RSI)을 물리적으로 방지하기 위해, 기판을 반으로 쪼개 배치하는 어골형 키보드 레이아웃의 해부학.]]></description>
-  </item>
-  <item>
     <title><![CDATA[GitHub Actions를 이용한 Zero-Dependency 정적 포트폴리오 사이트 자동 배포 파이프라인]]></title>
     <link>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</link>
     <guid>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</guid>
     <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[코드를 메인 브랜치에 푸시하면 빌드 검증을 거쳐 Vercel 또는 GitHub Pages 배포까지 1분 이내에 완료하는 CI/CD 가동 가이드.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[장시간 타이핑 코더를 위한 인체공학 스플릿(Split) 키보드의 정형외과적 효과]]></title>
+    <link>https://junseo.site/ko/blog/keyboard-ergonomics-split-layout/index.html</link>
+    <guid>https://junseo.site/ko/blog/keyboard-ergonomics-split-layout/index.html</guid>
+    <pubDate>Sun, 07 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[어깨 말림 현상과 손목 터널 증후군(RSI)을 물리적으로 방지하기 위해, 기판을 반으로 쪼개 배치하는 어골형 키보드 레이아웃의 해부학.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Groq Llama-3 API를 이용한 서브세컨드(Sub-Second) 문맥 요약 파이프라인 구축]]></title>
+    <link>https://junseo.site/ko/blog/groq-llama3-fast-inference/index.html</link>
+    <guid>https://junseo.site/ko/blog/groq-llama3-fast-inference/index.html</guid>
+    <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[대용량 블로그 글이나 기사를 올렸을 때 LPU 하드웨어 가속 성능을 통해 0.5초 이내에 핵심 요약 텍스트를 추출하는 백엔드 연동 가이드.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[기술 문서화의 혁신: 마크다운 내 Mermaid.js를 이용한 라이브 아키텍처 다이어그램]]></title>
+    <link>https://junseo.site/ko/blog/mermaid-diagrams-documentation/index.html</link>
+    <guid>https://junseo.site/ko/blog/mermaid-diagrams-documentation/index.html</guid>
+    <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[이미지 파일 캡처 대신 텍스트 코드로 시스템 구조도를 정의하여 버전 관리가 가능한 마크다운 Mermaid 라이브 렌더링 도입기.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[바이브 코딩에서 하네스 엔지니어링으로: AI 개발의 한계 뚫기]]></title>
+    <link>https://junseo.site/ko/blog/vibe-coding-to-harness-engineering/index.html</link>
+    <guid>https://junseo.site/ko/blog/vibe-coding-to-harness-engineering/index.html</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[자연어로 대충 부탁하는 "바이브 코딩"을 넘어, AI 에이전트가 안전하고 정확하게 동작할 수밖에 없도록 통제 환경(Harness)을 만드는 패러다임을 제안합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[바이브 코딩의 한계와 하네스 엔지니어링의 필요성]]></title>
+    <link>https://junseo.site/ko/blog/harness-vs-vibe-coding/index.html</link>
+    <guid>https://junseo.site/ko/blog/harness-vs-vibe-coding/index.html</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[단순한 대화형 코드 생성을 넘어서, AI 에이전트가 완벽하게 동작할 수밖에 없는 환경 제어(Harness) 기법을 알아봅니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Git Worktree 활용법: 개발 흐름 끊김 없는 핫픽스 멀티태스킹]]></title>
+    <link>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</link>
+    <guid>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</guid>
+    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[작업 중인 브랜치에서 git stash 대신, 별도의 작업 디렉토리 폴더를 동적으로 생성해 병렬로 핫픽스 코딩을 수행하는 모던 깃 명령어.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[이력서를 시스템 아키텍처로 엔지니어링하다]]></title>
+    <link>https://junseo.site/ko/blog/semiconductor-packaging-whitepaper/index.html</link>
+    <guid>https://junseo.site/ko/blog/semiconductor-packaging-whitepaper/index.html</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Figma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다]]></title>
+    <link>https://junseo.site/ko/blog/thinking-vs-understanding-karpathy/index.html</link>
+    <guid>https://junseo.site/ko/blog/thinking-vs-understanding-karpathy/index.html</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[AI가 생각의 과정을 대신해주는 소프트웨어 3.0 시대, 인간 엔지니어에게 남아있는 대체 불가능한 역량이 무엇인지에 대해.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[antigravity-rules를 이용한 에이전트 스코프 극단적 축소 기법]]></title>
+    <link>https://junseo.site/ko/blog/antigravity-scoping-rules/index.html</link>
+    <guid>https://junseo.site/ko/blog/antigravity-scoping-rules/index.html</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[에이전트에게 전달되는 컨텍스트를 제한하고 토큰 소비를 획기적으로 줄여 코딩 정확도를 올리는 방법.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[I2C 통신 신뢰성 확보를 위한 풀업 저항(Pull-up Resistor) 계산 가이드]]></title>
+    <link>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</link>
+    <guid>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</guid>
+    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[버스 기생 정전용량(Cb)과 스펙상 상승 시간(Rise Time) 규격을 충족하여 통신 신호 왜곡을 방지하는 정량적 풀업 저항 계산 공식 및 검증.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 시대의 진로 멘토 브랜드: "반도체 신입의 AI 생존기" 기획기]]></title>
+    <link>https://junseo.site/ko/blog/creator-business-strategy-roadmap/index.html</link>
+    <guid>https://junseo.site/ko/blog/creator-business-strategy-roadmap/index.html</guid>
+    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[AI가 일자리를 없앤다는 막연한 불안감 속에서, 2030 대학생 및 취준생들에게 현실적인 엔지니어 생존법을 제시하는 브랜드 포지셔닝 전략을 공유합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[TDD와 자동 테스트를 연동한 AI 에이전트 자기 보정 시스템]]></title>
+    <link>https://junseo.site/ko/blog/tdd-agent-guardrails/index.html</link>
+    <guid>https://junseo.site/ko/blog/tdd-agent-guardrails/index.html</guid>
+    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[에이전트가 코드를 완성했다고 선언하기 전에, 작성한 테스트 통과 여부를 직접 확인하게 만들어 오작동을 원천 봉쇄합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[고정밀 SAR ADC 드라이버 OP-AMP 설계: 침강 시간(Settling Time)과 Charge-Kickback 필터]]></title>
+    <link>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</link>
+    <guid>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</guid>
+    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[ADC의 내부 캐패시터 충전 스위칭 시 발생하는 역전류 노이즈를 억제하고 샘플링 시간 내 전압 평형을 유도하는 드라이브 필터 설계 기법.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 에이전트의 효율을 극대화하는 "도구 다이어트" 설계 전략]]></title>
+    <link>https://junseo.site/ko/blog/agent-tool-diet-strategy/index.html</link>
+    <guid>https://junseo.site/ko/blog/agent-tool-diet-strategy/index.html</guid>
+    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[에이전트에게 너무 많은 스킬과 권한을 주면 왜 망가지는지, 왜 도구를 덜 쥐어주는 미니멀리즘이 작동하는지 알아봅니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 "NotebookLM" 구축기]]></title>
+    <link>https://junseo.site/ko/blog/private-notebooklm-safari-obsidian/index.html</link>
+    <guid>https://junseo.site/ko/blog/private-notebooklm-safari-obsidian/index.html</guid>
+    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Zotero 7 + Safari + Obsidian (Copilot + Gemini API) 연동을 통해 리소스를 쓰지 않고 완벽한 개인 지식 데이터 분석 파이프라인을 구축하는 방법.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[안드레이 카파시 스타일 AI 에이전트와의 3대 소통 수칙]]></title>
+    <link>https://junseo.site/ko/blog/karpathy-agent-rules/index.html</link>
+    <guid>https://junseo.site/ko/blog/karpathy-agent-rules/index.html</guid>
+    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[장황한 자연어 부탁을 걷어내고, 명확하고 예측 가능한 인터페이스로 에이전트의 생산성을 통제하는 방법.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[LDO 레귤레이터 vs Buck 컨버터: 노이즈 저감 관점의 아날로그 전원 설계 비교]]></title>
+    <link>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</link>
+    <guid>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</guid>
+    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[고감도 ADC 및 센서 앰프 구동 시, 스위칭 리플이 있는 벅 스위처와 효율은 낮으나 리플이 제로인 LDO의 전원 성능 및 배치 시나리오.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[고속 차동 신호(Differential Signaling)의 스큐(Skew) 원인과 PCB 보정 기법]]></title>
+    <link>https://junseo.site/ko/blog/differential-signaling-skew/index.html</link>
+    <guid>https://junseo.site/ko/blog/differential-signaling-skew/index.html</guid>
+    <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[PCIe, USB3.0 등 차동 페어 배선 설계 시 미세한 배선 길이 불일치(Intra-pair Skew)로 신호 동기가 틀어지는 불균형 예방 가이드.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[단일 책임 원칙(SRP)에 기반한 테스크 분할 전략]]></title>
+    <link>https://junseo.site/ko/blog/single-responsibility-tasking/index.html</link>
+    <guid>https://junseo.site/ko/blog/single-responsibility-tasking/index.html</guid>
+    <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[대형 개발 작업을 잘개 쪼개어 AI 에이전트가 한 턴에 완벽히 해결할 수 있도록 가이드를 좁히는 법.]]></description>
   </item>
 </channel>
 </rss>
