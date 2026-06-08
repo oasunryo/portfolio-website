@@ -1,0 +1,24 @@
+{
+  "name": "portfolio_webstie_builer_v2",
+  "version": "1.0.0",
+  "description": "> 반도체 후공정 엔지니어 오준서의 개인 포트폴리오 웹사이트",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oasunryo/portfolio-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/oasunryo/portfolio-website/issues"
+  },
+  "homepage": "https://github.com/oasunryo/portfolio-website#readme",
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}

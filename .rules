@@ -1,0 +1,55 @@
+# Portfolio Website Builder V2 - AI Agent Coding Rules & Harness Guidelines
+
+본 가이드는 AI 에이전트(Antigravity)가 이 프로젝트의 코드를 수정하거나 기능을 설계할 때 반드시 따라야 하는 **핵심 판단 기준과 하드 제약 조건**을 정의합니다.
+
+---
+
+## 1. 핵심 제약 조건 및 아키텍처 규칙 (Hard Constraints & Architecture)
+
+### 1.1. 정적 컴파일 기반의 빌드 시스템 (Build-First Rule)
+* **직접 수정 금지**: `ko/` 및 `en/` 디렉토리 하위의 HTML 파일은 직접 수정하지 마십시오. 이 폴더들은 빌드 시마다 덮어씌워지는 컴파일 결과물입니다.
+* **소스 수정 대상**:
+  * 마크업 구조 및 정적 레이아웃: [templates/](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/templates/) 하위의 컴포넌트 템플릿 파일들 (`head.html`, `header.html`, `footer.html`, `noise.html`)을 수정하십시오.
+  * 데이터 및 메타데이터: [projectsData.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/projectsData.js), [newBlogPosts.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/newBlogPosts.js) 및 [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js) 내부의 리스트 상수를 수정하십시오.
+* **컴파일 실행**: 코드나 데이터 수정 후에는 반드시 프로젝트 루트에서 `node build.js` 명령어를 실행하여 HTML 파일을 갱신해야 합니다.
+
+### 1.2. 엄격한 기술 스택 통제 (Strict Tech Stack)
+* **프레임워크 금지**: React, Next.js, Vue 등의 프레임워크나 Tailwind CSS 등의 유틸리티 CSS 라이브러리를 **절대 도입하지 마십시오**.
+* **기술 표준**: 오직 **HTML5 + Vanilla CSS + Pure ES6+ JavaScript**로만 코드를 작성해야 합니다.
+* **스타일 집중**: 모든 스타일 속성은 [index.css](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/index.css)에 선언하며, 클래스 기반으로 일관성 있게 관리해야 합니다. (HTML 내 inline style 정의 최소화)
+
+### 1.3. 다국어 및 상대 경로 규칙 (Localization & Path Resolution)
+* **상대 경로 치환**: 다국어 페이지 컴파일 시 페이지 깊이(`depth`)에 따른 상대 경로(`${relPath}`)가 자동으로 연산되어 리소스를 참조합니다. 템플릿 내에 절대 경로(예: `/index.css`, `/logo/favicon.svg`)가 하드코딩되어 있다면, [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js)의 치환 로직(`compilePage`)에 반드시 반영하여 상대 경로로 변환되도록 처리해야 합니다.
+
+---
+
+## 2. 특정 브라우저 이슈 및 에러 방지 규칙 (Troubleshooting & Quirks)
+
+### 2.1. Safari iOS/macOS 레이아웃 이슈 방지
+* **헤더 안전 영역 계산**: 고정 헤더(`.sticky-nav`)와 상단 패딩(`.pt-24`) 설정 시, 모바일 노치 영역의 간섭을 막기 위해 CSS `env(safe-area-inset-top)`를 조합하여 계산해야 합니다.
+  ```css
+  header.sticky-nav {
+    padding-top: calc(1.25rem + env(safe-area-inset-top, 0px));
+  }
+  ```
+* **모달 오버레이 배경 끊김 예방**: 모달 배경(`.side-peek-overlay`)은 Safari 뷰포트 바운스 시 틈새가 발생하는 문제를 차단하기 위해 화면 물리 경계선보다 더 크게 음수 마진(`top: -10vh; bottom: -10vh; left: -10vw; right: -10vw;`)을 적용해야 합니다.
+* **스크롤 캐싱 원천 리셋**: 상세 모달창을 닫고 다른 상세 모달창을 열 때 이전의 스크롤 위치가 유지되는 오작동을 막기 위해, 모달을 오픈할 때마다 대상 컨테이너의 스크롤 탑 위치를 명시적으로 초기화하십시오.
+  ```javascript
+  body.scrollTop = 0;
+  ```
+
+### 2.2. Safari 파비콘 에러 캐시 고착화 방지
+* **Cache Busting 파라미터 강제**: 파비콘 리소스 로드가 1회라도 실패하면 Safari가 해당 도메인의 파비콘 에러 상태를 캐싱하는 버그가 있습니다. 파비콘 링크 태그에는 항상 캐시 버스팅 쿼리 스트링(`?v=1.0.1`)이 유지되도록 유지보수하고, 루트 `index.html`에도 동일 파비콘 선언을 누락하지 마십시오.
+
+---
+
+## 3. UI 컴포넌트 컨벤션 (UI Conventions)
+
+### 3.1. 툴팁 시스템 (Premium Tooltip)
+* **구현 방식**: 툴팁을 동적 JavaScript로 생성하지 마십시오. 성능 및 접근성을 위해 HTML 속성 `data-tooltip`에 텍스트를 할당하고, CSS 속성 선택자(`[data-tooltip]`)를 통해 렌더링해야 합니다.
+  ```html
+  <a href="..." data-tooltip="툴팁 문구">링크</a>
+  ```
+
+### 3.2. 카러셀 및 스크롤 슬라이더
+* **동적 단계 계산**: 화면 크기가 달라질 때 카러셀(`.carousel-container`) 이동 폭이 어긋나지 않도록 `offsetWidth`와 카드 갭(`gap`)을 동적으로 연산하여 좌표를 이동시키도록 코딩하십시오.
