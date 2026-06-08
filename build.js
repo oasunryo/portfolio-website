@@ -375,8 +375,8 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
   let head = headTpl
     .replace('href="/index.css"', `href="${relPath}index.css"`)
     .replace('href="/logo/favicon.svg?v=1.0.1"', `href="${relPath}logo/favicon.svg?v=1.0.1"`)
-    .replace('{{title}}', title)
-    .replace('{{description}}', description);
+    .replace(/{{title}}/g, title)
+    .replace(/{{description}}/g, description);
   
   // Parameterize Header navigation links
   const targetOppositeLang = (lang === 'ko') ? 'en' : 'ko';
@@ -615,8 +615,6 @@ languages.forEach(lang => {
   <div class="list-container">
     ${homeData.timeline}
   </div>
-</section>
-
 </section>
 `;
 
@@ -1022,8 +1020,8 @@ languages.forEach(lang => {
     const targetOppositeLang = (lang === 'ko') ? 'en' : 'ko';
     const hasOppositePost = post[targetOppositeLang] ? true : false;
     const oppositeLangSwitchHref = hasOppositePost 
-      ? `../../${targetOppositeLang}/blog/${post.slug}/index.html` 
-      : `../../${targetOppositeLang}/blog/index.html`;
+      ? `../../../${targetOppositeLang}/blog/${post.slug}/index.html` 
+      : `../../../${targetOppositeLang}/blog/index.html`;
 
     const postContent = `
       <article class="prose-article">
@@ -1242,7 +1240,7 @@ languages.forEach(lang => {
 
     // Cross-language details mapping
     const targetOppositeLang = (lang === 'ko') ? 'en' : 'ko';
-    const oppositeLangSwitchHref = `../../${targetOppositeLang}/projects/${proj.slug}/index.html`;
+    const oppositeLangSwitchHref = `../../../${targetOppositeLang}/projects/${proj.slug}/index.html`;
 
     const projectContent = `
       <article class="prose-article">
