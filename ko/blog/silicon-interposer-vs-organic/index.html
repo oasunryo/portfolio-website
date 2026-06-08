@@ -112,7 +112,7 @@
         <div class="article-body-content">
           
         <h2>인터포저(Interposer) 재질이 결정하는 공정 원가와 스펙</h2>
-        <p>AI 가속기 칩셋을 패키징할 때 메인 다이들과 HBM을 나란히 배열하여 신호를 연결하는 핵심 징검다리 기판을 **인터포저(Interposer)**라고 부릅니다. 이 인터포저는 크게 실리콘 재질의 **Silicon Interposer**와 유기 수지 수식인 **Organic Interposer**로 양분됩니다. 대표적으로 TSMC의 CoWoS-S는 실리콘을, CoWoS-R은 유기 RDL 기반 인터포저를 활용합니다.</p>
+        <p>AI 가속기 칩셋을 패키징할 때 메인 다이들과 HBM을 나란히 배열하여 신호를 연결하는 핵심 징검다리 기판을 <strong>인터포저(Interposer)</strong>라고 부릅니다. 이 인터포저는 크게 실리콘 재질의 <strong>Silicon Interposer</strong>와 유기 수지 수식인 <strong>Organic Interposer</strong>로 양분됩니다. 대표적으로 TSMC의 CoWoS-S는 실리콘을, CoWoS-R은 유기 RDL 기반 인터포저를 활용합니다.</p>
         <hr>
         <h2>실리콘 인터포저(Silicon Interposer)의 장점과 비용 한계</h2>
         <p>실리콘 인터포저는 반도체 전공정 노광 장비(Stepper)를 그대로 써서 수 나노미터~수백 나노미터 수준의 극미세 배선을 형성하므로, 다이 간 신호 전송 대역폭이 극대화되고 전기적 임피던스 정합성이 매우 우수합니다. 하지만, 면적이 커질수록 마스크 노광 레티클 한계(Reticle Limit)를 초과하여 복수의 노광 패치 봉합(Stitching) 공정이 강제되고, 이에 따라 원가가 천문학적으로 치솟는 문제가 발생합니다.</p>
@@ -131,7 +131,7 @@
 
         <!-- Embedded markdown database for LLM text copying -->
         <script type="application/json" id="markdown-silicon-interposer-vs-organic">
-          "# 2.5D 패키징 인터포저 비교: Silicon vs Organic (CoWoS-S vs CoWoS-R)\n\n실리콘관통비아(TSV) 기반의 Silicon Interposer와 미세 유기 재배선(RDL) 기반 Organic Interposer의 대역폭, 원가, 전기 성능 비교 분석.\n\n인터포저(Interposer) 재질이 결정하는 공정 원가와 스펙 AI 가속기 칩셋을 패키징할 때 메인 다이들과 HBM을 나란히 배열하여 신호를 연결하는 핵심 징검다리 기판을 **인터포저(Interposer)**라고 부릅니다. 이 인터포저는 크게 실리콘 재질의 **Silicon Interposer**와 유기 수지 수식인 **Organic Interposer**로 양분됩니다. 대표적으로 TSMC의 CoWoS-S는 실리콘을, CoWoS-R은 유기 RDL 기반 인터포저를 활용합니다. 실리콘 인터포저(Silicon Interposer)의 장점과 비용 한계 실리콘 인터포저는 반도체 전공정 노광 장비(Stepper)를 그대로 써서 수 나노미터~수백 나노미터 수준의 극미세 배선을 형성하므로, 다이 간 신호 전송 대역폭이 극대화되고 전기적 임피던스 정합성이 매우 우수합니다. 하지만, 면적이 커질수록 마스크 노광 레티클 한계(Reticle Limit)를 초과하여 복수의 노광 패치 봉합(Stitching) 공정이 강제되고, 이에 따라 원가가 천문학적으로 치솟는 문제가 발생합니다. 유기 인터포저(Organic Interposer)의 부상과 타협점 유기 인터포저는 기존 빌드업 기판 가공법에 RDL 미세화 기술을 조합하여 제조하므로, 실리콘에 비해 대형화가 매우 쉽고 TSV 가공비가 빠져 원가가 저렴합니다. 또한 재료 자체가 연성이 있어 온도 수축에 따른 Warpage 대응력이 좋습니다. 다만 배선 밀도가 실리콘 대비 상대적으로 넓어 최고 속도 대역폭은 소폭 하향 평준화될 수 있습니다. 대형 가성비 칩 구현에는 Organic이 대안으로 적극 배치되고 있습니다."
+          "# 2.5D 패키징 인터포저 비교: Silicon vs Organic (CoWoS-S vs CoWoS-R)\n\n실리콘관통비아(TSV) 기반의 Silicon Interposer와 미세 유기 재배선(RDL) 기반 Organic Interposer의 대역폭, 원가, 전기 성능 비교 분석.\n\n인터포저(Interposer) 재질이 결정하는 공정 원가와 스펙 AI 가속기 칩셋을 패키징할 때 메인 다이들과 HBM을 나란히 배열하여 신호를 연결하는 핵심 징검다리 기판을 인터포저(Interposer)라고 부릅니다. 이 인터포저는 크게 실리콘 재질의 Silicon Interposer와 유기 수지 수식인 Organic Interposer로 양분됩니다. 대표적으로 TSMC의 CoWoS-S는 실리콘을, CoWoS-R은 유기 RDL 기반 인터포저를 활용합니다. 실리콘 인터포저(Silicon Interposer)의 장점과 비용 한계 실리콘 인터포저는 반도체 전공정 노광 장비(Stepper)를 그대로 써서 수 나노미터~수백 나노미터 수준의 극미세 배선을 형성하므로, 다이 간 신호 전송 대역폭이 극대화되고 전기적 임피던스 정합성이 매우 우수합니다. 하지만, 면적이 커질수록 마스크 노광 레티클 한계(Reticle Limit)를 초과하여 복수의 노광 패치 봉합(Stitching) 공정이 강제되고, 이에 따라 원가가 천문학적으로 치솟는 문제가 발생합니다. 유기 인터포저(Organic Interposer)의 부상과 타협점 유기 인터포저는 기존 빌드업 기판 가공법에 RDL 미세화 기술을 조합하여 제조하므로, 실리콘에 비해 대형화가 매우 쉽고 TSV 가공비가 빠져 원가가 저렴합니다. 또한 재료 자체가 연성이 있어 온도 수축에 따른 Warpage 대응력이 좋습니다. 다만 배선 밀도가 실리콘 대비 상대적으로 넓어 최고 속도 대역폭은 소폭 하향 평준화될 수 있습니다. 대형 가성비 칩 구현에는 Organic이 대안으로 적극 배치되고 있습니다."
         </script>
 
         <script>

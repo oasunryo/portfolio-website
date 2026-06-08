@@ -112,7 +112,7 @@
         <div class="article-body-content">
           
         <h2>Open-Drain Drivers and Bus Pull-ups</h2>
-        <p>The I2C protocol uses open-drain drivers to allow multi-device sharing of SDA and SCL lines. Because devices only pull the bus low, external **pull-up resistors** pull the lines high when released.</p>
+        <p>The I2C protocol uses open-drain drivers to allow multi-device sharing of SDA and SCL lines. Because devices only pull the bus low, external <strong>pull-up resistors</strong> pull the lines high when released.</p>
         <hr>
         <h2>The Tradeoff Between Rise Time and Power</h2>
         <p>A high pull-up resistance ($R_{pullup}$) slows signal rise times due to the bus capacitance ($C_{bus}$) RC time constant, causing bit errors. Conversely, low resistance drives excessive sink currents that overload pins and waste power.</p>
@@ -131,7 +131,7 @@
 
         <!-- Embedded markdown database for LLM text copying -->
         <script type="application/json" id="markdown-i2c-pullup-resistor-sizing">
-          "# Sizing Pull-up Resistors for Reliable I2C Bus Communication\n\nCalculating pull-up resistor boundaries using bus capacitance and I2C rise time limits.\n\nOpen-Drain Drivers and Bus Pull-ups The I2C protocol uses open-drain drivers to allow multi-device sharing of SDA and SCL lines. Because devices only pull the bus low, external **pull-up resistors** pull the lines high when released. The Tradeoff Between Rise Time and Power A high pull-up resistance ($R_{pullup}$) slows signal rise times due to the bus capacitance ($C_{bus}$) RC time constant, causing bit errors. Conversely, low resistance drives excessive sink currents that overload pins and waste power. Calculating Resistor Boundaries For Fast-Mode (400kHz) I2C, max rise times are capped at 300ns. The upper limit follows $R_{max} = t_{r} / (0.8473 \\times C_{bus})$. Balances typically place resistors between 2.2kΩ and 4.7kΩ depending on trace lengths."
+          "# Sizing Pull-up Resistors for Reliable I2C Bus Communication\n\nCalculating pull-up resistor boundaries using bus capacitance and I2C rise time limits.\n\nOpen-Drain Drivers and Bus Pull-ups The I2C protocol uses open-drain drivers to allow multi-device sharing of SDA and SCL lines. Because devices only pull the bus low, external pull-up resistors pull the lines high when released. The Tradeoff Between Rise Time and Power A high pull-up resistance ($R_{pullup}$) slows signal rise times due to the bus capacitance ($C_{bus}$) RC time constant, causing bit errors. Conversely, low resistance drives excessive sink currents that overload pins and waste power. Calculating Resistor Boundaries For Fast-Mode (400kHz) I2C, max rise times are capped at 300ns. The upper limit follows $R_{max} = t_{r} / (0.8473 \\times C_{bus})$. Balances typically place resistors between 2.2kΩ and 4.7kΩ depending on trace lengths."
         </script>
 
         <script>

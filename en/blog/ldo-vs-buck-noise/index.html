@@ -112,14 +112,14 @@
         <div class="article-body-content">
           
         <h2>The Analog Power Supply Dilemma</h2>
-        <p>Power rail design balances efficiency and noise. Designers select between high-efficiency **Buck Converters** and low-noise **LDO (Linear Regulators)** based on circuit sensitivity.</p>
+        <p>Power rail design balances efficiency and noise. Designers select between high-efficiency <strong>Buck Converters</strong> and low-noise <strong>LDO (Linear Regulators)</strong> based on circuit sensitivity.</p>
         <ul>
           <li><strong>LDO Regulators:</strong> Drop voltages via linear transistor resistance. While inefficient under high voltage differentials, they offer excellent Power Supply Rejection Ratio (PSRR) and microvolt-level ripple.</li>
           <li><strong>Buck Converters:</strong> Convert voltages using LC energy storage and switching circuits. They deliver 90%+ efficiency but introduce high-frequency switching ripple.</li>
         </ul>
         <hr>
         <h2>Implementing Hybrid Power Trees</h2>
-        <p>To power low-noise analog stages, designers use a **Buck + LDO hybrid** setup. The buck stage handles the primary voltage drop efficiently, while a downstream LDO filters out switching ripple for quiet analog rails.</p>
+        <p>To power low-noise analog stages, designers use a <strong>Buck + LDO hybrid</strong> setup. The buck stage handles the primary voltage drop efficiently, while a downstream LDO filters out switching ripple for quiet analog rails.</p>
       
         </div>
         
@@ -132,7 +132,7 @@
 
         <!-- Embedded markdown database for LLM text copying -->
         <script type="application/json" id="markdown-ldo-vs-buck-noise">
-          "# LDO vs Buck Converters: Decoupling Noise from Sensitive Analog Rails\n\nComparing the noise spectrum, efficiency tradeoffs, and PSRR of linear LDOs against high-efficiency buck switchers.\n\nThe Analog Power Supply Dilemma Power rail design balances efficiency and noise. Designers select between high-efficiency **Buck Converters** and low-noise **LDO (Linear Regulators)** based on circuit sensitivity. LDO Regulators: Drop voltages via linear transistor resistance. While inefficient under high voltage differentials, they offer excellent Power Supply Rejection Ratio (PSRR) and microvolt-level ripple. Buck Converters: Convert voltages using LC energy storage and switching circuits. They deliver 90%+ efficiency but introduce high-frequency switching ripple. Implementing Hybrid Power Trees To power low-noise analog stages, designers use a **Buck + LDO hybrid** setup. The buck stage handles the primary voltage drop efficiently, while a downstream LDO filters out switching ripple for quiet analog rails."
+          "# LDO vs Buck Converters: Decoupling Noise from Sensitive Analog Rails\n\nComparing the noise spectrum, efficiency tradeoffs, and PSRR of linear LDOs against high-efficiency buck switchers.\n\nThe Analog Power Supply Dilemma Power rail design balances efficiency and noise. Designers select between high-efficiency Buck Converters and low-noise LDO (Linear Regulators) based on circuit sensitivity. LDO Regulators: Drop voltages via linear transistor resistance. While inefficient under high voltage differentials, they offer excellent Power Supply Rejection Ratio (PSRR) and microvolt-level ripple. Buck Converters: Convert voltages using LC energy storage and switching circuits. They deliver 90%+ efficiency but introduce high-frequency switching ripple. Implementing Hybrid Power Trees To power low-noise analog stages, designers use a Buck + LDO hybrid setup. The buck stage handles the primary voltage drop efficiently, while a downstream LDO filters out switching ripple for quiet analog rails."
         </script>
 
         <script>
