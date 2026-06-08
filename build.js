@@ -1021,8 +1021,8 @@ languages.forEach(lang => {
           ${locale.backToBlog}
         </a>
         <header class="article-header">
-          <div class="article-meta-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
-            <div class="article-meta-info" style="margin-bottom: 0;">
+          <div class="article-meta-row">
+            <div class="article-meta-info">
               <span class="article-category-badge">${post.category}</span>
               <span class="divider-pipe">•</span>
               <time class="tabular-nums" datetime="${post.date}">${post.date}</time>
@@ -1030,21 +1030,21 @@ languages.forEach(lang => {
               <span class="tabular-nums">${readingTimeLabel}</span>
             </div>
             
-            <div class="ai-dropdown-container" style="position: relative; display: inline-block;">
-              <button class="icon-btn ai-dropdown-trigger" style="font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.4rem 0.75rem; border: 1px solid var(--border-color); border-radius: 0.375rem; background: var(--bg-secondary); color: var(--text-secondary); cursor: pointer;" onclick="toggleAiDropdown(event)" data-tooltip="${locale.shareTooltip}">
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="${locale.shareTooltip}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
                 <span>${locale.shareAndCopy}</span>
               </button>
-              <div class="ai-dropdown-menu" style="display: none; position: absolute; right: 0; top: 110%; z-index: 100; min-width: 14rem; background: var(--peek-bg); backdrop-filter: blur(20px); border: 1px solid var(--border-color); border-radius: 0.5rem; box-shadow: var(--shadow-md); padding: 0.35rem; flex-direction: column; gap: 0.15rem;">
-                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, '${post.slug}')" style="width: 100%; text-align: left; background: transparent; border: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, '${post.slug}')">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
                   <span>${locale.copyForLlm}</span>
                 </button>
-                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://junseo.site/' + lang + '/blog/' + post.slug + '/')}" target="_blank" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://junseo.site/' + lang + '/blog/' + post.slug + '/')}" target="_blank">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                   <span>${locale.shareOnLinkedin}</span>
                 </a>
-                <a class="ai-dropdown-item" href="mailto:?subject=${encodeURIComponent(langData.title)}&body=${encodeURIComponent('오준서 님의 블로그 글을 공유합니다: https://junseo.site/' + lang + '/blog/' + post.slug + '/')}" style="text-decoration: none; padding: 0.5rem 0.75rem; font-size: 0.85rem; border-radius: 0.25rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; transition: background 0.2s, color 0.2s;">
+                <a class="ai-dropdown-item" href="mailto:?subject=${encodeURIComponent(langData.title)}&body=${encodeURIComponent('오준서 님의 블로그 글을 공유합니다: https://junseo.site/' + lang + '/blog/' + post.slug + '/')}" style="text-decoration: none;">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                   <span>${locale.sendViaEmail}</span>
                 </a>
