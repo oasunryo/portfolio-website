@@ -300,10 +300,15 @@ h2.section-title {
 
 .item-title-badge {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
   min-width: 0;
   flex-shrink: 1;
+}
+
+.item-title-badge .status-badge {
+  margin-top: 0.25rem;
+  flex-shrink: 0;
 }
 
 .item-title-link {
