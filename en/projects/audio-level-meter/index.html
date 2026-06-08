@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Design & Verification of a 3-Band Audio Level Meter with Sallen-Key Active Filters  | Junseo Oh</title>
+<meta name="description" content="Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/audio-level-meter/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Design & Verification of a 3-Band Audio Level Meter with Sallen-Key Active Filters</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">ANALOG CIRCUIT / ACTIVE FILTER AUDIO LEVEL METER</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2025. 03. 01. ~ 2025. 06. 30.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'audio-level-meter')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Faudio-level-meter%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Design%20%26%20Verification%20of%20a%203-Band%20Audio%20Level%20Meter%20with%20Sallen-Key%20Active%20Filters&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Faudio-level-meter%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2025. 03. 01. ~ 2025. 06. 30.</li>
+          <li><strong>Type:</strong> Analog Active Filter Circuit Design, Audio Signal Processing, and System Fabrication</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electrical Engineering (Capstone Design Project for Machine Learning in Electrical Engineering)</li>
+          <li><strong>Overview:</strong> Designed and built an analog 3-band audio level meter using active Butterworth filters to separate low, mid, and high acoustic frequencies. The system incorporates an OPA2134PA high-performance preamplifier, mathematically optimized 2nd-order Sallen-Key active filters, LM3914 LED array drivers, and an LM380N power amplifier to drive a speaker unit.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> Audio mixers, communication nodes, and scientific instruments rely on precise frequency band separation and noise filtering to visualize real-time signal amplitudes.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Low-voltage analog signals from microphones are highly vulnerable to electromagnetic noise. Inadequate roll-off slopes in filters lead to <strong>inter-band interference</strong>, generating measurement errors.</li>
+              <li>Additionally, we had to prevent phase distortion in high-fidelity audio signals and implement adjustable gains (0.2x to 5x) for low (below 400Hz), mid (800Hz~1.6kHz), and high (above 3.2kHz) frequency bands.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Maintain cutoff frequency ($f_c$) accuracy **above 95%** using 2nd-order Butterworth active filters (LPF: 400Hz, HPF: 3.2kHz).</li>
+              <li>Secure a sharp filter attenuation rate of **-40 dB/dec** in compliance with 2nd-order slopes.</li>
+              <li>Design a non-inverting gain stage providing linear, distortion-free amplification from 0.2x to 5.0x.</li>
+              <li>Drive an error-free 5-stage LED level meter using the LM3914.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Calculate passive component values ($R, C$) for the Sallen-Key filters, run SPICE simulations, and assemble the physical system.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Individual Design Project</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li><strong>3-Band Active Filter Derivation:</strong> Solved Sallen-Key Butterworth equations to calculate precise resistor values under a fixed capacitor constraint ($C=1\text{nF}$), obtaining $R=280\text{k}\Omega$ for LPF (400Hz) and $R_2=35\text{k}\Omega, R_1=70\text{k}\Omega$ for HPF (3.2kHz).</li>
+              <li><strong>Preamplifier & Variable Gain Circuitry:</strong> Built a variable gain stage ($A_v \le 5.0$) utilizing an OPA2134PA audio OP-AMP to scale incoming signals.</li>
+              <li><strong>LED Driver & Power Amp Integration:</strong> Calibrated the LM3914 display controllers using a reference resistor divider ($R_1=1.21\text{k}\Omega, R_2=3.83\text{k}\Omega$) to map 0~5V audio levels into smooth LED bar displays, and integrated an LM380N (2.5W) power amplifier to drive a 50mm speaker.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Audio Op-Amp IC</strong></td>
+          <td>OPA2134PA (High-performance, ultra-low distortion dual audio operational amplifier)</td>
+        </tr>
+        <tr>
+          <td><strong>Filter Topology</strong></td>
+          <td>Sallen-Key 2nd-Order Active Filter (Butterworth response profile)</td>
+        </tr>
+        <tr>
+          <td><strong>LED Level Driver</strong></td>
+          <td>LM3914 (Dot/Bar display driver with internal linear comparators)</td>
+        </tr>
+        <tr>
+          <td><strong>Power Amplifier</strong></td>
+          <td>LM380N (2.5W Mono Audio Power Amplifier)</td>
+        </tr>
+        <tr>
+          <td><strong>Speaker Unit</strong></td>
+          <td>UNISON U508B25G (8-ohm, 3W, 50mm dynamic speaker)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) Sallen-Key 2nd-Order Active Filter Mathematical Design</h4>
+        <ul class="journal-ul">
+          <li><strong>LPF (Bass Band, Cutoff 400Hz):</strong> To achieve a Butterworth profile ($Q=0.707$), we fixed $C_1=1\text{nF}$, $C_2=2\text{nF}$, yielding:
+            $$f_p = \frac{1}{2\pi R\sqrt{C_1 C_2}} = 400\text{Hz} \implies R = 280\text{k}\Omega$$
+          </li>
+          <li><strong>HPF (Treble Band, Cutoff 3.2kHz):</strong> Solved the transfer function for $C=1\text{nF}$, resulting in:
+            $$f_p = \frac{1}{2\pi C\sqrt{R_1 R_2}} = 3.2\text{kHz} \implies R_2=35\text{k}\Omega, R_1=2R_2=70\text{k}\Omega$$
+          </li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Designing filters is like sifting sand. An LPF acts as a fine mesh, blocking large pebbles (high frequencies) and letting fine sand (low frequencies) pass, whereas an HPF holds the pebbles and lets the sand fall through.</blockquote>
+        <h4 class="journal-h4">2) Parallel Band Separation & Adder Combination (System Architecture)</h4>
+        <ul class="journal-ul">
+          <li>Signals from the condenser microphone were routed in parallel into LPF, BPF, and HPF channels after pre-amplification.</li>
+          <li>To save physical board space and bypass complex passive component matching, we implemented the BPF by subtracting the LPF and HPF signals from the original wave: **[Original - (LPF + HPF)]** using an active adder.</li>
+          <li>Each band was routed through independent potentiometers, enabling real-time volume and gain adjustments.</li>
+        </ul>
+        <h4 class="journal-h4">3) Voltage Level Calibration & Output Verification (Metrology)</h4>
+        <ul class="journal-ul">
+          <li>Calibrated the reference voltages of the LM3914 comparators to ensure the 5-stage LED bar graph (HBSR-55) reacted smoothly to 0~5V signals without noise fluctuations.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Major Challenge:</strong> "Resolving poor roll-off rates and inter-band interference using passive filters."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>Early tests using 1st-order passive RC filters resulted in blurry boundaries (e.g., around 600Hz), causing low and mid LEDs to light up simultaneously.</li>
+              <li>Resolved this by adopting **2nd-order Sallen-Key Butterworth active filters** providing a sharp **-40 dB/dec** attenuation slope.</li>
+              <li>Tuned the quality factor ($Q$) to exactly 0.707 to suppress 3-dB peaking in the passband, successfully isolating all three frequency bands.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>High-Performance 3-Band Audio Level Meter Completed:</strong>
+            <ul class="journal-ul">
+              <li>Maintained frequency errors under 3.5% for LPF (400Hz) and HPF (3.2kHz).</li>
+              <li>Secured a sharp -40 dB/dec roll-off slope to eliminate inter-band interference.</li>
+              <li>Achieved distortion-free variable gain (0.2x to 5.0x) using the OPA2134PA stage.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Filter Design and Attenuation Outcomes</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Filter Band</th>
+          <th>Design Target (Cutoff)</th>
+          <th>Measured Performance</th>
+          <th>Roll-Off / Performance Profile</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>LPF (Bass Band)</strong></td>
+          <td>400 Hz</td>
+          <td><strong>414 Hz</strong></td>
+          <td>2nd-order Sallen-Key, -40 dB/dec</td>
+        </tr>
+        <tr>
+          <td><strong>HPF (Treble Band)</strong></td>
+          <td>3200 Hz (3.2 kHz)</td>
+          <td><strong>3110 Hz</strong></td>
+          <td>2nd-order Sallen-Key, -40 dB/dec</td>
+        </tr>
+        <tr>
+          <td><strong>BPF (Mid Band)</strong></td>
+          <td>800 Hz ~ 1.6 kHz</td>
+          <td><strong>820 Hz ~ 1.62 kHz</strong></td>
+          <td>Subtractive active adder filter design</td>
+        </tr>
+        <tr>
+          <td><strong>Variable Gain</strong></td>
+          <td>0.2 ~ 5.0 V/V</td>
+          <td><strong>0.2 ~ 5.0 V/V</strong></td>
+          <td>Linear adjustment via non-inverting trim</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Learned that passive component tolerances can shift cutoff frequencies. Used **1% metal film resistors** during fabrication to secure circuit precision.</li>
+          <li>Acquired practical insight into analog signal conditioning and high-fidelity audio driver interfaces by executing physical frequency-separation layouts.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end & Quality:</strong> Parallels the technology used in front-end instrumentation of ATE (Automated Test Equipment) for high-speed telecom chips and CIS (CMOS Image Sensors), which requires capturing micro-volt signals while filtering high-frequency noise.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Applies to **designing noise-reduction active filters on load boards** or calibrating signal bias lines to evaluate high-speed chip interfaces.</li>
+              <li>A thorough understanding of multi-stage comparative logic aids in building real-time tool yield monitoring setups.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-audio-level-meter">
+          "# Design & Verification of a 3-Band Audio Level Meter with Sallen-Key Active Filters\n\nANALOG CIRCUIT / ACTIVE FILTER AUDIO LEVEL METER\n\n1) Project Overview Duration: 2025. 03. 01. ~ 2025. 06. 30. Type: Analog Active Filter Circuit Design, Audio Signal Processing, and System Fabrication Affiliation: Kwangwoon University, Dept. of Electrical Engineering (Capstone Design Project for Machine Learning in Electrical Engineering) Overview: Designed and built an analog 3-band audio level meter using active Butterworth filters to separate low, mid, and high acoustic frequencies. The system incorporates an OPA2134PA high-performance preamplifier, mathematically optimized 2nd-order Sallen-Key active filters, LM3914 LED array drivers, and an LM380N power amplifier to drive a speaker unit. 2) Background & Problem Statement Background: Audio mixers, communication nodes, and scientific instruments rely on precise frequency band separation and noise filtering to visualize real-time signal amplitudes. Problem Statement: Low-voltage analog signals from microphones are highly vulnerable to electromagnetic noise. Inadequate roll-off slopes in filters lead to inter-band interference, generating measurement errors. Additionally, we had to prevent phase distortion in high-fidelity audio signals and implement adjustable gains (0.2x to 5x) for low (below 400Hz), mid (800Hz~1.6kHz), and high (above 3.2kHz) frequency bands. 3) Project Goals Quantitative Goals: Maintain cutoff frequency ($f_c$) accuracy **above 95%** using 2nd-order Butterworth active filters (LPF: 400Hz, HPF: 3.2kHz). Secure a sharp filter attenuation rate of **-40 dB/dec** in compliance with 2nd-order slopes. Design a non-inverting gain stage providing linear, distortion-free amplification from 0.2x to 5.0x. Drive an error-free 5-stage LED level meter using the LM3914. Qualitative Goals: Calculate passive component values ($R, C$) for the Sallen-Key filters, run SPICE simulations, and assemble the physical system. 4) Engineering Methodology & Role Project Type: Individual Design Project My Role (Key Contribution): 3-Band Active Filter Derivation: Solved Sallen-Key Butterworth equations to calculate precise resistor values under a fixed capacitor constraint ($C=1\\text{nF}$), obtaining $R=280\\text{k}\\Omega$ for LPF (400Hz) and $R_2=35\\text{k}\\Omega, R_1=70\\text{k}\\Omega$ for HPF (3.2kHz). Preamplifier & Variable Gain Circuitry: Built a variable gain stage ($A_v \\le 5.0$) utilizing an OPA2134PA audio OP-AMP to scale incoming signals. LED Driver & Power Amp Integration: Calibrated the LM3914 display controllers using a reference resistor divider ($R_1=1.21\\text{k}\\Omega, R_2=3.83\\text{k}\\Omega$) to map 0~5V audio levels into smooth LED bar displays, and integrated an LM380N (2.5W) power amplifier to drive a 50mm speaker. 5) Applied Processes & Process Tools Category Technical Details Audio Op-Amp IC OPA2134PA (High-performance, ultra-low distortion dual audio operational amplifier) Filter Topology Sallen-Key 2nd-Order Active Filter (Butterworth response profile) LED Level Driver LM3914 (Dot/Bar display driver with internal linear comparators) Power Amplifier LM380N (2.5W Mono Audio Power Amplifier) Speaker Unit UNISON U508B25G (8-ohm, 3W, 50mm dynamic speaker) 6) Implementation Process 1) Sallen-Key 2nd-Order Active Filter Mathematical Design LPF (Bass Band, Cutoff 400Hz): To achieve a Butterworth profile ($Q=0.707$), we fixed $C_1=1\\text{nF}$, $C_2=2\\text{nF}$, yielding: $$f_p = \\frac{1}{2\\pi R\\sqrt{C_1 C_2}} = 400\\text{Hz} \\implies R = 280\\text{k}\\Omega$$ HPF (Treble Band, Cutoff 3.2kHz): Solved the transfer function for $C=1\\text{nF}$, resulting in: $$f_p = \\frac{1}{2\\pi C\\sqrt{R_1 R_2}} = 3.2\\text{kHz} \\implies R_2=35\\text{k}\\Omega, R_1=2R_2=70\\text{k}\\Omega$$ 💡 Analogy: Designing filters is like sifting sand. An LPF acts as a fine mesh, blocking large pebbles (high frequencies) and letting fine sand (low frequencies) pass, whereas an HPF holds the pebbles and lets the sand fall through. 2) Parallel Band Separation & Adder Combination (System Architecture) Signals from the condenser microphone were routed in parallel into LPF, BPF, and HPF channels after pre-amplification. To save physical board space and bypass complex passive component matching, we implemented the BPF by subtracting the LPF and HPF signals from the original wave: **[Original - (LPF + HPF)]** using an active adder. Each band was routed through independent potentiometers, enabling real-time volume and gain adjustments. 3) Voltage Level Calibration & Output Verification (Metrology) Calibrated the reference voltages of the LM3914 comparators to ensure the 5-stage LED bar graph (HBSR-55) reacted smoothly to 0~5V signals without noise fluctuations. 7) Key Problem-Solving Points Major Challenge: \"Resolving poor roll-off rates and inter-band interference using passive filters.\" Solution Methodology: Early tests using 1st-order passive RC filters resulted in blurry boundaries (e.g., around 600Hz), causing low and mid LEDs to light up simultaneously. Resolved this by adopting **2nd-order Sallen-Key Butterworth active filters** providing a sharp **-40 dB/dec** attenuation slope. Tuned the quality factor ($Q$) to exactly 0.707 to suppress 3-dB peaking in the passband, successfully isolating all three frequency bands. 8) Results & Achievements High-Performance 3-Band Audio Level Meter Completed: Maintained frequency errors under 3.5% for LPF (400Hz) and HPF (3.2kHz). Secured a sharp -40 dB/dec roll-off slope to eliminate inter-band interference. Achieved distortion-free variable gain (0.2x to 5.0x) using the OPA2134PA stage. Filter Design and Attenuation Outcomes Filter Band Design Target (Cutoff) Measured Performance Roll-Off / Performance Profile LPF (Bass Band) 400 Hz 414 Hz 2nd-order Sallen-Key, -40 dB/dec HPF (Treble Band) 3200 Hz (3.2 kHz) 3110 Hz 2nd-order Sallen-Key, -40 dB/dec BPF (Mid Band) 800 Hz ~ 1.6 kHz 820 Hz ~ 1.62 kHz Subtractive active adder filter design Variable Gain 0.2 ~ 5.0 V/V 0.2 ~ 5.0 V/V Linear adjustment via non-inverting trim 9) Lessons Learned Learned that passive component tolerances can shift cutoff frequencies. Used **1% metal film resistors** during fabrication to secure circuit precision. Acquired practical insight into analog signal conditioning and high-fidelity audio driver interfaces by executing physical frequency-separation layouts. 10) Connection to Back-end Engineering Roles Relevance to Back-end & Quality: Parallels the technology used in front-end instrumentation of ATE (Automated Test Equipment) for high-speed telecom chips and CIS (CMOS Image Sensors), which requires capturing micro-volt signals while filtering high-frequency noise. Practical Application in Work: Applies to **designing noise-reduction active filters on load boards** or calibrating signal bias lines to evaluate high-speed chip interfaces. A thorough understanding of multi-stage comparative logic aids in building real-time tool yield monitoring setups."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "audio-level-meter";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

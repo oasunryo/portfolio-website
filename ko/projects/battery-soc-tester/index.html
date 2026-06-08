@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation  | 오준서</title>
+<meta name="description" content="OCV-CCV 내부 임피던스 동적 오차 보상 수식을 임베디드 펌웨어 상에 적용하여 충전잔량(SOC) 측정 정밀도를 혁신한 계측 툴 개발 프로젝트입니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/projects/battery-soc-tester/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 프로젝트 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">배터리 텔레메트리 / 배터리 잔량 테스터 설계</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2024. 03. 01. ~ 2024. 06. 30.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">7분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'battery-soc-tester')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Fbattery-soc-tester%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Development%20of%20a%20Multi-Battery%20SOC%20Tester%20with%20OCV-CCV%20Dynamic%20Compensation&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Fbattery-soc-tester%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(OCV-CCV 동적 보상 알고리즘을 적용한 멀티 배터리 잔량 계측 테스터 설계 및 제작)</em></p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-0">1) 프로젝트 개요</h3>
+<ul class="journal-ul">
+<li><strong>기간</strong>: 2024. 03. 01. ~ 2024. 06. 30.</li>
+<li><strong>유형</strong>: 아날로그 회로 설계, 배터리 방전 물리 데이터 분석 및 하드웨어 디스플레이 제어</li>
+<li><strong>소속/수행 환경</strong>: 광운대학교 전기공학과 (2학년 1학기 전기공학실험 종합 설계 과제)</li>
+<li><strong>한 줄 소개</strong>: </li>
+</ul>
+<p class="journal-p">> 이 프로젝트는 1.5V AA/AAA 건전지, 9V 건전지, 3.7V 리튬 이온 배터리를 대상으로, <strong>배터리 부하 인가 시 발생하는 개방 전압(OCV)과 부하 전압(CCV)의 물리적 차이를 분석하고, 아두이노 MCU 및 인코더/디코더 IC 회로를 통해 잔량(SOC)을 5단계 및 7세그먼트로 정밀 시각화 구동한 배터리 계측 프로젝트</strong>이다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-1">2) 배경 및 문제 정의</h3>
+<ul class="journal-ul">
+<li><strong>배경</strong>: 전기차 및 모바일 스마트 디바이스 산업의 폭발적 성장으로, 배터리 내부의 남은 에너지 용량(State of Charge, SOC)을 안정적으로 실시간 예측하는 <strong>배터리 연료 게이지(Fuel Gauge) 반도체 및 잔량 계측 기술</strong>의 중요성이 날로 높아지고 있습니다.</li>
+<li><strong>문제 정의</strong>: </li>
+</ul>
+<p class="journal-p">* 배터리는 사용하지 않을 때의 개방 전압(OCV, Open Circuit Voltage)과 실제 부하 회로가 연결되어 동작할 때의 전압(CCV, Closed Circuit Voltage) 사이에 물리적인 전압 차이가 발생합니다.</p>
+<p class="journal-p">* 이는 배터리 내부의 <strong>기생 화학적 내부 저항(IR, Internal Resistance)</strong>에 의한 전압 강하 때문이며, 단순히 부하가 걸린 상태의 전압(CCV)만 측정하여 잔량을 판단하면 배터리 용량을 실제보다 과소평가하게 되는 심각한 계측 왜곡 오류가 나타납니다.</p>
+<p class="journal-p">* 이에 따라 배터리 종류별 방전 특성 곡선 데이터를 정량적으로 수집하여, <strong>OCV-CCV 편차를 수치적으로 제어 보상하는 지능형 배터리 잔량 분석기 설계</strong>가 요구되었습니다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-2">3) 목표</h3>
+<ul class="journal-ul">
+<li><strong>정량 목표</strong>: </li>
+</ul>
+<p class="journal-p">* 1.5V(알칼라인), 3.7V(리튬이온), 9V(탄소/알칼라인) 멀티 배터리 전압 인식 및 <strong>5단계 잔량 분해능</strong> 100% 확보.</p>
+<p class="journal-p">* 아두이노 시리얼 플로터를 활용한 10옴 저항 방전 조건하에서의 배터리 방전 특성 그래프 실시간 데이터 로깅(txt 파일 변환).</p>
+<p class="journal-p">* BCD 인코더/디코더 디지털 IC 회로 배치를 통한 7세그먼트(HEX) 숫자 표기 제어 및 LED 점등 매핑 정확도 100% 달성.</p>
+<ul class="journal-ul">
+<li><strong>정성 목표</strong>: </li>
+</ul>
+<p class="journal-p">* 소켓 및 Molex 커넥터를 활용한 착탈식 배터리 안착 보드 납땜 제작 및 시연 합격.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-3">4) 내 역할</h3>
+<ul class="journal-ul">
+<li><strong>프로젝트 형태</strong>: 팀 프로젝트 (인원: 3명)</li>
+<li><strong>내 역할 (주도적 기여)</strong>: </li>
+</ul>
+<p class="journal-p">* <strong>방전 실험 및 OCV-CCV 물리 특성 규명</strong>: 10옴 방전 저항을 배터리 출력단에 결합하여 방전 전류량 추이를 모니터링하고, 부하 인가 즉시 기생 내부 저항(IR)에 의해 강하되는 전압 오차값을 실측 통계 데이터로 정립.</p>
+<p class="journal-p">* <strong>디지털 로직 및 디스플레이 회로 설계</strong>: 7세그먼트 및 5단 바그래프 LED(LTA-1000HR)를 구동하기 위한 아날로그-디지털 인터페이스 설계. 특히 가산점 항목인 <strong>인코더/디코더 IC 칩</strong>을 결합하여 MCU의 디지털 I/O 핀 점유를 획기적으로 줄이는 최적화 회로 셋업.</p>
+<p class="journal-p">* <strong>SOC 판단 알고리즘 코딩</strong>: 배터리 케미컬별 방전 전압 프로파일 데이터를 아두이노 상에 데이터 매핑(Look-up Table)하여, 동적으로 SOC를 연산하고 출력하는 펌웨어 개발.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-4">5) 적용 공정 / 기술 / 도구</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>구분</th>
+  <th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>제어 코어</strong></td>
+  <td>ATmega328P MCU (아두이노 임베디드 펌웨어 설계)</td>
+</tr>
+<tr>
+  <td><strong>방전 부하</strong></td>
+  <td>10 ohm / 5W High-power Cement Resistor (방전 테스트용 기준 부하)</td>
+</tr>
+<tr>
+  <td><strong>로직 IC</strong></td>
+  <td>74LS147 BCD Encoder, 74LS47 BCD-to-7Segment Decoder</td>
+</tr>
+<tr>
+  <td><strong>디스플레이</strong></td>
+  <td>LTA-1000HR Bargraph LED, FND507 7-Segment Display, I2C LCD</td>
+</tr>
+<tr>
+  <td><strong>커넥터 배선</strong></td>
+  <td>Molex 소켓 및 착탈형 슬라이드 배터리 홀더 모듈 매핑</td>
+</tr>
+</tbody>
+</table>
+
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-5">6) 진행 과정</h3>
+<h4 class="journal-h4">1) 10옴 기준 부하 방전 실험 및 데이터 수집 (상황 & 과제)</h4>
+<ul class="journal-ul">
+<li>배터리의 화학적 용량 거동을 분석하기 위해, 10옴 시멘트 저항을 18650 셀에 연결하여 강제 방전 테스트 수행.</li>
+<li>아두이노의 10비트 ADC를 통해 1초 단위로 실시간 방전 전압 데이터를 덤프받아 PC 내부 텍스트 파일로 로깅하고 Excel을 활용해 <strong>배터리 방전 특성곡선(Discharge Profile)</strong> 도출.</li>
+</ul>
+<h4 class="journal-h4">2) 기생 내부 저항(IR)에 의한 OCV-CCV 편차 분석 (원인 분석)</h4>
+<ul class="journal-ul">
+<li>배터리가 무부하 상태(Open Circuit)일 때는 기생 저항에 전류가 흐르지 않아 완벽한 기저 전압(OCV)이 계측되나, 부하가 동작(Closed Circuit)하면 다음 옴의 법칙에 의해 셀 단자 전압이 급락함을 분석:</li>
+</ul>
+<p class="journal-p">$$V_{ccv} = V_{ocv} - I \times R_{internal}$$</p>
+<p class="journal-p">> 💡 <strong>비유 예시</strong>: 수도꼭지 밸브를 완전히 잠갔을 때는 물탱크 내부 수압(OCV)이 그대로 가득 찬 것처럼 높게 측정되지만, 물을 콸콸 틀어놓으면(부하 동작) 배관 내부 마찰(내부 저항 IR) 때문에 호스 끝에서 나오는 물의 압력(CCV)은 뚝 떨어져서 낮게 측정되는 물리 현상과 같습니다.</p>
+<h4 class="journal-h4">3) 인코더/디코더 하드웨어 연동 및 잔량 시각화 (작동 검증)</h4>
+<ul class="journal-ul">
+<li>OCV-CCV 동적 전압 보상 공식을 알고리즘에 반영하여, 부하 인가 유무와 상관없이 동일한 배터리 잔량(SOC) 수치를 도출해내는 계측 정밀도 확보.</li>
+<li>가공된 SOC 데이터를 74LS147 인코더와 74LS47 디코더 논리 IC를 통과시켜 7세그먼트와 5단 LED 바그래프에 실시간으로 표시되도록 회로 기판을 납땜 구축하여 최종 구동 성공.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-6">7) 핵심 문제 해결 포인트</h3>
+<ul class="journal-ul">
+<li><strong>가장 어려웠던 문제</strong>: "전압 측정을 위한 ADC 포트 내의 기생 임피던스 노이즈 및 접촉 단자 저항에 의한 계측 편차"</li>
+<li><strong>해결 방법</strong>: </li>
+</ul>
+<p class="journal-p">* 초기 만능 기판 브레드보드 테스트 시 배터리 슬롯 단자의 미세한 흔들림 및 접촉 면적에 따라 접촉 저항(Contact Resistance)이 변해 ADC 계측 신호가 출렁이고 SOC 수치가 요동치는 고장 현상이 발견되었습니다.</p>
+<p class="journal-p">* 이를 해결하기 위해 측정부 접촉 구조를 분리가 쉽고 접촉면이 완벽히 고정되는 <strong>Molex 소켓 및 스프링 안착식 배터리 홀더</strong>로 변경하여 물리 계계 결합 신뢰성을 높였습니다.</p>
+<p class="journal-p">* 또한 아날로그 입력단에 커패시터를 병렬 연결한 하드웨어 RC 필터를 결합하여 서지 노이즈를 1차 차단하고, 임베디드 소스 상에 <strong>이동 평균 필터(Moving Average Filter)</strong> 코드를 탑재해 최종 센싱 노이즈 변동 편차를 <strong>0.02V</strong> 이내로 완벽하게 안정화시켰습니다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-7">8) 결과 및 성과</h3>
+<ul class="journal-ul">
+<li><strong>멀티 배터리 잔량 테스터 기판 제작 완료</strong>: </li>
+</ul>
+<p class="journal-p">* OCV-CCV 동적 기생 저항 편차 상쇄 알고리즘을 통한 SOC 정확도 96% 달성.</p>
+<p class="journal-p">* 아두이노 데이터 수집을 통해 10옴 시멘트 저항 조건 방전 데이터의 완벽한 텍스트 파일 축적.</p>
+<p class="journal-p">* 74LS 계열 인코더/디코더 IC를 활용한 디지털 디스플레이 제어 완벽 구동.</p>
+<h4 class="journal-h4">배터리 테스터 계측 신뢰성 데이터</h4>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>계측 대상 배터리</th>
+  <th>기준 화학 전압</th>
+  <th>만충 판단 전압 (100% SOC)</th>
+  <th>방전 한계 전압 (0% SOC)</th>
+  <th>계측 전압 노이즈 변동폭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>AA 알칼라인 건전지</strong></td>
+  <td>1.5 V</td>
+  <td><strong>1.62 V</strong></td>
+  <td><strong>1.05 V</strong></td>
+  <td>$\pm$ 0.015 V</td>
+</tr>
+<tr>
+  <td><strong>리튬이온 18650 셀</strong></td>
+  <td>3.7 V</td>
+  <td><strong>4.20 V</strong></td>
+  <td><strong>3.00 V</strong></td>
+  <td>$\pm$ 0.020 V</td>
+</tr>
+<tr>
+  <td><strong>9V 사각 건전지</strong></td>
+  <td>9.0 V</td>
+  <td><strong>9.54 V</strong></td>
+  <td><strong>6.50 V</strong></td>
+  <td>$\pm$ 0.035 V</td>
+</tr>
+</tbody>
+</table>
+
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-8">9) 내가 배운 점</h3>
+<ul class="journal-ul">
+<li>배터리는 전압 측정 시 외부 부하 전류량과 내부 저항(IR)의 곱에 의해 유기적으로 거동하는 '동적 아날로그 물리 시스템'임을 실험 데이터를 통해 뼈저리게 체득했습니다.</li>
+<li>디지털 IC(74LS 계열)의 Logic Table을 분석하여 MCU와의 최적 인터페이스 회로를 설계해 보며, <strong>논리 게이트 조합 및 임베디드 인터페이스 제어 역량</strong>을 키웠습니다.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-9">10) 후공정 직무와의 연결점</h3>
+<ul class="journal-ul">
+<li><strong>후공정/품질/평가 직무와의 관련성</strong>: 반도체 패키징 완료 후 패키지 내부 기생 저항(IR)을 측정하여 정상 접합 유무를 가려내는 <strong>OSAT 및 소자 품질 검사 신뢰성 평가</strong> 원리와 직접 연결됩니다.</li>
+<li><strong>실무 적용 가능 업무</strong>: </li>
+</ul>
+<p class="journal-p">* OSAT 기술 부서 입사 후, <strong>패키지 핀 계면의 접합 기생 저항(IR Drop) 수치를 정밀 분석하여 패키지 결합 신뢰성을 검증</strong>하거나, 테스트 보드 하드웨어 상의 미세 저항 오차를 보정 캘리브레이션하는 품질 보증(QA) 직무에 핵심 역량으로 기여할 것입니다.</p>
+<p class="journal-p">* 디지털 디코더 하드웨어 논리 회로 분석 능력을 바탕으로 테스트 패턴 디버깅 업무에서도 빠른 적응을 보장합니다.</p>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) 프로젝트 개요</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) 배경 및 문제 정의</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) 목표</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) 내 역할</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) 적용 공정 / 기술 / 도구</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) 진행 과정</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) 핵심 문제 해결 포인트</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) 결과 및 성과</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) 내가 배운 점</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) 후공정 직무와의 연결점</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 프로젝트 둘러보기</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-battery-soc-tester">
+          "# Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation\n\n배터리 텔레메트리 / 배터리 잔량 테스터 설계\n\n(OCV-CCV 동적 보상 알고리즘을 적용한 멀티 배터리 잔량 계측 테스터 설계 및 제작) 1) 프로젝트 개요 기간: 2024. 03. 01. ~ 2024. 06. 30. 유형: 아날로그 회로 설계, 배터리 방전 물리 데이터 분석 및 하드웨어 디스플레이 제어 소속/수행 환경: 광운대학교 전기공학과 (2학년 1학기 전기공학실험 종합 설계 과제) 한 줄 소개: > 이 프로젝트는 1.5V AA/AAA 건전지, 9V 건전지, 3.7V 리튬 이온 배터리를 대상으로, 배터리 부하 인가 시 발생하는 개방 전압(OCV)과 부하 전압(CCV)의 물리적 차이를 분석하고, 아두이노 MCU 및 인코더/디코더 IC 회로를 통해 잔량(SOC)을 5단계 및 7세그먼트로 정밀 시각화 구동한 배터리 계측 프로젝트이다. 2) 배경 및 문제 정의 배경: 전기차 및 모바일 스마트 디바이스 산업의 폭발적 성장으로, 배터리 내부의 남은 에너지 용량(State of Charge, SOC)을 안정적으로 실시간 예측하는 배터리 연료 게이지(Fuel Gauge) 반도체 및 잔량 계측 기술의 중요성이 날로 높아지고 있습니다. 문제 정의: * 배터리는 사용하지 않을 때의 개방 전압(OCV, Open Circuit Voltage)과 실제 부하 회로가 연결되어 동작할 때의 전압(CCV, Closed Circuit Voltage) 사이에 물리적인 전압 차이가 발생합니다. * 이는 배터리 내부의 기생 화학적 내부 저항(IR, Internal Resistance)에 의한 전압 강하 때문이며, 단순히 부하가 걸린 상태의 전압(CCV)만 측정하여 잔량을 판단하면 배터리 용량을 실제보다 과소평가하게 되는 심각한 계측 왜곡 오류가 나타납니다. * 이에 따라 배터리 종류별 방전 특성 곡선 데이터를 정량적으로 수집하여, OCV-CCV 편차를 수치적으로 제어 보상하는 지능형 배터리 잔량 분석기 설계가 요구되었습니다. 3) 목표 정량 목표: * 1.5V(알칼라인), 3.7V(리튬이온), 9V(탄소/알칼라인) 멀티 배터리 전압 인식 및 5단계 잔량 분해능 100% 확보. * 아두이노 시리얼 플로터를 활용한 10옴 저항 방전 조건하에서의 배터리 방전 특성 그래프 실시간 데이터 로깅(txt 파일 변환). * BCD 인코더/디코더 디지털 IC 회로 배치를 통한 7세그먼트(HEX) 숫자 표기 제어 및 LED 점등 매핑 정확도 100% 달성. 정성 목표: * 소켓 및 Molex 커넥터를 활용한 착탈식 배터리 안착 보드 납땜 제작 및 시연 합격. 4) 내 역할 프로젝트 형태: 팀 프로젝트 (인원: 3명) 내 역할 (주도적 기여): * 방전 실험 및 OCV-CCV 물리 특성 규명: 10옴 방전 저항을 배터리 출력단에 결합하여 방전 전류량 추이를 모니터링하고, 부하 인가 즉시 기생 내부 저항(IR)에 의해 강하되는 전압 오차값을 실측 통계 데이터로 정립. * 디지털 로직 및 디스플레이 회로 설계: 7세그먼트 및 5단 바그래프 LED(LTA-1000HR)를 구동하기 위한 아날로그-디지털 인터페이스 설계. 특히 가산점 항목인 인코더/디코더 IC 칩을 결합하여 MCU의 디지털 I/O 핀 점유를 획기적으로 줄이는 최적화 회로 셋업. * SOC 판단 알고리즘 코딩: 배터리 케미컬별 방전 전압 프로파일 데이터를 아두이노 상에 데이터 매핑(Look-up Table)하여, 동적으로 SOC를 연산하고 출력하는 펌웨어 개발. 5) 적용 공정 / 기술 / 도구 구분 내용 제어 코어 ATmega328P MCU (아두이노 임베디드 펌웨어 설계) 방전 부하 10 ohm / 5W High-power Cement Resistor (방전 테스트용 기준 부하) 로직 IC 74LS147 BCD Encoder, 74LS47 BCD-to-7Segment Decoder 디스플레이 LTA-1000HR Bargraph LED, FND507 7-Segment Display, I2C LCD 커넥터 배선 Molex 소켓 및 착탈형 슬라이드 배터리 홀더 모듈 매핑 6) 진행 과정 1) 10옴 기준 부하 방전 실험 및 데이터 수집 (상황 & 과제) 배터리의 화학적 용량 거동을 분석하기 위해, 10옴 시멘트 저항을 18650 셀에 연결하여 강제 방전 테스트 수행. 아두이노의 10비트 ADC를 통해 1초 단위로 실시간 방전 전압 데이터를 덤프받아 PC 내부 텍스트 파일로 로깅하고 Excel을 활용해 배터리 방전 특성곡선(Discharge Profile) 도출. 2) 기생 내부 저항(IR)에 의한 OCV-CCV 편차 분석 (원인 분석) 배터리가 무부하 상태(Open Circuit)일 때는 기생 저항에 전류가 흐르지 않아 완벽한 기저 전압(OCV)이 계측되나, 부하가 동작(Closed Circuit)하면 다음 옴의 법칙에 의해 셀 단자 전압이 급락함을 분석: $$V_{ccv} = V_{ocv} - I \\times R_{internal}$$ > 💡 비유 예시: 수도꼭지 밸브를 완전히 잠갔을 때는 물탱크 내부 수압(OCV)이 그대로 가득 찬 것처럼 높게 측정되지만, 물을 콸콸 틀어놓으면(부하 동작) 배관 내부 마찰(내부 저항 IR) 때문에 호스 끝에서 나오는 물의 압력(CCV)은 뚝 떨어져서 낮게 측정되는 물리 현상과 같습니다. 3) 인코더/디코더 하드웨어 연동 및 잔량 시각화 (작동 검증) OCV-CCV 동적 전압 보상 공식을 알고리즘에 반영하여, 부하 인가 유무와 상관없이 동일한 배터리 잔량(SOC) 수치를 도출해내는 계측 정밀도 확보. 가공된 SOC 데이터를 74LS147 인코더와 74LS47 디코더 논리 IC를 통과시켜 7세그먼트와 5단 LED 바그래프에 실시간으로 표시되도록 회로 기판을 납땜 구축하여 최종 구동 성공. 7) 핵심 문제 해결 포인트 가장 어려웠던 문제: \"전압 측정을 위한 ADC 포트 내의 기생 임피던스 노이즈 및 접촉 단자 저항에 의한 계측 편차\" 해결 방법: * 초기 만능 기판 브레드보드 테스트 시 배터리 슬롯 단자의 미세한 흔들림 및 접촉 면적에 따라 접촉 저항(Contact Resistance)이 변해 ADC 계측 신호가 출렁이고 SOC 수치가 요동치는 고장 현상이 발견되었습니다. * 이를 해결하기 위해 측정부 접촉 구조를 분리가 쉽고 접촉면이 완벽히 고정되는 Molex 소켓 및 스프링 안착식 배터리 홀더로 변경하여 물리 계계 결합 신뢰성을 높였습니다. * 또한 아날로그 입력단에 커패시터를 병렬 연결한 하드웨어 RC 필터를 결합하여 서지 노이즈를 1차 차단하고, 임베디드 소스 상에 이동 평균 필터(Moving Average Filter) 코드를 탑재해 최종 센싱 노이즈 변동 편차를 0.02V 이내로 완벽하게 안정화시켰습니다. 8) 결과 및 성과 멀티 배터리 잔량 테스터 기판 제작 완료: * OCV-CCV 동적 기생 저항 편차 상쇄 알고리즘을 통한 SOC 정확도 96% 달성. * 아두이노 데이터 수집을 통해 10옴 시멘트 저항 조건 방전 데이터의 완벽한 텍스트 파일 축적. * 74LS 계열 인코더/디코더 IC를 활용한 디지털 디스플레이 제어 완벽 구동. 배터리 테스터 계측 신뢰성 데이터 계측 대상 배터리 기준 화학 전압 만충 판단 전압 (100% SOC) 방전 한계 전압 (0% SOC) 계측 전압 노이즈 변동폭 AA 알칼라인 건전지 1.5 V 1.62 V 1.05 V $\\pm$ 0.015 V 리튬이온 18650 셀 3.7 V 4.20 V 3.00 V $\\pm$ 0.020 V 9V 사각 건전지 9.0 V 9.54 V 6.50 V $\\pm$ 0.035 V 9) 내가 배운 점 배터리는 전압 측정 시 외부 부하 전류량과 내부 저항(IR)의 곱에 의해 유기적으로 거동하는 '동적 아날로그 물리 시스템'임을 실험 데이터를 통해 뼈저리게 체득했습니다. 디지털 IC(74LS 계열)의 Logic Table을 분석하여 MCU와의 최적 인터페이스 회로를 설계해 보며, 논리 게이트 조합 및 임베디드 인터페이스 제어 역량을 키웠습니다. 10) 후공정 직무와의 연결점 후공정/품질/평가 직무와의 관련성: 반도체 패키징 완료 후 패키지 내부 기생 저항(IR)을 측정하여 정상 접합 유무를 가려내는 OSAT 및 소자 품질 검사 신뢰성 평가 원리와 직접 연결됩니다. 실무 적용 가능 업무: * OSAT 기술 부서 입사 후, 패키지 핀 계면의 접합 기생 저항(IR Drop) 수치를 정밀 분석하여 패키지 결합 신뢰성을 검증하거나, 테스트 보드 하드웨어 상의 미세 저항 오차를 보정 캘리브레이션하는 품질 보증(QA) 직무에 핵심 역량으로 기여할 것입니다. * 디지털 디코더 하드웨어 논리 회로 분석 능력을 바탕으로 테스트 패턴 디버깅 업무에서도 빠른 적응을 보장합니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & 후공정","title":"Ceramic Capillary Geometry","description":"반도체 와이어 본딩 캐필러리 형상이 First Bond 불량 모드 및 접합 신뢰성에 미치는 기계적 메커니즘을 규명하고 최적 파라미터를 도출합니다."},{"slug":"packaging-test","category":"반도체 이론","title":"Packaging & Test Fundamentals","description":"WLCSP, Flip-Chip, TSV 적층 HBM 이론부터 Warpage 휨 해석 및 SI 임피던스 매칭을 다루는 후공정 종합 엔지니어링 리서치입니다."},{"slug":"fpga-verilog","category":"디지털 회로","title":"FPGA & Verilog HDL Systems","description":"Altera DE2 Cyclone II 보드 환경에서 버튼 글리치 제거용 Debouncing 및 가변 분주 BCD 카운터를 설계하여 5ns 전파 딜레이를 검증합니다."},{"slug":"euv-photoresist","category":"전공정 노광","title":"TinNO₃ EUV Photoresist","description":"나노 스케일 EUV 리소그래피 한계 극복을 위한 무기 주석 옥소 클러스터 기반 PR 감도 향상 및 건식 식각 저항 메커니즘을 탐구합니다."},{"slug":"spotfire-analytics","category":"수율 분석","title":"Spotfire Process Analytics","description":"반도체 대공정 설비 로그 데이터셋을 Spotfire 시각화 프로파일링하여 전위 및 Defect 발생 유발 파라미터 간 상관관계를 통계적으로 도출합니다."},{"slug":"ac-power-meter","category":"임베디드","title":"MCU AC Power Meter","description":"Microcontroller 기반 AC 단상 전력 측정 모듈을 구현하여 전류/전압 실시간 센싱 및 전력 계산 텔레메트리 캘리브레이션을 진행합니다."},{"slug":"audio-level-meter","category":"아날로그 회로","title":"3-Band Audio Level Meter","description":"Sallen-Key 구조 Active Filter 회로를 설계 및 검증하여 오디오 주파수 대역을 3개 밴드로 물리 분할하는 전압 증폭 검출 시스템을 개발합니다."},{"slug":"battery-charger","category":"전력 전자","title":"CC-CV Li-Ion Charger","description":"리튬이온 배터리 안전 충전을 위한 CC-CV 전력 토폴로지 제어 보드를 실장하고 ADC 센싱 정밀 리포팅 회로망을 설계 및 캘리브레이션합니다."},{"slug":"battery-soc-tester","category":"임베디드","title":"Dynamic Battery SOC Tester","description":"OCV-CCV 내부 임피던스 동적 오차 보상 수식을 임베디드 펌웨어 상에 적용하여 충전잔량(SOC) 측정 정밀도를 혁신한 계측 툴 개발 프로젝트입니다."}];
+            const currentSlug = "battery-soc-tester";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

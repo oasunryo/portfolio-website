@@ -6,21 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyHandlers();
   initBlogSearch();
   initCarousel();
-  checkProjectQueryParam();
   initTocHighlight();
 });
-
-// Deep-link to project detail from query parameter
-function checkProjectQueryParam() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const projectId = urlParams.get('project');
-  if (projectId) {
-    // Wait a brief moment for projectsData.js/prose to be ready
-    setTimeout(() => {
-      openProjectDetail(parseInt(projectId, 10));
-    }, 100);
-  }
-}
 
 // Carousel Ticker/Controller (Gallery4 Style)
 function initCarousel() {
@@ -388,90 +375,6 @@ function initBlogSearch() {
   // Initial render
   renderPage();
 }
-
-// 5. Side Peek Detail View (Design Tab)
-function openProjectDetail(projectId) {
-  const overlay = document.getElementById('project-peek-overlay');
-  const panel = document.getElementById('project-peek-panel');
-  const body = document.getElementById('project-detail-body');
-
-  if (!overlay || !panel || !body) return;
-
-  // Check if projectProseData is available
-  if (typeof projectProseData === 'undefined') {
-    console.error('projectProseData is not loaded. Make sure projectsData.js is loaded.');
-    body.innerHTML = '<p>데이터를 로드하는 중 오류가 발생했습니다.</p>';
-    return;
-  }
-
-  const lang = document.documentElement.lang || 'ko';
-  const langGroup = projectProseData[lang] || projectProseData.ko;
-  const project = langGroup[projectId];
-  
-  if (!project) {
-    body.innerHTML = lang === 'en' 
-      ? '<p>Project detail report not found.</p>' 
-      : '<p>해당 프로젝트 상세 리포트를 찾을 수 없습니다.</p>';
-    return;
-  }
-
-  const dateLabel = lang === 'en' ? 'Duration:' : '진행 기간:';
-
-  // Format content
-  const contentHtml = `
-    <header style="margin-bottom: 2rem;">
-      <div style="font-size: 0.9rem; color: var(--text-tertiary); text-transform: uppercase; margin-bottom: 0.5rem;">
-        ${project.meta}
-      </div>
-      <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.5rem; color: var(--text-primary);">
-        ${project.title}
-      </h1>
-      <div style="font-size: 0.85rem; color: var(--text-secondary);">
-        ${dateLabel} ${project.date}
-      </div>
-    </header>
-    <div>
-      ${project.prose}
-    </div>
-  `;
-
-  body.innerHTML = contentHtml;
-
-  // Reset scroll pos
-  body.scrollTop = 0;
-
-  // Open overlay & panel
-  overlay.classList.add('open');
-  panel.classList.add('open');
-  document.documentElement.classList.add('modal-open');
-  document.body.classList.add('modal-open');
-
-  // Trigger MathJax rendering
-  if (window.MathJax && typeof window.MathJax.typesetPromise === 'function') {
-    window.MathJax.typesetPromise([body]).catch(err => console.error('MathJax typeset error:', err));
-  }
-  
-  // Re-run lucide icons if they exist in prose
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-}
-
-function closeProjectDetail() {
-  const overlay = document.getElementById('project-peek-overlay');
-  const panel = document.getElementById('project-peek-panel');
-  
-  if (overlay && panel) {
-    overlay.classList.remove('open');
-    panel.classList.remove('open');
-  }
-  document.documentElement.classList.remove('modal-open');
-  document.body.classList.remove('modal-open');
-}
-
-// Make functions global for inline events
-window.openProjectDetail = openProjectDetail;
-window.closeProjectDetail = closeProjectDetail;
 
 // AI Dropdown controls
 function toggleAiDropdown(event) {

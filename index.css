@@ -326,6 +326,13 @@ h2.section-title {
   underline-offset: 4px;
 }
 
+.item-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
 .status-badge {
   font-size: 0.75rem;
   font-weight: 500;
@@ -1686,10 +1693,10 @@ html.dark pre .function { color: #60a5fa; }
 /* Article meta row layout */
 .article-meta-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -1720,7 +1727,7 @@ html.dark pre .function { color: #60a5fa; }
 .ai-dropdown-menu {
   display: none;
   position: absolute;
-  right: 0;
+  left: 0;
   top: 110%;
   z-index: 100;
   min-width: 14rem;

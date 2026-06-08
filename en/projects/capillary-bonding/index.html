@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Effect of Ceramic Capillary Geometry on 1st Bond Morphology and Strength in Wire Bonding  | Junseo Oh</title>
+<meta name="description" content="Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/capillary-bonding/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Effect of Ceramic Capillary Geometry on 1st Bond Morphology and Strength in Wire Bonding</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">SEMICONDUCTOR / WIRE BONDING CAPILLARY RELIABILITY</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 05. 01. ~ 2026. 05. 18.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'capillary-bonding')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fcapillary-bonding%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Effect%20of%20Ceramic%20Capillary%20Geometry%20on%201st%20Bond%20Morphology%20and%20Strength%20in%20Wire%20Bonding&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fcapillary-bonding%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2026. 05. 01. ~ 2026. 05. 18.</li>
+          <li><strong>Type:</strong> Technical Seminar & Process Variable Optimization Analysis</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Engineering (Senior Seminar / Prep course for Amkor Packaging & Test Engineer)</li>
+          <li><strong>Overview:</strong> Analyzed the physical mechanisms by which <strong>ceramic capillary micro-dimensions impact 1st bond (ball bond) defects and joint reliability</strong> under ultra-fine pitch (50μm) boundaries, establishing an optimal parameter balance.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <p class="journal-p">As chip geometries scale down under 0.13μm, package pad pitches have shrunk to fine-pitch limits of 50μm. In this environment, even minor lateral ball squeeze or decentering causes short-circuits with neighboring pads. Conventional troubleshooting relies on adjusting energy recipes (Force/Ultrasonic Power), but without optimizing the structural geometry of the capillary tool, fundamental failure modes remain unresolved.</p>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative:</strong> Maximize pull strength to achieve a 99% normal wire break rate at Point C, and ensure a 0% adjacent pad short-circuit rate via Mashed Ball Diameter (MBD) control.</li>
+          <li><strong>Qualitative:</strong> Define physical correlation between capillary geometric parameters (IHD, ICAD, ICBA) and mechanical failures to establish standard design tolerances.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <p class="journal-p">Conducted statistical data extraction based on academic research (Cao et al., Micromachines 2020) and formulated mechanical interpretations of stress concentration at the gold wire neck. Developed CAD schemas and presented wire loop and ball bonding morphologic analysis during the technical OSAT seminar.</p>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like baking cookies, if the baking mold (capillary geometry) is distorted, adjusting the oven temperature (process parameters) will never yield a perfect shape.</blockquote>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Process/Tech</strong></td>
+          <td>Thermosonic Wire Bonding (Intermetallic joint via heat, pressure & ultrasonic energy)</td>
+        </tr>
+        <tr>
+          <td><strong>Tools</strong></td>
+          <td>KAIJO Bonder FB-988 (Process mechanism analysis) / OriginPro statistical suites</td>
+        </tr>
+        <tr>
+          <td><strong>Key Variables</strong></td>
+          <td><strong>IHD</strong> (Inner Hole Diameter), <strong>ICAD</strong> (Inside Chamfer Diameter), <strong>ICBA</strong> (Inside Chamfer Angle)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) Literature Review & Base Modeling (Week 1)</h4>
+        <ul class="journal-ul">
+          <li>Conducted theoretical review on capillary tip dimensions and formulated baseline physical modeling parameters using the gold wire diameter (25μm) as a standard.</li>
+          <li>Analyzed the mechanisms of Free Air Ball (FAB) formation and established process margins between capillary inner geometry and wire thickness.</li>
+        </ul>
+        <h4 class="journal-h4">2) Cause Hypothesis Setting (Core Defect-Variable Causal Mechanics)</h4>
+        <ul class="journal-ul">
+          <li><strong>Hypothesis 1:</strong> A narrow Inner Hole Diameter (IHD) will maximize friction between the hole wall and wire, focusing stress concentration on the wire neck and reducing bond strength.</li>
+          <li><strong>Hypothesis 2:</strong> A narrow Inside Chamfer Diameter (ICAD) will cause the FAB volume to overflow past the internal chamfer bounds, causing adjacent pad short-circuits.</li>
+          <li><strong>Hypothesis 3:</strong> An excessively wide Inside Chamfer Angle (ICBA) will lead to over-deformation of the ball laterally under load, increasing shear strength but violating fine-pitch margin limits.</li>
+        </ul>
+        <h4 class="journal-h4">3) Analysis & Data Verification (Statistical Proof)</h4>
+        <ul class="journal-ul">
+          <li><strong>IHD Analysis:</strong> Confirmed that an IHD of 26μm (too small) caused wire neck breakage due to severe friction. Conversely, an IHD of 41μm (too large) caused wire wobbling and degraded vertical alignment. Proven via statistical data that a ratio of <strong>1.3 times the wire diameter (33μm)</strong> provides the optimal balance.</li>
+          <li><strong>ICAD Analysis:</strong> Captured SEM micrographs revealing ball overflow when ICAD was 51μm. Deduced that an ICAD of 76μm distributes the pressure too widely, reducing the bonded interface and causing a 26% drop in shear strength. Established <strong>64μm</strong> as the optimal threshold.</li>
+          <li><strong>ICBA Analysis:</strong> Proven that an ICBA of 70° causes eccentric ball anomalies due to sharp gradients. An ICBA of 120° provides high shear strength but causes excessive radial squeezing, violating fine-pitch pad margins. Proven that <strong>100°</strong> represents the optimal trade-off limit.</li>
+        </ul>
+        <h4 class="journal-h4">4) Verification & Final Conclusion</h4>
+        <ul class="journal-ul">
+          <li>Demonstrated that under the geometrically optimized condition <strong>(IHD 33μm, ICAD 64μm, ICBA 100°)</strong>, wire pull strength is maximized to <strong>11.26g</strong>, achieving a normal break behavior rate (break at wire main body / Point C) of over 99%.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Core Dilemma Resolved:</strong> Resolving the paradox of whether high shear strength values always signify a safe, robust process window.</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>Statistical data indicated that a 120° chamfer angle (ICBA) yielded the highest shear strength.</li>
+              <li>However, applying this in ultra-fine pitch (50μm) packaging environments led to excessive Mashed Ball Diameter (MBD), causing catastrophic adjacent pad short-circuits.</li>
+              <li>Hence, instead of maximizing a single mechanical metric, we analyzed the engineering trade-offs between mechanical strength and process short margins, establishing <strong>100°</strong> as the process standard.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Optimal Process Design Standards Established:</strong>
+            <ul class="journal-ul">
+              <li><strong>IHD 33μm (1.3x wire diameter):</strong> Guarantees a 99% normal C-break rate and optimal pull strength of 11.26g (deviation causes up to a 76% drop in pull strength).</li>
+              <li><strong>ICAD 64μm:</strong> Prevents ball overflow and shear strength degradation.</li>
+              <li><strong>ICBA 100°:</strong> Secures an optimal safety window separating eccentric ball anomalies and adjacent short-circuits.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Performance Outcome Summary</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Evaluation Metric</th>
+          <th>Sub-optimal Specifications</th>
+          <th>Optimal Specification</th>
+          <th>Improvement Outcome / Failure Mode</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Pull Test C-Break Rate</strong></td>
+          <td>19% (IHD 26μm)</td>
+          <td><strong>99%</strong></td>
+          <td>Prevents neck-broken and joint lift defects</td>
+        </tr>
+        <tr>
+          <td><strong>Pull Strength</strong></td>
+          <td>~ 7.4 g</td>
+          <td><strong>11.26 g</strong></td>
+          <td>&gt; 50% increase in mechanical durability</td>
+        </tr>
+        <tr>
+          <td><strong>Shear Strength</strong></td>
+          <td>48.7 g (ICAD 76μm)</td>
+          <td><strong>66.2 g</strong></td>
+          <td>26% increase in interfacial adhesion</td>
+        </tr>
+        <tr>
+          <td><strong>Short Circuit Risk</strong></td>
+          <td>High (ICBA 120°)</td>
+          <td><strong>0% (Safe Margin)</strong></td>
+          <td>MBD perfectly controlled within 50μm pad limits</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Deeply realized through statistical data and physical proof that "even if process parameters are adjusted continuously, if the core capillary tool geometry itself is mismatching, fundamental physical defects cannot be resolved."</li>
+          <li>Learned to balance isolated performance metrics with overall layout margins, cultivating a holistic engineering perspective.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end Operations:</strong> Wire bonding remains a fundamental process determining reliability in conventional as well as advanced packaging.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Applies directly to tool optimization engineering, validating process margins and preventing short-circuits when introducing new fine wire dimensions at world-class OSAT firms.</li>
+              <li>Leverages data-driven failure analysis and SEM inspection expertise to contribute immediately to QA and Yield enhancement departments.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-10">11) Attachments</h3>
+        <ul class="journal-ul">
+          <li><strong>Figure 1:</strong> Detailed structural drawings of the three key capillary geometric parameters (IHD, ICAD, ICBA)</li>
+          <li><strong>Figure 2:</strong> Comparative SEM micrographs of ball morphology and ball overflow shorts according to chamfer angles (ICBA)</li>
+          <li><strong>Table 1:</strong> Pull/Shear test data distribution graphs according to capillary geometric design conditions</li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li><li class="toc-item toc-indent"><a href="#toc-heading-10" class="toc-link" data-heading-id="toc-heading-10">11) Attachments</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-capillary-bonding">
+          "# Effect of Ceramic Capillary Geometry on 1st Bond Morphology and Strength in Wire Bonding\n\nSEMICONDUCTOR / WIRE BONDING CAPILLARY RELIABILITY\n\n1) Project Overview Duration: 2026. 05. 01. ~ 2026. 05. 18. Type: Technical Seminar & Process Variable Optimization Analysis Affiliation: Kwangwoon University, Dept. of Electronic Engineering (Senior Seminar / Prep course for Amkor Packaging & Test Engineer) Overview: Analyzed the physical mechanisms by which ceramic capillary micro-dimensions impact 1st bond (ball bond) defects and joint reliability under ultra-fine pitch (50μm) boundaries, establishing an optimal parameter balance. 2) Background & Problem Statement As chip geometries scale down under 0.13μm, package pad pitches have shrunk to fine-pitch limits of 50μm. In this environment, even minor lateral ball squeeze or decentering causes short-circuits with neighboring pads. Conventional troubleshooting relies on adjusting energy recipes (Force/Ultrasonic Power), but without optimizing the structural geometry of the capillary tool, fundamental failure modes remain unresolved. 3) Project Goals Quantitative: Maximize pull strength to achieve a 99% normal wire break rate at Point C, and ensure a 0% adjacent pad short-circuit rate via Mashed Ball Diameter (MBD) control. Qualitative: Define physical correlation between capillary geometric parameters (IHD, ICAD, ICBA) and mechanical failures to establish standard design tolerances. 4) Engineering Methodology & Role Conducted statistical data extraction based on academic research (Cao et al., Micromachines 2020) and formulated mechanical interpretations of stress concentration at the gold wire neck. Developed CAD schemas and presented wire loop and ball bonding morphologic analysis during the technical OSAT seminar. 💡 Analogy: Like baking cookies, if the baking mold (capillary geometry) is distorted, adjusting the oven temperature (process parameters) will never yield a perfect shape. 5) Applied Processes & Process Tools Category Technical Details Process/Tech Thermosonic Wire Bonding (Intermetallic joint via heat, pressure & ultrasonic energy) Tools KAIJO Bonder FB-988 (Process mechanism analysis) / OriginPro statistical suites Key Variables IHD (Inner Hole Diameter), ICAD (Inside Chamfer Diameter), ICBA (Inside Chamfer Angle) 6) Implementation Process 1) Literature Review & Base Modeling (Week 1) Conducted theoretical review on capillary tip dimensions and formulated baseline physical modeling parameters using the gold wire diameter (25μm) as a standard. Analyzed the mechanisms of Free Air Ball (FAB) formation and established process margins between capillary inner geometry and wire thickness. 2) Cause Hypothesis Setting (Core Defect-Variable Causal Mechanics) Hypothesis 1: A narrow Inner Hole Diameter (IHD) will maximize friction between the hole wall and wire, focusing stress concentration on the wire neck and reducing bond strength. Hypothesis 2: A narrow Inside Chamfer Diameter (ICAD) will cause the FAB volume to overflow past the internal chamfer bounds, causing adjacent pad short-circuits. Hypothesis 3: An excessively wide Inside Chamfer Angle (ICBA) will lead to over-deformation of the ball laterally under load, increasing shear strength but violating fine-pitch margin limits. 3) Analysis & Data Verification (Statistical Proof) IHD Analysis: Confirmed that an IHD of 26μm (too small) caused wire neck breakage due to severe friction. Conversely, an IHD of 41μm (too large) caused wire wobbling and degraded vertical alignment. Proven via statistical data that a ratio of 1.3 times the wire diameter (33μm) provides the optimal balance. ICAD Analysis: Captured SEM micrographs revealing ball overflow when ICAD was 51μm. Deduced that an ICAD of 76μm distributes the pressure too widely, reducing the bonded interface and causing a 26% drop in shear strength. Established 64μm as the optimal threshold. ICBA Analysis: Proven that an ICBA of 70° causes eccentric ball anomalies due to sharp gradients. An ICBA of 120° provides high shear strength but causes excessive radial squeezing, violating fine-pitch pad margins. Proven that 100° represents the optimal trade-off limit. 4) Verification & Final Conclusion Demonstrated that under the geometrically optimized condition (IHD 33μm, ICAD 64μm, ICBA 100°), wire pull strength is maximized to 11.26g, achieving a normal break behavior rate (break at wire main body / Point C) of over 99%. 7) Key Problem-Solving Points Core Dilemma Resolved: Resolving the paradox of whether high shear strength values always signify a safe, robust process window. Solution Methodology: Statistical data indicated that a 120° chamfer angle (ICBA) yielded the highest shear strength. However, applying this in ultra-fine pitch (50μm) packaging environments led to excessive Mashed Ball Diameter (MBD), causing catastrophic adjacent pad short-circuits. Hence, instead of maximizing a single mechanical metric, we analyzed the engineering trade-offs between mechanical strength and process short margins, establishing 100° as the process standard. 8) Results & Achievements Optimal Process Design Standards Established: IHD 33μm (1.3x wire diameter): Guarantees a 99% normal C-break rate and optimal pull strength of 11.26g (deviation causes up to a 76% drop in pull strength). ICAD 64μm: Prevents ball overflow and shear strength degradation. ICBA 100°: Secures an optimal safety window separating eccentric ball anomalies and adjacent short-circuits. Performance Outcome Summary Evaluation Metric Sub-optimal Specifications Optimal Specification Improvement Outcome / Failure Mode Pull Test C-Break Rate 19% (IHD 26μm) 99% Prevents neck-broken and joint lift defects Pull Strength ~ 7.4 g 11.26 g &gt; 50% increase in mechanical durability Shear Strength 48.7 g (ICAD 76μm) 66.2 g 26% increase in interfacial adhesion Short Circuit Risk High (ICBA 120°) 0% (Safe Margin) MBD perfectly controlled within 50μm pad limits 9) Lessons Learned Deeply realized through statistical data and physical proof that \"even if process parameters are adjusted continuously, if the core capillary tool geometry itself is mismatching, fundamental physical defects cannot be resolved.\" Learned to balance isolated performance metrics with overall layout margins, cultivating a holistic engineering perspective. 10) Connection to Back-end Engineering Roles Relevance to Back-end Operations: Wire bonding remains a fundamental process determining reliability in conventional as well as advanced packaging. Practical Application in Work: Applies directly to tool optimization engineering, validating process margins and preventing short-circuits when introducing new fine wire dimensions at world-class OSAT firms. Leverages data-driven failure analysis and SEM inspection expertise to contribute immediately to QA and Yield enhancement departments. 11) Attachments Figure 1: Detailed structural drawings of the three key capillary geometric parameters (IHD, ICAD, ICBA) Figure 2: Comparative SEM micrographs of ball morphology and ball overflow shorts according to chamfer angles (ICBA) Table 1: Pull/Shear test data distribution graphs according to capillary geometric design conditions"
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "capillary-bonding";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

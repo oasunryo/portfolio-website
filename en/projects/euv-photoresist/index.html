@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>TinNO₃: Next-Gen EUV Photoresist Innovation by Integrating Photoactive Nitrate Anion  | Junseo Oh</title>
+<meta name="description" content="Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/euv-photoresist/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">TinNO₃: Next-Gen EUV Photoresist Innovation by Integrating Photoactive Nitrate Anion</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">NEXT-GEN LITHOGRAPHY / EUV INORGANIC PHOTORESIST</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2025. 11. 17. ~ 2025. 12. 04.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">6 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'euv-photoresist')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Feuv-photoresist%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=TinNO%E2%82%83%3A%20Next-Gen%20EUV%20Photoresist%20Innovation%20by%20Integrating%20Photoactive%20Nitrate%20Anion&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Feuv-photoresist%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2025. 11. 17. ~ 2025. 12. 04.</li>
+          <li><strong>Type:</strong> Next-Gen Semiconductor Lithography/Etch Materials Analysis & Device Reliability Seminar</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Engineering (Academic Seminar on Advanced Electrical Engineering)</li>
+          <li><strong>Overview:</strong> Quantitatively analyzed and presented the capabilities of `TinNO₃` (a next-generation inorganic tin oxo cluster photoresist integrating photoactive nitrate anions) in extreme ultraviolet (EUV) sensitivity, post-exposure bake (PEB) reliability, fine pattern resolution, and dry etching resistance to overcome nano-lithography limits.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> As semiconductor manufacturing scales below 10nm nodes, implementing Extreme Ultraviolet (EUV) lithography with a short 13.5nm wavelength is mandatory.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Conventional organic photoresists (PR) suffer from low light absorption under highly energetic EUV photons (92 eV) and induce significant shot noise, making uniform exposure difficult.</li>
+              <li>Additionally, wet development leads to <strong>pattern collapse</strong> in fine structures, while random acid diffusion in chemically amplified resists (CARs) causes severe Line Edge Roughness (LER).</li>
+              <li>While inorganic tin oxo clusters emerged as candidates, materials like `TinOH` suffer from thermal sensitivity drift during post-exposure bake (PEB), demanding a highly stable alternative.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Achieve an EUV sensitivity of <strong>32 mJ/cm²</strong> or below, overcoming the low sensitivity of existing inorganic PRs (a 3x improvement).</li>
+              <li>Secure a dry etch selectivity of <strong>13.2:1</strong> against amorphous carbon layers (ACL) to overcome wet processing limitations.</li>
+              <li>Restrict LER variation below <strong>8nm</strong> for 140nm line CD patterns.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Elucidate the photochemical activation mechanisms of the nitrate anion and establish why it provides robust physical and chemical stability under EUV exposure.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Individual Project (Academic seminar analysis and presentation)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li>Analyzed state-of-the-art research published in Applied Surface Science (IF 6.9, CiteScore 13.4) to prove the four core process advantages of `TinNO₃` (EUV sensitivity, PEB reliability, LER precision, and etch resistance).</li>
+              <li>Evaluated etch selectivity variations across heterogeneous thin films based on spectroscopic ellipsometry, field-emission scanning electron microscopy (FE-SEM), and atomic force microscopy (AFM).</li>
+              <li>Established a physical linkage showing how improving front-end EUV photoresist resolution increases the alignment margins for fine-pitch bumps and pads during back-end packaging.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>EUV exposure tools</strong></td>
+          <td>ASML XT1250D (Comparative analysis of 193nm ArF dry vs. 13.5nm EUV lithography)</td>
+        </tr>
+        <tr>
+          <td><strong>Metrology equipment</strong></td>
+          <td>FE-SEM (Field Emission Scanning Electron Microscopy), AFM (Atomic Force Microscope)</td>
+        </tr>
+        <tr>
+          <td><strong>Thin film measurement</strong></td>
+          <td>Ellipsometry (Refractive index and thin-film thickness analysis using polarization)</td>
+        </tr>
+        <tr>
+          <td><strong>Etching systems</strong></td>
+          <td>ICP (Inductively Coupled Plasma) Dry Etcher using a mixture of $Cl_2$ and $Ar$ gases</td>
+        </tr>
+        <tr>
+          <td><strong>Key materials</strong></td>
+          <td><strong>TinNO₃</strong> (Inorganic tin oxo cluster + photoactive nitrate anion), BARC (Bottom Anti-Reflective Coating)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) EUV Photosensitivity & Process Behavior (Core Achievement 1)</h4>
+        <ul class="journal-ul">
+          <li>Evaluated contrast curves under PLS-II beamline conditions to analyze the minimum dose required for pattern definition.</li>
+          <li>`TinNO₃` displayed an excellent sensitivity of <strong>32 mJ/cm²</strong>, which is <strong>3.25 times faster</strong> than existing inorganic PR `TinTos` (104 mJ/cm²) and 156% better than the industry baseline (50 mJ/cm²), promising dramatic wafer throughput improvements.</li>
+        </ul>
+        <h4 class="journal-h4">2) PEB (Post-Exposure Bake) Reliability Assessment (Core Achievement 2)</h4>
+        <ul class="journal-ul">
+          <li>Existing `TinOH` resists showed thermal sensitivity drift (time dependence) when PEB temperatures fluctuated (90°C ➔ 110°C ➔ 130°C).</li>
+          <li>In contrast, ellipsometry thickness profiles proved that `TinNO₃` with stable nitrate anion binding maintained uniform sensitivity across temperature variations.</li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like replacing a machine whose performance fluctuates with weather changes with an ultra-precision sensor that maintains 100% accuracy in extreme temperatures from the South Pole to the Sahara.</blockquote>
+        <h4 class="journal-h4">3) Fine L/S Pattern Resolution & LER Optimization (Core Achievement 3)</h4>
+        <ul class="journal-ul">
+          <li>Applied Bottom Anti-Reflective Coating (BARC) to block harmful reflections returning from the substrate.</li>
+          <li>Proven by AFM/SEM, the LER (roughness making lines look like centipede legs) for a 140nm line CD decreased dramatically from 16.9nm to <strong>7.87nm</strong>.</li>
+          <li>For an ultra-fine 84nm L/S pattern, it recorded an LER of 10.68nm, verifying the feasibility of implementing **45nm ultra-fine circuit pitches**.</li>
+        </ul>
+        <h4 class="journal-h4">4) ICP Dry Etch Resistance & Selectivity Verification (Core Achievement 4)</h4>
+        <ul class="journal-ul">
+          <li>Applied <strong>ICP dry etching</strong> to bypass pattern undercut and resolution degradation common in wet etching.</li>
+          <li>During Si layer etching, `TinNO₃` demonstrated a high selectivity of <strong>3.1:1</strong>, vastly outperforming organic PR (0.4:1).</li>
+          <li>Against amorphous carbon hardmasks (ACL), it achieved a remarkable selectivity of <strong>13.2:1</strong>, maintaining a stable etch barrier even under bias DC voltage fluctuations.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Unifying Front-End (EUV) & Back-End (Packaging) Synergies:</strong>
+            <ul class="journal-ul">
+              <li>Elucidated that LER defects not only compromise transistor performance in the front-end, but also shrink the alignment tolerance (misalignment margin) of fine-pitch bumps and pads during back-end assembly, directly <strong>harming packaging yields</strong>.</li>
+              <li>Severe LER distorts the pad shape, leading to uneven bump contacts and subsequent solder cracking.</li>
+              <li>Showed that the **LER reduction (16.9nm to 7.87nm) by `TinNO₃` doubles the interface bonding reliability margin**, establishing a unique, comprehensive engineering insight.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Validated Four Key Strengths of Next-Gen EUV PR:</strong>
+            <ul class="journal-ul">
+              <li><strong>Sensitivity:</strong> 32 mJ/cm² (3.25x improvement over TinTos, maximizing productivity).</li>
+              <li><strong>Process Stability:</strong> Negligible sensitivity drift across PEB temperature variations.</li>
+              <li><strong>Resolution:</strong> 45nm fine circuit capabilities with a 53% reduction in LER.</li>
+              <li><strong>Dry Etch Resistance:</strong> Selectivity of 3.1:1 for Si and 13.2:1 for ACL.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Photoresist Process Comparison Summary</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Conventional Organic / Inorganic (TinTos)</th>
+          <th>Next-Gen TinNO₃</th>
+          <th>Remarks / Process Comparison</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>EUV Photosensitivity</strong></td>
+          <td>104 mJ/cm² (TinTos)</td>
+          <td><strong>32 mJ/cm²</strong></td>
+          <td>3.25x faster (dramatically boosts throughput)</td>
+        </tr>
+        <tr>
+          <td><strong>PEB Sensitivity Drift</strong></td>
+          <td>High (temperature dependent)</td>
+          <td><strong>Stable (No shift)</strong></td>
+          <td>Resists external thermal stress</td>
+        </tr>
+        <tr>
+          <td><strong>Line Edge Roughness (LER)</strong></td>
+          <td>16.9 nm</td>
+          <td><strong>7.87 nm</strong></td>
+          <td>53% improvement (prevents short-circuits)</td>
+        </tr>
+        <tr>
+          <td><strong>Si Etch Selectivity</strong></td>
+          <td>0.4 : 1 (Organic PR)</td>
+          <td><strong>3.1 : 1</strong></td>
+          <td>7x higher chemical resistance</td>
+        </tr>
+        <tr>
+          <td><strong>ACL Hardmask Selectivity</strong></td>
+          <td>Low</td>
+          <td><strong>13.2 : 1</strong></td>
+          <td>Provides perfect barrier during deep etching</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Understood that ultra-fine nodes require not only advanced lithography machines but also **materials-level innovations (inorganic tin clusters and anion engineering)** working in harmony.</li>
+          <li>Internalized the physical measurement principles of metrology tools (AFM, FE-SEM, Ellipsometry) to objectively evaluate the reliability of engineering datasets.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end & Quality:</strong> As front-end line pitches scale down to 45nm, BGA substrate design rules (Line & Space margins) must achieve extreme precision.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>In OSAT and packaging QA (Quality Assurance) roles, this expertise applies directly to **using FE-SEM and AFM for cross-sectional micro-roughness evaluations** to analyze substrate defects.</li>
+              <li>A thorough understanding of lithography margins will enable smooth technical communication with front-end foundries to coordinate substrate specifications.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-euv-photoresist">
+          "# TinNO₃: Next-Gen EUV Photoresist Innovation by Integrating Photoactive Nitrate Anion\n\nNEXT-GEN LITHOGRAPHY / EUV INORGANIC PHOTORESIST\n\n1) Project Overview Duration: 2025. 11. 17. ~ 2025. 12. 04. Type: Next-Gen Semiconductor Lithography/Etch Materials Analysis & Device Reliability Seminar Affiliation: Kwangwoon University, Dept. of Electronic Engineering (Academic Seminar on Advanced Electrical Engineering) Overview: Quantitatively analyzed and presented the capabilities of `TinNO₃` (a next-generation inorganic tin oxo cluster photoresist integrating photoactive nitrate anions) in extreme ultraviolet (EUV) sensitivity, post-exposure bake (PEB) reliability, fine pattern resolution, and dry etching resistance to overcome nano-lithography limits. 2) Background & Problem Statement Background: As semiconductor manufacturing scales below 10nm nodes, implementing Extreme Ultraviolet (EUV) lithography with a short 13.5nm wavelength is mandatory. Problem Statement: Conventional organic photoresists (PR) suffer from low light absorption under highly energetic EUV photons (92 eV) and induce significant shot noise, making uniform exposure difficult. Additionally, wet development leads to pattern collapse in fine structures, while random acid diffusion in chemically amplified resists (CARs) causes severe Line Edge Roughness (LER). While inorganic tin oxo clusters emerged as candidates, materials like `TinOH` suffer from thermal sensitivity drift during post-exposure bake (PEB), demanding a highly stable alternative. 3) Project Goals Quantitative Goals: Achieve an EUV sensitivity of 32 mJ/cm² or below, overcoming the low sensitivity of existing inorganic PRs (a 3x improvement). Secure a dry etch selectivity of 13.2:1 against amorphous carbon layers (ACL) to overcome wet processing limitations. Restrict LER variation below 8nm for 140nm line CD patterns. Qualitative Goals: Elucidate the photochemical activation mechanisms of the nitrate anion and establish why it provides robust physical and chemical stability under EUV exposure. 4) Engineering Methodology & Role Project Type: Individual Project (Academic seminar analysis and presentation) My Role (Key Contribution): Analyzed state-of-the-art research published in Applied Surface Science (IF 6.9, CiteScore 13.4) to prove the four core process advantages of `TinNO₃` (EUV sensitivity, PEB reliability, LER precision, and etch resistance). Evaluated etch selectivity variations across heterogeneous thin films based on spectroscopic ellipsometry, field-emission scanning electron microscopy (FE-SEM), and atomic force microscopy (AFM). Established a physical linkage showing how improving front-end EUV photoresist resolution increases the alignment margins for fine-pitch bumps and pads during back-end packaging. 5) Applied Processes & Process Tools Category Technical Details EUV exposure tools ASML XT1250D (Comparative analysis of 193nm ArF dry vs. 13.5nm EUV lithography) Metrology equipment FE-SEM (Field Emission Scanning Electron Microscopy), AFM (Atomic Force Microscope) Thin film measurement Ellipsometry (Refractive index and thin-film thickness analysis using polarization) Etching systems ICP (Inductively Coupled Plasma) Dry Etcher using a mixture of $Cl_2$ and $Ar$ gases Key materials TinNO₃ (Inorganic tin oxo cluster + photoactive nitrate anion), BARC (Bottom Anti-Reflective Coating) 6) Implementation Process 1) EUV Photosensitivity & Process Behavior (Core Achievement 1) Evaluated contrast curves under PLS-II beamline conditions to analyze the minimum dose required for pattern definition. `TinNO₃` displayed an excellent sensitivity of 32 mJ/cm², which is 3.25 times faster than existing inorganic PR `TinTos` (104 mJ/cm²) and 156% better than the industry baseline (50 mJ/cm²), promising dramatic wafer throughput improvements. 2) PEB (Post-Exposure Bake) Reliability Assessment (Core Achievement 2) Existing `TinOH` resists showed thermal sensitivity drift (time dependence) when PEB temperatures fluctuated (90°C ➔ 110°C ➔ 130°C). In contrast, ellipsometry thickness profiles proved that `TinNO₃` with stable nitrate anion binding maintained uniform sensitivity across temperature variations. 💡 Analogy: Like replacing a machine whose performance fluctuates with weather changes with an ultra-precision sensor that maintains 100% accuracy in extreme temperatures from the South Pole to the Sahara. 3) Fine L/S Pattern Resolution & LER Optimization (Core Achievement 3) Applied Bottom Anti-Reflective Coating (BARC) to block harmful reflections returning from the substrate. Proven by AFM/SEM, the LER (roughness making lines look like centipede legs) for a 140nm line CD decreased dramatically from 16.9nm to 7.87nm. For an ultra-fine 84nm L/S pattern, it recorded an LER of 10.68nm, verifying the feasibility of implementing **45nm ultra-fine circuit pitches**. 4) ICP Dry Etch Resistance & Selectivity Verification (Core Achievement 4) Applied ICP dry etching to bypass pattern undercut and resolution degradation common in wet etching. During Si layer etching, `TinNO₃` demonstrated a high selectivity of 3.1:1, vastly outperforming organic PR (0.4:1). Against amorphous carbon hardmasks (ACL), it achieved a remarkable selectivity of 13.2:1, maintaining a stable etch barrier even under bias DC voltage fluctuations. 7) Key Problem-Solving Points Unifying Front-End (EUV) & Back-End (Packaging) Synergies: Elucidated that LER defects not only compromise transistor performance in the front-end, but also shrink the alignment tolerance (misalignment margin) of fine-pitch bumps and pads during back-end assembly, directly harming packaging yields. Severe LER distorts the pad shape, leading to uneven bump contacts and subsequent solder cracking. Showed that the **LER reduction (16.9nm to 7.87nm) by `TinNO₃` doubles the interface bonding reliability margin**, establishing a unique, comprehensive engineering insight. 8) Results & Achievements Validated Four Key Strengths of Next-Gen EUV PR: Sensitivity: 32 mJ/cm² (3.25x improvement over TinTos, maximizing productivity). Process Stability: Negligible sensitivity drift across PEB temperature variations. Resolution: 45nm fine circuit capabilities with a 53% reduction in LER. Dry Etch Resistance: Selectivity of 3.1:1 for Si and 13.2:1 for ACL. Photoresist Process Comparison Summary Metric Conventional Organic / Inorganic (TinTos) Next-Gen TinNO₃ Remarks / Process Comparison EUV Photosensitivity 104 mJ/cm² (TinTos) 32 mJ/cm² 3.25x faster (dramatically boosts throughput) PEB Sensitivity Drift High (temperature dependent) Stable (No shift) Resists external thermal stress Line Edge Roughness (LER) 16.9 nm 7.87 nm 53% improvement (prevents short-circuits) Si Etch Selectivity 0.4 : 1 (Organic PR) 3.1 : 1 7x higher chemical resistance ACL Hardmask Selectivity Low 13.2 : 1 Provides perfect barrier during deep etching 9) Lessons Learned Understood that ultra-fine nodes require not only advanced lithography machines but also **materials-level innovations (inorganic tin clusters and anion engineering)** working in harmony. Internalized the physical measurement principles of metrology tools (AFM, FE-SEM, Ellipsometry) to objectively evaluate the reliability of engineering datasets. 10) Connection to Back-end Engineering Roles Relevance to Back-end & Quality: As front-end line pitches scale down to 45nm, BGA substrate design rules (Line & Space margins) must achieve extreme precision. Practical Application in Work: In OSAT and packaging QA (Quality Assurance) roles, this expertise applies directly to **using FE-SEM and AFM for cross-sectional micro-roughness evaluations** to analyze substrate defects. A thorough understanding of lithography margins will enable smooth technical communication with front-end foundries to coordinate substrate specifications."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "euv-photoresist";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

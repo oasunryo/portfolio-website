@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Design & Verification of a Smart CC-CV Li-Ion Battery Charger with Precision Telemetry  | Junseo Oh</title>
+<meta name="description" content="Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/battery-charger/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Design & Verification of a Smart CC-CV Li-Ion Battery Charger with Precision Telemetry</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">POWER CONTROL / SMART LI-ION CHARGER DESIGN</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2024. 09. 01. ~ 2024. 12. 31.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'battery-charger')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fbattery-charger%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Design%20%26%20Verification%20of%20a%20Smart%20CC-CV%20Li-Ion%20Battery%20Charger%20with%20Precision%20Telemetry&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fbattery-charger%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2024. 09. 01. ~ 2024. 12. 31.</li>
+          <li><strong>Type:</strong> Analog/Digital Mixed-Signal Power Conversion Design, MCU control, and Real-time Telemetry</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electrical Engineering (Comprehensive Design Course for AC and Electronic Circuits)</li>
+          <li><strong>Overview:</strong> Designed and assembled a smart 3.7V single-cell Li-ion battery charger (18650 format, &ge; 500mAh) featuring a buck-converter topology and a CC-CV (Constant Current - Constant Voltage) charging algorithm. Integrated a real-time analog sensing telemetry network controlled by an ATmega328P MCU to log charging curves via serial communication.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> The rapid expansion of EVs and portable electronics demands intelligent power management ICs (PMIC) and Battery Management Systems (BMS) to ensure reliability and prevent thermal runaway.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Li-ion cells must be charged in Constant Current (CC) mode initially, switching to Constant Voltage (CV) at 4.2V. Overcharging beyond 4.2V triggers thermal runaway and catastrophic explosions, requiring fail-safe cutoff controls.</li>
+              <li>Additionally, we had to minimize telemetry measurement errors caused by insertion loss and <strong>IR drop</strong> across the shunt resistor, and maintain a stable charging bias under volatile input power fluctuations (5~14VDC).</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Achieve 99% accuracy in **CC-to-CV transition and 4.2V cutoff control** for a single 18650 cell.</li>
+              <li>Restrict maximum charging current strictly below **0.5C (250mA)** to prolong battery health.</li>
+              <li>Record voltage/current parameters at 1-second intervals, maintaining errors within 3.5% (precision to 2 decimal places).</li>
+              <li>Achieve a DC-DC Buck converter efficiency **above 85%**.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Implement serial communication logging, solder prototype boards, and demonstrate safe charging executions.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Team Project (3 members)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li><strong>CC-CV Power Loop Design:</strong> Designed the charging baseboard using dedicated Li-ion management IC feedback loops to scale 5VDC inputs and execute CC-to-CV transitions.</li>
+              <li><strong>Precision Telemetry Network:</strong> Configured a low-side current sensing network using a shunt resistor and differential amplifier stage, reading voltages and currents via MCU ADC ports.</li>
+              <li><strong>Embedded Firmware & Calibration:</strong> Developed serial-logging software storing metrics into `.txt` formats, integrating mathematical offset calibrations to eliminate measurement errors.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Charge Control</strong></td>
+          <td>Li-ion CC-CV charging circuitry and LED status interfaces</td>
+        </tr>
+        <tr>
+          <td><strong>Control Core</strong></td>
+          <td>ATmega328P MCU (Telemetry firmware and serial communications)</td>
+        </tr>
+        <tr>
+          <td><strong>Power Conversion</strong></td>
+          <td>High-efficiency DC-DC Buck Converter (designed for > 85% conversion efficiency)</td>
+        </tr>
+        <tr>
+          <td><strong>Wiring / Enclosure</strong></td>
+          <td>Molex C5264RB series socket connections and standardized battery slots</td>
+        </tr>
+        <tr>
+          <td><strong>Metrology</strong></td>
+          <td>Shunt Resistor & OP-AMP Differential Amplifier (2-decimal precision calibration)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) CC-CV Staged Charging Control Design</h4>
+        <ul class="journal-ul">
+          <li>Below 4.2V, the cell is charged under a Constant Current (CC) profile at 0.5C (250mA) to prevent anode plating.</li>
+          <li>Upon hitting 4.2V, the system switches to Constant Voltage (CV) mode, reducing charging current. Once current drops below 10mA, the MCU trips a safety relay to isolate the cell.</li>
+        </ul>
+        <h4 class="journal-h4">2) Tracking IR Drop Measurement Distortions (Root Cause Analysis)</h4>
+        <ul class="journal-ul">
+          <li>Detected early charging cutoffs caused by parasitic contact resistance. The resulting **IR drop** across the shunt resistor artificially inflated the measured cell voltage, deceiving the MCU.</li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> If there is debris (parasitic resistance) inside a water pipe, turning the tap on high creates high back-pressure. The flow meter (MCU) mistakenly assumes the tank is full and shuts the valve early.</blockquote>
+        <h4 class="journal-h4">3) Software Calibration & Telemetry Logging</h4>
+        <ul class="journal-ul">
+          <li>Programmed a calibration factor ($V_{actual} = V_{measured} - I \times R_{parasitic}$) in the firmware to dynamically subtract parasitic voltage drops in real time.</li>
+          <li>Achieved perfect alignment with handheld digital multimeters down to two decimal places, logging data smoothly into `.txt` logs.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Major Challenge:</strong> "Preventing overcharge explosions and maximizing efficiency under volatile inputs (5~14VDC)."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>Using linear regulators (LDO) would waste power (efficiency &lt; 50%) and risk thermal runaway, which could dump high voltages directly into the cell.</li>
+              <li>We integrated a **switching Buck converter** to step down inputs, combined with LC filters to suppress switching ripples and block voltage surges.</li>
+              <li>Engineered a redundant protection loop in the firmware using MCU analog comparators, ensuring charge voltages clamped at exactly 4.2V despite wide input voltage swings.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Fail-Safe Smart CC-CV Charger Completed:</strong>
+            <ul class="journal-ul">
+              <li>Achieved a peak conversion efficiency of 87.2% across a 5V ~ 14V input range.</li>
+              <li>Calibrated telemetry logging to 1-second intervals with errors under 3.0%.</li>
+              <li>Enforced safe C-rate charging and automatic cutoff configurations meeting JEDEC/MIT specifications.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Battery Charger Performance Outcomes</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Evaluation Metric</th>
+          <th>Design Target</th>
+          <th>Achieved Performance</th>
+          <th>Remarks / Debugging Outcome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Charge Voltage Accuracy</strong></td>
+          <td>4.2V $\pm$ 0.1V</td>
+          <td><strong>4.204 V</strong></td>
+          <td>Zero overcharge defect (Redundant isolation loop)</td>
+        </tr>
+        <tr>
+          <td><strong>Max Charging Current (0.5C)</strong></td>
+          <td>&lt; 250 mA</td>
+          <td><strong>242 mA (CC Mode)</strong></td>
+          <td>Preserves cell lifecycle via current limits</td>
+        </tr>
+        <tr>
+          <td><strong>Measurement Precision</strong></td>
+          <td>2 decimal places</td>
+          <td><strong>2 decimal places</strong></td>
+          <td>IR-drop offset cancellation algorithm integrated</td>
+        </tr>
+        <tr>
+          <td><strong>Power Conversion Efficiency</strong></td>
+          <td>&gt; 85.0%</td>
+          <td><strong>87.2% (Buck)</strong></td>
+          <td>Maintains high efficiency across 5~14V inputs</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Understood that when charging chemical cells, parasitic resistances and thermal stresses must be quantitatively evaluated to secure system health.</li>
+          <li>Acquired experience in component matching and datasheet analysis by building Buck converter stages.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to PMIC & Test:</strong> Directly matches the engineering principles of **PMIC (Power Management IC) wafer/package testing**, which requires evaluating CC-CV behaviors, transition times, and efficiency profiles.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Applies to **setting up test load boards to evaluate PMIC package characteristics** or calibrating high-current measurement telemetry.</li>
+              <li>Buck converter design skills translate to analyzing Power Integrity (PI) behaviors in high-speed packaging.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-battery-charger">
+          "# Design & Verification of a Smart CC-CV Li-Ion Battery Charger with Precision Telemetry\n\nPOWER CONTROL / SMART LI-ION CHARGER DESIGN\n\n1) Project Overview Duration: 2024. 09. 01. ~ 2024. 12. 31. Type: Analog/Digital Mixed-Signal Power Conversion Design, MCU control, and Real-time Telemetry Affiliation: Kwangwoon University, Dept. of Electrical Engineering (Comprehensive Design Course for AC and Electronic Circuits) Overview: Designed and assembled a smart 3.7V single-cell Li-ion battery charger (18650 format, &ge; 500mAh) featuring a buck-converter topology and a CC-CV (Constant Current - Constant Voltage) charging algorithm. Integrated a real-time analog sensing telemetry network controlled by an ATmega328P MCU to log charging curves via serial communication. 2) Background & Problem Statement Background: The rapid expansion of EVs and portable electronics demands intelligent power management ICs (PMIC) and Battery Management Systems (BMS) to ensure reliability and prevent thermal runaway. Problem Statement: Li-ion cells must be charged in Constant Current (CC) mode initially, switching to Constant Voltage (CV) at 4.2V. Overcharging beyond 4.2V triggers thermal runaway and catastrophic explosions, requiring fail-safe cutoff controls. Additionally, we had to minimize telemetry measurement errors caused by insertion loss and IR drop across the shunt resistor, and maintain a stable charging bias under volatile input power fluctuations (5~14VDC). 3) Project Goals Quantitative Goals: Achieve 99% accuracy in **CC-to-CV transition and 4.2V cutoff control** for a single 18650 cell. Restrict maximum charging current strictly below **0.5C (250mA)** to prolong battery health. Record voltage/current parameters at 1-second intervals, maintaining errors within 3.5% (precision to 2 decimal places). Achieve a DC-DC Buck converter efficiency **above 85%**. Qualitative Goals: Implement serial communication logging, solder prototype boards, and demonstrate safe charging executions. 4) Engineering Methodology & Role Project Type: Team Project (3 members) My Role (Key Contribution): CC-CV Power Loop Design: Designed the charging baseboard using dedicated Li-ion management IC feedback loops to scale 5VDC inputs and execute CC-to-CV transitions. Precision Telemetry Network: Configured a low-side current sensing network using a shunt resistor and differential amplifier stage, reading voltages and currents via MCU ADC ports. Embedded Firmware & Calibration: Developed serial-logging software storing metrics into `.txt` formats, integrating mathematical offset calibrations to eliminate measurement errors. 5) Applied Processes & Process Tools Category Technical Details Charge Control Li-ion CC-CV charging circuitry and LED status interfaces Control Core ATmega328P MCU (Telemetry firmware and serial communications) Power Conversion High-efficiency DC-DC Buck Converter (designed for > 85% conversion efficiency) Wiring / Enclosure Molex C5264RB series socket connections and standardized battery slots Metrology Shunt Resistor & OP-AMP Differential Amplifier (2-decimal precision calibration) 6) Implementation Process 1) CC-CV Staged Charging Control Design Below 4.2V, the cell is charged under a Constant Current (CC) profile at 0.5C (250mA) to prevent anode plating. Upon hitting 4.2V, the system switches to Constant Voltage (CV) mode, reducing charging current. Once current drops below 10mA, the MCU trips a safety relay to isolate the cell. 2) Tracking IR Drop Measurement Distortions (Root Cause Analysis) Detected early charging cutoffs caused by parasitic contact resistance. The resulting **IR drop** across the shunt resistor artificially inflated the measured cell voltage, deceiving the MCU. 💡 Analogy: If there is debris (parasitic resistance) inside a water pipe, turning the tap on high creates high back-pressure. The flow meter (MCU) mistakenly assumes the tank is full and shuts the valve early. 3) Software Calibration & Telemetry Logging Programmed a calibration factor ($V_{actual} = V_{measured} - I \\times R_{parasitic}$) in the firmware to dynamically subtract parasitic voltage drops in real time. Achieved perfect alignment with handheld digital multimeters down to two decimal places, logging data smoothly into `.txt` logs. 7) Key Problem-Solving Points Major Challenge: \"Preventing overcharge explosions and maximizing efficiency under volatile inputs (5~14VDC).\" Solution Methodology: Using linear regulators (LDO) would waste power (efficiency &lt; 50%) and risk thermal runaway, which could dump high voltages directly into the cell. We integrated a **switching Buck converter** to step down inputs, combined with LC filters to suppress switching ripples and block voltage surges. Engineered a redundant protection loop in the firmware using MCU analog comparators, ensuring charge voltages clamped at exactly 4.2V despite wide input voltage swings. 8) Results & Achievements Fail-Safe Smart CC-CV Charger Completed: Achieved a peak conversion efficiency of 87.2% across a 5V ~ 14V input range. Calibrated telemetry logging to 1-second intervals with errors under 3.0%. Enforced safe C-rate charging and automatic cutoff configurations meeting JEDEC/MIT specifications. Battery Charger Performance Outcomes Evaluation Metric Design Target Achieved Performance Remarks / Debugging Outcome Charge Voltage Accuracy 4.2V $\\pm$ 0.1V 4.204 V Zero overcharge defect (Redundant isolation loop) Max Charging Current (0.5C) &lt; 250 mA 242 mA (CC Mode) Preserves cell lifecycle via current limits Measurement Precision 2 decimal places 2 decimal places IR-drop offset cancellation algorithm integrated Power Conversion Efficiency &gt; 85.0% 87.2% (Buck) Maintains high efficiency across 5~14V inputs 9) Lessons Learned Understood that when charging chemical cells, parasitic resistances and thermal stresses must be quantitatively evaluated to secure system health. Acquired experience in component matching and datasheet analysis by building Buck converter stages. 10) Connection to Back-end Engineering Roles Relevance to PMIC & Test: Directly matches the engineering principles of **PMIC (Power Management IC) wafer/package testing**, which requires evaluating CC-CV behaviors, transition times, and efficiency profiles. Practical Application in Work: Applies to **setting up test load boards to evaluate PMIC package characteristics** or calibrating high-current measurement telemetry. Buck converter design skills translate to analyzing Power Integrity (PI) behaviors in high-speed packaging."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "battery-charger";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

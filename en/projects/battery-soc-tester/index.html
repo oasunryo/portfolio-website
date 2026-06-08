@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation  | Junseo Oh</title>
+<meta name="description" content="Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/battery-soc-tester/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">BATTERY TELEMETRY / BATTERY CAPACITY TESTER DESIGN</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2024. 03. 01. ~ 2024. 06. 30.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">4 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'battery-soc-tester')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fbattery-soc-tester%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Development%20of%20a%20Multi-Battery%20SOC%20Tester%20with%20OCV-CCV%20Dynamic%20Compensation&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fbattery-soc-tester%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2024. 03. 01. ~ 2024. 06. 30.</li>
+          <li><strong>Type:</strong> Analog Circuit Design, Battery Discharge Profiling, and Digital Display Logic Integration</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electrical Engineering (2nd Year 1st Semester Capstone Project)</li>
+          <li><strong>Overview:</strong> Designed and built a multi-battery capacity tester supporting 1.5V AA/AAA, 9V, and 3.7V Li-ion cells. Developed an OCV-CCV dynamic compensation algorithm to measure the true State of Charge (SOC) under active loads, driven via digital decoder ICs, 7-segment displays, and LED bargraphs.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> The growth of EVs and smart mobile devices highlights the need for precise State of Charge (SOC) estimation, placing significant focus on **battery fuel gauge ICs and telemetry architectures**.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Batteries exhibit a physical voltage gap between their Open Circuit Voltage (OCV, no-load) and Closed Circuit Voltage (CCV, under load).</li>
+              <li>This is caused by the battery's **internal resistance (IR)**. Evaluating capacity based solely on the raw CCV understates the true SOC.</li>
+              <li>To prevent this measurement distortion, we needed to log discharge profiles and engineer a tester that dynamically compensates for OCV-CCV deviations.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Differentiate 1.5V, 3.7V, and 9V cells, and secure **5-level SOC resolution**.</li>
+              <li>Log discharge parameters into `.txt` logs under a continuous 10-ohm load via MCU interfaces.</li>
+              <li>Integrate BCD encoder/decoder ICs to drive 7-segment and LED bar displays with 100% logic mapping accuracy.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Assemble a physical battery test board incorporating secure, swappable battery slots.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Team Project (3 members)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li><strong>Discharge Characterization:</strong> Conducted 10-ohm discharge runs to trace voltage decay profiles, establishing internal resistance (IR) models to isolate drop errors.</li>
+              <li><strong>Digital Logic & Interface Design:</strong> Built display control networks using a **74LS147 BCD Encoder** and a **74LS47 BCD-to-7Segment Decoder**, minimizing MCU pin utilization.</li>
+              <li><strong>SOC Estimation Algorithm:</strong> Coded lookup tables matching battery chemistry curves inside the ATmega328P to dynamically calculate real-time SOC levels.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Control Core</strong></td>
+          <td>ATmega328P Microcontroller (Arduino C-based firmware)</td>
+        </tr>
+        <tr>
+          <td><strong>Discharge Load</strong></td>
+          <td>10-ohm / 5W High-power Cement Resistor (standard discharge reference)</td>
+        </tr>
+        <tr>
+          <td><strong>Logic ICs</strong></td>
+          <td>74LS147 BCD Encoder, 74LS47 BCD-to-7Segment Decoder</td>
+        </tr>
+        <tr>
+          <td><strong>Visual Display</strong></td>
+          <td>LTA-1000HR Bargraph LED, FND507 7-Segment Display, I2C LCD Character Screen</td>
+        </tr>
+        <tr>
+          <td><strong>Connectors / Slots</strong></td>
+          <td>Molex wire sockets and physical slide battery holders</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) 10-ohm Reference Load Discharge Experiments</h4>
+        <ul class="journal-ul">
+          <li>Conducted continuous discharge tests on 18650 cells using 10-ohm cement resistors.</li>
+          <li>Captured voltage decay points at 1-second intervals via a 10-bit MCU ADC, outputting data to `.txt` files to trace **Discharge Profiles**.</li>
+        </ul>
+        <h4 class="journal-h4">2) Analyzing OCV-CCV Gaps via Internal Resistance (IR)</h4>
+        <ul class="journal-ul">
+          <li>While a cell displays its true potential (OCV) at rest, drawing a current ($I$) pulls down the terminal voltage (CCV) in accordance with Ohm's law:
+            $$V_{ccv} = V_{ocv} - I \times R_{internal}$$
+          </li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Measuring water pressure with the faucet closed shows full tank pressure (OCV). Turning the faucet fully open (load on) drops the measured pressure (CCV) due to pipe friction (internal resistance IR).</blockquote>
+        <h4 class="journal-h4">3) Decoder Circuit Integration & Visual Calibration</h4>
+        <ul class="journal-ul">
+          <li>Programmed dynamic OCV-CCV compensation formulas to output uniform SOC estimates whether under load or at rest.</li>
+          <li>Routed digital signals through 74LS series logic gates, showing capacity percentages on LED arrays and numeric displays.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Major Challenge:</strong> "Mitigating parasitic contact resistance and ADC impedance noise causing measurement fluctuations."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>Early breadboard configurations showed voltage swings caused by shifting contact resistances at battery contacts.</li>
+              <li>Replaced breadboard connections with **Molex sockets and fixed spring-loaded battery holders** to ensure mechanical stability.</li>
+              <li>Added RC filters to suppress high-frequency noise and programmed a **Moving Average Filter** in the MCU firmware, capping sensor noise variation within **0.02V**.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Multi-Battery Capacity Tester Completed:</strong>
+            <ul class="journal-ul">
+              <li>Achieved 96% accuracy in SOC calculations using OCV-CCV compensation.</li>
+              <li>Logged continuous discharge profiles under 10-ohm loads into standardized logs.</li>
+              <li>Successfully implemented display control architectures using 74LS logic ICs.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Battery Metrology Performance Outcomes</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Battery Under Test</th>
+          <th>Nominal Voltage</th>
+          <th>100% SOC Limit (OCV)</th>
+          <th>0% SOC Limit (CCV Limit)</th>
+          <th>Voltage Noise Deviation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>AA Alkaline Cell</strong></td>
+          <td>1.5 V</td>
+          <td><strong>1.62 V</strong></td>
+          <td><strong>1.05 V</strong></td>
+          <td>$\pm$ 0.015 V</td>
+        </tr>
+        <tr>
+          <td><strong>18650 Li-ion Cell</strong></td>
+          <td>3.7 V</td>
+          <td><strong>4.20 V</strong></td>
+          <td><strong>3.00 V</strong></td>
+          <td>$\pm$ 0.020 V</td>
+        </tr>
+        <tr>
+          <td><strong>9V Block Cell</strong></td>
+          <td>9.0 V</td>
+          <td><strong>9.54 V</strong></td>
+          <td><strong>6.50 V</strong></td>
+          <td>$\pm$ 0.035 V</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Learned that battery systems exhibit highly dynamic analog responses influenced by discharge rates and internal resistances.</li>
+          <li>Built digital interface design skills by analyzing the truth tables of 74LS series logic gates.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Quality & Inspection:</strong> Parallels the methodologies used to **verify package contact reliability and trace contact parasitic resistance (IR drop)** in OSAT quality assurance.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Applies to **analyzing contact interface resistance (IR drop) to evaluate packaged chip interconnect quality**, or calibrating test board parameters.</li>
+              <li>Logic gate debugging experience enables rapid adaptation to ATE test pattern configurations.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-battery-soc-tester">
+          "# Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation\n\nBATTERY TELEMETRY / BATTERY CAPACITY TESTER DESIGN\n\n1) Project Overview Duration: 2024. 03. 01. ~ 2024. 06. 30. Type: Analog Circuit Design, Battery Discharge Profiling, and Digital Display Logic Integration Affiliation: Kwangwoon University, Dept. of Electrical Engineering (2nd Year 1st Semester Capstone Project) Overview: Designed and built a multi-battery capacity tester supporting 1.5V AA/AAA, 9V, and 3.7V Li-ion cells. Developed an OCV-CCV dynamic compensation algorithm to measure the true State of Charge (SOC) under active loads, driven via digital decoder ICs, 7-segment displays, and LED bargraphs. 2) Background & Problem Statement Background: The growth of EVs and smart mobile devices highlights the need for precise State of Charge (SOC) estimation, placing significant focus on **battery fuel gauge ICs and telemetry architectures**. Problem Statement: Batteries exhibit a physical voltage gap between their Open Circuit Voltage (OCV, no-load) and Closed Circuit Voltage (CCV, under load). This is caused by the battery's **internal resistance (IR)**. Evaluating capacity based solely on the raw CCV understates the true SOC. To prevent this measurement distortion, we needed to log discharge profiles and engineer a tester that dynamically compensates for OCV-CCV deviations. 3) Project Goals Quantitative Goals: Differentiate 1.5V, 3.7V, and 9V cells, and secure **5-level SOC resolution**. Log discharge parameters into `.txt` logs under a continuous 10-ohm load via MCU interfaces. Integrate BCD encoder/decoder ICs to drive 7-segment and LED bar displays with 100% logic mapping accuracy. Qualitative Goals: Assemble a physical battery test board incorporating secure, swappable battery slots. 4) Engineering Methodology & Role Project Type: Team Project (3 members) My Role (Key Contribution): Discharge Characterization: Conducted 10-ohm discharge runs to trace voltage decay profiles, establishing internal resistance (IR) models to isolate drop errors. Digital Logic & Interface Design: Built display control networks using a **74LS147 BCD Encoder** and a **74LS47 BCD-to-7Segment Decoder**, minimizing MCU pin utilization. SOC Estimation Algorithm: Coded lookup tables matching battery chemistry curves inside the ATmega328P to dynamically calculate real-time SOC levels. 5) Applied Processes & Process Tools Category Technical Details Control Core ATmega328P Microcontroller (Arduino C-based firmware) Discharge Load 10-ohm / 5W High-power Cement Resistor (standard discharge reference) Logic ICs 74LS147 BCD Encoder, 74LS47 BCD-to-7Segment Decoder Visual Display LTA-1000HR Bargraph LED, FND507 7-Segment Display, I2C LCD Character Screen Connectors / Slots Molex wire sockets and physical slide battery holders 6) Implementation Process 1) 10-ohm Reference Load Discharge Experiments Conducted continuous discharge tests on 18650 cells using 10-ohm cement resistors. Captured voltage decay points at 1-second intervals via a 10-bit MCU ADC, outputting data to `.txt` files to trace **Discharge Profiles**. 2) Analyzing OCV-CCV Gaps via Internal Resistance (IR) While a cell displays its true potential (OCV) at rest, drawing a current ($I$) pulls down the terminal voltage (CCV) in accordance with Ohm's law: $$V_{ccv} = V_{ocv} - I \\times R_{internal}$$ 💡 Analogy: Measuring water pressure with the faucet closed shows full tank pressure (OCV). Turning the faucet fully open (load on) drops the measured pressure (CCV) due to pipe friction (internal resistance IR). 3) Decoder Circuit Integration & Visual Calibration Programmed dynamic OCV-CCV compensation formulas to output uniform SOC estimates whether under load or at rest. Routed digital signals through 74LS series logic gates, showing capacity percentages on LED arrays and numeric displays. 7) Key Problem-Solving Points Major Challenge: \"Mitigating parasitic contact resistance and ADC impedance noise causing measurement fluctuations.\" Solution Methodology: Early breadboard configurations showed voltage swings caused by shifting contact resistances at battery contacts. Replaced breadboard connections with **Molex sockets and fixed spring-loaded battery holders** to ensure mechanical stability. Added RC filters to suppress high-frequency noise and programmed a **Moving Average Filter** in the MCU firmware, capping sensor noise variation within **0.02V**. 8) Results & Achievements Multi-Battery Capacity Tester Completed: Achieved 96% accuracy in SOC calculations using OCV-CCV compensation. Logged continuous discharge profiles under 10-ohm loads into standardized logs. Successfully implemented display control architectures using 74LS logic ICs. Battery Metrology Performance Outcomes Battery Under Test Nominal Voltage 100% SOC Limit (OCV) 0% SOC Limit (CCV Limit) Voltage Noise Deviation AA Alkaline Cell 1.5 V 1.62 V 1.05 V $\\pm$ 0.015 V 18650 Li-ion Cell 3.7 V 4.20 V 3.00 V $\\pm$ 0.020 V 9V Block Cell 9.0 V 9.54 V 6.50 V $\\pm$ 0.035 V 9) Lessons Learned Learned that battery systems exhibit highly dynamic analog responses influenced by discharge rates and internal resistances. Built digital interface design skills by analyzing the truth tables of 74LS series logic gates. 10) Connection to Back-end Engineering Roles Relevance to Quality & Inspection: Parallels the methodologies used to **verify package contact reliability and trace contact parasitic resistance (IR drop)** in OSAT quality assurance. Practical Application in Work: Applies to **analyzing contact interface resistance (IR drop) to evaluate packaged chip interconnect quality**, or calibrating test board parameters. Logic gate debugging experience enables rapid adaptation to ATE test pattern configurations."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "battery-soc-tester";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

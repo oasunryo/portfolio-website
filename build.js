@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const newBlogPosts = require('./newBlogPosts');
+const projectProseData = require('./projectsData');
 
 // Ensure output directories exist for both Korean (ko) and English (en)
 const languages = ['ko', 'en'];
@@ -26,6 +27,7 @@ const noiseTpl = fs.readFileSync(path.join(__dirname, 'templates', 'noise.html')
 const projectsMeta = [
   {
     id: 1,
+    slug: "capillary-bonding",
     initials: "01",
     image: "/assets/projects/capillary_bonding.png",
     tags: ["OSAT", "Wire-bonding", "SEM", "OriginPro"],
@@ -44,6 +46,7 @@ const projectsMeta = [
   },
   {
     id: 2,
+    slug: "packaging-test",
     initials: "02",
     image: "/assets/projects/packaging_test.png",
     tags: ["BGA", "TSV", "SI-PI", "FEM"],
@@ -62,6 +65,7 @@ const projectsMeta = [
   },
   {
     id: 3,
+    slug: "fpga-verilog",
     initials: "03",
     image: "/assets/projects/fpga_verilog.png",
     tags: ["Verilog", "ModelSim", "FPGA", "Debouncer"],
@@ -80,6 +84,7 @@ const projectsMeta = [
   },
   {
     id: 4,
+    slug: "euv-photoresist",
     initials: "04",
     image: "/assets/projects/euv_photoresist.png",
     tags: ["EUV", "Photoresist", "FE-SEM", "AFM"],
@@ -98,6 +103,7 @@ const projectsMeta = [
   },
   {
     id: 5,
+    slug: "spotfire-analytics",
     initials: "05",
     image: "/assets/projects/spotfire_analytics.png",
     tags: ["TIBCO-Spotfire", "EDA", "Stat-Analysis", "Yield"],
@@ -116,6 +122,7 @@ const projectsMeta = [
   },
   {
     id: 6,
+    slug: "ac-power-meter",
     initials: "06",
     image: "/assets/projects/ac_power_meter.png",
     tags: ["MCU", "AC-Power", "Sensing", "Hardware"],
@@ -134,6 +141,7 @@ const projectsMeta = [
   },
   {
     id: 7,
+    slug: "audio-level-meter",
     initials: "07",
     image: "/assets/projects/audio_level_meter.png",
     tags: ["Analog", "Filter-Design", "OP-AMP", "Orcad-Pspice"],
@@ -152,6 +160,7 @@ const projectsMeta = [
   },
   {
     id: 8,
+    slug: "battery-charger",
     initials: "08",
     image: "/assets/projects/battery_charger.png",
     tags: ["CC-CV", "Power-Electronics", "ADC-Sensing", "Safety-Log"],
@@ -170,6 +179,7 @@ const projectsMeta = [
   },
   {
     id: 9,
+    slug: "battery-soc-tester",
     initials: "09",
     image: "/assets/projects/battery_soc_tester.png",
     tags: ["SOC-Estimation", "OCV-CCV", "Embedded", "Calibration"],
@@ -538,7 +548,7 @@ languages.forEach(lang => {
         const imgPath = p.image.startsWith('/') ? '../' + p.image.substring(1) : p.image;
         return `
         <div class="carousel-item">
-          <a href="./projects/index.html?project=${p.id}" class="carousel-card">
+          <a href="./projects/${p.slug}/index.html" class="carousel-card">
             <img class="carousel-card-img" src="${imgPath}" alt="${trans.title}" loading="lazy">
             <div class="carousel-card-overlay"></div>
             <div class="carousel-card-content">
@@ -1021,7 +1031,8 @@ languages.forEach(lang => {
           ${locale.backToBlog}
         </a>
         <header class="article-header">
-          <div class="article-meta-row">
+          <h1 class="article-main-title">${langData.title}</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
             <div class="article-meta-info">
               <span class="article-category-badge">${post.category}</span>
               <span class="divider-pipe">•</span>
@@ -1051,7 +1062,6 @@ languages.forEach(lang => {
               </div>
             </div>
           </div>
-          <h1 class="article-main-title">${langData.title}</h1>
         </header>
         <div class="article-layout-container">
           <div class="article-body-wrapper">
@@ -1119,11 +1129,9 @@ languages.forEach(lang => {
     const readingTimeLabel = lang === 'ko' ? `${readingTime}분 분량` : `${readingTime} min read`;
     return `
     <div class="list-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" data-search-content="${cleanContent}" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
-      <div class="item-header-row">
-        <div class="item-title-badge">
-          <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
-          <span class="status-badge">${post.category}</span>
-        </div>
+      <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
+      <div class="item-meta-row" style="margin-top: 0.25rem;">
+        <span class="status-badge">${post.category}</span>
         <span class="item-date-text tabular-nums">${post.date} &middot; ${readingTimeLabel}</span>
       </div>
       <p class="item-description" style="margin-top: 0.5rem;">${trans.description}</p>
@@ -1172,7 +1180,7 @@ languages.forEach(lang => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     return `
-    <div class="design-card-item" onclick="openProjectDetail(${p.id})">
+    <a class="design-card-item" href="./${p.slug}/index.html" style="text-decoration: none; color: inherit;">
       <div class="design-card-thumbnail">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>
@@ -1183,7 +1191,7 @@ languages.forEach(lang => {
       <div class="design-card-tags">
         ${p.tags.map(tag => `<span class="design-card-tag">${tag}</span>`).join('')}
       </div>
-    </div>
+    </a>
     `;
   }).join('\n');
 
@@ -1201,30 +1209,134 @@ languages.forEach(lang => {
       ${designGridContent}
     </div>
   </div>
-  
-  <!-- Load projects data -->
-  <script src="../../projectsData.js"></script>
-  
-  <!-- CENTERED DIALOG PANEL FOR PROJECT DETAILS -->
-  <div class="side-peek-overlay" id="project-peek-overlay" onclick="closeProjectDetail()"></div>
-  <aside class="side-peek-panel" id="project-peek-panel">
-    <header class="side-peek-header">
-      <div class="modal-badge-wrapper">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <span style="font-weight: 600;">Junseo Oh Engineering Report</span>
-      </div>
-      <button class="side-peek-close-btn" onclick="closeProjectDetail()" aria-label="Close">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </header>
-    <div class="side-peek-body article-body-content" id="project-detail-body">
-      <!-- Injected dynamically -->
-    </div>
-  </aside>
   `;
 
   fs.writeFileSync(path.join(dirProjects, 'index.html'), compilePage(designIndexContent, locale.projectsTitle, locale.projectsDesc, 'projects', lang, 2));
   console.log(`Generated /${lang}/projects/index.html`);
+
+  // Generate individual project detail pages
+  projectsMeta.forEach(proj => {
+    const projDir = path.join(dirProjects, proj.slug);
+    if (!fs.existsSync(projDir)) {
+      fs.mkdirSync(projDir, { recursive: true });
+    }
+
+    const proseGroup = projectProseData[lang];
+    const projDetail = proseGroup[proj.id];
+
+    if (!projDetail) {
+      console.warn(`Project prose details not found for ID: ${proj.id}`);
+      return;
+    }
+
+    const cleanBody = projDetail.prose.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+    const mdContent = `# ${projDetail.title}\n\n${projDetail.meta}\n\n${cleanBody}`;
+    const mdJson = JSON.stringify(mdContent);
+
+    // Reading time calculation
+    const readingTime = calculateReadingTime(projDetail.prose, lang);
+    const readingTimeLabel = lang === 'ko' ? `${readingTime}분 분량` : `${readingTime} min read`;
+
+    // TOC and ID-processed content
+    const { content: processedContent, tocHtml } = generateTocAndProcessContent(projDetail.prose, lang);
+
+    // Cross-language details mapping
+    const targetOppositeLang = (lang === 'ko') ? 'en' : 'ko';
+    const oppositeLangSwitchHref = `../../${targetOppositeLang}/projects/${proj.slug}/index.html`;
+
+    const projectContent = `
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ${lang === 'ko' ? '← 프로젝트 목록으로' : '← Back to Projects list'}
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">${projDetail.title}</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">${projDetail.meta}</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">${projDetail.date || ''}</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">${readingTimeLabel}</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="${locale.shareTooltip}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>${locale.shareAndCopy}</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, '${proj.slug}')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>${locale.copyForLlm}</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://junseo.site/' + lang + '/projects/' + proj.slug + '/')}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>${locale.shareOnLinkedin}</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=${encodeURIComponent(projDetail.title)}&body=${encodeURIComponent('오준서 님의 프로젝트 레포트를 공유합니다: https://junseo.site/' + lang + '/projects/' + proj.slug + '/')}" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>${locale.sendViaEmail}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              ${processedContent}
+            </div>
+          </div>
+          ${tocHtml}
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">${lang === 'ko' ? '다른 프로젝트 둘러보기' : 'Read More Projects'}</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-${proj.slug}">
+          ${mdJson}
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = ${JSON.stringify(projectsMeta.map(p => ({
+              slug: p.slug,
+              category: p[lang].category,
+              title: p[lang].title,
+              description: p[lang].description
+            })))};
+            const currentSlug = "${proj.slug}";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => \`
+                <a href="../\${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">\${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">\${p.title}</h4>
+                  <p class="recommended-card-desc">\${p.description}</p>
+                </a>
+              \`).join('');
+            }
+          });
+        </script>
+      </article>
+    `;
+
+    fs.writeFileSync(path.join(projDir, 'index.html'), compilePage(projectContent, `${projDetail.title} ${locale.titleSuffix}`, proj[lang].description, 'projects', lang, 3, oppositeLangSwitchHref));
+    console.log(`Generated /${lang}/projects/${proj.slug}/index.html`);
+  });
 });
 
 // Sitemap Generator
@@ -1255,6 +1367,16 @@ function generateSitemap(allPosts) {
     ['ko', 'en'].forEach(lang => {
       xml += `  <url>\n`;
       xml += `    <loc>${baseUrl}/${lang}/blog/${post.slug}/index.html</loc>\n`;
+      xml += `    <changefreq>weekly</changefreq>\n`;
+      xml += `    <priority>0.6</priority>\n`;
+      xml += `  </url>\n`;
+    });
+  });
+
+  projectsMeta.forEach(proj => {
+    ['ko', 'en'].forEach(lang => {
+      xml += `  <url>\n`;
+      xml += `    <loc>${baseUrl}/${lang}/projects/${proj.slug}/index.html</loc>\n`;
       xml += `    <changefreq>weekly</changefreq>\n`;
       xml += `    <priority>0.6</priority>\n`;
       xml += `  </url>\n`;

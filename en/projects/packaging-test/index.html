@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Semiconductor Packaging & Test Engineering Fundamentals Integration  | Junseo Oh</title>
+<meta name="description" content="Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/packaging-test/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Semiconductor Packaging & Test Engineering Fundamentals Integration</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">SEMICONDUCTOR / PACKAGING & TEST THEORY INTEGRATION</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 04. 01. ~</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">6 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'packaging-test')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fpackaging-test%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Semiconductor%20Packaging%20%26%20Test%20Engineering%20Fundamentals%20Integration&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fpackaging-test%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2026. 04. 01. ~ In Progress</li>
+          <li><strong>Type:</strong> Technical Book Analysis & Core Process Technology Systematization Project</li>
+          <li><strong>Affiliation/Environment:</strong> Private Research & Professional Theory Enhancement Project (Recommended Reading: <em>Introduction to Semiconductor Packaging and Test</em>)</li>
+          <li><strong>Overview:</strong> Systematically researched back-end semiconductor packaging and test methodologies, from test equipment operation processes to conventional/wafer-level packaging (WLCSP), next-generation stacking technologies (TSV/SiP), and computer simulations (thermal, structural, electrical analysis), establishing a solid theoretical foundation as a junior engineer.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> The back-end packaging and testing phase is a critical step in semiconductor manufacturing. It divides the fabricated wafer into individual chips, protects them, and establishes electrical connections to the external environment, ultimately determining the final product yield.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>In undergraduate courses, it is difficult to acquire in-depth practical knowledge regarding back-end packaging, test equipment, and reliability evaluation.</li>
+              <li>Furthermore, complex physical phenomena such as thermal/structural warpage caused by heterogeneous material bonding or high-speed signal integrity degradation cannot be effectively resolved for design optimization through simple rote memorization.</li>
+              <li>Therefore, by combining professional textbooks used by industry engineers with market trend analysis, this project was designed to cultivate a robust engineering foundation (phenomenon identification ➔ root cause analysis ➔ solution derivation).</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Completely master key chapters (totaling 280 pages) over 14 days and compile daily keyword reports.</li>
+              <li>Achieve a 100% technical completion and summary rate across <strong>seven major domains</strong>, including test processes, package classification, structural analysis, and reliability evaluation.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Beyond conceptual understanding, acquire the professional capability to explain the physical mechanisms of failure modes (e.g., routing optimization via Pad Swap, package-level repair using e-Fuse) at each process step.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Individual Project (14-day study roadmap and technical analysis notes compilation)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li>Compared, analyzed, and summarized complex structures and tables (Conventional vs. WLCSP, SoC vs. SiP) from the perspective of core job competencies.</li>
+              <li>Integrated physical models and mathematical equations of electrical/thermal analysis techniques (SI, PI, EMI, and thermal resistance $R_{j-a}$) with undergraduate-level knowledge (electromagnetics, mechanics of materials).</li>
+              <li>Traced the process paths of visual figures (probe cards, fan-in/fan-out, bump structures) to maximize understanding of real-world manufacturing flows.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <p class="journal-p">List of actual semiconductor back-end processes, tools, and technologies systematized through academic research:</p>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Semiconductor Test</strong></td>
+          <td>Probe Card (Cantilever, Vertical), Burn-In Test (TDBI), Laser/e-Fuse Repair</td>
+        </tr>
+        <tr>
+          <td><strong>Package Classification</strong></td>
+          <td>Conventional (Leadframe, Substrate BGA), WLCSP (Fan-In, Fan-Out, RDL First)</td>
+        </tr>
+        <tr>
+          <td><strong>Interconnect Technology</strong></td>
+          <td>Flip-Chip bonding, Capillary Stud Bump, ACF, Copper Pillar Bump, TSV (Via-Middle)</td>
+        </tr>
+        <tr>
+          <td><strong>Stacking & Package Structure</strong></td>
+          <td>TMV (Through Mold Via), PoP, HBM (X1024), 2.5D/3D SiP, Silicon Interposer</td>
+        </tr>
+        <tr>
+          <td><strong>Simulation & Analysis</strong></td>
+          <td>FEM (Finite Element Method), Structural (Warpage, Solder Joint Reliability), Thermal/Electrical (SI/PI/EMI)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) Week 1: Semiconductor Test Infrastructure & Packaging Classification Systematization</h4>
+        <ul class="journal-ul">
+          <li><strong>Test & Repair Mechanisms:</strong> Analyzed probe card operations and lifetime extension mechanisms enabling wafer-level testing. Specifically studied the <strong>e-Fuse Repair</strong> mechanism, which disconnects and restores circuits without exposing wires even after packaging, along with high current/voltage reduction principles.</li>
+          <li><strong>Production System Analysis:</strong> Categorized the pros/cons and business strategies of memory-oriented high-volume, low-variety production (focusing on process efficiency and cost reduction) versus foundry/OSAT-centric low-volume, high-variety production (focusing on customer delivery and high-value-added products).</li>
+        </ul>
+        <h4 class="journal-h4">2) Week 2: Mastering Next-Gen Packaging (WLCSP) & Stacking (TSV) Technologies</h4>
+        <ul class="journal-ul">
+          <li><strong>Fan-In vs. Fan-Out:</strong> Identified physical vulnerabilities in Fan-In packaging, where the chip size equals the package size, and verified the advantages of the Fan-Out reallocation method. Explored the rise of <strong>RDL First</strong> technology to prevent misalignment caused by molding fluid flow.</li>
+          <li><strong>Interconnect Innovation (Flip-Chip & TSV):</strong> Analyzed flip-chip bump technology that overcomes the physical length limitations of wire bonding. Investigated copper pillar bumps that dramatically reduce pitch intervals, and researched the <strong>TSV-based stacking structure (X1024)</strong> enabling high-speed transmission of 1024-bit signals simultaneously in High Bandwidth Memory (HBM).</li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Rather than sending data through a 2-lane road (wire bonding), constructing a 1024-lane ultra-wide highway (TSV HBM) allows a massive volume of data to flow rapidly without congestion.</blockquote>
+        <h4 class="journal-h4">3) Week 3: Reliability Analysis & Physical Limits Breakthrough</h4>
+        <ul class="journal-ul">
+          <li><strong>Warpage & Solder Joint Reliability:</strong> Evaluated warpage behavior in heterogeneous materials arising from the differences in Coefficient of Thermal Expansion (CTE) between silicon chips and substrates. Analyzed the failure mechanisms of solder joints subjected to complex stresses of planar shear and axial tensile forces.</li>
+          <li><strong>Electrical & Thermal Analysis (SI/PI/EMI):</strong> Derived factors of signal propagation distortion (time delay, crosstalk, skew, reflection, jitter) in high-frequency packages and the importance of solder/PCB impedance matching (termination). Understood PI analysis flows for placing decoupling capacitors to stabilize impedance.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Core Job Analysis:</strong> "Understanding the complex organic correlation between chip design and package design, and resolving process challenges via Pad Swap."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>Discovered that idealized routing during standalone chip design could lead to critical packaging assembly failures, such as capillary tool entry blockage or crosstalk.</li>
+              <li>Analyzed the importance of <strong>Pad Swap</strong> technology, which rearranges contact coordinates on the chip edge to prevent routing entanglement on the substrate. Systematized mutual optimization protocols to secure both process feasibility and electrical stability (SI) simultaneously.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Back-end Job Portfolio Foundation Established:</strong>
+            <ul class="journal-ul">
+              <li>Completed the 14-day study roadmap without delay, compiling a comprehensive technical compendium and reading notes.</li>
+              <li>Formulated cross-reference correlation tables matching causes, impacts, and solutions for each process instead of simple definitions.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Core Analysis Domain Summary</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Process/Analysis Domain</th>
+          <th>Key Failure Mode</th>
+          <th>Engineering Countermeasures</th>
+          <th>Job Application Point</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Testing Process</strong></td>
+          <td>Early product failure shipment</td>
+          <td>Burn-In testing with artificial stress acceleration</td>
+          <td>Pre-screen defects to secure customer trust</td>
+        </tr>
+        <tr>
+          <td><strong>RDL Packaging</strong></td>
+          <td>Chip misalignment via molding fluid flow</td>
+          <td>Implement RDL First method</td>
+          <td>Secure ultra-fine pattern tolerances and routing designs</td>
+        </tr>
+        <tr>
+          <td><strong>Physical Structural Analysis</strong></td>
+          <td>Warpage from CTE mismatch</td>
+          <td>FEM-based thermal deformation computer simulation</td>
+          <td>Optimize EMC thickness and substrate material properties</td>
+        </tr>
+        <tr>
+          <td><strong>Electrical Analysis (SI)</strong></td>
+          <td>Signal reflection from impedance mismatch</td>
+          <td>Termination resistance matching and minimizing vias</td>
+          <td>Transmission line routing design for high-speed packaging</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Deeply realized through 2.5D/3D SiP and HBM technology trends that the center of semiconductor performance improvement has shifted from front-end scaling (Scale-down) to advanced back-end packaging (Advanced Packaging).</li>
+          <li>Understood the importance of an integrated engineering perspective, looking beyond isolated process conditions to connect <strong>material properties (CTE, Poisson's ratio) ➔ equipment characteristics (Capillary, Decap) ➔ electrical/structural reliability (SI, Solder Reliability)</strong>.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>During new packaging technology introduction or conventional yield improvements, this theoretical background can be immediately applied as a powerful tool for <strong>process troubleshooting</strong>, establishing hypotheses and pinpointing physical causes rapidly.</li>
+              <li>When collaborating with substrate design and device analysis departments, I will act as a <strong>multidisciplinary collaborative engineer</strong> who accurately understands and communicates package design rules, dimensions, and line/space margins.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-packaging-test">
+          "# Semiconductor Packaging & Test Engineering Fundamentals Integration\n\nSEMICONDUCTOR / PACKAGING & TEST THEORY INTEGRATION\n\n1) Project Overview Duration: 2026. 04. 01. ~ In Progress Type: Technical Book Analysis & Core Process Technology Systematization Project Affiliation/Environment: Private Research & Professional Theory Enhancement Project (Recommended Reading: Introduction to Semiconductor Packaging and Test) Overview: Systematically researched back-end semiconductor packaging and test methodologies, from test equipment operation processes to conventional/wafer-level packaging (WLCSP), next-generation stacking technologies (TSV/SiP), and computer simulations (thermal, structural, electrical analysis), establishing a solid theoretical foundation as a junior engineer. 2) Background & Problem Statement Background: The back-end packaging and testing phase is a critical step in semiconductor manufacturing. It divides the fabricated wafer into individual chips, protects them, and establishes electrical connections to the external environment, ultimately determining the final product yield. Problem Statement: In undergraduate courses, it is difficult to acquire in-depth practical knowledge regarding back-end packaging, test equipment, and reliability evaluation. Furthermore, complex physical phenomena such as thermal/structural warpage caused by heterogeneous material bonding or high-speed signal integrity degradation cannot be effectively resolved for design optimization through simple rote memorization. Therefore, by combining professional textbooks used by industry engineers with market trend analysis, this project was designed to cultivate a robust engineering foundation (phenomenon identification ➔ root cause analysis ➔ solution derivation). 3) Project Goals Quantitative Goals: Completely master key chapters (totaling 280 pages) over 14 days and compile daily keyword reports. Achieve a 100% technical completion and summary rate across seven major domains, including test processes, package classification, structural analysis, and reliability evaluation. Qualitative Goals: Beyond conceptual understanding, acquire the professional capability to explain the physical mechanisms of failure modes (e.g., routing optimization via Pad Swap, package-level repair using e-Fuse) at each process step. 4) Engineering Methodology & Role Project Type: Individual Project (14-day study roadmap and technical analysis notes compilation) My Role (Key Contribution): Compared, analyzed, and summarized complex structures and tables (Conventional vs. WLCSP, SoC vs. SiP) from the perspective of core job competencies. Integrated physical models and mathematical equations of electrical/thermal analysis techniques (SI, PI, EMI, and thermal resistance $R_{j-a}$) with undergraduate-level knowledge (electromagnetics, mechanics of materials). Traced the process paths of visual figures (probe cards, fan-in/fan-out, bump structures) to maximize understanding of real-world manufacturing flows. 5) Applied Processes & Process Tools List of actual semiconductor back-end processes, tools, and technologies systematized through academic research: Category Technical Details Semiconductor Test Probe Card (Cantilever, Vertical), Burn-In Test (TDBI), Laser/e-Fuse Repair Package Classification Conventional (Leadframe, Substrate BGA), WLCSP (Fan-In, Fan-Out, RDL First) Interconnect Technology Flip-Chip bonding, Capillary Stud Bump, ACF, Copper Pillar Bump, TSV (Via-Middle) Stacking & Package Structure TMV (Through Mold Via), PoP, HBM (X1024), 2.5D/3D SiP, Silicon Interposer Simulation & Analysis FEM (Finite Element Method), Structural (Warpage, Solder Joint Reliability), Thermal/Electrical (SI/PI/EMI) 6) Implementation Process 1) Week 1: Semiconductor Test Infrastructure & Packaging Classification Systematization Test & Repair Mechanisms: Analyzed probe card operations and lifetime extension mechanisms enabling wafer-level testing. Specifically studied the e-Fuse Repair mechanism, which disconnects and restores circuits without exposing wires even after packaging, along with high current/voltage reduction principles. Production System Analysis: Categorized the pros/cons and business strategies of memory-oriented high-volume, low-variety production (focusing on process efficiency and cost reduction) versus foundry/OSAT-centric low-volume, high-variety production (focusing on customer delivery and high-value-added products). 2) Week 2: Mastering Next-Gen Packaging (WLCSP) & Stacking (TSV) Technologies Fan-In vs. Fan-Out: Identified physical vulnerabilities in Fan-In packaging, where the chip size equals the package size, and verified the advantages of the Fan-Out reallocation method. Explored the rise of RDL First technology to prevent misalignment caused by molding fluid flow. Interconnect Innovation (Flip-Chip & TSV): Analyzed flip-chip bump technology that overcomes the physical length limitations of wire bonding. Investigated copper pillar bumps that dramatically reduce pitch intervals, and researched the TSV-based stacking structure (X1024) enabling high-speed transmission of 1024-bit signals simultaneously in High Bandwidth Memory (HBM). 💡 Analogy: Rather than sending data through a 2-lane road (wire bonding), constructing a 1024-lane ultra-wide highway (TSV HBM) allows a massive volume of data to flow rapidly without congestion. 3) Week 3: Reliability Analysis & Physical Limits Breakthrough Warpage & Solder Joint Reliability: Evaluated warpage behavior in heterogeneous materials arising from the differences in Coefficient of Thermal Expansion (CTE) between silicon chips and substrates. Analyzed the failure mechanisms of solder joints subjected to complex stresses of planar shear and axial tensile forces. Electrical & Thermal Analysis (SI/PI/EMI): Derived factors of signal propagation distortion (time delay, crosstalk, skew, reflection, jitter) in high-frequency packages and the importance of solder/PCB impedance matching (termination). Understood PI analysis flows for placing decoupling capacitors to stabilize impedance. 7) Key Problem-Solving Points Core Job Analysis: \"Understanding the complex organic correlation between chip design and package design, and resolving process challenges via Pad Swap.\" Solution Methodology: Discovered that idealized routing during standalone chip design could lead to critical packaging assembly failures, such as capillary tool entry blockage or crosstalk. Analyzed the importance of Pad Swap technology, which rearranges contact coordinates on the chip edge to prevent routing entanglement on the substrate. Systematized mutual optimization protocols to secure both process feasibility and electrical stability (SI) simultaneously. 8) Results & Achievements Back-end Job Portfolio Foundation Established: Completed the 14-day study roadmap without delay, compiling a comprehensive technical compendium and reading notes. Formulated cross-reference correlation tables matching causes, impacts, and solutions for each process instead of simple definitions. Core Analysis Domain Summary Process/Analysis Domain Key Failure Mode Engineering Countermeasures Job Application Point Testing Process Early product failure shipment Burn-In testing with artificial stress acceleration Pre-screen defects to secure customer trust RDL Packaging Chip misalignment via molding fluid flow Implement RDL First method Secure ultra-fine pattern tolerances and routing designs Physical Structural Analysis Warpage from CTE mismatch FEM-based thermal deformation computer simulation Optimize EMC thickness and substrate material properties Electrical Analysis (SI) Signal reflection from impedance mismatch Termination resistance matching and minimizing vias Transmission line routing design for high-speed packaging 9) Lessons Learned Deeply realized through 2.5D/3D SiP and HBM technology trends that the center of semiconductor performance improvement has shifted from front-end scaling (Scale-down) to advanced back-end packaging (Advanced Packaging). Understood the importance of an integrated engineering perspective, looking beyond isolated process conditions to connect material properties (CTE, Poisson's ratio) ➔ equipment characteristics (Capillary, Decap) ➔ electrical/structural reliability (SI, Solder Reliability). 10) Connection to Back-end Engineering Roles Practical Application in Work: During new packaging technology introduction or conventional yield improvements, this theoretical background can be immediately applied as a powerful tool for process troubleshooting, establishing hypotheses and pinpointing physical causes rapidly. When collaborating with substrate design and device analysis departments, I will act as a multidisciplinary collaborative engineer who accurately understands and communicates package design rules, dimensions, and line/space margins."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "packaging-test";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

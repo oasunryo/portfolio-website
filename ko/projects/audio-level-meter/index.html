@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Design & Verification of a 3-Band Audio Level Meter with Active Filters  | 오준서</title>
+<meta name="description" content="Sallen-Key 구조 Active Filter 회로를 설계 및 검증하여 오디오 주파수 대역을 3개 밴드로 물리 분할하는 전압 증폭 검출 시스템을 개발합니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../en/projects/audio-level-meter/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 프로젝트 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Design & Verification of a 3-Band Audio Level Meter with Active Filters</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">아날로그 회로 / 능동 필터 오디오 레벨 미터</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2025. 03. 01. ~ 2025. 06. 30.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">8분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'audio-level-meter')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Faudio-level-meter%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Design%20%26%20Verification%20of%20a%203-Band%20Audio%20Level%20Meter%20with%20Active%20Filters&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Faudio-level-meter%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(능동 필터를 활용한 주파수 대역별 3단계 오디오 레벨 미터 및 드라이버 회로 설계)</em></p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-0">1) 프로젝트 개요</h3>
+<ul class="journal-ul">
+<li><strong>기간</strong>: 2025. 03. 01. ~ 2025. 06. 30.</li>
+<li><strong>유형</strong>: 아날로그 능동 필터(Active Filter) 회로 설계, 오디오 신호 제어 및 시스템 제작</li>
+<li><strong>소속/수행 환경</strong>: 광운대학교 전기공학과 (전기공학머신러닝실습 기말 설계 과제)</li>
+<li><strong>한 줄 소개</strong>: </li>
+</ul>
+<p class="journal-p">> 이 프로젝트는 OPA2134PA 고성능 오디오 OP-AMP를 프리앰프로 적용하고, <strong>2차 Sallen-Key Butterworth 능동 필터(LPF, HPF, BPF) 회로를 수학적으로 직접 계산 설계하여 오디오 대역을 3개로 분리한 후, LM3914 드라이버 IC와 LED 어레이 및 LM380N 파워 앰프 스피커 구동단을 통합 설계한 아날로그 신호 처리 프로젝트</strong>이다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-1">2) 배경 및 문제 정의</h3>
+<ul class="journal-ul">
+<li><strong>배경</strong>: 오디오 믹서, 통신 장비, 계측 기기 등에서는 아날로그 신호의 주파수 성분을 정확하게 분리하고 노이즈를 필터링하여 실시간 신호 강도를 시각화하는 기술이 매우 중요합니다.</li>
+<li><strong>문제 정의</strong>: </li>
+</ul>
+<p class="journal-p">* 아날로그 마이크로부터 들어오는 미세한 전압 신호는 전자기적 환경 노이즈에 매우 취약하며, 주파수 대역 분리 시 필터의 차단 특성(Roll-Off)이 날카롭지 않으면 <strong>대역 간 신호 중첩(Interference)</strong>으로 인해 레벨 계측 오차가 커집니다.</p>
+<p class="journal-p">* 또한, 고음질 오디오 신호의 전도/증폭 시 위상 왜곡을 제어해야 하며, 다양한 주파수 성분 중 저음(400Hz 이하), 중음(800Hz~1.6kHz), 고음(3.2kHz 이상)의 특정 크기에 정밀 대응하는 가변 증폭 게인(0.2배 ~ 5배)을 아날로그적으로 안정되게 구현하는 과제가 요구되었습니다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-2">3) 목표</h3>
+<ul class="journal-ul">
+<li><strong>정량 목표</strong>: </li>
+</ul>
+<p class="journal-p">* 2차 Butterworth Active 필터 설계를 통해 대역별 차단 주파수(Cutoff Frequency) 정확도 <strong>95% 이상</strong> 달성 (LPF: 400Hz, HPF: 3.2kHz).</p>
+<p class="journal-p">* 2차 필터 특성에 부합하는 <strong>-40 dB/dec</strong>의 예리한 필터 감쇠 응답(Filter Response) 확보.</p>
+<p class="journal-p">* 입력 신호를 0.2배에서 5배 크기까지 선형 왜곡 없이 가변 증폭(Gain Control)할 수 있는 비반전 증폭단 설계.</p>
+<p class="journal-p">* LM3914 칩 연동을 통한 주파수 대역별 5단계 LED 실시간 오차 없는 레벨 미터링 구현.</p>
+<ul class="journal-ul">
+<li><strong>정성 목표</strong>: </li>
+</ul>
+<p class="journal-p">* 각 밴드별 Sallen-Key 능동 필터 소자값($R$, $C$) 수학적 정밀 계산 및 회로 시뮬레이션 검증을 거친 하드웨어 제작.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-3">4) 내 역할</h3>
+<ul class="journal-ul">
+<li><strong>프로젝트 형태</strong>: 개인 설계 프로젝트</li>
+<li><strong>내 역할 (주도적 기여)</strong>: </li>
+</ul>
+<p class="journal-p">* <strong>3-Band 능동 필터 수식 설계</strong>: 2차 Sallen-Key Butterworth 고역/저역 통과 필터 설계 수식을 도출하고 커패시터($C=1\text{nF}$) 고정 하에 차단 주파수에 부합하는 정밀 저항값 계산 (LPF 400Hz ➔ $R=280\text{k}\Omega$, HPF 3.2kHz ➔ $R=35\text{k}\Omega$).</p>
+<p class="journal-p">* <strong>프리앰프 및 가변 증폭단 설계</strong>: OPA2134PA 오디오 전용 저노이즈 OP-AMP 소자를 활용하여 이득(Av) 5배의 반전/비반전 가변 증폭 회로 인터페이스 설계.</p>
+<p class="journal-p">* <strong>LED 드라이버 및 오디오 출력단 구축</strong>: LM3914 IC의 내부 비교기 전압 레퍼런스($R_1, R_2$) 설계를 통해 0~5V 오디오 입력에 따른 LED 점등 캘리브레이션 튜닝 및 LM380N(2.5W) 모노 앰프를 연동한 최종 8옴 스피커 구동단 제작.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-4">5) 적용 공정 / 기술 / 도구</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>구분</th>
+  <th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>오디오 앰프 IC</strong></td>
+  <td>OPA2134PA (고성능, 초저왜곡 8핀 Dual Audio Operational Amplifier)</td>
+</tr>
+<tr>
+  <td><strong>능동 필터 토폴로지</strong></td>
+  <td>Sallen-Key 2nd-Order Active Filter (Butterworth 특성 구현)</td>
+</tr>
+<tr>
+  <td><strong>LED 레벨 드라이버</strong></td>
+  <td>LM3914 (Dot/Bar Display Driver, 선형 전압 레벨 비교기 내장)</td>
+</tr>
+<tr>
+  <td><strong>파워 오디오 드라이버</strong></td>
+  <td>LM380N (2.5W Mono Audio Power Amplifier)</td>
+</tr>
+<tr>
+  <td><strong>스피커 유닛</strong></td>
+  <td>UNISON U508B25G (8 ohm, 3W, 직경 50mm dynamic speaker)</td>
+</tr>
+</tbody>
+</table>
+
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-5">6) 진행 과정</h3>
+<h4 class="journal-h4">1) 2차 Sallen-Key 고역 및 저역 통과 필터의 수학적 소자 매칭</h4>
+<ul class="journal-ul">
+<li><strong>LPF (저역통과필터, Cutoff 400Hz)</strong>: 2차 Butterworth 필터 특성($Q=0.707$)을 달성하기 위해, $C_1=1\text{nF}$, $C_2=2\text{nF}$로 설정하고 다음 차단 주파수 식을 기반으로 저항 설계:</li>
+</ul>
+<p class="journal-p">$$f_p = \frac{1}{2\pi R\sqrt{C_1 C_2}} = 400\text{Hz} \implies R = 280\text{k}\Omega$$</p>
+<ul class="journal-ul">
+<li><strong>HPF (고역통과필터, Cutoff 3.2kHz)</strong>: 동일 공식을 역적용하여 $C=1\text{nF}$ 기준 최적의 Butterworth 감쇠 저항값 도출:</li>
+</ul>
+<p class="journal-p">$$f_p = \frac{1}{2\pi C\sqrt{R_1 R_2}} = 3.2\text{kHz} \implies R_2=35\text{k}\Omega, R_1=2R_2=70\text{k}\Omega$$</p>
+<p class="journal-p">> 💡 <strong>비유 예시</strong>: 특정 주파수의 소리 신호만 걸러내는 필터 설계는 체에 흙을 치는 과정과 같습니다. LPF는 굵은 알갱이(고음)를 거르고 아주 미세한 모래(저음)만 통과시키는 미세한 체이고, HPF는 미세 모래(저음)를 밑으로 빠지게 만들고 큰 돌(고음)만 남기는 구조의 굵은 체와 같습니다.</p>
+<h4 class="journal-h4">2) 주파수 대역 분리 및 Adder 결합 시스템 설계 (주요 설계)</h4>
+<ul class="journal-ul">
+<li>콘덴서 마이크(CMIC-6027)를 통해 입력된 신호는 프리앰프를 거쳐 LPF, BPF, HPF의 3갈래 경로로 완벽하게 병렬 분기됨.</li>
+<li>BPF(대역통과필터)는 <strong>[원신호 - (LPF + HPF)]</strong>의 감산 연산 회로(Adder 활용) 방식을 적용하여 하드웨어 소자 오차율과 설계 공간을 획기적으로 줄이는 설계 지혜를 적용.</li>
+<li>분리된 주파수 신호들은 개별 비반전 게인 조절(Gain control) 볼륨 회로를 통과하며 스위치를 통해 앰프단으로 선별 전송되도록 시스템 설계도 완성.</li>
+</ul>
+<h4 class="journal-h4">3) 전압 레벨 캘리브레이션 및 출력 검증 (실험 및 분석)</h4>
+<ul class="journal-ul">
+<li>입력되는 아날로그 신호 세기(0~5V 범위)에 맞추어 LM3914 레벨 미터 회로의 기준 저항 $R_1=1.21\text{k}\Omega, R_2=3.83\text{k}\Omega$로 바이어스를 정밀 매핑하여 5단계 LED 어레이(HBSR-55)가 노이즈 없이 부드럽게 Bar 상태로 켜지는 것을 물리적으로 검증 완료.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-6">7) 핵심 문제 해결 포인트</h3>
+<ul class="journal-ul">
+<li><strong>가장 어려웠던 문제</strong>: "필터 통과 대역 경계면에서의 감쇄율(Roll-Off) 부족 및 인접 대역 신호 겹침 간섭"</li>
+<li><strong>해결 방법</strong>: </li>
+</ul>
+<p class="journal-p">* 초기 회로 구성 시 1차 패시브 RC 필터를 썼을 때는 경계대역(예: 600Hz 부근)에서 LPF와 BPF의 경계가 모호하여 저음과 중음의 LED가 동시에 켜지는 레벨 분리 실패 문제가 발생했습니다.</p>
+<p class="journal-p">* 이를 해결하기 위해, 차단 주파수 너머에서 데시벨 감소율이 2배나 매끄럽고 급격한 <strong>2차 Sallen-Key Butterworth 능동 필터(-40 dB/dec)</strong> 토폴로지를 선용하여 액티브 OP-AMP 피드백 회로를 도입했습니다.</p>
+<p class="journal-p">* 추가적으로 $Q$(품질계수) 인자를 0.707로 맞춰 필터 통과 대역에서 이득이 갑자기 튀는 3-dB peaking 현상을 최대로 억제하여, 대역 간 간섭 없이 깨끗하게 3개 대역으로 완벽 분할 계측하는 데 성공했습니다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-7">8) 결과 및 성과</h3>
+<ul class="journal-ul">
+<li><strong>고성능 3-Band 오디오 계측기 성공적 설계</strong>: </li>
+</ul>
+<p class="journal-p">* LPF(400Hz), HPF(3.2kHz) 기준 정확도 오차 3.5% 미만 달성.</p>
+<p class="journal-p">* -40 dB/dec의 예리한 Roll-Off 감쇄율 확보로 대역 간 간섭 차단.</p>
+<p class="journal-p">* OPA2134PA 고음질 앰프단을 통한 0.2~5배의 왜곡 없는 가변 증폭 실현.</p>
+<h4 class="journal-h4">필터 설계 최적화 지표 요약</h4>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>주파수 대역 필터</th>
+  <th>이론 설계 규격 (Cutoff)</th>
+  <th>실제 2차 필터 특성 측정치</th>
+  <th>비고 / 롤오프 특성</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>LPF (저음 대역)</strong></td>
+  <td>400 Hz</td>
+  <td><strong>414 Hz</strong></td>
+  <td>2차 Sallen-Key 저역 통과, -40 dB/dec</td>
+</tr>
+<tr>
+  <td><strong>HPF (고음 대역)</strong></td>
+  <td>3200 Hz (3.2kHz)</td>
+  <td><strong>3110 Hz (3.11kHz)</strong></td>
+  <td>2차 Sallen-Key 고역 통과, -40 dB/dec</td>
+</tr>
+<tr>
+  <td><strong>BPF (중음 대역)</strong></td>
+  <td>800 Hz ~ 1.6 kHz</td>
+  <td><strong>820 Hz ~ 1.62 kHz</strong></td>
+  <td>원신호 감산 연산(Adder) 결합 필터</td>
+</tr>
+<tr>
+  <td><strong>가변 이득(Gain)</strong></td>
+  <td>0.2 ~ 5.0 V/V</td>
+  <td><strong>0.2 ~ 5.0 V/V</strong></td>
+  <td>비반전 가변 저항(Potentiometer) 증폭단</td>
+</tr>
+</tbody>
+</table>
+
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-8">9) 내가 배운 점</h3>
+<ul class="journal-ul">
+<li>아날로그 회로 소자($R$, $C$) 오차에 의해 차단 주파수가 민감하게 이동할 수 있으므로, 실제 하드웨어 제작 시에는 <strong>오차 1% 미만의 정밀 금속 피막 저항</strong>을 활용하는 실무 엔지니어링 세심함을 키웠습니다.</li>
+<li>주파수 스펙트럼(FFT)의 물리적 신호 흐름을 직접 아날로그 필터 단계를 통해 구현해 보며, 아날로그 신호 처리 및 임베디드 오디오 드라이버의 신뢰성 인터페이스를 구축하는 실전 감각을 확립했습니다.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-9">10) 후공정 직무와의 연결점</h3>
+<ul class="journal-ul">
+<li><strong>후공정/품질/평가 직무와의 관련성</strong>: 반도체 후공정 최종 테스트 시, 고속 통신 칩이나 CIS(CMOS 이미지 센서) 소자의 미세 전압 신호를 왜곡 없이 포착해내기 위한 계측기 전단부의 신호 바이어스 캘리브레이션 및 아날로그 노이즈 차단 필터 기술과 근본 원리가 같습니다.</li>
+<li><strong>실무 적용 가능 업무</strong>: </li>
+</ul>
+<p class="journal-p">* OSAT 기술 연구소 및 테스트 엔지니어링 부서 입사 후, <strong>고속 전송 칩용 테스트 보드 설계 시 발생할 수 있는 노이즈 감쇠 능동 필터 회로 설계 및 위상 지연 오차 보정</strong> 업무에 최고의 공학적 통찰로 기여할 것입니다.</p>
+<p class="journal-p">* 정밀 다단 비교 계계(Comparative logic)를 이해하고 있어 장비 수율 모니터링 시스템 구축에도 기여도가 높습니다.</p>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) 프로젝트 개요</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) 배경 및 문제 정의</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) 목표</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) 내 역할</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) 적용 공정 / 기술 / 도구</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) 진행 과정</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) 핵심 문제 해결 포인트</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) 결과 및 성과</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) 내가 배운 점</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) 후공정 직무와의 연결점</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 프로젝트 둘러보기</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-audio-level-meter">
+          "# Design & Verification of a 3-Band Audio Level Meter with Active Filters\n\n아날로그 회로 / 능동 필터 오디오 레벨 미터\n\n(능동 필터를 활용한 주파수 대역별 3단계 오디오 레벨 미터 및 드라이버 회로 설계) 1) 프로젝트 개요 기간: 2025. 03. 01. ~ 2025. 06. 30. 유형: 아날로그 능동 필터(Active Filter) 회로 설계, 오디오 신호 제어 및 시스템 제작 소속/수행 환경: 광운대학교 전기공학과 (전기공학머신러닝실습 기말 설계 과제) 한 줄 소개: > 이 프로젝트는 OPA2134PA 고성능 오디오 OP-AMP를 프리앰프로 적용하고, 2차 Sallen-Key Butterworth 능동 필터(LPF, HPF, BPF) 회로를 수학적으로 직접 계산 설계하여 오디오 대역을 3개로 분리한 후, LM3914 드라이버 IC와 LED 어레이 및 LM380N 파워 앰프 스피커 구동단을 통합 설계한 아날로그 신호 처리 프로젝트이다. 2) 배경 및 문제 정의 배경: 오디오 믹서, 통신 장비, 계측 기기 등에서는 아날로그 신호의 주파수 성분을 정확하게 분리하고 노이즈를 필터링하여 실시간 신호 강도를 시각화하는 기술이 매우 중요합니다. 문제 정의: * 아날로그 마이크로부터 들어오는 미세한 전압 신호는 전자기적 환경 노이즈에 매우 취약하며, 주파수 대역 분리 시 필터의 차단 특성(Roll-Off)이 날카롭지 않으면 대역 간 신호 중첩(Interference)으로 인해 레벨 계측 오차가 커집니다. * 또한, 고음질 오디오 신호의 전도/증폭 시 위상 왜곡을 제어해야 하며, 다양한 주파수 성분 중 저음(400Hz 이하), 중음(800Hz~1.6kHz), 고음(3.2kHz 이상)의 특정 크기에 정밀 대응하는 가변 증폭 게인(0.2배 ~ 5배)을 아날로그적으로 안정되게 구현하는 과제가 요구되었습니다. 3) 목표 정량 목표: * 2차 Butterworth Active 필터 설계를 통해 대역별 차단 주파수(Cutoff Frequency) 정확도 95% 이상 달성 (LPF: 400Hz, HPF: 3.2kHz). * 2차 필터 특성에 부합하는 -40 dB/dec의 예리한 필터 감쇠 응답(Filter Response) 확보. * 입력 신호를 0.2배에서 5배 크기까지 선형 왜곡 없이 가변 증폭(Gain Control)할 수 있는 비반전 증폭단 설계. * LM3914 칩 연동을 통한 주파수 대역별 5단계 LED 실시간 오차 없는 레벨 미터링 구현. 정성 목표: * 각 밴드별 Sallen-Key 능동 필터 소자값($R$, $C$) 수학적 정밀 계산 및 회로 시뮬레이션 검증을 거친 하드웨어 제작. 4) 내 역할 프로젝트 형태: 개인 설계 프로젝트 내 역할 (주도적 기여): * 3-Band 능동 필터 수식 설계: 2차 Sallen-Key Butterworth 고역/저역 통과 필터 설계 수식을 도출하고 커패시터($C=1\\text{nF}$) 고정 하에 차단 주파수에 부합하는 정밀 저항값 계산 (LPF 400Hz ➔ $R=280\\text{k}\\Omega$, HPF 3.2kHz ➔ $R=35\\text{k}\\Omega$). * 프리앰프 및 가변 증폭단 설계: OPA2134PA 오디오 전용 저노이즈 OP-AMP 소자를 활용하여 이득(Av) 5배의 반전/비반전 가변 증폭 회로 인터페이스 설계. * LED 드라이버 및 오디오 출력단 구축: LM3914 IC의 내부 비교기 전압 레퍼런스($R_1, R_2$) 설계를 통해 0~5V 오디오 입력에 따른 LED 점등 캘리브레이션 튜닝 및 LM380N(2.5W) 모노 앰프를 연동한 최종 8옴 스피커 구동단 제작. 5) 적용 공정 / 기술 / 도구 구분 내용 오디오 앰프 IC OPA2134PA (고성능, 초저왜곡 8핀 Dual Audio Operational Amplifier) 능동 필터 토폴로지 Sallen-Key 2nd-Order Active Filter (Butterworth 특성 구현) LED 레벨 드라이버 LM3914 (Dot/Bar Display Driver, 선형 전압 레벨 비교기 내장) 파워 오디오 드라이버 LM380N (2.5W Mono Audio Power Amplifier) 스피커 유닛 UNISON U508B25G (8 ohm, 3W, 직경 50mm dynamic speaker) 6) 진행 과정 1) 2차 Sallen-Key 고역 및 저역 통과 필터의 수학적 소자 매칭 LPF (저역통과필터, Cutoff 400Hz): 2차 Butterworth 필터 특성($Q=0.707$)을 달성하기 위해, $C_1=1\\text{nF}$, $C_2=2\\text{nF}$로 설정하고 다음 차단 주파수 식을 기반으로 저항 설계: $$f_p = \\frac{1}{2\\pi R\\sqrt{C_1 C_2}} = 400\\text{Hz} \\implies R = 280\\text{k}\\Omega$$ HPF (고역통과필터, Cutoff 3.2kHz): 동일 공식을 역적용하여 $C=1\\text{nF}$ 기준 최적의 Butterworth 감쇠 저항값 도출: $$f_p = \\frac{1}{2\\pi C\\sqrt{R_1 R_2}} = 3.2\\text{kHz} \\implies R_2=35\\text{k}\\Omega, R_1=2R_2=70\\text{k}\\Omega$$ > 💡 비유 예시: 특정 주파수의 소리 신호만 걸러내는 필터 설계는 체에 흙을 치는 과정과 같습니다. LPF는 굵은 알갱이(고음)를 거르고 아주 미세한 모래(저음)만 통과시키는 미세한 체이고, HPF는 미세 모래(저음)를 밑으로 빠지게 만들고 큰 돌(고음)만 남기는 구조의 굵은 체와 같습니다. 2) 주파수 대역 분리 및 Adder 결합 시스템 설계 (주요 설계) 콘덴서 마이크(CMIC-6027)를 통해 입력된 신호는 프리앰프를 거쳐 LPF, BPF, HPF의 3갈래 경로로 완벽하게 병렬 분기됨. BPF(대역통과필터)는 [원신호 - (LPF + HPF)]의 감산 연산 회로(Adder 활용) 방식을 적용하여 하드웨어 소자 오차율과 설계 공간을 획기적으로 줄이는 설계 지혜를 적용. 분리된 주파수 신호들은 개별 비반전 게인 조절(Gain control) 볼륨 회로를 통과하며 스위치를 통해 앰프단으로 선별 전송되도록 시스템 설계도 완성. 3) 전압 레벨 캘리브레이션 및 출력 검증 (실험 및 분석) 입력되는 아날로그 신호 세기(0~5V 범위)에 맞추어 LM3914 레벨 미터 회로의 기준 저항 $R_1=1.21\\text{k}\\Omega, R_2=3.83\\text{k}\\Omega$로 바이어스를 정밀 매핑하여 5단계 LED 어레이(HBSR-55)가 노이즈 없이 부드럽게 Bar 상태로 켜지는 것을 물리적으로 검증 완료. 7) 핵심 문제 해결 포인트 가장 어려웠던 문제: \"필터 통과 대역 경계면에서의 감쇄율(Roll-Off) 부족 및 인접 대역 신호 겹침 간섭\" 해결 방법: * 초기 회로 구성 시 1차 패시브 RC 필터를 썼을 때는 경계대역(예: 600Hz 부근)에서 LPF와 BPF의 경계가 모호하여 저음과 중음의 LED가 동시에 켜지는 레벨 분리 실패 문제가 발생했습니다. * 이를 해결하기 위해, 차단 주파수 너머에서 데시벨 감소율이 2배나 매끄럽고 급격한 2차 Sallen-Key Butterworth 능동 필터(-40 dB/dec) 토폴로지를 선용하여 액티브 OP-AMP 피드백 회로를 도입했습니다. * 추가적으로 $Q$(품질계수) 인자를 0.707로 맞춰 필터 통과 대역에서 이득이 갑자기 튀는 3-dB peaking 현상을 최대로 억제하여, 대역 간 간섭 없이 깨끗하게 3개 대역으로 완벽 분할 계측하는 데 성공했습니다. 8) 결과 및 성과 고성능 3-Band 오디오 계측기 성공적 설계: * LPF(400Hz), HPF(3.2kHz) 기준 정확도 오차 3.5% 미만 달성. * -40 dB/dec의 예리한 Roll-Off 감쇄율 확보로 대역 간 간섭 차단. * OPA2134PA 고음질 앰프단을 통한 0.2~5배의 왜곡 없는 가변 증폭 실현. 필터 설계 최적화 지표 요약 주파수 대역 필터 이론 설계 규격 (Cutoff) 실제 2차 필터 특성 측정치 비고 / 롤오프 특성 LPF (저음 대역) 400 Hz 414 Hz 2차 Sallen-Key 저역 통과, -40 dB/dec HPF (고음 대역) 3200 Hz (3.2kHz) 3110 Hz (3.11kHz) 2차 Sallen-Key 고역 통과, -40 dB/dec BPF (중음 대역) 800 Hz ~ 1.6 kHz 820 Hz ~ 1.62 kHz 원신호 감산 연산(Adder) 결합 필터 가변 이득(Gain) 0.2 ~ 5.0 V/V 0.2 ~ 5.0 V/V 비반전 가변 저항(Potentiometer) 증폭단 9) 내가 배운 점 아날로그 회로 소자($R$, $C$) 오차에 의해 차단 주파수가 민감하게 이동할 수 있으므로, 실제 하드웨어 제작 시에는 오차 1% 미만의 정밀 금속 피막 저항을 활용하는 실무 엔지니어링 세심함을 키웠습니다. 주파수 스펙트럼(FFT)의 물리적 신호 흐름을 직접 아날로그 필터 단계를 통해 구현해 보며, 아날로그 신호 처리 및 임베디드 오디오 드라이버의 신뢰성 인터페이스를 구축하는 실전 감각을 확립했습니다. 10) 후공정 직무와의 연결점 후공정/품질/평가 직무와의 관련성: 반도체 후공정 최종 테스트 시, 고속 통신 칩이나 CIS(CMOS 이미지 센서) 소자의 미세 전압 신호를 왜곡 없이 포착해내기 위한 계측기 전단부의 신호 바이어스 캘리브레이션 및 아날로그 노이즈 차단 필터 기술과 근본 원리가 같습니다. 실무 적용 가능 업무: * OSAT 기술 연구소 및 테스트 엔지니어링 부서 입사 후, 고속 전송 칩용 테스트 보드 설계 시 발생할 수 있는 노이즈 감쇠 능동 필터 회로 설계 및 위상 지연 오차 보정 업무에 최고의 공학적 통찰로 기여할 것입니다. * 정밀 다단 비교 계계(Comparative logic)를 이해하고 있어 장비 수율 모니터링 시스템 구축에도 기여도가 높습니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & 후공정","title":"Ceramic Capillary Geometry","description":"반도체 와이어 본딩 캐필러리 형상이 First Bond 불량 모드 및 접합 신뢰성에 미치는 기계적 메커니즘을 규명하고 최적 파라미터를 도출합니다."},{"slug":"packaging-test","category":"반도체 이론","title":"Packaging & Test Fundamentals","description":"WLCSP, Flip-Chip, TSV 적층 HBM 이론부터 Warpage 휨 해석 및 SI 임피던스 매칭을 다루는 후공정 종합 엔지니어링 리서치입니다."},{"slug":"fpga-verilog","category":"디지털 회로","title":"FPGA & Verilog HDL Systems","description":"Altera DE2 Cyclone II 보드 환경에서 버튼 글리치 제거용 Debouncing 및 가변 분주 BCD 카운터를 설계하여 5ns 전파 딜레이를 검증합니다."},{"slug":"euv-photoresist","category":"전공정 노광","title":"TinNO₃ EUV Photoresist","description":"나노 스케일 EUV 리소그래피 한계 극복을 위한 무기 주석 옥소 클러스터 기반 PR 감도 향상 및 건식 식각 저항 메커니즘을 탐구합니다."},{"slug":"spotfire-analytics","category":"수율 분석","title":"Spotfire Process Analytics","description":"반도체 대공정 설비 로그 데이터셋을 Spotfire 시각화 프로파일링하여 전위 및 Defect 발생 유발 파라미터 간 상관관계를 통계적으로 도출합니다."},{"slug":"ac-power-meter","category":"임베디드","title":"MCU AC Power Meter","description":"Microcontroller 기반 AC 단상 전력 측정 모듈을 구현하여 전류/전압 실시간 센싱 및 전력 계산 텔레메트리 캘리브레이션을 진행합니다."},{"slug":"audio-level-meter","category":"아날로그 회로","title":"3-Band Audio Level Meter","description":"Sallen-Key 구조 Active Filter 회로를 설계 및 검증하여 오디오 주파수 대역을 3개 밴드로 물리 분할하는 전압 증폭 검출 시스템을 개발합니다."},{"slug":"battery-charger","category":"전력 전자","title":"CC-CV Li-Ion Charger","description":"리튬이온 배터리 안전 충전을 위한 CC-CV 전력 토폴로지 제어 보드를 실장하고 ADC 센싱 정밀 리포팅 회로망을 설계 및 캘리브레이션합니다."},{"slug":"battery-soc-tester","category":"임베디드","title":"Dynamic Battery SOC Tester","description":"OCV-CCV 내부 임피던스 동적 오차 보상 수식을 임베디드 펌웨어 상에 적용하여 충전잔량(SOC) 측정 정밀도를 혁신한 계측 툴 개발 프로젝트입니다."}];
+            const currentSlug = "audio-level-meter";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

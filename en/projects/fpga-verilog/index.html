@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>FPGA & Verilog HDL Digital Logic Circuit Design & Verification  | Junseo Oh</title>
+<meta name="description" content="Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/fpga-verilog/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">FPGA & Verilog HDL Digital Logic Circuit Design & Verification</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">DIGITAL DESIGN / FPGA & VERILOG HDL SYSTEM</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 03. 01. ~ 2026. 06. 30.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'fpga-verilog')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Ffpga-verilog%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=FPGA%20%26%20Verilog%20HDL%20Digital%20Logic%20Circuit%20Design%20%26%20Verification&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Ffpga-verilog%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2026. 03. 01. ~ 2026. 06. 30.</li>
+          <li><strong>Type:</strong> FPGA Board & Verilog HDL Digital System Design and Hardware Debugging</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Engineering (Digital System Design Lab)</li>
+          <li><strong>Overview:</strong> Designed and validated digital logic modules (Modulo-N counters, variable speed decimal counters, 7-segment display controllers, debouncer filters) in Verilog HDL using an Altera Cyclone II FPGA board, Quartus II, and ModelSim. Analyzed gate propagation delay and mechanical bouncing noise in hardware environments to verify system reliability.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> Back-end and test engineers must design test patterns to identify chip malfunctions and reliably synchronize signals between Automated Test Equipment (ATE) and FPGA interfaces.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Mechanical bouncing or <strong>glitches</strong> occurring at switch contacts cause severe logic errors, causing the digital counter to register multiple counts from a single press.</li>
+              <li>Moreover, using the high-speed system clock (50MHz) directly makes real-time visual observation of counter behavior impossible, requiring systematic tuning between hardware clock dividers and simulation parameters.</li>
+              <li>To address these challenges, we designed an integrated system featuring a debouncer filter, clock divider, BCD counter, and 7-segment driver to build robust <strong>board-level hardware design capabilities</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Drive a 4-digit BCD counter (0000~9999) on 7-segment displays using Active-Low signals without error.</li>
+              <li>Achieve a <strong>0%</strong> error count recognition rate by designing a debouncing circuit to filter button noise.</li>
+              <li>Establish a 5ns propagation delay prediction model in ModelSim timing simulations.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Master Verilog coding standards, utilizing asynchronous resets and bit concatenation operators (`{}`), and build hardware mapping and debugging expertise.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Individual Project (Weekly hardware board validation and Verilog programming assignments)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li>Designed co-modeling structures integrating Block Diagram Files (BDF) and Verilog HDL in Quartus II.</li>
+              <li>Connected LPM library adders (`LPM_ADD_SUB`) with custom adder modules (`add3`) on the BDF schematic.</li>
+              <li>Created scalable ModelSim TestBenches using named port mappings (`.a(a)`) and applied dynamic parameter divisions (`WIDTH=2`) to accelerate simulation speeds.</li>
+              <li>Analyzed gate-level timing delay waveforms using Cyclone II libraries and led debouncing circuit debugging for POF file conversion and FPGA programming.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Development Board</strong></td>
+          <td>Altera Cyclone II FPGA Board (EP2C35F672C6 - DE2)</td>
+        </tr>
+        <tr>
+          <td><strong>EDA Software</strong></td>
+          <td>Quartus II 13.0sp1, ModelSim-Altera Starter Edition</td>
+        </tr>
+        <tr>
+          <td><strong>Design Language</strong></td>
+          <td>Verilog HDL (Compliant with IEEE 1364 standards)</td>
+        </tr>
+        <tr>
+          <td><strong>Verification Tech</strong></td>
+          <td>Timing Simulation (Gate-level Delay), Testbench, Waveform Analysis</td>
+        </tr>
+        <tr>
+          <td><strong>Digital IP</strong></td>
+          <td>LPM_ADD_SUB, SEG7_LUT (7-Segment Lookup Table), Debouncer</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) 4-bit Adder & Block BDF Integration (Week 3 ~ 6)</h4>
+        <ul class="journal-ul">
+          <li>Designed an `add3` module with inputs `a, b[3:0]` and output `sum[5:0]`, using the bit concatenation operator (`temp = {cout, result}`) to merge the carry-out (cout) seamlessly.</li>
+          <li>Mapped switches and LEDs using Quartus II's <strong>Pin Planner</strong> in precise alignment with Terasic DE2 board pinout specifications.</li>
+        </ul>
+        <h4 class="journal-h4">2) Propagation Delay & Simulation Verification (Week 5 & 9)</h4>
+        <ul class="journal-ul">
+          <li>While ideal code (.v) simulations showed zero delay, timing simulations using the `.vo` file (which reflects the chip's internal layout routing) captured a <strong>5ns physical gate propagation delay</strong>.</li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> In a virtual map, moving between two points appears instantaneous (ideal code simulation), but driving on actual roads takes time due to traffic signals and friction (physical 5ns gate delay).</blockquote>
+        <h4 class="journal-h4">3) Speed-Controllable Up Counter Design (Week 10 ~ 11)</h4>
+        <ul class="journal-ul">
+          <li>Built a clock divider to slow down the DE2 board's 50MHz reference clock for visual verification.</li>
+          <li>Developed a variable BCD counter that adjusts system clock division ratios based on slide switch inputs (`sw[6:0]`) to change the 7-segment count speed in real time.</li>
+          <li>Optimized simulation runtimes by using a `WIDTH` parameter set to `2` (4 clocks) during simulation and switching to `20` or `22` for actual hardware execution.</li>
+        </ul>
+        <h4 class="journal-h4">4) Debouncer Circuit Design & Final Hardware Test (Week 12)</h4>
+        <ul class="journal-ul">
+          <li>Designed a <strong>multi-stage register shift filter</strong> using D Flip-Flops to eliminate high-frequency bouncing noise when pushing buttons.</li>
+          <li>Validated the debouncing algorithm, ensuring button inputs were registered as a valid `data_out` only after maintaining a stable signal level for a set duration (`counter_max = 50`).</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Major Challenge:</strong> "Resolving FPGA compilation errors and Pin Planner descending pin configuration errors."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>During early pin assignment, the alphabetical/numerical sorting in Quartus II (`a[3], a[2], a[1], a[0]`) led to reverse pin mapping, causing the MSB `a[3]` to malfunction when switch 0 was toggled.</li>
+              <li>We also identified a board freezing defect after programming due to the compiled SOF file size exceeding the EPCS4 memory capacity (4MB).</li>
+              <li>Realigned the FPGA pin mapping 1:1 at the physical level and converted the program file format into a <strong>POF format optimized for EPCS16 (supporting 6MB devices)</strong>, resolving the hardware freeze and verifying normal operation.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Variable Speed Decimal Counter Completed:</strong>
+            <ul class="journal-ul">
+              <li>Verified active-low inverted outputs (`~seg_sig`) displaying digits correctly on the 7-segment board.</li>
+              <li>Successfully controlled switch bouncing via the debouncing filter.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Hardware Design Performance Metrics</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Design Element</th>
+          <th>Before (Ideal No-Delay Model)</th>
+          <th>After (Physical Real-World Model)</th>
+          <th>Remarks / Debugging Outcome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Propagation Delay</strong></td>
+          <td>0 ns</td>
+          <td><strong>5 ns</strong></td>
+          <td>Reflects physical wire routing inside silicon</td>
+        </tr>
+        <tr>
+          <td><strong>Button Press Accuracy</strong></td>
+          <td>80% (Glitch-prone)</td>
+          <td><strong>100% (Error-Free)</strong></td>
+          <td>Debouncer (D-FF shift) filtering effect</td>
+        </tr>
+        <tr>
+          <td><strong>Simulation Compile Time</strong></td>
+          <td>~ 5 min (WIDTH 22)</td>
+          <td><strong>&lt; 10 sec</strong></td>
+          <td>Optimized via transient WIDTH=2 scaling</td>
+        </tr>
+        <tr>
+          <td><strong>FPGA Capacity Yield</strong></td>
+          <td>Capacity overflow (EPCS4)</td>
+          <td><strong>100% Normal Operation</strong></td>
+          <td>Successful conversion to EPCS16 POF format</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Learned that when idealized code meets real silicon, analog constraints such as <strong>gate delay</strong> and <strong>external mechanical bouncing</strong> are always present.</li>
+          <li>Cultivated expertise in structured hardware architectures by adhering to top-level entity naming conventions and implementing asynchronous resets to minimize signal disconnections and errors.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end & Test:</strong> To test packaged chips, precise digital signal synchronization and data sequence inputs between ATE (Automated Test Equipment) and the load board/probe card are mandatory.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Provides the ability to **setup board-level digital circuits to control test pattern logic** or analyze timing margins to debug yield evaluation equipment errors.</li>
+              <li>Aids in collaborating on noise reduction (PI) at the board level or understanding debouncing pattern layouts within packages.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-fpga-verilog">
+          "# FPGA & Verilog HDL Digital Logic Circuit Design & Verification\n\nDIGITAL DESIGN / FPGA & VERILOG HDL SYSTEM\n\n1) Project Overview Duration: 2026. 03. 01. ~ 2026. 06. 30. Type: FPGA Board & Verilog HDL Digital System Design and Hardware Debugging Affiliation: Kwangwoon University, Dept. of Electronic Engineering (Digital System Design Lab) Overview: Designed and validated digital logic modules (Modulo-N counters, variable speed decimal counters, 7-segment display controllers, debouncer filters) in Verilog HDL using an Altera Cyclone II FPGA board, Quartus II, and ModelSim. Analyzed gate propagation delay and mechanical bouncing noise in hardware environments to verify system reliability. 2) Background & Problem Statement Background: Back-end and test engineers must design test patterns to identify chip malfunctions and reliably synchronize signals between Automated Test Equipment (ATE) and FPGA interfaces. Problem Statement: Mechanical bouncing or glitches occurring at switch contacts cause severe logic errors, causing the digital counter to register multiple counts from a single press. Moreover, using the high-speed system clock (50MHz) directly makes real-time visual observation of counter behavior impossible, requiring systematic tuning between hardware clock dividers and simulation parameters. To address these challenges, we designed an integrated system featuring a debouncer filter, clock divider, BCD counter, and 7-segment driver to build robust board-level hardware design capabilities. 3) Project Goals Quantitative Goals: Drive a 4-digit BCD counter (0000~9999) on 7-segment displays using Active-Low signals without error. Achieve a 0% error count recognition rate by designing a debouncing circuit to filter button noise. Establish a 5ns propagation delay prediction model in ModelSim timing simulations. Qualitative Goals: Master Verilog coding standards, utilizing asynchronous resets and bit concatenation operators (`{}`), and build hardware mapping and debugging expertise. 4) Engineering Methodology & Role Project Type: Individual Project (Weekly hardware board validation and Verilog programming assignments) My Role (Key Contribution): Designed co-modeling structures integrating Block Diagram Files (BDF) and Verilog HDL in Quartus II. Connected LPM library adders (`LPM_ADD_SUB`) with custom adder modules (`add3`) on the BDF schematic. Created scalable ModelSim TestBenches using named port mappings (`.a(a)`) and applied dynamic parameter divisions (`WIDTH=2`) to accelerate simulation speeds. Analyzed gate-level timing delay waveforms using Cyclone II libraries and led debouncing circuit debugging for POF file conversion and FPGA programming. 5) Applied Processes & Process Tools Category Technical Details Development Board Altera Cyclone II FPGA Board (EP2C35F672C6 - DE2) EDA Software Quartus II 13.0sp1, ModelSim-Altera Starter Edition Design Language Verilog HDL (Compliant with IEEE 1364 standards) Verification Tech Timing Simulation (Gate-level Delay), Testbench, Waveform Analysis Digital IP LPM_ADD_SUB, SEG7_LUT (7-Segment Lookup Table), Debouncer 6) Implementation Process 1) 4-bit Adder & Block BDF Integration (Week 3 ~ 6) Designed an `add3` module with inputs `a, b[3:0]` and output `sum[5:0]`, using the bit concatenation operator (`temp = {cout, result}`) to merge the carry-out (cout) seamlessly. Mapped switches and LEDs using Quartus II's Pin Planner in precise alignment with Terasic DE2 board pinout specifications. 2) Propagation Delay & Simulation Verification (Week 5 & 9) While ideal code (.v) simulations showed zero delay, timing simulations using the `.vo` file (which reflects the chip's internal layout routing) captured a 5ns physical gate propagation delay. 💡 Analogy: In a virtual map, moving between two points appears instantaneous (ideal code simulation), but driving on actual roads takes time due to traffic signals and friction (physical 5ns gate delay). 3) Speed-Controllable Up Counter Design (Week 10 ~ 11) Built a clock divider to slow down the DE2 board's 50MHz reference clock for visual verification. Developed a variable BCD counter that adjusts system clock division ratios based on slide switch inputs (`sw[6:0]`) to change the 7-segment count speed in real time. Optimized simulation runtimes by using a `WIDTH` parameter set to `2` (4 clocks) during simulation and switching to `20` or `22` for actual hardware execution. 4) Debouncer Circuit Design & Final Hardware Test (Week 12) Designed a multi-stage register shift filter using D Flip-Flops to eliminate high-frequency bouncing noise when pushing buttons. Validated the debouncing algorithm, ensuring button inputs were registered as a valid `data_out` only after maintaining a stable signal level for a set duration (`counter_max = 50`). 7) Key Problem-Solving Points Major Challenge: \"Resolving FPGA compilation errors and Pin Planner descending pin configuration errors.\" Solution Methodology: During early pin assignment, the alphabetical/numerical sorting in Quartus II (`a[3], a[2], a[1], a[0]`) led to reverse pin mapping, causing the MSB `a[3]` to malfunction when switch 0 was toggled. We also identified a board freezing defect after programming due to the compiled SOF file size exceeding the EPCS4 memory capacity (4MB). Realigned the FPGA pin mapping 1:1 at the physical level and converted the program file format into a POF format optimized for EPCS16 (supporting 6MB devices), resolving the hardware freeze and verifying normal operation. 8) Results & Achievements Variable Speed Decimal Counter Completed: Verified active-low inverted outputs (`~seg_sig`) displaying digits correctly on the 7-segment board. Successfully controlled switch bouncing via the debouncing filter. Hardware Design Performance Metrics Design Element Before (Ideal No-Delay Model) After (Physical Real-World Model) Remarks / Debugging Outcome Propagation Delay 0 ns 5 ns Reflects physical wire routing inside silicon Button Press Accuracy 80% (Glitch-prone) 100% (Error-Free) Debouncer (D-FF shift) filtering effect Simulation Compile Time ~ 5 min (WIDTH 22) &lt; 10 sec Optimized via transient WIDTH=2 scaling FPGA Capacity Yield Capacity overflow (EPCS4) 100% Normal Operation Successful conversion to EPCS16 POF format 9) Lessons Learned Learned that when idealized code meets real silicon, analog constraints such as gate delay and external mechanical bouncing are always present. Cultivated expertise in structured hardware architectures by adhering to top-level entity naming conventions and implementing asynchronous resets to minimize signal disconnections and errors. 10) Connection to Back-end Engineering Roles Relevance to Back-end & Test: To test packaged chips, precise digital signal synchronization and data sequence inputs between ATE (Automated Test Equipment) and the load board/probe card are mandatory. Practical Application in Work: Provides the ability to **setup board-level digital circuits to control test pattern logic** or analyze timing margins to debug yield evaluation equipment errors. Aids in collaborating on noise reduction (PI) at the board level or understanding debouncing pattern layouts within packages."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "fpga-verilog";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

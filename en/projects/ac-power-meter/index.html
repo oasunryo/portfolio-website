@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Development of a Microcontroller-based Digital Single-Phase AC Power Meter Board  | Junseo Oh</title>
+<meta name="description" content="Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/ac-power-meter/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Development of a Microcontroller-based Digital Single-Phase AC Power Meter Board</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">EMBEDDED CIRCUIT / MCU-BASED AC POWER METER DESIGN</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2025. 09. 01. ~ 2025. 12. 31.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'ac-power-meter')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fac-power-meter%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Development%20of%20a%20Microcontroller-based%20Digital%20Single-Phase%20AC%20Power%20Meter%20Board&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fac-power-meter%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2025. 09. 01. ~ 2025. 12. 31.</li>
+          <li><strong>Type:</strong> Analog Sensor Circuit Design, MCU Embedded Systems Development, and PCB Assembly (Soldering)</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electrical Engineering (3rd Year 2nd Semester Capstone Project)</li>
+          <li><strong>Overview:</strong> Designed, soldered, and calibrated a microcontroller-based single-phase AC power meter on a custom PCB, measuring residential 220Vac / 1500W loads. Features real-time voltage/current sensing, active low-pass filtering, active/reactive power calculations within a 5% error margin, and software-controlled relay trip protection with THD/FFT harmonic monitoring.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> Smart Grid and Energy Management Systems (EMS) rely on precision power metering to monitor real-time power consumption, trace leakage, and trigger protection mechanisms.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>In AC grids, apparent power (voltage $	imes$ current) does not equal actual active power. Inductive loads introduce <strong>reactive power</strong> and degrade the **power factor**, leading to transmission losses.</li>
+              <li>Furthermore, during load transient transitions (sudden activation/deactivation), inrush currents can destroy sensitive instrumentation circuits or degrade measurement precision.</li>
+              <li>To address this, we needed to implement real-time Root-Mean-Square (RMS) algorithms on an ATmega328P MCU and integrate a hardware protection relay and total harmonic distortion (THD) monitoring.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Maintain active power measurement errors **below 5.0%** across a 220Vac / 1500W load range (achieved 3.2% error).</li>
+              <li>Ensure 100% operational reliability under rapid transient load switching.</li>
+              <li>Integrate FFT (Fast Fourier Transform) algorithms to display THD percentages on LCD/7-segment outputs.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Design analog OP-AMP amplifiers, low-pass filters, safety relay interfaces, and complete hand-soldering and testing on a prototype board.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Team Project (3 members)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li><strong>Analog Sensing & Front-end Design (HW):</strong> Designed active low-pass filters and DC-bias offset circuits using LM358 OP-AMPs to scale transformer/CT sensor outputs into the MCU's safe ADC range (0~5V). Soldered and assembled the prototype board.</li>
+              <li><strong>Real-time RMS Algorithm Porting (Embedded SW):</strong> Programmed discrete RMS integration equations on the MCU to process fast ADC sampling data.</li>
+              <li><strong>Protection Logic Development:</strong> Programmed real-time overcurrent/overvoltage sensing triggers to actuate a 5V relay trip circuit within 0.05 seconds.</li>
+              <li><strong>Troubleshooting & Optimization:</strong> Reduced transient voltage ripples using decoupling capacitors to calibrate and lower measurement errors.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Control Core</strong></td>
+          <td>ATmega328P Microcontroller (Arduino-based firmware)</td>
+        </tr>
+        <tr>
+          <td><strong>Analog Sensing</strong></td>
+          <td>Voltage sensing transformer, Current Transformer (CT) transducer</td>
+        </tr>
+        <tr>
+          <td><strong>Signal Conditioning</strong></td>
+          <td>2.5V DC Offset circuit, Active Low-pass Filter (LM358 OP-AMP)</td>
+        </tr>
+        <tr>
+          <td><strong>Display / Interface</strong></td>
+          <td>I2C 16x2 Character LCD (Outputs real-time $V_{rms}$, $I_{rms}$, $P$, $Q$, THD, PF)</td>
+        </tr>
+        <tr>
+          <td><strong>Protection Actuator</strong></td>
+          <td>5V SPDT Relay Module (overcurrent protection circuit trip)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">1) Analog Signal Conditioning & Bias Design (Sensing Optimization)</h4>
+        <ul class="journal-ul">
+          <li>Since AC 220V exceeds MCU ADC limits, we stepped down the voltage via isolated transformers and designed a <strong>2.5V DC Bias Offset circuit</strong> to eliminate negative wave segments.</li>
+          <li>To prevent aliasing from the ADC sampling frequency limits and remove high-frequency surges, we integrated an **active low-pass filter (LPF)** using an LM358 OP-AMP.</li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Rather than drinking directly from a high-velocity river (220Vac AC power), we build a bypass channel (isolation transformer) and add filters (LPF and Offset) to obtain clean, drinkable tap water (0~5V stable DC biased signal) for safe measurement.</blockquote>
+        <h4 class="journal-h4">2) Discrete RMS & Power Computation Algorithm (Embedded firmware)</h4>
+        <ul class="journal-ul">
+          <li>Ported fast mathematical integrations on the ATmega328P to compute discrete RMS values:
+            $$V_{rms} = \sqrt{\frac{1}{N}\sum_{i=1}^{N} v(i)^2}$$
+          </li>
+          <li>Calculated real-time average power (Active Power P), extracted Reactive Power (Q) and Apparent Power (S) mathematically, and derived the Power Factor (PF).</li>
+          <li>Calibrated timer interrupts to sample at least 100 times per 50Hz AC cycle (20ms) to minimize integration error.</li>
+        </ul>
+        <h4 class="journal-h4">3) Transient Load Testing & Overcurrent Protection (Verification)</h4>
+        <ul class="journal-ul">
+          <li>Connected high-wattage hair dryers and heaters to simulate sudden transient load changes.</li>
+          <li>Validated the **overcurrent protection interface**, which triggers a relay trip within 0.05 seconds of detecting a surge, verifying system physical safety.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Major Challenge:</strong> "Resolving measurement errors and noise when connecting inductive motor loads."</li>
+          <li><strong>Solution Methodology:</strong>
+            <ul class="journal-ul">
+              <li>While error rates remained under 2% for resistive loads (lamps), introducing an inductive motor (fan) caused active power errors to surge to 12%.</li>
+              <li>Discovered that mismatched parasitic inductances between voltage and current sensors introduced a micro phase shift, distorting active power calculations.</li>
+              <li>Resolved this by programming a **Phase Correction Constant** to align sensor sampling indexes in software, combined with bypass capacitors to filter board-level noise, bringing final active power errors down to **3.2%**.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>High-Precision AC Power Meter Completed:</strong>
+            <ul class="journal-ul">
+              <li>Achieved a 3.2% active power error, outperforming the 5% target specification.</li>
+              <li>Successfully tracked reactive power and power factors while verifying transient protection.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Power Meter Design & Metrology Outcomes</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Evaluation Metric</th>
+          <th>Design Target</th>
+          <th>Achieved Performance</th>
+          <th>Remarks / Debugging Outcome</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Active Power Error</strong></td>
+          <td>&lt; 5.0%</td>
+          <td><strong>3.2%</strong></td>
+          <td>Achieved via phase correction & LPF calibration</td>
+        </tr>
+        <tr>
+          <td><strong>Maximum Operating Load</strong></td>
+          <td>220 Vac / 1500 W</td>
+          <td><strong>220 Vac / 1500 W</strong></td>
+          <td>Stable execution without thermal dissipation issues</td>
+        </tr>
+        <tr>
+          <td><strong>Transient Reliability</strong></td>
+          <td>No malfunction on load step</td>
+          <td><strong>100% Stable Recovery</strong></td>
+          <td>Verified transient switching robustness</td>
+        </tr>
+        <tr>
+          <td><strong>Overcurrent Safety Trip</strong></td>
+          <td>Relay trip on overcurrent</td>
+          <td><strong>&lt; 0.05 seconds</strong></td>
+          <td>Software sensing integrated with SPDT relay</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Learned that conditioning analog sensor waveforms (LPF, Bias Offset) dictates the mathematical accuracy of digital MCU calculations.</li>
+          <li>Acquired hands-on debugging skills regarding parasitic inductances and capacitances while soldering and calibrating prototype boards.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end & Test:</strong> Analogous to the operation of Burn-In test boards and Source Measure Units (SMU) in ATE, which apply high temperature/voltage stress to packaged chips while monitoring real-time leakage currents.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Enables **diagnosing and filtering voltage bias offset and power noise on test load boards**, or debugging hardware safety interlocks in wafer sorting systems.</li>
+              <li>Brings practical expertise in metrology calibration and protection circuit debugging to technical teams.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-ac-power-meter">
+          "# Development of a Microcontroller-based Digital Single-Phase AC Power Meter Board\n\nEMBEDDED CIRCUIT / MCU-BASED AC POWER METER DESIGN\n\n1) Project Overview Duration: 2025. 09. 01. ~ 2025. 12. 31. Type: Analog Sensor Circuit Design, MCU Embedded Systems Development, and PCB Assembly (Soldering) Affiliation: Kwangwoon University, Dept. of Electrical Engineering (3rd Year 2nd Semester Capstone Project) Overview: Designed, soldered, and calibrated a microcontroller-based single-phase AC power meter on a custom PCB, measuring residential 220Vac / 1500W loads. Features real-time voltage/current sensing, active low-pass filtering, active/reactive power calculations within a 5% error margin, and software-controlled relay trip protection with THD/FFT harmonic monitoring. 2) Background & Problem Statement Background: Smart Grid and Energy Management Systems (EMS) rely on precision power metering to monitor real-time power consumption, trace leakage, and trigger protection mechanisms. Problem Statement: In AC grids, apparent power (voltage $ imes$ current) does not equal actual active power. Inductive loads introduce reactive power and degrade the **power factor**, leading to transmission losses. Furthermore, during load transient transitions (sudden activation/deactivation), inrush currents can destroy sensitive instrumentation circuits or degrade measurement precision. To address this, we needed to implement real-time Root-Mean-Square (RMS) algorithms on an ATmega328P MCU and integrate a hardware protection relay and total harmonic distortion (THD) monitoring. 3) Project Goals Quantitative Goals: Maintain active power measurement errors **below 5.0%** across a 220Vac / 1500W load range (achieved 3.2% error). Ensure 100% operational reliability under rapid transient load switching. Integrate FFT (Fast Fourier Transform) algorithms to display THD percentages on LCD/7-segment outputs. Qualitative Goals: Design analog OP-AMP amplifiers, low-pass filters, safety relay interfaces, and complete hand-soldering and testing on a prototype board. 4) Engineering Methodology & Role Project Type: Team Project (3 members) My Role (Key Contribution): Analog Sensing & Front-end Design (HW): Designed active low-pass filters and DC-bias offset circuits using LM358 OP-AMPs to scale transformer/CT sensor outputs into the MCU's safe ADC range (0~5V). Soldered and assembled the prototype board. Real-time RMS Algorithm Porting (Embedded SW): Programmed discrete RMS integration equations on the MCU to process fast ADC sampling data. Protection Logic Development: Programmed real-time overcurrent/overvoltage sensing triggers to actuate a 5V relay trip circuit within 0.05 seconds. Troubleshooting & Optimization: Reduced transient voltage ripples using decoupling capacitors to calibrate and lower measurement errors. 5) Applied Processes & Process Tools Category Technical Details Control Core ATmega328P Microcontroller (Arduino-based firmware) Analog Sensing Voltage sensing transformer, Current Transformer (CT) transducer Signal Conditioning 2.5V DC Offset circuit, Active Low-pass Filter (LM358 OP-AMP) Display / Interface I2C 16x2 Character LCD (Outputs real-time $V_{rms}$, $I_{rms}$, $P$, $Q$, THD, PF) Protection Actuator 5V SPDT Relay Module (overcurrent protection circuit trip) 6) Implementation Process 1) Analog Signal Conditioning & Bias Design (Sensing Optimization) Since AC 220V exceeds MCU ADC limits, we stepped down the voltage via isolated transformers and designed a 2.5V DC Bias Offset circuit to eliminate negative wave segments. To prevent aliasing from the ADC sampling frequency limits and remove high-frequency surges, we integrated an **active low-pass filter (LPF)** using an LM358 OP-AMP. 💡 Analogy: Rather than drinking directly from a high-velocity river (220Vac AC power), we build a bypass channel (isolation transformer) and add filters (LPF and Offset) to obtain clean, drinkable tap water (0~5V stable DC biased signal) for safe measurement. 2) Discrete RMS & Power Computation Algorithm (Embedded firmware) Ported fast mathematical integrations on the ATmega328P to compute discrete RMS values: $$V_{rms} = \\sqrt{\\frac{1}{N}\\sum_{i=1}^{N} v(i)^2}$$ Calculated real-time average power (Active Power P), extracted Reactive Power (Q) and Apparent Power (S) mathematically, and derived the Power Factor (PF). Calibrated timer interrupts to sample at least 100 times per 50Hz AC cycle (20ms) to minimize integration error. 3) Transient Load Testing & Overcurrent Protection (Verification) Connected high-wattage hair dryers and heaters to simulate sudden transient load changes. Validated the **overcurrent protection interface**, which triggers a relay trip within 0.05 seconds of detecting a surge, verifying system physical safety. 7) Key Problem-Solving Points Major Challenge: \"Resolving measurement errors and noise when connecting inductive motor loads.\" Solution Methodology: While error rates remained under 2% for resistive loads (lamps), introducing an inductive motor (fan) caused active power errors to surge to 12%. Discovered that mismatched parasitic inductances between voltage and current sensors introduced a micro phase shift, distorting active power calculations. Resolved this by programming a **Phase Correction Constant** to align sensor sampling indexes in software, combined with bypass capacitors to filter board-level noise, bringing final active power errors down to **3.2%**. 8) Results & Achievements High-Precision AC Power Meter Completed: Achieved a 3.2% active power error, outperforming the 5% target specification. Successfully tracked reactive power and power factors while verifying transient protection. Power Meter Design & Metrology Outcomes Evaluation Metric Design Target Achieved Performance Remarks / Debugging Outcome Active Power Error &lt; 5.0% 3.2% Achieved via phase correction & LPF calibration Maximum Operating Load 220 Vac / 1500 W 220 Vac / 1500 W Stable execution without thermal dissipation issues Transient Reliability No malfunction on load step 100% Stable Recovery Verified transient switching robustness Overcurrent Safety Trip Relay trip on overcurrent &lt; 0.05 seconds Software sensing integrated with SPDT relay 9) Lessons Learned Learned that conditioning analog sensor waveforms (LPF, Bias Offset) dictates the mathematical accuracy of digital MCU calculations. Acquired hands-on debugging skills regarding parasitic inductances and capacitances while soldering and calibrating prototype boards. 10) Connection to Back-end Engineering Roles Relevance to Back-end & Test: Analogous to the operation of Burn-In test boards and Source Measure Units (SMU) in ATE, which apply high temperature/voltage stress to packaged chips while monitoring real-time leakage currents. Practical Application in Work: Enables **diagnosing and filtering voltage bias offset and power noise on test load boards**, or debugging hardware safety interlocks in wafer sorting systems. Brings practical expertise in metrology calibration and protection circuit debugging to technical teams."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "ac-power-meter";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<title>Spotfire-based Semiconductor Manufacturing Process Data Analytics for Yield & Defect Optimization  | Junseo Oh</title>
+<meta name="description" content="Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../ko/projects/spotfire-analytics/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Spotfire-based Semiconductor Manufacturing Process Data Analytics for Yield & Defect Optimization</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">BIG DATA / SPOTFIRE-BASED SEMICONDUCTOR YIELD ANALYSIS</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2025. 10. 20. ~ 2025. 11. 09.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">6 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'spotfire-analytics')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fspotfire-analytics%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Spotfire-based%20Semiconductor%20Manufacturing%20Process%20Data%20Analytics%20for%20Yield%20%26%20Defect%20Optimization&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fspotfire-analytics%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+        <ul class="journal-ul">
+          <li><strong>Duration:</strong> 2025. 10. 20. ~ 2025. 11. 09.</li>
+          <li><strong>Type:</strong> Semiconductor Manufacturing Data Analysis & Yield/Defect Optimization (Root Cause Analysis)</li>
+          <li><strong>Affiliation:</strong> Semiconductor Manufacturing Data Visualization & Spotfire Statistical Analysis Professional Training Program</li>
+          <li><strong>Overview:</strong> Leveraged massive production datasets using TIBCO Spotfire to analyze chip/wafer metrology parameters, equipment sensor histories, and process routing paths. Conducted statistical validations (linear regression, ANOVA) to isolate key predictors compromising manufacturing yield.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+        <ul class="journal-ul">
+          <li><strong>Background:</strong> Modern semiconductor fabs involve hundreds of micro-processing steps, generating gigabytes of sensor and metrology data daily. Extracting hidden process correlation variables is essential to boost yield and cut defect rates.</li>
+          <li><strong>Problem Statement:</strong>
+            <ul class="journal-ul">
+              <li>Fabs often rely on historical intuition to tweak process recipes when defects or yield drops occur, struggling to prove the root causes of failures through systematic data.</li>
+              <li>Additionally, there was a critical need to merge fragmented equipment log sensors with wafer defect tables, identifying statistically significant parameters (p-value &lt; 0.05) to establish robust Statistical Process Control (SPC) structures.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-2">3) Project Goals</h3>
+        <ul class="journal-ul">
+          <li><strong>Quantitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Build a linear regression model linking chip-level metrics (Defect, CD, THK) to wafer yields, isolating key factors (p-value &lt; 0.05).</li>
+              <li>Execute join analyses between tool logs and wafer defects to extract dominant predictors with a coefficient of determination ($R^2$) above 0.95.</li>
+              <li>Calculate statistical contributions of categorical routing variables (recipe_id, eqp_id, path) using ANOVA to evaluate their impact on final yield.</li>
+            </ul>
+          </li>
+          <li><strong>Qualitative Goals:</strong> Systematize data merging (join) and aggregation workflows, generating data-driven manufacturing analysis reports using Spotfire visualizations and statistical validations.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-3">4) Engineering Methodology & Role</h3>
+        <ul class="journal-ul">
+          <li><strong>Project Type:</strong> Individual Project (Spotfire Practical Analysis Course & Technical Report Writing)</li>
+          <li><strong>My Role (Key Contribution):</strong>
+            <ul class="journal-ul">
+              <li>Engineered data processing pipelines to clean, aggregate, and calculate wafer-level yield based on raw chip-level tables.</li>
+              <li>Designed and built Spotfire dashboards across three distinct sub-analyses:
+                <ul class="journal-ul">
+                  <li><strong>Analysis 1:</strong> Linear regression of chip metrology parameters (Defects, Thickness, CD) against yield.</li>
+                  <li><strong>Analysis 2:</strong> Multi-variable regression joining 4 key sensor variables (precursor flow, pressure, rf power, reflect power) with Defect counts.</li>
+                  <li><strong>Analysis 3:</strong> ANOVA and box plots tracing equipment paths and recipe IDs.</li>
+                </ul>
+              </li>
+              <li>Interpreted p-values and R-square metrics to filter out statistically insignificant noise (e.g., CD, rf_power) from process control.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-4">5) Applied Processes & Process Tools</h3>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Technical Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Data Analytics Tools</strong></td>
+          <td>TIBCO Spotfire (Specialized software for semiconductor data visualization & statistical modeling)</td>
+        </tr>
+        <tr>
+          <td><strong>Statistical Methods</strong></td>
+          <td>Linear Regression, ANOVA (Analysis of Variance), Correlation Analysis</td>
+        </tr>
+        <tr>
+          <td><strong>Visualization Models</strong></td>
+          <td>Scatter Plot Matrix, Box Plot, Line / Bar Charts</td>
+        </tr>
+        <tr>
+          <td><strong>Key Database Keys</strong></td>
+          <td>`lot_id`, `wafer_id`, `recipe_id`, `eqp_id`, `BIN` (Good/Bad binning data)</td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-5">6) Implementation Process</h3>
+        <h4 class="journal-h4">🔬 Sub-Project 1: Analyzing Common Factors in Chip Defect and Yield</h4>
+        <ul class="journal-ul">
+          <li><strong>Objective:</strong> Isolate the dominant factors among chip thickness (THK), critical dimension (CD), and Defect count that impact wafer yield.</li>
+          <li><strong>Statistical Validation:</strong> Ran linear regression with yield as the dependent variable (Y).
+            <ul class="journal-ul">
+              <li><strong>Sum(Defect):</strong> p-value of $6.93 	imes 10^{-23}$ (&lt;&lt; 0.05), $R^2$ of 0.09, proving a highly significant **negative linear correlation**.</li>
+              <li><strong>Avg(THK):</strong> p-value of $6.77 	imes 10^{-10}$ (&lt;&lt; 0.05), $R^2$ of 0.04, confirming a significant **negative correlation**, proving thickness variation directly harms yield.</li>
+              <li><strong>Avg(CD):</strong> p-value of 0.456 (&gt; 0.05), showing no statistical relation, filtered out as noise.</li>
+            </ul>
+          </li>
+        </ul>
+        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like mathematically proving that a student's grades (yield) are linked to study hours (defects) and sleep duration (thickness), but have nothing to do with the color of their clothes (CD).</blockquote>
+        <h4 class="journal-h4">🔬 Sub-Project 2: Process Split Evaluation (Equipment Sensors vs. Defects)</h4>
+        <ul class="journal-ul">
+          <li><strong>Objective:</strong> Evaluate the impact of internal physical tool sensors on defect generation.</li>
+          <li><strong>Statistical Validation:</strong> Merged tables using `lot_id` and `wafer_id` to run a multi-variable regression of 4 sensors against defects.
+            <ul class="journal-ul">
+              <li><strong>Max(reflect_power):</strong> Unveiled an exceptionally strong positive correlation with a p-value of <strong>0.00E+000</strong> and an $R^2$ of <strong>0.99</strong>, proving reflect power instability is the dominant driver of defects.</li>
+              <li><strong>Other Variables:</strong> rf_power (p=0.513), precursor_flow (p=0.637), and chamber_pressure (p=0.867) showed no statistical relation, preventing wasted engineering resources.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">🔬 Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking)</h4>
+        <ul class="journal-ul">
+          <li><strong>Objective:</strong> Identify bottlenecks by tracing the equipment and recipe paths of low-yield wafers.</li>
+          <li><strong>Statistical Validation:</strong> Aggregated bin data to calculate yields and ran ANOVA across process paths.
+            <ul class="journal-ul">
+              <li><strong>recipe_id:</strong> p-value of $6.77 	imes 10^{-297}$ (&lt;&lt; 0.05), identifying it as the most critical factor. Visualized clear yield gaps between low-yield groups like F108C... (72%) and high-yield groups like HF601 (97.6%).</li>
+              <li><strong>eqp_id & Path:</strong> Confirmed that specific tools (p=$1.26 	imes 10^{-9}$) and cumulative paths (p=$4.88 	imes 10^{-133}$) also introduce statistically significant yield variances.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-6">7) Key Problem-Solving Points</h3>
+        <ul class="journal-ul">
+          <li><strong>Multidisciplinary Root Cause Identification:</strong>
+            <ul class="journal-ul">
+              <li>Blindly feeding all variables into a regression model risks multicollinearity and misleading conclusions.</li>
+              <li>To prevent this, we filtered outliers and missing values using box plots in Spotfire before running regression.</li>
+              <li>This proved that rather than RF Power input, the **maximum threshold of reflected power (`reflect_power`)** triggered electrical arcing inside the chamber, causing massive defects, successfully tracing and resolving the failure.</li>
+            </ul>
+          </li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-7">8) Results & Achievements</h3>
+        <ul class="journal-ul">
+          <li><strong>Yield Optimization Baseline Derived:</strong>
+            <ul class="journal-ul">
+              <li><strong>Defect Drivers:</strong> Confirmed `Sum(Defect)` and `Avg(THK)` are the primary drivers of yield loss.</li>
+              <li><strong>Predictive Accuracy:</strong> Established a regression formula with $R^2=0.99$ predicting defect rates based on `Max(reflect_power)`.</li>
+              <li><strong>Optimal Paths:</strong> Designated recipe group HF601 via ANOVA, ensuring yields above 97.6%.</li>
+            </ul>
+          </li>
+        </ul>
+        <h4 class="journal-h4">Statistical Analysis Results Summary</h4>
+        <table class="journal-table">
+        <thead>
+        <tr>
+          <th>Independent Variable (X)</th>
+          <th>Dependent Variable (Y)</th>
+          <th>Statistical Method</th>
+          <th>p-value</th>
+          <th>$R^2$</th>
+          <th>Decision / Conclusion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><strong>Sum(Defect)</strong></td>
+          <td>Wafer Yield</td>
+          <td>Linear Regression</td>
+          <td>$6.93 	imes 10^{-23}$</td>
+          <td>0.09</td>
+          <td><strong>Significant negative correlation (Control parameter)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Avg(THK) (Thickness)</strong></td>
+          <td>Wafer Yield</td>
+          <td>Linear Regression</td>
+          <td>$6.77 	imes 10^{-10}$</td>
+          <td>0.04</td>
+          <td><strong>Significant negative correlation (Control parameter)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Avg(CD) (Line Width)</strong></td>
+          <td>Wafer Yield</td>
+          <td>Linear Regression</td>
+          <td>0.456</td>
+          <td>-</td>
+          <td>No statistical significance (Exclude from control)</td>
+        </tr>
+        <tr>
+          <td><strong>Max(reflect_power)</strong></td>
+          <td>Defect Sum</td>
+          <td>Linear Regression</td>
+          <td><strong>0.00E+000</strong></td>
+          <td><strong>0.99</strong></td>
+          <td><strong>Extremely strong positive correlation (Priority control)</strong></td>
+        </tr>
+        <tr>
+          <td><strong>recipe_id</strong></td>
+          <td>Wafer Yield</td>
+          <td>ANOVA</td>
+          <td>$6.77 	imes 10^{-297}$</td>
+          <td>-</td>
+          <td><strong>Most dominant categorical factor driving yield drift</strong></td>
+        </tr>
+        </tbody>
+        </table>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+        <ul class="journal-ul">
+          <li>Internalized that modern engineering is not just tweaking knobs but **interpreting p-values and using data to scientifically backtrack equipment malfunctions**.</li>
+          <li>Grew quantitative engineering insight by filtering out false correlations from genuine process drivers using statistical methods.</li>
+        </ul>
+        <hr class="journal-divider">
+        <h3 class="journal-h3" id="toc-heading-9">10) Connection to Back-end Engineering Roles</h3>
+        <ul class="journal-ul">
+          <li><strong>Relevance to Back-end/Yield Roles:</strong> Packaging involves numerous variables (EMC dispensing rates, bonding force, vacuum parameters) that interact to dictate solder joint quality and yield.</li>
+          <li><strong>Practical Application in Work:</strong>
+            <ul class="journal-ul">
+              <li>Allows immediate contribution by **joining tool logs with packaging yield tables in Spotfire to rapidly isolate low-yield equipment (`eqp_id`) or assembly recipe bottlenecks**.</li>
+              <li>Prepared to contribute as an asset ready to implement Statistical Process Control (SPC) and Six Sigma yield management techniques.</li>
+            </ul>
+          </li>
+        </ul>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Project Goals</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Engineering Methodology & Role</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Applied Processes & Process Tools</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Process</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Problem-Solving Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Connection to Back-end Engineering Roles</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-spotfire-analytics">
+          "# Spotfire-based Semiconductor Manufacturing Process Data Analytics for Yield & Defect Optimization\n\nBIG DATA / SPOTFIRE-BASED SEMICONDUCTOR YIELD ANALYSIS\n\n1) Project Overview Duration: 2025. 10. 20. ~ 2025. 11. 09. Type: Semiconductor Manufacturing Data Analysis & Yield/Defect Optimization (Root Cause Analysis) Affiliation: Semiconductor Manufacturing Data Visualization & Spotfire Statistical Analysis Professional Training Program Overview: Leveraged massive production datasets using TIBCO Spotfire to analyze chip/wafer metrology parameters, equipment sensor histories, and process routing paths. Conducted statistical validations (linear regression, ANOVA) to isolate key predictors compromising manufacturing yield. 2) Background & Problem Statement Background: Modern semiconductor fabs involve hundreds of micro-processing steps, generating gigabytes of sensor and metrology data daily. Extracting hidden process correlation variables is essential to boost yield and cut defect rates. Problem Statement: Fabs often rely on historical intuition to tweak process recipes when defects or yield drops occur, struggling to prove the root causes of failures through systematic data. Additionally, there was a critical need to merge fragmented equipment log sensors with wafer defect tables, identifying statistically significant parameters (p-value &lt; 0.05) to establish robust Statistical Process Control (SPC) structures. 3) Project Goals Quantitative Goals: Build a linear regression model linking chip-level metrics (Defect, CD, THK) to wafer yields, isolating key factors (p-value &lt; 0.05). Execute join analyses between tool logs and wafer defects to extract dominant predictors with a coefficient of determination ($R^2$) above 0.95. Calculate statistical contributions of categorical routing variables (recipe_id, eqp_id, path) using ANOVA to evaluate their impact on final yield. Qualitative Goals: Systematize data merging (join) and aggregation workflows, generating data-driven manufacturing analysis reports using Spotfire visualizations and statistical validations. 4) Engineering Methodology & Role Project Type: Individual Project (Spotfire Practical Analysis Course & Technical Report Writing) My Role (Key Contribution): Engineered data processing pipelines to clean, aggregate, and calculate wafer-level yield based on raw chip-level tables. Designed and built Spotfire dashboards across three distinct sub-analyses: Analysis 1: Linear regression of chip metrology parameters (Defects, Thickness, CD) against yield. Analysis 2: Multi-variable regression joining 4 key sensor variables (precursor flow, pressure, rf power, reflect power) with Defect counts. Analysis 3: ANOVA and box plots tracing equipment paths and recipe IDs. Interpreted p-values and R-square metrics to filter out statistically insignificant noise (e.g., CD, rf_power) from process control. 5) Applied Processes & Process Tools Category Technical Details Data Analytics Tools TIBCO Spotfire (Specialized software for semiconductor data visualization & statistical modeling) Statistical Methods Linear Regression, ANOVA (Analysis of Variance), Correlation Analysis Visualization Models Scatter Plot Matrix, Box Plot, Line / Bar Charts Key Database Keys `lot_id`, `wafer_id`, `recipe_id`, `eqp_id`, `BIN` (Good/Bad binning data) 6) Implementation Process 🔬 Sub-Project 1: Analyzing Common Factors in Chip Defect and Yield Objective: Isolate the dominant factors among chip thickness (THK), critical dimension (CD), and Defect count that impact wafer yield. Statistical Validation: Ran linear regression with yield as the dependent variable (Y). Sum(Defect): p-value of $6.93 imes 10^{-23}$ (&lt;&lt; 0.05), $R^2$ of 0.09, proving a highly significant **negative linear correlation**. Avg(THK): p-value of $6.77 imes 10^{-10}$ (&lt;&lt; 0.05), $R^2$ of 0.04, confirming a significant **negative correlation**, proving thickness variation directly harms yield. Avg(CD): p-value of 0.456 (&gt; 0.05), showing no statistical relation, filtered out as noise. 💡 Analogy: Like mathematically proving that a student's grades (yield) are linked to study hours (defects) and sleep duration (thickness), but have nothing to do with the color of their clothes (CD). 🔬 Sub-Project 2: Process Split Evaluation (Equipment Sensors vs. Defects) Objective: Evaluate the impact of internal physical tool sensors on defect generation. Statistical Validation: Merged tables using `lot_id` and `wafer_id` to run a multi-variable regression of 4 sensors against defects. Max(reflect_power): Unveiled an exceptionally strong positive correlation with a p-value of 0.00E+000 and an $R^2$ of 0.99, proving reflect power instability is the dominant driver of defects. Other Variables: rf_power (p=0.513), precursor_flow (p=0.637), and chamber_pressure (p=0.867) showed no statistical relation, preventing wasted engineering resources. 🔬 Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking) Objective: Identify bottlenecks by tracing the equipment and recipe paths of low-yield wafers. Statistical Validation: Aggregated bin data to calculate yields and ran ANOVA across process paths. recipe_id: p-value of $6.77 imes 10^{-297}$ (&lt;&lt; 0.05), identifying it as the most critical factor. Visualized clear yield gaps between low-yield groups like F108C... (72%) and high-yield groups like HF601 (97.6%). eqp_id & Path: Confirmed that specific tools (p=$1.26 imes 10^{-9}$) and cumulative paths (p=$4.88 imes 10^{-133}$) also introduce statistically significant yield variances. 7) Key Problem-Solving Points Multidisciplinary Root Cause Identification: Blindly feeding all variables into a regression model risks multicollinearity and misleading conclusions. To prevent this, we filtered outliers and missing values using box plots in Spotfire before running regression. This proved that rather than RF Power input, the **maximum threshold of reflected power (`reflect_power`)** triggered electrical arcing inside the chamber, causing massive defects, successfully tracing and resolving the failure. 8) Results & Achievements Yield Optimization Baseline Derived: Defect Drivers: Confirmed `Sum(Defect)` and `Avg(THK)` are the primary drivers of yield loss. Predictive Accuracy: Established a regression formula with $R^2=0.99$ predicting defect rates based on `Max(reflect_power)`. Optimal Paths: Designated recipe group HF601 via ANOVA, ensuring yields above 97.6%. Statistical Analysis Results Summary Independent Variable (X) Dependent Variable (Y) Statistical Method p-value $R^2$ Decision / Conclusion Sum(Defect) Wafer Yield Linear Regression $6.93 imes 10^{-23}$ 0.09 Significant negative correlation (Control parameter) Avg(THK) (Thickness) Wafer Yield Linear Regression $6.77 imes 10^{-10}$ 0.04 Significant negative correlation (Control parameter) Avg(CD) (Line Width) Wafer Yield Linear Regression 0.456 - No statistical significance (Exclude from control) Max(reflect_power) Defect Sum Linear Regression 0.00E+000 0.99 Extremely strong positive correlation (Priority control) recipe_id Wafer Yield ANOVA $6.77 imes 10^{-297}$ - Most dominant categorical factor driving yield drift 9) Lessons Learned Internalized that modern engineering is not just tweaking knobs but **interpreting p-values and using data to scientifically backtrack equipment malfunctions**. Grew quantitative engineering insight by filtering out false correlations from genuine process drivers using statistical methods. 10) Connection to Back-end Engineering Roles Relevance to Back-end/Yield Roles: Packaging involves numerous variables (EMC dispensing rates, bonding force, vacuum parameters) that interact to dictate solder joint quality and yield. Practical Application in Work: Allows immediate contribution by **joining tool logs with packaging yield tables in Spotfire to rapidly isolate low-yield equipment (`eqp_id`) or assembly recipe bottlenecks**. Prepared to contribute as an asset ready to implement Statistical Process Control (SPC) and Six Sigma yield management techniques."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."}];
+            const currentSlug = "spotfire-analytics";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

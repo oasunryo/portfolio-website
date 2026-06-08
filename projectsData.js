@@ -3187,3 +3187,7 @@ const projectProseData = {
     },
   }
 };
+
+if (typeof module !== 'undefined') {
+  module.exports = projectProseData;
+}
