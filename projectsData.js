@@ -367,7 +367,7 @@ const projectProseData = {
 <ul class="journal-ul">
 <li><strong>기간</strong>: 2026. 03. 01. ~ 2026. 06. 30.</li>
 <li><strong>유형</strong>: FPGA 보드 및 Verilog HDL 디지털 시스템 설계 및 하드웨어 디버깅</li>
-<li><strong>소속/수행 환경</strong>: 광운대학교 전자공학과 (디지털 시스템 설계 실습)</li>
+<li><strong>소속/수행 환경</strong>: 광운대학교 전자재료공학과 (디지털 시스템 설계 실습)</li>
 <li><strong>한 줄 소개</strong>: </li>
 </ul>
 <p class="journal-p">> 이 프로젝트는 Altera Cyclone II FPGA 보드와 Quartus II, ModelSim 툴을 활용하여 <strong>기본 AND 게이트부터 시작해 가변 속도 10진 카운터, 7세그먼트 디스플레이 컨트롤러, 디바운서(Debouncer) 회로, FSM(Finite State Machine) 제어 회로 및 Single-Port RAM(Read/Write) 회로</strong>를 직접 Verilog HDL로 설계하고 파형 시뮬레이션을 통해 하드웨어의 시간 지연(Propagation Delay) 및 신뢰성을 검증한 프로젝트이다.</p>
@@ -1664,7 +1664,7 @@ const projectProseData = {
 <ul class="journal-ul">
   <li><strong>기간</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
   <li><strong>유형</strong>: 반도체 장비 공정 및 소자 신뢰성 분석 실습</li>
-  <li><strong>소속/수행 환경</strong>: 광운대학교 전자재료공학과 (반도체 장비 기구 설계 실습)</li>
+  <li><strong>소속/수행 환경</strong>: 광운대학교 전자바이오물리학과 (반도체 장비 기구 설계 실습)</li>
   <li><strong>한 줄 소개</strong>: ITO 전극의 물리·화학적 가공부터 Blade/Meniscus Coating 기반 발광층 형성과 열처리(Annealing)를 수행하여 소자를 완성하고, 휘도계 측정 데이터 분석을 통해 전체 8개 샘플 중 종합 공동 2위를 기록한 프로젝트입니다.</li>
 </ul>
 
@@ -2198,7 +2198,7 @@ const projectProseData = {
         <ul class="journal-ul">
           <li><strong>Duration:</strong> 2026. 03. 01. ~ 2026. 06. 30.</li>
           <li><strong>Type:</strong> FPGA Board & Verilog HDL Digital System Design and Hardware Debugging</li>
-          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Engineering (Digital System Design Lab)</li>
+          <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Materials Engineering (Digital System Design Lab)</li>
           <li><strong>Overview:</strong> Designed and validated digital logic modules (Modulo-N counters, variable speed decimal counters, 7-segment display controllers, debouncer filters, FSM controllers, and Single-Port RAM read/write blocks) in Verilog HDL using an Altera Cyclone II FPGA board, Quartus II, and ModelSim. Analyzed gate propagation delay and mechanical bouncing noise in hardware environments to verify system reliability.</li>
         </ul>
         <hr class="journal-divider">
@@ -3585,7 +3585,7 @@ const projectProseData = {
 <ul class="journal-ul">
   <li><strong>Period</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
   <li><strong>Type</strong>: Semiconductor Equipment & Device Reliability Analysis</li>
-  <li><strong>Organization</strong>: Dept. of Electronic Materials Engineering, Kwangwoon University</li>
+  <li><strong>Organization</strong>: Dept. of Electronic Biophysics, Kwangwoon University</li>
   <li><strong>Summary</strong>: Fabricating organic light-emitting devices through chemical acid pre-cleaning of ITO, blade-coating emitting layers, and executing two-step thermal baking to achieve 2nd rank overall among 8 competing batches.</li>
 </ul>
 
