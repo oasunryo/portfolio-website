@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis  | Junseo Oh</title>
+<meta name="description" content="Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis  | Junseo Oh">
+<meta property="og:description" content="Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/projects/ito-oled-analysis/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Device Physics / OLED Fabrication & Characterization</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 06. 04. ~ 2026. 06. 08.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'ito-oled-analysis')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fito-oled-analysis%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=ITO-based%20OLED%20Device%20Fabrication%20%26%20Optoelectronic%20Performance%20Analysis&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fito-oled-analysis%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(Fabrication of Organic Light Emitting Diodes on ITO glass anodes, utilizing Blade Coating and analyzing optoelectronic reliability J-V-L profiles.)</em></p>
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+<ul class="journal-ul">
+  <li><strong>Period</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>Type</strong>: Semiconductor Equipment & Device Reliability Analysis</li>
+  <li><strong>Organization</strong>: Dept. of Electronic Materials Engineering, Kwangwoon University</li>
+  <li><strong>Summary</strong>: Fabricating organic light-emitting devices through chemical acid pre-cleaning of ITO, blade-coating emitting layers, and executing two-step thermal baking to achieve 2nd rank overall among 8 competing batches.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Statement</h3>
+<ul class="journal-ul">
+  <li><strong>Background</strong>: Maximizing the efficiency of optoelectronic devices requires optimizing surface energy and ensuring uniform layer thickness to lower potential barriers at the anode interface.</li>
+  <li><strong>Problem Statement</strong>: While blade coating is highly material-efficient compared to spin coating, it suffers from poor film thickness uniformity, risking leakage currents, high turn-on voltages, and significant efficiency roll-off at high voltages.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-2">3) Objectives</h3>
+<ul class="journal-ul">
+  <li><strong>Quantitative Targets</strong>:
+    <ul>
+      <li>Control the turn-on voltage (V<sub>on</sub>) below 4.0 V.</li>
+      <li>Achieve peak luminance (L<sub>max</sub>) above 4,000 cd/m² and optimize performance at mid-voltage sweeps (6 V).</li>
+      <li>Profile and maximize EQE (External Quantum Efficiency) and CE (Current Efficiency) in valid ranges (> 10 cd/m²).</li>
+    </ul>
+  </li>
+  <li><strong>Qualitative Targets</strong>: Establish optical detection rules for ITO anodes, optimize surface wetting via acid cleaner pre-treatments, and stabilize double-pass reverse coating profiles.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-3">4) Key Contributions (My Role)</h3>
+<ul class="journal-ul">
+  <li><strong>Anode Edge Refraction Profiling</strong>: Identified the active ITO-coated side of the glass by inspecting edge refraction zones (purple light reflection denotes the glass side), completely avoiding electrode contact failure.</li>
+  <li><strong>Acid Pre-Cleaning Control</strong>: Applied reactive acid solutions to strip contaminants and surface oxide films, successfully optimizing the substrate's wetting angle.</li>
+  <li><strong>Double-Pass Reverse Blade Coating</strong>: Controlled blade-gap variables and syringe feed rates, executing a reverse-direction 2nd coat followed by 200°C thermal baking to yield high-quality emitting layers.</li>
+  <li><strong>J-V-L Data Profiling</strong>: Evaluated real-time Current Density (J) and Luminance (L) across a 0V-12V sweep, generating comprehensive J-V-L curves and CIE chromaticity movement paths.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-4">5) Technology & Tools Stack</h3>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Processes</strong></td>
+      <td>ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C)</td>
+    </tr>
+    <tr>
+      <td><strong>Instrumentation</strong></td>
+      <td>Luminance Meter & Voltage/Current Control Sweep System</td>
+    </tr>
+    <tr>
+      <td><strong>Data Tools</strong></td>
+      <td>Chart.js (Interactive J-V-L, EQE-CE curves, and CIE 1931 Scatter plots), MS Excel</td>
+    </tr>
+    <tr>
+      <td><strong>Metrics</strong></td>
+      <td>V<sub>on</sub> (Turn-on Voltage), L<sub>max</sub> (Max Luminance), EQE, Current Efficiency (CE), CIE 1931 color space</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-5">6) Implementation Pipeline</h3>
+<h4 class="journal-h4">1. Substrate Fabrication & Acid Cleaning</h4>
+<p class="journal-p">Verified the inactive side of the ITO glass by checking the purple boundary lines. Initiated chemical cleaning to clear micro-contaminants, establishing superior surface conditions for the deposition steps.</p>
+
+<h4 class="journal-h4">2. Emitting Layer Coating & Crystallization</h4>
+<p class="journal-p">Formed a stable meniscus boundary between the blade edge and the substrate. Programmed a two-step temperature profile up to 200°C to dry solvents and accelerate film crystallization kinetics. Compensated for thickness variation with a reverse-path 2nd coating process.</p>
+
+<h4 class="journal-h4">3. Device Sweeping & Analytics</h4>
+<p class="journal-p">Evaluated the finished device by applying a 0V to 12V voltage sweep. Collected J-V-L data points, isolating valid ranges (> 10 cd/m²) to filter out detector measurement noise.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-6">7) Key Troubleshooting Points</h3>
+<ul class="journal-ul">
+  <li><strong>Characterizing High-Voltage Efficiency Roll-off</strong>:
+    <p class="journal-p">Observed a rapid 93.2% drop in luminance from 10.5 V (4,071 cd/m²) to 12 V. While current density (J) remained high at 64 mA/cm², the lack of light emission pointed directly to Exciton-Exciton Annihilation and Joule Heating-induced damage within the emitting layer, causing carriers to bypass radiative recombination.</p>
+  </li>
+  <li><strong>Defect Root Cause Investigation (jyp Sample)</strong>:
+    <p class="journal-p">Detected a severe leakage current (2.875 mA/cm² @ 4V) followed by a non-monotonic voltage-current drop in a competitor's device. Diagnosed this as an electrical short path triggered by micro-cracks or dust contamination during cutting/cleaning, proving the criticality of pre-clean steps in packaging yield.</p>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-7">8) Key Results & Achievements</h3>
+<ul class="journal-ul">
+  <li><strong>Ranked 2nd Overall</strong>: Achieved 2nd place overall among 8 competing student groups based on cumulative metrics.</li>
+  <li><strong>No.1 in Mid-Voltage Luminance</strong>: Logged 119.2 cd/m² @ 6V, demonstrating unmatched power-to-light conversion efficiency in typical operating windows.</li>
+  <li><strong>Optimal CIE Color Saturation</strong>: Achieved CIE x = 0.5555, y = 0.4417, yielding the purest yellow emission hue among all test batches.</li>
+</ul>
+
+<h4 class="journal-h4">Device Performance Comparison Table</h4>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>Developer</th>
+      <th>V<sub>on</sub> (V)</th>
+      <th>L<sub>max</sub> (cd/m²)</th>
+      <th>Max EQE (%)</th>
+      <th>CIE (x, y) @ 6V</th>
+      <th>Key Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SH (1st)</strong></td>
+      <td>3.5</td>
+      <td><strong>4,760.8</strong></td>
+      <td><strong>0.5324</strong></td>
+      <td>(0.568, 0.429)</td>
+      <td>Highest peak efficiency and luminance</td>
+    </tr>
+    <tr style="background: rgba(139, 92, 246, 0.08);">
+      <td><strong>OJ (Junseo Oh / 2nd)</strong></td>
+      <td><strong>3.5</strong></td>
+      <td><strong>4,071.0</strong></td>
+      <td><strong>0.4910</strong></td>
+      <td><strong>(0.556, 0.442)</strong></td>
+      <td><strong>Highest luminance @ 6V, Purest yellow emission</strong></td>
+    </tr>
+    <tr>
+      <td><strong>HR (2nd)</strong></td>
+      <td>1.0</td>
+      <td>4,141.0</td>
+      <td>0.4544</td>
+      <td>(0.567, 0.428)</td>
+      <td>Superior low-voltage turn-on threshold</td>
+    </tr>
+    <tr>
+      <td><strong>jyp (8th)</strong></td>
+      <td>4.5</td>
+      <td>1,583.1</td>
+      <td>0.1973</td>
+      <td>(0.566, 0.429)</td>
+      <td>Severe leakage shorts & unstable sweeps</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-8">9) Lessons Learned</h3>
+<p class="journal-p">Gained a core understanding that minor deviations in process parameters (pre-treatment, temperature) determine the performance and yield of final electronic devices. Realized the significance of balancing peak conversion efficiency with high-voltage durability constraints.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-9">10) Alignment with Career Paths</h3>
+<ul class="journal-ul">
+  <li><strong>OSAT Integration</strong>: As an incoming Packaging & Test engineer at Amkor Technology Korea, I will apply these experimental diagnostic skills and data-driven analysis techniques to optimize die-attach and bonding line yields.</li>
+</ul>
+
+<!-- Interactive Chart Embedding -->
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-10">📊 Real-Time Device Analysis Dashboard</h3>
+<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+  <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L Curves</button>
+    <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
+    <button class="selector-btn" data-chart="cie" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">CIE Chromaticity</button>
+  </div>
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 350px;">
+    <canvas id="mainChart"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">OJ(Junseo Oh) Current Density (J) and Luminance (L) profiles over voltage sweep.</p>
+</div>
+
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Statement</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Objectives</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Key Contributions (My Role)</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Technology & Tools Stack</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Pipeline</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Key Troubleshooting Points</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Key Results & Achievements</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Lessons Learned</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Alignment with Career Paths</a></li><li class="toc-item toc-indent"><a href="#toc-heading-10" class="toc-link" data-heading-id="toc-heading-10">📊 Real-Time Device Analysis Dashboard</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-ito-oled-analysis">
+          "# ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis\n\nDevice Physics / OLED Fabrication & Characterization\n\n(Fabrication of Organic Light Emitting Diodes on ITO glass anodes, utilizing Blade Coating and analyzing optoelectronic reliability J-V-L profiles.) 1) Project Overview Period: 2026. 06. 04. ~ 2026. 06. 08. Type: Semiconductor Equipment & Device Reliability Analysis Organization: Dept. of Electronic Materials Engineering, Kwangwoon University Summary: Fabricating organic light-emitting devices through chemical acid pre-cleaning of ITO, blade-coating emitting layers, and executing two-step thermal baking to achieve 2nd rank overall among 8 competing batches. 2) Background & Problem Statement Background: Maximizing the efficiency of optoelectronic devices requires optimizing surface energy and ensuring uniform layer thickness to lower potential barriers at the anode interface. Problem Statement: While blade coating is highly material-efficient compared to spin coating, it suffers from poor film thickness uniformity, risking leakage currents, high turn-on voltages, and significant efficiency roll-off at high voltages. 3) Objectives Quantitative Targets: Control the turn-on voltage (Von) below 4.0 V. Achieve peak luminance (Lmax) above 4,000 cd/m² and optimize performance at mid-voltage sweeps (6 V). Profile and maximize EQE (External Quantum Efficiency) and CE (Current Efficiency) in valid ranges (> 10 cd/m²). Qualitative Targets: Establish optical detection rules for ITO anodes, optimize surface wetting via acid cleaner pre-treatments, and stabilize double-pass reverse coating profiles. 4) Key Contributions (My Role) Anode Edge Refraction Profiling: Identified the active ITO-coated side of the glass by inspecting edge refraction zones (purple light reflection denotes the glass side), completely avoiding electrode contact failure. Acid Pre-Cleaning Control: Applied reactive acid solutions to strip contaminants and surface oxide films, successfully optimizing the substrate's wetting angle. Double-Pass Reverse Blade Coating: Controlled blade-gap variables and syringe feed rates, executing a reverse-direction 2nd coat followed by 200°C thermal baking to yield high-quality emitting layers. J-V-L Data Profiling: Evaluated real-time Current Density (J) and Luminance (L) across a 0V-12V sweep, generating comprehensive J-V-L curves and CIE chromaticity movement paths. 5) Technology & Tools Stack Category Details Processes ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C) Instrumentation Luminance Meter & Voltage/Current Control Sweep System Data Tools Chart.js (Interactive J-V-L, EQE-CE curves, and CIE 1931 Scatter plots), MS Excel Metrics Von (Turn-on Voltage), Lmax (Max Luminance), EQE, Current Efficiency (CE), CIE 1931 color space 6) Implementation Pipeline 1. Substrate Fabrication & Acid Cleaning Verified the inactive side of the ITO glass by checking the purple boundary lines. Initiated chemical cleaning to clear micro-contaminants, establishing superior surface conditions for the deposition steps. 2. Emitting Layer Coating & Crystallization Formed a stable meniscus boundary between the blade edge and the substrate. Programmed a two-step temperature profile up to 200°C to dry solvents and accelerate film crystallization kinetics. Compensated for thickness variation with a reverse-path 2nd coating process. 3. Device Sweeping & Analytics Evaluated the finished device by applying a 0V to 12V voltage sweep. Collected J-V-L data points, isolating valid ranges (> 10 cd/m²) to filter out detector measurement noise. 7) Key Troubleshooting Points Characterizing High-Voltage Efficiency Roll-off: Observed a rapid 93.2% drop in luminance from 10.5 V (4,071 cd/m²) to 12 V. While current density (J) remained high at 64 mA/cm², the lack of light emission pointed directly to Exciton-Exciton Annihilation and Joule Heating-induced damage within the emitting layer, causing carriers to bypass radiative recombination. Defect Root Cause Investigation (jyp Sample): Detected a severe leakage current (2.875 mA/cm² @ 4V) followed by a non-monotonic voltage-current drop in a competitor's device. Diagnosed this as an electrical short path triggered by micro-cracks or dust contamination during cutting/cleaning, proving the criticality of pre-clean steps in packaging yield. 8) Key Results & Achievements Ranked 2nd Overall: Achieved 2nd place overall among 8 competing student groups based on cumulative metrics. No.1 in Mid-Voltage Luminance: Logged 119.2 cd/m² @ 6V, demonstrating unmatched power-to-light conversion efficiency in typical operating windows. Optimal CIE Color Saturation: Achieved CIE x = 0.5555, y = 0.4417, yielding the purest yellow emission hue among all test batches. Device Performance Comparison Table Developer Von (V) Lmax (cd/m²) Max EQE (%) CIE (x, y) @ 6V Key Remarks SH (1st) 3.5 4,760.8 0.5324 (0.568, 0.429) Highest peak efficiency and luminance OJ (Junseo Oh / 2nd) 3.5 4,071.0 0.4910 (0.556, 0.442) Highest luminance @ 6V, Purest yellow emission HR (2nd) 1.0 4,141.0 0.4544 (0.567, 0.428) Superior low-voltage turn-on threshold jyp (8th) 4.5 1,583.1 0.1973 (0.566, 0.429) Severe leakage shorts & unstable sweeps 9) Lessons Learned Gained a core understanding that minor deviations in process parameters (pre-treatment, temperature) determine the performance and yield of final electronic devices. Realized the significance of balancing peak conversion efficiency with high-voltage durability constraints. 10) Alignment with Career Paths OSAT Integration: As an incoming Packaging & Test engineer at Amkor Technology Korea, I will apply these experimental diagnostic skills and data-driven analysis techniques to optimize die-attach and bonding line yields. 📊 Real-Time Device Analysis Dashboard J-V-L Curves EQE / CE CIE Chromaticity OJ(Junseo Oh) Current Density (J) and Luminance (L) profiles over voltage sweep."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & Packaging","title":"Ceramic Capillary Geometry","description":"Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits."},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching."},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays."},{"slug":"euv-photoresist","category":"Front-end Lithography","title":"TinNO₃ EUV Photoresist","description":"Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography."},{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences."},{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration."},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes."},{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs."},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."},{"slug":"ito-oled-analysis","category":"Devices & Process","title":"ITO-based OLED Fabrication","description":"Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves."}];
+            const currentSlug = "ito-oled-analysis";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

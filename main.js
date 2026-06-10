@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initTocHighlight();
   initProjectsSort();
+  initOledDashboard();
 });
 
 // Carousel Ticker/Controller (Gallery4 Style)
@@ -500,4 +501,177 @@ function initProjectsSort() {
   
   // Initial sort (default is 'latest')
   sortProjects();
+}
+
+/**
+ * OLED 대시보드 차트 제어 모듈
+ * 10번째 프로젝트인 'ito-oled-analysis' 상세 페이지 로드 시에만 동적 실행
+ */
+function initOledDashboard() {
+  const chartCanvas = document.getElementById("mainChart");
+  if (!chartCanvas) return; // 차트 캔버스가 없으면 실행 취소
+
+  // 1. Chart.js CDN 동적 로드
+  if (typeof Chart === 'undefined') {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    script.onload = () => buildChartLogic();
+    document.head.appendChild(script);
+  } else {
+    buildChartLogic();
+  }
+
+  function buildChartLogic() {
+    // OJ 측정 데이터 셋
+    const ojData = {
+      v: [0.0, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0],
+      j: [0.0, 0.004564, 0.016503, 0.031231, 0.050447, 0.092100, 0.193742, 0.383047, 0.702408, 1.176845, 1.878700, 2.892761, 4.234863, 6.091335, 8.505679, 11.515195, 15.202113, 19.779861, 25.327582, 32.259401, 41.910835, 52.327868, 58.565672, 62.284898, 64.333864],
+      l: [0.0, 0.638, 0.470, 0.0, 0.055, 0.702, 0.235, 1.690, 4.757, 11.736, 32.016, 64.560, 119.249, 203.390, 328.789, 460.553, 752.729, 1079.713, 1525.262, 2199.473, 3429.953, 4071.006, 1920.930, 591.107, 276.757],
+      eqeV: [4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.5, 8.0, 8.5, 9.0, 9.5, 10.0, 10.5, 11.0, 11.5, 12.0],
+      eqe: [0.0598, 0.1022, 0.1339, 0.1690, 0.2003, 0.2319, 0.2400, 0.2971, 0.3275, 0.3613, 0.4091, 0.4910, 0.4668, 0.1968, 0.0569, 0.0258],
+      ce: [0.0418, 0.0642, 0.0765, 0.0885, 0.0968, 0.1041, 0.1005, 0.1167, 0.1211, 0.1261, 0.1353, 0.1543, 0.1397, 0.0562, 0.0156, 0.0068],
+      cieV: [4.0, 6.0, 8.0, 10.0, 12.0],
+      cieX: [0.5487, 0.5555, 0.5456, 0.5149, 0.4830],
+      cieY: [0.3982, 0.4417, 0.4536, 0.4830, 0.5136]
+    };
+
+    let currentChart = null;
+
+    const renderChart = (type) => {
+      if (currentChart) currentChart.destroy();
+      const ctx = chartCanvas.getContext("2d");
+      
+      // 포트폴리오 테마 변수 획득
+      const isDark = document.documentElement.classList.contains('dark');
+      const gridColor = isDark ? "rgba(255, 255, 255, 0.06)" : "rgba(0, 0, 0, 0.06)";
+      const textColor = isDark ? "#94a3b8" : "#475569";
+      
+      let config = {};
+
+      if (type === 'jvl') {
+        config = {
+          type: 'line',
+          data: {
+            labels: ojData.v,
+            datasets: [
+              {
+                label: isDark ? '전류밀도 J (mA/cm²)' : 'Current Density J',
+                data: ojData.j,
+                borderColor: '#8b5cf6',
+                backgroundColor: 'rgba(139, 92, 246, 0.08)',
+                yAxisID: 'yJ',
+                tension: 0.3,
+                borderWidth: 2.5
+              },
+              {
+                label: isDark ? '휘도 L (cd/m²)' : 'Luminance L',
+                data: ojData.l,
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245, 158, 11, 0.08)',
+                yAxisID: 'yL',
+                tension: 0.3,
+                borderWidth: 2.5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              yJ: { type: 'linear', position: 'left', grid: { color: gridColor }, ticks: { color: textColor } },
+              yL: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { color: textColor } }
+            }
+          }
+        };
+      } else if (type === 'eqece') {
+        config = {
+          type: 'line',
+          data: {
+            labels: ojData.eqeV,
+            datasets: [
+              { label: 'EQE (%)', data: ojData.eqe, borderColor: '#10b981', borderWidth: 2.5, yAxisID: 'yEqe' },
+              { label: 'CE (cd/A)', data: ojData.ce, borderColor: '#3b82f6', borderWidth: 2.5, yAxisID: 'yCe' }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              yEqe: { type: 'linear', position: 'left', grid: { color: gridColor }, ticks: { color: textColor } },
+              yCe: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { color: textColor } }
+            }
+          }
+        };
+      } else if (type === 'cie') {
+        config = {
+          type: 'scatter',
+          data: {
+            datasets: [{
+              label: 'CIE x, y (4V ➔ 12V)',
+              data: ojData.cieX.map((x, idx) => ({ x: x, y: ojData.cieY[idx] })),
+              borderColor: '#ec4899',
+              showLine: true,
+              borderWidth: 2.5,
+              pointBackgroundColor: ojData.cieV.map(v => v === 6.0 ? '#f59e0b' : '#ec4899'),
+              pointRadius: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { min: 0.45, max: 0.60, grid: { color: gridColor }, ticks: { color: textColor } },
+              y: { min: 0.35, max: 0.55, grid: { color: gridColor }, ticks: { color: textColor } }
+            }
+          }
+        };
+      }
+
+      currentChart = new Chart(ctx, config);
+    };
+
+    // 초기 차트 로드
+    renderChart('jvl');
+
+    // 셀렉터 버튼 리스너 연동
+    const buttons = document.querySelectorAll(".selector-btn");
+    buttons.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        buttons.forEach(b => {
+          b.classList.remove("active");
+          b.style.background = "none";
+          b.style.color = "var(--text-secondary)";
+        });
+        e.currentTarget.classList.add("active");
+        e.currentTarget.style.background = "var(--primary)";
+        e.currentTarget.style.color = "#fff";
+
+        const chartType = e.currentTarget.getAttribute("data-chart");
+        renderChart(chartType);
+
+        // 자막 변경
+        const caption = document.getElementById("chartCaption");
+        if (chartType === 'jvl') {
+          caption.innerText = "OJ(Junseo Oh) 샘플의 전압 Sweep에 따른 전류밀도(J) 및 휘도(L) 곡선입니다.";
+        } else if (chartType === 'eqece') {
+          caption.innerText = "유효 휘도 구간(L > 10 cd/m²)에서의 외부양자효율(EQE) 및 전류효율(CE) 특성 곡선입니다.";
+        } else if (chartType === 'cie') {
+          caption.innerText = "전압 상승에 따른 CIE 1931 색상 좌표의 황색 영역 이동 궤적을 확인합니다.";
+        }
+      });
+    });
+
+    // 다크 모드 갱신 감지 리스너 바인딩 (main.js의 기존 theme-toggle 이벤트와 연동 처리)
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(() => {
+          const activeBtn = document.querySelector(".selector-btn.active");
+          if (activeBtn) renderChart(activeBtn.getAttribute("data-chart"));
+        }, 100); // DOM 테마 Attribute 적용 완료 대기
+      });
+    }
+  }
 }

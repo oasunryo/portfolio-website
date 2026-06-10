@@ -213,6 +213,27 @@ const projectsMeta = [
       hostname: "SOC Battery Tester",
       description: "Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware."
     }
+  },
+  {
+    id: 10,
+    slug: "ito-oled-analysis",
+    initials: "10",
+    image: "/assets/projects/ito_oled_analysis.png",
+    tags: ["OLED", "Thin-Film", "Blade-Coating", "Optoelectronic", "Chart.js"],
+    date: "2026-06-04",
+    period: "2026. 06. 04. ~ 2026. 06. 08.",
+    ko: {
+      title: "ITO-based OLED Fabrication",
+      category: "반도체 소자 & 공정",
+      hostname: "OLED Optoelectronic Analysis",
+      description: "ITO 투명 전극 가공, 유기 발광층 Blade Coating 및 열처리를 통해 OLED 소자를 직접 제작하고 J-V-L 전기광학적 성능을 정량 분석한 프로젝트입니다."
+    },
+    en: {
+      title: "ITO-based OLED Fabrication",
+      category: "Devices & Process",
+      hostname: "OLED Optoelectronic Analysis",
+      description: "Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves."
+    }
   }
 ];
 

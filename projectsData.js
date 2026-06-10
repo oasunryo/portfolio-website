@@ -1570,6 +1570,193 @@ const projectProseData = {
 <p class="journal-p">* 디지털 디코더 하드웨어 논리 회로 분석 능력을 바탕으로 테스트 패턴 디버깅 업무에서도 빠른 적응을 보장합니다.</p>
       `
     },
+    10: {
+      meta: `반도체 소자 / OLED 공정 및 전기광학 특성 분석`,
+      title: `ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis`,
+      date: `2026. 06. 04. ~ 2026. 06. 08.`,
+      prose: `
+<p class="journal-p"><em>(ITO 투명 전극 가공 및 발광층 Blade Coating 공정을 통한 유기 발광 소자 제작 및 J-V-L 전기광학 신뢰성 특성 정량 평가)</em></p>
+<hr class="journal-divider">
+
+<h3 class="journal-h3">1) 프로젝트 개요</h3>
+<ul class="journal-ul">
+  <li><strong>기간</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>유형</strong>: 반도체 장비 공정 및 소자 신뢰성 분석 실습</li>
+  <li><strong>소속/수행 환경</strong>: 광운대학교 전자재료공학과 (반도체 장비 기구 설계 실습)</li>
+  <li><strong>한 줄 소개</strong>: ITO 전극의 물리·화학적 가공부터 Blade/Meniscus Coating 기반 발광층 형성과 열처리(Annealing)를 수행하여 소자를 완성하고, 휘도계 측정 데이터 분석을 통해 전체 8개 샘플 중 종합 공동 2위를 기록한 프로젝트입니다.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">2) 배경 및 문제 정의</h3>
+<ul class="journal-ul">
+  <li><strong>배경</strong>: 디스플레이 및 반도체 소자의 고효율화를 달성하려면 정공과 전자가 균일하게 만나 재결합할 수 있도록 우수한 표면 에너지를 지닌 투명 전극(ITO) 가공과 안정적인 유기 박막 도포가 핵심입니다.</li>
+  <li><strong>문제 정의</strong>: 스핀 코팅 대비 재료 손실이 적은 Blade Coating 방식은 박막의 평탄도 및 두께 균일도 제어가 어려워 계면 누설 전류나 구동 전압 상승을 유발하기 쉬우며, 고전압 영역에서의 급격한 효율 저하(Efficiency Roll-off) 문제를 지니고 있습니다.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">3) 목표</h3>
+<ul class="journal-ul">
+  <li><strong>정량 목표</strong>: 
+    <ul>
+      <li>구동 개시 전압(Turn-on Voltage, V<sub>on</sub>)을 4.0 V 미만으로 제어.</li>
+      <li>최대 휘도(L<sub>max</sub>) 4,000 cd/m² 이상 확보 및 6V 중간 전압대 구동 효율 극대화.</li>
+      <li>측정 신뢰성 확보를 위해 휘도 10 cd/m² 이상의 유효 구간에서 최고 수준의 외부양자효율(EQE) 및 전류효율(CE) 달성.</li>
+    </ul>
+  </li>
+  <li><strong>정성 목표</strong>: ITO 기판 앞뒷면의 광학적 판별법 정립, 산성 세정 공정을 활용한 젖음성(Wettability) 제어, 메니스커스 형성을 통한 2차 역방향 블레이드 코팅 및 Annealing 공정 최적화.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">4) 내 역할 (주도적 기여)</h3>
+<ul class="journal-ul">
+  <li><strong>기판 에지부 반사 특성 판별</strong>: 기판 끝부분에서 보라색 광 반사층 여부를 활용해 육안 구분이 어려운 ITO 앞면(증착면)과 뒷면(유리 전극면)을 오차 없이 판별하여 소자 조립 시 전극 접촉 불량 문제를 원천 예방.</li>
+  <li><strong>Acid Chemical 세정 제어</strong>: 산성 세정액을 활용한 오염물/산화막 박리로 표면 에너지를 개질하고 젖음성을 향상시킴.</li>
+  <li><strong>Meniscus & 2차 역방향 코팅 설계</strong>: 시린지 토출량과 블레이드 갭을 동적으로 제어하고, 1차 코팅 시 발생하는 마진 편차를 보완하기 위해 반대 방향으로 2차 코팅 및 200°C Annealing 공정을 적용하여 발광 박막 균일도 확보.</li>
+  <li><strong>전기광학 신뢰성 정량 분석</strong>: 0V~12V 전압 Sweep에 따른 전류밀도(J), 휘도(L) 변화를 측정하여 J-V-L 및 CIE 색좌표 이동 경로를 추적 및 데이터 통계 프로파일링.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">5) 적용 공정 / 기술 / 도구</h3>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>소자 공정</strong></td>
+      <td>ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C)</td>
+    </tr>
+    <tr>
+      <td><strong>측정 장비</strong></td>
+      <td>Luminance Meter (휘도계) 및 전압/전류 제어 Sweep 시스템</td>
+    </tr>
+    <tr>
+      <td><strong>분석 도구</strong></td>
+      <td>Chart.js (J-V-L, EQE-CE 곡선, CIE 1931 2D 산포도 동적 시각화), Excel</td>
+    </tr>
+    <tr>
+      <td><strong>핵심 지표</strong></td>
+      <td>V<sub>on</sub> (구동 전압), L<sub>max</sub> (최대 휘도), EQE (외부양자효율), CE (전류효율), CIE (색좌표)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">6) 진행 과정</h3>
+<h4 class="journal-h4">1. ITO 기판 물리화학 전처리</h4>
+<p class="journal-p">ITO는 산화물이 유리기판 위에 증착된 구조로, 기판 에지부를 위아래로 기울였을 때 얇은 보라색 층이 보이면 빛이 투과 전극면을 100% 흡수하지 못하고 반사되는 뒷면(유리)임을 판별함. 판별이 끝난 후 산성 클리너 세정을 통해 정공 주입 계면의 오염물질을 제거하여 표면 에너지를 극대화함.</p>
+
+<h4 class="journal-h4">2. 유기 발광층 증착 및 건조 열처리</h4>
+<p class="journal-p">블레이드와 기판 사이에 도포 용액의 표면 장력에 의한 메니스커스(Meniscus)를 고르게 유지하여 Blade Coating을 진행함. 도포 후 상온에서 점진적으로 200°C까지 올리는 두 단계 열처리를 진행해 잔류 용매를 완전 증발시키고 유기 결정 구조를 조밀하게 형성함. 박막 두께 편차 보정을 위해 2차 역방향 코팅 및 2차 열처리를 추가 수행함.</p>
+
+<h4 class="journal-h4">3. 소자 전압 인가 및 특성 정량 분석</h4>
+<p class="journal-p">제작 완료된 소자에 0V~12V(0.5V 간격, 총 25포인트) 전압 Sweep을 인가하며 휘도 및 누설 전류 신뢰성을 도출함. 휘도가 너무 낮은 극초기 구간(L &lt; 10 cd/m²)의 시스템 노이즈를 배제한 유효 효율 영역 데이터를 산출하여 통계 리더보드를 구축함.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">7) 핵심 트러블슈팅 포인트</h3>
+<ul class="journal-ul">
+  <li><strong>고전압 효율 롤오프(Efficiency Roll-off) 요인 규명</strong>:
+    <p class="journal-p">측정 결과, OJ 및 SH 샘플 모두 10.5 V(최대 휘도 4,071 cd/m²) 도달 이후 12 V 전압 인가 시 휘도가 약 93.2% 급격히 감소하는 비정상 효율 감쇠 현상이 관찰되었습니다. 분석 결과 전류밀도(J)는 64 mA/cm² 이상 유지되는 상태에서 휘도만 급락한 것은 유기 박막 내의 고전류 집중으로 인한 엑시톤-엑시톤 소광(Exciton-Exciton Annihilation) 및 축적된 줄 열(Joule Heating)로 인한 재결합 영역 이탈이 주요인임을 도출하였습니다.</p>
+  </li>
+  <li><strong>타사(jyp 샘플) 불량 원인 역추적</strong>:
+    <p class="journal-p">4V에서 타 샘플 대비 6배 높은 전류 밀도(2.875 mA/cm²)가 발생했다가 5.5V에서 비단조적으로 전류가 감소하는 비정상 쇼트 패스(Short Path) 현상을 식별했습니다. 이는 공정 전처리 세정 불량으로 인한 기판 파티클 혹은 절단 면의 미세 크랙이 전도성 계면에 단락 경로를 형성했기 때문임을 밝혀내어 전처리 공정 관리 수율 확보의 절대성을 세미나를 통해 입증했습니다.</p>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">8) 결과 및 성과</h3>
+<ul class="journal-ul">
+  <li><strong>종합 공동 2위 수성</strong>: 8개 샘플 대상 정량 평가(V<sub>on</sub>, L<sub>max</sub>, EQE, CE 점수화) 결과 총 26점으로 종합 공동 2위를 달성하였습니다.</li>
+  <li><strong>중간 전압 구동 효율 전체 1위</strong>: 6V 인가 시 휘도 119.2 cd/m²로 전체 샘플 중 압도적인 1위를 기록하여 실용 전압 구간에서 에너지 변환 효율이 가장 탁월함을 입증하였습니다.</li>
+  <li><strong>최상의 황색 색순도 확보</strong>: CIE 좌표 (0.5555, 0.4417)로 주황색 편향이 없는 순황색에 가장 근접하게 박막 성형을 구현하였습니다.</li>
+</ul>
+
+<h4 class="journal-h4">주요 샘플 성능 검증 비교 테이블</h4>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>제작자 (소자)</th>
+      <th>V<sub>on</sub> (V)</th>
+      <th>L<sub>max</sub> (cd/m²)</th>
+      <th>최대 EQE (%)</th>
+      <th>CIE (x, y) @ 6V</th>
+      <th>특이 사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SH (1위)</strong></td>
+      <td>3.5</td>
+      <td><strong>4,760.8</strong></td>
+      <td><strong>0.5324</strong></td>
+      <td>(0.568, 0.429)</td>
+      <td>최대 효율 및 최고 휘도 기록</td>
+    </tr>
+    <tr style="background: rgba(139, 92, 246, 0.08);">
+      <td><strong>OJ (오준서 / 2위)</strong></td>
+      <td><strong>3.5</strong></td>
+      <td><strong>4,071.0</strong></td>
+      <td><strong>0.4910</strong></td>
+      <td><strong>(0.556, 0.442)</strong></td>
+      <td><strong>중간 전압(6V) 휘도 전체 최고, 순황색 최적 구현</strong></td>
+    </tr>
+    <tr>
+      <td><strong>HR (2위)</strong></td>
+      <td>1.0</td>
+      <td>4,141.0</td>
+      <td>0.4544</td>
+      <td>(0.567, 0.428)</td>
+      <td>매우 우수한 저전압 구동 개시 성능</td>
+    </tr>
+    <tr>
+      <td><strong>jyp (8위)</strong></td>
+      <td>4.5</td>
+      <td>1,583.1</td>
+      <td>0.1973</td>
+      <td>(0.566, 0.429)</td>
+      <td>쇼트 패스 누설 및 비단조적 전압 거동 불량</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">9) 내가 배운 점</h3>
+<p class="journal-p">반도체 소자 및 후공정 엔지니어링 단계에서 <strong>'미세한 기구 설계 치수와 툴 제어, 그리고 공정 전처리 정밀도(Cleaning/Cutting)가 실제 최종 아날로그 소자의 전기광학 및 수율에 치명적인 결정력을 지닌다는 점'</strong>을 배웠습니다. 단일 기계 수치상의 최대 효율 확보보다 고전압 신뢰성과 누설 마진을 종합 판단해야 하는 엔지니어링적 아키텍처 관점의 중요성을 깨달았습니다.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">10) 후공정 및 테스트 직무와의 연결점</h3>
+<ul class="journal-ul">
+  <li><strong>실무 적용 가능 업무</strong>: 글로벌 OSAT 1티어인 앰코테크놀로지(Amkor Technology) 후공정 엔지니어로서, 최종 조립 완료된 반도체 칩의 테스트 핀 패드 접합 불량을 제어하고 계면 저항을 저감시키는 <strong>정밀 수율 개선(Yield Enhancement) 부서 및 불량 분석(FA) 업무</strong>에 이론 및 데이터 계측 역량을 접목할 수 있습니다.</li>
+</ul>
+
+<!-- 차트 렌더링 컨테이너 임베딩 영역 -->
+<hr class="journal-divider">
+<h3 class="journal-h3">📊 실시간 소자 분석 대시보드</h3>
+<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+  <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L 곡선</button>
+    <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
+    <button class="selector-btn" data-chart="cie" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">CIE 색좌표 이동</button>
+  </div>
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 350px;">
+    <canvas id="mainChart"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">OJ(Junseo Oh) 샘플의 전압Sweep에 따른 전류밀도(J) 및 휘도(L) 곡선입니다.</p>
+</div>
+`
+    },
   },
   en: {
     1: {
@@ -3218,6 +3405,193 @@ const projectProseData = {
           </li>
         </ul>
       `
+    },
+    10: {
+      meta: `Device Physics / OLED Fabrication & Characterization`,
+      title: `ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis`,
+      date: `2026. 06. 04. ~ 2026. 06. 08.`,
+      prose: `
+<p class="journal-p"><em>(Fabrication of Organic Light Emitting Diodes on ITO glass anodes, utilizing Blade Coating and analyzing optoelectronic reliability J-V-L profiles.)</em></p>
+<hr class="journal-divider">
+
+<h3 class="journal-h3">1) Project Overview</h3>
+<ul class="journal-ul">
+  <li><strong>Period</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>Type</strong>: Semiconductor Equipment & Device Reliability Analysis</li>
+  <li><strong>Organization</strong>: Dept. of Electronic Materials Engineering, Kwangwoon University</li>
+  <li><strong>Summary</strong>: Fabricating organic light-emitting devices through chemical acid pre-cleaning of ITO, blade-coating emitting layers, and executing two-step thermal baking to achieve 2nd rank overall among 8 competing batches.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">2) Background & Problem Statement</h3>
+<ul class="journal-ul">
+  <li><strong>Background</strong>: Maximizing the efficiency of optoelectronic devices requires optimizing surface energy and ensuring uniform layer thickness to lower potential barriers at the anode interface.</li>
+  <li><strong>Problem Statement</strong>: While blade coating is highly material-efficient compared to spin coating, it suffers from poor film thickness uniformity, risking leakage currents, high turn-on voltages, and significant efficiency roll-off at high voltages.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">3) Objectives</h3>
+<ul class="journal-ul">
+  <li><strong>Quantitative Targets</strong>:
+    <ul>
+      <li>Control the turn-on voltage (V<sub>on</sub>) below 4.0 V.</li>
+      <li>Achieve peak luminance (L<sub>max</sub>) above 4,000 cd/m² and optimize performance at mid-voltage sweeps (6 V).</li>
+      <li>Profile and maximize EQE (External Quantum Efficiency) and CE (Current Efficiency) in valid ranges (> 10 cd/m²).</li>
+    </ul>
+  </li>
+  <li><strong>Qualitative Targets</strong>: Establish optical detection rules for ITO anodes, optimize surface wetting via acid cleaner pre-treatments, and stabilize double-pass reverse coating profiles.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">4) Key Contributions (My Role)</h3>
+<ul class="journal-ul">
+  <li><strong>Anode Edge Refraction Profiling</strong>: Identified the active ITO-coated side of the glass by inspecting edge refraction zones (purple light reflection denotes the glass side), completely avoiding electrode contact failure.</li>
+  <li><strong>Acid Pre-Cleaning Control</strong>: Applied reactive acid solutions to strip contaminants and surface oxide films, successfully optimizing the substrate's wetting angle.</li>
+  <li><strong>Double-Pass Reverse Blade Coating</strong>: Controlled blade-gap variables and syringe feed rates, executing a reverse-direction 2nd coat followed by 200°C thermal baking to yield high-quality emitting layers.</li>
+  <li><strong>J-V-L Data Profiling</strong>: Evaluated real-time Current Density (J) and Luminance (L) across a 0V-12V sweep, generating comprehensive J-V-L curves and CIE chromaticity movement paths.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">5) Technology & Tools Stack</h3>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Processes</strong></td>
+      <td>ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C)</td>
+    </tr>
+    <tr>
+      <td><strong>Instrumentation</strong></td>
+      <td>Luminance Meter & Voltage/Current Control Sweep System</td>
+    </tr>
+    <tr>
+      <td><strong>Data Tools</strong></td>
+      <td>Chart.js (Interactive J-V-L, EQE-CE curves, and CIE 1931 Scatter plots), MS Excel</td>
+    </tr>
+    <tr>
+      <td><strong>Metrics</strong></td>
+      <td>V<sub>on</sub> (Turn-on Voltage), L<sub>max</sub> (Max Luminance), EQE, Current Efficiency (CE), CIE 1931 color space</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">6) Implementation Pipeline</h3>
+<h4 class="journal-h4">1. Substrate Fabrication & Acid Cleaning</h4>
+<p class="journal-p">Verified the inactive side of the ITO glass by checking the purple boundary lines. Initiated chemical cleaning to clear micro-contaminants, establishing superior surface conditions for the deposition steps.</p>
+
+<h4 class="journal-h4">2. Emitting Layer Coating & Crystallization</h4>
+<p class="journal-p">Formed a stable meniscus boundary between the blade edge and the substrate. Programmed a two-step temperature profile up to 200°C to dry solvents and accelerate film crystallization kinetics. Compensated for thickness variation with a reverse-path 2nd coating process.</p>
+
+<h4 class="journal-h4">3. Device Sweeping & Analytics</h4>
+<p class="journal-p">Evaluated the finished device by applying a 0V to 12V voltage sweep. Collected J-V-L data points, isolating valid ranges (> 10 cd/m²) to filter out detector measurement noise.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">7) Key Troubleshooting Points</h3>
+<ul class="journal-ul">
+  <li><strong>Characterizing High-Voltage Efficiency Roll-off</strong>:
+    <p class="journal-p">Observed a rapid 93.2% drop in luminance from 10.5 V (4,071 cd/m²) to 12 V. While current density (J) remained high at 64 mA/cm², the lack of light emission pointed directly to Exciton-Exciton Annihilation and Joule Heating-induced damage within the emitting layer, causing carriers to bypass radiative recombination.</p>
+  </li>
+  <li><strong>Defect Root Cause Investigation (jyp Sample)</strong>:
+    <p class="journal-p">Detected a severe leakage current (2.875 mA/cm² @ 4V) followed by a non-monotonic voltage-current drop in a competitor's device. Diagnosed this as an electrical short path triggered by micro-cracks or dust contamination during cutting/cleaning, proving the criticality of pre-clean steps in packaging yield.</p>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">8) Key Results & Achievements</h3>
+<ul class="journal-ul">
+  <li><strong>Ranked 2nd Overall</strong>: Achieved 2nd place overall among 8 competing student groups based on cumulative metrics.</li>
+  <li><strong>No.1 in Mid-Voltage Luminance</strong>: Logged 119.2 cd/m² @ 6V, demonstrating unmatched power-to-light conversion efficiency in typical operating windows.</li>
+  <li><strong>Optimal CIE Color Saturation</strong>: Achieved CIE x = 0.5555, y = 0.4417, yielding the purest yellow emission hue among all test batches.</li>
+</ul>
+
+<h4 class="journal-h4">Device Performance Comparison Table</h4>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>Developer</th>
+      <th>V<sub>on</sub> (V)</th>
+      <th>L<sub>max</sub> (cd/m²)</th>
+      <th>Max EQE (%)</th>
+      <th>CIE (x, y) @ 6V</th>
+      <th>Key Remarks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SH (1st)</strong></td>
+      <td>3.5</td>
+      <td><strong>4,760.8</strong></td>
+      <td><strong>0.5324</strong></td>
+      <td>(0.568, 0.429)</td>
+      <td>Highest peak efficiency and luminance</td>
+    </tr>
+    <tr style="background: rgba(139, 92, 246, 0.08);">
+      <td><strong>OJ (Junseo Oh / 2nd)</strong></td>
+      <td><strong>3.5</strong></td>
+      <td><strong>4,071.0</strong></td>
+      <td><strong>0.4910</strong></td>
+      <td><strong>(0.556, 0.442)</strong></td>
+      <td><strong>Highest luminance @ 6V, Purest yellow emission</strong></td>
+    </tr>
+    <tr>
+      <td><strong>HR (2nd)</strong></td>
+      <td>1.0</td>
+      <td>4,141.0</td>
+      <td>0.4544</td>
+      <td>(0.567, 0.428)</td>
+      <td>Superior low-voltage turn-on threshold</td>
+    </tr>
+    <tr>
+      <td><strong>jyp (8th)</strong></td>
+      <td>4.5</td>
+      <td>1,583.1</td>
+      <td>0.1973</td>
+      <td>(0.566, 0.429)</td>
+      <td>Severe leakage shorts & unstable sweeps</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">9) Lessons Learned</h3>
+<p class="journal-p">Gained a core understanding that minor deviations in process parameters (pre-treatment, temperature) determine the performance and yield of final electronic devices. Realized the significance of balancing peak conversion efficiency with high-voltage durability constraints.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3">10) Alignment with Career Paths</h3>
+<ul class="journal-ul">
+  <li><strong>OSAT Integration</strong>: As an incoming Packaging & Test engineer at Amkor Technology Korea, I will apply these experimental diagnostic skills and data-driven analysis techniques to optimize die-attach and bonding line yields.</li>
+</ul>
+
+<!-- Interactive Chart Embedding -->
+<hr class="journal-divider">
+<h3 class="journal-h3">📊 Real-Time Device Analysis Dashboard</h3>
+<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+  <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L Curves</button>
+    <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
+    <button class="selector-btn" data-chart="cie" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">CIE Chromaticity</button>
+  </div>
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 350px;">
+    <canvas id="mainChart"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">OJ(Junseo Oh) Current Density (J) and Luminance (L) profiles over voltage sweep.</p>
+</div>
+`
     },
   }
 };

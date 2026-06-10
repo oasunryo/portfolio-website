@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis  | 오준서</title>
+<meta name="description" content="ITO 투명 전극 가공, 유기 발광층 Blade Coating 및 열처리를 통해 OLED 소자를 직접 제작하고 J-V-L 전기광학적 성능을 정량 분석한 프로젝트입니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis  | 오준서">
+<meta property="og:description" content="ITO 투명 전극 가공, 유기 발광층 Blade Coating 및 열처리를 통해 OLED 소자를 직접 제작하고 J-V-L 전기광학적 성능을 정량 분석한 프로젝트입니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/projects/ito-oled-analysis/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 프로젝트 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">반도체 소자 / OLED 공정 및 전기광학 특성 분석</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 06. 04. ~ 2026. 06. 08.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">7분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'ito-oled-analysis')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Fito-oled-analysis%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=ITO-based%20OLED%20Device%20Fabrication%20%26%20Optoelectronic%20Performance%20Analysis&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fprojects%2Fito-oled-analysis%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(ITO 투명 전극 가공 및 발광층 Blade Coating 공정을 통한 유기 발광 소자 제작 및 J-V-L 전기광학 신뢰성 특성 정량 평가)</em></p>
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-0">1) 프로젝트 개요</h3>
+<ul class="journal-ul">
+  <li><strong>기간</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>유형</strong>: 반도체 장비 공정 및 소자 신뢰성 분석 실습</li>
+  <li><strong>소속/수행 환경</strong>: 광운대학교 전자재료공학과 (반도체 장비 기구 설계 실습)</li>
+  <li><strong>한 줄 소개</strong>: ITO 전극의 물리·화학적 가공부터 Blade/Meniscus Coating 기반 발광층 형성과 열처리(Annealing)를 수행하여 소자를 완성하고, 휘도계 측정 데이터 분석을 통해 전체 8개 샘플 중 종합 공동 2위를 기록한 프로젝트입니다.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-1">2) 배경 및 문제 정의</h3>
+<ul class="journal-ul">
+  <li><strong>배경</strong>: 디스플레이 및 반도체 소자의 고효율화를 달성하려면 정공과 전자가 균일하게 만나 재결합할 수 있도록 우수한 표면 에너지를 지닌 투명 전극(ITO) 가공과 안정적인 유기 박막 도포가 핵심입니다.</li>
+  <li><strong>문제 정의</strong>: 스핀 코팅 대비 재료 손실이 적은 Blade Coating 방식은 박막의 평탄도 및 두께 균일도 제어가 어려워 계면 누설 전류나 구동 전압 상승을 유발하기 쉬우며, 고전압 영역에서의 급격한 효율 저하(Efficiency Roll-off) 문제를 지니고 있습니다.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-2">3) 목표</h3>
+<ul class="journal-ul">
+  <li><strong>정량 목표</strong>: 
+    <ul>
+      <li>구동 개시 전압(Turn-on Voltage, V<sub>on</sub>)을 4.0 V 미만으로 제어.</li>
+      <li>최대 휘도(L<sub>max</sub>) 4,000 cd/m² 이상 확보 및 6V 중간 전압대 구동 효율 극대화.</li>
+      <li>측정 신뢰성 확보를 위해 휘도 10 cd/m² 이상의 유효 구간에서 최고 수준의 외부양자효율(EQE) 및 전류효율(CE) 달성.</li>
+    </ul>
+  </li>
+  <li><strong>정성 목표</strong>: ITO 기판 앞뒷면의 광학적 판별법 정립, 산성 세정 공정을 활용한 젖음성(Wettability) 제어, 메니스커스 형성을 통한 2차 역방향 블레이드 코팅 및 Annealing 공정 최적화.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-3">4) 내 역할 (주도적 기여)</h3>
+<ul class="journal-ul">
+  <li><strong>기판 에지부 반사 특성 판별</strong>: 기판 끝부분에서 보라색 광 반사층 여부를 활용해 육안 구분이 어려운 ITO 앞면(증착면)과 뒷면(유리 전극면)을 오차 없이 판별하여 소자 조립 시 전극 접촉 불량 문제를 원천 예방.</li>
+  <li><strong>Acid Chemical 세정 제어</strong>: 산성 세정액을 활용한 오염물/산화막 박리로 표면 에너지를 개질하고 젖음성을 향상시킴.</li>
+  <li><strong>Meniscus & 2차 역방향 코팅 설계</strong>: 시린지 토출량과 블레이드 갭을 동적으로 제어하고, 1차 코팅 시 발생하는 마진 편차를 보완하기 위해 반대 방향으로 2차 코팅 및 200°C Annealing 공정을 적용하여 발광 박막 균일도 확보.</li>
+  <li><strong>전기광학 신뢰성 정량 분석</strong>: 0V~12V 전압 Sweep에 따른 전류밀도(J), 휘도(L) 변화를 측정하여 J-V-L 및 CIE 색좌표 이동 경로를 추적 및 데이터 통계 프로파일링.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-4">5) 적용 공정 / 기술 / 도구</h3>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>구분</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>소자 공정</strong></td>
+      <td>ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C)</td>
+    </tr>
+    <tr>
+      <td><strong>측정 장비</strong></td>
+      <td>Luminance Meter (휘도계) 및 전압/전류 제어 Sweep 시스템</td>
+    </tr>
+    <tr>
+      <td><strong>분석 도구</strong></td>
+      <td>Chart.js (J-V-L, EQE-CE 곡선, CIE 1931 2D 산포도 동적 시각화), Excel</td>
+    </tr>
+    <tr>
+      <td><strong>핵심 지표</strong></td>
+      <td>V<sub>on</sub> (구동 전압), L<sub>max</sub> (최대 휘도), EQE (외부양자효율), CE (전류효율), CIE (색좌표)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-5">6) 진행 과정</h3>
+<h4 class="journal-h4">1. ITO 기판 물리화학 전처리</h4>
+<p class="journal-p">ITO는 산화물이 유리기판 위에 증착된 구조로, 기판 에지부를 위아래로 기울였을 때 얇은 보라색 층이 보이면 빛이 투과 전극면을 100% 흡수하지 못하고 반사되는 뒷면(유리)임을 판별함. 판별이 끝난 후 산성 클리너 세정을 통해 정공 주입 계면의 오염물질을 제거하여 표면 에너지를 극대화함.</p>
+
+<h4 class="journal-h4">2. 유기 발광층 증착 및 건조 열처리</h4>
+<p class="journal-p">블레이드와 기판 사이에 도포 용액의 표면 장력에 의한 메니스커스(Meniscus)를 고르게 유지하여 Blade Coating을 진행함. 도포 후 상온에서 점진적으로 200°C까지 올리는 두 단계 열처리를 진행해 잔류 용매를 완전 증발시키고 유기 결정 구조를 조밀하게 형성함. 박막 두께 편차 보정을 위해 2차 역방향 코팅 및 2차 열처리를 추가 수행함.</p>
+
+<h4 class="journal-h4">3. 소자 전압 인가 및 특성 정량 분석</h4>
+<p class="journal-p">제작 완료된 소자에 0V~12V(0.5V 간격, 총 25포인트) 전압 Sweep을 인가하며 휘도 및 누설 전류 신뢰성을 도출함. 휘도가 너무 낮은 극초기 구간(L &lt; 10 cd/m²)의 시스템 노이즈를 배제한 유효 효율 영역 데이터를 산출하여 통계 리더보드를 구축함.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-6">7) 핵심 트러블슈팅 포인트</h3>
+<ul class="journal-ul">
+  <li><strong>고전압 효율 롤오프(Efficiency Roll-off) 요인 규명</strong>:
+    <p class="journal-p">측정 결과, OJ 및 SH 샘플 모두 10.5 V(최대 휘도 4,071 cd/m²) 도달 이후 12 V 전압 인가 시 휘도가 약 93.2% 급격히 감소하는 비정상 효율 감쇠 현상이 관찰되었습니다. 분석 결과 전류밀도(J)는 64 mA/cm² 이상 유지되는 상태에서 휘도만 급락한 것은 유기 박막 내의 고전류 집중으로 인한 엑시톤-엑시톤 소광(Exciton-Exciton Annihilation) 및 축적된 줄 열(Joule Heating)로 인한 재결합 영역 이탈이 주요인임을 도출하였습니다.</p>
+  </li>
+  <li><strong>타사(jyp 샘플) 불량 원인 역추적</strong>:
+    <p class="journal-p">4V에서 타 샘플 대비 6배 높은 전류 밀도(2.875 mA/cm²)가 발생했다가 5.5V에서 비단조적으로 전류가 감소하는 비정상 쇼트 패스(Short Path) 현상을 식별했습니다. 이는 공정 전처리 세정 불량으로 인한 기판 파티클 혹은 절단 면의 미세 크랙이 전도성 계면에 단락 경로를 형성했기 때문임을 밝혀내어 전처리 공정 관리 수율 확보의 절대성을 세미나를 통해 입증했습니다.</p>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-7">8) 결과 및 성과</h3>
+<ul class="journal-ul">
+  <li><strong>종합 공동 2위 수성</strong>: 8개 샘플 대상 정량 평가(V<sub>on</sub>, L<sub>max</sub>, EQE, CE 점수화) 결과 총 26점으로 종합 공동 2위를 달성하였습니다.</li>
+  <li><strong>중간 전압 구동 효율 전체 1위</strong>: 6V 인가 시 휘도 119.2 cd/m²로 전체 샘플 중 압도적인 1위를 기록하여 실용 전압 구간에서 에너지 변환 효율이 가장 탁월함을 입증하였습니다.</li>
+  <li><strong>최상의 황색 색순도 확보</strong>: CIE 좌표 (0.5555, 0.4417)로 주황색 편향이 없는 순황색에 가장 근접하게 박막 성형을 구현하였습니다.</li>
+</ul>
+
+<h4 class="journal-h4">주요 샘플 성능 검증 비교 테이블</h4>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>제작자 (소자)</th>
+      <th>V<sub>on</sub> (V)</th>
+      <th>L<sub>max</sub> (cd/m²)</th>
+      <th>최대 EQE (%)</th>
+      <th>CIE (x, y) @ 6V</th>
+      <th>특이 사항</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>SH (1위)</strong></td>
+      <td>3.5</td>
+      <td><strong>4,760.8</strong></td>
+      <td><strong>0.5324</strong></td>
+      <td>(0.568, 0.429)</td>
+      <td>최대 효율 및 최고 휘도 기록</td>
+    </tr>
+    <tr style="background: rgba(139, 92, 246, 0.08);">
+      <td><strong>OJ (오준서 / 2위)</strong></td>
+      <td><strong>3.5</strong></td>
+      <td><strong>4,071.0</strong></td>
+      <td><strong>0.4910</strong></td>
+      <td><strong>(0.556, 0.442)</strong></td>
+      <td><strong>중간 전압(6V) 휘도 전체 최고, 순황색 최적 구현</strong></td>
+    </tr>
+    <tr>
+      <td><strong>HR (2위)</strong></td>
+      <td>1.0</td>
+      <td>4,141.0</td>
+      <td>0.4544</td>
+      <td>(0.567, 0.428)</td>
+      <td>매우 우수한 저전압 구동 개시 성능</td>
+    </tr>
+    <tr>
+      <td><strong>jyp (8위)</strong></td>
+      <td>4.5</td>
+      <td>1,583.1</td>
+      <td>0.1973</td>
+      <td>(0.566, 0.429)</td>
+      <td>쇼트 패스 누설 및 비단조적 전압 거동 불량</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-8">9) 내가 배운 점</h3>
+<p class="journal-p">반도체 소자 및 후공정 엔지니어링 단계에서 <strong>'미세한 기구 설계 치수와 툴 제어, 그리고 공정 전처리 정밀도(Cleaning/Cutting)가 실제 최종 아날로그 소자의 전기광학 및 수율에 치명적인 결정력을 지닌다는 점'</strong>을 배웠습니다. 단일 기계 수치상의 최대 효율 확보보다 고전압 신뢰성과 누설 마진을 종합 판단해야 하는 엔지니어링적 아키텍처 관점의 중요성을 깨달았습니다.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-9">10) 후공정 및 테스트 직무와의 연결점</h3>
+<ul class="journal-ul">
+  <li><strong>실무 적용 가능 업무</strong>: 글로벌 OSAT 1티어인 앰코테크놀로지(Amkor Technology) 후공정 엔지니어로서, 최종 조립 완료된 반도체 칩의 테스트 핀 패드 접합 불량을 제어하고 계면 저항을 저감시키는 <strong>정밀 수율 개선(Yield Enhancement) 부서 및 불량 분석(FA) 업무</strong>에 이론 및 데이터 계측 역량을 접목할 수 있습니다.</li>
+</ul>
+
+<!-- 차트 렌더링 컨테이너 임베딩 영역 -->
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-10">📊 실시간 소자 분석 대시보드</h3>
+<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+  <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+    <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L 곡선</button>
+    <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
+    <button class="selector-btn" data-chart="cie" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">CIE 색좌표 이동</button>
+  </div>
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 350px;">
+    <canvas id="mainChart"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">OJ(Junseo Oh) 샘플의 전압Sweep에 따른 전류밀도(J) 및 휘도(L) 곡선입니다.</p>
+</div>
+
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) 프로젝트 개요</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) 배경 및 문제 정의</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) 목표</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) 내 역할 (주도적 기여)</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) 적용 공정 / 기술 / 도구</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) 진행 과정</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) 핵심 트러블슈팅 포인트</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) 결과 및 성과</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) 내가 배운 점</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) 후공정 및 테스트 직무와의 연결점</a></li><li class="toc-item toc-indent"><a href="#toc-heading-10" class="toc-link" data-heading-id="toc-heading-10">📊 실시간 소자 분석 대시보드</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 프로젝트 둘러보기</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-ito-oled-analysis">
+          "# ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis\n\n반도체 소자 / OLED 공정 및 전기광학 특성 분석\n\n(ITO 투명 전극 가공 및 발광층 Blade Coating 공정을 통한 유기 발광 소자 제작 및 J-V-L 전기광학 신뢰성 특성 정량 평가) 1) 프로젝트 개요 기간: 2026. 06. 04. ~ 2026. 06. 08. 유형: 반도체 장비 공정 및 소자 신뢰성 분석 실습 소속/수행 환경: 광운대학교 전자재료공학과 (반도체 장비 기구 설계 실습) 한 줄 소개: ITO 전극의 물리·화학적 가공부터 Blade/Meniscus Coating 기반 발광층 형성과 열처리(Annealing)를 수행하여 소자를 완성하고, 휘도계 측정 데이터 분석을 통해 전체 8개 샘플 중 종합 공동 2위를 기록한 프로젝트입니다. 2) 배경 및 문제 정의 배경: 디스플레이 및 반도체 소자의 고효율화를 달성하려면 정공과 전자가 균일하게 만나 재결합할 수 있도록 우수한 표면 에너지를 지닌 투명 전극(ITO) 가공과 안정적인 유기 박막 도포가 핵심입니다. 문제 정의: 스핀 코팅 대비 재료 손실이 적은 Blade Coating 방식은 박막의 평탄도 및 두께 균일도 제어가 어려워 계면 누설 전류나 구동 전압 상승을 유발하기 쉬우며, 고전압 영역에서의 급격한 효율 저하(Efficiency Roll-off) 문제를 지니고 있습니다. 3) 목표 정량 목표: 구동 개시 전압(Turn-on Voltage, Von)을 4.0 V 미만으로 제어. 최대 휘도(Lmax) 4,000 cd/m² 이상 확보 및 6V 중간 전압대 구동 효율 극대화. 측정 신뢰성 확보를 위해 휘도 10 cd/m² 이상의 유효 구간에서 최고 수준의 외부양자효율(EQE) 및 전류효율(CE) 달성. 정성 목표: ITO 기판 앞뒷면의 광학적 판별법 정립, 산성 세정 공정을 활용한 젖음성(Wettability) 제어, 메니스커스 형성을 통한 2차 역방향 블레이드 코팅 및 Annealing 공정 최적화. 4) 내 역할 (주도적 기여) 기판 에지부 반사 특성 판별: 기판 끝부분에서 보라색 광 반사층 여부를 활용해 육안 구분이 어려운 ITO 앞면(증착면)과 뒷면(유리 전극면)을 오차 없이 판별하여 소자 조립 시 전극 접촉 불량 문제를 원천 예방. Acid Chemical 세정 제어: 산성 세정액을 활용한 오염물/산화막 박리로 표면 에너지를 개질하고 젖음성을 향상시킴. Meniscus & 2차 역방향 코팅 설계: 시린지 토출량과 블레이드 갭을 동적으로 제어하고, 1차 코팅 시 발생하는 마진 편차를 보완하기 위해 반대 방향으로 2차 코팅 및 200°C Annealing 공정을 적용하여 발광 박막 균일도 확보. 전기광학 신뢰성 정량 분석: 0V~12V 전압 Sweep에 따른 전류밀도(J), 휘도(L) 변화를 측정하여 J-V-L 및 CIE 색좌표 이동 경로를 추적 및 데이터 통계 프로파일링. 5) 적용 공정 / 기술 / 도구 구분 내용 소자 공정 ITO Anode Detection, Acid Clean, Glass Cutting, Blade & Meniscus Coating, Two-step Annealing (RT ➔ 200°C) 측정 장비 Luminance Meter (휘도계) 및 전압/전류 제어 Sweep 시스템 분석 도구 Chart.js (J-V-L, EQE-CE 곡선, CIE 1931 2D 산포도 동적 시각화), Excel 핵심 지표 Von (구동 전압), Lmax (최대 휘도), EQE (외부양자효율), CE (전류효율), CIE (색좌표) 6) 진행 과정 1. ITO 기판 물리화학 전처리 ITO는 산화물이 유리기판 위에 증착된 구조로, 기판 에지부를 위아래로 기울였을 때 얇은 보라색 층이 보이면 빛이 투과 전극면을 100% 흡수하지 못하고 반사되는 뒷면(유리)임을 판별함. 판별이 끝난 후 산성 클리너 세정을 통해 정공 주입 계면의 오염물질을 제거하여 표면 에너지를 극대화함. 2. 유기 발광층 증착 및 건조 열처리 블레이드와 기판 사이에 도포 용액의 표면 장력에 의한 메니스커스(Meniscus)를 고르게 유지하여 Blade Coating을 진행함. 도포 후 상온에서 점진적으로 200°C까지 올리는 두 단계 열처리를 진행해 잔류 용매를 완전 증발시키고 유기 결정 구조를 조밀하게 형성함. 박막 두께 편차 보정을 위해 2차 역방향 코팅 및 2차 열처리를 추가 수행함. 3. 소자 전압 인가 및 특성 정량 분석 제작 완료된 소자에 0V~12V(0.5V 간격, 총 25포인트) 전압 Sweep을 인가하며 휘도 및 누설 전류 신뢰성을 도출함. 휘도가 너무 낮은 극초기 구간(L &lt; 10 cd/m²)의 시스템 노이즈를 배제한 유효 효율 영역 데이터를 산출하여 통계 리더보드를 구축함. 7) 핵심 트러블슈팅 포인트 고전압 효율 롤오프(Efficiency Roll-off) 요인 규명: 측정 결과, OJ 및 SH 샘플 모두 10.5 V(최대 휘도 4,071 cd/m²) 도달 이후 12 V 전압 인가 시 휘도가 약 93.2% 급격히 감소하는 비정상 효율 감쇠 현상이 관찰되었습니다. 분석 결과 전류밀도(J)는 64 mA/cm² 이상 유지되는 상태에서 휘도만 급락한 것은 유기 박막 내의 고전류 집중으로 인한 엑시톤-엑시톤 소광(Exciton-Exciton Annihilation) 및 축적된 줄 열(Joule Heating)로 인한 재결합 영역 이탈이 주요인임을 도출하였습니다. 타사(jyp 샘플) 불량 원인 역추적: 4V에서 타 샘플 대비 6배 높은 전류 밀도(2.875 mA/cm²)가 발생했다가 5.5V에서 비단조적으로 전류가 감소하는 비정상 쇼트 패스(Short Path) 현상을 식별했습니다. 이는 공정 전처리 세정 불량으로 인한 기판 파티클 혹은 절단 면의 미세 크랙이 전도성 계면에 단락 경로를 형성했기 때문임을 밝혀내어 전처리 공정 관리 수율 확보의 절대성을 세미나를 통해 입증했습니다. 8) 결과 및 성과 종합 공동 2위 수성: 8개 샘플 대상 정량 평가(Von, Lmax, EQE, CE 점수화) 결과 총 26점으로 종합 공동 2위를 달성하였습니다. 중간 전압 구동 효율 전체 1위: 6V 인가 시 휘도 119.2 cd/m²로 전체 샘플 중 압도적인 1위를 기록하여 실용 전압 구간에서 에너지 변환 효율이 가장 탁월함을 입증하였습니다. 최상의 황색 색순도 확보: CIE 좌표 (0.5555, 0.4417)로 주황색 편향이 없는 순황색에 가장 근접하게 박막 성형을 구현하였습니다. 주요 샘플 성능 검증 비교 테이블 제작자 (소자) Von (V) Lmax (cd/m²) 최대 EQE (%) CIE (x, y) @ 6V 특이 사항 SH (1위) 3.5 4,760.8 0.5324 (0.568, 0.429) 최대 효율 및 최고 휘도 기록 OJ (오준서 / 2위) 3.5 4,071.0 0.4910 (0.556, 0.442) 중간 전압(6V) 휘도 전체 최고, 순황색 최적 구현 HR (2위) 1.0 4,141.0 0.4544 (0.567, 0.428) 매우 우수한 저전압 구동 개시 성능 jyp (8위) 4.5 1,583.1 0.1973 (0.566, 0.429) 쇼트 패스 누설 및 비단조적 전압 거동 불량 9) 내가 배운 점 반도체 소자 및 후공정 엔지니어링 단계에서 '미세한 기구 설계 치수와 툴 제어, 그리고 공정 전처리 정밀도(Cleaning/Cutting)가 실제 최종 아날로그 소자의 전기광학 및 수율에 치명적인 결정력을 지닌다는 점'을 배웠습니다. 단일 기계 수치상의 최대 효율 확보보다 고전압 신뢰성과 누설 마진을 종합 판단해야 하는 엔지니어링적 아키텍처 관점의 중요성을 깨달았습니다. 10) 후공정 및 테스트 직무와의 연결점 실무 적용 가능 업무: 글로벌 OSAT 1티어인 앰코테크놀로지(Amkor Technology) 후공정 엔지니어로서, 최종 조립 완료된 반도체 칩의 테스트 핀 패드 접합 불량을 제어하고 계면 저항을 저감시키는 정밀 수율 개선(Yield Enhancement) 부서 및 불량 분석(FA) 업무에 이론 및 데이터 계측 역량을 접목할 수 있습니다. 📊 실시간 소자 분석 대시보드 J-V-L 곡선 EQE / CE CIE 색좌표 이동 OJ(Junseo Oh) 샘플의 전압Sweep에 따른 전류밀도(J) 및 휘도(L) 곡선입니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & 후공정","title":"Ceramic Capillary Geometry","description":"반도체 와이어 본딩 캐필러리 형상이 First Bond 불량 모드 및 접합 신뢰성에 미치는 기계적 메커니즘을 규명하고 최적 파라미터를 도출합니다."},{"slug":"packaging-test","category":"반도체 이론","title":"Packaging & Test Fundamentals","description":"WLCSP, Flip-Chip, TSV 적층 HBM 이론부터 Warpage 휨 해석 및 SI 임피던스 매칭을 다루는 후공정 종합 엔지니어링 리서치입니다."},{"slug":"fpga-verilog","category":"디지털 회로","title":"FPGA & Verilog HDL Systems","description":"Altera DE2 Cyclone II 보드 환경에서 버튼 글리치 제거용 Debouncing 및 가변 분주 BCD 카운터를 설계하여 5ns 전파 딜레이를 검증합니다."},{"slug":"euv-photoresist","category":"전공정 노광","title":"TinNO₃ EUV Photoresist","description":"나노 스케일 EUV 리소그래피 한계 극복을 위한 무기 주석 옥소 클러스터 기반 PR 감도 향상 및 건식 식각 저항 메커니즘을 탐구합니다."},{"slug":"spotfire-analytics","category":"수율 분석","title":"Spotfire Process Analytics","description":"반도체 대공정 설비 로그 데이터셋을 Spotfire 시각화 프로파일링하여 전위 및 Defect 발생 유발 파라미터 간 상관관계를 통계적으로 도출합니다."},{"slug":"ac-power-meter","category":"임베디드","title":"MCU AC Power Meter","description":"Microcontroller 기반 AC 단상 전력 측정 모듈을 구현하여 전류/전압 실시간 센싱 및 전력 계산 텔레메트리 캘리브레이션을 진행합니다."},{"slug":"audio-level-meter","category":"아날로그 회로","title":"3-Band Audio Level Meter","description":"Sallen-Key 구조 Active Filter 회로를 설계 및 검증하여 오디오 주파수 대역을 3개 밴드로 물리 분할하는 전압 증폭 검출 시스템을 개발합니다."},{"slug":"battery-charger","category":"전력 전자","title":"CC-CV Li-Ion Charger","description":"리튬이온 배터리 안전 충전을 위한 CC-CV 전력 토폴로지 제어 보드를 실장하고 ADC 센싱 정밀 리포팅 회로망을 설계 및 캘리브레이션합니다."},{"slug":"battery-soc-tester","category":"임베디드","title":"Dynamic Battery SOC Tester","description":"OCV-CCV 내부 임피던스 동적 오차 보상 수식을 임베디드 펌웨어 상에 적용하여 충전잔량(SOC) 측정 정밀도를 혁신한 계측 툴 개발 프로젝트입니다."},{"slug":"ito-oled-analysis","category":"반도체 소자 & 공정","title":"ITO-based OLED Fabrication","description":"ITO 투명 전극 가공, 유기 발광층 Blade Coating 및 열처리를 통해 OLED 소자를 직접 제작하고 J-V-L 전기광학적 성능을 정량 분석한 프로젝트입니다."}];
+            const currentSlug = "ito-oled-analysis";
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              const filtered = allProjects.filter(p => p.slug !== currentSlug);
+              const shuffled = filtered.sort(() => 0.5 - Math.random());
+              const selected = shuffled.slice(0, 3);
+              
+              recommendedGrid.innerHTML = selected.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <span class="recommended-card-category">${p.category}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>
