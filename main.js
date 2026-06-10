@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initTocHighlight();
   initProjectsSort();
+  initProjectHoverPreview();
   initOledDashboard();
   initAllProjectCharts();
 });
@@ -502,6 +503,45 @@ function initProjectsSort() {
   
   // Initial sort (default is 'latest')
   sortProjects();
+}
+
+// 5.1. Projects Hover Preview for Desktop
+function initProjectHoverPreview() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+
+  // Create floating preview element
+  let preview = document.getElementById('project-hover-preview');
+  if (!preview) {
+    preview = document.createElement('div');
+    preview.id = 'project-hover-preview';
+    preview.className = 'project-hover-preview';
+    document.body.appendChild(preview);
+  }
+
+  const items = grid.querySelectorAll('.design-card-item');
+  items.forEach(item => {
+    const imgUrl = item.getAttribute('data-image');
+    if (!imgUrl) return;
+
+    item.addEventListener('mouseenter', () => {
+      if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
+        preview.style.backgroundImage = `url(${imgUrl})`;
+        preview.classList.add('active');
+      }
+    });
+
+    item.addEventListener('mouseleave', () => {
+      preview.classList.remove('active');
+    });
+
+    item.addEventListener('mousemove', (e) => {
+      if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
+        preview.style.left = `${e.clientX + 20}px`;
+        preview.style.top = `${e.clientY + 20}px`;
+      }
+    });
+  });
 }
 
 /**

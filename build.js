@@ -1224,20 +1224,19 @@ languages.forEach(lang => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     return `
-    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" style="text-decoration: none; color: inherit;">
+    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" style="text-decoration: none; color: inherit;">
       <div class="design-card-thumbnail">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>
-      <div class="design-card-header">
-        <h3 class="design-card-title">${trans.title}</h3>
-      </div>
-      <div class="design-card-meta" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: -0.25rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 0.35rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="tabular-nums">${p.period}</span>
-      </div>
-      <p class="design-card-description">${trans.description}</p>
-      <div class="design-card-tags">
-        ${p.tags.map(tag => `<span class="design-card-tag">${tag}</span>`).join('')}
+      <div class="design-card-content">
+        <div class="design-card-main-info">
+          <span class="design-card-number">${p.initials}</span>
+          <h3 class="design-card-title">${trans.title}</h3>
+        </div>
+        <div class="design-card-sub-info">
+          <span class="recommended-card-category">${trans.category}</span>
+          <span class="design-card-date">${p.period}</span>
+        </div>
       </div>
     </a>
     `;
