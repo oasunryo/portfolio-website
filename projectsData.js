@@ -285,7 +285,7 @@ const projectProseData = {
   <div class="canvas-holder">
     <canvas id="projectChart2"></canvas>
   </div>
-  <p class="chart-caption" id="chartCaption2"><strong>Figure 2.</strong> 신호 전송 주파수 스윕에 따른 반사 감쇄(S11) 및 투과 손실(S21) 특성 비교 (50Ω 임피던스 정합 vs 미스매치)</p>
+  <p class="chart-caption" id="chartCaption2"><strong>Figure 1.</strong> 신호 전송 주파수 스윕에 따른 반사 감쇄(S11) 및 투과 손실(S21) 특성 비교 (50Ω 임피던스 정합 vs 미스매치)</p>
 </div>
 
 <hr class="journal-divider">
@@ -642,7 +642,7 @@ const projectProseData = {
   <div class="canvas-holder">
     <canvas id="projectChart4"></canvas>
   </div>
-  <p class="chart-caption" id="chartCaption4"><strong>Figure 4.</strong> EUV 노광 조사량(Dose)에 따른 감광막 잔막률 Contrast Curve 비교 (TinNO₃ vs TinTos vs TinOH)</p>
+  <p class="chart-caption" id="chartCaption4"><strong>Figure 1.</strong> EUV 노광 조사량(Dose)에 따른 감광막 잔막률 Contrast Curve 비교 (TinNO₃ vs TinTos vs TinOH)</p>
 </div>
 
 <hr class="journal-divider">
@@ -841,6 +841,14 @@ const projectProseData = {
 </ul>
 <p class="journal-p">* <strong>Max(reflect_power)</strong>: p-value <strong>0.00E+000</strong>, 결정계수($R^2$) <strong>0.99</strong>라는 완벽에 가까운 <strong>초강력 양의 선형 상관관계</strong> 발견! 반사 파워 제어 실패가 Defect 발생의 압도적 핵심 원인(Key Predictor)임을 단번에 규명.</p>
 <p class="journal-p">* <strong>기타 변수</strong>: rf_power(p=0.513), precursor_flow_rate(p=0.637), chamber_pressure(p=0.867)는 불량 발생과 통계적 유의성이 완전히 무관함을 증명하여 불필요한 엔지니어링 리소스 낭비를 차단함.</p>
+
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder">
+    <canvas id="projectChart5"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption5"><strong>Figure 1.</strong> 반사 파워(Reflected Power) 및 챔버 온도 편차에 따른 불량(Defect) 밀도 분포 (Spotfire 3차원 다변량 상관분석 산점도)</p>
+</div>
+
 <h4 class="journal-h4">🔬 서브 프로젝트 3. Wafer 단위 수율 영향 인자 분석 (공정 Path 이력 추적)</h4>
 <ul class="journal-ul">
 <li><strong>목적</strong>: 불량 웨이퍼가 흘러온 장비 및 레시피 경로(Path Tracking) 이력 분석.</li>
@@ -1189,7 +1197,7 @@ const projectProseData = {
   <div class="canvas-holder">
     <canvas id="projectChart7"></canvas>
   </div>
-  <p class="chart-caption" id="chartCaption7"><strong>Figure 7.</strong> Low-Pass (400Hz) / Mid-Pass / High-Pass (3.2kHz) 능동 필터 채널별 주파수 응답 보데 플롯(Bode Plot)</p>
+  <p class="chart-caption" id="chartCaption7"><strong>Figure 1.</strong> Low-Pass (400Hz) / Mid-Pass / High-Pass (3.2kHz) 능동 필터 채널별 주파수 응답 보데 플롯(Bode Plot)</p>
 </div>
 
 <hr class="journal-divider">
@@ -1547,7 +1555,7 @@ const projectProseData = {
   <div class="canvas-holder">
     <canvas id="projectChart9"></canvas>
   </div>
-  <p class="chart-caption" id="chartCaption9"><strong>Figure 9.</strong> 방전 심도(DOD, Depth of Discharge)에 따른 배터리 개방 전압(OCV) 및 폐회로 단자 전압(CCV)의 기생 저항 강하 실측 곡선</p>
+  <p class="chart-caption" id="chartCaption9"><strong>Figure 1.</strong> 방전 심도(DOD, Depth of Discharge)에 따른 배터리 개방 전압(OCV) 및 폐회로 단자 전압(CCV)의 기생 저항 강하 실측 곡선</p>
 </div>
 
 <h4 class="journal-h4">3) 인코더/디코더 하드웨어 연동 및 잔량 시각화 (작동 검증)</h4>
@@ -2082,7 +2090,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart2"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption2"><strong>Figure 2.</strong> Transmission loss (S21) & reflection loss (S11) over frequency sweep (50Ω impedance matched vs. mismatched)</p>
+          <p class="chart-caption" id="chartCaption2"><strong>Figure 1.</strong> Transmission loss (S21) & reflection loss (S11) over frequency sweep (50Ω impedance matched vs. mismatched)</p>
         </div>
 
         <hr class="journal-divider">
@@ -2464,7 +2472,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart4"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption4"><strong>Figure 4.</strong> Normalized photoresist thickness Contrast Curves over EUV exposure dose (TinNO₃ vs. TinTos vs. TinOH)</p>
+          <p class="chart-caption" id="chartCaption4"><strong>Figure 1.</strong> Normalized photoresist thickness Contrast Curves over EUV exposure dose (TinNO₃ vs. TinTos vs. TinOH)</p>
         </div>
 
         <hr class="journal-divider">
@@ -2687,7 +2695,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart5"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption5"><strong>Figure 5.</strong> Defect density distribution over reflected power and chamber temperature variance (Spotfire 3D multivariate correlation scatter)</p>
+          <p class="chart-caption" id="chartCaption5"><strong>Figure 1.</strong> Defect density distribution over reflected power and chamber temperature variance (Spotfire 3D multivariate correlation scatter)</p>
         </div>
 
         <h4 class="journal-h4">🔬 Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking)</h4>
@@ -2902,7 +2910,7 @@ const projectProseData = {
             <label for="phaseSliderEn">Phase Shift: <span id="phaseValEn">0</span>°</label>
             <input type="range" id="phaseSliderEn" min="-90" max="90" value="0" class="chart-slider">
           </div>
-          <p class="chart-caption"><strong>Figure 6.</strong> Dynamic visualization of AC voltage (V) and current (I) waveforms shifting based on phase offset control</p>
+          <p class="chart-caption"><strong>Figure 1.</strong> Dynamic visualization of AC voltage (V) and current (I) waveforms shifting based on phase offset control</p>
         </div>
 
         <h4 class="journal-h4">3) Transient Load Testing & Overcurrent Protection (Verification)</h4>
@@ -3073,7 +3081,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart7"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption7"><strong>Figure 7.</strong> Frequency response Bode Plot for Low-Pass (400Hz), Mid-Pass, and High-Pass (3.2kHz) active filters</p>
+          <p class="chart-caption" id="chartCaption7"><strong>Figure 1.</strong> Frequency response Bode Plot for Low-Pass (400Hz), Mid-Pass, and High-Pass (3.2kHz) active filters</p>
         </div>
 
         <hr class="journal-divider">
@@ -3269,7 +3277,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart8"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption8"><strong>Figure 8.</strong> Charge current (fixed 250mA in CC mode) and cell voltage (converges at 4.2V in CV mode) charge profiles over time</p>
+          <p class="chart-caption" id="chartCaption8"><strong>Figure 1.</strong> Charge current (fixed 250mA in CC mode) and cell voltage (converges at 4.2V in CV mode) charge profiles over time</p>
         </div>
 
         <h4 class="journal-h4">2) Tracking IR Drop Measurement Distortions (Root Cause Analysis)</h4>
@@ -3460,7 +3468,7 @@ const projectProseData = {
           <div class="canvas-holder">
             <canvas id="projectChart9"></canvas>
           </div>
-          <p class="chart-caption" id="chartCaption9"><strong>Figure 9.</strong> Open Circuit Voltage (OCV) vs. Closed Circuit Voltage (CCV) showing parasitic voltage drops over Depth of Discharge (DOD)</p>
+          <p class="chart-caption" id="chartCaption9"><strong>Figure 1.</strong> Open Circuit Voltage (OCV) vs. Closed Circuit Voltage (CCV) showing parasitic voltage drops over Depth of Discharge (DOD)</p>
         </div>
 
         <h4 class="journal-h4">3) Decoder Circuit Integration & Visual Calibration</h4>
