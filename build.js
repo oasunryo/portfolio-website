@@ -1224,7 +1224,7 @@ languages.forEach(lang => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     return `
-    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" style="text-decoration: none; color: inherit;">
+    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
       <div class="design-card-thumbnail">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>

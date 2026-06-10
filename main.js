@@ -526,7 +526,24 @@ function initProjectHoverPreview() {
 
     item.addEventListener('mouseenter', () => {
       if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
-        preview.style.backgroundImage = `url(${imgUrl})`;
+        const title = item.querySelector('.design-card-title')?.innerText || '';
+        const category = item.querySelector('.recommended-card-category')?.innerText || '';
+        const desc = item.getAttribute('data-description') || '';
+        const tags = item.getAttribute('data-tags') || '';
+        
+        const tagHTML = tags ? tags.split(',').map(t => `<span class="design-card-tag">${t.trim()}</span>`).join('') : '';
+
+        preview.innerHTML = `
+          <div class="hover-preview-image" style="background-image: url(${imgUrl});"></div>
+          <div class="hover-preview-body">
+            <span class="recommended-card-category" style="font-size: 0.75rem; margin-bottom: 0.15rem;">${category}</span>
+            <h4 class="hover-preview-title">${title}</h4>
+            <p class="hover-preview-desc" style="margin-top: 0.25rem; margin-bottom: 0.5rem;">${desc}</p>
+            <div class="hover-preview-tags">
+              ${tagHTML}
+            </div>
+          </div>
+        `;
         preview.classList.add('active');
       }
     });

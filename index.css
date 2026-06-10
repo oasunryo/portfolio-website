@@ -824,25 +824,63 @@ html.dark .tag-filter-btn.active {
 /* Floating Image Preview Container for Desktop */
 .project-hover-preview {
   position: fixed;
-  width: 280px;
-  height: 175px;
+  width: 320px;
+  height: auto;
   border-radius: 0.75rem;
-  background-size: cover;
-  background-position: center;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
   pointer-events: none;
   z-index: 1000;
   opacity: 0;
   transform: scale(0.95);
   transform-origin: center center;
-  transition: opacity 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
-  box-shadow: var(--shadow-md), 0 15px 30px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: block;
+  transition: opacity 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: var(--shadow-md), 0 20px 45px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .project-hover-preview.active {
   opacity: 1;
   transform: scale(1);
+}
+
+.hover-preview-image {
+  width: 100%;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+
+.hover-preview-body {
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--bg-primary);
+}
+
+.hover-preview-title {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.hover-preview-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.hover-preview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 /* Mobile Media Query for Projects List to Card Transformation */
