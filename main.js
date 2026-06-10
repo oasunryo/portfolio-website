@@ -703,6 +703,19 @@ function initAllProjectCharts() {
   function buildAllCharts() {
     const activeCharts = {};
 
+    const generateSineData = (phaseShiftDeg) => {
+      const phaseRad = (phaseShiftDeg * Math.PI) / 180;
+      const labels = [];
+      const voltage = [];
+      const current = [];
+      for (let deg = 0; deg <= 360; deg += 10) {
+        labels.push(`${deg}°`);
+        voltage.push(Math.sin((deg * Math.PI) / 180));
+        current.push(Math.sin((deg * Math.PI) / 180 - phaseRad) * 0.8);
+      }
+      return { labels, voltage, current };
+    };
+
     const getThemeColors = () => {
       const isDark = document.documentElement.classList.contains('dark');
       return {
@@ -892,19 +905,6 @@ function initAllProjectCharts() {
           }
         };
       } else if (chartId === 6) {
-        const generateSineData = (phaseShiftDeg) => {
-          const phaseRad = (phaseShiftDeg * Math.PI) / 180;
-          const labels = [];
-          const voltage = [];
-          const current = [];
-          for (let deg = 0; deg <= 360; deg += 10) {
-            labels.push(`${deg}°`);
-            voltage.push(Math.sin((deg * Math.PI) / 180));
-            current.push(Math.sin((deg * Math.PI) / 180 - phaseRad) * 0.8);
-          }
-          return { labels, voltage, current };
-        };
-
         const initialData = generateSineData(0);
         config = {
           type: 'line',
