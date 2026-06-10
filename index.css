@@ -883,6 +883,16 @@ html.dark .tag-filter-btn.active {
   margin-top: 0.25rem;
 }
 
+.design-card-tag {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
 /* Mobile Media Query for Projects List to Card Transformation */
 @media (max-width: 768px) {
   .design-grid-container {
@@ -949,9 +959,9 @@ html.dark .tag-filter-btn.active {
   
   .design-card-sub-info {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.15rem;
   }
   
   .recommended-card-category {
