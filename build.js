@@ -220,8 +220,8 @@ const projectsMeta = [
     initials: "10",
     image: "/assets/projects/ito_oled_analysis.png",
     tags: ["OLED", "Thin-Film", "Blade-Coating", "Optoelectronic", "Chart.js"],
-    date: "2026-06-04",
-    period: "2026. 06. 04. ~ 2026. 06. 08.",
+    date: "2026-03-01",
+    period: "2026. 03. 01. ~ 2026. 06. 30.",
     ko: {
       title: "ITO-based OLED Fabrication",
       category: "반도체 소자 & 공정",

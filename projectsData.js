@@ -1655,14 +1655,14 @@ const projectProseData = {
     10: {
       meta: `반도체 소자 / OLED 공정 및 전기광학 특성 분석`,
       title: `ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis`,
-      date: `2026. 06. 04. ~ 2026. 06. 08.`,
+      date: `2026. 03. 01. ~ 2026. 06. 30.`,
       prose: `
 <p class="journal-p"><em>(ITO 투명 전극 가공 및 발광층 Blade Coating 공정을 통한 유기 발광 소자 제작 및 J-V-L 전기광학 신뢰성 특성 정량 평가)</em></p>
 <hr class="journal-divider">
 
 <h3 class="journal-h3">1) 프로젝트 개요</h3>
 <ul class="journal-ul">
-  <li><strong>기간</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>기간</strong>: 2026. 03. 01. ~ 2026. 06. 30.</li>
   <li><strong>유형</strong>: 반도체 장비 공정 및 소자 신뢰성 분석 실습</li>
   <li><strong>소속/수행 환경</strong>: 광운대학교 전자바이오물리학과 (반도체 장비 기구 설계 실습)</li>
   <li><strong>한 줄 소개</strong>: ITO 전극의 물리·화학적 가공부터 Blade/Meniscus Coating 기반 발광층 형성과 열처리(Annealing)를 수행하여 소자를 완성하고, 휘도계 측정 데이터 분석을 통해 전체 8개 샘플 중 종합 공동 2위를 기록한 프로젝트입니다.</li>
@@ -3576,14 +3576,14 @@ const projectProseData = {
     10: {
       meta: `Device Physics / OLED Fabrication & Characterization`,
       title: `ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis`,
-      date: `2026. 06. 04. ~ 2026. 06. 08.`,
+      date: `2026. 03. 01. ~ 2026. 06. 30.`,
       prose: `
 <p class="journal-p"><em>(Fabrication of Organic Light Emitting Diodes on ITO glass anodes, utilizing Blade Coating and analyzing optoelectronic reliability J-V-L profiles.)</em></p>
 <hr class="journal-divider">
 
 <h3 class="journal-h3">1) Project Overview</h3>
 <ul class="journal-ul">
-  <li><strong>Period</strong>: 2026. 06. 04. ~ 2026. 06. 08.</li>
+  <li><strong>Period</strong>: 2026. 03. 01. ~ 2026. 06. 30.</li>
   <li><strong>Type</strong>: Semiconductor Equipment & Device Reliability Analysis</li>
   <li><strong>Organization</strong>: Dept. of Electronic Biophysics, Kwangwoon University</li>
   <li><strong>Summary</strong>: Fabricating organic light-emitting devices through chemical acid pre-cleaning of ITO, blade-coating emitting layers, and executing two-step thermal baking to achieve 2nd rank overall among 8 competing batches.</li>
