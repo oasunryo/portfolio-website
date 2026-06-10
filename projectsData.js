@@ -355,7 +355,7 @@ const projectProseData = {
 <li><strong>소속/수행 환경</strong>: 광운대학교 전자공학과 (디지털 시스템 설계 실습)</li>
 <li><strong>한 줄 소개</strong>: </li>
 </ul>
-<p class="journal-p">> 이 프로젝트는 Altera Cyclone II FPGA 보드와 Quartus II, ModelSim 툴을 활용하여 <strong>기본 AND 게이트부터 시작해 가변 속도 10진 카운터, 7세그먼트 디스플레이 컨트롤러, 디바운서(Debouncer) 회로 등을 직접 Verilog HDL로 설계하고 파형 시뮬레이션을 통해 하드웨어의 시간 지연(Propagation Delay) 및 신뢰성을 검증한 프로젝트</strong>이다.</p>
+<p class="journal-p">> 이 프로젝트는 Altera Cyclone II FPGA 보드와 Quartus II, ModelSim 툴을 활용하여 <strong>기본 AND 게이트부터 시작해 가변 속도 10진 카운터, 7세그먼트 디스플레이 컨트롤러, 디바운서(Debouncer) 회로, FSM(Finite State Machine) 제어 회로 및 Single-Port RAM(Read/Write) 회로</strong>를 직접 Verilog HDL로 설계하고 파형 시뮬레이션을 통해 하드웨어의 시간 지연(Propagation Delay) 및 신뢰성을 검증한 프로젝트이다.</p>
 <hr class="journal-divider">
 <h3 class="journal-h3">2) 배경 및 문제 정의</h3>
 <ul class="journal-ul">
@@ -364,7 +364,7 @@ const projectProseData = {
 </ul>
 <p class="journal-p">* 하드웨어 스위치를 누를 때 기계적 접점에서 발생하는 미세한 물리적 잡음인 <strong>글리치(Glitch)/바운싱(Bouncing)</strong> 현상은 디지털 카운터 회로에서 한 번 눌렀음에도 여러 번 누른 것으로 오인식하는 심각한 논리 오류를 유발합니다.</p>
 <p class="journal-p">* 또한, 고속 시스템 클럭(50MHz)을 그대로 사용하면 카운터 동작이 육안으로 관찰 불가능하여, 하드웨어 타이밍 클럭 분주와 시뮬레이션용 파라미터 간의 유기적 조율이 요구되었습니다.</p>
-<p class="journal-p">* 이에 따라 FPGA 보드 상에서 발생할 수 있는 글리치 필터링(Debouncing), 클럭 분주기, BCD 카운터 및 7세그먼트 드라이버를 통합 설계하여 실제 <strong>보드급 하드웨어 디자인 역량</strong>을 다지고자 실습을 수행했습니다.</p>
+<p class="journal-p">* 이에 따라 FPGA 보드 상에서 발생할 수 있는 글리치 필터링(Debouncing), 클럭 분주기, BCD 카운터 및 7세그먼트 드라이버, 상태 제어를 위한 FSM(Finite State Machine) 및 데이터 저장 검증을 위한 Single-Port RAM을 통합 설계하여 실제 <strong>보드급 하드웨어 디자인 역량</strong>을 다지고자 실습을 수행했습니다.</p>
 <hr class="journal-divider">
 <h3 class="journal-h3">3) 목표</h3>
 <ul class="journal-ul">
@@ -373,10 +373,12 @@ const projectProseData = {
 <p class="journal-p">* 0000~9999까지 4자리 BCD 카운트를 7세그먼트에 Active-Low 신호로 오차 없이 디스플레이 구동.</p>
 <p class="journal-p">* 버튼 글리치 필터링을 위한 디바운싱(Debouncing) 회로를 설계하여 카운터 오류 인식률 <strong>0%</strong> 달성.</p>
 <p class="journal-p">* ModelSim 시뮬레이션 시 게이트 전파 지연(Gate Delay) 5ns 프로파일 예측 모델 수립.</p>
+<p class="journal-p">* Single-Port RAM 블록을 활용해 주소 및 입력값 최대 9(1001) 범위 내에서 오차 없는 Read & Write 동작 및 100% 데이터 무결성 검증.</p>
 <ul class="journal-ul">
 <li><strong>정성 목표</strong>: </li>
 </ul>
 <p class="journal-p">* 비동기 리셋(Asynchronous Reset) 및 비트 결합 연산자(\<code>{}\</code>)를 활용한 Verilog 코딩 스타일 준수 및 하드웨어 매핑 디버깅 능력 배양.</p>
+<p class="journal-p">* FSM 상태 천이도(State Transition Diagram) 설계를 통한 제어 흐름의 가독성 및 논리 정합성 확보.</p>
 <hr class="journal-divider">
 <h3 class="journal-h3">4) 내 역할</h3>
 <ul class="journal-ul">
@@ -387,6 +389,8 @@ const projectProseData = {
 <p class="journal-p">* LPM 라이브러리 가산기(\<code>LPM_ADD_SUB\</code>)와 직접 코딩한 가산 모듈(\<code>add3\</code>)을 BDF 블록상에서 유기적으로 배치 및 핀 연결.</p>
 <p class="journal-p">* ModelSim TestBench 작성 시 포트 매핑을 이름 방식(\<code>.a(a)\</code>)으로 설계하여 확장성을 높이고, 시뮬레이션 속도 향상을 위해 파라미터(\<code>WIDTH=2\</code>) 동적 분주 셋업 적용.</p>
 <p class="journal-p">* Cyclone II 라이브러리를 활용한 게이트 지연 시뮬레이션 파형 분석 및 FPGA 업로드용 POF 변환 디바운싱 회로 디버깅 주도.</p>
+<p class="journal-p">* Plugin Manager를 통한 RAM 1 Port 블록 설계 및 BDF(Block Diagram File) 계층구조 통합 설계.</p>
+<p class="journal-p">* FSM(Finite State Machine)의 start/stop 상태 제어 코딩 및 모델심을 이용한 상태 천이 파형 검증.</p>
 <hr class="journal-divider">
 <h3 class="journal-h3">5) 적용 공정 / 기술 / 도구</h3>
 <table class="journal-table">
@@ -415,7 +419,7 @@ const projectProseData = {
 </tr>
 <tr>
   <td><strong>디지털 IP</strong></td>
-  <td>LPM_ADD_SUB, SEG7_LUT (7세그먼트 룩업테이블), Debouncer</td>
+  <td>LPM_ADD_SUB, SEG7_LUT (7세그먼트 룩업테이블), Debouncer, FSM, Single-Port RAM</td>
 </tr>
 </tbody>
 </table>
@@ -443,6 +447,16 @@ const projectProseData = {
 <li>푸시 버튼을 누를 때 튀는 과도 상태 노이즈를 제어하기 위해, D 플립플롭을 여러 단계 거치는 <strong>다단 레지스터 시프트 필터</strong> 설계.</li>
 <li>지연된 신호가 일정 카운트(\<code>counter_max = 50\</code>) 동안 흐트러짐 없이 똑같은 신호 레벨을 유지할 때만 진짜 입력 신호(\<code>data_out\</code>)로 인정하여 카운트를 올리는 디바운싱 알고리즘 검증 완료.</li>
 </ul>
+<h4 class="journal-h4">5) FSM(Finite State Machine) 기반 제어 설계 및 채터링 방지 (Week 13)</h4>
+<ul class="journal-ul">
+<li>카운터의 시작(start)과 정지(stop) 동작을 if문 등으로 분산 처리하는 대신, 명시적인 상태 정의를 통해 관리하는 FSM 제어 구조를 Verilog HDL로 설계함.</li>
+<li>기계식 버튼의 접점 튕김으로 인해 다중 카운트가 발생하는 채터링(Chattering) 현상을 방지하도록 button_debouncer를 FSM의 전단 입력 필터로 연결하여 안정적인 상태 전이를 보장함.</li>
+</ul>
+<h4 class="journal-h4">6) Single-Port RAM Read & Write 동작 구현 및 시뮬레이션 검증 (Week 15)</h4>
+<ul class="journal-ul">
+<li>Quartus II의 MegaWizard/Plugin Manager를 활용해 Single-Port RAM 1 Port IP를 생성하고 BDF 상에 통합함.</li>
+<li>주소(Address)와 입력값(Data)을 최대 9(1001)까지 처리하도록 4비트(reg[3:0]) 단위로 제한하고, Write Enable(we) 신호 활성화 시 쓰기 동작 및 비활성화 시 읽기 동작을 ModelSim 시뮬레이션 파형으로 검증함.</li>
+</ul>
 <hr class="journal-divider">
 <h3 class="journal-h3">7) 핵심 문제 해결 포인트</h3>
 <ul class="journal-ul">
@@ -455,10 +469,11 @@ const projectProseData = {
 <hr class="journal-divider">
 <h3 class="journal-h3">8) 결과 및 성과</h3>
 <ul class="journal-ul">
-<li><strong>속도 가변형 10진 카운터 완성</strong>: </li>
+<li><strong>속도 가변형 10진 카운터 및 제어/저장 장치 완성</strong>: </li>
 </ul>
 <p class="journal-p">* 7세그먼트 디스플레이 구동 및 Active-Low 반전 출력(\<code>~seg_sig\</code>)을 통해 보드상에 숫자가 정확히 표시됨을 검증.</p>
-<p class="journal-p">* 디바운싱 회로를 통해 버튼 글리치 오인식 제어 성공.</p>
+<p class="journal-p">* 디바운싱 회로 및 FSM 기반 제어를 통해 버튼 글리치 오인식을 제어하고 상태 천이의 신뢰성 확보.</p>
+<p class="journal-p">* MegaWizard RAM 1 Port IP를 활용하여 주소/데이터 최대 9 범위의 메모리 Read/Write 동작 무결성 100% 입증.</p>
 <h4 class="journal-h4">하드웨어 설계 결과 데이터</h4>
 <table class="journal-table">
 <thead>
@@ -1899,7 +1914,7 @@ const projectProseData = {
           <li><strong>Duration:</strong> 2026. 03. 01. ~ 2026. 06. 30.</li>
           <li><strong>Type:</strong> FPGA Board & Verilog HDL Digital System Design and Hardware Debugging</li>
           <li><strong>Affiliation:</strong> Kwangwoon University, Dept. of Electronic Engineering (Digital System Design Lab)</li>
-          <li><strong>Overview:</strong> Designed and validated digital logic modules (Modulo-N counters, variable speed decimal counters, 7-segment display controllers, debouncer filters) in Verilog HDL using an Altera Cyclone II FPGA board, Quartus II, and ModelSim. Analyzed gate propagation delay and mechanical bouncing noise in hardware environments to verify system reliability.</li>
+          <li><strong>Overview:</strong> Designed and validated digital logic modules (Modulo-N counters, variable speed decimal counters, 7-segment display controllers, debouncer filters, FSM controllers, and Single-Port RAM read/write blocks) in Verilog HDL using an Altera Cyclone II FPGA board, Quartus II, and ModelSim. Analyzed gate propagation delay and mechanical bouncing noise in hardware environments to verify system reliability.</li>
         </ul>
         <hr class="journal-divider">
         <h3 class="journal-h3">2) Background & Problem Statement</h3>
@@ -1909,7 +1924,7 @@ const projectProseData = {
             <ul class="journal-ul">
               <li>Mechanical bouncing or <strong>glitches</strong> occurring at switch contacts cause severe logic errors, causing the digital counter to register multiple counts from a single press.</li>
               <li>Moreover, using the high-speed system clock (50MHz) directly makes real-time visual observation of counter behavior impossible, requiring systematic tuning between hardware clock dividers and simulation parameters.</li>
-              <li>To address these challenges, we designed an integrated system featuring a debouncer filter, clock divider, BCD counter, and 7-segment driver to build robust <strong>board-level hardware design capabilities</strong>.</li>
+              <li>To address these challenges, we designed an integrated system featuring a debouncer filter, clock divider, BCD counter, 7-segment driver, FSM (Finite State Machine) controller, and Single-Port RAM to build robust <strong>board-level hardware design capabilities</strong>.</li>
             </ul>
           </li>
         </ul>
@@ -1921,9 +1936,15 @@ const projectProseData = {
               <li>Drive a 4-digit BCD counter (0000~9999) on 7-segment displays using Active-Low signals without error.</li>
               <li>Achieve a <strong>0%</strong> error count recognition rate by designing a debouncing circuit to filter button noise.</li>
               <li>Establish a 5ns propagation delay prediction model in ModelSim timing simulations.</li>
+              <li>Verify error-free Read & Write operations and 100% data integrity within address and data ranges up to 9 (1001) using a Single-Port RAM block.</li>
             </ul>
           </li>
-          <li><strong>Qualitative Goals:</strong> Master Verilog coding standards, utilizing asynchronous resets and bit concatenation operators (\`{}\`), and build hardware mapping and debugging expertise.</li>
+          <li><strong>Qualitative Goals:</strong>
+            <ul class="journal-ul">
+              <li>Master Verilog coding standards, utilizing asynchronous resets and bit concatenation operators (\`{}\`), and build hardware mapping and debugging expertise.</li>
+              <li>Ensure control flow readability and logical correctness through FSM state transition design.</li>
+            </ul>
+          </li>
         </ul>
         <hr class="journal-divider">
         <h3 class="journal-h3">4) Engineering Methodology & Role</h3>
@@ -1935,6 +1956,8 @@ const projectProseData = {
               <li>Connected LPM library adders (\`LPM_ADD_SUB\`) with custom adder modules (\`add3\`) on the BDF schematic.</li>
               <li>Created scalable ModelSim TestBenches using named port mappings (\`.a(a)\`) and applied dynamic parameter divisions (\`WIDTH=2\`) to accelerate simulation speeds.</li>
               <li>Analyzed gate-level timing delay waveforms using Cyclone II libraries and led debouncing circuit debugging for POF file conversion and FPGA programming.</li>
+              <li>Designed Single-Port RAM 1 Port blocks using the Plugin Manager and integrated them into the hierarchical BDF (Block Diagram File) structure.</li>
+              <li>Coded the FSM (Finite State Machine) start/stop state control logic and verified state transition waveforms via ModelSim.</li>
             </ul>
           </li>
         </ul>
@@ -1966,7 +1989,7 @@ const projectProseData = {
         </tr>
         <tr>
           <td><strong>Digital IP</strong></td>
-          <td>LPM_ADD_SUB, SEG7_LUT (7-Segment Lookup Table), Debouncer</td>
+          <td>LPM_ADD_SUB, SEG7_LUT (7-Segment Lookup Table), Debouncer, FSM, Single-Port RAM</td>
         </tr>
         </tbody>
         </table>
@@ -1993,6 +2016,16 @@ const projectProseData = {
           <li>Designed a <strong>multi-stage register shift filter</strong> using D Flip-Flops to eliminate high-frequency bouncing noise when pushing buttons.</li>
           <li>Validated the debouncing algorithm, ensuring button inputs were registered as a valid \`data_out\` only after maintaining a stable signal level for a set duration (\`counter_max = 50\`).</li>
         </ul>
+        <h4 class="journal-h4">5) FSM (Finite State Machine) Control & Chattering Filter (Week 13)</h4>
+        <ul class="journal-ul">
+          <li>Designed an FSM control structure in Verilog HDL to manage counter start and stop states cleanly, rather than scattering logic conditions across multiple if-statements.</li>
+          <li>Connected button_debouncer as a front-end input filter for the FSM to prevent double-count chattering caused by mechanical switch bouncing, ensuring reliable state transitions.</li>
+        </ul>
+        <h4 class="journal-h4">6) Single-Port RAM Read & Write Design & Verification (Week 15)</h4>
+        <ul class="journal-ul">
+          <li>Created a Single-Port RAM 1 Port IP block using MegaWizard/Plugin Manager and integrated it into the top-level BDF design.</li>
+          <li>Restricted address and data processing to 4 bits (reg[3:0]) for a maximum decimal range of 9 (1001), and verified write/read execution via ModelSim timing waveforms under Write Enable (we) control.</li>
+        </ul>
         <hr class="journal-divider">
         <h3 class="journal-h3">7) Key Problem-Solving Points</h3>
         <ul class="journal-ul">
@@ -2008,10 +2041,11 @@ const projectProseData = {
         <hr class="journal-divider">
         <h3 class="journal-h3">8) Results & Achievements</h3>
         <ul class="journal-ul">
-          <li><strong>Variable Speed Decimal Counter Completed:</strong>
+          <li><strong>Variable Speed Decimal Counter & Control/Storage System Completed:</strong>
             <ul class="journal-ul">
               <li>Verified active-low inverted outputs (\`~seg_sig\`) displaying digits correctly on the 7-segment board.</li>
-              <li>Successfully controlled switch bouncing via the debouncing filter.</li>
+              <li>Successfully controlled switch bouncing and verified robust FSM-based state transitions.</li>
+              <li>Validated 100% memory read/write integrity up to data values and addresses of 9 using MegaWizard RAM 1 Port IP.</li>
             </ul>
           </li>
         </ul>

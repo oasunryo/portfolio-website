@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlogSearch();
   initCarousel();
   initTocHighlight();
+  initProjectsSort();
 });
 
 // Carousel Ticker/Controller (Gallery4 Style)
@@ -459,4 +460,44 @@ function initTocHighlight() {
 
   window.addEventListener('scroll', updateActiveToc);
   updateActiveToc();
+}
+
+// 5. Projects Grid Clientside Sort
+function initProjectsSort() {
+  const sortSelect = document.getElementById('projects-sort');
+  const grid = document.getElementById('projects-grid');
+  if (!sortSelect || !grid) return;
+
+  const cards = Array.from(grid.children);
+
+  function sortProjects() {
+    const sortBy = sortSelect.value;
+
+    cards.sort((a, b) => {
+      if (sortBy === 'latest') {
+        return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+      } else if (sortBy === 'oldest') {
+        return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
+      } else if (sortBy === 'alphabetical') {
+        const titleA = a.getAttribute('data-title') || '';
+        const titleB = b.getAttribute('data-title') || '';
+        return titleA.localeCompare(titleB, undefined, { sensitivity: 'base' });
+      }
+      return 0;
+    });
+
+    // Re-append to DOM in sorted order
+    cards.forEach(card => grid.appendChild(card));
+    
+    // Smooth grid transition
+    grid.style.opacity = 0.5;
+    void grid.offsetWidth; // trigger reflow
+    grid.style.transition = 'opacity 0.15s ease';
+    grid.style.opacity = 1;
+  }
+
+  sortSelect.addEventListener('change', sortProjects);
+  
+  // Initial sort (default is 'latest')
+  sortProjects();
 }

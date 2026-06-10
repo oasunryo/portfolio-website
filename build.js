@@ -31,6 +31,8 @@ const projectsMeta = [
     initials: "01",
     image: "/assets/projects/capillary_bonding.png",
     tags: ["OSAT", "Wire-bonding", "SEM", "OriginPro"],
+    date: "2026-05-01",
+    period: "2026. 05. 01. ~ 2026. 05. 18.",
     ko: {
       title: "Ceramic Capillary Geometry",
       category: "OSAT & 후공정",
@@ -50,6 +52,8 @@ const projectsMeta = [
     initials: "02",
     image: "/assets/projects/packaging_test.png",
     tags: ["BGA", "TSV", "SI-PI", "FEM"],
+    date: "2026-04-01",
+    period: "2026. 04. 01. ~",
     ko: {
       title: "Packaging & Test Fundamentals",
       category: "반도체 이론",
@@ -69,6 +73,8 @@ const projectsMeta = [
     initials: "03",
     image: "/assets/projects/fpga_verilog.png",
     tags: ["Verilog", "ModelSim", "FPGA", "Debouncer"],
+    date: "2026-03-01",
+    period: "2026. 03. 01. ~ 2026. 06. 30.",
     ko: {
       title: "FPGA & Verilog HDL Systems",
       category: "디지털 회로",
@@ -88,6 +94,8 @@ const projectsMeta = [
     initials: "04",
     image: "/assets/projects/euv_photoresist.png",
     tags: ["EUV", "Photoresist", "FE-SEM", "AFM"],
+    date: "2025-11-17",
+    period: "2025. 11. 17. ~ 2025. 12. 04.",
     ko: {
       title: "TinNO₃ EUV Photoresist",
       category: "전공정 노광",
@@ -107,6 +115,8 @@ const projectsMeta = [
     initials: "05",
     image: "/assets/projects/spotfire_analytics.png",
     tags: ["TIBCO-Spotfire", "EDA", "Stat-Analysis", "Yield"],
+    date: "2025-10-20",
+    period: "2025. 10. 20. ~ 2025. 11. 09.",
     ko: {
       title: "Spotfire Process Analytics",
       category: "수율 분석",
@@ -126,6 +136,8 @@ const projectsMeta = [
     initials: "06",
     image: "/assets/projects/ac_power_meter.png",
     tags: ["MCU", "AC-Power", "Sensing", "Hardware"],
+    date: "2025-09-01",
+    period: "2025. 09. 01. ~ 2025. 12. 31.",
     ko: {
       title: "MCU AC Power Meter",
       category: "임베디드",
@@ -145,6 +157,8 @@ const projectsMeta = [
     initials: "07",
     image: "/assets/projects/audio_level_meter.png",
     tags: ["Analog", "Filter-Design", "OP-AMP", "Orcad-Pspice"],
+    date: "2025-03-01",
+    period: "2025. 03. 01. ~ 2025. 06. 30.",
     ko: {
       title: "3-Band Audio Level Meter",
       category: "아날로그 회로",
@@ -164,6 +178,8 @@ const projectsMeta = [
     initials: "08",
     image: "/assets/projects/battery_charger.png",
     tags: ["CC-CV", "Power-Electronics", "ADC-Sensing", "Safety-Log"],
+    date: "2024-09-01",
+    period: "2024. 09. 01. ~ 2024. 12. 31.",
     ko: {
       title: "CC-CV Li-Ion Charger",
       category: "전력 전자",
@@ -183,6 +199,8 @@ const projectsMeta = [
     initials: "09",
     image: "/assets/projects/battery_soc_tester.png",
     tags: ["SOC-Estimation", "OCV-CCV", "Embedded", "Calibration"],
+    date: "2024-03-01",
+    period: "2024. 03. 01. ~ 2024. 06. 30.",
     ko: {
       title: "Dynamic Battery SOC Tester",
       category: "임베디드",
@@ -1178,12 +1196,16 @@ languages.forEach(lang => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     return `
-    <a class="design-card-item" href="./${p.slug}/index.html" style="text-decoration: none; color: inherit;">
+    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" style="text-decoration: none; color: inherit;">
       <div class="design-card-thumbnail">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>
       <div class="design-card-header">
         <h3 class="design-card-title">${trans.title}</h3>
+      </div>
+      <div class="design-card-meta" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: -0.25rem; font-family: var(--font-sans); display: flex; align-items: center; gap: 0.35rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.7;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="tabular-nums">${p.period}</span>
       </div>
       <p class="design-card-description">${trans.description}</p>
       <div class="design-card-tags">
@@ -1198,12 +1220,21 @@ languages.forEach(lang => {
     <a href="../index.html" class="blog-back-link">
       ${locale.backToHome}
     </a>
-    <header class="mb-10" style="margin-bottom: 2.5rem;">
-      <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; margin-bottom: 0.5rem;">Projects</h1>
-      <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.projectsDesc}</p>
+    <header style="margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; margin-bottom: 0.5rem;">Projects</h1>
+        <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.projectsDesc}</p>
+      </div>
+      <div class="projects-sort-container">
+        <select id="projects-sort" class="sort-select-box" aria-label="Sort projects">
+          <option value="latest">${lang === 'ko' ? '최신순' : 'Latest'}</option>
+          <option value="oldest">${lang === 'ko' ? '오래된순' : 'Oldest'}</option>
+          <option value="alphabetical">${lang === 'ko' ? '제목순' : 'Alphabetical'}</option>
+        </select>
+      </div>
     </header>
     
-    <div class="design-grid-container">
+    <div class="design-grid-container" id="projects-grid">
       ${designGridContent}
     </div>
   </div>
