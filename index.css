@@ -29,6 +29,7 @@
   --border-color: #e7e5e4; /* stone-200 */
   --accent-color: #c2410c; /* Beautiful terracotta orange */
   --accent-hover: #9a3412; /* Rich deep copper */
+  --primary: var(--accent-color);
   --font-sans: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-serif: 'Source Serif 4', Georgia, serif;
   --overlay-bg: rgba(252, 251, 249, 0.8);
@@ -51,6 +52,7 @@ html.dark {
   --border-color: rgba(231, 229, 228, 0.07);
   --accent-color: #f97316; /* Vibrant warm orange */
   --accent-hover: #fdba74; /* Soft peach glow */
+  --primary: var(--accent-color);
   --overlay-bg: rgba(15, 14, 13, 0.8);
   --peek-bg: rgba(23, 21, 20, 0.96);
   --nav-bg: rgba(15, 14, 13, 0.85);

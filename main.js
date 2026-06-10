@@ -558,8 +558,8 @@ function initOledDashboard() {
               {
                 label: isDark ? '전류밀도 J (mA/cm²)' : 'Current Density J',
                 data: ojData.j,
-                borderColor: '#8b5cf6',
-                backgroundColor: 'rgba(139, 92, 246, 0.08)',
+                borderColor: isDark ? '#a78bfa' : '#7c3aed',
+                backgroundColor: isDark ? 'rgba(167, 139, 250, 0.08)' : 'rgba(124, 58, 237, 0.08)',
                 yAxisID: 'yJ',
                 tension: 0.3,
                 borderWidth: 2.5
@@ -567,8 +567,8 @@ function initOledDashboard() {
               {
                 label: isDark ? '휘도 L (cd/m²)' : 'Luminance L',
                 data: ojData.l,
-                borderColor: '#f59e0b',
-                backgroundColor: 'rgba(245, 158, 11, 0.08)',
+                borderColor: isDark ? '#fbbf24' : '#d97706',
+                backgroundColor: isDark ? 'rgba(251, 191, 36, 0.08)' : 'rgba(217, 119, 6, 0.08)',
                 yAxisID: 'yL',
                 tension: 0.3,
                 borderWidth: 2.5
@@ -591,8 +591,8 @@ function initOledDashboard() {
           data: {
             labels: ojData.eqeV,
             datasets: [
-              { label: 'EQE (%)', data: ojData.eqe, borderColor: '#10b981', borderWidth: 2.5, yAxisID: 'yEqe' },
-              { label: 'CE (cd/A)', data: ojData.ce, borderColor: '#3b82f6', borderWidth: 2.5, yAxisID: 'yCe' }
+              { label: 'EQE (%)', data: ojData.eqe, borderColor: isDark ? '#34d399' : '#059669', borderWidth: 2.5, yAxisID: 'yEqe' },
+              { label: 'CE (cd/A)', data: ojData.ce, borderColor: isDark ? '#60a5fa' : '#2563eb', borderWidth: 2.5, yAxisID: 'yCe' }
             ]
           },
           options: {
@@ -612,10 +612,10 @@ function initOledDashboard() {
             datasets: [{
               label: 'CIE x, y (4V ➔ 12V)',
               data: ojData.cieX.map((x, idx) => ({ x: x, y: ojData.cieY[idx] })),
-              borderColor: '#ec4899',
+              borderColor: isDark ? '#f472b6' : '#db2777',
               showLine: true,
               borderWidth: 2.5,
-              pointBackgroundColor: ojData.cieV.map(v => v === 6.0 ? '#f59e0b' : '#ec4899'),
+              pointBackgroundColor: ojData.cieV.map(v => v === 6.0 ? (isDark ? '#fbbf24' : '#d97706') : (isDark ? '#f472b6' : '#db2777')),
               pointRadius: 6
             }]
           },
@@ -732,8 +732,8 @@ function initAllProjectCharts() {
               {
                 label: isDark ? '인장 강도 Pull Strength (g)' : 'Pull Strength (g)',
                 data: [5.2, 11.26, 7.8],
-                borderColor: '#6366f1',
-                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                borderColor: isDark ? '#818cf8' : '#4f46e5',
+                backgroundColor: isDark ? 'rgba(129, 140, 248, 0.1)' : 'rgba(79, 70, 229, 0.1)',
                 tension: 0.1,
                 borderWidth: 3,
                 yAxisID: 'y'
@@ -741,8 +741,8 @@ function initAllProjectCharts() {
               {
                 label: isDark ? '전단 강도 Shear Strength (g)' : 'Shear Strength (g)',
                 data: [8.1, 14.85, 10.4],
-                borderColor: '#10b981',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                borderColor: isDark ? '#34d399' : '#059669',
+                backgroundColor: isDark ? 'rgba(52, 211, 153, 0.1)' : 'rgba(5, 150, 105, 0.1)',
                 tension: 0.1,
                 borderWidth: 3,
                 yAxisID: 'y'
@@ -767,7 +767,7 @@ function initAllProjectCharts() {
               {
                 label: 'S21 Transmission (Matched 50Ω)',
                 data: [-0.1, -0.2, -0.3, -0.4, -0.5, -0.6, -0.7, -0.8, -0.9, -1.0],
-                borderColor: '#3b82f6',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
                 borderWidth: 2.5,
                 fill: false,
                 tension: 0.2
@@ -775,7 +775,7 @@ function initAllProjectCharts() {
               {
                 label: 'S21 Transmission (Mismatched)',
                 data: [-0.5, -1.2, -2.1, -3.5, -4.8, -6.2, -8.1, -10.5, -13.2, -15.8],
-                borderColor: '#ef4444',
+                borderColor: isDark ? '#f87171' : '#dc2626',
                 borderWidth: 2.5,
                 borderDash: [5, 5],
                 fill: false,
@@ -801,14 +801,14 @@ function initAllProjectCharts() {
               {
                 label: 'Glitch Switch Input',
                 data: [0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                borderColor: '#f59e0b',
+                borderColor: isDark ? '#fbbf24' : '#d97706',
                 stepped: true,
                 borderWidth: 2
               },
               {
                 label: 'Cleaned Output',
                 data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                borderColor: '#10b981',
+                borderColor: isDark ? '#34d399' : '#059669',
                 stepped: true,
                 borderWidth: 3
               }
@@ -832,8 +832,8 @@ function initAllProjectCharts() {
               {
                 label: 'TinNO3 (New PR)',
                 data: [1.0, 0.98, 0.95, 0.85, 0.40, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                borderColor: '#a855f7',
-                backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                borderColor: isDark ? '#c084fc' : '#7e22ce',
+                backgroundColor: isDark ? 'rgba(192, 132, 252, 0.15)' : 'rgba(126, 34, 206, 0.15)',
                 fill: true,
                 tension: 0.2,
                 borderWidth: 3
@@ -841,14 +841,14 @@ function initAllProjectCharts() {
               {
                 label: 'TinTos (Conventional)',
                 data: [1.0, 1.0, 1.0, 0.99, 0.98, 0.97, 0.95, 0.92, 0.85, 0.70, 0.35, 0.05, 0.0],
-                borderColor: '#6b7280',
+                borderColor: isDark ? '#9ca3af' : '#4b5563',
                 fill: false,
                 tension: 0.2
               },
               {
                 label: 'TinOH (Reference)',
                 data: [1.0, 1.0, 0.98, 0.95, 0.92, 0.90, 0.88, 0.82, 0.75, 0.65, 0.50, 0.30, 0.15],
-                borderColor: '#3b82f6',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
                 fill: false,
                 tension: 0.2
               }
@@ -878,8 +878,8 @@ function initAllProjectCharts() {
                 {x: 30, y: 75, r: 28},
                 {x: 32, y: 80, r: 40}
               ],
-              backgroundColor: 'rgba(239, 68, 68, 0.6)',
-              borderColor: '#ef4444'
+              backgroundColor: isDark ? 'rgba(248, 113, 113, 0.6)' : 'rgba(220, 38, 38, 0.6)',
+              borderColor: isDark ? '#f87171' : '#dc2626'
             }]
           },
           options: {
@@ -914,7 +914,7 @@ function initAllProjectCharts() {
               {
                 label: 'Voltage V(t)',
                 data: initialData.voltage,
-                borderColor: '#ef4444',
+                borderColor: isDark ? '#f87171' : '#dc2626',
                 borderWidth: 2.5,
                 tension: 0.4,
                 pointRadius: 0
@@ -922,7 +922,7 @@ function initAllProjectCharts() {
               {
                 label: 'Current I(t) (Phase Shifted)',
                 data: initialData.current,
-                borderColor: '#3b82f6',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
                 borderWidth: 2.5,
                 tension: 0.4,
                 pointRadius: 0
@@ -947,21 +947,21 @@ function initAllProjectCharts() {
               {
                 label: 'Low Pass (Cutoff 400Hz)',
                 data: [0, 0, -0.5, -3, -12, -24, -36, -48, -60, -72, -84],
-                borderColor: '#ef4444',
+                borderColor: isDark ? '#f87171' : '#dc2626',
                 borderWidth: 2,
                 tension: 0.2
               },
               {
                 label: 'Mid Band Channel',
                 data: [-40, -26, -12, -3, 0, -3, -12, -26, -40, -52, -64],
-                borderColor: '#10b981',
+                borderColor: isDark ? '#34d399' : '#059669',
                 borderWidth: 2,
                 tension: 0.2
               },
               {
                 label: 'High Pass (Cutoff 3.2kHz)',
                 data: [-84, -72, -60, -48, -36, -24, -12, -3, -0.5, 0, 0],
-                borderColor: '#3b82f6',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
                 borderWidth: 2,
                 tension: 0.2
               }
@@ -985,7 +985,7 @@ function initAllProjectCharts() {
               {
                 label: 'Cell Voltage (V)',
                 data: [3.0, 3.4, 3.7, 3.9, 4.1, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2],
-                borderColor: '#ec4899',
+                borderColor: isDark ? '#f472b6' : '#db2777',
                 yAxisID: 'yV',
                 borderWidth: 3,
                 tension: 0.2
@@ -993,7 +993,7 @@ function initAllProjectCharts() {
               {
                 label: 'Charge Current (mA)',
                 data: [250, 250, 250, 250, 250, 210, 150, 90, 40, 15, 0],
-                borderColor: '#06b6d4',
+                borderColor: isDark ? '#22d3ee' : '#0891b2',
                 yAxisID: 'yI',
                 borderWidth: 3,
                 tension: 0.2
@@ -1019,14 +1019,14 @@ function initAllProjectCharts() {
               {
                 label: 'Open Circuit Voltage (OCV)',
                 data: [4.2, 4.15, 4.08, 4.0, 3.92, 3.85, 3.79, 3.73, 3.68, 3.6, 3.0],
-                borderColor: '#3b82f6',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
                 borderWidth: 2.5,
                 tension: 0.2
               },
               {
                 label: 'Closed Circuit Voltage (CCV under 10Ω Load)',
                 data: [4.02, 3.97, 3.90, 3.82, 3.74, 3.67, 3.61, 3.55, 3.50, 3.42, 2.75],
-                borderColor: '#f43f5e',
+                borderColor: isDark ? '#fb7185' : '#e11d48',
                 borderWidth: 2.5,
                 tension: 0.2
               }
