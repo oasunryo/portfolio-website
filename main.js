@@ -519,12 +519,59 @@ function initProjectHoverPreview() {
     document.body.appendChild(preview);
   }
 
+  let lastX = 0;
+  let lastY = 0;
+
+  function updatePosition(clientX, clientY) {
+    lastX = clientX;
+    lastY = clientY;
+
+    const previewWidth = 320;
+    // Use actual height if rendered, fallback to a safe 360px if 0
+    const previewHeight = preview.offsetHeight || 360;
+
+    let left = clientX + 20;
+    let top = clientY + 20;
+
+    // Prevent overflow to the right (show on left of cursor)
+    if (left + previewWidth > window.innerWidth) {
+      left = clientX - previewWidth - 20;
+    }
+
+    // Prevent overflow to the bottom (show above cursor)
+    if (top + previewHeight > window.innerHeight) {
+      top = clientY - previewHeight - 20;
+    }
+
+    // Additional hybrid constraint: if it still overflows the viewport bottom (e.g. dynamic resize), clamp it
+    if (top + previewHeight > window.innerHeight) {
+      top = window.innerHeight - previewHeight - 15;
+    }
+
+    // Safety fallback bounds checking
+    if (left < 10) left = 10;
+    if (top < 10) top = 10;
+
+    preview.style.left = `${left}px`;
+    preview.style.top = `${top}px`;
+  }
+
+  // Use ResizeObserver to reposition dynamically when preview content height loads or updates
+  if (window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(() => {
+      if (preview.classList.contains('active')) {
+        updatePosition(lastX, lastY);
+      }
+    });
+    resizeObserver.observe(preview);
+  }
+
   const items = grid.querySelectorAll('.design-card-item');
   items.forEach(item => {
     const imgUrl = item.getAttribute('data-image');
     if (!imgUrl) return;
 
-    item.addEventListener('mouseenter', () => {
+    item.addEventListener('mouseenter', (e) => {
       if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
         const title = item.querySelector('.design-card-title')?.innerText || '';
         const category = item.querySelector('.recommended-card-category')?.innerText || '';
@@ -545,6 +592,7 @@ function initProjectHoverPreview() {
           </div>
         `;
         preview.classList.add('active');
+        updatePosition(e.clientX, e.clientY);
       }
     });
 
@@ -554,8 +602,7 @@ function initProjectHoverPreview() {
 
     item.addEventListener('mousemove', (e) => {
       if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
-        preview.style.left = `${e.clientX + 20}px`;
-        preview.style.top = `${e.clientY + 20}px`;
+        updatePosition(e.clientX, e.clientY);
       }
     });
   });

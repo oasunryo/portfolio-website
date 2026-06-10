@@ -1230,7 +1230,6 @@ languages.forEach(lang => {
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
-          <span class="design-card-number">${p.initials}</span>
           <h3 class="design-card-title">${trans.title}</h3>
         </div>
         <div class="design-card-sub-info">
