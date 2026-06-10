@@ -393,6 +393,9 @@ function compilePage(content, title, description, activeNav, lang = 'ko', depth 
   let head = headTpl
     .replace('href="/index.css"', `href="${relPath}index.css"`)
     .replace('href="/logo/favicon.svg?v=1.0.1"', `href="${relPath}logo/favicon.svg?v=1.0.1"`)
+    .replace('href="/logo/favicon-32x32.png?v=1.0.1"', `href="${relPath}logo/favicon-32x32.png?v=1.0.1"`)
+    .replace('href="/logo/apple-touch-icon.png?v=1.0.1"', `href="${relPath}logo/apple-touch-icon.png?v=1.0.1"`)
+    .replace('href="/site.webmanifest"', `href="${relPath}site.webmanifest"`)
     .replace(/{{title}}/g, title)
     .replace(/{{description}}/g, description);
   
@@ -522,6 +525,10 @@ const rootIndexContent = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/svg+xml" href="./logo/favicon.svg?v=1.0.1">
+  <link rel="alternate icon" type="image/png" href="./logo/favicon-32x32.png?v=1.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./logo/apple-touch-icon.png?v=1.0.1">
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="theme-color" content="#c2410c">
   <meta http-equiv="refresh" content="0; url=./ko/index.html">
   <script>window.location.replace("./ko/index.html");</script>
 </head>
