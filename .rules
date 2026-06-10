@@ -63,4 +63,28 @@
 * **수직 오프셋 보정**: 텍스트 옆에 배치되는 SVG 아이콘(예: 12~14px 크기)은 단순히 `align-items: center`만 적용할 경우 시각적으로 위에 떠 있는 것처럼 보일 수 있습니다.
 * **해결 방법**: 해당 SVG 요소에 `position: relative; top: 1px;` (상황에 따라 0.5px~1.5px) 오프셋을 명시적으로 부여하여 시각적인 중앙/정렬 상태를 보정해 주어야 합니다.
 
+---
+
+## 4. 미디어 자산 관리 및 성능 최적화 규칙 (Media Assets & Optimization)
+
+### 4.1. GitHub + jsDelivr CDN 호스팅 표준 (CDN Asset Hosting)
+* **용량 및 빌드 성능 보존**: 블로그 및 프로젝트의 이미지/도표 같은 시각 자료는 웹 빌더 본 프로젝트 리포지토리에 커밋하지 않습니다.
+* **표준 저장소**: 미디어 에셋은 전용 퍼블릭 에셋 리포지토리(`oasunryo/portfolio-assets`)에 업로드하여 관리해야 합니다.
+* **CDN 연동**: 업로드된 에셋은 `jsDelivr` CDN 주소를 통해 아래 템플릿에 맞추어 절대 경로 형태로 블로그 데이터(`newBlogPosts.js`) 본문에 직접 임베딩합니다.
+  ```text
+  https://cdn.jsdelivr.net/gh/oasunryo/portfolio-assets@main/[경로/파일명]
+  ```
+
+### 4.2. 에셋 폴더 구조 캡슐화 및 파일명 컨벤션 (Directory & Naming Convention)
+* **폴더 분리 규칙**: 포스트 및 프로젝트의 에셋은 루트에 혼재시키지 않고, 각각 고유 식별자(Slug)에 맞춰 디렉토리를 캡슐화하여 격리합니다.
+  * 블로그: `blog/[yyyy-mm-dd-slug]/` (예: `blog/2026-05-08-amkor-osat-interview-prep/`)
+  * 프로젝트: `projects/[project-slug]/` (예: `projects/capillary-bonding/`)
+* **네이밍 규칙**: 경로 유실 및 깨짐을 완벽 방지하기 위해 파일명은 한글과 공백을 배제하고, 반드시 **소문자 케밥 케이스(kebab-case)**만 허용합니다. (예: `wafer-process-chart.webp`)
+
+### 4.3. 이미지 포맷 및 자동 압축 (Format & Compression)
+* **지연 로딩 필수**: 초기 로딩 속도(LCP) 저하를 방지하기 위해 포스트 본문 내 모든 `<img>` 태그에는 `loading="lazy"` 속성과 가로/세로 비율(`width`, `height`)을 기재하여 누적 레이아웃 이동(CLS)을 제어해야 합니다.
+* **최적 포맷 지향**: 사진/차트 같은 비트맵 리소스는 용량 최적화가 우수한 **WebP**를 기본 채택하고, 도형/도면/단순 벡터 데이터는 해상도 유지가 자유로운 **SVG** 포맷을 활용합니다.
+* **자동 압축 보장**: 에셋 저장소에 연동된 GitHub Actions(`image-actions`) 워크플로우를 통하여 푸시 시 자동으로 무손실 압축이 수행되므로, 수동 압축 누락에 대한 예외 처리가 기본 보장됩니다.
+
+
 
