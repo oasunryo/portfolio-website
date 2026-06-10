@@ -333,7 +333,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">Amkor Technology</span>
+            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Amkor Technology</span>
             <span class="status-badge">OSAT</span>
           </div>
           <span class="item-date-text">2026.07 ~ (합류 예정)</span>
@@ -347,7 +347,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">광운대학교 (Kwangwoon University)</span>
+            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">광운대학교 (Kwangwoon University)</span>
             <span class="status-badge">학사 (B.S.)</span>
           </div>
           <span class="item-date-text">2020.03 ~ 2027.02 (졸업 예정)</span>
@@ -377,7 +377,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">Amkor Technology</span>
+            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Amkor Technology</span>
             <span class="status-badge">OSAT</span>
           </div>
           <span class="item-date-text">2026.07 ~ (Incoming)</span>
@@ -391,7 +391,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 500;">Kwangwoon University</span>
+            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Kwangwoon University</span>
             <span class="status-badge">B.S.</span>
           </div>
           <span class="item-date-text">2020.03 ~ 2027.02 (Candidate)</span>
@@ -1189,7 +1189,7 @@ languages.forEach(lang => {
       ${locale.backToHome}
     </a>
     <header class="mb-10" style="margin-bottom: 2.5rem;">
-      <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; margin-bottom: 0.5rem;">Blog</h1>
+      <h1 style="font-family: var(--font-sans); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Blog</h1>
       <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.blogGreeting}</p>
     </header>
     
@@ -1250,7 +1250,7 @@ languages.forEach(lang => {
     </a>
     <header style="margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
       <div>
-        <h1 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 500; margin-bottom: 0.5rem;">Projects</h1>
+        <h1 style="font-family: var(--font-sans); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Projects</h1>
         <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.projectsDesc}</p>
       </div>
       <div class="projects-sort-container">
