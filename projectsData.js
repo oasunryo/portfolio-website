@@ -69,15 +69,22 @@ const projectProseData = {
   <td><strong>측정/검증</strong></td>
   <td>Wire Pull Test (접합부 인장 강도 검증), Ball Shear Test (전단 신뢰성 평가), SEM 분석</td>
 </tr>
-<tr>
-  <td><strong>핵심 변수</strong></td>
-  <td><strong>IHD</strong> (Inner Hole Diameter), <strong>ICAD</strong> (Inside Chamfer Diameter), <strong>ICBA</strong> (Inside Chamfer Angle)</td>
-</tr>
-</tbody>
-</table>
+        <tr>
+          <td><strong>핵심 변수</strong></td>
+          <td><strong>IHD</strong> (Inner Hole Diameter), <strong>ICAD</strong> (Inside Chamfer Diameter), <strong>ICBA</strong> (Inside Chamfer Angle)</td>
+        </tr>
+        </tbody>
+        </table>
 
-<hr class="journal-divider">
-<h3 class="journal-h3">6) 진행 과정</h3>
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart1"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption1"><strong>Figure 1.</strong> 캐필러리 치수 최적화에 따른 인장 및 전단 강도 실증 편차 분포 (IHD 33μm 기준)</p>
+        </div>
+
+        <hr class="journal-divider">
+        <h3 class="journal-h3">6) 진행 과정</h3>
 <h4 class="journal-h4">1) 현상 파악 (미세 피치 본딩의 물리적 거동 이해)</h4>
 <ul class="journal-ul">
 <li>와이어 본딩 공정 중 고주파 열에너지(EFO spark)로 형성된 Free Air Ball(FAB)이 본딩 패드에 물리적 압력과 초음파 에너지를 통해 접합될 때, 납작해진 볼의 직경(MBD)과 목 부분(Neck)의 기하학적 형태가 캐필러리 끝단 미세 세라믹 팁 내부 형상과 직접 일치하여 성형되는 현상을 분석함.</li>
@@ -273,6 +280,14 @@ const projectProseData = {
 <li><strong>Warpage & Solder Joint Reliability</strong>: 실리콘 칩과 기판의 서로 다른 열팽창 계수(CTE) 차이에서 오는 이종 재료 휨(Heterogeneous Materials Warpage) 현상 규명. 평면 전단(Shear)과 축 인장(Tensile)의 복합 응력에 노출되는 솔더 접합부 파괴 거동 해석.</li>
 <li><strong>전기 및 열 해석 (SI/PI/EMI)</strong>: 고주파 패키지에서 신호 전달 왜곡을 일으키는 시간 지연, 크로스톡, 스큐, 반사, 지터의 인자와 솔더/PCB 임피던스 매칭(Termination)의 중요성 도출. 임피던스를 안정화하기 위해 디커플링 커패시터를 배치하는 PI 해석 흐름 파악.</li>
 </ul>
+
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder">
+    <canvas id="projectChart2"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption2"><strong>Figure 2.</strong> 신호 전송 주파수 스윕에 따른 반사 감쇄(S11) 및 투과 손실(S21) 특성 비교 (50Ω 임피던스 정합 vs 미스매치)</p>
+</div>
+
 <hr class="journal-divider">
 <h3 class="journal-h3">7) 핵심 문제 해결 포인트</h3>
 <ul class="journal-ul">
@@ -447,6 +462,23 @@ const projectProseData = {
 <li>푸시 버튼을 누를 때 튀는 과도 상태 노이즈를 제어하기 위해, D 플립플롭을 여러 단계 거치는 <strong>다단 레지스터 시프트 필터</strong> 설계.</li>
 <li>지연된 신호가 일정 카운트(\<code>counter_max = 50\</code>) 동안 흐트러짐 없이 똑같은 신호 레벨을 유지할 때만 진짜 입력 신호(\<code>data_out\</code>)로 인정하여 카운트를 올리는 디바운싱 알고리즘 검증 완료.</li>
 </ul>
+
+<div class="chart-split-container">
+  <div class="chart-split-left">
+    <div class="panel-body chart-container-wrapper context-embedded align-compact">
+      <div class="canvas-holder">
+        <canvas id="projectChart3"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="chart-split-right">
+    <p class="chart-desc-side">
+      <strong>하드웨어 디바운스 실측 타이밍도:</strong><br>
+      기계식 스위치를 누를 때 발생하는 수 밀리초 단위의 미세 채터링/글리치 신호(Glitch)가 클럭 분주 필터 및 시프트 레지스터를 거치며 완전히 소거되어 깨끗한 신호(Cleaned Output)로 출력되는 물리적 필터링 성능을 검증한 그래프입니다.
+    </p>
+  </div>
+</div>
+
 <h4 class="journal-h4">5) FSM(Finite State Machine) 기반 제어 설계 및 채터링 방지 (Week 13)</h4>
 <ul class="journal-ul">
 <li>카운터의 시작(start)과 정지(stop) 동작을 if문 등으로 분산 처리하는 대신, 명시적인 상태 정의를 통해 관리하는 FSM 제어 구조를 Verilog HDL로 설계함.</li>
@@ -605,6 +637,13 @@ const projectProseData = {
 </tr>
 </tbody>
 </table>
+
+<div class="panel-body chart-container-wrapper context-embedded align-wide">
+  <div class="canvas-holder">
+    <canvas id="projectChart4"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption4"><strong>Figure 4.</strong> EUV 노광 조사량(Dose)에 따른 감광막 잔막률 Contrast Curve 비교 (TinNO₃ vs TinTos vs TinOH)</p>
+</div>
 
 <hr class="journal-divider">
 <h3 class="journal-h3">6) 진행 과정</h3>
@@ -1146,6 +1185,13 @@ const projectProseData = {
 </tbody>
 </table>
 
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder">
+    <canvas id="projectChart7"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption7"><strong>Figure 7.</strong> Low-Pass (400Hz) / Mid-Pass / High-Pass (3.2kHz) 능동 필터 채널별 주파수 응답 보데 플롯(Bode Plot)</p>
+</div>
+
 <hr class="journal-divider">
 <h3 class="journal-h3">6) 진행 과정</h3>
 <h4 class="journal-h4">1) 2차 Sallen-Key 고역 및 저역 통과 필터의 수학적 소자 매칭</h4>
@@ -1496,6 +1542,14 @@ const projectProseData = {
 </ul>
 <p class="journal-p">$$V_{ccv} = V_{ocv} - I \\times R_{internal}$$</p>
 <p class="journal-p">> 💡 <strong>비유 예시</strong>: 수도꼭지 밸브를 완전히 잠갔을 때는 물탱크 내부 수압(OCV)이 그대로 가득 찬 것처럼 높게 측정되지만, 물을 콸콸 틀어놓으면(부하 동작) 배관 내부 마찰(내부 저항 IR) 때문에 호스 끝에서 나오는 물의 압력(CCV)은 뚝 떨어져서 낮게 측정되는 물리 현상과 같습니다.</p>
+
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder">
+    <canvas id="projectChart9"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption9"><strong>Figure 9.</strong> 방전 심도(DOD, Depth of Discharge)에 따른 배터리 개방 전압(OCV) 및 폐회로 단자 전압(CCV)의 기생 저항 강하 실측 곡선</p>
+</div>
+
 <h4 class="journal-h4">3) 인코더/디코더 하드웨어 연동 및 잔량 시각화 (작동 검증)</h4>
 <ul class="journal-ul">
 <li>OCV-CCV 동적 전압 보상 공식을 알고리즘에 반영하여, 부하 인가 유무와 상관없이 동일한 배터리 잔량(SOC) 수치를 도출해내는 계측 정밀도 확보.</li>
@@ -1808,6 +1862,14 @@ const projectProseData = {
         </tr>
         </tbody>
         </table>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart1"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption1"><strong>Figure 1.</strong> Pull and shear strength empirical distributions vs. capillary dimensions (Base IHD 33μm)</p>
+        </div>
+
         <hr class="journal-divider">
         <h3 class="journal-h3">6) Implementation Process</h3>
         <h4 class="journal-h4">1) Literature Review & Base Modeling (Week 1)</h4>
@@ -2015,6 +2077,14 @@ const projectProseData = {
           <li><strong>Warpage & Solder Joint Reliability:</strong> Evaluated warpage behavior in heterogeneous materials arising from the differences in Coefficient of Thermal Expansion (CTE) between silicon chips and substrates. Analyzed the failure mechanisms of solder joints subjected to complex stresses of planar shear and axial tensile forces.</li>
           <li><strong>Electrical & Thermal Analysis (SI/PI/EMI):</strong> Derived factors of signal propagation distortion (time delay, crosstalk, skew, reflection, jitter) in high-frequency packages and the importance of solder/PCB impedance matching (termination). Understood PI analysis flows for placing decoupling capacitors to stabilize impedance.</li>
         </ul>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart2"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption2"><strong>Figure 2.</strong> Transmission loss (S21) & reflection loss (S11) over frequency sweep (50Ω impedance matched vs. mismatched)</p>
+        </div>
+
         <hr class="journal-divider">
         <h3 class="journal-h3">7) Key Problem-Solving Points</h3>
         <ul class="journal-ul">
@@ -2203,6 +2273,23 @@ const projectProseData = {
           <li>Designed a <strong>multi-stage register shift filter</strong> using D Flip-Flops to eliminate high-frequency bouncing noise when pushing buttons.</li>
           <li>Validated the debouncing algorithm, ensuring button inputs were registered as a valid \`data_out\` only after maintaining a stable signal level for a set duration (\`counter_max = 50\`).</li>
         </ul>
+
+        <div class="chart-split-container">
+          <div class="chart-split-left">
+            <div class="panel-body chart-container-wrapper context-embedded align-compact">
+              <div class="canvas-holder">
+                <canvas id="projectChart3"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="chart-split-right">
+            <p class="chart-desc-side">
+              <strong>Hardware Debouncing Timing:</strong><br>
+              This timing diagram visualizes the microsecond-level chattering and glitches being completely filtered out by the shift register, ensuring a clean digital output.
+            </p>
+          </div>
+        </div>
+
         <h4 class="journal-h4">5) FSM (Finite State Machine) Control & Chattering Filter (Week 13)</h4>
         <ul class="journal-ul">
           <li>Designed an FSM control structure in Verilog HDL to manage counter start and stop states cleanly, rather than scattering logic conditions across multiple if-statements.</li>
@@ -2372,6 +2459,14 @@ const projectProseData = {
         </tr>
         </tbody>
         </table>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-wide">
+          <div class="canvas-holder">
+            <canvas id="projectChart4"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption4"><strong>Figure 4.</strong> Normalized photoresist thickness Contrast Curves over EUV exposure dose (TinNO₃ vs. TinTos vs. TinOH)</p>
+        </div>
+
         <hr class="journal-divider">
         <h3 class="journal-h3">6) Implementation Process</h3>
         <h4 class="journal-h4">1) EUV Photosensitivity & Process Behavior (Core Achievement 1)</h4>
@@ -2587,6 +2682,14 @@ const projectProseData = {
             </ul>
           </li>
         </ul>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart5"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption5"><strong>Figure 5.</strong> Defect density distribution over reflected power and chamber temperature variance (Spotfire 3D multivariate correlation scatter)</p>
+        </div>
+
         <h4 class="journal-h4">🔬 Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking)</h4>
         <ul class="journal-ul">
           <li><strong>Objective:</strong> Identify bottlenecks by tracing the equipment and recipe paths of low-yield wafers.</li>
@@ -2790,6 +2893,18 @@ const projectProseData = {
           <li>Calculated real-time average power (Active Power P), extracted Reactive Power (Q) and Apparent Power (S) mathematically, and derived the Power Factor (PF).</li>
           <li>Calibrated timer interrupts to sample at least 100 times per 50Hz AC cycle (20ms) to minimize integration error.</li>
         </ul>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-wide interactive-chart">
+          <div class="canvas-holder">
+            <canvas id="projectChart6"></canvas>
+          </div>
+          <div class="chart-controls">
+            <label for="phaseSliderEn">Phase Shift: <span id="phaseValEn">0</span>°</label>
+            <input type="range" id="phaseSliderEn" min="-90" max="90" value="0" class="chart-slider">
+          </div>
+          <p class="chart-caption"><strong>Figure 6.</strong> Dynamic visualization of AC voltage (V) and current (I) waveforms shifting based on phase offset control</p>
+        </div>
+
         <h4 class="journal-h4">3) Transient Load Testing & Overcurrent Protection (Verification)</h4>
         <ul class="journal-ul">
           <li>Connected high-wattage hair dryers and heaters to simulate sudden transient load changes.</li>
@@ -2953,6 +3068,14 @@ const projectProseData = {
         </tr>
         </tbody>
         </table>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart7"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption7"><strong>Figure 7.</strong> Frequency response Bode Plot for Low-Pass (400Hz), Mid-Pass, and High-Pass (3.2kHz) active filters</p>
+        </div>
+
         <hr class="journal-divider">
         <h3 class="journal-h3">6) Implementation Process</h3>
         <h4 class="journal-h4">1) Sallen-Key 2nd-Order Active Filter Mathematical Design</h4>
@@ -3141,6 +3264,14 @@ const projectProseData = {
           <li>Below 4.2V, the cell is charged under a Constant Current (CC) profile at 0.5C (250mA) to prevent anode plating.</li>
           <li>Upon hitting 4.2V, the system switches to Constant Voltage (CV) mode, reducing charging current. Once current drops below 10mA, the MCU trips a safety relay to isolate the cell.</li>
         </ul>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart8"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption8"><strong>Figure 8.</strong> Charge current (fixed 250mA in CC mode) and cell voltage (converges at 4.2V in CV mode) charge profiles over time</p>
+        </div>
+
         <h4 class="journal-h4">2) Tracking IR Drop Measurement Distortions (Root Cause Analysis)</h4>
         <ul class="journal-ul">
           <li>Detected early charging cutoffs caused by parasitic contact resistance. The resulting **IR drop** across the shunt resistor artificially inflated the measured cell voltage, deceiving the MCU.</li>
@@ -3324,6 +3455,14 @@ const projectProseData = {
           </li>
         </ul>
         <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Measuring water pressure with the faucet closed shows full tank pressure (OCV). Turning the faucet fully open (load on) drops the measured pressure (CCV) due to pipe friction (internal resistance IR).</blockquote>
+
+        <div class="panel-body chart-container-wrapper context-embedded align-center">
+          <div class="canvas-holder">
+            <canvas id="projectChart9"></canvas>
+          </div>
+          <p class="chart-caption" id="chartCaption9"><strong>Figure 9.</strong> Open Circuit Voltage (OCV) vs. Closed Circuit Voltage (CCV) showing parasitic voltage drops over Depth of Discharge (DOD)</p>
+        </div>
+
         <h4 class="journal-h4">3) Decoder Circuit Integration & Visual Calibration</h4>
         <ul class="journal-ul">
           <li>Programmed dynamic OCV-CCV compensation formulas to output uniform SOC estimates whether under load or at rest.</li>

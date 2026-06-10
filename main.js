@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTocHighlight();
   initProjectsSort();
   initOledDashboard();
+  initAllProjectCharts();
 });
 
 // Carousel Ticker/Controller (Gallery4 Style)
@@ -671,6 +672,411 @@ function initOledDashboard() {
           const activeBtn = document.querySelector(".selector-btn.active");
           if (activeBtn) renderChart(activeBtn.getAttribute("data-chart"));
         }, 100); // DOM 테마 Attribute 적용 완료 대기
+      });
+    }
+  }
+}
+
+/**
+ * 1~9번 프로젝트 상세 페이지용 차트 통합 로드 모듈
+ */
+function initAllProjectCharts() {
+  const chartCanvases = [];
+  for (let i = 1; i <= 9; i++) {
+    const el = document.getElementById(`projectChart${i}`);
+    if (el) {
+      chartCanvases.push({ id: i, el: el });
+    }
+  }
+
+  if (chartCanvases.length === 0) return;
+
+  if (typeof Chart === 'undefined') {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/npm/chart.js";
+    script.onload = () => buildAllCharts();
+    document.head.appendChild(script);
+  } else {
+    buildAllCharts();
+  }
+
+  function buildAllCharts() {
+    const activeCharts = {};
+
+    const getThemeColors = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      return {
+        gridColor: isDark ? "rgba(255, 255, 255, 0.08)" : "rgba(0, 0, 0, 0.06)",
+        textColor: isDark ? "#94a3b8" : "#475569",
+        isDark: isDark
+      };
+    };
+
+    const renderSingleChart = (item) => {
+      const { gridColor, textColor, isDark } = getThemeColors();
+      const ctx = item.el.getContext('2d');
+      const chartId = item.id;
+
+      if (activeCharts[chartId]) {
+        activeCharts[chartId].destroy();
+      }
+
+      let config = {};
+
+      if (chartId === 1) {
+        config = {
+          type: 'line',
+          data: {
+            labels: ['26μm', '33μm', '41μm'],
+            datasets: [
+              {
+                label: isDark ? '인장 강도 Pull Strength (g)' : 'Pull Strength (g)',
+                data: [5.2, 11.26, 7.8],
+                borderColor: '#6366f1',
+                backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                tension: 0.1,
+                borderWidth: 3,
+                yAxisID: 'y'
+              },
+              {
+                label: isDark ? '전단 강도 Shear Strength (g)' : 'Shear Strength (g)',
+                data: [8.1, 14.85, 10.4],
+                borderColor: '#10b981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                tension: 0.1,
+                borderWidth: 3,
+                yAxisID: 'y'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 2) {
+        config = {
+          type: 'line',
+          data: {
+            labels: ['1G', '2G', '3G', '4G', '5G', '6G', '7G', '8G', '9G', '10G'],
+            datasets: [
+              {
+                label: 'S21 Transmission (Matched 50Ω)',
+                data: [-0.1, -0.2, -0.3, -0.4, -0.5, -0.6, -0.7, -0.8, -0.9, -1.0],
+                borderColor: '#3b82f6',
+                borderWidth: 2.5,
+                fill: false,
+                tension: 0.2
+              },
+              {
+                label: 'S21 Transmission (Mismatched)',
+                data: [-0.5, -1.2, -2.1, -3.5, -4.8, -6.2, -8.1, -10.5, -13.2, -15.8],
+                borderColor: '#ef4444',
+                borderWidth: 2.5,
+                borderDash: [5, 5],
+                fill: false,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { display: false }, ticks: { color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Gain (dB)', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 3) {
+        config = {
+          type: 'line',
+          data: {
+            labels: Array.from({length: 21}, (_, i) => `${i}μs`),
+            datasets: [
+              {
+                label: 'Glitch Switch Input',
+                data: [0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                borderColor: '#f59e0b',
+                stepped: true,
+                borderWidth: 2
+              },
+              {
+                label: 'Cleaned Output',
+                data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                borderColor: '#10b981',
+                stepped: true,
+                borderWidth: 3
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              y: { min: -0.2, max: 1.2, grid: { color: gridColor }, ticks: { color: textColor, stepSize: 1 } }
+            }
+          }
+        };
+      } else if (chartId === 4) {
+        config = {
+          type: 'line',
+          data: {
+            labels: [10, 15, 20, 25, 30, 32, 35, 40, 50, 60, 80, 100, 120],
+            datasets: [
+              {
+                label: 'TinNO3 (New PR)',
+                data: [1.0, 0.98, 0.95, 0.85, 0.40, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                borderColor: '#a855f7',
+                backgroundColor: 'rgba(168, 85, 247, 0.15)',
+                fill: true,
+                tension: 0.2,
+                borderWidth: 3
+              },
+              {
+                label: 'TinTos (Conventional)',
+                data: [1.0, 1.0, 1.0, 0.99, 0.98, 0.97, 0.95, 0.92, 0.85, 0.70, 0.35, 0.05, 0.0],
+                borderColor: '#6b7280',
+                fill: false,
+                tension: 0.2
+              },
+              {
+                label: 'TinOH (Reference)',
+                data: [1.0, 1.0, 0.98, 0.95, 0.92, 0.90, 0.88, 0.82, 0.75, 0.65, 0.50, 0.30, 0.15],
+                borderColor: '#3b82f6',
+                fill: false,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Dose (mJ/cm²)', color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Normalized Thickness', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 5) {
+        config = {
+          type: 'bubble',
+          data: {
+            datasets: [{
+              label: 'Chamber Defect Density',
+              data: [
+                {x: 10, y: 50, r: 4},
+                {x: 12, y: 55, r: 6},
+                {x: 15, y: 60, r: 8},
+                {x: 20, y: 65, r: 12},
+                {x: 25, y: 70, r: 18},
+                {x: 30, y: 75, r: 28},
+                {x: 32, y: 80, r: 40}
+              ],
+              backgroundColor: 'rgba(239, 68, 68, 0.6)',
+              borderColor: '#ef4444'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Reflected Power (W)', color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Chamber Temp (°C)', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 6) {
+        const generateSineData = (phaseShiftDeg) => {
+          const phaseRad = (phaseShiftDeg * Math.PI) / 180;
+          const labels = [];
+          const voltage = [];
+          const current = [];
+          for (let deg = 0; deg <= 360; deg += 10) {
+            labels.push(`${deg}°`);
+            voltage.push(Math.sin((deg * Math.PI) / 180));
+            current.push(Math.sin((deg * Math.PI) / 180 - phaseRad) * 0.8);
+          }
+          return { labels, voltage, current };
+        };
+
+        const initialData = generateSineData(0);
+        config = {
+          type: 'line',
+          data: {
+            labels: initialData.labels,
+            datasets: [
+              {
+                label: 'Voltage V(t)',
+                data: initialData.voltage,
+                borderColor: '#ef4444',
+                borderWidth: 2.5,
+                tension: 0.4,
+                pointRadius: 0
+              },
+              {
+                label: 'Current I(t) (Phase Shifted)',
+                data: initialData.current,
+                borderColor: '#3b82f6',
+                borderWidth: 2.5,
+                tension: 0.4,
+                pointRadius: 0
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor, maxTicksLimit: 12 } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 7) {
+        config = {
+          type: 'line',
+          data: {
+            labels: ['10Hz', '20Hz', '50Hz', '100Hz', '200Hz', '500Hz', '1kHz', '2kHz', '5kHz', '10kHz', '20kHz'],
+            datasets: [
+              {
+                label: 'Low Pass (Cutoff 400Hz)',
+                data: [0, 0, -0.5, -3, -12, -24, -36, -48, -60, -72, -84],
+                borderColor: '#ef4444',
+                borderWidth: 2,
+                tension: 0.2
+              },
+              {
+                label: 'Mid Band Channel',
+                data: [-40, -26, -12, -3, 0, -3, -12, -26, -40, -52, -64],
+                borderColor: '#10b981',
+                borderWidth: 2,
+                tension: 0.2
+              },
+              {
+                label: 'High Pass (Cutoff 3.2kHz)',
+                data: [-84, -72, -60, -48, -36, -24, -12, -3, -0.5, 0, 0],
+                borderColor: '#3b82f6',
+                borderWidth: 2,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Attenuation (dB)', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 8) {
+        config = {
+          type: 'line',
+          data: {
+            labels: ['0m', '10m', '20m', '30m', '40m', '50m', '60m', '70m', '80m', '90m', '100m'],
+            datasets: [
+              {
+                label: 'Cell Voltage (V)',
+                data: [3.0, 3.4, 3.7, 3.9, 4.1, 4.2, 4.2, 4.2, 4.2, 4.2, 4.2],
+                borderColor: '#ec4899',
+                yAxisID: 'yV',
+                borderWidth: 3,
+                tension: 0.2
+              },
+              {
+                label: 'Charge Current (mA)',
+                data: [250, 250, 250, 250, 250, 210, 150, 90, 40, 15, 0],
+                borderColor: '#06b6d4',
+                yAxisID: 'yI',
+                borderWidth: 3,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              yV: { type: 'linear', position: 'left', grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Voltage (V)', color: textColor } },
+              yI: { type: 'linear', position: 'right', grid: { drawOnChartArea: false }, ticks: { color: textColor }, title: { display: true, text: 'Current (mA)', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 9) {
+        config = {
+          type: 'line',
+          data: {
+            labels: ['0%', '10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%'],
+            datasets: [
+              {
+                label: 'Open Circuit Voltage (OCV)',
+                data: [4.2, 4.15, 4.08, 4.0, 3.92, 3.85, 3.79, 3.73, 3.68, 3.6, 3.0],
+                borderColor: '#3b82f6',
+                borderWidth: 2.5,
+                tension: 0.2
+              },
+              {
+                label: 'Closed Circuit Voltage (CCV under 10Ω Load)',
+                data: [4.02, 3.97, 3.90, 3.82, 3.74, 3.67, 3.61, 3.55, 3.50, 3.42, 2.75],
+                borderColor: '#f43f5e',
+                borderWidth: 2.5,
+                tension: 0.2
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Depth of Discharge (DOD)', color: textColor } },
+              y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Cell Voltage (V)', color: textColor } }
+            }
+          }
+        };
+      }
+
+      const inst = new Chart(ctx, config);
+      activeCharts[chartId] = inst;
+
+      // Handle interactive phase slider for Project 6
+      if (chartId === 6) {
+        const setupSlider = (sliderId, valId) => {
+          const slider = document.getElementById(sliderId);
+          const valDisplay = document.getElementById(valId);
+          if (slider && valDisplay) {
+            const updateSlider = () => {
+              const deg = parseInt(slider.value, 10);
+              valDisplay.innerText = deg >= 0 ? `+${deg}` : deg;
+              const newData = generateSineData(deg);
+              inst.data.datasets[1].data = newData.current;
+              inst.update('none'); // silent update
+            };
+            slider.addEventListener('input', updateSlider);
+          }
+        };
+        setupSlider('phaseSlider', 'phaseVal');
+        setupSlider('phaseSliderEn', 'phaseValEn');
+      }
+    };
+
+    // Render all detected canvases
+    chartCanvases.forEach(renderSingleChart);
+
+    // Dynamic update on theme-toggle
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        setTimeout(() => {
+          chartCanvases.forEach(renderSingleChart);
+        }, 100);
       });
     }
   }

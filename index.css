@@ -1858,3 +1858,78 @@ html.dark .chart-container-wrapper {
   text-align: center;
   margin-top: 0.5rem;
 }
+
+/* 본문 중간 삽입용 차트 래퍼 스타일 */
+.chart-container-wrapper.context-embedded {
+  margin: 1.5rem 0;
+  border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+}
+html.dark .chart-container-wrapper.context-embedded {
+  background: rgba(22, 29, 49, 0.65);
+}
+
+.chart-container-wrapper.align-center {
+  margin: 1.5rem auto;
+  max-width: 720px;
+}
+.chart-container-wrapper.align-compact {
+  max-width: 500px;
+  margin: 1rem auto;
+}
+.chart-container-wrapper.align-wide {
+  max-width: 840px;
+  margin: 1.5rem auto;
+}
+
+.chart-split-container {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+@media (max-width: 768px) {
+  .chart-split-container {
+    flex-direction: column;
+  }
+}
+.chart-split-left { flex: 1.2; width: 100%; }
+.chart-split-right { flex: 0.8; width: 100%; }
+
+.chart-desc-side {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  background: var(--card-bg);
+  border-left: 4px solid var(--primary);
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.chart-controls {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+html.dark .chart-controls {
+  background: rgba(22, 29, 49, 0.4);
+}
+.chart-controls label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.chart-slider {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
