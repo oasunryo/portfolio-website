@@ -1040,6 +1040,18 @@ const projectProseData = {
 <li>실시간 전압/전류 배열 데이터를 곱하여 평균 전력(유효 전력 P)을 계산하고, 무효 전력(Q) 및 피상 전력(S)을 수학적으로 분리 추출하여 실시간 역률(Power Factor)을 계산함.</li>
 <li>50Hz 교류 주파수의 한 주기(20ms) 동안 최소 100회 이상 정밀 샘플링되도록 타이머 인터럽트 주기를 미세 조정하여 오차 최소화.</li>
 </ul>
+
+<div class="panel-body chart-container-wrapper context-embedded align-wide interactive-chart">
+  <div class="canvas-holder">
+    <canvas id="projectChart6"></canvas>
+  </div>
+  <div class="chart-controls">
+    <label for="phaseSlider">Phase Shift (위상 편차): <span id="phaseVal">0</span>°</label>
+    <input type="range" id="phaseSlider" min="-90" max="90" value="0" class="chart-slider">
+  </div>
+  <p class="chart-caption"><strong>Figure 1.</strong> 위상차(Phase Shift) 제어에 따른 교류 전압(V) 및 전류(I) 파형 간의 위상 변위 동적 가시화</p>
+</div>
+
 <h4 class="journal-h4">3) 부하 추가/탈락 및 과도 보호 동작 시뮬레이션 (검증 및 결론)</h4>
 <ul class="journal-ul">
 <li>대형 헤어드라이어 및 온풍기를 다단 결합(부하 추가/탈락) 시키며 Transient 환경 생성.</li>
@@ -1378,6 +1390,14 @@ const projectProseData = {
 <li>리튬이온 배터리의 충전 특성곡선(Charge Profile)을 바탕으로, 전압이 4.2V 미만일 때는 배터리 손상을 방지하기 위해 0.5C C-rate(250mA) 미만의 일정한 전류로 가압하는 CC 충전 구현.</li>
 <li>단자 전압이 4.2V에 도달하는 즉시 CV 모드로 진입하여 전류를 완만하게 감소시키고, 완전히 충전이 끝나 충전 전류가 10mA 이하로 떨어지면 화재 위험 방지를 위해 충전을 물리적으로 차단(Cut-Off)하는 안전 메커니즘 구축.</li>
 </ul>
+
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder">
+    <canvas id="projectChart8"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption8"><strong>Figure 1.</strong> 시간 경과에 따른 충전 전류(CC 모드 250mA 고정) 및 셀 단자 전압(CV 모드 4.2V 수렴) 충전 프로파일</p>
+</div>
+
 <h4 class="journal-h4">2) 기생 저항에 의한 계측 왜곡(IR Drop) 현상 추적 (원인 분석)</h4>
 <ul class="journal-ul">
 <li>배터리와 충전기 연결 단자의 기생 저항과 전류 측정용 션트 저항에서 발생하는 미세 전압 강하(<strong>IR Drop</strong>)로 인해, MCU가 인식하는 배터리 단자 전압과 실제 셀 내부 전압 간에 오차가 발생하여 충전이 조기에 차단되는 현상 식별.</li>
