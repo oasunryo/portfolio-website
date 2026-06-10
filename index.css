@@ -195,6 +195,10 @@ header.sticky-nav {
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -1780,5 +1784,16 @@ html.dark pre .function { color: #60a5fa; }
     left: 0;
   }
 }
+
+/* Optical vertical alignment for inline SVG icons inside flex container text lines */
+.design-card-meta svg,
+.meta-info-row svg,
+.ai-dropdown-trigger svg,
+.ai-dropdown-item svg,
+.carousel-card-more svg {
+  position: relative;
+  top: 1px;
+}
+
 
 
