@@ -249,7 +249,7 @@ const localeDict = {
     backToBlog: "← 블로그 목록으로",
     searchPlaceholder: "글 검색...",
     featuredTitle: "Featured Projects",
-    featuredSubtitle: "반도체 전/후공정, 디지털/아날로그 회로설계, 임베디드 핵심 프로젝트 9선",
+    featuredSubtitle: "반도체 전/후공정, 디지털/아날로그 회로설계, 임베디드 핵심 프로젝트 10선",
     viewDetails: "자세히 보기",
     careerTitle: "Career & Education",
     contactTitle: "Contact",
@@ -285,7 +285,7 @@ const localeDict = {
     backToBlog: "← Back to Blog list",
     searchPlaceholder: "Search posts...",
     featuredTitle: "Featured Projects",
-    featuredSubtitle: "9 core engineering projects across semiconductor manufacturing, digital circuits, and embedded systems.",
+    featuredSubtitle: "10 core engineering projects across semiconductor manufacturing, digital circuits, and embedded systems.",
     viewDetails: "Read more",
     careerTitle: "Career & Education",
     contactTitle: "Contact",
@@ -325,7 +325,7 @@ const homeContentDict = {
       </p>
       <br>
       <p>
-        본 포트폴리오는 학부생 오준서가 실무 현장의 주니어 엔지니어로 성장하기까지 수행한 9대 핵심 프로젝트와 기술적 여정을 담고 있습니다. 
+        본 포트폴리오는 학부생 오준서가 실무 현장의 주니어 엔지니어로 성장하기까지 수행한 10대 핵심 프로젝트와 기술적 여정을 담고 있습니다. 
         각 프로젝트에 관한 세부 실증 분석 데이터와 SEM 비교표, 설계 시뮬레이션 결과 등은 <a href="/ko/projects/" style="color: var(--accent-color); font-weight: 500;">프로젝트 탭</a>에서 시각적으로 열람하실 수 있습니다.
       </p>
     `,
@@ -369,7 +369,7 @@ const homeContentDict = {
       </p>
       <br>
       <p>
-        This portfolio details 9 key engineering projects and technical journeys that highlight my progression as a junior engineer.
+        This portfolio details 10 key engineering projects and technical journeys that highlight my progression as a junior engineer.
         The exact analysis logs, SEM comparison tables, and design verification waveforms can be visually browsed in the <a href="/en/projects/" style="color: var(--accent-color); font-weight: 500;">Projects tab</a>.
       </p>
     `,

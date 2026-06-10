@@ -1744,7 +1744,7 @@ const projectProseData = {
 <!-- 차트 렌더링 컨테이너 임베딩 영역 -->
 <hr class="journal-divider">
 <h3 class="journal-h3">📊 실시간 소자 분석 대시보드</h3>
-<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+<div class="panel-body chart-container-wrapper">
   <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
     <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L 곡선</button>
     <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
@@ -3580,7 +3580,7 @@ const projectProseData = {
 <!-- Interactive Chart Embedding -->
 <hr class="journal-divider">
 <h3 class="journal-h3">📊 Real-Time Device Analysis Dashboard</h3>
-<div class="panel-body chart-container-wrapper" style="background: rgba(22, 29, 49, 0.65); padding: 1.5rem; border-radius: 12px; margin-top: 1rem;">
+<div class="panel-body chart-container-wrapper">
   <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
     <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L Curves</button>
     <button class="selector-btn" data-chart="eqece" style="background: none; border: 1px solid var(--card-border); padding: 0.5rem 1rem; border-radius: 8px; color: var(--text-secondary); cursor: pointer;">EQE / CE</button>
