@@ -89,7 +89,7 @@ const projectProseData = {
 <ul class="journal-ul">
 <li>와이어 본딩 공정 중 고주파 열에너지(EFO spark)로 형성된 Free Air Ball(FAB)이 본딩 패드에 물리적 압력과 초음파 에너지를 통해 접합될 때, 납작해진 볼의 직경(MBD)과 목 부분(Neck)의 기하학적 형태가 캐필러리 끝단 미세 세라믹 팁 내부 형상과 직접 일치하여 성형되는 현상을 분석함.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 마치 제과 제빵을 할 때 틀의 모양(Capillary)에 따라 구워져 나오는 쿠키(Ball Bond)의 형태가 완전히 결정되는 것과 같습니다. 틀의 구멍이나 각도가 아주 미세하게만 어긋나도 구워진 쿠키는 찢어지거나 넘치게 됩니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 마치 제과 제빵을 할 때 틀의 모양(Capillary)에 따라 구워져 나오는 쿠키(Ball Bond)의 형태가 완전히 결정되는 것과 같습니다. 틀의 구멍이나 각도가 아주 미세하게만 어긋나도 구워진 쿠키는 찢어지거나 넘치게 됩니다.</p>
 <h4 class="journal-h4">2) 원인 가설 설정 (3대 핵심 변수의 불량 인과관계 가설 세우기)</h4>
 <ul class="journal-ul">
 <li><strong>가설 1</strong>: IHD(홀 지름)가 너무 좁으면 구멍 벽면과 와이어 사이 마찰력이 극대화되어 와이어 목(Neck) 부위에 물리적 스트레스(Stress Concentration)가 집중되어 접합 강도가 낮아질 것이다.</li>
@@ -274,7 +274,7 @@ const projectProseData = {
 <li><strong>Fan-In vs Fan-Out</strong>: 칩 크기가 곧 패키지 크기가 되는 팬인의 물리적 취약성을 파악하고, 재배열 방식을 사용하는 팬아웃의 강점 확인. 몰딩 유체 흐름에 의한 미스얼라인을 방지하는 <strong>RDL First</strong> 기술의 부상 원인 규명.</li>
 <li><strong>연결의 혁신(Flip-Chip & TSV)</strong>: 와이어 본딩의 물리적 길이 한계를 극복하는 플립칩 범프 기술 분석. Copper Pillar 범프를 통해 피치 간격을 극적으로 줄이는 기술과 고대역폭 메모리(HBM)에서 한 번에 1024비트 신호를 전송할 수 있는 <strong>TSV 기반 적층 구조(X1024)</strong>의 대량 데이터 고속도로 메커니즘 연구.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 2차선 국도(와이어 본딩)를 통해 데이터를 보내던 것을 1024차선 초광대역 고속도로(TSV HBM)로 뚫어버려, 한 번에 어마어마한 양의 데이터를 신속하고 정체 없이 소통시키는 혁신적인 교통 제어와 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 2차선 국도(와이어 본딩)를 통해 데이터를 보내던 것을 1024차선 초광대역 고속도로(TSV HBM)로 뚫어버려, 한 번에 어마어마한 양의 데이터를 신속하고 정체 없이 소통시키는 혁신적인 교통 제어와 같습니다.</p>
 <h4 class="journal-h4">3) 3주차: 신뢰성 해석 및 물리적 한계 돌파 분석</h4>
 <ul class="journal-ul">
 <li><strong>Warpage & Solder Joint Reliability</strong>: 실리콘 칩과 기판의 서로 다른 열팽창 계수(CTE) 차이에서 오는 이종 재료 휨(Heterogeneous Materials Warpage) 현상 규명. 평면 전단(Shear)과 축 인장(Tensile)의 복합 응력에 노출되는 솔더 접합부 파괴 거동 해석.</li>
@@ -450,7 +450,7 @@ const projectProseData = {
 <ul class="journal-ul">
 <li>단순 이상적인 코드(.v) 시뮬레이션에서는 딜레이가 전혀 발생하지 않았으나, 칩의 실제 내부 레이아웃 배선 정보가 반영된 \<code>.vo\</code> 파일을 ModelSim에 올려 검증한 결과, <strong>5ns의 물리적 게이트 전파 지연(Propagation Delay)</strong> 파형이 정상적으로 튀어나오는 것을 관찰함.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 가상의 지도에서는 한 장소에서 다른 장소로 순간이동 하듯 거리가 0으로 표시되지만(코드 시뮬레이션), 실제 현실 도로에서 차를 몰고 가면 교차로 신호등과 마찰 때문에 가는데 일정 시간이 걸리는 것(물리적인 5ns 지연 파형 관측)과 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 가상의 지도에서는 한 장소에서 다른 장소로 순간이동 하듯 거리가 0으로 표시되지만(코드 시뮬레이션), 실제 현실 도로에서 차를 몰고 가면 교차로 신호등과 마찰 때문에 가는데 일정 시간이 걸리는 것(물리적인 5ns 지연 파형 관측)과 같습니다.</p>
 <h4 class="journal-h4">3) Speed-Controllable Up Counter 설계 (Week 10 ~ 11)</h4>
 <ul class="journal-ul">
 <li>DE2 보드의 50MHz 기본 클럭을 육안으로 확인하도록 분주(Divider) 회로 구축.</li>
@@ -657,7 +657,7 @@ const projectProseData = {
 <li>기존 \<code>TinOH\</code> 레지스트의 경우 PEB 온도 증가(90℃ ➔ 110℃ ➔ 130℃)에 따라 열에 의해 감도가 시시각각 급변하는 불안정성(시간 의존성)을 노출함.</li>
 <li>반면, 질산염 음이온이 안정적으로 바인딩된 \<code>TinNO₃\</code>는 PEB 온도 변화에도 감도 변동 파형이 완전 일치하는 <strong>우수한 공정 신뢰성</strong>을 보임을 앨립소미터 측정 두께 데이터를 통해 최종 규명.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 더운 여름철이나 추운 겨울철 날씨 변화에 따라 성능이 매번 달라지는 기계 대신, 남극이나 사하라 사막처럼 극한의 온도 편차 속에서도 일정한 정확도를 100% 유지하는 초정밀 계측 시스템을 구축한 것과 같은 원리입니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 더운 여름철이나 추운 겨울철 날씨 변화에 따라 성능이 매번 달라지는 기계 대신, 남극이나 사하라 사막처럼 극한의 온도 편차 속에서도 일정한 정확도를 100% 유지하는 초정밀 계측 시스템을 구축한 것과 같은 원리입니다.</p>
 <h4 class="journal-h4">3) 미세 L/S 패턴 해상도 및 LER 개선 분석 (핵심 성과 3)</h4>
 <ul class="journal-ul">
 <li>하부 반사 방지막(BARC) 코팅을 도입하여 기판에서 되돌아오는 유해 반사광을 차단.</li>
@@ -825,7 +825,7 @@ const projectProseData = {
 
 <hr class="journal-divider">
 <h3 class="journal-h3">6) 진행 과정</h3>
-<h4 class="journal-h4">🔬 서브 프로젝트 1. Chip 양불(Good/Bad) 공통 인자 분석</h4>
+<h4 class="journal-h4">서브 프로젝트 1. Chip 양불(Good/Bad) 공통 인자 분석</h4>
 <ul class="journal-ul">
 <li><strong>목적</strong>: 칩 두께(THK), 선폭(CD), Defect 수 중 수율의 지배적 인자 도출.</li>
 <li><strong>통계 검증</strong>: 수율을 종속 변수(Y)로 설정해 선형 회귀 분석 수행.</li>
@@ -833,8 +833,8 @@ const projectProseData = {
 <p class="journal-p">* <strong>Sum(Defect)</strong>: p-value가 $6.93 \\times 10^{-23}$ (<<0.05), $R^2$ 0.09로 매우 유의미한 <strong>음의 선형 상관관계</strong> 입증.</p>
 <p class="journal-p">* <strong>Avg(THK)</strong>: p-value가 $6.77 \\times 10^{-10}$ (<<0.05), $R^2$ 0.04로 통계적으로 유의미한 <strong>음의 상관관계</strong> 입증. 두께 편차가 수율에 직접적 악영향을 미침을 규명.</p>
 <p class="journal-p">* <strong>Avg(CD)</strong>: p-value가 0.456 (>0.05)으로 수율에 미치는 유의미한 영향이 발견되지 않아 노이즈 변수로 배제.</p>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 학생의 성적(수율)에 미치는 요인 중 예습 시간(Defect)과 잠자는 시간(두께)은 뚜렷한 관련이 있는 반면, 등교할 때 입은 옷의 색깔(CD)은 성적과 아무 관련이 없음을 차가운 수학적 데이터로 밝혀낸 것과 같습니다.</p>
-<h4 class="journal-h4">🔬 서브 프로젝트 2. 공정 Split 평가 분석 (설비 센서 및 Defect)</h4>
+<p class="journal-p">> <strong>비유 예시</strong>: 학생의 성적(수율)에 미치는 요인 중 예습 시간(Defect)과 잠자는 시간(두께)은 뚜렷한 관련이 있는 반면, 등교할 때 입은 옷의 색깔(CD)은 성적과 아무 관련이 없음을 차가운 수학적 데이터로 밝혀낸 것과 같습니다.</p>
+<h4 class="journal-h4">서브 프로젝트 2. 공정 Split 평가 분석 (설비 센서 및 Defect)</h4>
 <ul class="journal-ul">
 <li><strong>목적</strong>: 설비 내부 물리 센서 값이 불량(Defect) 발생에 주는 영향 분석.</li>
 <li><strong>통계 검증</strong>: \<code>lot_id\</code> 및 \<code>wafer_id\</code>를 매핑해 테이블을 병합하고, 4대 센서 변수와 Defect 수 간의 다중 회귀 분석 실시.</li>
@@ -849,7 +849,7 @@ const projectProseData = {
   <p class="chart-caption" id="chartCaption5"><strong>Figure 1.</strong> 반사 파워(Reflected Power) 및 챔버 온도 편차에 따른 불량(Defect) 밀도 분포 (Spotfire 3차원 다변량 상관분석 산점도)</p>
 </div>
 
-<h4 class="journal-h4">🔬 서브 프로젝트 3. Wafer 단위 수율 영향 인자 분석 (공정 Path 이력 추적)</h4>
+<h4 class="journal-h4">서브 프로젝트 3. Wafer 단위 수율 영향 인자 분석 (공정 Path 이력 추적)</h4>
 <ul class="journal-ul">
 <li><strong>목적</strong>: 불량 웨이퍼가 흘러온 장비 및 레시피 경로(Path Tracking) 이력 분석.</li>
 <li><strong>통계 검증</strong>: \<code>BIN\</code> 데이터로 칩 수율을 가공하고, 장비 경로를 텍스트로 합친 \<code>Path\</code> 변수를 생성하여 분산 분석(ANOVA) 실시.</li>
@@ -1030,7 +1030,7 @@ const projectProseData = {
 <li>AC 220V 고전압 전류 파형을 바로 MCU의 ADC(0~5V)에 인가할 수 없어, 기계적 절연 트랜스를 통해 전압을 떨어뜨리고 음의 전압 영역을 제거하기 위해 <strong>2.5V DC Bias Offset 회로</strong> 설계.</li>
 <li>ADC 샘플링 속도 한계로 인한 에일리어싱(Aliasing) 및 고주파 서지 노이즈를 필터링하기 위해 LM358 OP-AMP를 사용한 <strong>액티브 저대역 필터(LPF)</strong> 회로를 셋업함.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 엄청나게 빠른 유속을 가진 큰 강물(220Vac 고전압 교류)의 물을 컵으로 바로 마실 수 없으므로, 작은 수로를 파서 속도를 늦추고 필터(LPF 및 Offset)를 달아 깨끗하고 마실 수 있는 적당한 양의 수돗물(0~5V 안정적인 DC 바이어스 아날로그 신호)로 바꾸어 계량기로 정밀 측정하는 것과 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 엄청나게 빠른 유속을 가진 큰 강물(220Vac 고전압 교류)의 물을 컵으로 바로 마실 수 없으므로, 작은 수로를 파서 속도를 늦추고 필터(LPF 및 Offset)를 달아 깨끗하고 마실 수 있는 적당한 양의 수돗물(0~5V 안정적인 DC 바이어스 아날로그 신호)로 바꾸어 계량기로 정밀 측정하는 것과 같습니다.</p>
 <h4 class="journal-h4">2) 이산 RMS 및 전력 통계 연산 알고리즘 구현 (진행 및 분석)</h4>
 <ul class="journal-ul">
 <li>연속적인 교류 파형을 이산적으로 적분 연산하기 위해 아두이노 상에 빠른 연산 수식 포팅:</li>
@@ -1223,7 +1223,7 @@ const projectProseData = {
 <li><strong>HPF (고역통과필터, Cutoff 3.2kHz)</strong>: 동일 공식을 역적용하여 $C=1\\text{nF}$ 기준 최적의 Butterworth 감쇠 저항값 도출:</li>
 </ul>
 <p class="journal-p">$$f_p = \\frac{1}{2\\pi C\\sqrt{R_1 R_2}} = 3.2\\text{kHz} \\implies R_2=35\\text{k}\\Omega, R_1=2R_2=70\\text{k}\\Omega$$</p>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 특정 주파수의 소리 신호만 걸러내는 필터 설계는 체에 흙을 치는 과정과 같습니다. LPF는 굵은 알갱이(고음)를 거르고 아주 미세한 모래(저음)만 통과시키는 미세한 체이고, HPF는 미세 모래(저음)를 밑으로 빠지게 만들고 큰 돌(고음)만 남기는 구조의 굵은 체와 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 특정 주파수의 소리 신호만 걸러내는 필터 설계는 체에 흙을 치는 과정과 같습니다. LPF는 굵은 알갱이(고음)를 거르고 아주 미세한 모래(저음)만 통과시키는 미세한 체이고, HPF는 미세 모래(저음)를 밑으로 빠지게 만들고 큰 돌(고음)만 남기는 구조의 굵은 체와 같습니다.</p>
 <h4 class="journal-h4">2) 주파수 대역 분리 및 Adder 결합 시스템 설계 (주요 설계)</h4>
 <ul class="journal-ul">
 <li>콘덴서 마이크(CMIC-6027)를 통해 입력된 신호는 프리앰프를 거쳐 LPF, BPF, HPF의 3갈래 경로로 완벽하게 병렬 분기됨.</li>
@@ -1402,7 +1402,7 @@ const projectProseData = {
 <ul class="journal-ul">
 <li>배터리와 충전기 연결 단자의 기생 저항과 전류 측정용 션트 저항에서 발생하는 미세 전압 강하(<strong>IR Drop</strong>)로 인해, MCU가 인식하는 배터리 단자 전압과 실제 셀 내부 전압 간에 오차가 발생하여 충전이 조기에 차단되는 현상 식별.</li>
 </ul>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 수도꼭지 끝(배선 연결 단자)에 마찰이 심한 이물질(기생 저항)이 껴 있으면 물을 약하게 틀었을 때는 괜찮지만 세게 틀었을 때 압력(전압)이 비정상적으로 높게 걸려, 계량기(MCU)가 "벌써 물탱크(배터리)가 다 찼다"고 착각하고 밸브를 일찍 잠가버리는 현상과 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 수도꼭지 끝(배선 연결 단자)에 마찰이 심한 이물질(기생 저항)이 껴 있으면 물을 약하게 틀었을 때는 괜찮지만 세게 틀었을 때 압력(전압)이 비정상적으로 높게 걸려, 계량기(MCU)가 "벌써 물탱크(배터리)가 다 찼다"고 착각하고 밸브를 일찍 잠가버리는 현상과 같습니다.</p>
 <h4 class="journal-h4">3) 소프트웨어 캘리브레이션 및 실시간 PC 로깅 검증 (동작 테스트)</h4>
 <ul class="journal-ul">
 <li>이 오류를 극복하기 위해 통계적인 보정 상수($V_{actual} = V_{measured} - I \\times R_{parasitic}$)를 임베디드 코드에 반영하여 기생 오차를 실시간 상쇄.</li>
@@ -1569,7 +1569,7 @@ const projectProseData = {
 <li>배터리가 무부하 상태(Open Circuit)일 때는 기생 저항에 전류가 흐르지 않아 완벽한 기저 전압(OCV)이 계측되나, 부하가 동작(Closed Circuit)하면 다음 옴의 법칙에 의해 셀 단자 전압이 급락함을 분석:</li>
 </ul>
 <p class="journal-p">$$V_{ccv} = V_{ocv} - I \\times R_{internal}$$</p>
-<p class="journal-p">> 💡 <strong>비유 예시</strong>: 수도꼭지 밸브를 완전히 잠갔을 때는 물탱크 내부 수압(OCV)이 그대로 가득 찬 것처럼 높게 측정되지만, 물을 콸콸 틀어놓으면(부하 동작) 배관 내부 마찰(내부 저항 IR) 때문에 호스 끝에서 나오는 물의 압력(CCV)은 뚝 떨어져서 낮게 측정되는 물리 현상과 같습니다.</p>
+<p class="journal-p">> <strong>비유 예시</strong>: 수도꼭지 밸브를 완전히 잠갔을 때는 물탱크 내부 수압(OCV)이 그대로 가득 찬 것처럼 높게 측정되지만, 물을 콸콸 틀어놓으면(부하 동작) 배관 내부 마찰(내부 저항 IR) 때문에 호스 끝에서 나오는 물의 압력(CCV)은 뚝 떨어져서 낮게 측정되는 물리 현상과 같습니다.</p>
 
 <div class="panel-body chart-container-wrapper context-embedded align-center">
   <div class="canvas-holder">
@@ -1825,7 +1825,7 @@ const projectProseData = {
 
 <!-- 차트 렌더링 컨테이너 임베딩 영역 -->
 <hr class="journal-divider">
-<h3 class="journal-h3">📊 실시간 소자 분석 대시보드</h3>
+<h3 class="journal-h3">실시간 소자 분석 대시보드</h3>
 <div class="panel-body chart-container-wrapper">
   <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
     <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L 곡선</button>
@@ -1865,7 +1865,7 @@ const projectProseData = {
         <hr class="journal-divider">
         <h3 class="journal-h3">4) Engineering Methodology & Role</h3>
         <p class="journal-p">Conducted statistical data extraction based on academic research (Cao et al., Micromachines 2020) and formulated mechanical interpretations of stress concentration at the gold wire neck. Developed CAD schemas and presented wire loop and ball bonding morphologic analysis during the technical OSAT seminar.</p>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like baking cookies, if the baking mold (capillary geometry) is distorted, adjusting the oven temperature (process parameters) will never yield a perfect shape.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Like baking cookies, if the baking mold (capillary geometry) is distorted, adjusting the oven temperature (process parameters) will never yield a perfect shape.</blockquote>
         <hr class="journal-divider">
         <h3 class="journal-h3">5) Applied Processes & Process Tools</h3>
         <table class="journal-table">
@@ -2099,7 +2099,7 @@ const projectProseData = {
           <li><strong>Fan-In vs. Fan-Out:</strong> Identified physical vulnerabilities in Fan-In packaging, where the chip size equals the package size, and verified the advantages of the Fan-Out reallocation method. Explored the rise of <strong>RDL First</strong> technology to prevent misalignment caused by molding fluid flow.</li>
           <li><strong>Interconnect Innovation (Flip-Chip & TSV):</strong> Analyzed flip-chip bump technology that overcomes the physical length limitations of wire bonding. Investigated copper pillar bumps that dramatically reduce pitch intervals, and researched the <strong>TSV-based stacking structure (X1024)</strong> enabling high-speed transmission of 1024-bit signals simultaneously in High Bandwidth Memory (HBM).</li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Rather than sending data through a 2-lane road (wire bonding), constructing a 1024-lane ultra-wide highway (TSV HBM) allows a massive volume of data to flow rapidly without congestion.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Rather than sending data through a 2-lane road (wire bonding), constructing a 1024-lane ultra-wide highway (TSV HBM) allows a massive volume of data to flow rapidly without congestion.</blockquote>
         <h4 class="journal-h4">3) Week 3: Reliability Analysis & Physical Limits Breakthrough</h4>
         <ul class="journal-ul">
           <li><strong>Warpage & Solder Joint Reliability:</strong> Evaluated warpage behavior in heterogeneous materials arising from the differences in Coefficient of Thermal Expansion (CTE) between silicon chips and substrates. Analyzed the failure mechanisms of solder joints subjected to complex stresses of planar shear and axial tensile forces.</li>
@@ -2289,7 +2289,7 @@ const projectProseData = {
         <ul class="journal-ul">
           <li>While ideal code (.v) simulations showed zero delay, timing simulations using the \`.vo\` file (which reflects the chip's internal layout routing) captured a <strong>5ns physical gate propagation delay</strong>.</li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> In a virtual map, moving between two points appears instantaneous (ideal code simulation), but driving on actual roads takes time due to traffic signals and friction (physical 5ns gate delay).</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> In a virtual map, moving between two points appears instantaneous (ideal code simulation), but driving on actual roads takes time due to traffic signals and friction (physical 5ns gate delay).</blockquote>
         <h4 class="journal-h4">3) Speed-Controllable Up Counter Design (Week 10 ~ 11)</h4>
         <ul class="journal-ul">
           <li>Built a clock divider to slow down the DE2 board's 50MHz reference clock for visual verification.</li>
@@ -2507,7 +2507,7 @@ const projectProseData = {
           <li>Existing \`TinOH\` resists showed thermal sensitivity drift (time dependence) when PEB temperatures fluctuated (90°C ➔ 110°C ➔ 130°C).</li>
           <li>In contrast, ellipsometry thickness profiles proved that \`TinNO₃\` with stable nitrate anion binding maintained uniform sensitivity across temperature variations.</li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like replacing a machine whose performance fluctuates with weather changes with an ultra-precision sensor that maintains 100% accuracy in extreme temperatures from the South Pole to the Sahara.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Like replacing a machine whose performance fluctuates with weather changes with an ultra-precision sensor that maintains 100% accuracy in extreme temperatures from the South Pole to the Sahara.</blockquote>
         <h4 class="journal-h4">3) Fine L/S Pattern Resolution & LER Optimization (Core Achievement 3)</h4>
         <ul class="journal-ul">
           <li>Applied Bottom Anti-Reflective Coating (BARC) to block harmful reflections returning from the substrate.</li>
@@ -2688,7 +2688,7 @@ const projectProseData = {
         </table>
         <hr class="journal-divider">
         <h3 class="journal-h3">6) Implementation Process</h3>
-        <h4 class="journal-h4">🔬 Sub-Project 1: Analyzing Common Factors in Chip Defect and Yield</h4>
+        <h4 class="journal-h4">Sub-Project 1: Analyzing Common Factors in Chip Defect and Yield</h4>
         <ul class="journal-ul">
           <li><strong>Objective:</strong> Isolate the dominant factors among chip thickness (THK), critical dimension (CD), and Defect count that impact wafer yield.</li>
           <li><strong>Statistical Validation:</strong> Ran linear regression with yield as the dependent variable (Y).
@@ -2699,8 +2699,8 @@ const projectProseData = {
             </ul>
           </li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Like mathematically proving that a student's grades (yield) are linked to study hours (defects) and sleep duration (thickness), but have nothing to do with the color of their clothes (CD).</blockquote>
-        <h4 class="journal-h4">🔬 Sub-Project 2: Process Split Evaluation (Equipment Sensors vs. Defects)</h4>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Like mathematically proving that a student's grades (yield) are linked to study hours (defects) and sleep duration (thickness), but have nothing to do with the color of their clothes (CD).</blockquote>
+        <h4 class="journal-h4">Sub-Project 2: Process Split Evaluation (Equipment Sensors vs. Defects)</h4>
         <ul class="journal-ul">
           <li><strong>Objective:</strong> Evaluate the impact of internal physical tool sensors on defect generation.</li>
           <li><strong>Statistical Validation:</strong> Merged tables using \`lot_id\` and \`wafer_id\` to run a multi-variable regression of 4 sensors against defects.
@@ -2718,7 +2718,7 @@ const projectProseData = {
           <p class="chart-caption" id="chartCaption5"><strong>Figure 1.</strong> Defect density distribution over reflected power and chamber temperature variance (Spotfire 3D multivariate correlation scatter)</p>
         </div>
 
-        <h4 class="journal-h4">🔬 Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking)</h4>
+        <h4 class="journal-h4">Sub-Project 3: Wafer-Level Yield Tracing (Process Path Tracking)</h4>
         <ul class="journal-ul">
           <li><strong>Objective:</strong> Identify bottlenecks by tracing the equipment and recipe paths of low-yield wafers.</li>
           <li><strong>Statistical Validation:</strong> Aggregated bin data to calculate yields and ran ANOVA across process paths.
@@ -2912,7 +2912,7 @@ const projectProseData = {
           <li>Since AC 220V exceeds MCU ADC limits, we stepped down the voltage via isolated transformers and designed a <strong>2.5V DC Bias Offset circuit</strong> to eliminate negative wave segments.</li>
           <li>To prevent aliasing from the ADC sampling frequency limits and remove high-frequency surges, we integrated an **active low-pass filter (LPF)** using an LM358 OP-AMP.</li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Rather than drinking directly from a high-velocity river (220Vac AC power), we build a bypass channel (isolation transformer) and add filters (LPF and Offset) to obtain clean, drinkable tap water (0~5V stable DC biased signal) for safe measurement.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Rather than drinking directly from a high-velocity river (220Vac AC power), we build a bypass channel (isolation transformer) and add filters (LPF and Offset) to obtain clean, drinkable tap water (0~5V stable DC biased signal) for safe measurement.</blockquote>
         <h4 class="journal-h4">2) Discrete RMS & Power Computation Algorithm (Embedded firmware)</h4>
         <ul class="journal-ul">
           <li>Ported fast mathematical integrations on the ATmega328P to compute discrete RMS values:
@@ -3115,7 +3115,7 @@ const projectProseData = {
             $$f_p = \\frac{1}{2\\pi C\\sqrt{R_1 R_2}} = 3.2\\text{kHz} \\implies R_2=35\\text{k}\\Omega, R_1=2R_2=70\\text{k}\\Omega$$
           </li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Designing filters is like sifting sand. An LPF acts as a fine mesh, blocking large pebbles (high frequencies) and letting fine sand (low frequencies) pass, whereas an HPF holds the pebbles and lets the sand fall through.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Designing filters is like sifting sand. An LPF acts as a fine mesh, blocking large pebbles (high frequencies) and letting fine sand (low frequencies) pass, whereas an HPF holds the pebbles and lets the sand fall through.</blockquote>
         <h4 class="journal-h4">2) Parallel Band Separation & Adder Combination (System Architecture)</h4>
         <ul class="journal-ul">
           <li>Signals from the condenser microphone were routed in parallel into LPF, BPF, and HPF channels after pre-amplification.</li>
@@ -3304,7 +3304,7 @@ const projectProseData = {
         <ul class="journal-ul">
           <li>Detected early charging cutoffs caused by parasitic contact resistance. The resulting **IR drop** across the shunt resistor artificially inflated the measured cell voltage, deceiving the MCU.</li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> If there is debris (parasitic resistance) inside a water pipe, turning the tap on high creates high back-pressure. The flow meter (MCU) mistakenly assumes the tank is full and shuts the valve early.</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> If there is debris (parasitic resistance) inside a water pipe, turning the tap on high creates high back-pressure. The flow meter (MCU) mistakenly assumes the tank is full and shuts the valve early.</blockquote>
         <h4 class="journal-h4">3) Software Calibration & Telemetry Logging</h4>
         <ul class="journal-ul">
           <li>Programmed a calibration factor ($V_{actual} = V_{measured} - I \\times R_{parasitic}$) in the firmware to dynamically subtract parasitic voltage drops in real time.</li>
@@ -3482,7 +3482,7 @@ const projectProseData = {
             $$V_{ccv} = V_{ocv} - I \\times R_{internal}$$
           </li>
         </ul>
-        <blockquote class="journal-quote tip"><span class="quote-icon">💡</span> <strong>Analogy:</strong> Measuring water pressure with the faucet closed shows full tank pressure (OCV). Turning the faucet fully open (load on) drops the measured pressure (CCV) due to pipe friction (internal resistance IR).</blockquote>
+        <blockquote class="journal-quote tip"><strong>Analogy:</strong> Measuring water pressure with the faucet closed shows full tank pressure (OCV). Turning the faucet fully open (load on) drops the measured pressure (CCV) due to pipe friction (internal resistance IR).</blockquote>
 
         <div class="panel-body chart-container-wrapper context-embedded align-center">
           <div class="canvas-holder">
@@ -3746,7 +3746,7 @@ const projectProseData = {
 
 <!-- Interactive Chart Embedding -->
 <hr class="journal-divider">
-<h3 class="journal-h3">📊 Real-Time Device Analysis Dashboard</h3>
+<h3 class="journal-h3">Real-Time Device Analysis Dashboard</h3>
 <div class="panel-body chart-container-wrapper">
   <div class="chart-selectors" style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
     <button class="selector-btn active" data-chart="jvl" style="background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; color: #fff; cursor: pointer; border: none;">J-V-L Curves</button>
