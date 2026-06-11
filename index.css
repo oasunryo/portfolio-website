@@ -2280,7 +2280,7 @@ html.dark .chart-controls {
 /* Projects Grid Mode Styles */
 .design-grid-container.grid-mode {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   border-top: none;
   padding-top: 1.5rem;
@@ -2349,7 +2349,11 @@ html.dark .chart-controls {
 }
 
 .design-grid-container.grid-mode .design-card-desc {
-  display: block;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.45;
