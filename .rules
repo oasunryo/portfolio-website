@@ -1,116 +1,110 @@
 # Portfolio Website Builder V2 - AI Agent Coding Rules & Harness Guidelines
 
-본 가이드는 AI 에이전트(Antigravity)가 이 프로젝트의 코드를 수정하거나 기능을 설계할 때 반드시 따라야 하는 **핵심 판단 기준과 하드 제약 조건**을 정의합니다.
+This guide defines the **core decision-making criteria and hard constraints** that must be followed by any AI agent (Antigravity) modifying code or designing features in this project.
 
 ---
 
-## 1. 핵심 제약 조건 및 아키텍처 규칙 (Hard Constraints & Architecture)
+## 1. Core Constraints and Architecture Rules
 
-### 1.1. 정적 컴파일 기반의 빌드 시스템 (Build-First Rule)
-* **직접 수정 금지**: `ko/` 및 `en/` 디렉토리 하위의 HTML 파일은 직접 수정하지 마십시오. 이 폴더들은 빌드 시마다 덮어씌워지는 컴파일 결과물입니다.
-* **소스 수정 대상**:
-  * 마크업 구조 및 정적 레이아웃: [templates/](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/templates/) 하위의 컴포넌트 템플릿 파일들 (`head.html`, `header.html`, `footer.html`, `noise.html`)을 수정하십시오.
-  * 데이터 및 메타데이터: [projectsData.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/projectsData.js), [newBlogPosts.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/newBlogPosts.js) 및 [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js) 내부의 리스트 상수를 수정하십시오.
-* **컴파일 실행**: 코드나 데이터 수정 후에는 반드시 프로젝트 루트에서 `node build.js` 명령어를 실행하여 HTML 파일을 갱신해야 합니다.
+### 1.1. Build-First Static Compilation System
+- **No Direct Modification**: Do NOT modify HTML files directly under the `ko/` and `en/` directories. These folders are compiler outputs overwritten on every build execution.
+- **Modification Targets**:
+  - Markup structure and static layouts: Modify component templates inside [templates/](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/templates/) (such as `head.html`, `header.html`, `footer.html`, `noise.html`).
+  - Data and metadata: Edit list constants inside [projectsData.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/projectsData.js), [newBlogPosts.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/newBlogPosts.js), and [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js).
+- **Run Compilations**: After modifying code or data, you must run `node build.js` in the project root to refresh the HTML files.
 
-### 1.2. 엄격한 기술 스택 통제 (Strict Tech Stack)
-* **프레임워크 금지**: React, Next.js, Vue 등의 프레임워크나 Tailwind CSS 등의 유틸리티 CSS 라이브러리를 **절대 도입하지 마십시오**.
-* **기술 표준**: 오직 **HTML5 + Vanilla CSS + Pure ES6+ JavaScript**로만 코드를 작성해야 합니다.
-* **스타일 집중**: 모든 스타일 속성은 [index.css](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/index.css)에 선언하며, 클래스 기반으로 일관성 있게 관리해야 합니다. (HTML 내 inline style 정의 최소화)
+### 1.2. Strict Tech Stack Control
+- **No Frameworks**: Do NOT introduce frontend frameworks (e.g., React, Next.js, Vue) or utility-first CSS libraries (e.g., Tailwind CSS).
+- **Tech Standards**: Code must be written strictly using **HTML5 + Vanilla CSS + Pure ES6+ JavaScript**.
+- **Style Centralization**: All style declarations must reside inside [index.css](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/index.css) to maintain clean class-based layouts. Minimize inlining CSS properties inside HTML tags.
 
-### 1.3. 다국어 및 상대 경로 규칙 (Localization & Path Resolution)
-* **상대 경로 치환**: 다국어 페이지 컴파일 시 페이지 깊이(`depth`)에 따른 상대 경로(`${relPath}`)가 자동으로 연산되어 리소스를 참조합니다. 템플릿 내에 절대 경로(예: `/index.css`, `/logo/favicon.svg`)가 하드코딩되어 있다면, [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js)의 치환 로직(`compilePage`)에 반드시 반영하여 상대 경로로 변환되도록 처리해야 합니다.
+### 1.3. Localization and Relative Path Resolution
+- **Relative Path Swapping**: When compiling multilingual pages, relative paths (`${relPath}`) computed based on the page depth (`depth`) are dynamically referenced. If absolute paths (e.g., `/index.css`, `/logo/favicon.svg`) are hardcoded in templates, add them to the string substitution logic (`compilePage`) in [build.js](file:///Users/oasunryo/Files/Antigravity/portfolio_webstie_builer_v2/build.js) to compile them to relative paths.
 
 ---
 
-## 2. 특정 브라우저 이슈 및 에러 방지 규칙 (Troubleshooting & Quirks)
+## 2. Troubleshooting and Browser Quirks
 
-### 2.1. Safari iOS/macOS 레이아웃 이슈 방지
-* **헤더 안전 영역 계산**: 고정 헤더(`.sticky-nav`)와 상단 패딩(`.pt-24`) 설정 시, 모바일 노치 영역의 간섭을 막기 위해 CSS `env(safe-area-inset-top)`를 조합하여 계산해야 합니다.
+### 2.1. Safari iOS/macOS Layout Fixes
+- **Safe Area Header Calculations**: When defining sticky navigation headers (`.sticky-nav`) and top padding (`.pt-24`), incorporate the CSS `env(safe-area-inset-top)` variable to prevent overlaps with mobile notch boundaries:
   ```css
   header.sticky-nav {
     padding-top: calc(1.25rem + env(safe-area-inset-top, 0px));
   }
   ```
-* **모달 오버레이 배경 끊김 예방**: 모달 배경(`.side-peek-overlay`)은 Safari 뷰포트 바운스 시 틈새가 발생하는 문제를 차단하기 위해 화면 물리 경계선보다 더 크게 음수 마진(`top: -10vh; bottom: -10vh; left: -10vw; right: -10vw;`)을 적용해야 합니다.
-* **스크롤 캐싱 원천 리셋**: 상세 모달창을 닫고 다른 상세 모달창을 열 때 이전의 스크롤 위치가 유지되는 오작동을 막기 위해, 모달을 오픈할 때마다 대상 컨테이너의 스크롤 탑 위치를 명시적으로 초기화하십시오.
+- **Modal Overlay Seam Protection**: To prevent gaps when scrolling bounces in Safari, apply negative viewport margins (`top: -10vh; bottom: -10vh; left: -10vw; right: -10vw;`) to the modal overlay (`.side-peek-overlay`).
+- **Resetting Scroll Caches**: To avoid bugs where the previous modal's scroll coordinates persist when opening another side peek detail panel, reset the target container scroll top explicitly:
   ```javascript
   body.scrollTop = 0;
   ```
 
-### 2.2. Safari 파비콘 에러 캐시 고착화 방지
-* **Cache Busting 파라미터 강제**: 파비콘 리소스 로드가 1회라도 실패하면 Safari가 해당 도메인의 파비콘 에러 상태를 캐싱하는 버그가 있습니다. 파비콘 링크 태그에는 항상 캐시 버스팅 쿼리 스트링(`?v=1.0.1`)이 유지되도록 유지보수하고, 루트 `index.html`에도 동일 파비콘 선언을 누락하지 마십시오.
+### 2.2. Safari Favicon Cache Bugs
+- **Enforce Cache Busting Parameters**: Safari caches broken favicon states indefinitely if loading fails once. Keep the cache-busting query string parameter (`?v=1.0.1`) appended to all link tags, and ensure the root `index.html` also contains the same declarations.
 
 ---
 
-## 3. UI 컴포넌트 컨벤션 (UI Conventions)
+## 3. UI Component Conventions
 
-### 3.1. 툴팁 시스템 (Premium Tooltip)
-* **구현 방식**: 툴팁을 동적 JavaScript로 생성하지 마십시오. 성능 및 접근성을 위해 HTML 속성 `data-tooltip`에 텍스트를 할당하고, CSS 속성 선택자(`[data-tooltip]`)를 통해 렌더링해야 합니다.
+### 3.1. Premium Tooltip System
+- **Implementation**: Do NOT use dynamic JS scripts to build tooltips. For accessibility and performance, declare text targets in the `data-tooltip` attribute of HTML elements, and style them using the CSS attribute selector `[data-tooltip]`:
   ```html
-  <a href="..." data-tooltip="툴팁 문구">링크</a>
+  <a href="..." data-tooltip="Tooltip Text">Link</a>
   ```
 
-### 3.2. 카러셀 및 스크롤 슬라이더
-* **동적 단계 계산**: 화면 크기가 달라질 때 카러셀(`.carousel-container`) 이동 폭이 어긋나지 않도록 `offsetWidth`와 카드 갭(`gap`)을 동적으로 연산하여 좌표를 이동시키도록 코딩하십시오.
+### 3.2. Carousels and Scroll Sliders
+- **Dynamic Step Calculations**: To prevent coordinate misalignment inside `.carousel-container` during screen resizing, compute movement intervals dynamically by evaluating both `offsetWidth` and card `gap` variables.
 
-### 3.3. 블로그 및 프로젝트 본문 텍스트 마크업 규칙 (HTML Text Markup)
-* **HTML 태그 직접 기입**: 블로그 글이나 프로젝트 상세 설명의 본문 데이터(`content`, `prose`)는 마크다운 파서를 거치지 않고 브라우저에 raw HTML 형식으로 직접 렌더링됩니다.
-* **마크다운 볼드체 금지**: 따라서 본문 텍스트 내에 `**강조텍스트**`와 같은 마크다운 문법을 작성하면 브라우저 상에 `**` 기호가 그대로 노출되는 에러가 발생합니다.
-* **강조 표시 표준**: 텍스트를 강조할 때는 반드시 HTML 표준인 `<strong>강조텍스트</strong>` 태그를 직접 작성하여 마크업 정합성을 유지해야 합니다.
+### 3.3. Blog and Project Content Markup Rules
+- **Direct HTML Insertion**: Detailed body content (`content`, `prose`) for posts and projects is rendered as raw HTML in the browser without markdown processing.
+- **No Markdown Bold Syntax**: Writing markdown bold tags like `**text**` in body data will display raw asterisks (`**`) in the viewport.
+- **Standard Emphasizing**: Use the HTML standard `<strong>text</strong>` tag to preserve markup formatting.
 
-### 3.4. 인라인 아이콘과 텍스트 정렬 규칙 (Optical Icon Alignment)
-* **수직 오프셋 보정**: 텍스트 옆에 배치되는 SVG 아이콘(예: 12~14px 크기)은 단순히 `align-items: center`만 적용할 경우 시각적으로 위에 떠 있는 것처럼 보일 수 있습니다.
-* **해결 방법**: 해당 SVG 요소에 `position: relative; top: 1px;` (상황에 따라 0.5px~1.5px) 오프셋을 명시적으로 부여하여 시각적인 중앙/정렬 상태를 보정해 주어야 합니다.
+### 3.4. Optical Icon Alignment
+- **Vertical Offsets**: Small SVG icons (e.g. 12–14px) placed adjacent to text can appear visually elevated even with `align-items: center` declared on the container.
+- **Solution**: Adjust visual alignment by assigning relative positioning offsets such as `position: relative; top: 1px;` (or between 0.5px to 1.5px) to the SVG elements.
 
-### 3.5. 대화형 툴팁/호버 프리뷰 카드 포지셔닝 규칙 (Interactive Preview Card Positioning)
-* **동적 위치 보정**: 마우스를 추적하여 렌더링하는 대화형 툴팁이나 호버 프리뷰 카드는 초기 렌더링 시 레이아웃 계산 지연(Layout Lag)으로 인해 크기(`offsetHeight`)가 0으로 처리되거나 화면을 벗어날 우려가 있습니다.
-* **해결 방법**: 
-  1. `ResizeObserver`를 등록하여 프리뷰 카드의 내용물 변경이나 이미지 로드로 인해 실제 크기가 변할 때마다 최신 좌표를 실시간으로 재정정하도록 처리해야 합니다.
-  2. 뷰포트 바운더리 체크를 통해 계산된 카드의 끝점이 뷰포트 하단을 초과하면 화면 위쪽으로 띄우거나, 최하단(`window.innerHeight - previewHeight - 15`) 영역 내부로 강제 정렬(Clamping)하여 화면 바깥으로 잘리지 않게 해야 합니다.
-  3. `mouseenter` 시점의 마우스 좌표를 즉시 전달받아 첫 번째 프레임부터 자연스러운 좌표에 카드가 활성화되도록 개발하십시오.
+### 3.5. Interactive Preview Card Positioning
+- **Dynamic Coordinates Correction**: Tooltips or preview cards tracked by mouse movements are prone to layout lag, rendering their height (`offsetHeight`) as 0 or drawing them offscreen.
+- **Solution**:
+  1. Register a `ResizeObserver` to re-evaluate card coordinates whenever content changes or image assets load.
+  2. If the boundary calculations show the card card bottom exceeds the viewport height, position the card above the cursor or clamp it (`window.innerHeight - previewHeight - 15`) to keep it visible.
+  3. Hook into the initial mouse coordinates immediately on `mouseenter` to render the card smoothly on the first frame.
 
-### 3.6. 장식용 이모지 및 아이콘 사용 금지 규칙 (No Decorative Emojis/Icons)
-* **이모지 사용 제한**: 프로젝트 본문, 제목, 소제목, 인용 박스(Analogy 등)를 비롯한 모든 웹사이트 콘텐츠 영역에 시각적으로 정돈되지 않고 촌스러운 인상을 줄 수 있는 장식성 이모지(예: 📊, 🔬, 💡, 🚀 등)나 무분별한 아이콘을 절대 기입하지 마십시오.
-* **설계 원칙**: 텍스트만으로 미니멀하고 전문적인 톤앤매너를 유지하도록 콘텐츠를 구성해야 합니다.
+### 3.6. No Decorative Emojis or Icons
+- **Strict Emoji Limitations**: Do NOT use decorative emojis (e.g. 📊, 🔬, 💡, 🚀) or miscellaneous icons in headings, subtitles, or layout boxes.
+- **Design Philosophy**: Keep content layouts minimal and standard, relying strictly on clean typography to establish a professional tone of voice.
 
-### 3.7. 리스트 뷰 및 호버 프리뷰 정보 중복 제거 설계 (Redundancy Elimination in Lists)
-* **중복 제거 원칙**: 리스트 형태의 화면(예: 블로그 리스트)에 호버 프리뷰를 적용할 때는 텍스트 정보의 중복(예: 리스트 아이템 본문과 호버 카드 설명 일치)을 원천 배제합니다.
-* **구현 표준**: 메인 목록 레이아웃은 제목과 정형화된 열(Column) 형태의 메타데이터(Category, Date 등)만 밀도 있게 표현하고, 상세 요약글(Description)은 리스트 본문에서 감추는 대신 `data-description` 속성으로만 보존하여 오직 호버 프리뷰 카드를 통해서만 노출되도록 디자인합니다.
-* **레이아웃 안정화 (고정 폭 지정)**: 화면이 좁아질 때 가로 텍스트들이 겹치는 현상(Overlap)을 막기 위해 컬럼 규격을 `1fr [카테고리 고정폭] [날짜 고정폭] [읽기시간 고정폭]` 형태로 정의합니다. (예: `1fr 120px 100px 80px`)
-* **정렬 컨벤션**: 카테고리 배지, 날짜, 읽기 시간 컬럼은 데스크톱에서 중앙 정렬(`text-align: center`)을 적용하고, 모바일 세로 레이아웃으로 변경될 시 왼쪽 정렬(`text-align: left`)로 복원되도록 반응형 미디어 쿼리를 작성합니다.
-* **카테고리 전용 테마 칩**: 블로그 목록의 카테고리 배지에는 지정된 고유 파스텔 배경색(Architecture: `#edede9`, Career: `#d6ccc2`, Hardware: `#f5ebe0`, Insight: `#e3d5ca`, Semiconductor: `#d5bdaf`)을 주입하고, 텍스트 색상은 가독성을 보장하기 위해 `#1a1a1a`로 통일합니다.
+### 3.7. Redundancy Elimination in Lists
+- **No Text Duplication**: When implementing hover previews for list-view pages (e.g., blog list), do not duplicate list item texts inside the hover preview card.
+- **Implementation Standard**: The main list layouts should only display high-density structured metadata columns (Category, Date, etc.) alongside the title. Keep detailed summaries (`Description`) hidden in the main body, storing them inside a `data-description` attribute to be exposed only on hover card previews.
+- **Layout Stabilization (Fixed Width Columns)**: To avoid text overlapping during viewport shrinking, specify grid dimensions as: `1fr [fixed-width category] [fixed-width date] [fixed-width read-time]` (e.g., `1fr 120px 100px 80px`).
+- **Alignment Conventions**: Center-align category badges, dates, and read times on desktop (`text-align: center`), and restore them to left-aligned (`text-align: left`) on mobile layouts using media queries.
+- **Category Badge Color Themes**: Use defined pastel background colors for category chips (Architecture: `#edede9`, Career: `#d6ccc2`, Hardware: `#f5ebe0`, Insight: `#e3d5ca`, Semiconductor: `#d5bdaf`), and enforce `#1a1a1a` text color to guarantee readability.
 
-### 3.8. 프로젝트 뷰 모드 전환 및 프리뷰 제어 규칙 (Grid/List Toggle & Caching)
-* **뷰 캐싱 메커니즘**: 그리드(Grid)와 리스트(List) 뷰 전환 토글은 사용자의 선택 상태가 새로고침 시에도 유지되도록 브라우저 `localStorage`('projects-view' 키)에 선택 정보를 지속해서 저장 및 복원해야 합니다.
-* **그리드 모드 카드 및 라인 클램핑**: 그리드 모드가 활성화될 때 각 아이템은 2열 그리드(`grid-template-columns: repeat(2, 1fr)`) 카드 형태로 렌더링합니다. 카드의 세로 폭이 비대해지지 않도록 요약 설명 텍스트는 최대 2줄(`line-clamp: 2`)로 제한하고 말줄임표 처리하여 균일한 레이아웃 높이를 유지합니다.
-* **플로팅 프리뷰 중복 예외 처리**: 그리드 모드일 때는 각 카드 자체가 이미 충분한 이미지와 텍스트를 노출하고 있으므로, 불필요하게 마우스를 따라다니는 플로팅 호버 카드가 생성되어 시야를 방해하지 않도록 예외 처리(Early Return)하여 스크립트 실행을 생략해야 합니다.
-
-
-
+### 3.8. Grid/List View Toggle and Caching
+- **View Caching**: Persist the user's grid/list toggle selections across page reloads using browser `localStorage` (key: `projects-view`).
+- **Grid Mode and Line Clamping**: When grid mode is active, render items in a 2-column layout (`grid-template-columns: repeat(2, 1fr)`). To maintain uniform card heights, clamp description summaries to a maximum of 2 lines (`line-clamp: 2`).
+- **Skip Floating Previews in Grid Mode**: Because grid cards display sufficient visual and text content, bypass floating hover cards in grid mode via early returns to reduce visual clutter.
 
 ---
 
-## 4. 미디어 자산 관리 및 성능 최적화 규칙 (Media Assets & Optimization)
+## 4. Media Assets and Performance Optimization
 
-### 4.1. GitHub + jsDelivr CDN 호스팅 표준 (CDN Asset Hosting)
-* **용량 및 빌드 성능 보존**: 블로그 및 프로젝트의 이미지/도표 같은 시각 자료는 웹 빌더 본 프로젝트 리포지토리에 커밋하지 않습니다.
-* **표준 저장소**: 미디어 에셋은 전용 퍼블릭 에셋 리포지토리(`oasunryo/portfolio-assets`)에 업로드하여 관리해야 합니다.
-* **CDN 연동**: 업로드된 에셋은 `jsDelivr` CDN 주소를 통해 아래 템플릿에 맞추어 절대 경로 형태로 블로그 데이터(`newBlogPosts.js`) 본문에 직접 임베딩합니다.
+### 4.1. GitHub + jsDelivr CDN Asset Hosting
+- **Keep Repositories Light**: Do NOT commit heavy image or chart assets to the web builder code repository.
+- **Standard Asset Repository**: Upload media assets to the public repository `oasunryo/portfolio-assets`.
+- **CDN Integration**: Reference assets using absolute `jsDelivr` URLs inside blog post data files (`newBlogPosts.js`):
   ```text
-  https://cdn.jsdelivr.net/gh/oasunryo/portfolio-assets@main/[경로/파일명]
+  https://cdn.jsdelivr.net/gh/oasunryo/portfolio-assets@main/[path/filename]
   ```
 
-### 4.2. 에셋 폴더 구조 캡슐화 및 파일명 컨벤션 (Directory & Naming Convention)
-* **폴더 분리 규칙**: 포스트 및 프로젝트의 에셋은 루트에 혼재시키지 않고, 각각 고유 식별자(Slug)에 맞춰 디렉토리를 캡슐화하여 격리합니다.
-  * 블로그: `blog/[yyyy-mm-dd-slug]/` (예: `blog/2026-05-08-amkor-osat-interview-prep/`)
-  * 프로젝트: `projects/[project-slug]/` (예: `projects/capillary-bonding/`)
-* **네이밍 규칙**: 경로 유실 및 깨짐을 완벽 방지하기 위해 파일명은 한글과 공백을 배제하고, 반드시 **소문자 케밥 케이스(kebab-case)**만 허용합니다. (예: `wafer-process-chart.webp`)
+### 4.2. Directory & Naming Conventions for Assets
+- **Asset Directories**: Isolate media assets inside designated folders matching their post or project slugs:
+  - Blog: `blog/[yyyy-mm-dd-slug]/` (e.g., `blog/2026-05-08-amkor-osat-interview-prep/`)
+  - Project: `projects/[project-slug]/` (e.g., `projects/capillary-bonding/`)
+- **Naming Standards**: Prevent broken link errors by using only **lowercase kebab-case** names without spaces or Korean characters (e.g., `wafer-process-chart.webp`).
 
-### 4.3. 이미지 포맷 및 자동 압축 (Format & Compression)
-* **지연 로딩 필수**: 초기 로딩 속도(LCP) 저하를 방지하기 위해 포스트 본문 내 모든 `<img>` 태그에는 `loading="lazy"` 속성과 가로/세로 비율(`width`, `height`)을 기재하여 누적 레이아웃 이동(CLS)을 제어해야 합니다.
-* **최적 포맷 지향**: 사진/차트 같은 비트맵 리소스는 용량 최적화가 우수한 **WebP**를 기본 채택하고, 도형/도면/단순 벡터 데이터는 해상도 유지가 자유로운 **SVG** 포맷을 활용합니다.
-* **자동 압축 보장**: 에셋 저장소에 연동된 GitHub Actions(`image-actions`) 워크플로우를 통하여 푸시 시 자동으로 무손실 압축이 수행되므로, 수동 압축 누락에 대한 예외 처리가 기본 보장됩니다.
-
-
-
+### 4.3. Format and Lossless Compression
+- **Lazy Loading**: Enforce `loading="lazy"` on all `<img>` tags inside body sections, and declare aspect ratios (`width`, `height`) to prevent Cumulative Layout Shifts (CLS).
+- **Format Choices**: Use **WebP** for bitmap images (photos, charts) and **SVG** for vector structures (diagrams, simple designs).
+- **Automated Compression**: The GitHub Action workflow (`image-actions`) configured in the asset repository compresses images losslessly on push, ensuring file sizes remain optimized.
