@@ -861,6 +861,11 @@ html.dark .tag-filter-btn.active {
   background-color: var(--bg-primary);
 }
 
+.hover-preview-body.blog-preview {
+  padding: 1.25rem;
+  border-left: 3px solid var(--accent-color);
+}
+
 .hover-preview-title {
   font-family: var(--font-sans);
   font-size: 1.1rem;
@@ -1851,11 +1856,12 @@ html.dark pre .function { color: #60a5fa; }
 /* Article meta row layout */
 .article-meta-row {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 .article-meta-info {
@@ -2081,6 +2087,12 @@ html.dark .chart-controls {
 
 /* Responsive metadata alignment to break lines cleanly on small viewports */
 @media (max-width: 640px) {
+  .article-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    width: 100%;
+  }
   .article-meta-info {
     flex-direction: column;
     align-items: flex-start;

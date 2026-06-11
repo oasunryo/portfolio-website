@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTocHighlight();
   initProjectsSort();
   initProjectHoverPreview();
+  initBlogHoverPreview();
   initOledDashboard();
   initAllProjectCharts();
 });
@@ -196,7 +197,7 @@ function zeroGravityScrollTo(element) {
   const elementPosition = element.getBoundingClientRect().top;
   const target = start + elementPosition - headerOffset;
   const distance = target - start;
-  const duration = 1600; // 1.6s for highly pronounced, floating zero-gravity kinetic glide
+  const duration = 400; // 0.4s for fast, responsive kinetic glide without layout lag
   let startTime = null;
 
   // Quintic ease-out timing function for extremely smooth, floating deceleration
@@ -1184,4 +1185,97 @@ function initAllProjectCharts() {
       });
     }
   }
+}
+
+// 5.2. Blog List Hover Preview for Desktop
+function initBlogHoverPreview() {
+  const blogList = document.getElementById('blog-posts-list');
+  if (!blogList) return;
+
+  // Create floating preview element
+  let preview = document.getElementById('project-hover-preview');
+  if (!preview) {
+    preview = document.createElement('div');
+    preview.id = 'project-hover-preview';
+    preview.className = 'project-hover-preview';
+    document.body.appendChild(preview);
+  }
+
+  let lastX = 0;
+  let lastY = 0;
+
+  function updatePosition(clientX, clientY) {
+    lastX = clientX;
+    lastY = clientY;
+
+    const previewWidth = 320;
+    // Use actual height if rendered, fallback to a safe 220px since no image
+    const previewHeight = preview.offsetHeight || 220;
+
+    let left = clientX + 20;
+    let top = clientY + 20;
+
+    // Prevent overflow to the right (show on left of cursor)
+    if (left + previewWidth > window.innerWidth) {
+      left = clientX - previewWidth - 20;
+    }
+
+    // Prevent overflow to the bottom (show above cursor)
+    if (top + previewHeight > window.innerHeight) {
+      top = clientY - previewHeight - 20;
+    }
+
+    // Additional hybrid constraint (clamping)
+    if (top + previewHeight > window.innerHeight) {
+      top = window.innerHeight - previewHeight - 15;
+    }
+
+    // Safety fallback bounds checking
+    if (left < 10) left = 10;
+    if (top < 10) top = 10;
+
+    preview.style.left = `${left}px`;
+    preview.style.top = `${top}px`;
+  }
+
+  // Use ResizeObserver to reposition dynamically when preview content height loads or updates
+  if (window.ResizeObserver) {
+    const resizeObserver = new ResizeObserver(() => {
+      if (preview.classList.contains('active')) {
+        updatePosition(lastX, lastY);
+      }
+    });
+    resizeObserver.observe(preview);
+  }
+
+  const items = blogList.querySelectorAll('.blog-hover-item');
+  items.forEach(item => {
+    item.addEventListener('mouseenter', (e) => {
+      if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
+        const title = item.querySelector('.item-title-link')?.innerText || '';
+        const category = item.querySelector('.status-badge')?.innerText || '';
+        const desc = item.getAttribute('data-description') || '';
+
+        preview.innerHTML = `
+          <div class="hover-preview-body blog-preview">
+            <span class="recommended-card-category" style="font-size: 0.75rem; margin-bottom: 0.15rem;">${category}</span>
+            <h4 class="hover-preview-title">${title}</h4>
+            <p class="hover-preview-desc" style="margin-top: 0.25rem; margin-bottom: 0.15rem;">${desc}</p>
+          </div>
+        `;
+        preview.classList.add('active');
+        updatePosition(e.clientX, e.clientY);
+      }
+    });
+
+    item.addEventListener('mouseleave', () => {
+      preview.classList.remove('active');
+    });
+
+    item.addEventListener('mousemove', (e) => {
+      if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
+        updatePosition(e.clientX, e.clientY);
+      }
+    });
+  });
 }
