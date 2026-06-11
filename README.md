@@ -87,7 +87,7 @@ git push origin main
 ## Contact
 
 - **Email:** junseo.oh.kr@gmail.com
-- **LinkedIn:** [linkedin.com/in/junseo-oh](https://linkedin.com/in/junseo-oh)
+- **LinkedIn:** [linkedin.com/in/junseokorea](https://linkedin.com/in/junseokorea)
 - **Website:** [junseo.site](https://junseo.site)
 
 ---
