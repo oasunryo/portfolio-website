@@ -2129,6 +2129,12 @@ html.dark .chart-controls {
   letter-spacing: 0.05em;
 }
 
+.blog-table-header .col-category,
+.blog-table-header .col-date,
+.blog-table-header .col-reading-time {
+  text-align: center;
+}
+
 .blog-table-row {
   display: grid;
   grid-template-columns: 1fr 120px 100px 80px;
@@ -2167,6 +2173,9 @@ html.dark .chart-controls {
 
 .blog-table-row .col-category {
   font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Individual Category Badge Background Colors for Blog Table */
@@ -2200,12 +2209,14 @@ html.dark .chart-controls {
   font-size: 0.9rem;
   color: var(--text-secondary);
   font-family: var(--font-sans);
+  text-align: center;
 }
 
 .blog-table-row .col-reading-time {
   font-size: 0.9rem;
   color: var(--text-tertiary);
   font-family: var(--font-sans);
+  text-align: center;
 }
 
 /* Responsive Table Layout for Blog List */
@@ -2242,6 +2253,11 @@ html.dark .chart-controls {
   .blog-table-row .col-date,
   .blog-table-row .col-reading-time {
     font-size: 0.8rem;
+    text-align: left;
+  }
+  
+  .blog-table-row .col-category {
+    justify-content: flex-start;
   }
 }
 
