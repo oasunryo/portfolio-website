@@ -187,13 +187,13 @@ const projectProseData = {
     2: {
       meta: `반도체 / 후공정 패키지 및 테스트 종합 이론`,
       title: `Semiconductor Packaging & Test Engineering Fundamentals`,
-      date: `2026. 04. 01. ~`,
+      date: `2026. 04. 01. ~ 2026. 05. 28.`,
       prose: `
 <p class="journal-p"><em>(반도체 패키징 및 테스트 엔지니어링 핵심 이론 독파 및 직무 역량 체계화)</em></p>
 <hr class="journal-divider">
 <h3 class="journal-h3">1) 프로젝트 개요</h3>
 <ul class="journal-ul">
-<li><strong>기간</strong>: 2026. 04. 01. ~ 진행 중</li>
+<li><strong>기간</strong>: 2026. 04. 01. ~ 2026. 05. 28.</li>
 <li><strong>유형</strong>: 전공 직무 서적 분석 및 핵심 공정 기술 체계화 프로젝트</li>
 <li><strong>소속/수행 환경</strong>: 개인 연구 및 직무 이론 강화 프로젝트 (추천 도서: <em>반도체 패키지와 테스트 입문</em>)</li>
 <li><strong>한 줄 소개</strong>: </li>
@@ -2010,11 +2010,11 @@ const projectProseData = {
     2: {
       meta: `SEMICONDUCTOR / PACKAGING & TEST THEORY INTEGRATION`,
       title: `Semiconductor Packaging & Test Engineering Fundamentals Integration`,
-      date: `2026. 04. 01. ~`,
+      date: `2026. 04. 01. ~ 2026. 05. 28.`,
       prose: `
 <h3 class="journal-h3">1) Project Overview</h3>
         <ul class="journal-ul">
-          <li><strong>Duration:</strong> 2026. 04. 01. ~ In Progress</li>
+          <li><strong>Duration:</strong> 2026. 04. 01. ~ 2026. 05. 28.</li>
           <li><strong>Type:</strong> Technical Book Analysis & Core Process Technology Systematization Project</li>
           <li><strong>Affiliation/Environment:</strong> Private Research & Professional Theory Enhancement Project (Recommended Reading: <em>Introduction to Semiconductor Packaging and Test</em>)</li>
           <li><strong>Overview:</strong> Systematically researched back-end semiconductor packaging and test methodologies, from test equipment operation processes to conventional/wafer-level packaging (WLCSP), next-generation stacking technologies (TSV/SiP), and computer simulations (thermal, structural, electrical analysis), establishing a solid theoretical foundation as a junior engineer.</li>

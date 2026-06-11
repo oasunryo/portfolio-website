@@ -53,7 +53,7 @@ const projectsMeta = [
     image: "/assets/projects/packaging_test.png",
     tags: ["BGA", "TSV", "SI-PI", "FEM"],
     date: "2026-04-01",
-    period: "2026. 04. 01. ~",
+    period: "2026. 04. 01. ~ 2026. 05. 28.",
     ko: {
       title: "Packaging & Test Fundamentals",
       category: "반도체 이론",
