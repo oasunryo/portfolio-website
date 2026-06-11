@@ -1177,7 +1177,7 @@ languages.forEach(lang => {
         <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
       </div>
       <div class="col-category">
-        <span class="status-badge">${post.category}</span>
+        <span class="status-badge badge-${post.category.toLowerCase()}">${post.category}</span>
       </div>
       <div class="col-date tabular-nums">${post.date}</div>
       <div class="col-reading-time tabular-nums">${readingTimeLabel}</div>

@@ -2118,7 +2118,7 @@ html.dark .chart-controls {
 
 .blog-table-header {
   display: grid;
-  grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 120px 100px 80px;
   padding: 0.75rem 0.5rem;
   border-bottom: 1px solid var(--border-color);
   font-family: var(--font-sans);
@@ -2131,7 +2131,7 @@ html.dark .chart-controls {
 
 .blog-table-row {
   display: grid;
-  grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 120px 100px 80px;
   align-items: center;
   padding: 1.25rem 0.5rem;
   border-bottom: 1px solid var(--border-color);
@@ -2167,6 +2167,33 @@ html.dark .chart-controls {
 
 .blog-table-row .col-category {
   font-size: 0.85rem;
+}
+
+/* Individual Category Badge Background Colors for Blog Table */
+.blog-table-row .status-badge.badge-architecture {
+  background-color: #edede9 !important;
+  color: #1a1a1a !important;
+  border-color: #d6d6d0;
+}
+.blog-table-row .status-badge.badge-career {
+  background-color: #d6ccc2 !important;
+  color: #1a1a1a !important;
+  border-color: #bfb5aa;
+}
+.blog-table-row .status-badge.badge-hardware {
+  background-color: #f5ebe0 !important;
+  color: #1a1a1a !important;
+  border-color: #ded3c8;
+}
+.blog-table-row .status-badge.badge-insight {
+  background-color: #e3d5ca !important;
+  color: #1a1a1a !important;
+  border-color: #ccbeab;
+}
+.blog-table-row .status-badge.badge-semiconductor {
+  background-color: #d5bdaf !important;
+  color: #1a1a1a !important;
+  border-color: #bfa799;
 }
 
 .blog-table-row .col-date {
