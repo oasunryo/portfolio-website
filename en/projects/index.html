@@ -87,27 +87,41 @@
         <h1 style="font-family: var(--font-sans); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Projects</h1>
         <p style="font-size: 1.1rem; color: var(--text-secondary);">List of core engineering projects in semiconductor fabrication/packaging, analog/digital designs, and embedded systems.</p>
       </div>
-      <div class="projects-sort-container">
-        <select id="projects-sort" class="sort-select-box" aria-label="Sort projects">
-          <option value="latest">Latest</option>
-          <option value="oldest">Oldest</option>
-          <option value="alphabetical">Alphabetical</option>
-        </select>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="projects-sort-container">
+          <select id="projects-sort" class="sort-select-box" aria-label="Sort projects">
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+            <option value="alphabetical">Alphabetical</option>
+          </select>
+        </div>
+        <div class="view-toggle-buttons" style="display: flex; gap: 0.25rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 0.25rem; border-radius: 2rem; align-items: center;">
+          <button id="toggle-grid-btn" class="toggle-view-btn" aria-label="Grid View" style="outline: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button id="toggle-list-btn" class="toggle-view-btn active" aria-label="List View" style="outline: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
       </div>
     </header>
     
     <div class="design-grid-container" id="projects-grid">
       
     <a class="design-card-item" href="./capillary-bonding/index.html" data-date="2026-05-01" data-title="ceramic capillary geometry" data-image="../../assets/projects/capillary_bonding.png" data-description="Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits." data-tags="OSAT,Wire-bonding,SEM,OriginPro" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/capillary_bonding.png);">
         <img src="../../assets/projects/capillary_bonding.png" alt="Ceramic Capillary Geometry" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">OSAT & Packaging</span>
           <h3 class="design-card-title">Ceramic Capillary Geometry</h3>
+          <p class="design-card-desc">Optimizing wire-bonding capillary geometry variables (IHD, ICAD, ICBA) to minimize first bond defects and short circuits.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">OSAT</span><span class="design-card-tag">Wire-bonding</span><span class="design-card-tag">SEM</span><span class="design-card-tag">OriginPro</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">OSAT & Packaging</span>
           <span class="design-card-date">2026. 05. 01. ~ 2026. 05. 18.</span>
         </div>
       </div>
@@ -115,15 +129,19 @@
     
 
     <a class="design-card-item" href="./packaging-test/index.html" data-date="2026-04-01" data-title="packaging & test fundamentals" data-image="../../assets/projects/packaging_test.png" data-description="Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching." data-tags="BGA,TSV,SI-PI,FEM" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/packaging_test.png);">
         <img src="../../assets/projects/packaging_test.png" alt="Packaging & Test Fundamentals" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Semiconductor Theory</span>
           <h3 class="design-card-title">Packaging & Test Fundamentals</h3>
+          <p class="design-card-desc">Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">BGA</span><span class="design-card-tag">TSV</span><span class="design-card-tag">SI-PI</span><span class="design-card-tag">FEM</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Semiconductor Theory</span>
           <span class="design-card-date">2026. 04. 01. ~</span>
         </div>
       </div>
@@ -131,15 +149,19 @@
     
 
     <a class="design-card-item" href="./fpga-verilog/index.html" data-date="2026-03-01" data-title="fpga & verilog hdl systems" data-image="../../assets/projects/fpga_verilog.png" data-description="Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays." data-tags="Verilog,ModelSim,FPGA,Debouncer" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/fpga_verilog.png);">
         <img src="../../assets/projects/fpga_verilog.png" alt="FPGA & Verilog HDL Systems" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Digital Circuits</span>
           <h3 class="design-card-title">FPGA & Verilog HDL Systems</h3>
+          <p class="design-card-desc">Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">Verilog</span><span class="design-card-tag">ModelSim</span><span class="design-card-tag">FPGA</span><span class="design-card-tag">Debouncer</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Digital Circuits</span>
           <span class="design-card-date">2026. 03. 01. ~ 2026. 06. 30.</span>
         </div>
       </div>
@@ -147,15 +169,19 @@
     
 
     <a class="design-card-item" href="./euv-photoresist/index.html" data-date="2025-11-17" data-title="tinno₃ euv photoresist" data-image="../../assets/projects/euv_photoresist.png" data-description="Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography." data-tags="EUV,Photoresist,FE-SEM,AFM" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/euv_photoresist.png);">
         <img src="../../assets/projects/euv_photoresist.png" alt="TinNO₃ EUV Photoresist" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Front-end Lithography</span>
           <h3 class="design-card-title">TinNO₃ EUV Photoresist</h3>
+          <p class="design-card-desc">Exploring sensitivity improvements and dry etch resistance of tin oxide cluster PRs to push limits in EUV lithography.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">EUV</span><span class="design-card-tag">Photoresist</span><span class="design-card-tag">FE-SEM</span><span class="design-card-tag">AFM</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Front-end Lithography</span>
           <span class="design-card-date">2025. 11. 17. ~ 2025. 12. 04.</span>
         </div>
       </div>
@@ -163,15 +189,19 @@
     
 
     <a class="design-card-item" href="./spotfire-analytics/index.html" data-date="2025-10-20" data-title="spotfire process analytics" data-image="../../assets/projects/spotfire_analytics.png" data-description="Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences." data-tags="TIBCO-Spotfire,EDA,Stat-Analysis,Yield" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/spotfire_analytics.png);">
         <img src="../../assets/projects/spotfire_analytics.png" alt="Spotfire Process Analytics" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Yield Analytics</span>
           <h3 class="design-card-title">Spotfire Process Analytics</h3>
+          <p class="design-card-desc">Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">TIBCO-Spotfire</span><span class="design-card-tag">EDA</span><span class="design-card-tag">Stat-Analysis</span><span class="design-card-tag">Yield</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Yield Analytics</span>
           <span class="design-card-date">2025. 10. 20. ~ 2025. 11. 09.</span>
         </div>
       </div>
@@ -179,15 +209,19 @@
     
 
     <a class="design-card-item" href="./ac-power-meter/index.html" data-date="2025-09-01" data-title="mcu ac power meter" data-image="../../assets/projects/ac_power_meter.png" data-description="Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration." data-tags="MCU,AC-Power,Sensing,Hardware" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/ac_power_meter.png);">
         <img src="../../assets/projects/ac_power_meter.png" alt="MCU AC Power Meter" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Embedded Systems</span>
           <h3 class="design-card-title">MCU AC Power Meter</h3>
+          <p class="design-card-desc">Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">MCU</span><span class="design-card-tag">AC-Power</span><span class="design-card-tag">Sensing</span><span class="design-card-tag">Hardware</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Embedded Systems</span>
           <span class="design-card-date">2025. 09. 01. ~ 2025. 12. 31.</span>
         </div>
       </div>
@@ -195,15 +229,19 @@
     
 
     <a class="design-card-item" href="./audio-level-meter/index.html" data-date="2025-03-01" data-title="3-band audio level meter" data-image="../../assets/projects/audio_level_meter.png" data-description="Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes." data-tags="Analog,Filter-Design,OP-AMP,Orcad-Pspice" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/audio_level_meter.png);">
         <img src="../../assets/projects/audio_level_meter.png" alt="3-Band Audio Level Meter" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Analog Circuits</span>
           <h3 class="design-card-title">3-Band Audio Level Meter</h3>
+          <p class="design-card-desc">Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">Analog</span><span class="design-card-tag">Filter-Design</span><span class="design-card-tag">OP-AMP</span><span class="design-card-tag">Orcad-Pspice</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Analog Circuits</span>
           <span class="design-card-date">2025. 03. 01. ~ 2025. 06. 30.</span>
         </div>
       </div>
@@ -211,15 +249,19 @@
     
 
     <a class="design-card-item" href="./battery-charger/index.html" data-date="2024-09-01" data-title="cc-cv li-ion charger" data-image="../../assets/projects/battery_charger.png" data-description="Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs." data-tags="CC-CV,Power-Electronics,ADC-Sensing,Safety-Log" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/battery_charger.png);">
         <img src="../../assets/projects/battery_charger.png" alt="CC-CV Li-Ion Charger" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Power Electronics</span>
           <h3 class="design-card-title">CC-CV Li-Ion Charger</h3>
+          <p class="design-card-desc">Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">CC-CV</span><span class="design-card-tag">Power-Electronics</span><span class="design-card-tag">ADC-Sensing</span><span class="design-card-tag">Safety-Log</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Power Electronics</span>
           <span class="design-card-date">2024. 09. 01. ~ 2024. 12. 31.</span>
         </div>
       </div>
@@ -227,15 +269,19 @@
     
 
     <a class="design-card-item" href="./battery-soc-tester/index.html" data-date="2024-03-01" data-title="dynamic battery soc tester" data-image="../../assets/projects/battery_soc_tester.png" data-description="Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware." data-tags="SOC-Estimation,OCV-CCV,Embedded,Calibration" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/battery_soc_tester.png);">
         <img src="../../assets/projects/battery_soc_tester.png" alt="Dynamic Battery SOC Tester" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Embedded Calibration</span>
           <h3 class="design-card-title">Dynamic Battery SOC Tester</h3>
+          <p class="design-card-desc">Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">SOC-Estimation</span><span class="design-card-tag">OCV-CCV</span><span class="design-card-tag">Embedded</span><span class="design-card-tag">Calibration</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Embedded Calibration</span>
           <span class="design-card-date">2024. 03. 01. ~ 2024. 06. 30.</span>
         </div>
       </div>
@@ -243,15 +289,19 @@
     
 
     <a class="design-card-item" href="./ito-oled-analysis/index.html" data-date="2026-03-01" data-title="ito-based oled fabrication" data-image="../../assets/projects/ito_oled_analysis.png" data-description="Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves." data-tags="OLED,Thin-Film,Blade-Coating,Optoelectronic,Chart.js" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(../../assets/projects/ito_oled_analysis.png);">
         <img src="../../assets/projects/ito_oled_analysis.png" alt="ITO-based OLED Fabrication" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">Devices & Process</span>
           <h3 class="design-card-title">ITO-based OLED Fabrication</h3>
+          <p class="design-card-desc">Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves.</p>
+          <div class="design-card-tags">
+            <span class="design-card-tag">OLED</span><span class="design-card-tag">Thin-Film</span><span class="design-card-tag">Blade-Coating</span><span class="design-card-tag">Optoelectronic</span><span class="design-card-tag">Chart.js</span>
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">Devices & Process</span>
           <span class="design-card-date">2026. 03. 01. ~ 2026. 06. 30.</span>
         </div>
       </div>

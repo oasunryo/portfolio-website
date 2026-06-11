@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTocHighlight();
   initProjectsSort();
   initProjectHoverPreview();
+  initProjectsViewToggle();
   initBlogHoverPreview();
   initOledDashboard();
   initAllProjectCharts();
@@ -573,6 +574,7 @@ function initProjectHoverPreview() {
     if (!imgUrl) return;
 
     item.addEventListener('mouseenter', (e) => {
+      if (grid.classList.contains('grid-mode')) return;
       if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
         const title = item.querySelector('.design-card-title')?.innerText || '';
         const category = item.querySelector('.recommended-card-category')?.innerText || '';
@@ -602,6 +604,7 @@ function initProjectHoverPreview() {
     });
 
     item.addEventListener('mousemove', (e) => {
+      if (grid.classList.contains('grid-mode')) return;
       if (window.innerWidth > 768 && window.matchMedia('(pointer: fine)').matches) {
         updatePosition(e.clientX, e.clientY);
       }
@@ -1278,4 +1281,33 @@ function initBlogHoverPreview() {
       }
     });
   });
+}
+
+// 5.3. Projects List/Grid Toggle View
+function initProjectsViewToggle() {
+  const gridBtn = document.getElementById('toggle-grid-btn');
+  const listBtn = document.getElementById('toggle-list-btn');
+  const gridContainer = document.getElementById('projects-grid');
+
+  if (!gridBtn || !listBtn || !gridContainer) return;
+
+  const setViewMode = (mode) => {
+    if (mode === 'grid') {
+      gridContainer.classList.add('grid-mode');
+      gridBtn.classList.add('active');
+      listBtn.classList.remove('active');
+    } else {
+      gridContainer.classList.remove('grid-mode');
+      listBtn.classList.add('active');
+      gridBtn.classList.remove('active');
+    }
+    localStorage.setItem('projects-view', mode);
+  };
+
+  gridBtn.addEventListener('click', () => setViewMode('grid'));
+  listBtn.addEventListener('click', () => setViewMode('list'));
+
+  // Initialize view from local storage (default is list view)
+  const savedView = localStorage.getItem('projects-view') || 'list';
+  setViewMode(savedView);
 }

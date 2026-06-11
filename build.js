@@ -1233,17 +1233,22 @@ languages.forEach(lang => {
   let designGridContent = projectsMeta.map(p => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
+    const tagHTML = p.tags ? p.tags.map(t => `<span class="design-card-tag">${t.trim()}</span>`).join('') : '';
     return `
     <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail">
+      <div class="design-card-thumbnail" style="background-image: url(${imgPath});">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>
       <div class="design-card-content">
         <div class="design-card-main-info">
+          <span class="recommended-card-category">${trans.category}</span>
           <h3 class="design-card-title">${trans.title}</h3>
+          <p class="design-card-desc">${trans.description}</p>
+          <div class="design-card-tags">
+            ${tagHTML}
+          </div>
         </div>
         <div class="design-card-sub-info">
-          <span class="recommended-card-category">${trans.category}</span>
           <span class="design-card-date">${p.period}</span>
         </div>
       </div>
@@ -1261,12 +1266,22 @@ languages.forEach(lang => {
         <h1 style="font-family: var(--font-sans); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Projects</h1>
         <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.projectsDesc}</p>
       </div>
-      <div class="projects-sort-container">
-        <select id="projects-sort" class="sort-select-box" aria-label="Sort projects">
-          <option value="latest">${lang === 'ko' ? '최신순' : 'Latest'}</option>
-          <option value="oldest">${lang === 'ko' ? '오래된순' : 'Oldest'}</option>
-          <option value="alphabetical">${lang === 'ko' ? '제목순' : 'Alphabetical'}</option>
-        </select>
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <div class="projects-sort-container">
+          <select id="projects-sort" class="sort-select-box" aria-label="Sort projects">
+            <option value="latest">${lang === 'ko' ? '최신순' : 'Latest'}</option>
+            <option value="oldest">${lang === 'ko' ? '오래된순' : 'Oldest'}</option>
+            <option value="alphabetical">${lang === 'ko' ? '제목순' : 'Alphabetical'}</option>
+          </select>
+        </div>
+        <div class="view-toggle-buttons" style="display: flex; gap: 0.25rem; background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 0.25rem; border-radius: 2rem; align-items: center;">
+          <button id="toggle-grid-btn" class="toggle-view-btn" aria-label="Grid View" style="outline: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button id="toggle-list-btn" class="toggle-view-btn active" aria-label="List View" style="outline: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
       </div>
     </header>
     
