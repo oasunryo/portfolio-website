@@ -1170,15 +1170,17 @@ languages.forEach(lang => {
     const trans = post[lang];
     const cleanContent = trans.content.replace(/<[^>]*>/g, ' ').replace(/"/g, '&quot;').toLowerCase();
     const readingTime = calculateReadingTime(trans.content, lang);
-    const readingTimeLabel = lang === 'ko' ? `${readingTime}분 분량` : `${readingTime} min read`;
+    const readingTimeLabel = lang === 'ko' ? `${readingTime}분` : `${readingTime} min`;
     return `
-    <div class="list-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" data-search-content="${cleanContent}" style="border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
-      <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
-      <div class="item-meta-row" style="margin-top: 0.25rem;">
-        <span class="status-badge">${post.category}</span>
-        <span class="item-date-text tabular-nums">${post.date} &middot; ${readingTimeLabel}</span>
+    <div class="blog-table-row blog-hover-item" data-category="${post.category}" data-date="${post.date}" data-title="${trans.title.toLowerCase()}" data-description="${trans.description.replace(/"/g, '&quot;')}" data-search-content="${cleanContent}">
+      <div class="col-title">
+        <a href="./${post.slug}/index.html" class="item-title-link">${trans.title}</a>
       </div>
-      <p class="item-description" style="margin-top: 0.5rem;">${trans.description}</p>
+      <div class="col-category">
+        <span class="status-badge">${post.category}</span>
+      </div>
+      <div class="col-date tabular-nums">${post.date}</div>
+      <div class="col-reading-time tabular-nums">${readingTimeLabel}</div>
     </div>
     `;
   }).join('\n');
@@ -1208,8 +1210,16 @@ languages.forEach(lang => {
       </div>
     </div>
     
-    <div class="list-container" id="blog-posts-list">
-      ${blogListings}
+    <div class="blog-table-container">
+      <div class="blog-table-header">
+        <div class="col-title">TITLE</div>
+        <div class="col-category">CATEGORY</div>
+        <div class="col-date">DATE</div>
+        <div class="col-reading-time">READ TIME</div>
+      </div>
+      <div class="blog-table-body" id="blog-posts-list">
+        ${blogListings}
+      </div>
     </div>
     <div id="blog-pagination-wrapper" class="blog-pagination-wrapper"></div>
   </div>

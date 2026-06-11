@@ -2107,3 +2107,113 @@ html.dark .chart-controls {
     gap: 0.35rem;
   }
 }
+
+/* Blog Table Layout (Claude style) */
+.blog-table-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-color);
+  margin-top: 1.5rem;
+}
+
+.blog-table-header {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.blog-table-row {
+  display: grid;
+  grid-template-columns: 3.5fr 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease, padding-left 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-table-row:hover {
+  background-color: var(--bg-secondary);
+  padding-left: 0.75rem;
+  padding-right: 0.25rem;
+}
+
+.blog-table-row .col-title {
+  min-width: 0;
+  padding-right: 1.5rem;
+}
+
+.blog-table-row .col-title a {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.blog-table-row .col-category {
+  font-size: 0.85rem;
+}
+
+.blog-table-row .col-date {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+}
+
+.blog-table-row .col-reading-time {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+}
+
+/* Responsive Table Layout for Blog List */
+@media (max-width: 768px) {
+  .blog-table-header {
+    display: none;
+  }
+  
+  .blog-table-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    padding: 1.25rem 0.5rem;
+  }
+
+  .blog-table-row:hover {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .blog-table-row .col-title {
+    padding-right: 0;
+    width: 100%;
+  }
+
+  .blog-table-row .col-title a {
+    white-space: normal;
+    font-size: 1.05rem;
+    max-width: 100%;
+  }
+
+  .blog-table-row .col-category,
+  .blog-table-row .col-date,
+  .blog-table-row .col-reading-time {
+    font-size: 0.8rem;
+  }
+}

@@ -279,7 +279,7 @@ function initBlogSearch() {
 
     // Show/hide all posts
     allPosts.forEach(post => {
-      post.style.display = pageItems.has(post) ? 'block' : 'none';
+      post.style.display = pageItems.has(post) ? '' : 'none';
     });
 
     // Re-append visible posts in sorted order (preserves DOM order = sorted order)
