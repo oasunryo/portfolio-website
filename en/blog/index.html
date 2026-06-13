@@ -117,26 +117,26 @@
       <div class="blog-table-body" id="blog-posts-list">
         
     <div class="blog-table-row blog-hover-item" data-category="Architecture" data-date="2026-06-03" data-title="engineering a resume into a system architecture" data-description="A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio." data-search-content="
-           a resume is ultimately a product to be engineered 
-           standard chronological resumes are boring and cannot show multi-dimensional structures. for semiconductor packaging engineers who need to show complex 3-stage process flow configurations, it is even worse. this portfolio was born with a single question:  &quot;what if i package my entire undergrad engineering career into a visual figma-blueprint workspace?&quot;  
-           my primary rule was to build a  zero-dependency core (pure html, css, client-side js)  without depending on heavy modern frameworks (react or vue). this kept initial load speeds instant and removed build complexities, putting rendering performance directly under vanilla control. 
-          
-           
-          
-           figma 3-stage layout & auto-zoom engine 
-           i structured projects into stage 1 (analog & hw core), stage 2 (digital & data), and stage 3 (osat & packaging), enclosing them in border: 2px dashed #9333ea component blocks. to prevent layout clip errors, i coded a dynamic scaling formula in main.js to keep aspect ratios pixel-perfect on any device. 
-          
-           
-          
-           resolving visual bugs 
-           
-              case 1. nested tree collapses : collapsed child tree elements leaked text. using child combinators (&gt;) instead of broad sibling rules kept overflow states localized. 
-              case 2. dynamic translation leaks : canvas labels missed ko/en locale updates. broadening the query selector to document-wide [data-ko] targets solved it. 
-              case 3. detail peek scroll cash : reopening peek panels kept scrolled offset positions. forcing a clear scrolltop = 0 trigger reset it clean. 
-              case 4. safari viewport gap & overlay cutoff : in ios safari, the top of the header appeared hollow, and opening modals left white borders at the top/bottom bars. by injecting `viewport-fit=cover`, safe-area-inset padding calculations, and forcing a black body background (`background-color: #000000 !important`) during modal active states, we resolved safari's safe area layout clipping and achieved seamless glassmorphic overlays. 
-              case 5. social website link integration & favicon path optimization : updated the globe social icon tooltip to 'visit dynamic portfolio' and pointed its link to the new production deployment (`https://portfolio-tau-five-85.vercel.app`). additionally, solved an issue where the favicon (favicon.svg) would not display on korean locale pages or specific localized subpaths due to absolute path references. by programmatically converting the favicon url to a relative path with cache busting query (`${relpath}logo/favicon.svg?v=1.0.1`) during compile time in build.js, we bypassed safari's aggressive favicon cache and ensured robust rendering across all subfolders. 
-           
-        ">
+         a resume is ultimately a product to be engineered 
+         standard chronological resumes are boring and cannot show multi-dimensional structures. for semiconductor packaging engineers who need to show complex 3-stage process flow configurations, it is even worse. this portfolio was born with a single question:  &quot;what if i package my entire undergrad engineering career into a visual figma-blueprint workspace?&quot;  
+         my primary rule was to build a  zero-dependency core (pure html, css, client-side js)  without depending on heavy modern frameworks (react or vue). this kept initial load speeds instant and removed build complexities, putting rendering performance directly under vanilla control. 
+        
+         
+        
+         figma 3-stage layout & auto-zoom engine 
+         i structured projects into stage 1 (analog & hw core), stage 2 (digital & data), and stage 3 (osat & packaging), enclosing them in border: 2px dashed #9333ea component blocks. to prevent layout clip errors, i coded a dynamic scaling formula in main.js to keep aspect ratios pixel-perfect on any device. 
+        
+         
+        
+         resolving visual bugs 
+         
+            case 1. nested tree collapses : collapsed child tree elements leaked text. using child combinators (&gt;) instead of broad sibling rules kept overflow states localized. 
+            case 2. dynamic translation leaks : canvas labels missed ko/en locale updates. broadening the query selector to document-wide [data-ko] targets solved it. 
+            case 3. detail peek scroll cash : reopening peek panels kept scrolled offset positions. forcing a clear scrolltop = 0 trigger reset it clean. 
+            case 4. safari viewport gap & overlay cutoff : in ios safari, the top of the header appeared hollow, and opening modals left white borders at the top/bottom bars. by injecting `viewport-fit=cover`, safe-area-inset padding calculations, and forcing a black body background (`background-color: #000000 !important`) during modal active states, we resolved safari's safe area layout clipping and achieved seamless glassmorphic overlays. 
+            case 5. social website link integration & favicon path optimization : updated the globe social icon tooltip to 'visit dynamic portfolio' and pointed its link to the new production deployment (`https://portfolio-tau-five-85.vercel.app`). additionally, solved an issue where the favicon (favicon.svg) would not display on korean locale pages or specific localized subpaths due to absolute path references. by programmatically converting the favicon url to a relative path with cache busting query (`${relpath}logo/favicon.svg?v=1.0.1`) during compile time in build.js, we bypassed safari's aggressive favicon cache and ensured robust rendering across all subfolders. 
+         
+      ">
       <div class="col-title">
         <a href="./semiconductor-packaging-whitepaper/index.html" class="item-title-link">Engineering a Resume into a System Architecture</a>
       </div>
@@ -149,15 +149,15 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-05-20" data-title="preparing to join global osat amkor technology" data-description="Reflecting on backend process packaging and testing knowledge built as an undergraduate before joining Amkor Technology Korea in July 2026." data-search-content="
-           semiconductor packaging is now leading performance scaling 
-           as front-end lithography hits physical boundaries, packaging technologies hold the key to performance boosts. i chose to join amkor technology korea, a premier global osat leader, and have focused on laying down practical backend fundamentals. 
-           i researched capillary dimensions in wire bonding to see how variables affect first-bond reliability, studied tsv interconnections for hbm, and modeled high-frequency signal integrity impedance matchings on pcbs. 
-          
-           
-          
-           my mission at amkor 
-           i will target defect rates in ultra-fine pitch bond lines under 50μm. by utilizing statistics and data tools like spotfire and originpro, i aim to map parameter correlations to improve manufacturing yields, growing into a data-driven troubleshooter. 
-        ">
+         semiconductor packaging is now leading performance scaling 
+         as front-end lithography hits physical boundaries, packaging technologies hold the key to performance boosts. i chose to join amkor technology korea, a premier global osat leader, and have focused on laying down practical backend fundamentals. 
+         i researched capillary dimensions in wire bonding to see how variables affect first-bond reliability, studied tsv interconnections for hbm, and modeled high-frequency signal integrity impedance matchings on pcbs. 
+        
+         
+        
+         my mission at amkor 
+         i will target defect rates in ultra-fine pitch bond lines under 50μm. by utilizing statistics and data tools like spotfire and originpro, i aim to map parameter correlations to improve manufacturing yields, growing into a data-driven troubleshooter. 
+      ">
       <div class="col-title">
         <a href="./amkor-technology-joining-2026/index.html" class="item-title-link">Preparing to Join Global OSAT Amkor Technology</a>
       </div>
@@ -170,15 +170,15 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Hardware" data-date="2026-04-18" data-title="verilog hdl debouncer design & gate propagation delay verification" data-description="Using a multi-stage shift register debouncer to eliminate switch bounce noise on a Cyclone II FPGA board and verifying a 5ns gate propagation delay with ModelSim." data-search-content="
-           physical switches are incredibly noisy 
-           when you press a tactile switch, the metal contacts bounce rapidly for milliseconds. on a 50mhz fpga, this mechanical chatter is read as hundreds of rapid inputs. an analog-to-digital filtering buffer is required. 
-          
-           
-          
-           debouncer architecture & modelsim timing 
-           i designed a 3-stage d-ff shift register debouncer in verilog hdl. it delays the switch logic until the signal remains stable for a set clock duration, suppressing mechanical bounce. 
-           using gate-level simulations in modelsim, i verified a 5ns wire propagation delay, confirming how physical lines affect digital signals. 
-        ">
+         physical switches are incredibly noisy 
+         when you press a tactile switch, the metal contacts bounce rapidly for milliseconds. on a 50mhz fpga, this mechanical chatter is read as hundreds of rapid inputs. an analog-to-digital filtering buffer is required. 
+        
+         
+        
+         debouncer architecture & modelsim timing 
+         i designed a 3-stage d-ff shift register debouncer in verilog hdl. it delays the switch logic until the signal remains stable for a set clock duration, suppressing mechanical bounce. 
+         using gate-level simulations in modelsim, i verified a 5ns wire propagation delay, confirming how physical lines affect digital signals. 
+      ">
       <div class="col-title">
         <a href="./fpga-verilog-digital-design/index.html" class="item-title-link">Verilog HDL Debouncer Design & Gate Propagation Delay Verification</a>
       </div>
@@ -191,15 +191,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Architecture" data-date="2026-06-04" data-title="from vibe coding to harness engineering: pushing ai coding limits" data-description="Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably." data-search-content="
-           natural language pleas have clear limits 
-           asking an llm chat screen to &quot;write this code&quot; is what andrej karpathy calls  &quot;vibe coding.&quot;  vibe coding lifts the entry floor for non-developers, but fails to raise the execution ceiling when engineering large-scale enterprise systems, as agents repeatedly commit logic bugs. 
-           this is where we need  &quot;harness engineering.&quot;  
-          
-           
-          
-           force ai agents to stay on course 
-           a harness acts like a horse's reins, locking the ai agent within a controlled execution sandbox. instead of giving agents unlimited scope and vague requests, we must build automated test runners (tdd) and strict code structure guidelines. designing constraint architectures is the modern software developer's real role. 
-        ">
+         natural language pleas have clear limits 
+         asking an llm chat screen to &quot;write this code&quot; is what andrej karpathy calls  &quot;vibe coding.&quot;  vibe coding lifts the entry floor for non-developers, but fails to raise the execution ceiling when engineering large-scale enterprise systems, as agents repeatedly commit logic bugs. 
+        
+         
+        
+         force ai agents to stay on course 
+         a harness acts like a horse's reins, locking the ai agent within a controlled execution sandbox. instead of giving agents unlimited scope and vague requests, we must build automated test runners (tdd) and strict code structure guidelines. designing constraint architectures is the modern software developer's real role. 
+      ">
       <div class="col-title">
         <a href="./vibe-coding-to-harness-engineering/index.html" class="item-title-link">From Vibe Coding to Harness Engineering: Pushing AI Coding Limits</a>
       </div>
@@ -212,14 +211,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-06-03" data-title="thinking can be outsourced, but understanding cannot" data-description="In the Software 3.0 era where LLMs handle coding logistics, what is the irreplaceable value of a human engineer?" data-search-content="
-           outsource the coding logistics, keep the system vision 
-           andrej karpathy delivered a powerful quote:  &quot;thinking can be outsourced, but understanding cannot.&quot;  the heavy cognitive load of writing boilerplate, fixing logic errors, and compiling data can now be shifted to ai. in 2026, ai coders write syntax faster than humans. 
-          
-           
-          
-           the core of real engineering 
-           what is left for the human engineer? it is  &quot;systemic understanding.&quot;  why this architecture fits the business logic, how real-world safety policies map to database schemas—this cannot be delegated. engineers who master this understanding will orchestrate teams of ai agents. 
-        ">
+         outsource the coding logistics, keep the system vision 
+         andrej karpathy delivered a powerful quote:  &quot;thinking can be outsourced, but understanding cannot.&quot;  the heavy cognitive load of writing boilerplate, fixing logic errors, and compiling data can now be shifted to ai. in 2026, ai coders write syntax faster than humans. 
+        
+         
+        
+         the core of real engineering 
+         what is left for the human engineer? it is  &quot;systemic understanding.&quot;  why this architecture fits the business logic, how real-world safety policies map to database schemas—this cannot be delegated. engineers who master this understanding will orchestrate teams of ai agents. 
+      ">
       <div class="col-title">
         <a href="./thinking-vs-understanding-karpathy/index.html" class="item-title-link">Thinking Can Be Outsourced, But Understanding Cannot</a>
       </div>
@@ -232,14 +231,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Architecture" data-date="2026-06-01" data-title="maximizing ai agent efficiency via the "tool diet" strategy" data-description="Why overloading LLM agents with too many APIs degrades performance, and how minimalist toolkits build smarter assistants." data-search-content="
-           ai agents suffer from choice overload too 
-           giving a developer agent terminal access, web searching, file editing, and databases all at once seems optimal, but it is counter-productive. with too many tool choices, agents waste tokens choosing which tools to use rather than thinking about the coding task. decisional paralysis happens in silicon too. 
-          
-           
-          
-           fewer tools yield smarter reasoning 
-           applying a  &quot;tool diet&quot;  improves success rates. by provisioning only 2 or 3 critical apis needed for the immediate sub-task, we keep decision trees small. this focuses the llm's reasoning purely on logical verification and output quality. 
-        ">
+         ai agents suffer from choice overload too 
+         giving a developer agent terminal access, web searching, file editing, and databases all at once seems optimal, but it is counter-productive. with too many tool choices, agents waste tokens choosing which tools to use rather than thinking about the coding task. decisional paralysis happens in silicon too. 
+        
+         
+        
+         fewer tools yield smarter reasoning 
+         applying a  &quot;tool diet&quot;  improves success rates. by provisioning only 2 or 3 critical apis needed for the immediate sub-task, we keep decision trees small. this focuses the llm's reasoning purely on logical verification and output quality. 
+      ">
       <div class="col-title">
         <a href="./agent-tool-diet-strategy/index.html" class="item-title-link">Maximizing AI Agent Efficiency via the "Tool Diet" Strategy</a>
       </div>
@@ -252,14 +251,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Architecture" data-date="2026-05-29" data-title="folder structure is a giant prompt: the broken windows theory in ai coding" data-description="Dirty workspace directories breed messy code generations. Why neat physical architectures dictate AI quality." data-search-content="
-           a messy workspace guides ai to generate messy code 
-           if your project root is littered with temp files and inconsistent naming conventions, the ai agent will follow suit and generate poor quality code. the  broken windows theory  applies directly to ai development. agents absorb the workspace layout as context before beginning their task. 
-          
-           
-          
-           clean files drive high-quality outputs 
-           keeping directory structures logical acts as a continuous silent prompt. when an agent reads clean components and unified css variables, it mimics that neat coding style. tidying up your directories is the highest leverage prompt engineering. 
-        ">
+         a messy workspace guides ai to generate messy code 
+         if your project root is littered with temp files and inconsistent naming conventions, the ai agent will follow suit and generate poor quality code. the  broken windows theory  applies directly to ai development. agents absorb the workspace layout as context before beginning their task. 
+        
+         
+        
+         clean files drive high-quality outputs 
+         keeping directory structures logical acts as a continuous silent prompt. when an agent reads clean components and unified css variables, it mimics that neat coding style. tidying up your directories is the highest leverage prompt engineering. 
+      ">
       <div class="col-title">
         <a href="./clean-folder-structure-as-prompt/index.html" class="item-title-link">Folder Structure is a Giant Prompt: The Broken Windows Theory in AI Coding</a>
       </div>
@@ -272,18 +271,18 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-06-01" data-title="building a private local "notebooklm" on an 8gb ram macbook" data-description="How to build a low-resource private research pipeline by integrating Zotero 7, Safari, and Obsidian (Copilot + Gemini API)." data-search-content="
-           no need to exhaust your local gpu for llm inference 
-           running heavy offline models on an 8gb ram mac causes thermal throttling and lags your workflow. alternatively, uploading intellectual property to third-party web apps is tedious. the solution is integrating  zotero 7, safari, and obsidian with gemini apis . 
-          
-           
-          
-           the 3-step research loop 
-           
-              zotero 7 & stoplight reading : save articles in safari directly to zotero, highlighting critical sections in red (foundational), yellow (citation candidate), or green (context). 
-              obsidian sync : pull annotations dynamically using zotero integration and local css snippets, syncing highlighted notes directly into neat callouts. 
-              gemini reasoning : wire your free gemini 2.0 api key to obsidian copilot. with a 1-to-2 million token context window, gemini reads your entire note library, generating outlines in seconds without using local memory. 
-           
-        ">
+         no need to exhaust your local gpu for llm inference 
+         running heavy offline models on an 8gb ram mac causes thermal throttling and lags your workflow. alternatively, uploading intellectual property to third-party web apps is tedious. the solution is integrating  zotero 7, safari, and obsidian with gemini apis . 
+        
+         
+        
+         the 3-step research loop 
+         
+            zotero 7 & stoplight reading : save articles in safari directly to zotero, highlighting critical sections in red (foundational), yellow (citation candidate), or green (context). 
+            obsidian sync : pull annotations dynamically using zotero integration and local css snippets, syncing highlighted notes directly into neat callouts. 
+            gemini reasoning : wire your free gemini 2.0 api key to obsidian copilot. with a 1-to-2 million token context window, gemini reads your entire note library, generating outlines in seconds without using local memory. 
+         
+      ">
       <div class="col-title">
         <a href="./private-notebooklm-safari-obsidian/index.html" class="item-title-link">Building a Private Local "NotebookLM" on an 8GB RAM MacBook</a>
       </div>
@@ -296,14 +295,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-06-02" data-title="building "a semiconductor rookie's ai survival log" brand strategy" data-description="Positioning a mentoring brand for tech students by leveraging career counseling backgrounds and real-world engineer reality." data-search-content="
-           the advantage of positioning as a rookie engineer 
-           vague declarations by tech prophets often alienate engineering students. in contrast, hearing a career mentor who recently entered amkor technology share their day-to-day ai toolsets is practical. i created  &quot;a semiconductor rookie's ai survival log&quot;  around this approach. 
-          
-           
-          
-           merging engineering with storytelling 
-           my strength is combining electrical engineering with my background at stairs crusher club and experiences founding a career clinic. i will structure content around 1-minute career solutions, guiding students on surviving in the ai era. 
-        ">
+         the advantage of positioning as a rookie engineer 
+         vague declarations by tech prophets often alienate engineering students. in contrast, hearing a career mentor who recently entered amkor technology share their day-to-day ai toolsets is practical. i created  &quot;a semiconductor rookie's ai survival log&quot;  around this approach. 
+        
+         
+        
+         merging engineering with storytelling 
+         my strength is combining electrical engineering with my background at stairs crusher club and experiences founding a career clinic. i will structure content around 1-minute career solutions, guiding students on surviving in the ai era. 
+      ">
       <div class="col-title">
         <a href="./creator-business-strategy-roadmap/index.html" class="item-title-link">Building "A Semiconductor Rookie's AI Survival Log" Brand Strategy</a>
       </div>
@@ -316,14 +315,14 @@
     
 
     <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-05-28" data-title=""build with, not for": why human-centered engineering matters" data-description="Focusing on solving real user inconveniences rather than showing off technical complexity." data-search-content="
-           speed of solving pain points beats technology hype 
-           my guiding rule is:  &quot;build with, not for.&quot;  developers often fall in love with complex algorithms, ignoring the user's friction. technology holds value only when complexity is hidden, delivering a fast solution to the operator. 
-          
-           
-          
-           the engineer's true mindset 
-           whether tracing defect trends or visualizing yield diagnostics on a factory line, creating a dashboard that machine operators can action instantly is far more impactful than pitching deep neural networks. engineering is always about human utility. 
-        ">
+         speed of solving pain points beats technology hype 
+         my guiding rule is:  &quot;build with, not for.&quot;  developers often fall in love with complex algorithms, ignoring the user's friction. technology holds value only when complexity is hidden, delivering a fast solution to the operator. 
+        
+         
+        
+         the engineer's true mindset 
+         whether tracing defect trends or visualizing yield diagnostics on a factory line, creating a dashboard that machine operators can action instantly is far more impactful than pitching deep neural networks. engineering is always about human utility. 
+      ">
       <div class="col-title">
         <a href="./build-with-not-for-philosophy/index.html" class="item-title-link">"Build with, not for": Why Human-Centered Engineering Matters</a>
       </div>

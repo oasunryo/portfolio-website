@@ -306,6 +306,17 @@
         <section class="recommended-section">
           <h3 class="recommended-title">다른 프로젝트 둘러보기</h3>
           <div class="recommended-grid" id="recommended-projects-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
         </section>
 
         <!-- Embedded markdown database for LLM text copying -->
@@ -315,19 +326,24 @@
 
         <script>
           document.addEventListener('DOMContentLoaded', () => {
-            const allProjects = [{"slug":"capillary-bonding","category":"OSAT & 후공정","title":"Ceramic Capillary Geometry","description":"반도체 와이어 본딩 캐필러리 형상이 First Bond 불량 모드 및 접합 신뢰성에 미치는 기계적 메커니즘을 규명하고 최적 파라미터를 도출합니다."},{"slug":"packaging-test","category":"반도체 이론","title":"Packaging & Test Fundamentals","description":"WLCSP, Flip-Chip, TSV 적층 HBM 이론부터 Warpage 휨 해석 및 SI 임피던스 매칭을 다루는 후공정 종합 엔지니어링 리서치입니다."},{"slug":"fpga-verilog","category":"디지털 회로","title":"FPGA & Verilog HDL Systems","description":"Altera DE2 Cyclone II 보드 환경에서 버튼 글리치 제거용 Debouncing 및 가변 분주 BCD 카운터를 설계하여 5ns 전파 딜레이를 검증합니다."},{"slug":"euv-photoresist","category":"전공정 노광","title":"TinNO₃ EUV Photoresist","description":"나노 스케일 EUV 리소그래피 한계 극복을 위한 무기 주석 옥소 클러스터 기반 PR 감도 향상 및 건식 식각 저항 메커니즘을 탐구합니다."},{"slug":"spotfire-analytics","category":"수율 분석","title":"Spotfire Process Analytics","description":"반도체 대공정 설비 로그 데이터셋을 Spotfire 시각화 프로파일링하여 전위 및 Defect 발생 유발 파라미터 간 상관관계를 통계적으로 도출합니다."},{"slug":"ac-power-meter","category":"임베디드","title":"MCU AC Power Meter","description":"Microcontroller 기반 AC 단상 전력 측정 모듈을 구현하여 전류/전압 실시간 센싱 및 전력 계산 텔레메트리 캘리브레이션을 진행합니다."},{"slug":"audio-level-meter","category":"아날로그 회로","title":"3-Band Audio Level Meter","description":"Sallen-Key 구조 Active Filter 회로를 설계 및 검증하여 오디오 주파수 대역을 3개 밴드로 물리 분할하는 전압 증폭 검출 시스템을 개발합니다."},{"slug":"battery-charger","category":"전력 전자","title":"CC-CV Li-Ion Charger","description":"리튬이온 배터리 안전 충전을 위한 CC-CV 전력 토폴로지 제어 보드를 실장하고 ADC 센싱 정밀 리포팅 회로망을 설계 및 캘리브레이션합니다."},{"slug":"battery-soc-tester","category":"임베디드","title":"Dynamic Battery SOC Tester","description":"OCV-CCV 내부 임피던스 동적 오차 보상 수식을 임베디드 펌웨어 상에 적용하여 충전잔량(SOC) 측정 정밀도를 혁신한 계측 툴 개발 프로젝트입니다."},{"slug":"ito-oled-analysis","category":"반도체 소자 & 공정","title":"ITO-based OLED Fabrication","description":"ITO 투명 전극 가공, 유기 발광층 Blade Coating 및 열처리를 통해 OLED 소자를 직접 제작하고 J-V-L 전기광학적 성능을 정량 분석한 프로젝트입니다."}];
-            const currentSlug = "ac-power-meter";
+            const recommended = [{"slug":"battery-charger","category":"Power Electronics","title":"CC-CV Li-Ion Charger","description":"Implementing a CC-CV power charging controller board, designing precision ADC sensing lines, and calibrating safety logs.","date":"2024-09-01","score":28},{"slug":"audio-level-meter","category":"Analog Circuits","title":"3-Band Audio Level Meter","description":"Designing a Sallen-Key Active Filter topology to separate audio frequencies into three bands and capture peak amplitude envelopes.","date":"2025-03-01","score":22},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware.","date":"2024-03-01","score":19}];
             const recommendedGrid = document.getElementById('recommended-projects-grid');
             
             if (recommendedGrid) {
-              const filtered = allProjects.filter(p => p.slug !== currentSlug);
-              const shuffled = filtered.sort(() => 0.5 - Math.random());
-              const selected = shuffled.slice(0, 3);
-              
-              recommendedGrid.innerHTML = selected.map(p => `
+              recommendedGrid.innerHTML = recommended.map(p => `
                 <a href="../${p.slug}/index.html" class="recommended-card">
                   <div class="recommended-card-meta">
-                    <span class="recommended-card-category">${p.category}</span>
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
                   </div>
                   <h4 class="recommended-card-title">${p.title}</h4>
                   <p class="recommended-card-desc">${p.description}</p>

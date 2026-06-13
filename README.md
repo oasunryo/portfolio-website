@@ -16,6 +16,9 @@
 
 - **한국어 / English** 이중 언어 지원 (`/ko`, `/en`)
 - **다크 / 라이트 모드** 토글 (localStorage 기반 테마 유지)
+- **Gemini Embeddings Similarity Recommendation System (임베딩 기반 콘텐츠 연관 추천)** — Google Gemini API (`gemini-embedding-2` 모델)를 통해 다차원 텍스트 임베딩 벡터를 추출하여 각 글/프로젝트 간의 코사인 유사도(Cosine Similarity)를 사전 계산하고, 의미론적으로 가장 연관도가 높은 상위 3개 콘텐츠를 자동 추천 (블로그 탭에서는 블로그 글만, 프로젝트 탭에서는 프로젝트만 각각 분리하여 정합성 있게 매칭).
+- **Incremental Language-Prefixed Caching & Free-Tier Rate Limiting** — API 호출 제한(100 RPM) 극복을 위해 650ms 딜레이를 적용하고, 성공 시 즉시 파일 시스템에 캐싱(`ko_`, `en_` 접두사 분리)하여 100% 캐시 적중률을 달성. API 단절 시 로컬 TF-IDF 연산으로 자동 전환되는 회복성(Fallback) 탑재.
+- **Collapsible Details Explanation (연관도 계산 정보 컴포넌트)** — 추천 리스트 하단에 누르면 연관도가 계산되는 과정(Gemini 임베딩, 코사인 유사도, TF-IDF 로컬 대체 기준 등)을 상세하고 깔끔하게 설명하는 아코디언 컴포넌트 내장.
 - **블로그 (40+ 기술 포스트)** — 반도체(Semiconductor) 및 커리어(Career) 카테고리로 전문화된 40여 개의 기술 포스트. 모듈 독립성 확보를 위해 `newBlogPosts.js`로 분리하여 빌드 시스템에 통합.
 - **usePagination 기반 페이지네이션** — 블로그 글을 페이지당 10개씩 똑똑하게 쪼개어 노출하며, 5페이지 미만일 때는 말줄임표(`…`)가 노출되지 않도록 디테일한 에러 핸들링이 가미된 렌더링 지원.
 - **Zero-Gravity Kinetic Scroll (무중력 스크롤)** — 각 페이지네이션 동작 또는 헤더 스크롤링 시, 5차 감속 곡선(`easeOutQuint`)과 1.6초(`1600ms`) 듀레이션이 결합된 커스텀 이징 수식을 구동하여 부드럽고 세련된 무중력 부유 스크롤 메커니즘을 지원.
