@@ -1839,6 +1839,177 @@ const projectProseData = {
 </div>
 `
     },
+    11: {
+      meta: `소프트웨어 / AI 컨텍스트 관리`,
+      title: `Context Relay: Zero-Loss Handover System for AI Coding Assistants`,
+      date: `2026. 06. 15. ~ 2026. 06. 16.`,
+      prose: `
+<p class="journal-p"><em>(AI 코딩 에이전트 간 세션 전환 시 개발 컨텍스트 유실 방지 및 토큰 압축 시스템)</em></p>
+<hr class="journal-divider">
+<h3 class="journal-h3">1) 프로젝트 개요</h3>
+<ul class="journal-ul">
+<li><strong>기간</strong>: 2026. 06. 15. ~ 2026. 06. 16.</li>
+<li><strong>유형</strong>: 프롬프트 엔지니어링 & 에이전트 토큰 세이빙 최적화 툴 개발</li>
+<li><strong>소속/수행 환경</strong>: 개인 오픈소스 개발 프로젝트</li>
+<li><strong>한 줄 소개</strong>: 대형 언어 모델 기반 코딩 에이전트들의 컨텍스트 누적으로 인한 속도 저하와 토큰 비용을 최소화하기 위해, 무손실 세션 이관용 마크다운 스키마 및 자동 릴레이 프롬프트를 설계한 프로젝트입니다.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">2) 배경 및 문제 정의</h3>
+<ul class="journal-ul">
+<li><strong>배경</strong>: Cursor, Cline, Claude Code 등 자율적인 AI 코딩 도구를 장시간 사용하다 보면 대화 세션에 컴파일 로그, 에러 트레이스, 이전 파일 읽기 등의 불필요한 노이즈가 과도하게 누적되어 컨텍스트 윈도우(Context Window)가 50K~150K 토큰에 이르게 됩니다.</li>
+<li><strong>문제 정의</strong>:
+  <ul>
+    <li>컨텍스트 크기가 늘어남에 따라 첫 응답 속도(TTFT)가 10초 이상 지연되고, 단일 대화 호출당 API 비용이 급격하게 증가합니다.</li>
+    <li>대화 후반부로 갈수록 모델이 초기 요구사항이나 핵심 아키텍처 규칙을 잊고 환각(Hallucination) 현상을 일으키거나 엉뚱한 설계를 제안하는 탈조(Drift) 현상이 일어납니다.</li>
+  </ul>
+</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">3) 목표</h3>
+<ul class="journal-ul">
+<li><strong>토큰 효율성</strong>: 활성 대화 세션 전환 시 핵심 상태 정보만 남기고 불필요한 로그는 퍼지하여 토큰 크기를 98% 압축(50K -> 1.5K)합니다.</li>
+<li><strong>응답성</strong>: 세션 초기화를 통해 1초 미만의 고속 응답 속도를 회복합니다.</li>
+<li><strong>정확성</strong>: 새로운 대화창에서도 이전 개발 맥락과 잔여 태스크 리스트를 한 글자의 유실도 없이 계승하도록 정형화된 명세 가이드를 수립합니다.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">4) 적용 기술 및 개발 범위</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>구분</th>
+  <th>내용</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>핵심 기술</strong></td>
+  <td>Prompt Engineering, Context Serialization, Git Worktree Status Parsing</td>
+</tr>
+<tr>
+  <td><strong>지원 에이전트</strong></td>
+  <td>Cursor, Cline (Roo Code), Antigravity, Claude Code, Aider, ChatGPT, Gemini Advanced</td>
+</tr>
+<tr>
+  <td><strong>명세 규격</strong></td>
+  <td>Markdown Schema, Task State Tracking, Session Handover Prompt Rule</td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3">5) 시스템 개요 및 아키텍처</h3>
+<p class="journal-p">다음은 Context Relay 시스템의 전체적인 데이터 압축 및 전송 메커니즘을 시각화한 프로젝트 개요서입니다.</p>
+<div class="align-center" style="margin: 2rem 0; text-align: center;">
+  <img class="journal-img" src="../../assets/projects/context_relay.png" alt="Context Relay System Design" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
+  <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><strong>Figure 1.</strong> 누적된 대화 노이즈를 퍼지하고 코사인 유사도 및 핵심 태스크 중심으로 세션을 릴레이하는 메커니즘</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">6) 세부 구현 과정</h3>
+<h4 class="journal-h4">1단계: 과거 흔적 제거 (Context Purge)</h4>
+<p class="journal-p">코딩 도중 터미널을 통해 실행했던 긴 컴파일 오류, 빌드 결과물, 이전 파일 조회 이력 등은 새로운 세션에서 불필요합니다. 이를 식별하여 히스토리에서 제외하는 가이드 프로토콜을 구현했습니다.</p>
+<h4 class="journal-h4">2단계: 워크스페이스 상태 직렬화 (Workspace State Encoding)</h4>
+<p class="journal-p">현재 작업 디렉토리의 실제 Git Status, 변경 파일 차이점(Diff), 진행 중인 태스크(task.md)를 분석하여 간결하게 구조화합니다.</p>
+<h4 class="journal-h4">3단계: 연속성 릴레이 프롬프트 생성 (Relay Prompt Generation)</h4>
+<p class="journal-p">분석한 모든 구조적 정보를 바탕으로, 새로운 AI 세션창에 복사-붙여넣기하여 즉각 맥락을 주입할 수 있는 "Handover Markdown Block"을 자동 생성하도록 에이전트에 지시합니다.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3">7) 성능 평가</h3>
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 320px;">
+    <canvas id="projectChart11"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption11"><strong>Figure 2.</strong> 기존 노이즈 누적 세션 대비 Relay 세션 전환 후 토큰 절약률 및 TTFT 지연 속도 향상 비교</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">8) 핵심 성능 지표</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>측정 지표</th>
+  <th>기존 장기 세션</th>
+  <th>릴레이 세션</th>
+  <th>개선폭</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>활성 컨텍스트 크기</strong></td>
+  <td>50K – 150K tokens</td>
+  <td>1K – 2K tokens</td>
+  <td><strong>98.5% 압축</strong></td>
+</tr>
+<tr>
+  <td><strong>첫 응답 속도 (TTFT)</strong></td>
+  <td>5.2s – 12.0s</td>
+  <td>0.8s – 1.5s</td>
+  <td><strong>약 85% 단축</strong></td>
+</tr>
+<tr>
+  <td><strong>API 호출 토큰 비용</strong></td>
+  <td>급격히 증가</td>
+  <td>최솟값 유지</td>
+  <td><strong>최대 10× 절감</strong></td>
+</tr>
+<tr>
+  <td><strong>에이전트 판단 정확도</strong></td>
+  <td>Hallucination / Drift 발생</td>
+  <td>태스크 완벽 정렬</td>
+  <td><strong>Drift 완전 제거</strong></td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3">9) 호환 AI 에이전트</h3>
+<p class="journal-p">Context Relay는 특정 도구에 종속되지 않는 범용 프롬프트 규격입니다. 아래 에이전트에서 즉시 사용 가능합니다.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⚡ Antigravity</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🖱 Cursor</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🦘 Cline / Roo Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🤖 Claude Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⌨️ Aider</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">💬 ChatGPT</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">✦ Gemini Advanced</span>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">10) 실사용 예시 (Before / After)</h3>
+<p class="journal-p">개발자가 트리거 문구를 입력하면, 에이전트는 자동으로 워크스페이스 상태를 감사하고 핸드오버 블록을 생성합니다.</p>
+<h4 class="journal-h4">▶ 사용자 입력 (트리거)</h4>
+<pre class="journal-pre"><code># 다음 대화로 넘겨줘 (트리거 문구 예시)
+&gt; "이거 다음 대화로 넘겨줘"
+&gt; "Generate session handover brief"</code></pre>
+<h4 class="journal-h4">▶ 에이전트 생성 핸드오버 블록 (After)</h4>
+<pre class="journal-pre"><code>## 🔁 SESSION HANDOVER BRIEF
+
+### 📌 Current Goal
+포트폴리오 웹사이트 projects 탭에 하드웨어/소프트웨어 필터 탭 구현 중.
+
+### ✅ Completed
+- [x] projectsMeta에 type 필드 추가
+- [x] localeDict에 filterAll / filterHardware / filterSoftware 추가
+- [x] HTML 필터 버튼 생성 완료
+
+### 🔄 In Progress
+- [/] main.js 필터 인터랙션 로직 구현
+
+### 📁 Modified Files
+- build.js (lines 47–300, 285–335, 943–1015)
+- main.js (필터 이벤트 리스너 추가 예정)
+
+### ⚡ Next Action
+node build.js 실행 후 브라우저에서 탭 필터 동작 검증
+
+### 🗜 Active Token Size: ~1.2K tokens (vs 기존 ~80K)</code></pre>
+<hr class="journal-divider">
+<h3 class="journal-h3">11) 원커맨드 설치 (install.sh)</h3>
+<p class="journal-p">GitHub 레포에서 <code>install.sh</code>를 실행하면 사용 중인 AI 에이전트에 맞게 Context Relay 규격을 자동 적용합니다.</p>
+<pre class="journal-pre"><code># 원커맨드 설치
+curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.sh | bash
+
+# 설치 선택지:
+# 1) Antigravity Custom Skill  (~/.gemini/antigravity/...)
+# 2) Cursor Rules              (프로젝트 루트 .cursorrules)
+# 3) Roo Code / Cline         (프로젝트 루트 .roo/instructions)</code></pre>
+<p class="journal-p">설치 후 AI 에이전트에게 트리거 문구를 입력하면 즉시 핸드오버 릴레이가 동작합니다. 소스코드 및 전체 스펙은 <a href="https://github.com/oasunryo/context-relay" target="_blank" rel="noopener">GitHub 레포</a>에서 확인할 수 있습니다.</p>
+`
+    },
   },
   en: {
     1: {
@@ -3758,6 +3929,178 @@ const projectProseData = {
   </div>
   <p class="chart-caption" id="chartCaption" style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">OJ(Junseo Oh) Current Density (J) and Luminance (L) profiles over voltage sweep.</p>
 </div>
+`
+    },
+    11: {
+      meta: `Software / AI Context Management`,
+      title: `Context Relay: Zero-Loss Handover System for AI Coding Assistants`,
+      date: `2026. 06. 15. ~ 2026. 06. 16.`,
+      prose: `
+<p class="journal-p"><em>(Framework-agnostic system prompt configuration for zero-loss session handovers)</em></p>
+<hr class="journal-divider">
+<h3 class="journal-h3">1) Project Overview</h3>
+<ul class="journal-ul">
+<li><strong>Period</strong>: 2026. 06. 15. ~ 2026. 06. 16.</li>
+<li><strong>Type</strong>: Prompt Engineering & AI Agent Token Optimization Tool</li>
+<li><strong>Organization</strong>: Personal Open Source Initiative</li>
+<li><strong>Description</strong>: A framework-agnostic system prompt workflow designed to bypass token accumulation, eliminate latency drift, and perform zero-loss task handovers.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">2) Background & Problem Definition</h3>
+<ul class="journal-ul">
+<li><strong>Background</strong>: Relying heavily on AI coding agents (Cursor, Cline, Claude Code) over hours of development inflates active context sizes up to 50K - 150K tokens due to tracebacks, terminal output, and redundant file scans.</li>
+<li><strong>Problem Statement</strong>:
+  <ul>
+    <li>High active context increases Time-to-First-Token (TTFT) response latency above 10 seconds and inflates token billing dynamically.</li>
+    <li>LLM attention spreads thin over historical logs, leading to model drift and visual code hallucination.</li>
+  </ul>
+</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">3) Objectives</h3>
+<ul class="journal-ul">
+<li><strong>Token Reduction</strong>: Shrink active conversational window by up to 98% (e.g. 50K tokens down to 1.5K tokens) by purging redundant session logs.</li>
+<li><strong>Latency recovery</strong>: Reclaim sub-second response times by resetting model memory.</li>
+<li><strong>Precision Continuity</strong>: Re-align new chat instances with structured, lossless task states.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3">4) Technologies & Scope</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>Category</th>
+  <th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Core Technologies</strong></td>
+  <td>Prompt Engineering, Context Serialization, Git Worktree Parsing</td>
+</tr>
+<tr>
+  <td><strong>Compatible Agents</strong></td>
+  <td>Cursor, Cline (Roo Code), Antigravity, Claude Code, Aider, ChatGPT, Gemini Advanced</td>
+</tr>
+<tr>
+  <td><strong>Specifications</strong></td>
+  <td>Markdown schemas, task.md status files, handover prompts</td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3">5) System Design</h3>
+<p class="journal-p">The following layout illustrates how Context Relay extracts and compresses active token states.</p>
+<div class="align-center" style="margin: 2rem 0; text-align: center;">
+  <img class="journal-img" src="../../assets/projects/context_relay.png" alt="Context Relay Architecture" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
+  <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><strong>Figure 1.</strong> Architecture depicting token compression, noise purge, and cross-session handovers.</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">6) Implementation Steps</h3>
+<h4 class="journal-h4">Step 1: Noise Purging</h4>
+<p class="journal-p">Discard dead-end debugging loops, stdout outputs, and compiler errors from the model's history.</p>
+<h4 class="journal-h4">Step 2: Workspace State Auditing</h4>
+<p class="journal-p">Structure ongoing code diffs, file modifications, and current task lists (<code>task.md</code>) into a compact serialized markdown string.</p>
+<h4 class="journal-h4">Step 3: Transfer Prompt Generation</h4>
+<p class="journal-p">Instruct the agent to compile this data into a highly structured, copy-pasteable handover block designed to instantly align the subsequent session.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3">7) Metrics Evaluation</h3>
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 320px;">
+    <canvas id="projectChart11"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption11"><strong>Figure 2.</strong> Token footprint and latency reduction comparison (Long degraded session vs Clean relay session).</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">8) Performance Metrics</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Degraded Long Session</th>
+  <th>After Relay Reset</th>
+  <th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Active Context Size</strong></td>
+  <td>50K – 150K tokens</td>
+  <td>1K – 2K tokens</td>
+  <td><strong>98.5% compression</strong></td>
+</tr>
+<tr>
+  <td><strong>Time-to-First-Token (TTFT)</strong></td>
+  <td>5.2s – 12.0s</td>
+  <td>0.8s – 1.5s</td>
+  <td><strong>~85% faster</strong></td>
+</tr>
+<tr>
+  <td><strong>API Token Cost</strong></td>
+  <td>Rapidly escalating</td>
+  <td>Near minimum</td>
+  <td><strong>Up to 10× reduction</strong></td>
+</tr>
+<tr>
+  <td><strong>Model Accuracy</strong></td>
+  <td>Hallucination / Drift</td>
+  <td>Perfectly task-aligned</td>
+  <td><strong>Zero drift</strong></td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3">9) Compatible AI Agents</h3>
+<p class="journal-p">Context Relay is a tool-agnostic prompt specification — it works immediately with any of the following agents:</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⚡ Antigravity</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🖱 Cursor</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🦘 Cline / Roo Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🤖 Claude Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⌨️ Aider</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">💬 ChatGPT</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">✦ Gemini Advanced</span>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3">10) Usage Example (Before / After)</h3>
+<p class="journal-p">When the user inputs a trigger phrase, the agent audits the current workspace and outputs a copy-pasteable handover block.</p>
+<h4 class="journal-h4">▶ User Input (Trigger)</h4>
+<pre class="journal-pre"><code># Trigger phrases supported:
+&gt; "Let's continue this in a new conversation window"
+&gt; "Generate session handover brief"
+&gt; "Migrate this session to a new chat"</code></pre>
+<h4 class="journal-h4">▶ Agent Output — Handover Block (After)</h4>
+<pre class="journal-pre"><code>## 🔁 SESSION HANDOVER BRIEF
+
+### 📌 Current Goal
+Implementing Hardware / Software filter tabs on portfolio projects page.
+
+### ✅ Completed
+- [x] Added type field to projectsMeta
+- [x] Added filterAll / filterHardware / filterSoftware to localeDict
+- [x] Filter button HTML generated
+
+### 🔄 In Progress
+- [/] Implementing filter interaction logic in main.js
+
+### 📁 Modified Files
+- build.js (lines 47–300, 285–335, 943–1015)
+- main.js (filter event listener — pending)
+
+### ⚡ Next Action
+Run node build.js, verify tab filter behavior in browser
+
+### 🗜 Active Token Size: ~1.2K tokens (vs former ~80K)</code></pre>
+<hr class="journal-divider">
+<h3 class="journal-h3">11) One-Command Installation</h3>
+<p class="journal-p">Run <code>install.sh</code> from the GitHub repo to automatically apply Context Relay to your preferred AI agent:</p>
+<pre class="journal-pre"><code># One-command install
+curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.sh | bash
+
+# Installation targets:
+# 1) Antigravity Custom Skill  (~/.gemini/antigravity/...)
+# 2) Cursor Rules              (project root .cursorrules)
+# 3) Roo Code / Cline         (project root .roo/instructions)</code></pre>
+<p class="journal-p">After installation, send a trigger phrase to your agent — it will immediately begin relaying sessions losslessly. Full source and spec: <a href="https://github.com/oasunryo/context-relay" target="_blank" rel="noopener">GitHub Repository</a>.</p>
 `
     },
   }

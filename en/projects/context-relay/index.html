@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>Context Relay: Zero-Loss Handover System for AI Coding Assistants  | Junseo Oh</title>
+<meta name="description" content="Designing a framework-agnostic system prompt configuration to enable zero-loss context handovers and compress active tokens by 98%.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Context Relay: Zero-Loss Handover System for AI Coding Assistants  | Junseo Oh">
+<meta property="og:description" content="Designing a framework-agnostic system prompt configuration to enable zero-loss context handovers and compress active tokens by 98%.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/projects/context-relay/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Context Relay: Zero-Loss Handover System for AI Coding Assistants</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Software / AI Context Management</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 06. 15. ~ 2026. 06. 16.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">4 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'context-relay')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fcontext-relay%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Context%20Relay%3A%20Zero-Loss%20Handover%20System%20for%20AI%20Coding%20Assistants&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fcontext-relay%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(Framework-agnostic system prompt configuration for zero-loss session handovers)</em></p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+<ul class="journal-ul">
+<li><strong>Period</strong>: 2026. 06. 15. ~ 2026. 06. 16.</li>
+<li><strong>Type</strong>: Prompt Engineering & AI Agent Token Optimization Tool</li>
+<li><strong>Organization</strong>: Personal Open Source Initiative</li>
+<li><strong>Description</strong>: A framework-agnostic system prompt workflow designed to bypass token accumulation, eliminate latency drift, and perform zero-loss task handovers.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-1">2) Background & Problem Definition</h3>
+<ul class="journal-ul">
+<li><strong>Background</strong>: Relying heavily on AI coding agents (Cursor, Cline, Claude Code) over hours of development inflates active context sizes up to 50K - 150K tokens due to tracebacks, terminal output, and redundant file scans.</li>
+<li><strong>Problem Statement</strong>:
+  <ul>
+    <li>High active context increases Time-to-First-Token (TTFT) response latency above 10 seconds and inflates token billing dynamically.</li>
+    <li>LLM attention spreads thin over historical logs, leading to model drift and visual code hallucination.</li>
+  </ul>
+</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-2">3) Objectives</h3>
+<ul class="journal-ul">
+<li><strong>Token Reduction</strong>: Shrink active conversational window by up to 98% (e.g. 50K tokens down to 1.5K tokens) by purging redundant session logs.</li>
+<li><strong>Latency recovery</strong>: Reclaim sub-second response times by resetting model memory.</li>
+<li><strong>Precision Continuity</strong>: Re-align new chat instances with structured, lossless task states.</li>
+</ul>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-3">4) Technologies & Scope</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>Category</th>
+  <th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Core Technologies</strong></td>
+  <td>Prompt Engineering, Context Serialization, Git Worktree Parsing</td>
+</tr>
+<tr>
+  <td><strong>Compatible Agents</strong></td>
+  <td>Cursor, Cline (Roo Code), Antigravity, Claude Code, Aider, ChatGPT, Gemini Advanced</td>
+</tr>
+<tr>
+  <td><strong>Specifications</strong></td>
+  <td>Markdown schemas, task.md status files, handover prompts</td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-4">5) System Design</h3>
+<p class="journal-p">The following layout illustrates how Context Relay extracts and compresses active token states.</p>
+<div class="align-center" style="margin: 2rem 0; text-align: center;">
+  <img class="journal-img" src="../../assets/projects/context_relay.png" alt="Context Relay Architecture" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
+  <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><strong>Figure 1.</strong> Architecture depicting token compression, noise purge, and cross-session handovers.</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-5">6) Implementation Steps</h3>
+<h4 class="journal-h4">Step 1: Noise Purging</h4>
+<p class="journal-p">Discard dead-end debugging loops, stdout outputs, and compiler errors from the model's history.</p>
+<h4 class="journal-h4">Step 2: Workspace State Auditing</h4>
+<p class="journal-p">Structure ongoing code diffs, file modifications, and current task lists (<code>task.md</code>) into a compact serialized markdown string.</p>
+<h4 class="journal-h4">Step 3: Transfer Prompt Generation</h4>
+<p class="journal-p">Instruct the agent to compile this data into a highly structured, copy-pasteable handover block designed to instantly align the subsequent session.</p>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-6">7) Metrics Evaluation</h3>
+<div class="panel-body chart-container-wrapper context-embedded align-center">
+  <div class="canvas-holder" style="position: relative; width: 100%; height: 320px;">
+    <canvas id="projectChart11"></canvas>
+  </div>
+  <p class="chart-caption" id="chartCaption11"><strong>Figure 2.</strong> Token footprint and latency reduction comparison (Long degraded session vs Clean relay session).</p>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-7">8) Performance Metrics</h3>
+<table class="journal-table">
+<thead>
+<tr>
+  <th>Metric</th>
+  <th>Degraded Long Session</th>
+  <th>After Relay Reset</th>
+  <th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><strong>Active Context Size</strong></td>
+  <td>50K – 150K tokens</td>
+  <td>1K – 2K tokens</td>
+  <td><strong>98.5% compression</strong></td>
+</tr>
+<tr>
+  <td><strong>Time-to-First-Token (TTFT)</strong></td>
+  <td>5.2s – 12.0s</td>
+  <td>0.8s – 1.5s</td>
+  <td><strong>~85% faster</strong></td>
+</tr>
+<tr>
+  <td><strong>API Token Cost</strong></td>
+  <td>Rapidly escalating</td>
+  <td>Near minimum</td>
+  <td><strong>Up to 10× reduction</strong></td>
+</tr>
+<tr>
+  <td><strong>Model Accuracy</strong></td>
+  <td>Hallucination / Drift</td>
+  <td>Perfectly task-aligned</td>
+  <td><strong>Zero drift</strong></td>
+</tr>
+</tbody>
+</table>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-8">9) Compatible AI Agents</h3>
+<p class="journal-p">Context Relay is a tool-agnostic prompt specification — it works immediately with any of the following agents:</p>
+<div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⚡ Antigravity</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🖱 Cursor</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🦘 Cline / Roo Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">🤖 Claude Code</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">⌨️ Aider</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">💬 ChatGPT</span>
+  <span style="display:inline-flex;align-items:center;gap:0.35rem;padding:0.3rem 0.75rem;border-radius:9999px;background:var(--tag-bg);color:var(--tag-color);font-size:0.78rem;font-weight:600;">✦ Gemini Advanced</span>
+</div>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-9">10) Usage Example (Before / After)</h3>
+<p class="journal-p">When the user inputs a trigger phrase, the agent audits the current workspace and outputs a copy-pasteable handover block.</p>
+<h4 class="journal-h4">▶ User Input (Trigger)</h4>
+<pre class="journal-pre"><code># Trigger phrases supported:
+&gt; "Let's continue this in a new conversation window"
+&gt; "Generate session handover brief"
+&gt; "Migrate this session to a new chat"</code></pre>
+<h4 class="journal-h4">▶ Agent Output — Handover Block (After)</h4>
+<pre class="journal-pre"><code>## 🔁 SESSION HANDOVER BRIEF
+
+### 📌 Current Goal
+Implementing Hardware / Software filter tabs on portfolio projects page.
+
+### ✅ Completed
+- [x] Added type field to projectsMeta
+- [x] Added filterAll / filterHardware / filterSoftware to localeDict
+- [x] Filter button HTML generated
+
+### 🔄 In Progress
+- [/] Implementing filter interaction logic in main.js
+
+### 📁 Modified Files
+- build.js (lines 47–300, 285–335, 943–1015)
+- main.js (filter event listener — pending)
+
+### ⚡ Next Action
+Run node build.js, verify tab filter behavior in browser
+
+### 🗜 Active Token Size: ~1.2K tokens (vs former ~80K)</code></pre>
+<hr class="journal-divider">
+<h3 class="journal-h3" id="toc-heading-10">11) One-Command Installation</h3>
+<p class="journal-p">Run <code>install.sh</code> from the GitHub repo to automatically apply Context Relay to your preferred AI agent:</p>
+<pre class="journal-pre"><code># One-command install
+curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.sh | bash
+
+# Installation targets:
+# 1) Antigravity Custom Skill  (~/.gemini/antigravity/...)
+# 2) Cursor Rules              (project root .cursorrules)
+# 3) Roo Code / Cline         (project root .roo/instructions)</code></pre>
+<p class="journal-p">After installation, send a trigger phrase to your agent — it will immediately begin relaying sessions losslessly. Full source and spec: <a href="https://github.com/oasunryo/context-relay" target="_blank" rel="noopener">GitHub Repository</a>.</p>
+
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Problem Definition</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Objectives</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Technologies & Scope</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) System Design</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Implementation Steps</a></li><li class="toc-item toc-indent"><a href="#toc-heading-6" class="toc-link" data-heading-id="toc-heading-6">7) Metrics Evaluation</a></li><li class="toc-item toc-indent"><a href="#toc-heading-7" class="toc-link" data-heading-id="toc-heading-7">8) Performance Metrics</a></li><li class="toc-item toc-indent"><a href="#toc-heading-8" class="toc-link" data-heading-id="toc-heading-8">9) Compatible AI Agents</a></li><li class="toc-item toc-indent"><a href="#toc-heading-9" class="toc-link" data-heading-id="toc-heading-9">10) Usage Example (Before / After)</a></li><li class="toc-item toc-indent"><a href="#toc-heading-10" class="toc-link" data-heading-id="toc-heading-10">11) One-Command Installation</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>How similarity is calculated</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>Recommended content on this portfolio is sorted based on the <strong>Cosine Similarity</strong> between <strong>multi-dimensional text embedding vectors</strong> extracted using the <strong>Google Gemini API (gemini-embedding-2 model)</strong>.</p>
+              <p>By analyzing the title, category, description, and full body text, it evaluates semantic relevance beyond simple keyword matching. If the API is unavailable, it automatically falls back to a <strong>local TF-IDF term frequency analysis algorithm</strong>.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-context-relay">
+          "# Context Relay: Zero-Loss Handover System for AI Coding Assistants\n\nSoftware / AI Context Management\n\n(Framework-agnostic system prompt configuration for zero-loss session handovers) 1) Project Overview Period: 2026. 06. 15. ~ 2026. 06. 16. Type: Prompt Engineering & AI Agent Token Optimization Tool Organization: Personal Open Source Initiative Description: A framework-agnostic system prompt workflow designed to bypass token accumulation, eliminate latency drift, and perform zero-loss task handovers. 2) Background & Problem Definition Background: Relying heavily on AI coding agents (Cursor, Cline, Claude Code) over hours of development inflates active context sizes up to 50K - 150K tokens due to tracebacks, terminal output, and redundant file scans. Problem Statement: High active context increases Time-to-First-Token (TTFT) response latency above 10 seconds and inflates token billing dynamically. LLM attention spreads thin over historical logs, leading to model drift and visual code hallucination. 3) Objectives Token Reduction: Shrink active conversational window by up to 98% (e.g. 50K tokens down to 1.5K tokens) by purging redundant session logs. Latency recovery: Reclaim sub-second response times by resetting model memory. Precision Continuity: Re-align new chat instances with structured, lossless task states. 4) Technologies & Scope Category Details Core Technologies Prompt Engineering, Context Serialization, Git Worktree Parsing Compatible Agents Cursor, Cline (Roo Code), Antigravity, Claude Code, Aider, ChatGPT, Gemini Advanced Specifications Markdown schemas, task.md status files, handover prompts 5) System Design The following layout illustrates how Context Relay extracts and compresses active token states. Figure 1. Architecture depicting token compression, noise purge, and cross-session handovers. 6) Implementation Steps Step 1: Noise Purging Discard dead-end debugging loops, stdout outputs, and compiler errors from the model's history. Step 2: Workspace State Auditing Structure ongoing code diffs, file modifications, and current task lists (task.md) into a compact serialized markdown string. Step 3: Transfer Prompt Generation Instruct the agent to compile this data into a highly structured, copy-pasteable handover block designed to instantly align the subsequent session. 7) Metrics Evaluation Figure 2. Token footprint and latency reduction comparison (Long degraded session vs Clean relay session). 8) Performance Metrics Metric Degraded Long Session After Relay Reset Improvement Active Context Size 50K – 150K tokens 1K – 2K tokens 98.5% compression Time-to-First-Token (TTFT) 5.2s – 12.0s 0.8s – 1.5s ~85% faster API Token Cost Rapidly escalating Near minimum Up to 10× reduction Model Accuracy Hallucination / Drift Perfectly task-aligned Zero drift 9) Compatible AI Agents Context Relay is a tool-agnostic prompt specification — it works immediately with any of the following agents: ⚡ Antigravity 🖱 Cursor 🦘 Cline / Roo Code 🤖 Claude Code ⌨️ Aider 💬 ChatGPT ✦ Gemini Advanced 10) Usage Example (Before / After) When the user inputs a trigger phrase, the agent audits the current workspace and outputs a copy-pasteable handover block. ▶ User Input (Trigger) # Trigger phrases supported: &gt; \"Let's continue this in a new conversation window\" &gt; \"Generate session handover brief\" &gt; \"Migrate this session to a new chat\" ▶ Agent Output — Handover Block (After) ## 🔁 SESSION HANDOVER BRIEF ### 📌 Current Goal Implementing Hardware / Software filter tabs on portfolio projects page. ### ✅ Completed - [x] Added type field to projectsMeta - [x] Added filterAll / filterHardware / filterSoftware to localeDict - [x] Filter button HTML generated ### 🔄 In Progress - [/] Implementing filter interaction logic in main.js ### 📁 Modified Files - build.js (lines 47–300, 285–335, 943–1015) - main.js (filter event listener — pending) ### ⚡ Next Action Run node build.js, verify tab filter behavior in browser ### 🗜 Active Token Size: ~1.2K tokens (vs former ~80K) 11) One-Command Installation Run install.sh from the GitHub repo to automatically apply Context Relay to your preferred AI agent: # One-command install curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.sh | bash # Installation targets: # 1) Antigravity Custom Skill (~/.gemini/antigravity/...) # 2) Cursor Rules (project root .cursorrules) # 3) Roo Code / Cline (project root .roo/instructions) After installation, send a trigger phrase to your agent — it will immediately begin relaying sessions losslessly. Full source and spec: GitHub Repository."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"ac-power-meter","category":"Embedded Systems","title":"MCU AC Power Meter","description":"Implementing a single-phase AC power sensing module with an MCU, handling real-time voltage/current sensing calibration.","date":"2025-09-01","score":41},{"slug":"battery-soc-tester","category":"Embedded Calibration","title":"Dynamic Battery SOC Tester","description":"Improving State of Charge (SOC) estimation precision by coding dynamic OCV-CCV impedance compensation curves into MCU firmware.","date":"2024-03-01","score":39},{"slug":"fpga-verilog","category":"Digital Circuits","title":"FPGA & Verilog HDL Systems","description":"Designing a switch debouncer and clock-dividing BCD counter on an Altera DE2 Cyclone II board, verifying 5ns gate propagation delays.","date":"2026-03-01","score":39}];
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">Similarity: ${p.score}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

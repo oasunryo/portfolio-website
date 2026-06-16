@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCarousel();
   initTocHighlight();
   initProjectsSort();
+  initProjectsFilter();
   initProjectHoverPreview();
   initProjectsViewToggle();
   initBlogHoverPreview();
@@ -507,6 +508,40 @@ function initProjectsSort() {
   sortProjects();
 }
 
+// 5.0. Projects Grid Filter (All / Hardware / Software)
+function initProjectsFilter() {
+  const container = document.querySelector('.projects-tags-container');
+  const grid = document.getElementById('projects-grid');
+  if (!container || !grid) return;
+
+  const buttons = container.querySelectorAll('.tag-filter-btn');
+  const cards = Array.from(grid.children);
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filterVal = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const type = card.getAttribute('data-type');
+        if (filterVal === 'all' || type === filterVal) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Smooth grid transition
+      grid.style.opacity = 0.5;
+      void grid.offsetWidth; // trigger reflow
+      grid.style.transition = 'opacity 0.15s ease';
+      grid.style.opacity = 1;
+    });
+  });
+}
+
 // 5.1. Projects Hover Preview for Desktop
 function initProjectHoverPreview() {
   const grid = document.getElementById('projects-grid');
@@ -790,7 +825,7 @@ function initOledDashboard() {
  */
 function initAllProjectCharts() {
   const chartCanvases = [];
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= 11; i++) {
     const el = document.getElementById(`projectChart${i}`);
     if (el) {
       chartCanvases.push({ id: i, el: el });
@@ -1146,6 +1181,59 @@ function initAllProjectCharts() {
             scales: {
               x: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Depth of Discharge (DOD)', color: textColor } },
               y: { grid: { color: gridColor }, ticks: { color: textColor }, title: { display: true, text: 'Cell Voltage (V)', color: textColor } }
+            }
+          }
+        };
+      } else if (chartId === 11) {
+        config = {
+          type: 'bar',
+          data: {
+            labels: [
+              isDark ? '기존 장기 세션 (Degraded)' : 'Degraded Session',
+              isDark ? '릴레이 세션 (Clean Relay)' : 'Relay Session'
+            ],
+            datasets: [
+              {
+                label: isDark ? '활성 컨텍스트 크기 (Tokens)' : 'Active Context Size (Tokens)',
+                data: [100000, 1500],
+                backgroundColor: isDark ? 'rgba(239, 68, 68, 0.75)' : 'rgba(220, 38, 38, 0.75)',
+                borderColor: isDark ? '#f87171' : '#dc2626',
+                borderWidth: 1.5,
+                yAxisID: 'yTokens'
+              },
+              {
+                label: isDark ? '첫 응답 속도 (Seconds)' : 'Response Latency (Seconds)',
+                data: [8.6, 1.1],
+                type: 'line',
+                borderColor: isDark ? '#60a5fa' : '#2563eb',
+                backgroundColor: isDark ? '#60a5fa' : '#2563eb',
+                borderWidth: 3,
+                tension: 0.1,
+                yAxisID: 'yLatency'
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: gridColor }, ticks: { color: textColor } },
+              yTokens: {
+                type: 'linear',
+                position: 'left',
+                grid: { color: gridColor },
+                ticks: { color: textColor },
+                title: { display: true, text: 'Tokens', color: textColor }
+              },
+              yLatency: {
+                type: 'linear',
+                position: 'right',
+                grid: { drawOnChartArea: false },
+                ticks: { color: textColor },
+                title: { display: true, text: 'Seconds', color: textColor },
+                min: 0,
+                max: 10
+              }
             }
           }
         };

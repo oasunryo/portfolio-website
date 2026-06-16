@@ -48,6 +48,7 @@ const projectsMeta = [
   {
     id: 1,
     slug: "capillary-bonding",
+    type: "hardware",
     initials: "01",
     image: "/assets/projects/capillary_bonding.png",
     tags: ["OSAT", "Wire-bonding", "SEM", "OriginPro"],
@@ -69,6 +70,7 @@ const projectsMeta = [
   {
     id: 2,
     slug: "packaging-test",
+    type: "hardware",
     initials: "02",
     image: "/assets/projects/packaging_test.png",
     tags: ["BGA", "TSV", "SI-PI", "FEM"],
@@ -90,6 +92,7 @@ const projectsMeta = [
   {
     id: 3,
     slug: "fpga-verilog",
+    type: "software",
     initials: "03",
     image: "/assets/projects/fpga_verilog.png",
     tags: ["Verilog", "ModelSim", "FPGA", "Debouncer"],
@@ -111,6 +114,7 @@ const projectsMeta = [
   {
     id: 4,
     slug: "euv-photoresist",
+    type: "hardware",
     initials: "04",
     image: "/assets/projects/euv_photoresist.png",
     tags: ["EUV", "Photoresist", "FE-SEM", "AFM"],
@@ -132,6 +136,7 @@ const projectsMeta = [
   {
     id: 5,
     slug: "spotfire-analytics",
+    type: "software",
     initials: "05",
     image: "/assets/projects/spotfire_analytics.png",
     tags: ["TIBCO-Spotfire", "EDA", "Stat-Analysis", "Yield"],
@@ -153,6 +158,7 @@ const projectsMeta = [
   {
     id: 6,
     slug: "ac-power-meter",
+    type: "hardware",
     initials: "06",
     image: "/assets/projects/ac_power_meter.png",
     tags: ["MCU", "AC-Power", "Sensing", "Hardware"],
@@ -174,6 +180,7 @@ const projectsMeta = [
   {
     id: 7,
     slug: "audio-level-meter",
+    type: "hardware",
     initials: "07",
     image: "/assets/projects/audio_level_meter.png",
     tags: ["Analog", "Filter-Design", "OP-AMP", "Orcad-Pspice"],
@@ -195,6 +202,7 @@ const projectsMeta = [
   {
     id: 8,
     slug: "battery-charger",
+    type: "hardware",
     initials: "08",
     image: "/assets/projects/battery_charger.png",
     tags: ["CC-CV", "Power-Electronics", "ADC-Sensing", "Safety-Log"],
@@ -216,6 +224,7 @@ const projectsMeta = [
   {
     id: 9,
     slug: "battery-soc-tester",
+    type: "software",
     initials: "09",
     image: "/assets/projects/battery_soc_tester.png",
     tags: ["SOC-Estimation", "OCV-CCV", "Embedded", "Calibration"],
@@ -237,6 +246,7 @@ const projectsMeta = [
   {
     id: 10,
     slug: "ito-oled-analysis",
+    type: "hardware",
     initials: "10",
     image: "/assets/projects/ito_oled_analysis.png",
     tags: ["OLED", "Thin-Film", "Blade-Coating", "Optoelectronic", "Chart.js"],
@@ -253,6 +263,28 @@ const projectsMeta = [
       category: "Devices & Process",
       hostname: "OLED Optoelectronic Analysis",
       description: "Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves."
+    }
+  },
+  {
+    id: 11,
+    slug: "context-relay",
+    type: "software",
+    initials: "11",
+    image: "/assets/projects/context_relay.png",
+    tags: ["AI-Agent", "Prompt-Eng", "Token-Saving", "Context-Management"],
+    date: "2026-06-16",
+    period: "2026. 06. 15. ~ 2026. 06. 16.",
+    ko: {
+      title: "Context Relay System",
+      category: "소프트웨어 & AI",
+      hostname: "Context Relayer",
+      description: "AI 코딩 에이전트 간 세션 전환 시 개발 컨텍스트 유실을 방지하고 활성 토큰 크기를 98% 압축하는 범용 시스템 프롬프트 엔진을 구축합니다."
+    },
+    en: {
+      title: "Context Relay System",
+      category: "Software & AI",
+      hostname: "Context Relayer",
+      description: "Designing a framework-agnostic system prompt configuration to enable zero-loss context handovers and compress active tokens by 98%."
     }
   }
 ];
@@ -285,6 +317,9 @@ const localeDict = {
     blogDesc: "반도체 패키징 및 테스트 엔지니어 오준서의 기술 블로그입니다.",
     projectsTitle: "프로젝트",
     projectsDesc: "반도체 전/후공정, 아날로그/디지털 회로설계, 임베디드 핵심 수행 프로젝트 목록입니다.",
+    filterAll: "전체",
+    filterHardware: "하드웨어",
+    filterSoftware: "소프트웨어",
     themeToggleTooltip: "화면 테마 변경 (다크/라이트)",
     langSwitchTooltip: "English 버전으로 변경",
     linkedinTooltip: "LinkedIn 프로필 방문",
@@ -321,6 +356,9 @@ const localeDict = {
     blogDesc: "Technical blog of Junseo Oh, a semiconductor packaging & test engineer.",
     projectsTitle: "Projects",
     projectsDesc: "List of core engineering projects in semiconductor fabrication/packaging, analog/digital designs, and embedded systems.",
+    filterAll: "All",
+    filterHardware: "Hardware",
+    filterSoftware: "Software",
     themeToggleTooltip: "Toggle Dark/Light Theme",
     langSwitchTooltip: "Switch to Korean",
     linkedinTooltip: "Visit LinkedIn Profile",
@@ -946,7 +984,7 @@ async function buildAll() {
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     const tagHTML = p.tags ? p.tags.map(t => `<span class="design-card-tag">${t.trim()}</span>`).join('') : '';
     return `
-    <a class="design-card-item" href="./${p.slug}/index.html" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
+    <a class="design-card-item" href="./${p.slug}/index.html" data-type="${p.type}" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
       <div class="design-card-thumbnail" style="background-image: url(${imgPath});">
         <img src="${imgPath}" alt="${trans.title}" loading="lazy">
       </div>
@@ -972,7 +1010,7 @@ async function buildAll() {
     <a href="../index.html" class="blog-back-link">
       ${locale.backToHome}
     </a>
-    <header style="margin-bottom: 2.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+    <header style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
       <div>
         <h1 style="font-family: var(--font-sans); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Projects</h1>
         <p style="font-size: 1.1rem; color: var(--text-secondary);">${locale.projectsDesc}</p>
@@ -995,6 +1033,12 @@ async function buildAll() {
         </div>
       </div>
     </header>
+
+    <div class="projects-tags-container" style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
+      <button class="tag-filter-btn active" data-filter="all">${locale.filterAll}</button>
+      <button class="tag-filter-btn" data-filter="hardware">${locale.filterHardware}</button>
+      <button class="tag-filter-btn" data-filter="software">${locale.filterSoftware}</button>
+    </div>
     
     <div class="design-grid-container" id="projects-grid">
       ${designGridContent}

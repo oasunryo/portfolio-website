@@ -1,3 +1,5 @@
+# 🔴 CRITICAL: ALWAYS READ [GEMINI.md](file:///Users/oasunryo/.gemini/GEMINI.md) FIRST BEFORE STARTING ANY WORK
+
 # Portfolio Website Builder V2 - AI Agent Coding Rules & Harness Guidelines
 
 This guide defines the **core decision-making criteria and hard constraints** that must be followed by any AI agent (Antigravity) modifying code or designing features in this project.
@@ -108,3 +110,11 @@ This guide defines the **core decision-making criteria and hard constraints** th
 - **Lazy Loading**: Enforce `loading="lazy"` on all `<img>` tags inside body sections, and declare aspect ratios (`width`, `height`) to prevent Cumulative Layout Shifts (CLS).
 - **Format Choices**: Use **WebP** for bitmap images (photos, charts) and **SVG** for vector structures (diagrams, simple designs).
 - **Automated Compression**: The GitHub Action workflow (`image-actions`) configured in the asset repository compresses images losslessly on push, ensuring file sizes remain optimized.
+
+---
+
+## 5. 🔄 Karpathy-Style LLM Wiki Management Rules
+*   **3-Layer Compliance**: Always follow the directory separation guidelines defined in `WIKI_SCHEMA.md` (Raw Sources, Wiki Pages, and Schema).
+*   **Automation Tools**: Utilize `./scripts/ingest.py` for compiling/propagating raw resources, `./scripts/query.py --save` for synthesizing queries into the permanent knowledge base (compounding), and `./scripts/lint.py` for health-checking link integrity and resolving contradictions.
+*   **Bookkeeping & Indexing**: Ensure every ingestion or synthesis updates `log.md` chronologically and indexes target files under content categories in `Index.md`.
+

@@ -1080,6 +1080,40 @@ article.prose-article {
   font-weight: 600;
 }
 
+/* Code Block Style for project pages */
+.journal-pre,
+.article-body-content pre {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.82rem;
+  line-height: 1.65;
+}
+
+.journal-pre code,
+.article-body-content pre code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  color: var(--text-primary);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.article-body-content code {
+  font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.4em;
+  font-size: 0.85em;
+  color: var(--accent-primary);
+}
+
 /* NOTION-STYLE SIDE PEEK PANEL */
 .side-peek-overlay {
   position: fixed;

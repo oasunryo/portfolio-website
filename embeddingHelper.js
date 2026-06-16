@@ -206,7 +206,9 @@ async function computeRecommendations(allItems) {
       if (isFallback) {
         similarityPercent = Math.max(0, Math.min(100, Math.round(sim * 100)));
       } else {
-        similarityPercent = Math.max(0, Math.min(100, Math.round(((sim + 1) / 2) * 100)));
+        // Stretch similarity range around 0.7 baseline to match human intuition:
+        // sim = 0.7 becomes 50%, sim = 0.76 becomes 74%, sim = 0.6 becomes 10%.
+        similarityPercent = Math.max(0, Math.min(100, Math.round(50 + (sim - 0.7) * 400)));
       }
 
       similarities.push({
