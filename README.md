@@ -9,7 +9,7 @@
 ## Overview
 
 광운대학교 전기공학과 학부생 오준서의 포트폴리오입니다.  
-반도체 전/후공정, 회로 설계, FPGA Verilog 등 9개의 핵심 프로젝트와 기술적 여정을 담고 있습니다.  
+반도체 전/후공정, 회로 설계, FPGA Verilog 등 11개의 핵심 프로젝트와 기술적 여정을 담고 있습니다.  
 2026년 7월 **앰코테크놀로지(Amkor Technology)** 후공정 엔지니어로 합류 예정입니다.
 
 ## Features
@@ -24,7 +24,7 @@
 - **Zero-Gravity Kinetic Scroll (무중력 스크롤)** — 각 페이지네이션 동작 또는 헤더 스크롤링 시, 5차 감속 곡선(`easeOutQuint`)과 1.6초(`1600ms`) 듀레이션이 결합된 커스텀 이징 수식을 구동하여 부드럽고 세련된 무중력 부유 스크롤 메커니즘을 지원.
 - **Glassmorphic Floating Header** — 상단 탭 위에 항상 밀착되어 반투명 블러 효과를 제공하는 플로팅 헤더와 상단 화면 영역 이탈 방지형 리버스 툴팁(Reverse Tooltip, 하향 및 우측 밀착 노출) 설계.
 - **Terracotta & Obsidian Custom Scrollbar** — 웹사이트의 고유 악센트 컬러(테라코타 오렌지 및 다크 모드 오렌지 glow)를 그대로 이식하고 트랙과의 대조를 최적화하여 스크롤링 가독성을 향상한 고감도 커스텀 스크롤바 탑재.
-- **프로젝트** — 9개 핵심 프로젝트의 상세 기술 분석 (SEM 이미지, 시뮬레이션 데이터 포함)
+- **프로젝트** — 11개 핵심 프로젝트의 상세 기술 분석 (SEM 이미지, 시뮬레이션 데이터 포함)
 - **정적 사이트** — 빠른 로딩, 프레임워크 미사용 순수 HTML/CSS/JS 및 `build.js` 빌더 통합
 - **MathJax** 수식 렌더링 지원
 
@@ -41,6 +41,8 @@
 | 07 | Audio Level Meter | 회로 설계 |
 | 08 | Battery Charger with MCU | 임베디드 |
 | 09 | Battery SOC Tester | 임베디드 |
+| 10 | ITO-based OLED Fabrication | 반도체 소자 |
+| 11 | Context Relay System | AI 에이전트 스킬 |
 
 ## Tech Stack
 
