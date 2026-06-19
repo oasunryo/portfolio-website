@@ -98,7 +98,7 @@ const projectProseData = {
 </ul>
 <h4 class="journal-h4">3) 분석 및 데이터 검증 (통계 분석 기반 증명)</h4>
 <ul class="journal-ul">
-<li><strong>IHD 분석</strong>: IHD가 26μm(너무 작을 때)인 경우 홀 내부 마찰 극대화로 와이어 목 부러짐(Neck broken) 현상이 심해져 인장 강도가 급락함을 확인. 반면 41μm(너무 클 때)는 와이어가 흔들려 수직 정렬도가 무너짐. 와이어 직경 대비 <strong>1.3배(33μm)</strong>가 최적 밸런스임을 데이터로 증명.</li>
+<li><strong>IHD 분석</strong>: IHD가 26μm(너무 작을 때)인 경우 홀 내부 마찰 극대화로 와이어 목(Neck broken) 현상이 심해져 인장 강도가 급락함을 확인. 반면 41μm(너무 클 때)는 와이어가 흔들려 수직 정렬도가 무너짐. 와이어 직경 대비 <strong>1.3배(33μm)</strong>가 최적 밸런스임을 데이터로 증명.</li>
 <li><strong>ICAD 분석</strong>: ICAD가 51μm일 때 볼이 패드 밖으로 범람(Ball Overflow)하는 SEM 이미지를 확보하고, 76μm일 때는 누르는 압력이 분산되어 결합 면적이 줄어들어 접합 전단 강도가 26% 감소하는 상관관계 도출. <strong>64μm</strong>가 전단 강도 유지와 쇼트 방지의 최적 수치임을 확인.</li>
 <li><strong>ICBA 분석</strong>: ICBA가 70°일 때는 가파른 경사로 인해 볼이 한쪽으로 쏠리는 편심 볼(Eccentric Ball) 현상 유발. 120°는 전단 강도 수치는 높지만 radial 방향(부채꼴)으로 볼이 과도하게 퍼져 미세 피치 마진을 초과함. 양쪽의 트레이드오프를 맞추는 지점은 <strong>100°</strong>임을 증명.</li>
 </ul>
@@ -178,9 +178,24 @@ const projectProseData = {
 <hr class="journal-divider">
 <h3 class="journal-h3">11) 첨부 자료</h3>
 <ul class="journal-ul">
-<li><strong>그림 1</strong>: 캐필러리 3대 기하학 변수(IHD, ICAD, ICBA) 상세 도면</li>
-<li><strong>그림 2</strong>: 챔퍼 각도(ICBA)에 따른 볼 성형(Morphology) 및 패드 밖 쇼트 현상 SEM 이미지 비교</li>
-<li><strong>표 1</strong>: 캐필러리 형상 설계 조건에 따른 Pull/Shear Test 데이터 분포 그래프</li>
+  <li>
+    <strong>그림 1</strong>: 캐필러리 3대 기하학 변수(IHD, ICAD, ICBA) 상세 도면
+    <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+      <img class="journal-img" src="../capillary-bonding/4.png" alt="그림 1. 캐필러리 3대 기하학 변수 도면" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    </div>
+  </li>
+  <li>
+    <strong>그림 2</strong>: 챔퍼 각도(ICBA)에 따른 볼 성형(Morphology) 및 패드 밖 쇼트 현상 SEM 이미지 비교
+    <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+      <img class="journal-img" src="../capillary-bonding/8.png" alt="그림 2. 챔퍼 각도별 볼 성형 및 쇼트 현상 비교" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    </div>
+  </li>
+  <li>
+    <strong>표 1</strong>: 캐필러리 형상 설계 조건에 따른 Pull/Shear Test 데이터 분포 그래프
+    <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+      <img class="journal-img" src="../capillary-bonding/12.png" alt="표 1. Pull/Shear Test 데이터 분포 그래프" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+    </div>
+  </li>
 </ul>
       `
     },
@@ -274,7 +289,7 @@ const projectProseData = {
 <li><strong>Fan-In vs Fan-Out</strong>: 칩 크기가 곧 패키지 크기가 되는 팬인의 물리적 취약성을 파악하고, 재배열 방식을 사용하는 팬아웃의 강점 확인. 몰딩 유체 흐름에 의한 미스얼라인을 방지하는 <strong>RDL First</strong> 기술의 부상 원인 규명.</li>
 <li><strong>연결의 혁신(Flip-Chip & TSV)</strong>: 와이어 본딩의 물리적 길이 한계를 극복하는 플립칩 범프 기술 분석. Copper Pillar 범프를 통해 피치 간격을 극적으로 줄이는 기술과 고대역폭 메모리(HBM)에서 한 번에 1024비트 신호를 전송할 수 있는 <strong>TSV 기반 적층 구조(X1024)</strong>의 대량 데이터 고속도로 메커니즘 연구.</li>
 </ul>
-<p class="journal-p">> <strong>비유 예시</strong>: 2차선 국도(와이어 본딩)를 통해 데이터를 보내던 것을 1024차선 초광대역 고속도로(TSV HBM)로 뚫어버려, 한 번에 어마어마한 양의 데이터를 신속하고 정체 없이 소통시키는 혁신적인 교통 제어와 같습니다.</p>
+<blockquote class="journal-quote tip"><strong>비유 예시</strong>: 2차선 국도(와이어 본딩)를 통해 데이터를 보내던 것을 1024차선 초광대역 고속도로(TSV HBM)로 뚫어버려, 한 번에 어마어마한 양의 데이터를 신속하고 정체 없이 소통시키는 혁신적인 교통 제어와 같습니다.</blockquote>
 <h4 class="journal-h4">3) 3주차: 신뢰성 해석 및 물리적 한계 돌파 분석</h4>
 <ul class="journal-ul">
 <li><strong>Warpage & Solder Joint Reliability</strong>: 실리콘 칩과 기판의 서로 다른 열팽창 계수(CTE) 차이에서 오는 이종 재료 휨(Heterogeneous Materials Warpage) 현상 규명. 평면 전단(Shear)과 축 인장(Tensile)의 복합 응력에 노출되는 솔더 접합부 파괴 거동 해석.</li>
@@ -285,24 +300,30 @@ const projectProseData = {
   <div class="canvas-holder">
     <canvas id="projectChart2"></canvas>
   </div>
-  <p class="chart-caption" id="chartCaption2"><strong>Figure 1.</strong> 신호 전송 주파수 스윕에 따른 반사 감쇄(S11) 및 투과 손실(S21) 특성 비교 (50Ω 임피던스 정합 vs 미스매치)</p>
+  <p class="chart-caption" id="chartCaption2"><strong>Figure 1.</strong> 주파수 Sweep에 따른 삽입 손실(S21) 및 반사 손실(S11) 변화 추이 (50Ω 매칭 vs 비매칭 조건 비교)</p>
 </div>
 
 <hr class="journal-divider">
 <h3 class="journal-h3">7) 핵심 문제 해결 포인트</h3>
 <ul class="journal-ul">
 <li><strong>직무 관점의 핵심 분석</strong>: "칩 설계와 패키지 설계 간의 복합 유기적 상관관계 이해 및 Pad Swap을 통한 공정 난제 해결"</li>
-<li><strong>해결 방법</strong>: </li>
+<li><strong>해결 방법</strong>: 
+    <ul class="journal-ul">
+      <li>칩 단독 설계 시에는 이상적인 배선 흐름이 패키징 조립 단계에서는 캐필러리 장비 진입 차단이나 크로스톡(Crosstalk)과 같은 치명적인 성능 저하를 일으킬 수 있음을 파악했습니다.</li>
+      <li>이를 방지하기 위해 기판 상에서 배선이 꼬이지 않도록 칩 가장자리의 접점 좌표를 재배치하는 <strong>패드 스왑(Pad Swap)</strong> 기술의 중요성을 분석하고, 이를 통해 공정 작업성과 전기적 안정성(SI)을 한 번에 확보할 수 있는 상호 최적화 프로토콜을 체계화하였습니다.</li>
+    </ul>
+  </li>
 </ul>
-<p class="journal-p">* 칩 단독 설계 시에는 이상적인 배선 흐름이 패키징 조립 단계에서는 캐필러리 장비 진입 차단이나 크로스톡(Crosstalk)과 같은 치명적인 성능 저하를 일으킬 수 있음을 파악했습니다.</p>
-<p class="journal-p">* 이를 방지하기 위해 기판 상에서 배선이 꼬이지 않도록 칩 가장자리의 접점 좌표를 재배치하는 <strong>패드 스왑(Pad Swap)</strong> 기술의 중요성을 분석하고, 이를 통해 공정 작업성과 전기적 안정성(SI)을 한 번에 확보할 수 있는 상호 최적화 프로토콜을 체계화하였습니다.</p>
 <hr class="journal-divider">
 <h3 class="journal-h3">8) 결과 및 성과</h3>
 <ul class="journal-ul">
-<li><strong>후공정 직무 포트폴리오 기틀 확립</strong>: </li>
+<li><strong>후공정 직무 포트폴리오 기틀 확립</strong>: 
+    <ul class="journal-ul">
+      <li>14일간의 독서 로드맵을 지연 없이 완주하여 후공정 전 분야에 걸친 방대한 기술 도감 및 독서 노트 완성.</li>
+      <li>단순한 용어 정의에 그치지 않고, 공정별 원인-영향-솔루션 간의 상관관계 테이블 작성 완료.</li>
+    </ul>
+  </li>
 </ul>
-<p class="journal-p">* 14일간의 독서 로드맵을 지연 없이 완주하여 후공정 전 분야에 걸친 방대한 기술 도감 및 독서 노트 완성.</p>
-<p class="journal-p">* 단순한 용어 정의에 그치지 않고, 공정별 원인-영향-솔루션 간의 상관관계 테이블 작성 완료.</p>
 <h4 class="journal-h4">핵심 분석 영역 요약 표</h4>
 <table class="journal-table">
 <thead>
@@ -350,23 +371,25 @@ const projectProseData = {
 <hr class="journal-divider">
 <h3 class="journal-h3">10) 후공정 직무와의 연결점</h3>
 <ul class="journal-ul">
-<li><strong>실무 적용 가능 업무</strong>: </li>
+<li><strong>실무 적용 가능 업무</strong>: 
+    <ul class="journal-ul">
+      <li>입사 후 신규 패키징 기술 도입 및 기존 Conventional 패키지의 수율 개선 시, 공정 불량이 발생했을 때 빠르게 가설을 세우고 물리적 원인을 짚어내는 <strong>공정 트러블슈팅(Troubleshooting)</strong> 직무에 강력한 이론적 배경으로 즉시 활용할 수 있습니다.</li>
+      <li>기판 설계 및 소자 분석 부서와의 협업 시, 패키지 디자인 룰(PKG Design rule & Dimension)과 라인/스페이스 마진 수치들을 정확히 이해하고 소통하는 <strong>다학제적 협업 엔지니어</strong>로 기여할 것입니다.</li>
+    </ul>
+  </li>
 </ul>
-<p class="journal-p">* 입사 후 신규 패키징 기술 도입 및 기존 Conventional 패키지의 수율 개선 시, 공정 불량이 발생했을 때 빠르게 가설을 세우고 물리적 원인을 짚어내는 <strong>공정 트러블슈팅(Troubleshooting)</strong> 직무에 강력한 이론적 배경으로 즉시 활용할 수 있습니다.</p>
-<p class="journal-p">* 기판 설계 및 소자 분석 부서와의 협업 시, 패키지 디자인 룰(PKG Design rule & Dimension)과 라인/스페이스 마진 수치들을 정확히 이해하고 소통하는 <strong>다학제적 협업 엔지니어</strong>로 기여할 것입니다.</p>
       `
     },
     3: {
       meta: `디지털 설계 / FPGA 및 Verilog HDL 시스템`,
-      title: `FPGA and Verilog HDL Digital Logic Circuit Design & Verification`,
+      title: `FPGA & Verilog HDL Digital Logic Circuit Design & Verification`,
       date: `2026. 03. 01. ~ 2026. 06. 30.`,
       prose: `
-<p class="journal-p"><em>(FPGA 및 Verilog HDL을 활용한 디지털 논리 회로 설계 및 하드웨어 검증)</em></p>
+<p class="journal-p"><em>(Altera Cyclone II FPGA 환경의 Verilog HDL 기반 제어 모듈 설계 및 시뮬레이션 타이밍 분석 검증)</em></p>
 <hr class="journal-divider">
 <h3 class="journal-h3">1) 프로젝트 개요</h3>
 <ul class="journal-ul">
 <li><strong>기간</strong>: 2026. 03. 01. ~ 2026. 06. 30.</li>
-<li><strong>유형</strong>: FPGA 보드 및 Verilog HDL 디지털 시스템 설계 및 하드웨어 디버깅</li>
 <li><strong>소속/수행 환경</strong>: 광운대학교 전자재료공학과 (디지털 시스템 설계 실습)</li>
 <li><strong>한 줄 소개</strong>: </li>
 </ul>
@@ -1899,7 +1922,7 @@ const projectProseData = {
 <h3 class="journal-h3">5) 시스템 개요 및 아키텍처</h3>
 <p class="journal-p">다음은 Context Relay 시스템의 전체적인 데이터 압축 및 전송 메커니즘을 시각화한 프로젝트 개요서입니다.</p>
 <div class="align-center" style="margin: 2rem 0; text-align: center;">
-  <img class="journal-img" src="../../assets/projects/context_relay.png" alt="Context Relay System Design" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
+  <img class="journal-img" src="../../../assets/projects/context_relay.png" alt="Context Relay System Design" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
   <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><strong>Figure 1.</strong> 누적된 대화 노이즈를 퍼지하고 코사인 유사도 및 핵심 태스크 중심으로 세션을 릴레이하는 메커니즘</p>
 </div>
 <hr class="journal-divider">
@@ -2172,9 +2195,24 @@ curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.s
         <hr class="journal-divider">
         <h3 class="journal-h3">11) Attachments</h3>
         <ul class="journal-ul">
-          <li><strong>Figure 1:</strong> Detailed structural drawings of the three key capillary geometric parameters (IHD, ICAD, ICBA)</li>
-          <li><strong>Figure 2:</strong> Comparative SEM micrographs of ball morphology and ball overflow shorts according to chamfer angles (ICBA)</li>
-          <li><strong>Table 1:</strong> Pull/Shear test data distribution graphs according to capillary geometric design conditions</li>
+          <li>
+            <strong>Figure 1:</strong> Detailed structural drawings of the three key capillary geometric parameters (IHD, ICAD, ICBA)
+            <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+              <img class="journal-img" src="../capillary-bonding/4.png" alt="Figure 1. Detailed drawings of the three key capillary geometric parameters" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+          </li>
+          <li>
+            <strong>Figure 2:</strong> Comparative SEM micrographs of ball morphology and ball overflow shorts according to chamfer angles (ICBA)
+            <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+              <img class="journal-img" src="../capillary-bonding/8.png" alt="Figure 2. Comparative SEM micrographs of ball morphology and shorts" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+          </li>
+          <li>
+            <strong>Table 1:</strong> Pull/Shear test data distribution graphs according to capillary geometric design conditions
+            <div class="align-center" style="margin: 1.5rem 0; text-align: center;">
+              <img class="journal-img" src="../capillary-bonding/12.png" alt="Table 1. Pull/Shear test data distribution graphs" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+            </div>
+          </li>
         </ul>
       `
     },
@@ -3991,7 +4029,7 @@ curl -sL https://raw.githubusercontent.com/oasunryo/context-relay/main/install.s
 <h3 class="journal-h3">5) System Design</h3>
 <p class="journal-p">The following layout illustrates how Context Relay extracts and compresses active token states.</p>
 <div class="align-center" style="margin: 2rem 0; text-align: center;">
-  <img class="journal-img" src="../../assets/projects/context_relay.png" alt="Context Relay Architecture" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
+  <img class="journal-img" src="../../../assets/projects/context_relay.png" alt="Context Relay Architecture" style="max-width: 100%; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); border: 1px solid var(--border-color);">
   <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;"><strong>Figure 1.</strong> Architecture depicting token compression, noise purge, and cross-session handovers.</p>
 </div>
 <hr class="journal-divider">
