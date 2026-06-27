@@ -7,6 +7,111 @@
   <language>en-US</language>
   <atom:link href="https://junseo.site/en/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title><![CDATA[Designing a Lightweight Multilingual Static Compiler with Dynamic Relative Path Swapping]]></title>
+    <link>https://junseo.site/en/blog/multilingual-localization-compiler/index.html</link>
+    <guid>https://junseo.site/en/blog/multilingual-localization-compiler/index.html</guid>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Architecting a lightweight Node.js compiler. It automatically parses `ko`/`en` subdirectories and resolves relative links for robust multilingual localization without frameworks.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Zotero 7 Better BibTeX Citekey Unification and Local Obsidian Paper Highlight Sync]]></title>
+    <link>https://junseo.site/en/blog/zotero-better-bibtex-obsidian/index.html</link>
+    <guid>https://junseo.site/en/blog/zotero-better-bibtex-obsidian/index.html</guid>
+    <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Structuring literature notes, sync templates, and custom CSS callouts to bridge academics from Zotero reading sessions to the local brain.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Building a Web Audio API Real-time Signal Frequency Canvas Band Level Meter Widget]]></title>
+    <link>https://junseo.site/en/blog/audio-level-meter-widget/index.html</link>
+    <guid>https://junseo.site/en/blog/audio-level-meter-widget/index.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Implementing dynamic canvas bar animations representing audio analyzer frequencies with high-performance CSS and JavaScript loops.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Mitigating BOM & Carriage Return Anomalies in Data Pipelines]]></title>
+    <link>https://junseo.site/en/blog/bom-unicode-csv-preprocessing/index.html</link>
+    <guid>https://junseo.site/en/blog/bom-unicode-csv-preprocessing/index.html</guid>
+    <pubDate>Sun, 21 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Addressing structural JSON/CSV corruption caused by hidden byte order marks (<code>\ufeff</code>) and carriage returns, critical for robust data integration and parsing.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI-Powered Content Pipeline for Niche Semiconductor Education]]></title>
+    <link>https://junseo.site/en/blog/single-creator-content-pipeline/index.html</link>
+    <guid>https://junseo.site/en/blog/single-creator-content-pipeline/index.html</guid>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Leveraging Llama-Vision and API orchestration to automate technical content generation for semiconductor industry education via short-form video.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Automated Session Handover for AI-Driven Development]]></title>
+    <link>https://junseo.site/en/blog/automated-session-handover/index.html</link>
+    <guid>https://junseo.site/en/blog/automated-session-handover/index.html</guid>
+    <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Compiling codebase audits and active task states into token-optimized briefing prompts for seamless sequential AI agent execution.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Optimizing Safari Viewport Overlays and iOS Safe-Area Headers]]></title>
+    <link>https://junseo.site/en/blog/safari-viewport-overlay-optimization/index.html</link>
+    <guid>https://junseo.site/en/blog/safari-viewport-overlay-optimization/index.html</guid>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Resolving bounce scroll seam gaps in Safari overlays using negative margins and dynamically computing top safe-area boundaries.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Off-line Static Embedding Similarity Calculation and Standalone Blog Recommendation]]></title>
+    <link>https://junseo.site/en/blog/blog-embedding-recommendation-system/index.html</link>
+    <guid>https://junseo.site/en/blog/blog-embedding-recommendation-system/index.html</guid>
+    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Compiling sentence-transformer embedding matrices during build time to generate static similarity mapping for offline related posts navigation.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Building High-End Interactive Web Presentations with HTML/CSS]]></title>
+    <link>https://junseo.site/en/blog/interactive-web-slides-builder/index.html</link>
+    <guid>https://junseo.site/en/blog/interactive-web-slides-builder/index.html</guid>
+    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Explore designing a responsive, HTML/CSS-native slide builder with micro-animations and style presets, replacing heavy presentation files.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Wafer WAT Big Data Analysis via Spotfire Cobalt Grid Visualization]]></title>
+    <link>https://junseo.site/en/blog/spotfire-cobalt-grid-analysis/index.html</link>
+    <guid>https://junseo.site/en/blog/spotfire-cobalt-grid-analysis/index.html</guid>
+    <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Developing interactive Spotfire dashboards with cobalt grid parameters to isolate spatial yield failures and equipment anomalies.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Karpathy-Style LLM Wiki Synthesis: Ingest, Query, and Lint Automation for Obsidian PKM]]></title>
+    <link>https://junseo.site/en/blog/karpathy-style-wiki-synthesis/index.html</link>
+    <guid>https://junseo.site/en/blog/karpathy-style-wiki-synthesis/index.html</guid>
+    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Compounding local notes into an English knowledge base with a 3-layer structure using automated ingestion, validation, and semantic sync.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI Wealth Manager: Sheets API & Multi-Agent Portfolio Rebalancing]]></title>
+    <link>https://junseo.site/en/blog/google-sheets-api-asset-management/index.html</link>
+    <guid>https://junseo.site/en/blog/google-sheets-api-asset-management/index.html</guid>
+    <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Integrating 4 specialized agents (Finance, News, Industry, Strategy) to synchronize ledger balances and execute target weight rebalancing via Google Sheets API.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Semiconductor News Scraper & Discord Bot Orchestration]]></title>
+    <link>https://junseo.site/en/blog/discord-semiconductor-news-bot/index.html</link>
+    <guid>https://junseo.site/en/blog/discord-semiconductor-news-bot/index.html</guid>
+    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Structuring an automated pipeline to aggregate semiconductor industry developments and deliver daily summaries to Discord.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Hacking CapCut Local Project JSON for Automated Cuts and Subtitle Synchronization]]></title>
+    <link>https://junseo.site/en/blog/capcut-draft-json-automation/index.html</link>
+    <guid>https://junseo.site/en/blog/capcut-draft-json-automation/index.html</guid>
+    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Reverse engineering CapCut's draft metadata to programmatically align ASR transcripts, video segments, and styling for advanced automation.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Integrating Ponytail and Caveman Rules for AI Agent Optimization]]></title>
+    <link>https://junseo.site/en/blog/harness-ponytail-caveman-integration/index.html</link>
+    <guid>https://junseo.site/en/blog/harness-ponytail-caveman-integration/index.html</guid>
+    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[How merging YAGNI-centric code control with terse, token-efficient Korean Caveman style interactions stabilizes AI workspace collaboration.]]></description>
+  </item>
+  <item>
     <title><![CDATA[Continuous Integration Pipelines for Static Sites via GitHub Actions]]></title>
     <link>https://junseo.site/en/blog/continuous-integration-static-pages/index.html</link>
     <guid>https://junseo.site/en/blog/continuous-integration-static-pages/index.html</guid>
@@ -40,111 +145,6 @@
     <guid>https://junseo.site/en/blog/vibe-coding-to-harness-engineering/index.html</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[The Limits of Vibe Coding and the Necessity of Harness Engineering]]></title>
-    <link>https://junseo.site/en/blog/harness-vs-vibe-coding/index.html</link>
-    <guid>https://junseo.site/en/blog/harness-vs-vibe-coding/index.html</guid>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Moving beyond conversational code generation to design environment constraints (Harnesses) that force AI agents to perform reliably.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Leveraging Git Worktree to Handle Emergency Hotfixes Seamlessly]]></title>
-    <link>https://junseo.site/en/blog/git-worktree-multi-tasking/index.html</link>
-    <guid>https://junseo.site/en/blog/git-worktree-multi-tasking/index.html</guid>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[How to create parallel working directories inside a single git repository to bypass git stash context-switching bottlenecks.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Engineering a Resume into a System Architecture]]></title>
-    <link>https://junseo.site/en/blog/semiconductor-packaging-whitepaper/index.html</link>
-    <guid>https://junseo.site/en/blog/semiconductor-packaging-whitepaper/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Thinking Can Be Outsourced, But Understanding Cannot]]></title>
-    <link>https://junseo.site/en/blog/thinking-vs-understanding-karpathy/index.html</link>
-    <guid>https://junseo.site/en/blog/thinking-vs-understanding-karpathy/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[In the Software 3.0 era where LLMs handle coding logistics, what is the irreplaceable value of a human engineer?]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Extreme Scoping for AI Agents via Project Rules]]></title>
-    <link>https://junseo.site/en/blog/antigravity-scoping-rules/index.html</link>
-    <guid>https://junseo.site/en/blog/antigravity-scoping-rules/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Limiting context sizes and reducing token consumption to dramatically increase agent precision and coding success rates.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Sizing Pull-up Resistors for Reliable I2C Bus Communication]]></title>
-    <link>https://junseo.site/en/blog/i2c-pullup-resistor-sizing/index.html</link>
-    <guid>https://junseo.site/en/blog/i2c-pullup-resistor-sizing/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Calculating pull-up resistor boundaries using bus capacitance and I2C rise time limits.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Building "A Semiconductor Rookie's AI Survival Log" Brand Strategy]]></title>
-    <link>https://junseo.site/en/blog/creator-business-strategy-roadmap/index.html</link>
-    <guid>https://junseo.site/en/blog/creator-business-strategy-roadmap/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Positioning a mentoring brand for tech students by leveraging career counseling backgrounds and real-world engineer reality.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[TDD and Automated Test Guardrails for AI Self-Correction]]></title>
-    <link>https://junseo.site/en/blog/tdd-agent-guardrails/index.html</link>
-    <guid>https://junseo.site/en/blog/tdd-agent-guardrails/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Forcing AI agents to write and run unit tests inside the terminal, creating a closed self-debugging loop before declaring completion.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[OP-AMP Input Driver Design for High-Precision SAR ADCs]]></title>
-    <link>https://junseo.site/en/blog/adc-input-driver-settling/index.html</link>
-    <guid>https://junseo.site/en/blog/adc-input-driver-settling/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Calculating Charge-Kickback filter parameters and OP-AMP bandwidths to secure complete voltage settling before conversion.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Maximizing AI Agent Efficiency via the "Tool Diet" Strategy]]></title>
-    <link>https://junseo.site/en/blog/agent-tool-diet-strategy/index.html</link>
-    <guid>https://junseo.site/en/blog/agent-tool-diet-strategy/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Why overloading LLM agents with too many APIs degrades performance, and how minimalist toolkits build smarter assistants.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Building a Private Local "NotebookLM" on an 8GB RAM MacBook]]></title>
-    <link>https://junseo.site/en/blog/private-notebooklm-safari-obsidian/index.html</link>
-    <guid>https://junseo.site/en/blog/private-notebooklm-safari-obsidian/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[How to build a low-resource private research pipeline by integrating Zotero 7, Safari, and Obsidian (Copilot + Gemini API).]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Andrej Karpathy-Style Rules for Communicating with AI Agents]]></title>
-    <link>https://junseo.site/en/blog/karpathy-agent-rules/index.html</link>
-    <guid>https://junseo.site/en/blog/karpathy-agent-rules/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Stripping away conversational filler to command LLM agents via clean, structured, and predictable interfaces.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[LDO vs Buck Converters: Decoupling Noise from Sensitive Analog Rails]]></title>
-    <link>https://junseo.site/en/blog/ldo-vs-buck-noise/index.html</link>
-    <guid>https://junseo.site/en/blog/ldo-vs-buck-noise/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Comparing the noise spectrum, efficiency tradeoffs, and PSRR of linear LDOs against high-efficiency buck switchers.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Managing Intra-pair Skew in High-Speed Differential Signals]]></title>
-    <link>https://junseo.site/en/blog/differential-signaling-skew/index.html</link>
-    <guid>https://junseo.site/en/blog/differential-signaling-skew/index.html</guid>
-    <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Adjusting differential trace lengths on PCBs to prevent phase shifts and secure signal integrity margins.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Single-Responsibility Tasking: Splitting Large Coding Missions]]></title>
-    <link>https://junseo.site/en/blog/single-responsibility-tasking/index.html</link>
-    <guid>https://junseo.site/en/blog/single-responsibility-tasking/index.html</guid>
-    <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[How to divide complex developer requirements into isolated milestones, helping AI perform perfectly on each turn.]]></description>
   </item>
 </channel>
 </rss>

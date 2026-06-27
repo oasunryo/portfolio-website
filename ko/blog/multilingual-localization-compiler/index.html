@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계  | 오준서</title>
+<meta name="description" content="경량 Node.js 컴파일러 아키텍처. `ko`/`en` 서브디렉토리를 자동으로 파싱하고 상대 링크를 해결하여, 프레임워크 없이 강력한 다국어 지역화를 제공합니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계  | 오준서">
+<meta property="og:description" content="경량 Node.js 컴파일러 아키텍처. `ko`/`en` 서브디렉토리를 자동으로 파싱하고 상대 링크를 해결하여, 프레임워크 없이 강력한 다국어 지역화를 제공합니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/multilingual-localization-compiler/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Architecture</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-06-24">2026-06-24</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">5분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'multilingual-localization-compiler')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fmultilingual-localization-compiler%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=%EB%8F%99%EC%A0%81%20%EC%83%81%EB%8C%80%20%EA%B2%BD%EB%A1%9C%20%EA%B5%90%ED%99%98%EC%9D%84%20%ED%86%B5%ED%95%9C%20%EA%B2%BD%EB%9F%89%20%EB%8B%A4%EA%B5%AD%EC%96%B4%20%EC%A0%95%EC%A0%81%20%EC%BB%B4%ED%8C%8C%EC%9D%BC%EB%9F%AC%20%EC%84%A4%EA%B3%84&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fmultilingual-localization-compiler%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <h2 id="toc-heading-0">서론: 다국어 정적 사이트의 도전 과제</h2><p>점점 더 세계화되는 디지털 환경에서 여러 언어로 콘텐츠를 제공하는 것은 매우 중요합니다. 성능, 보안 및 낮은 운영 오버헤드로 높이 평가받는 정적 웹사이트의 경우, 강력한 다국어 지원을 구현하는 것은 놀라울 정도로 복잡할 수 있습니다. 전통적인 접근 방식은 동적 언어 전환을 위해 클라이언트 측 JavaScript를 포함하는 경우가 많으며, 이는 SEO에 방해가 되거나 서버 측 재작성에 의존하여 배포 복잡성을 증가시킬 수 있습니다. 핵심 과제는 특히 기술 문서나 반도체 제품 카탈로그에서 흔히 볼 수 있는 깊게 중첩된 디렉토리 구조를 다룰 때, 모든 내부 상대 링크가 기능하고 해당 지역화된 리소스를 올바르게 가리키도록 보장하면서 로케일별 콘텐츠를 원활하게 관리하는 데 있습니다.</p><h2 id="toc-heading-1">컴파일러의 아키텍처 개요</h2><p>우리의 솔루션은 Node.js로 작성된 <code>build.js</code> 스크립트가 대표하는 경량의 맞춤형 정적 컴파일러입니다. 이 컴파일러는 각 로케일(예: <code>ko/</code>, <code>en/</code>)이 자체 최상위 서브디렉토리에 위치하는 구조화된 소스 디렉토리에서 작동합니다. 빌드 프로세스는 몇 가지 명확한 단계로 구성됩니다:</p><ul><li><strong>1단계: 소스 파일 수집:</strong> 컴파일러는 미리 정의된 로케일 디렉토리(예: <code>src/en/</code>, <code>src/ko/</code>)를 재귀적으로 스캔하여 모든 관련 HTML 파일 및 정적 자산을 식별합니다.</li><li><strong>2단계: HTML 파싱 및 링크 식별:</strong> 각 HTML 파일에 대해 DOM 파싱 라이브러리(예: <code>cheerio</code>)를 사용하여 문서 트리를 순회합니다. 이는 <code>&lt;a&gt;</code> 및 <code>&lt;link&gt;</code> 태그의 <code>href</code>, <code>&lt;img&gt;</code> 및 <code>&lt;script&gt;</code> 태그의 <code>src</code>, 그리고 인라인 CSS의 <code>url()</code>을 포함하여 경로 참조를 포함하는 모든 속성을 식별합니다.</li><li><strong>3단계: 동적 상대 경로 해결:</strong> 이것이 핵심 혁신입니다. 소스 파일의 로케일과 소스 트리 내 위치를 기반으로 컴파일러는 식별된 모든 상대 경로를 최종 정적 출력 구조에 적합한 루트 상대 경로로 동적으로 재평가하고 변환합니다.</li><li><strong>4단계: 출력 생성:</strong> 수정된 HTML 콘텐츠는 복사되고 정리된 정적 자산과 함께 지정된 출력 디렉토리(예: <code>dist/</code>)에 기록되며, 로케일 기반 서브디렉토리 구조를 유지합니다.</li></ul><h2 id="toc-heading-2">심층 분석: 동적 상대 경로 교환 로직</h2><p>이 접근 방식의 독창성은 컴파일 중에 상대 경로를 문맥적으로 해결하고 교환하는 능력에 있습니다. <code>/src/ko/pages/product-spec.html</code> 소스 파일에 <code>&lt;a href="../assets/datasheet.pdf"&gt;</code>와 같은 내부 링크가 포함된 시나리오를 고려해 보십시오. <code>build.js</code> 스크립트는 Node.js의 <code>path</code> 모듈을 활용합니다:</p><ol><li>컴파일러는 먼저 처리 중인 현재 소스 파일의 절대 경로를 결정합니다: <code>/project-root/src/ko/pages/product-spec.html</code>.</li><li>그런 다음 현재 파일의 디렉토리를 기준으로 상대 링크를 해결합니다: <code>path.resolve('/project-root/src/ko/pages/', '../assets/datasheet.pdf')</code>. 이 작업은 소스 트리 내 자산에 대한 절대 경로인 <code>/project-root/src/ko/assets/datasheet.pdf</code>를 올바르게 생성합니다.</li><li>일관된 배포 준비 링크를 생성하기 위해, 해결된 절대 소스 경로는 전체 프로젝트의 출력 구조를 기반으로 루트 상대 경로로 변환됩니다. 만약 우리의 출력 디렉토리가 <code>/project-root/dist/</code>이고 로케일 서브디렉토리를 미러링한다면, 최종 <code>href</code>는 <code>/ko/assets/datasheet.pdf</code>가 됩니다.</li></ol><p>이 메커니즘은 다양한 링크 시나리오에 대해 링크 대상을 동적으로 조정합니다:</p><ul><li><strong>로케일 내 링크:</strong> <code>/src/en/products/</code> 내의 <code>&lt;a href="details.html"&gt;</code>와 같은 링크는 <code>/en/products/details.html</code>로 변환됩니다.</li><li><strong>로케일 간 링크:</strong> <code>/src/en/products/</code>에서 시작된 <code>&lt;a href="../../ko/about.html"&gt;</code>와 같이 로케일을 넘나드는 링크의 경우, 컴파일러는 이를 <code>/ko/about.html</code>로 올바르게 해결하여 콘텐츠의 지역화된 버전 간에 원활한 탐색을 보장합니다.</li><li><strong>공유 자산:</strong> 공통 디렉토리(예: <code>/src/shared/images/logo.png</code>)에 있는 자산은 해당 <code>dist/shared/</code> 위치로 복사되며, <code>/src/ko/docs/</code>의 <code>&lt;img src="../../shared/images/logo.png"&gt;</code>와 같은 링크는 <code>/shared/images/logo.png</code>로 적절하게 해결되어 전역 리소스에 대한 단일 진실 소스를 유지합니다.</li></ul><h2 id="toc-heading-3">장점 및 결론</h2><p>이 경량 정적 컴파일러를 구현하면 상당한 이점을 얻을 수 있습니다. 일관되고 크롤링 가능한 URL을 통해 강력한 <a href="https://developers.google.com/search/docs/specialty/international/localized-versions" target="_blank" rel="noopener noreferrer">SEO 최적화</a>를 보장합니다. 순수 정적 파일을 제공함으로써 서버 측 렌더링이나 복잡한 클라이언트 측 라우팅 로직을 제거하여 성능을 극대화합니다. 이 아키텍처는 명확한 관심사 분리를 제공하고, 모든 표준 웹 서버 또는 CDN에 대한 배포를 단순화하며, 유지 관리 가능한 코드베이스를 조성합니다. 빌드 시점에 상대 경로를 세심하게 관리함으로써, 정밀도와 속도가 가장 중요한 반도체 또는 SaaS 환경의 복잡한 기술 문서 또는 고트래픽 제품 랜딩 페이지에 적합한 고효율적이고 확장 가능하며 사용자 친화적인 다국어 정적 사이트 솔루션을 달성합니다.</p>
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">서론: 다국어 정적 사이트의 도전 과제</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">컴파일러의 아키텍처 개요</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">심층 분석: 동적 상대 경로 교환 로직</a></li><li class="toc-item "><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">장점 및 결론</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-multilingual-localization-compiler">
+          "# 동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계\n\n경량 Node.js 컴파일러 아키텍처. `ko`/`en` 서브디렉토리를 자동으로 파싱하고 상대 링크를 해결하여, 프레임워크 없이 강력한 다국어 지역화를 제공합니다.\n\n서론: 다국어 정적 사이트의 도전 과제점점 더 세계화되는 디지털 환경에서 여러 언어로 콘텐츠를 제공하는 것은 매우 중요합니다. 성능, 보안 및 낮은 운영 오버헤드로 높이 평가받는 정적 웹사이트의 경우, 강력한 다국어 지원을 구현하는 것은 놀라울 정도로 복잡할 수 있습니다. 전통적인 접근 방식은 동적 언어 전환을 위해 클라이언트 측 JavaScript를 포함하는 경우가 많으며, 이는 SEO에 방해가 되거나 서버 측 재작성에 의존하여 배포 복잡성을 증가시킬 수 있습니다. 핵심 과제는 특히 기술 문서나 반도체 제품 카탈로그에서 흔히 볼 수 있는 깊게 중첩된 디렉토리 구조를 다룰 때, 모든 내부 상대 링크가 기능하고 해당 지역화된 리소스를 올바르게 가리키도록 보장하면서 로케일별 콘텐츠를 원활하게 관리하는 데 있습니다.컴파일러의 아키텍처 개요우리의 솔루션은 Node.js로 작성된 build.js 스크립트가 대표하는 경량의 맞춤형 정적 컴파일러입니다. 이 컴파일러는 각 로케일(예: ko/, en/)이 자체 최상위 서브디렉토리에 위치하는 구조화된 소스 디렉토리에서 작동합니다. 빌드 프로세스는 몇 가지 명확한 단계로 구성됩니다:1단계: 소스 파일 수집: 컴파일러는 미리 정의된 로케일 디렉토리(예: src/en/, src/ko/)를 재귀적으로 스캔하여 모든 관련 HTML 파일 및 정적 자산을 식별합니다.2단계: HTML 파싱 및 링크 식별: 각 HTML 파일에 대해 DOM 파싱 라이브러리(예: cheerio)를 사용하여 문서 트리를 순회합니다. 이는 &lt;a&gt; 및 &lt;link&gt; 태그의 href, &lt;img&gt; 및 &lt;script&gt; 태그의 src, 그리고 인라인 CSS의 url()을 포함하여 경로 참조를 포함하는 모든 속성을 식별합니다.3단계: 동적 상대 경로 해결: 이것이 핵심 혁신입니다. 소스 파일의 로케일과 소스 트리 내 위치를 기반으로 컴파일러는 식별된 모든 상대 경로를 최종 정적 출력 구조에 적합한 루트 상대 경로로 동적으로 재평가하고 변환합니다.4단계: 출력 생성: 수정된 HTML 콘텐츠는 복사되고 정리된 정적 자산과 함께 지정된 출력 디렉토리(예: dist/)에 기록되며, 로케일 기반 서브디렉토리 구조를 유지합니다.심층 분석: 동적 상대 경로 교환 로직이 접근 방식의 독창성은 컴파일 중에 상대 경로를 문맥적으로 해결하고 교환하는 능력에 있습니다. /src/ko/pages/product-spec.html 소스 파일에 &lt;a href=\"../assets/datasheet.pdf\"&gt;와 같은 내부 링크가 포함된 시나리오를 고려해 보십시오. build.js 스크립트는 Node.js의 path 모듈을 활용합니다:컴파일러는 먼저 처리 중인 현재 소스 파일의 절대 경로를 결정합니다: /project-root/src/ko/pages/product-spec.html.그런 다음 현재 파일의 디렉토리를 기준으로 상대 링크를 해결합니다: path.resolve('/project-root/src/ko/pages/', '../assets/datasheet.pdf'). 이 작업은 소스 트리 내 자산에 대한 절대 경로인 /project-root/src/ko/assets/datasheet.pdf를 올바르게 생성합니다.일관된 배포 준비 링크를 생성하기 위해, 해결된 절대 소스 경로는 전체 프로젝트의 출력 구조를 기반으로 루트 상대 경로로 변환됩니다. 만약 우리의 출력 디렉토리가 /project-root/dist/이고 로케일 서브디렉토리를 미러링한다면, 최종 href는 /ko/assets/datasheet.pdf가 됩니다.이 메커니즘은 다양한 링크 시나리오에 대해 링크 대상을 동적으로 조정합니다:로케일 내 링크: /src/en/products/ 내의 &lt;a href=\"details.html\"&gt;와 같은 링크는 /en/products/details.html로 변환됩니다.로케일 간 링크: /src/en/products/에서 시작된 &lt;a href=\"../../ko/about.html\"&gt;와 같이 로케일을 넘나드는 링크의 경우, 컴파일러는 이를 /ko/about.html로 올바르게 해결하여 콘텐츠의 지역화된 버전 간에 원활한 탐색을 보장합니다.공유 자산: 공통 디렉토리(예: /src/shared/images/logo.png)에 있는 자산은 해당 dist/shared/ 위치로 복사되며, /src/ko/docs/의 &lt;img src=\"../../shared/images/logo.png\"&gt;와 같은 링크는 /shared/images/logo.png로 적절하게 해결되어 전역 리소스에 대한 단일 진실 소스를 유지합니다.장점 및 결론이 경량 정적 컴파일러를 구현하면 상당한 이점을 얻을 수 있습니다. 일관되고 크롤링 가능한 URL을 통해 강력한 SEO 최적화를 보장합니다. 순수 정적 파일을 제공함으로써 서버 측 렌더링이나 복잡한 클라이언트 측 라우팅 로직을 제거하여 성능을 극대화합니다. 이 아키텍처는 명확한 관심사 분리를 제공하고, 모든 표준 웹 서버 또는 CDN에 대한 배포를 단순화하며, 유지 관리 가능한 코드베이스를 조성합니다. 빌드 시점에 상대 경로를 세심하게 관리함으로써, 정밀도와 속도가 가장 중요한 반도체 또는 SaaS 환경의 복잡한 기술 문서 또는 고트래픽 제품 랜딩 페이지에 적합한 고효율적이고 확장 가능하며 사용자 친화적인 다국어 정적 사이트 솔루션을 달성합니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"blog-embedding-recommendation-system","category":"Architecture","title":"Off-line Static Embedding Similarity Calculation and Standalone Blog Recommendation","description":"Compiling sentence-transformer embedding matrices during build time to generate static similarity mapping for offline related posts navigation.","date":"2026-06-17","score":78},{"slug":"semiconductor-packaging-whitepaper","category":"Architecture","title":"Engineering a Resume into a System Architecture","description":"A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio.","date":"2026-06-03","score":75},{"slug":"continuous-integration-static-pages","category":"Insight","title":"Continuous Integration Pipelines for Static Sites via GitHub Actions","description":"Automating compile scripts and static file deployments through cloud runner workflows.","date":"2026-06-08","score":59}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

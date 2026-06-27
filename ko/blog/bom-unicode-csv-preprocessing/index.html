@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화  | 오준서</title>
+<meta name="description" content="숨겨진 BOM(<code>\ufeff</code>) 및 캐리지 리턴으로 인한 JSON/CSV 구조 손상을 해결하여 견고한 데이터 통합 및 파싱을 보장합니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화  | 오준서">
+<meta property="og:description" content="숨겨진 BOM(<code>\ufeff</code>) 및 캐리지 리턴으로 인한 JSON/CSV 구조 손상을 해결하여 견고한 데이터 통합 및 파싱을 보장합니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/bom-unicode-csv-preprocessing/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Architecture</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-06-21">2026-06-21</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">3분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'bom-unicode-csv-preprocessing')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fbom-unicode-csv-preprocessing%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=%EB%8D%B0%EC%9D%B4%ED%84%B0%20%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8%EC%97%90%EC%84%9C%20BOM%20%EB%B0%8F%20%EC%BA%90%EB%A6%AC%EC%A7%80%20%EB%A6%AC%ED%84%B4%20%EC%9D%B4%EC%83%81%20%ED%98%84%EC%83%81%20%EC%99%84%ED%99%94&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fbom-unicode-csv-preprocessing%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <p>현대 데이터 아키텍처, 특히 Google Sheets와 같은 협업 데이터 소스 또는 수동 CSV 내보내기에 의존하는 환경에서는 미묘하지만 만연한 데이터 이상 현상이 치명적인 다운스트림 오류로 이어질 수 있습니다. UTF-8의 BOM(Byte Order Mark), 특히 <code>\ufeff</code>와 일관성 없는 캐리지 리턴 문자(<code>\r</code>)가 주요 원인입니다. 이러한 보이지 않는 문자는 데이터 생성 또는 내보내기 과정에서 부주의하게 유입되는 경우가 많으며, JSON 페이로드 및 CSV 구조를 손상시켜 파서 오류, 스키마 유효성 검사 실패, 그리고 궁극적으로 핵심 ETL 파이프라인의 중단을 초래합니다. 이러한 문제는 데이터 계약이 엄격하게 준수되어야 하는 마이크로서비스 생태계에서 특히 교활하며, API 통합부터 분석 대시보드에 이르기까지 모든 것에 영향을 미칩니다.</p>
+
+<h2 id="toc-heading-0">BOM 및 캐리지 리턴의 교활한 특성</h2>
+<p>더 깊이 들어가 보면 이러한 문제의 메커니즘을 알 수 있습니다. UTF-8 BOM은 다중 바이트 인코딩에서 바이트 순서 신호용으로 고안되었지만, 바이트 순서가 암묵적인 UTF-8에서는 대체로 불필요하고 문제가 됩니다. Microsoft Excel 또는 특정 텍스트 편집기와 같은 도구가 BOM이 포함된 UTF-8 파일을 저장할 때, 호환 파서(예: Python의 <code>csv</code> 모듈 또는 사용자 정의 JSON 파서)는 <code>\ufeff</code>를 첫 번째 필드 데이터의 일부로 해석하여 <code>"&#xfeff;field_name"</code>과 같은 키 또는 <code>"&#xfeff;data"</code>와 같은 값을 생성할 수 있습니다. 이는 예상되는 스키마 구조를 직접적으로 위반합니다. 마찬가지로, Windows 스타일 줄 끝(<code>\r\n</code>) 또는 macOS 클래식(<code>\r</code>)에서 시작된 캐리지 리턴은 데이터 필드 내부에 남아 있을 수 있습니다. 예를 들어, CSV 필드 내에 포함된 <code>\r</code>은 올바르게 제거되거나 정규화되지 않으면 라인을 조기에 종료시켜 열을 잘못 정렬하고 이후 데이터를 새로운 레코드로 오해할 수 있습니다. JSON에서는 문자열 값 내의 이스케이프되지 않은 <code>\r</code> 문자가 유효하지 않은 JSON 구문으로 이어지거나, 로그 파서 또는 임베디드 시스템의 디스플레이 드라이버와 같이 엄격한 줄 바꿈(<code>\n</code>)을 예상하는 시스템에서 텍스트를 읽을 수 없게 만들 수 있습니다.</p>
+
+<h2 id="toc-heading-1">엔지니어링 견고성: 완화 전략</h2>
+<p>효과적인 완화는 데이터 수집 파이프라인 내에 능동적인 전처리 계층을 필요로 합니다. BOM의 경우 명시적인 바이트 수준 필터링 또는 인코딩 인식 라이브러리 활용이 가장 중요합니다. Python에서는 파일을 읽을 때 <code>encoding='utf-8-sig'</code>를 지정하면 BOM이 자동으로 제거됩니다. 다른 언어의 경우, 파일 시작 부분에서 <code>0xEF 0xBB 0xBF</code> 바이트 시퀀스를 수동으로 확인하고 제거해야 하는 경우가 많습니다. 캐리지 리턴 이상 현상은 세심한 정규화를 요구합니다. 즉, 모든 <code>\r\n</code> 및 단독 <code>\r</code> 문자를 <code>\n</code>으로 일관되게 바꾸거나, 데이터 요소 내에서 새 줄이 예상되지 않는 경우 필드 값에서 <code>\r</code>을 완전히 제거하는 것입니다. 예를 들어, 일반적인 패턴은 <code>string.replace('\r', '')</code>를 포함합니다. 또한, JSON Schema 또는 Avro와 같은 도구를 사용하여 가능한 가장 빠른 단계에서 강력한 스키마 유효성 검사를 수행하는 것은 필수적인 안전망을 제공하여, 반도체 제조 공정 제어 시스템에 데이터를 공급하는 구성 요소를 포함하여 중요 인프라 구성 요소 전반에 걸쳐 연쇄적인 오류를 일으키기 전에 잘못 형성된 데이터를 포착합니다.</p>
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">BOM 및 캐리지 리턴의 교활한 특성</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">엔지니어링 견고성: 완화 전략</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-bom-unicode-csv-preprocessing">
+          "# 데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화\n\n숨겨진 BOM(<code>\\ufeff</code>) 및 캐리지 리턴으로 인한 JSON/CSV 구조 손상을 해결하여 견고한 데이터 통합 및 파싱을 보장합니다.\n\n현대 데이터 아키텍처, 특히 Google Sheets와 같은 협업 데이터 소스 또는 수동 CSV 내보내기에 의존하는 환경에서는 미묘하지만 만연한 데이터 이상 현상이 치명적인 다운스트림 오류로 이어질 수 있습니다. UTF-8의 BOM(Byte Order Mark), 특히 \\ufeff와 일관성 없는 캐리지 리턴 문자(\\r)가 주요 원인입니다. 이러한 보이지 않는 문자는 데이터 생성 또는 내보내기 과정에서 부주의하게 유입되는 경우가 많으며, JSON 페이로드 및 CSV 구조를 손상시켜 파서 오류, 스키마 유효성 검사 실패, 그리고 궁극적으로 핵심 ETL 파이프라인의 중단을 초래합니다. 이러한 문제는 데이터 계약이 엄격하게 준수되어야 하는 마이크로서비스 생태계에서 특히 교활하며, API 통합부터 분석 대시보드에 이르기까지 모든 것에 영향을 미칩니다. BOM 및 캐리지 리턴의 교활한 특성 더 깊이 들어가 보면 이러한 문제의 메커니즘을 알 수 있습니다. UTF-8 BOM은 다중 바이트 인코딩에서 바이트 순서 신호용으로 고안되었지만, 바이트 순서가 암묵적인 UTF-8에서는 대체로 불필요하고 문제가 됩니다. Microsoft Excel 또는 특정 텍스트 편집기와 같은 도구가 BOM이 포함된 UTF-8 파일을 저장할 때, 호환 파서(예: Python의 csv 모듈 또는 사용자 정의 JSON 파서)는 \\ufeff를 첫 번째 필드 데이터의 일부로 해석하여 \"&#xfeff;field_name\"과 같은 키 또는 \"&#xfeff;data\"와 같은 값을 생성할 수 있습니다. 이는 예상되는 스키마 구조를 직접적으로 위반합니다. 마찬가지로, Windows 스타일 줄 끝(\\r\\n) 또는 macOS 클래식(\\r)에서 시작된 캐리지 리턴은 데이터 필드 내부에 남아 있을 수 있습니다. 예를 들어, CSV 필드 내에 포함된 \\r은 올바르게 제거되거나 정규화되지 않으면 라인을 조기에 종료시켜 열을 잘못 정렬하고 이후 데이터를 새로운 레코드로 오해할 수 있습니다. JSON에서는 문자열 값 내의 이스케이프되지 않은 \\r 문자가 유효하지 않은 JSON 구문으로 이어지거나, 로그 파서 또는 임베디드 시스템의 디스플레이 드라이버와 같이 엄격한 줄 바꿈(\\n)을 예상하는 시스템에서 텍스트를 읽을 수 없게 만들 수 있습니다. 엔지니어링 견고성: 완화 전략 효과적인 완화는 데이터 수집 파이프라인 내에 능동적인 전처리 계층을 필요로 합니다. BOM의 경우 명시적인 바이트 수준 필터링 또는 인코딩 인식 라이브러리 활용이 가장 중요합니다. Python에서는 파일을 읽을 때 encoding='utf-8-sig'를 지정하면 BOM이 자동으로 제거됩니다. 다른 언어의 경우, 파일 시작 부분에서 0xEF 0xBB 0xBF 바이트 시퀀스를 수동으로 확인하고 제거해야 하는 경우가 많습니다. 캐리지 리턴 이상 현상은 세심한 정규화를 요구합니다. 즉, 모든 \\r\\n 및 단독 \\r 문자를 \\n으로 일관되게 바꾸거나, 데이터 요소 내에서 새 줄이 예상되지 않는 경우 필드 값에서 \\r을 완전히 제거하는 것입니다. 예를 들어, 일반적인 패턴은 string.replace('\\r', '')를 포함합니다. 또한, JSON Schema 또는 Avro와 같은 도구를 사용하여 가능한 가장 빠른 단계에서 강력한 스키마 유효성 검사를 수행하는 것은 필수적인 안전망을 제공하여, 반도체 제조 공정 제어 시스템에 데이터를 공급하는 구성 요소를 포함하여 중요 인프라 구성 요소 전반에 걸쳐 연쇄적인 오류를 일으키기 전에 잘못 형성된 데이터를 포착합니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"bom-unicode-strip-value-error","category":"Insight","title":"Filtering Out Unicode BOM and Whitespace from Sheet Parsers","description":"Stripping invisible BOM headers (feff) and whitespaces during dataframe conversion to avoid ValueError exceptions.","date":"2026-04-20","score":88},{"slug":"harness-ponytail-caveman-integration","category":"Architecture","title":"Integrating Ponytail and Caveman Rules for AI Agent Optimization","description":"How merging YAGNI-centric code control with terse, token-efficient Korean Caveman style interactions stabilizes AI workspace collaboration.","date":"2026-06-10","score":48},{"slug":"capcut-draft-json-automation","category":"Career","title":"Hacking CapCut Local Project JSON for Automated Cuts and Subtitle Synchronization","description":"Reverse engineering CapCut's draft metadata to programmatically align ASR transcripts, video segments, and styling for advanced automation.","date":"2026-06-11","score":44}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

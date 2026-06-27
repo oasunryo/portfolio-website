@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정  | 오준서</title>
+<meta name="description" content="4개의 전문 에이전트(재무, 뉴스, 산업, 전략)를 통합하여 Google Sheets API를 통해 장부 잔액을 동기화하고 목표 비중 재조정을 실행합니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정  | 오준서">
+<meta property="og:description" content="4개의 전문 에이전트(재무, 뉴스, 산업, 전략)를 통합하여 Google Sheets API를 통해 장부 잔액을 동기화하고 목표 비중 재조정을 실행합니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/google-sheets-api-asset-management/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Insight</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-06-13">2026-06-13</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">3분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'google-sheets-api-asset-management')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fgoogle-sheets-api-asset-management%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=AI%20%EC%9E%90%EC%82%B0%20%EA%B4%80%EB%A6%AC%EC%9E%90%3A%20Google%20Sheets%20API%20%EB%B0%8F%20%EB%8B%A4%EC%A4%91%20%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%20%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%20%EC%9E%AC%EC%A1%B0%EC%A0%95&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fgoogle-sheets-api-asset-management%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <p>현대 자산 관리의 역동적인 특성은 끊임없이 변화하는 시장 조건에 대한 지능적이고 적응력 있는 대응을 요구합니다. 본 블로그 게시물에서는 Google Sheets를 핵심 원장으로 활용하는 멀티 에이전트 AI 시스템을 통해 이러한 복잡성에 대처하는 정교한 접근 방식을 제시합니다. 이 시스템은 실시간 자산 동기화, 포트폴리오 평가 및 자율적인 목표 비중 재조정 기능을 제공하여 투자 전략의 효율성과 반응성을 크게 향상시킵니다. 병렬 오케스트레이션은 여러 에이전트가 동시에 작동하여 시장 변동에 대한 신속하고 일관된 의사 결정을 보장하는 데 매우 중요합니다.</p><p>당사의 아키텍처는 중앙 신경계 역할을 하는 <strong>오케스트레이터</strong>를 중심으로 구축되어 병렬 에이전트 실행 및 워크플로우 조정을 관리합니다. <code>Google Sheets API</code>를 통해 액세스되는 Google Sheets는 자산 보유, 목표 할당 및 거래 로그에 대한 변경 불가능한 원장 역할을 하여 투명하고 감사 가능한 추적을 보장합니다. 이 프레임워크 내에서 네 가지 전문 에이전트가 각자의 역할을 수행합니다. 첫째, <code>재무 에이전트</code>는 실시간 시장 데이터(가격, NAV)를 가져와 현재 포트폴리오 가치 평가 및 목표와의 편차를 계산합니다. 둘째, <code>뉴스 에이전트</code>는 재무 뉴스 피드를 지속적으로 모니터링하여 거시 경제 변화, 회사별 발표 및 지정학적 이벤트를 식별합니다. 셋째, <code>산업 에이전트</code>는 특히 반도체와 같은 첨단 기술 부문에 중요한 심층적인 부문 분석을 제공하여 공급망 중단, 경쟁 역학 및 기술 변곡점을 평가합니다. 마지막으로, <code>전략 에이전트</code>는 다른 에이전트의 통찰력을 통합하고, 미리 정의되고 동적으로 조정된 투자 휴리스틱을 적용하며, 최적의 재조정 작업을 계산하여 <code>spreadsheets.values.update</code>를 통해 Google Sheets 내에서 목표 비중 업데이트로 반영됩니다.</p><p>기술적 구현은 몇 가지 중요한 고려 사항을 수반합니다. 강력한 <code>Google Sheets API</code> 통합은 보안 OAuth 2.0 인증, 속도 제한 처리, 데이터 무결성을 위한 원자적 읽기/쓰기 작업, 원장 항목 버전 관리가 필수적입니다. <strong>오케스트레이션 계층</strong>은 병렬 에이전트 실행을 관리하고 내결함성 및 효율적인 리소스 활용을 보장하기 위해 비동기 작업 큐(예: Redis 백엔드가 있는 Celery)를 구현합니다. Google Sheets 자체 내에서 자산 클래스, 통화 및 수량에 대한 엄격한 데이터 모델을 적용하여 원장 일관성을 유지하는 <strong>데이터 스키마 및 유효성 검사</strong>가 중요합니다. <strong>재조정 알고리즘 논리</strong>에는 임계값 기반 재조정, 세금 손실 수확 의미, 실행 중 거래 미끄러짐 최소화에 대한 논의가 포함됩니다. 확장성을 위해 특히 뉴스 및 시장 데이터와 같은 시간 민감한 정보를 위해 짧은 대기 시간 데이터 가져오기 및 처리를 설계하고 에이전트 배포를 위한 클라우드 기반 서버리스 기능을 고려합니다. 마지막으로, 데이터 암호화, API에 대한 최소 권한 액세스, 규정 준수를 위한 모든 에이전트 결정 및 시트 수정의 완전한 감사 추적 유지는 <strong>보안 및 감사</strong>의 핵심 요소입니다.</p>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-google-sheets-api-asset-management">
+          "# AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정\n\n4개의 전문 에이전트(재무, 뉴스, 산업, 전략)를 통합하여 Google Sheets API를 통해 장부 잔액을 동기화하고 목표 비중 재조정을 실행합니다.\n\n현대 자산 관리의 역동적인 특성은 끊임없이 변화하는 시장 조건에 대한 지능적이고 적응력 있는 대응을 요구합니다. 본 블로그 게시물에서는 Google Sheets를 핵심 원장으로 활용하는 멀티 에이전트 AI 시스템을 통해 이러한 복잡성에 대처하는 정교한 접근 방식을 제시합니다. 이 시스템은 실시간 자산 동기화, 포트폴리오 평가 및 자율적인 목표 비중 재조정 기능을 제공하여 투자 전략의 효율성과 반응성을 크게 향상시킵니다. 병렬 오케스트레이션은 여러 에이전트가 동시에 작동하여 시장 변동에 대한 신속하고 일관된 의사 결정을 보장하는 데 매우 중요합니다.당사의 아키텍처는 중앙 신경계 역할을 하는 오케스트레이터를 중심으로 구축되어 병렬 에이전트 실행 및 워크플로우 조정을 관리합니다. Google Sheets API를 통해 액세스되는 Google Sheets는 자산 보유, 목표 할당 및 거래 로그에 대한 변경 불가능한 원장 역할을 하여 투명하고 감사 가능한 추적을 보장합니다. 이 프레임워크 내에서 네 가지 전문 에이전트가 각자의 역할을 수행합니다. 첫째, 재무 에이전트는 실시간 시장 데이터(가격, NAV)를 가져와 현재 포트폴리오 가치 평가 및 목표와의 편차를 계산합니다. 둘째, 뉴스 에이전트는 재무 뉴스 피드를 지속적으로 모니터링하여 거시 경제 변화, 회사별 발표 및 지정학적 이벤트를 식별합니다. 셋째, 산업 에이전트는 특히 반도체와 같은 첨단 기술 부문에 중요한 심층적인 부문 분석을 제공하여 공급망 중단, 경쟁 역학 및 기술 변곡점을 평가합니다. 마지막으로, 전략 에이전트는 다른 에이전트의 통찰력을 통합하고, 미리 정의되고 동적으로 조정된 투자 휴리스틱을 적용하며, 최적의 재조정 작업을 계산하여 spreadsheets.values.update를 통해 Google Sheets 내에서 목표 비중 업데이트로 반영됩니다.기술적 구현은 몇 가지 중요한 고려 사항을 수반합니다. 강력한 Google Sheets API 통합은 보안 OAuth 2.0 인증, 속도 제한 처리, 데이터 무결성을 위한 원자적 읽기/쓰기 작업, 원장 항목 버전 관리가 필수적입니다. 오케스트레이션 계층은 병렬 에이전트 실행을 관리하고 내결함성 및 효율적인 리소스 활용을 보장하기 위해 비동기 작업 큐(예: Redis 백엔드가 있는 Celery)를 구현합니다. Google Sheets 자체 내에서 자산 클래스, 통화 및 수량에 대한 엄격한 데이터 모델을 적용하여 원장 일관성을 유지하는 데이터 스키마 및 유효성 검사가 중요합니다. 재조정 알고리즘 논리에는 임계값 기반 재조정, 세금 손실 수확 의미, 실행 중 거래 미끄러짐 최소화에 대한 논의가 포함됩니다. 확장성을 위해 특히 뉴스 및 시장 데이터와 같은 시간 민감한 정보를 위해 짧은 대기 시간 데이터 가져오기 및 처리를 설계하고 에이전트 배포를 위한 클라우드 기반 서버리스 기능을 고려합니다. 마지막으로, 데이터 암호화, API에 대한 최소 권한 액세스, 규정 준수를 위한 모든 에이전트 결정 및 시트 수정의 완전한 감사 추적 유지는 보안 및 감사의 핵심 요소입니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"ai-wealth-manager-intro","category":"Insight","title":"Designing a Bidirectional Google Sheets Sync AI Financial Assistant","description":"How to build an automated asset ledger updated via interactive chat inputs, keeping spreadsheets synchronized.","date":"2026-05-02","score":100},{"slug":"financial-sub-agents-orchestrator","category":"Insight","title":"Orchestrating 4 Specialized Financial Sub-agents Parallelized","description":"How a financial orchestrator triggers financial, news sentiment, semiconductor industry, and trading strategy sub-agents.","date":"2026-04-30","score":100},{"slug":"vision-pipeline-html-report","category":"Insight","title":"Automating Account Audits: Llama-Vision to HTML Email Pipeline","description":"Parsing account screenshots using free Groq Llama-Vision APIs to trigger beautifully designed HTML financial diagnoses.","date":"2026-03-26","score":81}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

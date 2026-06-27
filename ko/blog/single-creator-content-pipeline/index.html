@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략  | 오준서</title>
+<meta name="description" content="Llama-Vision 및 API 오케스트레이션을 활용하여 단편 비디오를 통한 반도체 산업 교육 콘텐츠 생성을 자동화합니다.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략  | 오준서">
+<meta property="og:description" content="Llama-Vision 및 API 오케스트레이션을 활용하여 단편 비디오를 통한 반도체 산업 교육 콘텐츠 생성을 자동화합니다.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/single-creator-content-pipeline/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Insight</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-06-20">2026-06-20</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">3분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'single-creator-content-pipeline')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fsingle-creator-content-pipeline%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=AI%20%EA%B8%B0%EB%B0%98%20%EB%B0%98%EB%8F%84%EC%B2%B4%20%EC%BD%98%ED%85%90%EC%B8%A0%20%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8%3A%20%EB%8B%88%EC%B9%98%20%ED%83%80%EA%B2%9F%ED%8C%85%20%EC%A0%84%EB%9E%B5&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fsingle-creator-content-pipeline%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <p>현대 전문 기술 교육 환경은 콘텐츠 전달에 있어 전례 없는 속도와 정밀성을 요구합니다. 반도체 산업의 복잡성을 헤쳐나가는 개인 사업가에게 있어 강력한 브랜딩 콘텐츠 파이프라인을 구축하는 것은 단순히 유리한 것을 넘어 필수적입니다. 효율적인 '원맨 사업' 모델에서 영감을 얻어, 이 게시물은 단편 비디오 플랫폼을 통해 반도체 분야의 틈새 시장을 겨냥한 고부가가치 교육 콘텐츠 생성을 자동화하고 확장하기 위한 아키텍처 접근 방식을 설명합니다.</p>
+
+<h2 id="toc-heading-0">Llama-Vision: 진단 통찰력 및 의미론적 구조화</h2>
+<p>이 파이프라인의 핵심은 고도로 튜닝된 <strong>Llama-Vision</strong> 모델로 대표되는 고급 진단 도구의 통합입니다. 이 멀티모달 AI 시스템은 복잡한 회로도, 연구 논문, 제조 공정 비디오, 산업 보고서 등 방대한 반도체 데이터를 처리하도록 설계되었습니다. 주요 기능은 <code>시각적 특징 추출</code>, 기술 도면의 <code>광학 문자 인식(OCR)</code>, 그리고 방대한 문서의 <code>의미론적 색인화</code>를 포함합니다. 예를 들어, Llama-Vision은 특정 IC 토폴로지를 식별하고, 웨이퍼 검사 이미지의 이상 징후를 정확히 찾아내며, 또는 <code>FinFET 게이트 형상</code>이나 <code>EUV 리소그래피 과제</code>와 같은 핵심 개념을 추출하기 위해 학술 텍스트를 분석할 수 있습니다. 결과물은 잠재적인 시각적 후크와 주요 학습 목표로 풍부해진 구조화된 메타데이터 계층이며, 후속 콘텐츠 생성을 위해 준비됩니다.</p>
+
+<h2 id="toc-heading-1">자동화된 콘텐츠 합성 및 니치 타겟팅</h2>
+<p>Llama-Vision의 구조화된 통찰력을 활용하여 파이프라인은 콘텐츠 생성 단계로 진행됩니다. 추가로 미세 조정된 Llama 변형일 수 있는 특수 언어 모델이 <strong>내러티브 생성 엔진</strong> 역할을 합니다. 이 엔진은 추출된 메타데이터, 주제 클러스터, 시각적 신호를 사용하여 매력적인 단편 비디오 스크립트를 자동으로 작성합니다. 스크립트는 <code>플라즈마 식각 매개변수</code> 또는 <code>MEMS 제조 공정</code>과 같은 고도로 기술적인 개념을 YouTube Shorts 또는 LinkedIn과 같은 플랫폼에 적합한 이해하기 쉬운 내러티브로 전환하도록 세심하게 설계됩니다. 자동화는 Llama-Vision이 식별한 시각적 자산(예: 특정 현미경 이미지, 전자 흐름 애니메이션 개념)을 추천하고, 강력한 <code>오디오 생성 API</code>를 통해 텍스트-음성 합성을 조율하는 것까지 확장됩니다. 이를 통해 단일 크리에이터가 재료 과학 대학원생부터 고급 패키징 설계 엔지니어에 이르기까지 반도체 엔지니어링 커뮤니티 내의 특정 하위 세그먼트를 다룰 수 있는 하이퍼-니치 타겟팅이 가능해집니다.</p>
+
+<h2 id="toc-heading-2">확장 가능한 파이프라인 아키텍처 및 배포</h2>
+<p>전체 시스템은 확장성과 비용 효율성을 보장하기 위해 서버리스 함수(예: AWS Lambda, Google Cloud Functions)를 통해 배포 가능한 일련의 상호 운용 가능한 마이크로서비스로 아키텍처화됩니다. 데이터 수집 모듈은 산업 뉴스 피드, 학술 데이터베이스(예: IEEE Xplore, arXiv), 특허 출원을 지속적으로 모니터링하여 새로운 정보를 Llama-Vision 처리 대기열에 공급합니다. 강력한 <code>API 오케스트레이션 계층</code>은 비전 처리에서 내러티브 생성, 그리고 최종적으로 게시 모듈에 이르는 흐름을 관리합니다. 게시 모듈에는 다양한 소셜 미디어 플랫폼을 위한 특정 API 통합이 포함되어 생성된 단편 비디오 콘텐츠의 예약 및 배포를 자동화합니다. Llama-Vision의 진단 정확도와 내러티브 엔진의 설득력 있는 기능을 반복하여 개선하기 위한 지속적인 통합 및 지속적인 배포(CI/CD) 파이프라인은 급변하는 반도체 분야에서 콘텐츠가 최첨단으로 유지되고 반향을 일으키는 데 필수적입니다.</p>
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">Llama-Vision: 진단 통찰력 및 의미론적 구조화</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">자동화된 콘텐츠 합성 및 니치 타겟팅</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">확장 가능한 파이프라인 아키텍처 및 배포</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-single-creator-content-pipeline">
+          "# AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략\n\nLlama-Vision 및 API 오케스트레이션을 활용하여 단편 비디오를 통한 반도체 산업 교육 콘텐츠 생성을 자동화합니다.\n\n현대 전문 기술 교육 환경은 콘텐츠 전달에 있어 전례 없는 속도와 정밀성을 요구합니다. 반도체 산업의 복잡성을 헤쳐나가는 개인 사업가에게 있어 강력한 브랜딩 콘텐츠 파이프라인을 구축하는 것은 단순히 유리한 것을 넘어 필수적입니다. 효율적인 '원맨 사업' 모델에서 영감을 얻어, 이 게시물은 단편 비디오 플랫폼을 통해 반도체 분야의 틈새 시장을 겨냥한 고부가가치 교육 콘텐츠 생성을 자동화하고 확장하기 위한 아키텍처 접근 방식을 설명합니다. Llama-Vision: 진단 통찰력 및 의미론적 구조화 이 파이프라인의 핵심은 고도로 튜닝된 Llama-Vision 모델로 대표되는 고급 진단 도구의 통합입니다. 이 멀티모달 AI 시스템은 복잡한 회로도, 연구 논문, 제조 공정 비디오, 산업 보고서 등 방대한 반도체 데이터를 처리하도록 설계되었습니다. 주요 기능은 시각적 특징 추출, 기술 도면의 광학 문자 인식(OCR), 그리고 방대한 문서의 의미론적 색인화를 포함합니다. 예를 들어, Llama-Vision은 특정 IC 토폴로지를 식별하고, 웨이퍼 검사 이미지의 이상 징후를 정확히 찾아내며, 또는 FinFET 게이트 형상이나 EUV 리소그래피 과제와 같은 핵심 개념을 추출하기 위해 학술 텍스트를 분석할 수 있습니다. 결과물은 잠재적인 시각적 후크와 주요 학습 목표로 풍부해진 구조화된 메타데이터 계층이며, 후속 콘텐츠 생성을 위해 준비됩니다. 자동화된 콘텐츠 합성 및 니치 타겟팅 Llama-Vision의 구조화된 통찰력을 활용하여 파이프라인은 콘텐츠 생성 단계로 진행됩니다. 추가로 미세 조정된 Llama 변형일 수 있는 특수 언어 모델이 내러티브 생성 엔진 역할을 합니다. 이 엔진은 추출된 메타데이터, 주제 클러스터, 시각적 신호를 사용하여 매력적인 단편 비디오 스크립트를 자동으로 작성합니다. 스크립트는 플라즈마 식각 매개변수 또는 MEMS 제조 공정과 같은 고도로 기술적인 개념을 YouTube Shorts 또는 LinkedIn과 같은 플랫폼에 적합한 이해하기 쉬운 내러티브로 전환하도록 세심하게 설계됩니다. 자동화는 Llama-Vision이 식별한 시각적 자산(예: 특정 현미경 이미지, 전자 흐름 애니메이션 개념)을 추천하고, 강력한 오디오 생성 API를 통해 텍스트-음성 합성을 조율하는 것까지 확장됩니다. 이를 통해 단일 크리에이터가 재료 과학 대학원생부터 고급 패키징 설계 엔지니어에 이르기까지 반도체 엔지니어링 커뮤니티 내의 특정 하위 세그먼트를 다룰 수 있는 하이퍼-니치 타겟팅이 가능해집니다. 확장 가능한 파이프라인 아키텍처 및 배포 전체 시스템은 확장성과 비용 효율성을 보장하기 위해 서버리스 함수(예: AWS Lambda, Google Cloud Functions)를 통해 배포 가능한 일련의 상호 운용 가능한 마이크로서비스로 아키텍처화됩니다. 데이터 수집 모듈은 산업 뉴스 피드, 학술 데이터베이스(예: IEEE Xplore, arXiv), 특허 출원을 지속적으로 모니터링하여 새로운 정보를 Llama-Vision 처리 대기열에 공급합니다. 강력한 API 오케스트레이션 계층은 비전 처리에서 내러티브 생성, 그리고 최종적으로 게시 모듈에 이르는 흐름을 관리합니다. 게시 모듈에는 다양한 소셜 미디어 플랫폼을 위한 특정 API 통합이 포함되어 생성된 단편 비디오 콘텐츠의 예약 및 배포를 자동화합니다. Llama-Vision의 진단 정확도와 내러티브 엔진의 설득력 있는 기능을 반복하여 개선하기 위한 지속적인 통합 및 지속적인 배포(CI/CD) 파이프라인은 급변하는 반도체 분야에서 콘텐츠가 최첨단으로 유지되고 반향을 일으키는 데 필수적입니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"discord-semiconductor-news-bot","category":"Career","title":"Semiconductor News Scraper & Discord Bot Orchestration","description":"Structuring an automated pipeline to aggregate semiconductor industry developments and deliver daily summaries to Discord.","date":"2026-06-12","score":84},{"slug":"karpathy-style-wiki-synthesis","category":"Insight","title":"Karpathy-Style LLM Wiki Synthesis: Ingest, Query, and Lint Automation for Obsidian PKM","description":"Compounding local notes into an English knowledge base with a 3-layer structure using automated ingestion, validation, and semantic sync.","date":"2026-06-14","score":84},{"slug":"vision-pipeline-html-report","category":"Insight","title":"Automating Account Audits: Llama-Vision to HTML Email Pipeline","description":"Parsing account screenshots using free Groq Llama-Vision APIs to trigger beautifully designed HTML financial diagnoses.","date":"2026-03-26","score":80}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

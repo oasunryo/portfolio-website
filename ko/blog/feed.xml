@@ -7,6 +7,111 @@
   <language>ko-KR</language>
   <atom:link href="https://junseo.site/ko/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title><![CDATA[동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계]]></title>
+    <link>https://junseo.site/ko/blog/multilingual-localization-compiler/index.html</link>
+    <guid>https://junseo.site/ko/blog/multilingual-localization-compiler/index.html</guid>
+    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[경량 Node.js 컴파일러 아키텍처. `ko`/`en` 서브디렉토리를 자동으로 파싱하고 상대 링크를 해결하여, 프레임워크 없이 강력한 다국어 지역화를 제공합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Zotero 7 Better BibTeX 인용 키 통합 및 로컬 Obsidian 논문 하이라이트 동기화]]></title>
+    <link>https://junseo.site/ko/blog/zotero-better-bibtex-obsidian/index.html</link>
+    <guid>https://junseo.site/ko/blog/zotero-better-bibtex-obsidian/index.html</guid>
+    <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[문헌 노트 구조화, 동기화 템플릿, 사용자 지정 CSS 콜아웃을 통해 Zotero 독서에서 로컬 지식 체계로 학술 정보를 연결합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[웹 오디오 API 실시간 신호 주파수 캔버스 밴드 레벨 미터 위젯 구축]]></title>
+    <link>https://junseo.site/ko/blog/audio-level-meter-widget/index.html</link>
+    <guid>https://junseo.site/ko/blog/audio-level-meter-widget/index.html</guid>
+    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[고성능 CSS 및 JavaScript 루프를 사용하여 오디오 분석기 주파수를 나타내는 동적 캔버스 바 애니메이션 구현.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화]]></title>
+    <link>https://junseo.site/ko/blog/bom-unicode-csv-preprocessing/index.html</link>
+    <guid>https://junseo.site/ko/blog/bom-unicode-csv-preprocessing/index.html</guid>
+    <pubDate>Sun, 21 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[숨겨진 BOM(<code>\ufeff</code>) 및 캐리지 리턴으로 인한 JSON/CSV 구조 손상을 해결하여 견고한 데이터 통합 및 파싱을 보장합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략]]></title>
+    <link>https://junseo.site/ko/blog/single-creator-content-pipeline/index.html</link>
+    <guid>https://junseo.site/ko/blog/single-creator-content-pipeline/index.html</guid>
+    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Llama-Vision 및 API 오케스트레이션을 활용하여 단편 비디오를 통한 반도체 산업 교육 콘텐츠 생성을 자동화합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 기반 개발을 위한 자동 세션 핸드오버]]></title>
+    <link>https://junseo.site/ko/blog/automated-session-handover/index.html</link>
+    <guid>https://junseo.site/ko/blog/automated-session-handover/index.html</guid>
+    <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[코드베이스 감사 및 활성 작업 상태를 토큰 최적화된 브리핑 프롬프트로 컴파일하여 AI 에이전트의 원활한 순차 실행을 지원합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Safari 뷰포트 오버레이 및 iOS 안전 영역 헤더 최적화]]></title>
+    <link>https://junseo.site/ko/blog/safari-viewport-overlay-optimization/index.html</link>
+    <guid>https://junseo.site/ko/blog/safari-viewport-overlay-optimization/index.html</guid>
+    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Safari 오버레이의 바운스 스크롤 이음새 간격 해결 및 상단 안전 영역 경계 동적 계산.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[오프라인 정적 임베딩 유사성 계산 및 독립형 블로그 추천]]></title>
+    <link>https://junseo.site/ko/blog/blog-embedding-recommendation-system/index.html</link>
+    <guid>https://junseo.site/ko/blog/blog-embedding-recommendation-system/index.html</guid>
+    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[빌드 타임에 sentence-transformer 임베딩 행렬을 계산하여 오프라인 관련 게시물 탐색을 위한 정적 유사성 매핑 생성.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[HTML/CSS 기반의 고성능 인터랙티브 웹 프레젠테이션 구축]]></title>
+    <link>https://junseo.site/ko/blog/interactive-web-slides-builder/index.html</link>
+    <guid>https://junseo.site/ko/blog/interactive-web-slides-builder/index.html</guid>
+    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[반응형, HTML/CSS 네이티브 슬라이드 빌더를 마이크로 애니메이션 및 스타일 프리셋과 함께 설계하여, 무거운 프레젠테이션 파일을 대체하는 방법을 탐구합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Spotfire 코발트 그리드 시각화를 통한 웨이퍼 WAT 빅데이터 분석]]></title>
+    <link>https://junseo.site/ko/blog/spotfire-cobalt-grid-analysis/index.html</link>
+    <guid>https://junseo.site/ko/blog/spotfire-cobalt-grid-analysis/index.html</guid>
+    <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[코발트 그리드 파라미터를 사용한 대화형 Spotfire 대시보드 개발로 공간적 수율 실패 및 장비 이상을 격리합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[카파티 스타일 LLM 위키 합성: 옵시디언 PKM을 위한 자동화된 수집, 질의 및 린트]]></title>
+    <link>https://junseo.site/ko/blog/karpathy-style-wiki-synthesis/index.html</link>
+    <guid>https://junseo.site/ko/blog/karpathy-style-wiki-synthesis/index.html</guid>
+    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[자동화된 수집, 검증, 시맨틱 동기화를 통해 3계층 구조의 로컬 노트를 영어 지식 베이스로 통합합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정]]></title>
+    <link>https://junseo.site/ko/blog/google-sheets-api-asset-management/index.html</link>
+    <guid>https://junseo.site/ko/blog/google-sheets-api-asset-management/index.html</guid>
+    <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[4개의 전문 에이전트(재무, 뉴스, 산업, 전략)를 통합하여 Google Sheets API를 통해 장부 잔액을 동기화하고 목표 비중 재조정을 실행합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[반도체 뉴스 스크래퍼 및 디스코드 웹훅 봇 오케스트레이션]]></title>
+    <link>https://junseo.site/ko/blog/discord-semiconductor-news-bot/index.html</link>
+    <guid>https://junseo.site/ko/blog/discord-semiconductor-news-bot/index.html</guid>
+    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[반도체 산업 동향을 집계하고 매일 디스코드에 요약을 전송하는 자동화된 봇 파이프라인 구축.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[CapCut 로컬 프로젝트 JSON 해킹: 자동화된 컷 및 자막 동기화]]></title>
+    <link>https://junseo.site/ko/blog/capcut-draft-json-automation/index.html</link>
+    <guid>https://junseo.site/ko/blog/capcut-draft-json-automation/index.html</guid>
+    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[CapCut 초안 메타데이터 역설계를 통해 ASR 스크립트, 비디오 세그먼트 및 스타일링을 프로그램적으로 정렬하여 고급 자동화 구현.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[AI 에이전트 최적화를 위한 포니테일 및 케이브맨 규칙 통합]]></title>
+    <link>https://junseo.site/ko/blog/harness-ponytail-caveman-integration/index.html</link>
+    <guid>https://junseo.site/ko/blog/harness-ponytail-caveman-integration/index.html</guid>
+    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[YAGNI 중심의 코드 제어와 간결하고 토큰 효율적인 한국형 케이브맨 스타일 상호작용을 결합하여 AI 작업 공간 협업을 안정화하는 방법.]]></description>
+  </item>
+  <item>
     <title><![CDATA[GitHub Actions를 이용한 Zero-Dependency 정적 포트폴리오 사이트 자동 배포 파이프라인]]></title>
     <link>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</link>
     <guid>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</guid>
@@ -40,111 +145,6 @@
     <guid>https://junseo.site/ko/blog/vibe-coding-to-harness-engineering/index.html</guid>
     <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[자연어로 대충 부탁하는 "바이브 코딩"을 넘어, AI 에이전트가 안전하고 정확하게 동작할 수밖에 없도록 통제 환경(Harness)을 만드는 패러다임을 제안합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[바이브 코딩의 한계와 하네스 엔지니어링의 필요성]]></title>
-    <link>https://junseo.site/ko/blog/harness-vs-vibe-coding/index.html</link>
-    <guid>https://junseo.site/ko/blog/harness-vs-vibe-coding/index.html</guid>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[단순한 대화형 코드 생성을 넘어서, AI 에이전트가 완벽하게 동작할 수밖에 없는 환경 제어(Harness) 기법을 알아봅니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Git Worktree 활용법: 개발 흐름 끊김 없는 핫픽스 멀티태스킹]]></title>
-    <link>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</link>
-    <guid>https://junseo.site/ko/blog/git-worktree-multi-tasking/index.html</guid>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[작업 중인 브랜치에서 git stash 대신, 별도의 작업 디렉토리 폴더를 동적으로 생성해 병렬로 핫픽스 코딩을 수행하는 모던 깃 명령어.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[이력서를 시스템 아키텍처로 엔지니어링하다]]></title>
-    <link>https://junseo.site/ko/blog/semiconductor-packaging-whitepaper/index.html</link>
-    <guid>https://junseo.site/ko/blog/semiconductor-packaging-whitepaper/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Figma 스타일의 반응형 웹 포트폴리오 기획 의도와 Zero-Dependency 아키텍처 설계 과정을 기술한 시스템 엔지니어링 백서입니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다]]></title>
-    <link>https://junseo.site/ko/blog/thinking-vs-understanding-karpathy/index.html</link>
-    <guid>https://junseo.site/ko/blog/thinking-vs-understanding-karpathy/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[AI가 생각의 과정을 대신해주는 소프트웨어 3.0 시대, 인간 엔지니어에게 남아있는 대체 불가능한 역량이 무엇인지에 대해.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[antigravity-rules를 이용한 에이전트 스코프 극단적 축소 기법]]></title>
-    <link>https://junseo.site/ko/blog/antigravity-scoping-rules/index.html</link>
-    <guid>https://junseo.site/ko/blog/antigravity-scoping-rules/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[에이전트에게 전달되는 컨텍스트를 제한하고 토큰 소비를 획기적으로 줄여 코딩 정확도를 올리는 방법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[I2C 통신 신뢰성 확보를 위한 풀업 저항(Pull-up Resistor) 계산 가이드]]></title>
-    <link>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</link>
-    <guid>https://junseo.site/ko/blog/i2c-pullup-resistor-sizing/index.html</guid>
-    <pubDate>Wed, 03 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[버스 기생 정전용량(Cb)과 스펙상 상승 시간(Rise Time) 규격을 충족하여 통신 신호 왜곡을 방지하는 정량적 풀업 저항 계산 공식 및 검증.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI 시대의 진로 멘토 브랜드: "반도체 신입의 AI 생존기" 기획기]]></title>
-    <link>https://junseo.site/ko/blog/creator-business-strategy-roadmap/index.html</link>
-    <guid>https://junseo.site/ko/blog/creator-business-strategy-roadmap/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[AI가 일자리를 없앤다는 막연한 불안감 속에서, 2030 대학생 및 취준생들에게 현실적인 엔지니어 생존법을 제시하는 브랜드 포지셔닝 전략을 공유합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[TDD와 자동 테스트를 연동한 AI 에이전트 자기 보정 시스템]]></title>
-    <link>https://junseo.site/ko/blog/tdd-agent-guardrails/index.html</link>
-    <guid>https://junseo.site/ko/blog/tdd-agent-guardrails/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[에이전트가 코드를 완성했다고 선언하기 전에, 작성한 테스트 통과 여부를 직접 확인하게 만들어 오작동을 원천 봉쇄합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[고정밀 SAR ADC 드라이버 OP-AMP 설계: 침강 시간(Settling Time)과 Charge-Kickback 필터]]></title>
-    <link>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</link>
-    <guid>https://junseo.site/ko/blog/adc-input-driver-settling/index.html</guid>
-    <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[ADC의 내부 캐패시터 충전 스위칭 시 발생하는 역전류 노이즈를 억제하고 샘플링 시간 내 전압 평형을 유도하는 드라이브 필터 설계 기법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI 에이전트의 효율을 극대화하는 "도구 다이어트" 설계 전략]]></title>
-    <link>https://junseo.site/ko/blog/agent-tool-diet-strategy/index.html</link>
-    <guid>https://junseo.site/ko/blog/agent-tool-diet-strategy/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[에이전트에게 너무 많은 스킬과 권한을 주면 왜 망가지는지, 왜 도구를 덜 쥐어주는 미니멀리즘이 작동하는지 알아봅니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 "NotebookLM" 구축기]]></title>
-    <link>https://junseo.site/ko/blog/private-notebooklm-safari-obsidian/index.html</link>
-    <guid>https://junseo.site/ko/blog/private-notebooklm-safari-obsidian/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Zotero 7 + Safari + Obsidian (Copilot + Gemini API) 연동을 통해 리소스를 쓰지 않고 완벽한 개인 지식 데이터 분석 파이프라인을 구축하는 방법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[안드레이 카파시 스타일 AI 에이전트와의 3대 소통 수칙]]></title>
-    <link>https://junseo.site/ko/blog/karpathy-agent-rules/index.html</link>
-    <guid>https://junseo.site/ko/blog/karpathy-agent-rules/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[장황한 자연어 부탁을 걷어내고, 명확하고 예측 가능한 인터페이스로 에이전트의 생산성을 통제하는 방법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[LDO 레귤레이터 vs Buck 컨버터: 노이즈 저감 관점의 아날로그 전원 설계 비교]]></title>
-    <link>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</link>
-    <guid>https://junseo.site/ko/blog/ldo-vs-buck-noise/index.html</guid>
-    <pubDate>Mon, 01 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[고감도 ADC 및 센서 앰프 구동 시, 스위칭 리플이 있는 벅 스위처와 효율은 낮으나 리플이 제로인 LDO의 전원 성능 및 배치 시나리오.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[고속 차동 신호(Differential Signaling)의 스큐(Skew) 원인과 PCB 보정 기법]]></title>
-    <link>https://junseo.site/ko/blog/differential-signaling-skew/index.html</link>
-    <guid>https://junseo.site/ko/blog/differential-signaling-skew/index.html</guid>
-    <pubDate>Sun, 31 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[PCIe, USB3.0 등 차동 페어 배선 설계 시 미세한 배선 길이 불일치(Intra-pair Skew)로 신호 동기가 틀어지는 불균형 예방 가이드.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[단일 책임 원칙(SRP)에 기반한 테스크 분할 전략]]></title>
-    <link>https://junseo.site/ko/blog/single-responsibility-tasking/index.html</link>
-    <guid>https://junseo.site/ko/blog/single-responsibility-tasking/index.html</guid>
-    <pubDate>Sat, 30 May 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[대형 개발 작업을 잘개 쪼개어 AI 에이전트가 한 턴에 완벽히 해결할 수 있도록 가이드를 좁히는 법.]]></description>
   </item>
 </channel>
 </rss>

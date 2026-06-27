@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>Building High-End Interactive Web Presentations with HTML/CSS  | Junseo Oh</title>
+<meta name="description" content="Explore designing a responsive, HTML/CSS-native slide builder with micro-animations and style presets, replacing heavy presentation files.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Building High-End Interactive Web Presentations with HTML/CSS  | Junseo Oh">
+<meta property="og:description" content="Explore designing a responsive, HTML/CSS-native slide builder with micro-animations and style presets, replacing heavy presentation files.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/blog/interactive-web-slides-builder/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Blog list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Building High-End Interactive Web Presentations with HTML/CSS</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Career</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-06-16">2026-06-16</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'interactive-web-slides-builder')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fblog%2Finteractive-web-slides-builder%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Building%20High-End%20Interactive%20Web%20Presentations%20with%20HTML%2FCSS&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fblog%2Finteractive-web-slides-builder%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <h2 id="toc-heading-0">Introduction: The Paradigm Shift</h2><p>Traditional presentation tools often fall short in delivering truly interactive, web-native experiences, burdened by proprietary file formats, large sizes, and limited browser capabilities. This post outlines the architectural design and implementation patterns for a next-generation interactive web presentation builder. Our goal is to leverage the full power of web standards—HTML, CSS, and JavaScript—to create a responsive, lightweight, and highly customizable platform that transcends static slide decks, enabling dynamic content delivery and superior user engagement. This approach not only enhances accessibility but also streamlines collaborative content creation and deployment.</p><h2 id="toc-heading-1">Core Architecture: HTML/CSS as the Rendering Canvas</h2><p>The core rendering engine is built upon a robust HTML/CSS foundation, employing <code>CSS Grid</code> and <code>Flexbox</code> for intricate, responsive layouts that adapt seamlessly across devices. Central to this is a sophisticated styling system utilizing <code>CSS Custom Properties</code> (variables) for granular control over themes, fonts, and color palettes, enabling rapid preset switching. Micro-animations, critical for enhancing user experience and guiding attention, are orchestrated primarily via <code>CSS Transitions</code> and <code>Animations</code>, potentially augmented by the <code>Web Animations API</code> (WAAPI) or a performant library like <code>GreenSock (GSAP)</code> for complex, timeline-based sequences. Event-driven JavaScript manages state, navigations, and real-time user interactions, ensuring a smooth, fluid presentation flow.</p><h2 id="toc-heading-2">Dynamic Content and Real-time Data Integration</h2><p>Beyond static content, this builder incorporates advanced interactivity. Slides can fetch and visualize dynamic data through <code>RESTful APIs</code> or real-time protocols like <code>WebSockets</code>, making it ideal for displaying live sensor telemetry, financial metrics, or semiconductor design parameters. For instance, visualizing wafer fabrication process data or chip performance graphs in real-time within a presentation dramatically elevates its technical utility. To ensure optimal performance and SEO, content pre-rendering via <code>Static Site Generation (SSG)</code> or <code>Server-Side Rendering (SSR)</code> is crucial, complemented by strategies like <code>CSS Containment</code> and lazy loading. Security, especially with sensitive data, necessitates robust <code>OAuth 2.0</code> or <code>JWT</code> authentication for API endpoints, while a modular component architecture ensures extensibility for custom data visualization tools or specialized components.</p>
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">Introduction: The Paradigm Shift</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">Core Architecture: HTML/CSS as the Rendering Canvas</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">Dynamic Content and Real-time Data Integration</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Articles</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>How similarity is calculated</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>Recommended content on this portfolio is sorted based on the <strong>Cosine Similarity</strong> between <strong>multi-dimensional text embedding vectors</strong> extracted using the <strong>Google Gemini API (gemini-embedding-2 model)</strong>.</p>
+              <p>By analyzing the title, category, description, and full body text, it evaluates semantic relevance beyond simple keyword matching. If the API is unavailable, it automatically falls back to a <strong>local TF-IDF term frequency analysis algorithm</strong>.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-interactive-web-slides-builder">
+          "# Building High-End Interactive Web Presentations with HTML/CSS\n\nExplore designing a responsive, HTML/CSS-native slide builder with micro-animations and style presets, replacing heavy presentation files.\n\nIntroduction: The Paradigm ShiftTraditional presentation tools often fall short in delivering truly interactive, web-native experiences, burdened by proprietary file formats, large sizes, and limited browser capabilities. This post outlines the architectural design and implementation patterns for a next-generation interactive web presentation builder. Our goal is to leverage the full power of web standards—HTML, CSS, and JavaScript—to create a responsive, lightweight, and highly customizable platform that transcends static slide decks, enabling dynamic content delivery and superior user engagement. This approach not only enhances accessibility but also streamlines collaborative content creation and deployment.Core Architecture: HTML/CSS as the Rendering CanvasThe core rendering engine is built upon a robust HTML/CSS foundation, employing CSS Grid and Flexbox for intricate, responsive layouts that adapt seamlessly across devices. Central to this is a sophisticated styling system utilizing CSS Custom Properties (variables) for granular control over themes, fonts, and color palettes, enabling rapid preset switching. Micro-animations, critical for enhancing user experience and guiding attention, are orchestrated primarily via CSS Transitions and Animations, potentially augmented by the Web Animations API (WAAPI) or a performant library like GreenSock (GSAP) for complex, timeline-based sequences. Event-driven JavaScript manages state, navigations, and real-time user interactions, ensuring a smooth, fluid presentation flow.Dynamic Content and Real-time Data IntegrationBeyond static content, this builder incorporates advanced interactivity. Slides can fetch and visualize dynamic data through RESTful APIs or real-time protocols like WebSockets, making it ideal for displaying live sensor telemetry, financial metrics, or semiconductor design parameters. For instance, visualizing wafer fabrication process data or chip performance graphs in real-time within a presentation dramatically elevates its technical utility. To ensure optimal performance and SEO, content pre-rendering via Static Site Generation (SSG) or Server-Side Rendering (SSR) is crucial, complemented by strategies like CSS Containment and lazy loading. Security, especially with sensitive data, necessitates robust OAuth 2.0 or JWT authentication for API endpoints, while a modular component architecture ensures extensibility for custom data visualization tools or specialized components."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"semiconductor-packaging-whitepaper","category":"Architecture","title":"Engineering a Resume into a System Architecture","description":"A system engineering whitepaper outlining the design intent and Zero-Dependency architecture of a Figma-style interactive web portfolio.","date":"2026-06-03","score":68},{"slug":"zero-dependency-portfolio-zoom-engine","category":"Architecture","title":"Building a Zero-Dependency Zoom-Scaling Canvas Renderer from Scratch","description":"Implementing custom aspect-ratio scaling and transform-matrix properties using vanilla JavaScript without external web-flow engines.","date":"2026-05-24","score":62},{"slug":"audio-level-meter-widget","category":"Architecture","title":"Building a Web Audio API Real-time Signal Frequency Canvas Band Level Meter Widget","description":"Implementing dynamic canvas bar animations representing audio analyzer frequencies with high-performance CSS and JavaScript loops.","date":"2026-06-22","score":57}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">Similarity: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>
