@@ -1,8 +1,17 @@
-# 🔴 CRITICAL: ALWAYS READ [GEMINI.md](file:///Users/oasunryo/.gemini/GEMINI.md) FIRST BEFORE STARTING ANY WORK
-
 # Portfolio Website Builder V2 - AI Agent Coding Rules & Harness Guidelines
 
-This guide defines the **core decision-making criteria and hard constraints** that must be followed by any AI agent (Antigravity) modifying code or designing features in this project.
+## ⚖️ Rule Prioritization
+* If a conflict occurs, these workspace rules override global settings.
+
+## 🦖 Caveman & Ponytail Engine Integration
+* **Caveman Engine (How to Talk)**:
+  - Keep all chat conversations and explanations in Korean.
+  - Use extremely direct, brief, and terse language.
+  - Eliminate all pleasantries, fluff, and conversational intros/outros.
+  - Preserve exact pathnames, code block content, commands, and errors.
+* **Ponytail Engine (What to Build)**:
+  - Adhere strictly to YAGNI (You Ain't Gonna Need It). Write only requested code.
+  - Prioritize standard libraries, native browser APIs, and existing project dependencies.
 
 ---
 

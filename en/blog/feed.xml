@@ -7,6 +7,34 @@
   <language>en-US</language>
   <atom:link href="https://junseo.site/en/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title><![CDATA[Building Offline-First Web Apps via Browser IndexedDB Architectures]]></title>
+    <link>https://junseo.site/en/blog/indexeddb-offline-sync-caching/index.html</link>
+    <guid>https://junseo.site/en/blog/indexeddb-offline-sync-caching/index.html</guid>
+    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Designing transactional sync pipelines in IndexedDB to preserve client application state and maintain reliability during network dropouts.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Flip Chip Interconnects and the Rise of MR-MUF in HBM Stacking]]></title>
+    <link>https://junseo.site/en/blog/flip-chip-vs-mr-muf-bonding/index.html</link>
+    <guid>https://junseo.site/en/blog/flip-chip-vs-mr-muf-bonding/index.html</guid>
+    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Comparing traditional flip-chip bonding limits with Mass Reflow Molded Underfill (MR-MUF) in terms of thermal dissipation and assembly yields.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Automating Multilingual Static Build Verification via Git Hooks]]></title>
+    <link>https://junseo.site/en/blog/git-hooks-multilingual-build-verification/index.html</link>
+    <guid>https://junseo.site/en/blog/git-hooks-multilingual-build-verification/index.html</guid>
+    <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Implementing pre-commit hooks to automatically validate file integrity and relative path resolution in a multilingual static compilation system.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[ALD (Atomic Layer Deposition) Process Mechanisms in 3D NAND Channel Hole Fabrication]]></title>
+    <link>https://junseo.site/en/blog/ald-3d-nand-deposition/index.html</link>
+    <guid>https://junseo.site/en/blog/ald-3d-nand-deposition/index.html</guid>
+    <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[An analysis of Atomic Layer Deposition (ALD) chemistry, self-limiting reactions, and their critical application in high-aspect-ratio 3D NAND flash memory.]]></description>
+  </item>
+  <item>
     <title><![CDATA[Designing a Lightweight Multilingual Static Compiler with Dynamic Relative Path Swapping]]></title>
     <link>https://junseo.site/en/blog/multilingual-localization-compiler/index.html</link>
     <guid>https://junseo.site/en/blog/multilingual-localization-compiler/index.html</guid>
@@ -117,34 +145,6 @@
     <guid>https://junseo.site/en/blog/continuous-integration-static-pages/index.html</guid>
     <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Automating compile scripts and static file deployments through cloud runner workflows.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Split Ergonomic Keyboards: An Engineering Approach to RSI Prevention]]></title>
-    <link>https://junseo.site/en/blog/keyboard-ergonomics-split-layout/index.html</link>
-    <guid>https://junseo.site/en/blog/keyboard-ergonomics-split-layout/index.html</guid>
-    <pubDate>Sun, 07 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[How split board physical layouts and tenting angles prevent shoulder rolling and carpal tunnel syndrome.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Building Sub-Second Summary Pipelines with Groq Llama-3 API]]></title>
-    <link>https://junseo.site/en/blog/groq-llama3-fast-inference/index.html</link>
-    <guid>https://junseo.site/en/blog/groq-llama3-fast-inference/index.html</guid>
-    <pubDate>Sat, 06 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Connecting fast Groq LPU engine endpoints to parse text inputs and return abstract summaries under 500ms.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Version-Controlled Architecture: Introducing Mermaid.js in Markdown]]></title>
-    <link>https://junseo.site/en/blog/mermaid-diagrams-documentation/index.html</link>
-    <guid>https://junseo.site/en/blog/mermaid-diagrams-documentation/index.html</guid>
-    <pubDate>Fri, 05 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Ditching static image mockups to write live, auto-rendering vector charts directly in raw markdown code.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[From Vibe Coding to Harness Engineering: Pushing AI Coding Limits]]></title>
-    <link>https://junseo.site/en/blog/vibe-coding-to-harness-engineering/index.html</link>
-    <guid>https://junseo.site/en/blog/vibe-coding-to-harness-engineering/index.html</guid>
-    <pubDate>Thu, 04 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably.]]></description>
   </item>
 </channel>
 </rss>

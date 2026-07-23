@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교  | 오준서</title>
+<meta name="description" content="전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교  | 오준서">
+<meta property="og:description" content="전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/flip-chip-vs-mr-muf-bonding/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Semiconductor</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-07-15">2026-07-15</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'flip-chip-vs-mr-muf-bonding')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fflip-chip-vs-mr-muf-bonding%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=%ED%94%8C%EB%A6%BD%EC%B9%A9%20%EB%B3%B8%EB%94%A9%EA%B3%BC%20HBM%EC%9D%98%20%ED%98%81%EC%8B%A0%2C%20MR-MUF%20%EA%B8%B0%EC%88%A0%20%EC%84%A4%EA%B3%84%20%ED%8A%B9%EC%A7%95%20%EB%B9%84%EA%B5%90&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fflip-chip-vs-mr-muf-bonding%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+        <h2 id="toc-heading-0">칩 부착의 발전과 언더필 공정</h2>
+        <p>반도체 패키징에서 칩의 패드와 기판을 금속 범프로 직접 연결하는 플립칩(Flip Chip) 기술은 신호 거리를 줄이고 속도를 높이는 표준 공정입니다. 칩을 기판에 붙인 후에는 범프 사이의 빈 공간을 액체 에폭시 수지로 채워 보호하는 <strong>언더필(Underfill)</strong> 공정이 필수적입니다. 이 언더필은 열팽창 시 기계적 응력을 흡수하고 수분 침투를 막는 역할을 수행합니다.</p>
+        <hr>
+        <h2 id="toc-heading-1">전통적인 본딩의 한계와 MR-MUF의 등장</h2>
+        <p>기존 플립칩 공정은 칩을 개별적으로 눌러 붙이는 NCP(Non-Conductive Paste) 방식이나 필름(NCF) 방식을 주로 사용했습니다. 하지만 D램 다이를 8단, 12단 이상 쌓는 HBM에서는 적층 수가 늘어날수록 열 압착(Thermal Compression) 시간이 길어지고 칩이 휘는 현상이 심해집니다. 이를 극복하기 위해 제안된 것이 <strong>MR-MUF(Mass Reflow Molded Underfill)</strong> 기술입니다. MR-MUF는 적층된 칩들을 매스 리플로우로 한 번에 구워 붙인 후, 액체 몰딩재를 압력으로 주입해 칩 사이 공간 충진과 외부 성형을 단번에 처리합니다.</p>
+        <hr>
+        <h2 id="toc-heading-2">신뢰성과 열 배출 비교 분석</h2>
+        <p>MR-MUF는 필름형 접합재(NCF)에 비해 열 전도도가 매우 높은 실리카 에폭시 복합재를 칩 틈새로 원활히 투입할 수 있어 HBM의 열 방출 특성을 대폭 개선했습니다. 또한 칩 적층 시 얇은 보호 필름 레이어가 없어 칩 내부의 기포(Void) 불량이 현저히 줄고, 대량 리플로우 본딩 덕분에 공정 속도가 비약적으로 개선되어 고단 적층 패키지 신뢰성 향상의 핵심 기술로 인정받고 있습니다.</p>
+      
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">칩 부착의 발전과 언더필 공정</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">전통적인 본딩의 한계와 MR-MUF의 등장</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">신뢰성과 열 배출 비교 분석</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-flip-chip-vs-mr-muf-bonding">
+          "# 플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교\n\n전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.\n\n칩 부착의 발전과 언더필 공정 반도체 패키징에서 칩의 패드와 기판을 금속 범프로 직접 연결하는 플립칩(Flip Chip) 기술은 신호 거리를 줄이고 속도를 높이는 표준 공정입니다. 칩을 기판에 붙인 후에는 범프 사이의 빈 공간을 액체 에폭시 수지로 채워 보호하는 언더필(Underfill) 공정이 필수적입니다. 이 언더필은 열팽창 시 기계적 응력을 흡수하고 수분 침투를 막는 역할을 수행합니다. 전통적인 본딩의 한계와 MR-MUF의 등장 기존 플립칩 공정은 칩을 개별적으로 눌러 붙이는 NCP(Non-Conductive Paste) 방식이나 필름(NCF) 방식을 주로 사용했습니다. 하지만 D램 다이를 8단, 12단 이상 쌓는 HBM에서는 적층 수가 늘어날수록 열 압착(Thermal Compression) 시간이 길어지고 칩이 휘는 현상이 심해집니다. 이를 극복하기 위해 제안된 것이 MR-MUF(Mass Reflow Molded Underfill) 기술입니다. MR-MUF는 적층된 칩들을 매스 리플로우로 한 번에 구워 붙인 후, 액체 몰딩재를 압력으로 주입해 칩 사이 공간 충진과 외부 성형을 단번에 처리합니다. 신뢰성과 열 배출 비교 분석 MR-MUF는 필름형 접합재(NCF)에 비해 열 전도도가 매우 높은 실리카 에폭시 복합재를 칩 틈새로 원활히 투입할 수 있어 HBM의 열 방출 특성을 대폭 개선했습니다. 또한 칩 적층 시 얇은 보호 필름 레이어가 없어 칩 내부의 기포(Void) 불량이 현저히 줄고, 대량 리플로우 본딩 덕분에 공정 속도가 비약적으로 개선되어 고단 적층 패키지 신뢰성 향상의 핵심 기술로 인정받고 있습니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"tcb-vs-mrb-bonding","category":"Semiconductor","title":"Advanced Flip-Chip Interconnects: TCB vs Mass Reflow (MRB)","description":"Comparing thermal compression bonding (TCB) accuracy against mass reflow bonding (MRB) output yields.","date":"2026-05-25","score":22},{"slug":"underfill-void-capillary-flow","category":"Semiconductor","title":"Capillary Underfill Dynamics and Void Prevention in Flip-Chip Stacking","description":"Analyzing fluid viscosities, dispensing patterns, and bump arrays to prevent micro-void formation during capillary underfill (CUF) processes.","date":"2026-05-23","score":18},{"slug":"tsv-hbm-technology","category":"Semiconductor","title":"TSV Process Mechanisms and Defect Modes in HBM Stacking","description":"An analysis of Through Silicon Via (TSV) etching, deposition, plating, and bonding processes critical for High Bandwidth Memory (HBM) stacking.","date":"2026-05-15","score":10}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

@@ -136,6 +136,46 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://junseo.site/ko/blog/ald-3d-nand-deposition/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/en/blog/ald-3d-nand-deposition/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/ko/blog/git-hooks-multilingual-build-verification/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/en/blog/git-hooks-multilingual-build-verification/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/ko/blog/flip-chip-vs-mr-muf-bonding/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/en/blog/flip-chip-vs-mr-muf-bonding/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/ko/blog/indexeddb-offline-sync-caching/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://junseo.site/en/blog/indexeddb-offline-sync-caching/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://junseo.site/ko/blog/tsv-hbm-technology/index.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

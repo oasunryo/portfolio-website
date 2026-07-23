@@ -346,6 +346,90 @@
     </div>
     
 
+    <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-07-01" data-title="3d nand 채널 홀 형성의 핵심, ald(원자층 증착) 공정 메커니즘" data-description="3D NAND의 고단화에 따른 높은 종횡비 구조에서 나노미터 단위의 균일한 박막 증착을 실현하는 ALD 기술의 화학적 흡착 원리와 채널 홀 적용 공정을 분석합니다." data-search-content="
+         ald 공정의 원리와 자기제한적 반응 
+         ald(atomic layer deposition, 원자층 증착)는 기판 표면에서 전구체(precursor)와 반응 가스(reactant)의 교차 유입을 통해 원자층 두께의 초미세 박막을 한 층씩 쌓아 올리는 기술입니다. 화학 기상 증착(cvd)과 달리, 기판 표면의 반응 활성기 수에 의해서만 화학 반응이 일어나는  자기제한적 반응(self-limiting reaction)  메커니즘을 가집니다. 이를 통해 박막의 두께를 원자 단위로 정밀 제어할 수 있습니다. 
+         
+         3d nand 고단화와 ald의 역할 
+         3d nand 플래시 메모리가 200단 이상으로 고단화되면서 채널 홀(channel hole)의 종횡비(aspect ratio)가 100:1을 초과하게 되었습니다. 이러한 깊고 좁은 홀 내벽에 균일한 두께로 전하 차단막, 전하 트랩막, 터널 절연막을 증착하는 것은 기존 cvd 기술로는 불가능합니다. ald는 우수한 단차 피복성(step coverage)을 제공하여 종횡비가 극도로 높은 구조에서도 상부와 하부의 두께 편차가 없는 균일한 박막을 형성합니다. 
+         
+         ald 공정의 극복 과제 
+         ald의 가장 큰 약점은 박막을 한 층씩 증착하는 특성상  낮은 생산 속도(throughput) 입니다. 이를 해결하기 위해 배치 타입(batch type) 설비의 도입이나, 가스의 유입과 배기를 고속으로 반복하는 가스 제어 밸브의 하드웨어 개선이 계속되고 있습니다. 또한 저온 ald 공정 시 전구체의 불완전 분해로 인한 불순물 잔류를 억제하는 유기 금속 전구체 설계 기술이 요구됩니다. 
+      ">
+      <div class="col-title">
+        <a href="./ald-3d-nand-deposition/index.html" class="item-title-link">3D NAND 채널 홀 형성의 핵심, ALD(원자층 증착) 공정 메커니즘</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-semiconductor">Semiconductor</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-01</div>
+      <div class="col-reading-time tabular-nums">2분</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-07-08" data-title="git hooks와 정적 분석을 통한 다국어 빌드 깨짐 방지 파이프라인 구축" data-description="다국어 정적 컴파일러 환경에서 커밋 시점에 다국어 템플릿의 상대 경로 변환 및 파일 무결성을 자동으로 검증하는 pre-commit 훅 구축 사례." data-search-content="
+         다국어 정적 사이트의 경로 변환 위험성 
+         정적 빌드 시스템을 활용하여 한국어(ko)와 영어(en) 페이지를 동시에 컴파일하는 환경에서는 파일 깊이(depth)에 따른 상대 경로 치환이 빈번하게 오작동할 수 있습니다. 템플릿 파일이 변경되었을 때 빌드 검증 과정을 생략한 채 커밋하면 배포 단계에서 링크가 깨지거나 css 로드 실패 오류를 겪게 됩니다. 
+         
+         husky와 git hooks를 이용한 자동 검증 
+         개발자가 변경된 코드를 레포지토리에 푸시하기 전 로컬에서 문제를 차단할 수 있도록  git hooks  환경을 구축합니다. `pre-commit` 훅 단계에서 정적 컴파일 스크립트인 `node build.js`를 자동으로 가동하고, 빌드가 정상 완료되었는지 종료 코드를 검증하는 쉘 스크립트를 연결합니다. 빌드 스크립트가 에러를 리턴하면 커밋을 즉시 차단하여 망가진 코드가 레포지토리에 올라가는 것을 방지합니다. 
+         
+         ci/cd 파이프라인 연계 
+         로컬 git hooks 검증에만 의존하지 않고, github actions 워크플로우에 `build.js` 수행 단계를 포함하여 이중 보안을 설정합니다. 이를 통해 다수의 작업자가 기여하는 분산 환경에서도 언어별 정적 파일들이 항상 올바른 상대 경로 구조를 준수하고 빌드 성공이 보장되는 일관된 개발 파이프라인을 유지할 수 있습니다. 
+      ">
+      <div class="col-title">
+        <a href="./git-hooks-multilingual-build-verification/index.html" class="item-title-link">Git Hooks와 정적 분석을 통한 다국어 빌드 깨짐 방지 파이프라인 구축</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-insight">Insight</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-08</div>
+      <div class="col-reading-time tabular-nums">2분</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-07-15" data-title="플립칩 본딩과 hbm의 혁신, mr-muf 기술 설계 특징 비교" data-description="전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석." data-search-content="
+         칩 부착의 발전과 언더필 공정 
+         반도체 패키징에서 칩의 패드와 기판을 금속 범프로 직접 연결하는 플립칩(flip chip) 기술은 신호 거리를 줄이고 속도를 높이는 표준 공정입니다. 칩을 기판에 붙인 후에는 범프 사이의 빈 공간을 액체 에폭시 수지로 채워 보호하는  언더필(underfill)  공정이 필수적입니다. 이 언더필은 열팽창 시 기계적 응력을 흡수하고 수분 침투를 막는 역할을 수행합니다. 
+         
+         전통적인 본딩의 한계와 mr-muf의 등장 
+         기존 플립칩 공정은 칩을 개별적으로 눌러 붙이는 ncp(non-conductive paste) 방식이나 필름(ncf) 방식을 주로 사용했습니다. 하지만 d램 다이를 8단, 12단 이상 쌓는 hbm에서는 적층 수가 늘어날수록 열 압착(thermal compression) 시간이 길어지고 칩이 휘는 현상이 심해집니다. 이를 극복하기 위해 제안된 것이  mr-muf(mass reflow molded underfill)  기술입니다. mr-muf는 적층된 칩들을 매스 리플로우로 한 번에 구워 붙인 후, 액체 몰딩재를 압력으로 주입해 칩 사이 공간 충진과 외부 성형을 단번에 처리합니다. 
+         
+         신뢰성과 열 배출 비교 분석 
+         mr-muf는 필름형 접합재(ncf)에 비해 열 전도도가 매우 높은 실리카 에폭시 복합재를 칩 틈새로 원활히 투입할 수 있어 hbm의 열 방출 특성을 대폭 개선했습니다. 또한 칩 적층 시 얇은 보호 필름 레이어가 없어 칩 내부의 기포(void) 불량이 현저히 줄고, 대량 리플로우 본딩 덕분에 공정 속도가 비약적으로 개선되어 고단 적층 패키지 신뢰성 향상의 핵심 기술로 인정받고 있습니다. 
+      ">
+      <div class="col-title">
+        <a href="./flip-chip-vs-mr-muf-bonding/index.html" class="item-title-link">플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-semiconductor">Semiconductor</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-15</div>
+      <div class="col-reading-time tabular-nums">2분</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-07-22" data-title="indexeddb와 브라우저 저장소를 활용한 오프라인 동작 웹 애플리케이션 구축" data-description="네트워크 단절 상황에서도 사용자 경험을 저해하지 않고 로컬 상태를 유지하며 데이터 신뢰성을 보장하는 IndexedDB 트랜잭션 동기화 전략." data-search-content="
+         브라우저 로컬 저장 공간의 선택지 
+         웹 서비스의 크기가 커지고 오프라인이나 느린 네트워크 상태에서의 원활한 동작이 요구되면서 로컬 캐싱의 중요성이 커졌습니다. 단순 문자열만 저장 가능한 localstorage는 동기식으로 동작하여 대용량 데이터 처리 시 ui 쓰레드를 차단하는 치명적인 단점이 있습니다. 구조화된 대용량 이진 데이터를 다루기 위해서는 비동기식 트랜잭션 데이터베이스인  indexeddb 의 사용이 권장됩니다. 
+         
+         비동기 트랜잭션 모델과 상태 동기화 
+         indexeddb는 데이터베이스 객체 저장소(object store)를 기반으로 하여 비동기적인 트랜잭션을 통해 동작합니다. 사용자가 오프라인 상태일 때 발생한 모든 데이터 수정 및 생성 요청은 indexeddb에 트랜잭션 단위로 안전하게 큐잉(queue)됩니다. 이후 서비스 워커(service worker)가 브라우저의 온라인 복귀 이벤트를 감지하면, 백그라운드 동기화(background sync)를 구동하여 큐에 대기 중이던 로컬 데이터를 서버 api에 안전하게 반영합니다. 
+         
+         오프라인 앱의 동시성 및 예외 처리 
+         오프라인 캐싱 도입 시 동일한 데이터가 로컬과 서버에서 각기 수정되었을 때 발생하는 동시성 충돌을 해결해야 합니다. 일반적으로 최종 수정 시간을 비교하는 last-write-wins 정책을 적용하거나, 충돌 메타데이터 필드를 통해 사용자가 최종 병합 버전을 선택할 수 있도록 데이터 구조 설계를 고도화하여 신뢰성 높은 데이터를 관리해야 합니다. 
+      ">
+      <div class="col-title">
+        <a href="./indexeddb-offline-sync-caching/index.html" class="item-title-link">IndexedDB와 브라우저 저장소를 활용한 오프라인 동작 웹 애플리케이션 구축</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-insight">Insight</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-22</div>
+      <div class="col-reading-time tabular-nums">2분</div>
+    </div>
+    
+
     <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-05-15" data-title="hbm 적층의 핵심, tsv(관통전극) 공정 매커니즘과 불량 유형" data-description="고대역폭 메모리(HBM)에서 D램을 수직으로 쌓아 올리는 실리콘관통전극(TSV)의 전공정 에칭부터 후공정 본딩 단계까지의 핵심 공정 및 불량 이슈를 해부합니다." data-search-content="
          hbm 성능을 좌우하는 3d 적층과 tsv 
          hbm(high bandwidth memory)은 d램 다이(die)를 수직으로 적층하여 데이터 전송 대역폭을 극대화한 메모리입니다. 이때 다이 간 신호를 주고받는 수천 개의 미세 통로를 뚫는 기술이 바로 tsv(through silicon via, 실리콘관통전극)입니다. 전통적인 와이어 본딩 방식에 비해 경로가 극도로 단축되어 저전력 고속 동작이 가능해집니다. 

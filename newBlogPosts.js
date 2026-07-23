@@ -1,5 +1,65 @@
 module.exports = [
   {
+    "slug": "ald-3d-nand-deposition",
+    "date": "2026-07-01",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "3D NAND 채널 홀 형성의 핵심, ALD(원자층 증착) 공정 메커니즘",
+      "description": "3D NAND의 고단화에 따른 높은 종횡비 구조에서 나노미터 단위의 균일한 박막 증착을 실현하는 ALD 기술의 화학적 흡착 원리와 채널 홀 적용 공정을 분석합니다.",
+      "content": "\n        <h2>ALD 공정의 원리와 자기제한적 반응</h2>\n        <p>ALD(Atomic Layer Deposition, 원자층 증착)는 기판 표면에서 전구체(Precursor)와 반응 가스(Reactant)의 교차 유입을 통해 원자층 두께의 초미세 박막을 한 층씩 쌓아 올리는 기술입니다. 화학 기상 증착(CVD)과 달리, 기판 표면의 반응 활성기 수에 의해서만 화학 반응이 일어나는 <strong>자기제한적 반응(Self-Limiting Reaction)</strong> 메커니즘을 가집니다. 이를 통해 박막의 두께를 원자 단위로 정밀 제어할 수 있습니다.</p>\n        <hr>\n        <h2>3D NAND 고단화와 ALD의 역할</h2>\n        <p>3D NAND 플래시 메모리가 200단 이상으로 고단화되면서 채널 홀(Channel Hole)의 종횡비(Aspect Ratio)가 100:1을 초과하게 되었습니다. 이러한 깊고 좁은 홀 내벽에 균일한 두께로 전하 차단막, 전하 트랩막, 터널 절연막을 증착하는 것은 기존 CVD 기술로는 불가능합니다. ALD는 우수한 단차 피복성(Step Coverage)을 제공하여 종횡비가 극도로 높은 구조에서도 상부와 하부의 두께 편차가 없는 균일한 박막을 형성합니다.</p>\n        <hr>\n        <h2>ALD 공정의 극복 과제</h2>\n        <p>ALD의 가장 큰 약점은 박막을 한 층씩 증착하는 특성상 <strong>낮은 생산 속도(Throughput)</strong>입니다. 이를 해결하기 위해 배치 타입(Batch Type) 설비의 도입이나, 가스의 유입과 배기를 고속으로 반복하는 가스 제어 밸브의 하드웨어 개선이 계속되고 있습니다. 또한 저온 ALD 공정 시 전구체의 불완전 분해로 인한 불순물 잔류를 억제하는 유기 금속 전구체 설계 기술이 요구됩니다.</p>\n      "
+    },
+    "en": {
+      "title": "ALD (Atomic Layer Deposition) Process Mechanisms in 3D NAND Channel Hole Fabrication",
+      "description": "An analysis of Atomic Layer Deposition (ALD) chemistry, self-limiting reactions, and their critical application in high-aspect-ratio 3D NAND flash memory.",
+      "content": "\n        <h2>Self-Limiting Mechanisms in ALD Chemistry</h2>\n        <p>Atomic Layer Deposition (ALD) deposits ultra-thin films atomic layer by layer through sequential exposure of precursors and reactants. Unlike Chemical Vapor Deposition (CVD), ALD relies on <strong>self-limiting surface reactions</strong>, where the chemical reaction stops once all active surface sites are saturated. This enables precise thickness control at the angstrom scale.</p>\n        <hr>\n        <h2>3D NAND High-Aspect-Ratio Stacking & ALD</h2>\n        <p>As 3D NAND flash memory exceeds 200 vertical layers, the aspect ratio of memory channel holes surpasses 100:1. Depositing charge block layers, charge trap layers, and tunnel oxides inside these deep channels requires absolute thickness uniformity. ALD delivers exceptional step coverage, eliminating top-to-bottom thickness variations inside deep vias.</p>\n        <hr>\n        <h2>Process Challenges and Mitigation</h2>\n        <p>The primary constraint of ALD is its <strong>low throughput</strong> due to cyclic gas purging. Next-generation batch tools and high-speed gas delivery valves are utilized to reduce cycle time. Additionally, developing organometallic precursors that decompose fully at lower temperatures prevents impurity contamination within the films.</p>\n      "
+    }
+  },
+  {
+    "slug": "git-hooks-multilingual-build-verification",
+    "date": "2026-07-08",
+    "category": "Insight",
+    "ko": {
+      "title": "Git Hooks와 정적 분석을 통한 다국어 빌드 깨짐 방지 파이프라인 구축",
+      "description": "다국어 정적 컴파일러 환경에서 커밋 시점에 다국어 템플릿의 상대 경로 변환 및 파일 무결성을 자동으로 검증하는 pre-commit 훅 구축 사례.",
+      "content": "\n        <h2>다국어 정적 사이트의 경로 변환 위험성</h2>\n        <p>정적 빌드 시스템을 활용하여 한국어(ko)와 영어(en) 페이지를 동시에 컴파일하는 환경에서는 파일 깊이(depth)에 따른 상대 경로 치환이 빈번하게 오작동할 수 있습니다. 템플릿 파일이 변경되었을 때 빌드 검증 과정을 생략한 채 커밋하면 배포 단계에서 링크가 깨지거나 CSS 로드 실패 오류를 겪게 됩니다.</p>\n        <hr>\n        <h2>Husky와 Git Hooks를 이용한 자동 검증</h2>\n        <p>개발자가 변경된 코드를 레포지토리에 푸시하기 전 로컬에서 문제를 차단할 수 있도록 <strong>Git Hooks</strong> 환경을 구축합니다. `pre-commit` 훅 단계에서 정적 컴파일 스크립트인 `node build.js`를 자동으로 가동하고, 빌드가 정상 완료되었는지 종료 코드를 검증하는 쉘 스크립트를 연결합니다. 빌드 스크립트가 에러를 리턴하면 커밋을 즉시 차단하여 망가진 코드가 레포지토리에 올라가는 것을 방지합니다.</p>\n        <hr>\n        <h2>CI/CD 파이프라인 연계</h2>\n        <p>로컬 Git Hooks 검증에만 의존하지 않고, GitHub Actions 워크플로우에 `build.js` 수행 단계를 포함하여 이중 보안을 설정합니다. 이를 통해 다수의 작업자가 기여하는 분산 환경에서도 언어별 정적 파일들이 항상 올바른 상대 경로 구조를 준수하고 빌드 성공이 보장되는 일관된 개발 파이프라인을 유지할 수 있습니다.</p>\n      "
+    },
+    "en": {
+      "title": "Automating Multilingual Static Build Verification via Git Hooks",
+      "description": "Implementing pre-commit hooks to automatically validate file integrity and relative path resolution in a multilingual static compilation system.",
+      "content": "\n        <h2>Path Resolution Risks in Static Multilingual Sites</h2>\n        <p>In a compiled static environment with multiple languages, swapping relative paths dynamically based on page depth is error-prone. Committing modified templates without testing the compiler output can lead to broken links or missing CSS stylesheets in production.</p>\n        <hr>\n        <h2>Local Validation with Git Hooks and Husky</h2>\n        <p>Deploying <strong>Git Hooks</strong> lets developers catch layout issues locally before pushing code. By linking the compiler script `node build.js` to a `pre-commit` hook, the system aborts the commit if the compiler throws an error. This ensures broken configurations never enter the repository history.</p>\n        <hr>\n        <h2>Integration with CI/CD Pipelines</h2>\n        <p>While local hooks secure individual workstations, integrating the same compilation checks into GitHub Actions provides an extra layer of defense. Automating compiler checks in the pull request phase guarantees that multilingual static files maintain correct routing and structure.</p>\n      "
+    }
+  },
+  {
+    "slug": "flip-chip-vs-mr-muf-bonding",
+    "date": "2026-07-15",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교",
+      "description": "전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.",
+      "content": "\n        <h2>칩 부착의 발전과 언더필 공정</h2>\n        <p>반도체 패키징에서 칩의 패드와 기판을 금속 범프로 직접 연결하는 플립칩(Flip Chip) 기술은 신호 거리를 줄이고 속도를 높이는 표준 공정입니다. 칩을 기판에 붙인 후에는 범프 사이의 빈 공간을 액체 에폭시 수지로 채워 보호하는 <strong>언더필(Underfill)</strong> 공정이 필수적입니다. 이 언더필은 열팽창 시 기계적 응력을 흡수하고 수분 침투를 막는 역할을 수행합니다.</p>\n        <hr>\n        <h2>전통적인 본딩의 한계와 MR-MUF의 등장</h2>\n        <p>기존 플립칩 공정은 칩을 개별적으로 눌러 붙이는 NCP(Non-Conductive Paste) 방식이나 필름(NCF) 방식을 주로 사용했습니다. 하지만 D램 다이를 8단, 12단 이상 쌓는 HBM에서는 적층 수가 늘어날수록 열 압착(Thermal Compression) 시간이 길어지고 칩이 휘는 현상이 심해집니다. 이를 극복하기 위해 제안된 것이 <strong>MR-MUF(Mass Reflow Molded Underfill)</strong> 기술입니다. MR-MUF는 적층된 칩들을 매스 리플로우로 한 번에 구워 붙인 후, 액체 몰딩재를 압력으로 주입해 칩 사이 공간 충진과 외부 성형을 단번에 처리합니다.</p>\n        <hr>\n        <h2>신뢰성과 열 배출 비교 분석</h2>\n        <p>MR-MUF는 필름형 접합재(NCF)에 비해 열 전도도가 매우 높은 실리카 에폭시 복합재를 칩 틈새로 원활히 투입할 수 있어 HBM의 열 방출 특성을 대폭 개선했습니다. 또한 칩 적층 시 얇은 보호 필름 레이어가 없어 칩 내부의 기포(Void) 불량이 현저히 줄고, 대량 리플로우 본딩 덕분에 공정 속도가 비약적으로 개선되어 고단 적층 패키지 신뢰성 향상의 핵심 기술로 인정받고 있습니다.</p>\n      "
+    },
+    "en": {
+      "title": "Flip Chip Interconnects and the Rise of MR-MUF in HBM Stacking",
+      "description": "Comparing traditional flip-chip bonding limits with Mass Reflow Molded Underfill (MR-MUF) in terms of thermal dissipation and assembly yields.",
+      "content": "\n        <h2>Evolution of Die Interconnects and Underfill</h2>\n        <p>Flip-chip technology connects die pads to substrates directly using metal micro-bumps. After bonding, the narrow gap between the die and substrate must be filled with epoxy resin, a process known as <strong>underfill</strong>. Underfill absorbs thermomechanical stresses and shields active circuits from environmental degradation.</p>\n        <hr>\n        <h2>Limits of NCF/NCP and Rise of MR-MUF</h2>\n        <p>Conventional packaging relies on Non-Conductive Film (NCF) or paste (NCP) under thermal compression (TC) bonding. However, when stacking up to 12 DRAM layers for HBM, TC bonding extends cycle times and causes wafer warpage. <strong>Mass Reflow Molded Underfill (MR-MUF)</strong> solves this. MR-MUF stacks the dies first, melts all joints concurrently inside a mass reflow oven, and then injects a liquid compound to fill gaps and encapsulate the unit simultaneously.</p>\n        <hr>\n        <h2>Thermal Dissipation and Void Mitigation</h2>\n        <p>Compared to NCF, MR-MUF uses mold compounds blended with high-thermal-conductivity silica fillers, drastically enhancing heat dissipation. Eliminating film layering prevents micro-void formation and improves assembly throughput, making MR-MUF a dominant process for high-density stack reliability.</p>\n      "
+    }
+  },
+  {
+    "slug": "indexeddb-offline-sync-caching",
+    "date": "2026-07-22",
+    "category": "Insight",
+    "ko": {
+      "title": "IndexedDB와 브라우저 저장소를 활용한 오프라인 동작 웹 애플리케이션 구축",
+      "description": "네트워크 단절 상황에서도 사용자 경험을 저해하지 않고 로컬 상태를 유지하며 데이터 신뢰성을 보장하는 IndexedDB 트랜잭션 동기화 전략.",
+      "content": "\n        <h2>브라우저 로컬 저장 공간의 선택지</h2>\n        <p>웹 서비스의 크기가 커지고 오프라인이나 느린 네트워크 상태에서의 원활한 동작이 요구되면서 로컬 캐싱의 중요성이 커졌습니다. 단순 문자열만 저장 가능한 localStorage는 동기식으로 동작하여 대용량 데이터 처리 시 UI 쓰레드를 차단하는 치명적인 단점이 있습니다. 구조화된 대용량 이진 데이터를 다루기 위해서는 비동기식 트랜잭션 데이터베이스인 <strong>IndexedDB</strong>의 사용이 권장됩니다.</p>\n        <hr>\n        <h2>비동기 트랜잭션 모델과 상태 동기화</h2>\n        <p>IndexedDB는 데이터베이스 객체 저장소(Object Store)를 기반으로 하여 비동기적인 트랜잭션을 통해 동작합니다. 사용자가 오프라인 상태일 때 발생한 모든 데이터 수정 및 생성 요청은 IndexedDB에 트랜잭션 단위로 안전하게 큐잉(Queue)됩니다. 이후 서비스 워커(Service Worker)가 브라우저의 온라인 복귀 이벤트를 감지하면, 백그라운드 동기화(Background Sync)를 구동하여 큐에 대기 중이던 로컬 데이터를 서버 API에 안전하게 반영합니다.</p>\n        <hr>\n        <h2>오프라인 앱의 동시성 및 예외 처리</h2>\n        <p>오프라인 캐싱 도입 시 동일한 데이터가 로컬과 서버에서 각기 수정되었을 때 발생하는 동시성 충돌을 해결해야 합니다. 일반적으로 최종 수정 시간을 비교하는 Last-Write-Wins 정책을 적용하거나, 충돌 메타데이터 필드를 통해 사용자가 최종 병합 버전을 선택할 수 있도록 데이터 구조 설계를 고도화하여 신뢰성 높은 데이터를 관리해야 합니다.</p>\n      "
+    },
+    "en": {
+      "title": "Building Offline-First Web Apps via Browser IndexedDB Architectures",
+      "description": "Designing transactional sync pipelines in IndexedDB to preserve client application state and maintain reliability during network dropouts.",
+      "content": "\n        <h2>Browser Storage Trade-offs</h2>\n        <p>Modern web apps must remain functional in offline scenarios. Standard localStorage is synchronous and blocks the UI thread during heavy reads. For caching structured records, binary assets, and larger datasets, developers must utilize <strong>IndexedDB</strong>, an asynchronous transactional database.</p>\n        <hr>\n        <h2>Transactional Architecture & Network Synchronization</h2>\n        <p>IndexedDB structures records in object stores and handles writes inside database transactions. When the client is offline, all write operations queue safely within IndexedDB. When the service worker detects the navigator is online, it initiates background synchronization to push these queued mutations to the server.</p>\n        <hr>\n        <h2>Resolving Sync Conflicts</h2>\n        <p>Offline modifications introduce state divergence. Establishing deterministic conflict resolution strategies, like Last-Write-Wins (LWW) timestamping or interactive merging UI, is necessary to keep client and backend data stores synchronized without losing user inputs.</p>\n      "
+    }
+  },
+  {
     "slug": "tsv-hbm-technology",
     "date": "2026-05-15",
     "category": "Semiconductor",

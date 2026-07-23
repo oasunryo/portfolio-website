@@ -334,6 +334,90 @@
     </div>
     
 
+    <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-07-01" data-title="ald (atomic layer deposition) process mechanisms in 3d nand channel hole fabrication" data-description="An analysis of Atomic Layer Deposition (ALD) chemistry, self-limiting reactions, and their critical application in high-aspect-ratio 3D NAND flash memory." data-search-content="
+         self-limiting mechanisms in ald chemistry 
+         atomic layer deposition (ald) deposits ultra-thin films atomic layer by layer through sequential exposure of precursors and reactants. unlike chemical vapor deposition (cvd), ald relies on  self-limiting surface reactions , where the chemical reaction stops once all active surface sites are saturated. this enables precise thickness control at the angstrom scale. 
+         
+         3d nand high-aspect-ratio stacking & ald 
+         as 3d nand flash memory exceeds 200 vertical layers, the aspect ratio of memory channel holes surpasses 100:1. depositing charge block layers, charge trap layers, and tunnel oxides inside these deep channels requires absolute thickness uniformity. ald delivers exceptional step coverage, eliminating top-to-bottom thickness variations inside deep vias. 
+         
+         process challenges and mitigation 
+         the primary constraint of ald is its  low throughput  due to cyclic gas purging. next-generation batch tools and high-speed gas delivery valves are utilized to reduce cycle time. additionally, developing organometallic precursors that decompose fully at lower temperatures prevents impurity contamination within the films. 
+      ">
+      <div class="col-title">
+        <a href="./ald-3d-nand-deposition/index.html" class="item-title-link">ALD (Atomic Layer Deposition) Process Mechanisms in 3D NAND Channel Hole Fabrication</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-semiconductor">Semiconductor</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-01</div>
+      <div class="col-reading-time tabular-nums">1 min</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-07-08" data-title="automating multilingual static build verification via git hooks" data-description="Implementing pre-commit hooks to automatically validate file integrity and relative path resolution in a multilingual static compilation system." data-search-content="
+         path resolution risks in static multilingual sites 
+         in a compiled static environment with multiple languages, swapping relative paths dynamically based on page depth is error-prone. committing modified templates without testing the compiler output can lead to broken links or missing css stylesheets in production. 
+         
+         local validation with git hooks and husky 
+         deploying  git hooks  lets developers catch layout issues locally before pushing code. by linking the compiler script `node build.js` to a `pre-commit` hook, the system aborts the commit if the compiler throws an error. this ensures broken configurations never enter the repository history. 
+         
+         integration with ci/cd pipelines 
+         while local hooks secure individual workstations, integrating the same compilation checks into github actions provides an extra layer of defense. automating compiler checks in the pull request phase guarantees that multilingual static files maintain correct routing and structure. 
+      ">
+      <div class="col-title">
+        <a href="./git-hooks-multilingual-build-verification/index.html" class="item-title-link">Automating Multilingual Static Build Verification via Git Hooks</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-insight">Insight</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-08</div>
+      <div class="col-reading-time tabular-nums">1 min</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-07-15" data-title="flip chip interconnects and the rise of mr-muf in hbm stacking" data-description="Comparing traditional flip-chip bonding limits with Mass Reflow Molded Underfill (MR-MUF) in terms of thermal dissipation and assembly yields." data-search-content="
+         evolution of die interconnects and underfill 
+         flip-chip technology connects die pads to substrates directly using metal micro-bumps. after bonding, the narrow gap between the die and substrate must be filled with epoxy resin, a process known as  underfill . underfill absorbs thermomechanical stresses and shields active circuits from environmental degradation. 
+         
+         limits of ncf/ncp and rise of mr-muf 
+         conventional packaging relies on non-conductive film (ncf) or paste (ncp) under thermal compression (tc) bonding. however, when stacking up to 12 dram layers for hbm, tc bonding extends cycle times and causes wafer warpage.  mass reflow molded underfill (mr-muf)  solves this. mr-muf stacks the dies first, melts all joints concurrently inside a mass reflow oven, and then injects a liquid compound to fill gaps and encapsulate the unit simultaneously. 
+         
+         thermal dissipation and void mitigation 
+         compared to ncf, mr-muf uses mold compounds blended with high-thermal-conductivity silica fillers, drastically enhancing heat dissipation. eliminating film layering prevents micro-void formation and improves assembly throughput, making mr-muf a dominant process for high-density stack reliability. 
+      ">
+      <div class="col-title">
+        <a href="./flip-chip-vs-mr-muf-bonding/index.html" class="item-title-link">Flip Chip Interconnects and the Rise of MR-MUF in HBM Stacking</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-semiconductor">Semiconductor</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-15</div>
+      <div class="col-reading-time tabular-nums">1 min</div>
+    </div>
+    
+
+    <div class="blog-table-row blog-hover-item" data-category="Insight" data-date="2026-07-22" data-title="building offline-first web apps via browser indexeddb architectures" data-description="Designing transactional sync pipelines in IndexedDB to preserve client application state and maintain reliability during network dropouts." data-search-content="
+         browser storage trade-offs 
+         modern web apps must remain functional in offline scenarios. standard localstorage is synchronous and blocks the ui thread during heavy reads. for caching structured records, binary assets, and larger datasets, developers must utilize  indexeddb , an asynchronous transactional database. 
+         
+         transactional architecture & network synchronization 
+         indexeddb structures records in object stores and handles writes inside database transactions. when the client is offline, all write operations queue safely within indexeddb. when the service worker detects the navigator is online, it initiates background synchronization to push these queued mutations to the server. 
+         
+         resolving sync conflicts 
+         offline modifications introduce state divergence. establishing deterministic conflict resolution strategies, like last-write-wins (lww) timestamping or interactive merging ui, is necessary to keep client and backend data stores synchronized without losing user inputs. 
+      ">
+      <div class="col-title">
+        <a href="./indexeddb-offline-sync-caching/index.html" class="item-title-link">Building Offline-First Web Apps via Browser IndexedDB Architectures</a>
+      </div>
+      <div class="col-category">
+        <span class="status-badge badge-insight">Insight</span>
+      </div>
+      <div class="col-date tabular-nums">2026-07-22</div>
+      <div class="col-reading-time tabular-nums">1 min</div>
+    </div>
+    
+
     <div class="blog-table-row blog-hover-item" data-category="Semiconductor" data-date="2026-05-15" data-title="tsv process mechanisms and defect modes in hbm stacking" data-description="An analysis of Through Silicon Via (TSV) etching, deposition, plating, and bonding processes critical for High Bandwidth Memory (HBM) stacking." data-search-content="
          3d stacking and tsv dictating hbm performance 
          high bandwidth memory (hbm) stacks dram dies vertically to maximize data transfer bandwidth. through silicon via (tsv) technology etches thousands of micro-channels through these dies to connect them. compared to traditional wire bonding, tsv shortens signal paths, enabling low-power and high-speed operation. 
