@@ -806,6 +806,7 @@ html.dark .tag-filter-btn.active {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex-shrink: 0;
 }
 
 .recommended-card-category {
