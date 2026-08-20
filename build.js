@@ -379,7 +379,7 @@ const homeContentDict = {
     bio: `
       <p>
         안녕하세요. 광운대학교에서 전기공학을 전공하고 있으며, 반도체 전/후공정 이론 및 회로 설계에 깊은 관심을 가진 학부생 오준서입니다. 
-        2026년 7월 27일부터 글로벌 OSAT 기업인 <strong>앰코테크놀로지(Amkor Technology)</strong>의 후공정(Packaging & Test) 분야 엔지니어로 근무하고 있습니다.
+        2026년 7월 27일부터 글로벌 OSAT 기업인 <strong>앰코테크놀로지(Amkor Technology)</strong>의 DP(Die Preparation) 공정 엔지니어(Process Engineer)로 근무하고 있습니다.
       </p>
       <br>
       <p>
@@ -396,9 +396,9 @@ const homeContentDict = {
           </div>
           <span class="item-date-text">2026.07.27 ~ </span>
         </div>
-        <p class="item-role-subtitle">Packaging & Test Engineer (후공정 엔지니어)</p>
+        <p class="item-role-subtitle">Process Engineer (DP 공정 엔지니어)</p>
         <p class="item-description">
-          글로벌 반도체 패키징 및 테스트 전문 OSAT 기업인 앰코테크놀로지 코리아의 후공정 엔지니어로 근무하고 있습니다.
+          앰코테크놀로지 코리아의 DP (Die Preparation) 공정 엔지니어로 근무하고 있으며, WBG (Wafer Backgrinding), WM (Wafer Mounting), LG (Laser Grooving), Saw (Dicing), PNP (Pick and Place) 세부 공정을 담당하고 있습니다.
         </p>
       </div>
 
@@ -423,7 +423,7 @@ const homeContentDict = {
     bio: `
       <p>
         Hello, I am Junseo Oh, an undergraduate student majoring in Electrical Engineering at Kwangwoon University. I have a deep engineering focus on semiconductor fabrication/packaging mechanisms and hardware circuit designs.
-        Since July 27, 2026, I have been working as a Packaging & Test engineer at <strong>Amkor Technology</strong> (a global OSAT leader).
+        Since July 27, 2026, I have been working as a DP (Die Preparation) Process Engineer at <strong>Amkor Technology</strong> (a global OSAT leader).
       </p>
       <br>
       <p>
@@ -440,9 +440,9 @@ const homeContentDict = {
           </div>
           <span class="item-date-text">2026.07.27 ~ </span>
         </div>
-        <p class="item-role-subtitle">Packaging & Test Engineer</p>
+        <p class="item-role-subtitle">Process Engineer (Die Preparation)</p>
         <p class="item-description">
-          Working as a backend packaging & test process engineer at Amkor Technology Korea.
+          Working as a DP (Die Preparation) process engineer at Amkor Technology Korea, responsible for WBG (Wafer Backgrinding), WM (Wafer Mounting), LG (Laser Grooving), Saw (Dicing), and PNP (Pick and Place) processes.
         </p>
       </div>
 
