@@ -1,0 +1,15 @@
+{
+  "slug": "bga-vs-wlcsp-packaging",
+  "date": "2026-05-05",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "BGA vs WLCSP: 모바일 AP와 IoT 칩 패키징 설계 비교",
+    "description": "볼 그리드 어레이(BGA)와 웨이퍼 레벨 칩 스케일 패키지(WLCSP)의 구조적 차이와 열전도, 전기적 특성 비교 분석.",
+    "content": "\n        <h2>서브스트레이트 유무가 가르는 폼팩터의 한계</h2>\n        <p>모바일 기기와 초소형 IoT 센서 시장의 팽창은 패키징 소형화 경쟁을 가속해왔습니다. 대표적인 두 패키지 기술인 <strong>BGA(Ball Grid Array)</strong>와 <strong>WLCSP(Wafer Level Chip Scale Package)</strong>는 기판(Substrate) 사용 여부에서 가장 본질적인 차이를 보입니다.</p>\n        <ul>\n          <li><strong>BGA:</strong> 반도체 칩을 인쇄회로기판(PCB) 형태의 서브스트레이트에 얹고 와이어나 플립칩 범프로 연결한 뒤 에폭시(EMC)로 성형하는 구조입니다. 신호 입출력(I/O) 핀이 수백 개 이상 필요한 고성능 모바일 AP에 적합합니다.</li>\n          <li><strong>WLCSP:</strong> 별도의 기판이나 와이어 없이, 실리콘 웨이퍼 상태에서 패드 위에 직접 재배선층(RDL)과 범프(Solder Ball)를 올려 칩을 그대로 패키지화하는 궁극의 소형 폼팩터입니다. 전력반도체(PMIC)나 센서류에 많이 쓰입니다.</li>\n        </ul>\n        <hr>\n        <h2>열 및 전기적 신호 특성 비교</h2>\n        <p>BGA는 기판 내부 배선층 덕분에 회로 배치 자유도가 높고 외부 충격에 강하지만, 패키지 두께가 두껍고寄생 인덕턴스가 상대적으로 큽니다. 반면 WLCSP는 기판이 없어 경로가 매우 짧아 고주파 신호 손실이 극도로 적지만, 칩 외곽 테두리가 실리콘 그대로 외부 노출되므로 기계적 크랙과 물리적 충격에 취약하며 보드 레벨 낙하 테스트(Drop Test) 통과가 더 까다롭습니다.</p>\n      "
+  },
+  "en": {
+    "title": "BGA vs WLCSP: Packaging Architectures for Mobile AP and IoT Chips",
+    "description": "Comparing Ball Grid Array (BGA) and Wafer-Level Chip Scale Package (WLCSP) architectures in terms of signal routing, thermal transfer, and footprint.",
+    "content": "\n        <h2>Substrate Elimination Reshaping the Footprint</h2>\n        <p>Form factor constraints in mobile devices and IoT sensors have driven packaging minimization. <strong>Ball Grid Array (BGA)</strong> and <strong>Wafer Level Chip Scale Package (WLCSP)</strong> differ fundamentally on substrate use.</p>\n        <ul>\n          <li><strong>BGA:</strong> Mounts the silicon die onto a laminated PCB substrate, connecting them via wire bonding or flip-chip bumps, encapsulated in Mold Compound (EMC). Ideal for high I/O density application processors (AP).</li>\n          <li><strong>WLCSP:</strong> Routes signals directly on the wafer using Redistributed Layers (RDL) and solder bumps without a substrate. Offers the smallest footprint for PMICs and RF ICs.</li>\n        </ul>\n        <hr>\n        <h2>Thermal & Electrical Integrity</h2>\n        <p>BGA design offers flexible routing through substrate layers but introduces higher parasitic inductance. WLCSP minimizes trace loops for lower insertion loss but exposes bare silicon edges, making it fragile to dynamic drops and thermo-mechanical stress on printed boards.</p>\n      "
+  }
+}

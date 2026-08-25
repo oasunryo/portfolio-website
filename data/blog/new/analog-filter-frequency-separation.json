@@ -1,0 +1,15 @@
+{
+  "slug": "analog-filter-frequency-separation",
+  "date": "2026-03-15",
+  "category": "Hardware",
+  "ko": {
+    "title": "아날로그 주파수 분할 필터(Crossover)의 임피던스 임팩트 분석",
+    "description": "스피커 유닛 조합 시 저음역(Woofer)과 고음역(Tweeter) 신호를 가르는 패시브 L-C 크로스오버 네트워킹과 로드 임피던스 틀어짐 대응책.",
+    "content": "\n        <h2>오디오 주파수를 가르는 하드웨어 벽</h2>\n        <p>고품질 스피커는 하나의 유닛이 모든 저주파와 고주파를 완벽히 낼 수 없으므로, 저음 전문 우퍼와 고음 전문 트위터를 조합합니다. 이때 들어오는 아날로그 음향 주파수 성분을 쪼개주는 인덕터(L)와 커패시터(C) 기반의 <strong>크로스오버(Crossover) 필터 네트워크</strong>가 필수적입니다.</p>\n        <hr>\n        <h2>임피던스 틀어짐과 보상 필터의 설계</h2>\n        <p>간단한 계산에서는 스피커가 고정된 8옴 저항이라고 가정하지만, 실제 스피커는 보이스 코일 인덕턴스 때문에 주파수가 올라갈수록 임피던스가 올라갑니다. 이로 인해 설계했던 필터의 차단 주파수 지점이 틀어져 중음역대 음향 공백이 생깁니다. 이를 상쇄하기 위해 스피커 유닛에 병렬로 임피던스를 보정하는 <strong>조벨 필터(Zobel Network)</strong> 저항/커패시터 결합 회로를 추가하는 설계를 거칩니다.</p>\n      "
+  },
+  "en": {
+    "title": "Analog Frequency Crossover Networks and Load Impedance Correction",
+    "description": "Designing passive LC crossover filters and matching Zobel networks to compensate for dynamic speaker impedance shifts.",
+    "content": "\n        <h2>Splitting Audio Frequencies In Analog</h2>\n        <p>Speakers combine multi-driver arrays: Woofers for bass and Tweeters for treble. A passive <strong>Crossover network</strong> utilizing inductors (L) and capacitors (C) splits the source signal.</p>\n        <hr>\n        <h2>Dynamic Impedance & Zobel Compensation</h2>\n        <p>Loudspeakers are not static resistors; their impedance spikes at high frequencies due to voice coil inductance. This shifts filter cutoff points. Adding a parallel <strong>Zobel network</strong> flattens the load curve for smooth frequency transitions.</p>\n      "
+  }
+}

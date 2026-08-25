@@ -1,0 +1,15 @@
+{
+  "slug": "hbm4-custom-dram-foundry",
+  "date": "2026-05-21",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "HBM4 규격 대전환: 베이스 다이의 파운더리 공정 도입 배경",
+    "description": "HBM3e까지 메모리 공정으로 제조되던 최하단 베이스 다이(Base Die)가 HBM4에 이르러 TSMC/삼성 파운더리 선단 공정으로 전환되는 구조적 이유.",
+    "content": "\n        <h2>베이스 다이(Base Die)의 패러다임 변화</h2>\n        <p>HBM 메모리의 맨 밑바닥에서 GPU/ASIC 컨트롤러와 D램 다이 사이의 통신 중재 및 라우팅을 총괄하는 버퍼 다이를 <strong>베이스 다이(Base Die)</strong>라고 부릅니다. 기존 HBM3e까지는 이 베이스 다이도 메모리 제조사(SK하이닉스, 삼성, 마이크론)의 자체 D램 공정으로 양산되어 왔습니다. 그러나 전송 속도가 급증하는 HBM4 규격부터는 파운더리의 선단 미세 공정(최대 3nm/4nm)으로 제조 영역이 전환되고 있습니다.</p>\n        <hr>\n        <h2>메모리 공정 베이스 다이의 물리적 한계</h2>\n        <p>기존 D램 제조 공정은 캐패시터 형성 등을 위해 메탈 배선층이 최대 3~4층 수준으로 극도로 단순합니다. 이 때문에 수천 개의 I/O 버퍼와 BIST(내장 자체 테스트) 회로, 고속 디지털 먹스(MUX) 로직을 이 좁은 면적에 복잡하게 라우팅할 수가 없습니다. 반면 파운더리 로직 선단 공정은 10층 이상의 미세 메탈층을 지원하므로, 배선 병목 없이 고속 라우팅 회로를 초미세 면적으로 패키징할 수 있습니다.</p>\n        <hr>\n        <h2>HBM4 생태계의 이종 집적 고도화</h2>\n        <p>베이스 다이가 로직 파운더리 공정으로 제조됨에 따라, HBM은 단순 적층 메모리를 넘어 시스템 LSI 반도체의 영역으로 통합되고 있습니다. 이는 패키징 단에서 GPU와 메모리 인터커넥션 속도를 물리적으로 비약시킬 것이며, 동시에 파운더리사와 메모리사 간의 첨단 패키징(CoWoS, I-Cube 등) 협업 설계를 더욱긴밀하게 묶는 결과를 초래하고 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "HBM4 Specifications: Transitioning Base Dies to Foundry Logic Nodes",
+    "description": "Why the foundational base die in High Bandwidth Memory (HBM) is shifting from DRAM processes to sub-5nm logic foundries.",
+    "content": "\n        <h2>The Evolution of the Base Die</h2>\n        <p>The <strong>Base Die</strong> at the bottom of the HBM stack acts as the communication interface between the host processor and the stacked DRAM memory. While HBM3e utilized standard DRAM processes, the HBM4 generation transitions to advanced logic foundry nodes (sub-5nm) for base die production.</p>\n        <hr>\n        <h2>Physical Bottlenecks of Memory Processes</h2>\n        <p>DRAM processes optimized for cell capacitors offer limited metal routing layers (typically 3 to 4). This architecture cannot accommodate complex Built-In Self-Test (BIST) circuits and high-speed multiplexers. Foundry logic nodes, with 10+ ultra-fine copper layers, resolve this interconnect congestion.</p>\n        <hr>\n        <h2>Heterogeneous Integration Trends</h2>\n        <p>Using advanced logic foundries for HBM4 base dies transforms HBM from standard stacked memory into integrated system silicon. This shift lowers latency at the package boundary and requires tighter design integration between foundries and memory makers.</p>\n      "
+  }
+}

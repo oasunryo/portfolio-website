@@ -1,0 +1,15 @@
+{
+  "slug": "community-manager-engineer-story",
+  "date": "2026-03-01",
+  "category": "Career",
+  "ko": {
+    "title": "비영리 단체 커뮤니티 매니저 활동이 엔지니어 협업 역량에 미친 영향",
+    "description": "계단뿌셔클럽 등 시민 참여 커뮤니티에서 활동하며 배운 비개발 팀원들과의 소통 문법과 공학적 트러블슈팅의 교차점.",
+    "content": "\n        <h2>코드와 회로 바깥에 존재하는 협업의 언어</h2>\n        <p>뛰어난 엔지니어가 되기 위해 필요한 것은 정교한 코딩 스킬뿐만이 아닙니다. 제품과 공정이 굴러가기 위해서는 마케터, 재무 담당자, 현장 오퍼레이터 등 공학 백그라운드가 전혀 없는 다양한 이들과 상호 소통하여 협력을 이끌어내는 능력이 필수적입니다. 저는 계단뿌셔클럽 비영리 단체의 커뮤니티 코디네이터로 활동하며 이 소중한 소통 문법을 갈고 닦았습니다.</p>\n        <hr>\n        <h2>비기술적 맥락을 기술적 아키텍처로 변환하기</h2>\n        <p>활동가들의 현장 민원과 운영진의 요구사항을 수렴하여 모바일 동선 가이드라인 개선에 반영할 때, 비개발자의 투박한 피드백을 시스템 요구사항(Functional Requirement)으로 명확히 추상화하여 개발팀에 전달해 주었던 경험은 공학도의 가장 큰 무기였습니다. 공정 불량 데이터를 정리해 타 부서 선배들을 설득하고 협력을 받아내는 직무 실무 상황에서도 이 소통 역량은 강력한 무기로 작동하고 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "How Non-Profit Community Management Enhanced My EE Collaboration Skills",
+    "description": "Translating human feedback into system requirements: Lessons learned from community coordinating roles.",
+    "content": "\n        <h2>Collaboration Languages Beyond Code and Circuits</h2>\n        <p>Engineering doesn't happen in a vacuum. Projects succeed when we translate technical specs to clients, line operators, and business partners. Coordinating volunteers in non-profits honed my human-centric problem-solving skills.</p>\n        <hr>\n        <h2>Translating Human Feedback into Systems</h2>\n        <p>Converting chaotic field feedback into structured system requirements for development teams taught me clear communication, a trait that makes engineers invaluable on cross-functional factory teams.</p>\n      "
+  }
+}

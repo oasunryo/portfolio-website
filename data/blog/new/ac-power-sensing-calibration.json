@@ -1,0 +1,15 @@
+{
+  "slug": "ac-power-sensing-calibration",
+  "date": "2026-04-10",
+  "category": "Hardware",
+  "ko": {
+    "title": "AC 교류 전력량 측정을 위한 비접촉 CT 센서 회로 및 ADC 캘리브레이션",
+    "description": "송전선이나 가전제품 교류 전류 측정을 위해 변류기(CT) 센서를 연동하고 오프셋 바이어스 회로를 설계해 MCU로 계측하는 과정.",
+    "content": "\n        <h2>위험한 고압 AC 전력량의 비접촉 계측</h2>\n        <p>실제 교류 220V 송전 전선에 멀티미터 프롭을 대는 것은 위험합니다. 전류가 흐르면 그 전선 주변으로 비례적인 유도 자기장이 발생하는데, 이 전자기 유도 효과를 이용하는 <strong>CT(Current Transformer, 변류기) 센서</strong>를 감싸주면 전선을 단선시키지 않고도 2차측에 비례 전류를 만들어낼 수 있습니다.</p>\n        <hr>\n        <h2>AC 전압 클램핑과 ADC 읽기 기법</h2>\n        <p>CT 센서 출력은 교류이므로 음(-)의 영역 전압도 포함하고 있습니다. 하지만 단일 전원(0~3.3V)을 쓰는 임베디드 MCU의 ADC 포트는 음의 전압이 인가되면 하드웨어적으로 손상되거나 값을 읽지 못합니다. 따라서 두 개의 저항으로 1.65V 중간 바이어스 전압(Offset Voltage) 분배기를 만들고, CT 출력을 여기에 실어 공중으로 띄운 뒤(AC Coupling) 샘플링하여 실시간 RMS 전압과 위상차를 역산합니다.</p>\n      "
+  },
+  "en": {
+    "title": "AC Power Sensing: Non-Contact CT Sensor Circuits and Analog Calibration",
+    "description": "Designing current transformer bias networks for single-supply microcontrollers to measure high-voltage alternating currents safely.",
+    "content": "\n        <h2>Safe Measurement of High-Voltage Alternating Currents</h2>\n        <p>Tapping directly into AC power lines is hazardous. Using a <strong>Current Transformer (CT) sensor</strong> leverages induction fields to scale down alternating currents proportionally, without stripping wires.</p>\n        <hr>\n        <h2>DC Biasing & ADC Sample Routines</h2>\n        <p>Because CT outputs are sinusoidal, they swing below 0V. Standard 3.3V microcontrollers cannot process negative inputs. An offset bias network shifts the AC wave midpoint to 1.65V, keeping the signal within safe boundaries.</p>\n      "
+  }
+}

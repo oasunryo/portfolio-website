@@ -1,0 +1,15 @@
+{
+  "slug": "thinking-vs-understanding-karpathy",
+  "date": "2026-06-03",
+  "category": "Insight",
+  "ko": {
+    "title": "생각은 아웃소싱할 수 있지만, 이해는 아웃소싱할 수 없다",
+    "description": "AI가 생각의 과정을 대신해주는 소프트웨어 3.0 시대, 인간 엔지니어에게 남아있는 대체 불가능한 역량이 무엇인지에 대해.",
+    "content": "\n        <h2>Thinking은 위임하되, Understanding은 쥐고 있어라</h2>\n        <p>안드레이 카파시가 남긴 아주 인상 깊은 통찰이 있어요. <strong>\"Thinking can be outsourced, but Understanding cannot.\"</strong></p>\n        <p>코드를 한 줄씩 타이핑하고, 버그가 생겼을 때 트러블슈팅 라인을 짜거나, 대규모 데이터를 분석하고 정형화하는 복잡하고 고된 '생각의 흐름'은 AI 에이전트에게 전적으로 아웃소싱할 수 있는 시대에 도달했습니다. 2026년은 이미 AI가 인간보다 빠르고 정교하게 코드를 뱉고 있죠.</p>\n        \n        <hr>\n        \n        <h2>진짜 엔지니어링의 본질</h2>\n        <p>그렇다면 인간 엔지니어는 무엇을 해야 할까요? 바로 <strong>'이해와 의사결정'</strong>입니다. 이 시스템이 왜 이렇게 설계되어야 하는지, 비즈니스의 수수료 아키텍처나 사용자 약관 동의 등 현실의 요구사항이 공학 디자인과 어떻게 얽히는지에 대한 '깊은 맥락의 이해'는 AI에게 맡길 수 없습니다.</p>\n        <p>단순 코더는 도태되겠지만, 전체 시스템을 조망하고 조율하는 '이해' 능력을 갖춘 사람은 AI 아키텍트를 지휘하며 개발 생산성을 기하급수적으로 확장시킬 수 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Thinking Can Be Outsourced, But Understanding Cannot",
+    "description": "In the Software 3.0 era where LLMs handle coding logistics, what is the irreplaceable value of a human engineer?",
+    "content": "\n        <h2>Outsource the coding logistics, keep the system vision</h2>\n        <p>Andrej Karpathy delivered a powerful quote: <strong>\"Thinking can be outsourced, but Understanding cannot.\"</strong> The heavy cognitive load of writing boilerplate, fixing logic errors, and compiling data can now be shifted to AI. In 2026, AI coders write syntax faster than humans.</p>\n        \n        <hr>\n        \n        <h2>The core of real engineering</h2>\n        <p>What is left for the human engineer? It is <strong>\"Systemic Understanding.\"</strong> Why this architecture fits the business logic, how real-world safety policies map to database schemas—this cannot be delegated. Engineers who master this understanding will orchestrate teams of AI agents.</p>\n      "
+  }
+}

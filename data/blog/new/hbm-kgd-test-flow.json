@@ -1,0 +1,15 @@
+{
+  "slug": "hbm-kgd-test-flow",
+  "date": "2026-05-26",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "HBM KGD(Known Good Die) 테스트 플로우와 후공정 수율 방어선",
+    "description": "D램 칩렛 적층 전/후 단계에서 불량 다이를 사전에 분리하여 완제품 패키지 불량률을 예방하는 Known Good Die 선별 검사 구조.",
+    "content": "\n        <h2>적층형 반도체의 수학적 재앙과 수율</h2>\n        <p>만약 수율이 90%인 D램 칩 12개를 와이어나 TSV로 적층하여 패키징한다면, 단순 확률상 완제품 수율은 $0.90^{12} \\approx 28.2\\%$ 수준으로 폭락합니다. 적층 개수가 증가할수록 완제품 폐기율은 지수함수적으로 폭등합니다. 따라서 불량 다이를 적층 전에 완전히 배제하는 <strong>KGD(Known Good Die)</strong> 테스트 확보가 완제품 수율을 수호하기 위한 절대적 방어선입니다.</p>\n        <hr>\n        <h2>KGD 주요 테스트 관문</h2>\n        <ul>\n          <li><strong>Wafer-Level Test:</strong> 프로브 카드(Probe Card) 바늘을 D램 웨이퍼 패드에 접속하여 고속 읽기/쓰기 동작 및 DC 파라미터를 계측합니다.</li>\n          <li><strong>Thin-Wafer Probe Test:</strong> 배면 연삭(Thinning)을 마쳐 얇아진 웨이퍼에 초미세 피치 전용 프로브 팁을 대고 동적 응답을 다시 확인합니다.</li>\n          <li><strong>Built-In Self-Test (BIST) 검사:</strong> HBM4 등에 탑재되는 내부 테스트 자가 진단 회로를 트리거하여 불량 메모리 셀 블록을 소프트웨어적으로 리던던시(Redundancy) 셀로 치환하는 공정을 가동합니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "HBM Known Good Die (KGD) Test Methodologies and Yield Defenses",
+    "description": "Implementing pre-stack probing, wafer thinning testing, and built-in self-test (BIST) sweeps to prevent stacked package losses.",
+    "content": "\n        <h2>The Yield Mathematics of Multi-Die Packages</h2>\n        <p>If you stack 12 DRAM dies, each with a 90% yield, the overall package yield drops to $0.90^{12} \\approx 28.2\\%$. Ensuring each die is a <strong>Known Good Die (KGD)</strong> before assembly is critical to prevent yield fallout.</p>\n        <hr>\n        <h2>The KGD Test Flow</h2>\n        <ul>\n          <li><strong>Wafer Probing:</strong> Probe cards interface with wafer terminals to test electrical parameters and speed grades.</li>\n          <li><strong>Thin-Wafer Probing:</strong> Dynamic tests are rerun after wafer thinning to verify chip performance.</li>\n          <li><strong>Built-In Self-Test (BIST):</strong> Internal test blocks detect failures, routing addresses to redundancy cells on-chip.</li>\n        </ul>\n      "
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "private-notebooklm-safari-obsidian",
+  "date": "2026-06-01",
+  "category": "Insight",
+  "ko": {
+    "title": "8GB 램 맥북에서 쌩쌩 돌아가는 프라이빗 로컬 \"NotebookLM\" 구축기",
+    "description": "Zotero 7 + Safari + Obsidian (Copilot + Gemini API) 연동을 통해 리소스를 쓰지 않고 완벽한 개인 지식 데이터 분석 파이프라인을 구축하는 방법.",
+    "content": "\n        <h2>무겁게 로컬 LLM을 돌릴 필요가 없다</h2>\n        <p>연구 논문이나 전공 PDF 수백 장을 분석할 때 로컬 LLM(Ollama 등)을 직접 돌리면 맥북 쿨러가 폭발하고 8GB 램 기기에서는 시스템이 뻗어버리기 십상입니다. 그렇다고 브라우저로 매번 외부에 파일을 하나씩 업로드해서 질의하는 것은 보안 유출 문제도 있고 관리하기도 몹시 번거롭죠.</p>\n        <p>이 한계를 극복하기 위해 <strong>Zotero 7(논문 수집) ➡️ Safari ➡️ Obsidian(Copilot 플러그인 + Gemini API)</strong>을 엮은 무부하 개인 리서치 파이프라인을 구성했습니다.</p>\n        \n        <hr>\n        \n        <h2>수집부터 분석까지 끊김 없는 3단계 루프</h2>\n        <ol>\n          <li><strong>Zotero 7 수집 & Stoplight 하이라이트</strong>: Safari에서 마음에 드는 프리프린트나 자료를 원클릭 저장하고 Zotero 뷰어로 읽으면서 빨강(핵심), 노랑(의문), 초록(배경)으로 형광펜 칠을 해둡니다.</li>\n          <li><strong>Obsidian 색상 동기화 호출</strong>: Zotero Integration 플러그인과 직접 짠 CSS 스니펫을 통해 Zotero의 형광펜 데이터가 옵시디언 문서 내에 예쁜 콜아웃(Callouts) 형태로 고스란히 끌려옵니다.</li>\n          <li><strong>Copilot + Gemini 대형 컨텍스트 추론</strong>: 옵시디언 내 Copilot 플러그인에 구글 Gemini 2.0 API를 연동합니다. Gemini는 컨텍스트 윈도우가 100만~200만 토큰에 달해, 내 로컬 옵시디언 전체 문서를 싹 얹어 질의해도 렉 없이 1초 만에 논리적 초안과 요약을 뱉어냅니다.</li>\n        </ol>\n        <p>이 구성이면 내 맥북의 로컬 램과 SSD 수명을 전혀 갉아먹지 않으면서도, 세상에서 가장 빠르고 안전한 나만의 개인 비서(NotebookLM)를 100% 무료로 가동할 수 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Building a Private Local \"NotebookLM\" on an 8GB RAM MacBook",
+    "description": "How to build a low-resource private research pipeline by integrating Zotero 7, Safari, and Obsidian (Copilot + Gemini API).",
+    "content": "\n        <h2>No need to exhaust your local GPU for LLM inference</h2>\n        <p>Running heavy offline models on an 8GB RAM Mac causes thermal throttling and lags your workflow. Alternatively, uploading intellectual property to third-party web apps is tedious. The solution is integrating <strong>Zotero 7, Safari, and Obsidian with Gemini APIs</strong>.</p>\n        \n        <hr>\n        \n        <h2>The 3-Step Research Loop</h2>\n        <ol>\n          <li><strong>Zotero 7 & Stoplight Reading</strong>: Save articles in Safari directly to Zotero, highlighting critical sections in Red (foundational), Yellow (citation candidate), or Green (context).</li>\n          <li><strong>Obsidian Sync</strong>: Pull annotations dynamically using Zotero integration and local CSS snippets, syncing highlighted notes directly into neat callouts.</li>\n          <li><strong>Gemini Reasoning</strong>: Wire your free Gemini 2.0 API key to Obsidian Copilot. With a 1-to-2 million token context window, Gemini reads your entire note library, generating outlines in seconds without using local memory.</li>\n        </ol>\n      "
+  }
+}

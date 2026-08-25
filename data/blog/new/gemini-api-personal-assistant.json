@@ -1,0 +1,15 @@
+{
+  "slug": "gemini-api-personal-assistant",
+  "date": "2026-04-24",
+  "category": "Architecture",
+  "ko": {
+    "title": "구글 Gemini API를 활용한 옵시디언 개인 리서치 대시보드 설계",
+    "description": "API 키 하나로 내 지식창고를 긁어 연동하고, 질문에 따라 최적의 지식 노트를 발굴 및 추천해주는 지식 매니저 구현 방법.",
+    "content": "\n        <h2>나만을 위한 프라이빗 AI 뇌</h2>\n        <p>인터넷의 일반적인 지식을 알려주는 범용 챗봇은 편리하지만 정작 '내가 메모해두었던 독자적인 전공 정리'나 '나만의 일기장' 데이터는 접근하지 못합니다. 구글 Gemini API의 방대한 200만 토큰 컨텍스트 능력을 내 옵시디언(Obsidian) 폴더 데이터베이스에 결합하면, 나만을 위한 진정한 개인 비서가 구현됩니다.</p>\n        <hr>\n        <h2>대용량 컨텍스트 윈도우의 적극적 활용</h2>\n        <p>과거에는 노트를 잘게 쪼개어 임베딩하고 검색(RAG)해야 했기에 개발이 복잡하고 매칭률이 떨어졌습니다. 하지만 Gemini API는 내 로컬 지식 위키 폴더 내의 마크다운 텍스트 20~30개를 통째로 한 번에 컨텍스트로 집어넣어 질의할 수 있습니다. \"내가 정리했던 반도체 후공정 휨 대책 중, 기판 Residual Stress 관련 내용만 3줄 요약해줘\" 같은 정교한 인덱스 발굴이 복잡한 데이터베이스 세팅 없이 손쉽게 이루어집니다.</p>\n      "
+  },
+  "en": {
+    "title": "Designing an Obsidian Knowledge Dashboard via Gemini API Integration",
+    "description": "Leveraging Gemini's million-token context windows to read and summarize entire markdown vaults without RAG pipelines.",
+    "content": "\n        <h2>Creating Your Private External Brain</h2>\n        <p>Generic web chatbots lack access to your personal study logs. Feeding your Obsidian markdown notes into <strong>Gemini API</strong> instances creates a localized knowledge retrieval assistant.</p>\n        <hr>\n        <h2>Harnessing 2M Token Window Scaling</h2>\n        <p>RAG pipelines are complex to set up. With Gemini's 2-million-token window, you can upload your entire semester's engineering notes as context. Asking for cross-references between class notes yields instantaneous results.</p>\n      "
+  }
+}

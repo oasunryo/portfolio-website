@@ -1,0 +1,15 @@
+{
+  "slug": "hardmask-materials-innovation",
+  "date": "2026-08-16",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "고종횡비 식각을 위한 하드마스크(Hardmask) 신소재 혁신",
+    "description": "식각 시 패턴 붕괴를 예방하기 위한 ACL막 및 스핀온 카본(SOC) 마스크 소재의 화학적 고도화 동향을 정리합니다.",
+    "content": "<h2>다중 패터닝 식각 장벽, 하드마스크</h2><p>DP 또는 QP 공정에서는 패턴을 웨이퍼 기판에 깊숙이 새기기 위해 감광막(PR) 하부에 강력한 식각 장벽 역할을 하는 하드마스크층이 필수적입니다. 종횡비가 극단적으로 늘어날수록 일반적인 이산화규소(SiO2)막은 견디지 못하고 무너집니다.</p><h2>ACL & SOC 신소재 도입과 DuPont/Merck 경쟁</h2><p>이를 해결하기 위해 탄소 함량이 극도로 높은 <strong>비정질 탄소막(ACL)</strong>과 스핀 코팅이 용이한 <strong>Spin-On Carbon (SOC)</strong> 물질이 도입되었습니다. DuPont과 Merck, 그리고 한국의 동진쎄미켐 등 소재 기업들은 더 단단하고 내화학성이 높은 탄소 하드마스크 재료를 제공하여 3D NAND 및 최첨단 로직 공정의 패턴 미세화를 지원하고 있습니다.</p>"
+  },
+  "en": {
+    "title": "Hardmask Material Innovations for High-Aspect-Ratio Etching",
+    "description": "Investigating carbon hardmask technology and material shifts driven by DuPont, Merck, and Dongjin Semichem.",
+    "content": "<h2>Etch Buffers in Multi-Patterning</h2><p>In DP or QP schemes, thin photoresists lack the etch selectivity to transfer deep layouts into substrates. A structural buffer, or hardmask, must be inserted beneath the resist to shield target features during prolonged plasma exposures.</p><h2>ACL and SOC Evolution by DuPont and Merck</h2><p>High-carbon <strong>Amorphous Carbon Layers (ACL)</strong> and spin-on carbon (SOC) compounds address this. Chem manufacturers like DuPont, Merck, and Dongjin Semichem formulate hardmasks with enhanced mechanical strength and etch resistance, maintaining fidelity in high-aspect structures.</p>"
+  }
+}

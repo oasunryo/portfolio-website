@@ -1,0 +1,15 @@
+{
+  "slug": "native-dialog-popover",
+  "date": "2026-05-25",
+  "category": "Architecture",
+  "ko": {
+    "title": "Native Dialog와 Popover를 이용한 복잡한 z-index 탈출기",
+    "description": "브라우저 최상단 레이어(Top Layer)에 직접 요소를 띄워 복잡한 쌓임 맥락(Stacking Context)을 우회하고 모달을 띄우는 법.",
+    "content": "\n        <h2>z-index 전쟁의 종식</h2>\n        <p>그동안 모달이나 툴팁을 띄울 때 부모 박스의 overflow 설정에 갇히거나 z-index 선언이 꼬여 요소가 뒤로 숨는 버그가 많았습니다. HTML5 네이티브 요소를 사용하면 이 문제를 말끔히 해결할 수 있습니다.</p>\n        <hr>\n        <h2>Top Layer 활용법</h2>\n        <ul>\n          <li><strong>&lt;dialog&gt; 요소와 showModal():</strong> 브라우저가 직접 포커스를 가두고 배경을 inert(비활성) 처리하며 최상단에 렌더링하는 공식 모달 윈도우.</li>\n          <li><strong>popover 속성:</strong> 툴팁, 토스트, 드롭다운 메뉴처럼 일시적으로 화면 최상단에 띄우는 가벼운 UI용. 별도의 JS 샌드박스 없이도 스스로 포커스를 감지하고 닫힙니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Escaping z-index Hell with Native HTML Dialog and Popovers",
+    "description": "Leveraging top-layer rendering primitives to float overlay elements cleanly, bypassing complex nesting and parent overflow clips.",
+    "content": "\n        <h2>Ending the z-index Arms Race</h2>\n        <p>Floating menus or modals traditionally suffered from parent overflow clipping and nested stacking context collisions, hiding under other content.</p>\n        <hr>\n        <h2>The Native Top Layer</h2>\n        <ul>\n          <li><strong>&lt;dialog&gt; and showModal():</strong> Renders modal panels in the top layer, trapping focus and setting backdrop filters without manual DOM sorting.</li>\n          <li><strong>popover attribute:</strong> Floating tooltips and menus that display over the layout, handling light-dismiss events automatically.</li>\n        </ul>\n      "
+  }
+}

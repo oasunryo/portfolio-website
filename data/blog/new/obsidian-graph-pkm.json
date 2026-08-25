@@ -1,0 +1,15 @@
+{
+  "slug": "obsidian-graph-pkm",
+  "date": "2026-05-04",
+  "category": "Insight",
+  "ko": {
+    "title": "폴더 분류의 지옥 탈출: 태그(#)와 링크([[ ]])로 연결하는 세컨드 브레인",
+    "description": "계층적 디렉토리 정리 강박을 걷어내고, 우리 뇌의 뉴런 시냅스 구조와 닮은 연상 메모리망을 옵시디언 그래프 뷰로 구축하는 원칙.",
+    "content": "\n        <h2>메모를 적기도 전에 지치는 분류 작업</h2>\n        <p>\"이 메모는 '1_학부공부' 폴더에 넣어야 할까, '2_반도체정리' 폴더에 넣어야 할까?\" 하는 사소한 고민들이 기록의 마찰을 일으키고 결국 지식 수집을 멈추게 만듭니다.</p>\n        <hr>\n        <h2>시냅스 방식의 지식 연결</h2>\n        <p>폴더는 단순 수집함(Inbox)과 완성 보관함(Archive) 두 개면 충분합니다. 대신 본문 작성 중에 다른 개념이 연상될 때마다 대괄호 두 개를 씌워 <code>[[TSV 본딩 공정]]</code>처럼 양방향 백링크를 걸고 관련 핵심 키워드에만 태그(#)를 다세요. 옵시디언의 '그래프 뷰'가 이 링크들을 뉴런망처럼 실시간 연결해, 잊고 살았던 과거의 아이디어들을 예상치 못한 순간에 소환해 줍니다.</p>\n      "
+  },
+  "en": {
+    "title": "Ditching Folders for Backlinks: Neuro-Associative Personal Vaults",
+    "description": "Building a web of notes inside Obsidian using double brackets and tags, mapping ideas like cognitive synapses.",
+    "content": "\n        <h2>The Friction of Complex Folder Systems</h2>\n        <p>Choosing where to file a note is mental friction. It causes you to hesitate to write, ultimately halting your record-keeping loop.</p>\n        <hr>\n        <h2>Associative Memory Webs</h2>\n        <p>Reduce your folder hierarchy to an Inbox and Archive. Instead, use double brackets like <code>[[TSV Bonding]]</code> to connect notes. The Graph View visualizes these links, creating concept bridges.</p>\n      "
+  }
+}

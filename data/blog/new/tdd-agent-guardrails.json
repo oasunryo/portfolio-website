@@ -1,0 +1,15 @@
+{
+  "slug": "tdd-agent-guardrails",
+  "date": "2026-06-02",
+  "category": "Architecture",
+  "ko": {
+    "title": "TDD와 자동 테스트를 연동한 AI 에이전트 자기 보정 시스템",
+    "description": "에이전트가 코드를 완성했다고 선언하기 전에, 작성한 테스트 통과 여부를 직접 확인하게 만들어 오작동을 원천 봉쇄합니다.",
+    "content": "\n        <h2>인간의 개입을 줄이는 Guardrail 설계</h2>\n        <p>코드를 받고 나서 사람이 직접 실행해보고 에러를 발견한 뒤 다시 프롬프트를 작성하는 것은 많은 토큰과 시간의 낭비를 부릅니다. AI 스스로 검증할 수 있는 피드백 루프가 핵심입니다.</p>\n        <hr>\n        <h2>TDD 기반의 에이전트 검증 루프</h2>\n        <p>에이전트에게 \"기능 구현 전 단위 테스트 코드를 먼저 작성하고, 터미널 명령어를 통해 그 테스트가 완전하게 통과하는지 확인한 로그를 포함해 결과를 출력하라\"는 하네스 제약을 줍니다. AI는 스스로 테스트 오류를 보고 스스로 리팩토링하는 과정을 반복해 무결점 코드를 제출하게 됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "TDD and Automated Test Guardrails for AI Self-Correction",
+    "description": "Forcing AI agents to write and run unit tests inside the terminal, creating a closed self-debugging loop before declaring completion.",
+    "content": "\n        <h2>Eliminating Human-in-the-Loop Overhead</h2>\n        <p>Telling an agent to fix a bug after running the code manually wastes developer time. AI needs a self-verifying feedback loop to correct itself.</p>\n        <hr>\n        <h2>Automated Feedback Loop</h2>\n        <p>Instruct the agent to write test definitions first and execute them using the terminal. The agent analyzes test failure logs and fixes its own logic, eliminating manual verification cycles.</p>\n      "
+  }
+}

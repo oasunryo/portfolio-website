@@ -1,0 +1,15 @@
+{
+  "slug": "mcu-firmware-optimization",
+  "date": "2026-03-02",
+  "category": "Hardware",
+  "ko": {
+    "title": "MCU 펌웨어 최적화: 정밀 오버클럭 없는 초절전 슬립 모드와 인터럽트 설계",
+    "description": "배터리 구동 센서 하드웨어에서 전력 소모를 최소화하기 위해 CPU를 절전(Deep Sleep) 모드로 두고, 하드웨어 타이머와 외부 핀 인터럽트(ISR)로 구동하는 저전력 설계 기법.",
+    "content": "\n        <h2>항상 켜져 있는 코드는 배터리의 적이다</h2>\n        <p>배터리로 작동하는 소형 무선 온도 센서 노드 등에서 메인 루프를 <code>while(1)</code> 문 안에서 딜레이 함수로 멍하니 지연시키면, MCU는 계속 수십 밀리암페어(mA) 전력을 낭비하며 수일 내에 배터리가 소진됩니다. 전력 효율을 올리려면 <strong>슬립 모드(Sleep/Deep Sleep Mode)</strong> 전환이 중심이 되어야 합니다.</p>\n        <hr>\n        <h2>인터럽트 기반 휴면 상태 해제(Wakeup ISR)</h2>\n        <p>센서 데이터를 송신하는 짧은 0.1초 동안만 MCU 코어와 무선 RF칩을 켜고, 나머지 9.9초 동안은 소모 전류가 수 마이크로암페어(μA) 수준으로 미미한 딥 슬립 상태에 머물게 합니다. 내부 저전력 타이머(WDT) 카운트 오버플로우 이벤트 혹은 외부 핀 센서 상태 변경 시그널이 도달하는 찰나에만 <strong>인터럽트 서비스 루틴(ISR)</strong>을 깨우는 아키텍처를 도입해야 장비가 배터리 하나로 1년 이상 동작합니다.</p>\n      "
+  },
+  "en": {
+    "title": "MCU Firmware Optimization: Implementing Interrupt-Driven Deep Sleep States",
+    "description": "Structuring firmware loops around low-power wake-up interrupts rather than polling delays to extend battery lifetimes.",
+    "content": "\n        <h2>Constant CPU Polling Drains Battery Life</h2>\n        <p>In low-power IoT hardware, running a busy-wait loop inside `while(1)` keeps the MCU core drawing milliamperes constantly, draining cells in days. The solution is sleeping.</p>\n        <hr>\n        <h2>Interrupt-Driven Execution Cycles</h2>\n        <p>The MCU spends 99% of its runtime in a microampere Deep Sleep state. On internal Low-Power Timer overflows or GPIO events, hardware triggers an Interrupt Service Routine (ISR) to wake up the system briefly.</p>\n      "
+  }
+}

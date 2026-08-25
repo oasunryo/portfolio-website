@@ -1,0 +1,15 @@
+{
+  "slug": "stevesurfing-storytelling-productivity",
+  "date": "2026-04-06",
+  "category": "Insight",
+  "ko": {
+    "title": "건조한 기술에 온기를 입히는 스티브서핑식 Cozy 연출론",
+    "description": "화면 캡처와 코드 라인 위주의 지루한 IT 튜토리얼을, 한 잔의 따뜻한 커피 같은 감성적 스토리텔링으로 승화시키는 촬영 및 내레이션 기법.",
+    "content": "\n        <h2>기술 튜토리얼의 가장 큰 적: 지루함</h2>\n        <p>모니터 화면만 보여주고 쉰 목소리로 마이크에 대고 코드를 읽어 내려가는 튜토리얼은 시청자를 즉시 이탈하게 만듭니다. 기술 역시 스토리로 포장되어야 소비됩니다.</p>\n        <hr>\n        <h2>Cozy 브랜딩의 3대 요소</h2>\n        <p>노란빛 따뜻한 스탠드 조명, 은은하게 흐르는 로파이(Lo-Fi) 배경음악, 그리고 \"이거 정말 편한데 같이 써보실래요?\" 하고 조용히 말을 건네는 나긋나긋한 내레이션 어조를 융합합니다. 시청자가 지식을 습득하는 행위를 마치 일상의 편안한 힐링 시간으로 인지하게 만드는 감성 연출이 채널 재방문율을 지배합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Warm Tech Storytelling: Applying Steve Surfing Cozy Formats",
+    "description": "Transforming dry software tutorials into comforting storytelling blogs using warm studio lighting and relaxed narration.",
+    "content": "\n        <h2>The Enemy of Tech Content: Dry Screens</h2>\n        <p>Reading code documentation over recorded screen captures causes viewers to bounce instantly. Technical logs must carry emotional hooks.</p>\n        <hr>\n        <h2>Cozy Production Variables</h2>\n        <p>Use warm ambient background lights, low-volume Lo-Fi acoustic tracks, and a conversational narration style. Frame learning as a relaxing ritual.</p>\n      "
+  }
+}

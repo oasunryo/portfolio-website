@@ -1,0 +1,15 @@
+{
+  "slug": "container-queries-fluid",
+  "date": "2026-05-26",
+  "category": "Architecture",
+  "ko": {
+    "title": "뷰포트(Viewport)를 넘어선 컴포넌트 중심의 컨테이너 쿼리 활용법",
+    "description": "화면 크기가 아닌, 부모 박스의 실제 가로폭에 따라 스스로 레이아웃을 전환하는 독립형 웹 컴포넌트 설계.",
+    "content": "\n        <h2>미디어 쿼리의 한계점</h2>\n        <p>미디어 쿼리는 화면 전체 크기(Viewport Width)만 알 수 있습니다. 이 때문에 사이드바가 열려 본문 영역이 좁아지는 등 컴포넌트가 놓이는 실제 맥락의 크기 변화에는 반응하지 못해 디자인이 꼬이게 됩니다.</p>\n        <hr>\n        <h2>Container Queries (Baseline 2023)</h2>\n        <p>부모 요소에 <code>container-type: inline-size</code>를 선언하면, 자식 요소들은 <code>@container (min-width: 400px)</code>와 같이 부모의 크기를 직접 쿼리하여 스스로 외형을 결정합니다. 이를 통해 어떤 화면 위치에 이식되더라도 완벽하게 적응하는 모듈형 컴포넌트 구현이 가능해집니다.</p>\n      "
+  },
+  "en": {
+    "title": "Component-Driven Layouts via Modern CSS Container Queries",
+    "description": "Designing modular elements that adapt their styles based on parent box widths instead of global viewport media queries.",
+    "content": "\n        <h2>The Limit of Global Media Queries</h2>\n        <p>Viewport queries measure whole-screen widths. They cannot detect local width shifts, such as when a main article column narrows due to sidebar toggles.</p>\n        <hr>\n        <h2>Container Queries (Baseline 2023)</h2>\n        <p>Declaring <code>container-type: inline-size</code> on a wrapper enables descendants to query its local width via <code>@container</code>. Components become self-contained units that style themselves correctly wherever they are dropped.</p>\n      "
+  }
+}

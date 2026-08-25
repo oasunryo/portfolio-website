@@ -1,0 +1,15 @@
+{
+  "slug": "creator-brand-semiconductor-rookie",
+  "date": "2026-03-10",
+  "category": "Career",
+  "ko": {
+    "title": "퇴근 후 퍼스널 브랜드 구축: 주니어 엔지니어의 1인 미디어 생존 전략",
+    "description": "회사 명함 안의 직함에 갇히지 않고, 반도체 분야 콘텐츠 크리에이터이자 주니어 멘토로서 내 이름 석 자를 알리는 디지털 채널 기획.",
+    "content": "\n        <h2>직급이 아닌, 나만의 온전한 채널의 필요성</h2>\n        <p>아무리 좋은 대기업에 다녀도, 명함의 로고가 지워지면 직장인에게 남는 알맹이는 무엇일까요? 주니어 시절부터 자신의 성장 기록과 전공 스터디를 외부 소셜 미디어나 개인 사이트에 아카이빙해야 하는 이유는, 회사 밖에서도 독립적으로 가치를 생산할 수 있는 '퍼스널 브랜드'의 씨앗을 뿌려야 하기 때문입니다.</p>\n        <hr>\n        <h2>부담 없는 엔지니어 크리에이터 포지셔닝</h2>\n        <p>엄청난 인사이트를 주려 애쓰지 마세요. 본인이 어제 공부한 HBM 기술 문서 분석, 오늘 겪은 전력량 계측 오차 트러블슈팅 일지처럼 날것의 기록이 같은 대학생 후배들에게는 최고의 스터디 교재가 됩니다. 콘텐츠 하나를 카드뉴스로 가공해 링크드인에 올리고, 상세 코드는 깃허브에 적재하는 멀티 채널 배포 체계를 습관화할 때 커리어 확장성이 기하급수적으로 터져 나옵니다.</p>\n      "
+  },
+  "en": {
+    "title": "Building a Personal Brand After Hours: Junior Engineer Strategies",
+    "description": "Creating a digital presence beyond your day job title by archiving your learning curves and tech notes online.",
+    "content": "\n        <h2>Your Brand Beyond Your Corporate Business Card</h2>\n        <p>Employment is temporary; your professional brand is permanent. Documenting your learning curves and engineering notes creates a digital paper trail that opens doors outside standard corporate ladders.</p>\n        <hr>\n        <h2>Low-Friction Tech Content Creation</h2>\n        <p>Don't wait until you are an expert. Summarize HBM papers or detail a hardware debugging case study. Publishing this logs your expertise, attracting peers and future collaborators.</p>\n      "
+  }
+}

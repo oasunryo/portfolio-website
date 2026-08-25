@@ -1,0 +1,15 @@
+{
+  "slug": "cc-cv-charger-adc-precision",
+  "date": "2026-05-12",
+  "category": "Hardware",
+  "ko": {
+    "title": "리튬이온 배터리 충전기 설계를 위한 CC-CV 루프 제어와 ADC 정밀도",
+    "description": "배터리 관리 시스템(BMS)에서 정전류(CC)에서 정전압(CV) 충전 모드로 안전하게 전환하기 위한 고해상도 ADC 전류 측정 회로 설계.",
+    "content": "\n        <h2>리튬 배터리 폭발을 막는 안전한 충전 주기</h2>\n        <p>리튬이온 배터리는 조금이라도 과충전되거나 잘못된 전압이 지속적으로 인가되면 내부 열 폭주(Thermal Runaway)를 일으킵니다. 이를 방지하기 위해 충전 IC는 초기에 일정한 전류로 충전하는 <strong>정전류(CC, Constant Current)</strong> 모드를 유지하다가, 배터리 단자 전압이 만충 한계(보통 4.2V)에 도달하면 일정한 전압을 유지하며 전류량을 점점 줄여나가는 <strong>정전압(CV, Constant Voltage)</strong> 충전 방식으로 변환 루프를 돌아야 합니다.</p>\n        <hr>\n        <h2>ADC 전류 센싱 회로 설계 포인트</h2>\n        <p>이 스위칭 마진을 정밀하게 잡으려면 션트 저항(Shunt Resistor) 양단에 생기는 미세 수 밀리볼트(mV) 전압 강하를 차동 증폭기(Current Sense Amplifier)로 키운 뒤, MCU의 높은 해상도 ADC 포트에서 수집해야 합니다. 노이즈 차단을 위한 로우패스 필터(RC Filter) 시정수를 배터리 셀 화학 반응 특성과 매칭하고 오프셋 에러를 상쇄하는 보정 로직을 포함시켜야 안전성이 확보됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "CC-CV Battery Charger Control Loops & Precision Current Sensing",
+    "description": "Designing constant-current constant-voltage switching algorithms and differential shunt amplifier layouts for Li-ion battery chargers.",
+    "content": "\n        <h2>Preventing Thermal Runaways via CC-CV Staging</h2>\n        <p>Li-ion batteries require rigorous charge profiling to avoid explosions. Charge ICs drive high currents in <strong>Constant Current (CC)</strong> mode, switching to <strong>Constant Voltage (CV)</strong> mode as cells approach maximum terminal voltages (4.2V), ramping current down.</p>\n        <hr>\n        <h2>Analog-to-Digital Current Sensing Layout</h2>\n        <p>This threshold transition relies on tracking small millivolt drops across a low-resistance shunt. Differentially amplifying this voltage and filtering out switching noise with passive RC networks allows microcontrollers to read stable values.</p>\n      "
+  }
+}

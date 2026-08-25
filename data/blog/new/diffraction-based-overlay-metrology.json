@@ -1,0 +1,15 @@
+{
+  "slug": "diffraction-based-overlay-metrology",
+  "date": "2026-08-14",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "다중 패터닝 핵심: DBO (Diffraction-Based Overlay) 계측과 APC 제어",
+    "description": "수 나노미터 오정렬을 회절 신호 데이터 분석으로 잡아내는 DBO 원리와 런투런 스테이지 동기화 기술을 살펴봅니다.",
+    "content": "<h2>1nm 이하 정밀도의 오버레이 장벽</h2><p>더블/쿼드러플 패터닝 공정은 수많은 레이어가 완벽하게 겹쳐야 완성됩니다. 오버레이(Overlay) 허용 오차가 1nm 수준으로 축소됨에 따라 전통적인 이미지 기반 계측(IBO)은 렌즈 수차와 해상도 한계로 인해 측정 한계에 도달했습니다.</p><h2>회절 기반 오버레이(DBO)와 실시간 보정</h2><p>ASML의 YieldStar와 KLA 계측 장비는 회절 광학 패턴을 분석하는 <strong>회절 기반 오버레이(DBO)</strong> 기술을 사용하여 정확한 물리적 틀어짐을 계산해 냅니다. 수집된 오버레이 오차 데이터는 노광기로 피드백되어 실시간 런투런(Run-to-Run) APC 알고리즘을 통해 렌즈 왜곡과 스테이지 정밀도를 매 프레임 제어합니다.</p>"
+  },
+  "en": {
+    "title": "The Heart of Multi-Patterning: Diffraction-Based Overlay (DBO) and APC Control",
+    "description": "Understanding overlay control limits and how DBO feedback loops drive scanner stage alignments.",
+    "content": "<h2>The Sub-Nanometer Overlay Challenge</h2><p>Multi-patterning hinges on alignment accuracy across several exposures. With overlay margins compressed down to 1nm, traditional Image-Based Overlay (IBO) struggles due to lens aberration and optical diffraction limits.</p><h2>DBO Metrology and Real-Time Corrections</h2><p>YieldStar scanners from ASML and overlay tools from KLA utilize <strong>Diffraction-Based Overlay (DBO)</strong> targets to resolve nano-scale alignment errors. The measured deviation is fed back to the scanner, allowing Advanced Process Control (APC) systems to adjust lens profiles and stage positioning dynamically.</p>"
+  }
+}

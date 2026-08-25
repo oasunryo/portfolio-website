@@ -1,0 +1,15 @@
+{
+  "slug": "etf-google-finance-na-fix",
+  "date": "2026-04-26",
+  "category": "Insight",
+  "ko": {
+    "title": "국내 특수 액티브 ETF의 구글 파이낸스 N/A 에러와 계좌 오염 방지",
+    "description": "KRX 접두사를 떼어도 데이터를 뱉지 않는 국내 액티브 ETF의 에러 파동을 방지하기 위한 수식 튜닝 기술.",
+    "content": "\n        <h2>구글 파이낸스 수식의 돌연사</h2>\n        <p>국내 상장된 일부 특수 액티브 ETF(예: KoAct 브로드컴밸류체인액티브)는 구글 스프레드시트 내에서 <code>=GOOGLEFINANCE(\"KRX:0051A0\")</code> 수식을 썼을 때 <code>#N/A</code> 에러를 유발하며, 이 에러가 전체 평가합 셀까지 전파되어 대시보드가 마비되는 문제가 생깁니다.</p>\n        <hr>\n        <h2>수식 튜닝과 방어선 구축</h2>\n        <p>일반 종목들은 <code>SUBSTITUTE</code> 수식을 가미해 <code>KRX:</code> 접두사를 실시간으로 떼어내고 주가를 수집하게 튜닝합니다. 하지만 그럼에도 응답하지 않는 악성 특수 종목의 경우, 구글 파이낸스 호출을 과감히 포기하고 챗봇과의 대화로 현재가를 상수로 직접 기입해 관리하는 '수동 갱신 방어벽'을 개조하여 정합성을 지켜냈습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Resolving Google Finance #N/A Errors on Special Active ETFs",
+    "description": "Fixing cell math crashes by writing fallback substitute formulas and implementing manual updates for recalcitrant ticker targets.",
+    "content": "\n        <h2>The Cascading #N/A Cell Error</h2>\n        <p>Using <code>=GOOGLEFINANCE(\"KRX:0051A0\")</code> on Korean active ETFs fails, outputting #N/A errors that break sum totals.</p>\n        <hr>\n        <h2>Building the Formula Shield</h2>\n        <p>Use <code>SUBSTITUTE</code> functions to strip the \"KRX:\" prefix automatically. For unresponsive active ETFs, we configure the sheet to accept manual pricing overrides via chat instructions.</p>\n      "
+  }
+}

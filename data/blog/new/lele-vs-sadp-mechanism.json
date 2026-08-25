@@ -1,0 +1,15 @@
+{
+  "slug": "lele-vs-sadp-mechanism",
+  "date": "2026-08-03",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "LELE (Litho-Etch-Litho-Etch) vs SADP (Self-Aligned Double Patterning) 메커니즘 비교",
+    "description": "오버레이 마진 확보 관점에서 스페이서 증착 방식을 쓰는 SADP와 다중 노광/식각인 LELE의 장단점 및 수율 차이를 분석합니다.",
+    "content": "<h2>다중 패터닝 구현을 위한 두 가지 경로</h2><p>더블 패터닝을 구현하는 대표적인 방식으로는 LELE와 SADP가 있습니다. LELE는 말 그대로 두 번의 노광과 두 번의 식각 공정을 순차 진행하는 방식으로, 레이아웃 설계의 유연성이 매우 높지만 두 번째 노광 시 첫 번째 패턴과의 정렬 오차(Overlay error)를 완벽하게 제어해야 하는 까다로운 마진 문제를 안고 있습니다.</p><h2>SADP의 자체 정렬(Self-Aligned) 강점</h2><p>반면, Applied Materials와 Lam Research의 식각 및 증착 장비를 활용하는 SADP 공정은 더미 패턴에 스페이서(Spacer)를 얇게 코팅한 뒤 이를 식각 마스크로 삼아 피치를 절반으로 줄입니다. 한 번의 노광만 필요하기 때문에 오버레이 오차가 원천 차단되며, 10nm 이하의 극미세 피치 공정에서 높은 수율을 확보할 수 있는 핵심적인 강점을 가집니다.</p>"
+  },
+  "en": {
+    "title": "LELE vs. SADP Multi-Patterning Process Comparison",
+    "description": "Comparing Litho-Etch-Litho-Etch (LELE) and Self-Aligned Double Patterning (SADP) mechanisms and their yield differences.",
+    "content": "<h2>Two Paths to Pitch Splitting</h2><p>Litho-Etch-Litho-Etch (LELE) and Self-Aligned Double Patterning (SADP) are the primary routes to double patterning. LELE runs two full lithography and etch steps sequentially, offering high layout design flexibility but demanding extreme overlay accuracy between the two exposures.</p><h2>The Self-Aligned Advantage of SADP</h2><p>SADP, enabled by advanced deposition and etching tools from Applied Materials and Lam Research, deposits conformable spacers on sacrificial mandrel patterns. The spacer acts as an etch mask to halve the pitch. Because it requires only a single lithography step, overlay errors are intrinsically mitigated, making SADP essential for sub-10nm pitch control.</p>"
+  }
+}

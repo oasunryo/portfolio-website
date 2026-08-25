@@ -1,0 +1,15 @@
+{
+  "slug": "agent-tool-diet-strategy",
+  "date": "2026-06-01",
+  "category": "Architecture",
+  "ko": {
+    "title": "AI 에이전트의 효율을 극대화하는 \"도구 다이어트\" 설계 전략",
+    "description": "에이전트에게 너무 많은 스킬과 권한을 주면 왜 망가지는지, 왜 도구를 덜 쥐어주는 미니멀리즘이 작동하는지 알아봅니다.",
+    "content": "\n        <h2>선택장애는 AI 에이전트도 겪는다</h2>\n        <p>보통 AI 에이전트에게 터미널 명령어 실행, 웹 검색, 파일 읽기/쓰기, 데이터베이스 조회 등 가능한 모든 도구(Tool/API)를 다 제공해주면 뭐든 척척 다 해결할 것 같지만, 실제 에이전트를 가동해보면 전혀 그렇지 않습니다. 선택지가 지나치게 많아지면 모델은 현재 맥락에서 굳이 필요 없는 도구를 순회하고 고민하느라 정작 풀고자 하는 본래의 추론 능력을 낭비하게 됩니다.</p>\n        <p>사람과 똑같아요. 눈앞에 도구상자가 너무 화려하게 놓여있으면 어떤 것부터 써야 할지 몰라 헤매는 법이죠.</p>\n        \n        <hr>\n        \n        <h2>적게 줄수록 똑똑해지는 이유</h2>\n        <p>이를 방지하려면 <strong>'도구 다이어트(Tool Diet)'</strong>가 필수적입니다. 현재 당면한 특정 서브 태스크에 필수적인 2~3개의 핵심 도구만 쥐여주고 나머지는 가차 없이 차단하는 구조가 좋습니다. 도구가 작아지면 AI의 의사결정 트리가 극도로 단순해져 모델이 온전히 코드의 내부 추론과 정확성에만 집중하게 됩니다.</p>\n        <p>더 많은 기능을 얹어주려 애쓰기보다, 적절한 통제망을 씌워 필요한 상황에만 필요한 도구가 켜지게 설계하는 디자이너가 진짜 생산성 높은 AI 워크스페이스를 만듭니다.</p>\n      "
+  },
+  "en": {
+    "title": "Maximizing AI Agent Efficiency via the \"Tool Diet\" Strategy",
+    "description": "Why overloading LLM agents with too many APIs degrades performance, and how minimalist toolkits build smarter assistants.",
+    "content": "\n        <h2>AI agents suffer from choice overload too</h2>\n        <p>Giving a developer agent terminal access, web searching, file editing, and databases all at once seems optimal, but it is counter-productive. With too many tool choices, agents waste tokens choosing which tools to use rather than thinking about the coding task. Decisional paralysis happens in silicon too.</p>\n        \n        <hr>\n        \n        <h2>Fewer tools yield smarter reasoning</h2>\n        <p>Applying a <strong>\"Tool Diet\"</strong> improves success rates. By provisioning only 2 or 3 critical APIs needed for the immediate sub-task, we keep decision trees small. This focuses the LLM's reasoning purely on logical verification and output quality.</p>\n      "
+  }
+}

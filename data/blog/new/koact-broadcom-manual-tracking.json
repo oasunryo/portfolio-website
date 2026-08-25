@@ -1,0 +1,15 @@
+{
+  "slug": "koact-broadcom-manual-tracking",
+  "date": "2026-04-24",
+  "category": "Insight",
+  "ko": {
+    "title": "구글 파이낸스 불통 종목 수동 갱신 보정 매커니즘",
+    "description": "API 수식이 먹통이 된 자산의 가치를 실시간으로 유지하기 위해, 수동 변수 주입 시나리오를 설계하여 정합성을 지켜낸 조치 사항.",
+    "content": "\n        <h2>불통 종목의 실시간 관리 한계</h2>\n        <p>구글 파이낸스 조회가 차단된 특수 ETF는 방치할 경우 계좌 내 자산 비중이 옛날 데이터에 머물게 되어 실시간 자산 비중차가 뒤틀리게 됩니다.</p>\n        <hr>\n        <h2>수동 보정 수식 설계</h2>\n        <p>파라미터 입력 시 챗봇에게 \"KoAct 브로드컴 현재 주가 28,150원으로 업데이트해줘\"라고 명령하면, API 가동 스크립트가 해당 주식의 현재가 입력 셀을 찾아 수식 대신 상수를 즉시 덮어쓰도록(Override) 코딩했습니다. 덕분에 구글 파이낸스 오류에 구애받지 않고 계좌 총액을 1원 단위까지 정확히 일치시킬 수 있게 되었습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Manual Asset Overrides for Unfetchable Tickers",
+    "description": "Coding custom pricing updates into python scripts to override broken formulas with static cell data seamlessly.",
+    "content": "\n        <h2>The Challenge of Locked Pricing Fields</h2>\n        <p>Unfetchable active ETFs distort current allocations, rendering automated rebalancing calculations useless.</p>\n        <hr>\n        <h2>Custom Parameter Override Mechanism</h2>\n        <p>We built a script listener. Saying \"update Broadcom price to 28150\" instructs the backend to target the exact cell and write a static integer value, bypassing API errors.</p>\n      "
+  }
+}

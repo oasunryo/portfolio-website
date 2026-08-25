@@ -1,0 +1,15 @@
+{
+  "slug": "vibe-coding-to-harness-engineering",
+  "date": "2026-06-04",
+  "category": "Architecture",
+  "ko": {
+    "title": "바이브 코딩에서 하네스 엔지니어링으로: AI 개발의 한계 뚫기",
+    "description": "자연어로 대충 부탁하는 \"바이브 코딩\"을 넘어, AI 에이전트가 안전하고 정확하게 동작할 수밖에 없도록 통제 환경(Harness)을 만드는 패러다임을 제안합니다.",
+    "content": "\n        <h2>그냥 자연어로 부탁만 해서는 한계가 뻔하다</h2>\n        <p>프롬프트 창에 대충 \"이것 좀 구현해줘\"라고 명령해서 그럴듯한 코드를 받아내는 것을 안드레이 카파시는 <strong>'바이브 코딩(Vibe Coding)'</strong>이라고 불렀어요. 바이브 코딩은 개발을 모르는 사람들의 바닥(Floor)을 끌어올려주는 데는 탁월하지만, 복잡하고 실무적인 대형 프로젝트를 정교하게 완성해야 하는 시점에서는 천장(Ceiling)을 올리지 못합니다. AI가 계속 실수를 반복하거나 엉뚱한 파일을 망가뜨리기 때문이죠.</p>\n        <p>이 지점에서 개발의 질을 바꾸려면 <strong>'하네스 엔지니어링(Harness Engineering)'</strong>이 필요합니다.</p>\n        \n        <hr>\n        \n        <h2>AI가 마음대로 탈주하지 못하게 하는 안전망</h2>\n        <p>하네스(Harness)는 마차의 말에게 씌우는 마구처럼, AI 에이전트가 지정된 경로 밖으로 나가지 못하게 통제하는 <strong>'안전 샌드박스와 통제 장치'</strong>를 의미해요. 에이전트에게 너무 광범위한 권한이나 애매한 지시를 주기보다, 자동 테스트 파이프라인(TDD)을 엮어주거나, 프로젝트의 파일 규칙 및 스키마 가이드를 세워 제한된 도구만 쥐여줄 때 AI는 비로소 예측 가능하고 안전하게 기능합니다.</p>\n        <p>AI 모델이 내뱉은 결과에 분노하며 프롬프트를 고칠 시간에, AI가 잘 작동할 수밖에 없는 명확한 시스템 구조와 통제망을 구축하는 것이 앞으로의 현대 개발자가 해야 할 진짜 프로그래밍입니다.</p>\n      "
+  },
+  "en": {
+    "title": "From Vibe Coding to Harness Engineering: Pushing AI Coding Limits",
+    "description": "Moving past lazy chat-based vibe coding to design rigorous execution sandboxes (Harnesses) that force AI agents to perform reliably.",
+    "content": "\n        <h2>Natural language pleas have clear limits</h2>\n        <p>Asking an LLM chat screen to \"write this code\" is what Andrej Karpathy calls <strong>\"Vibe Coding.\"</strong> Vibe coding lifts the entry floor for non-developers, but fails to raise the execution ceiling when engineering large-scale enterprise systems, as agents repeatedly commit logic bugs.</p>\n        \n        <hr>\n        \n        <h2>Force AI agents to stay on course</h2>\n        <p>A harness acts like a horse's reins, locking the AI agent within a controlled execution sandbox. Instead of giving agents unlimited scope and vague requests, we must build automated test runners (TDD) and strict code structure guidelines. Designing constraint architectures is the modern software developer's real role.</p>\n      "
+  }
+}

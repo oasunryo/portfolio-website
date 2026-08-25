@@ -1,0 +1,15 @@
+{
+  "slug": "differential-signaling-skew",
+  "date": "2026-05-31",
+  "category": "Hardware",
+  "ko": {
+    "title": "고속 차동 신호(Differential Signaling)의 스큐(Skew) 원인과 PCB 보정 기법",
+    "description": "PCIe, USB3.0 등 차동 페어 배선 설계 시 미세한 배선 길이 불일치(Intra-pair Skew)로 신호 동기가 틀어지는 불균형 예방 가이드.",
+    "content": "\n        <h2>차동 신호의 강점과 동기화 전제 조건</h2>\n        <p>노이즈에 강한 고속 인터페이스 회로(PCIe, MIPI, SATA 등)는 두 선의 위상이 $180^\\circ$ 반대인 신호 페어인 <strong>차동 신호(Differential Signaling)</strong>로 데이터를 주고받습니다. 리시버는 두 배선 간의 전압 차이(차동 성분)만을 증폭하므로 공통 노이즈를 완전 캔슬하지만, 두 라인의 신호 도달 시간차인 <strong>Intra-pair Skew</strong>가 없어야 한다는 엄격한 대칭 전제가 필요합니다.</p>\n        <hr>\n        <h2>길이 불일치(Skew)가 초래하는 데이터 오염</h2>\n        <p>한쪽 배선이 구부러져 미세하게 길어지면 위상 대칭이 무너져 공통 모드 전압이 출렁이고 차동 파형 눈 모양의 오픈 여유가 좁아져 데이터 패킷 에러율(BER)이 급증하며, 배선 단면에서 누설 전류 방사가 증가해 EMI 규격을 탈락하게 됩니다.</p>\n        <hr>\n        <h2>PCB 매칭 보정 설계</h2>\n        <p>기하학적 굴곡으로 좁아진 길이만큼 짧은 쪽 노선의 에지 꺾임 지점에 지그재그 패턴의 미세 구부러짐을 강제하는 <strong>Trombone/Phase Tuning</strong> 배선 길이 정합 보정 레이아웃 기법을 PCB 설계 CAD 툴 상에서 가미하여 두 배선 쌍의 신호 도달 타이밍 마진을 1ps 이내로 맞춰냅니다.</p>\n      "
+  },
+  "en": {
+    "title": "Managing Intra-pair Skew in High-Speed Differential Signals",
+    "description": "Adjusting differential trace lengths on PCBs to prevent phase shifts and secure signal integrity margins.",
+    "content": "\n        <h2>Differential Noise Integrity Constraints</h2>\n        <p>High-speed interfaces (PCIe, USB, HDMI) utilize <strong>Differential Signaling</strong> (two lines with opposite phases) to suppress common-mode noise. Maintaining phase alignment requires eliminating <strong>Intra-pair Skew</strong> (arrival time delta).</p>\n        <hr>\n        <h2>Impacts of Trace Mismatches</h2>\n        <p>Mismatched trace lengths disrupt phase symmetry, converting differential signals into common-mode noise. This closes the signal eye diagram, increasing Bit Error Rates (BER) and electromagnetic emission levels.</p>\n        <hr>\n        <h2>PCB Skew Compensation Layouts</h2>\n        <p>Layout designers use <strong>Serpentine</strong> or phase tuning serpentine traces on the shorter line of the pair. This matches trace lengths within picosecond arrival targets, securing signal integrity.</p>\n      "
+  }
+}

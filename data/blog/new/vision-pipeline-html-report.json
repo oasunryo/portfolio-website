@@ -1,0 +1,15 @@
+{
+  "slug": "vision-pipeline-html-report",
+  "date": "2026-03-26",
+  "category": "Insight",
+  "ko": {
+    "title": "Llama-Vision API 기반 계좌 캡처 분석 및 HTML 진단 메일 자동화 파이프라인",
+    "description": "사용자가 구글 드라이브에 자산 캡처본을 올리면, 무료 Llama-Vision 모델이 데이터를 해체하고 금융 진단서 메일을 쏘는 아키텍처.",
+    "content": "\n        <h2>귀차니즘을 기술로 해결하다</h2>\n        <p>스프레드시트에 일일이 타이핑하는 수고를 덜어주는 완전 자동 분석 시스템을 설계합니다.</p>\n        <hr>\n        <h2>Vision 자동화 파이프라인 아키텍처</h2>\n        <p>구글 API가 드라이브 폴더의 신규 이미지 업로드를 감지하면, 백엔드 스크립트가 무료 Groq Llama-3-Vision API를 호출해 이미지 내의 보유 종목명, 평가금액, 현재가, 수량을 구조화된 JSON 데이터로 정확히 적출합니다. 이후 <code>financial_agent</code>를 구동해 해당 계좌의 비중차 분석과 조언을 담은 정교한 다크 모드 HTML 메일 진단 리포트를 사용자 편안하게 발송하는 자동 루프를 완성합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Automating Account Audits: Llama-Vision to HTML Email Pipeline",
+    "description": "Parsing account screenshots using free Groq Llama-Vision APIs to trigger beautifully designed HTML financial diagnoses.",
+    "content": "\n        <h2>Ditching Typing for Pure Computer Vision</h2>\n        <p>Manually keying in investment data blocks is a barrier. Automating verification via screenshots maximizes user retention.</p>\n        <hr>\n        <h2>The Vision to Email Architecture</h2>\n        <p>A folder listener detects screenshot uploads. A script triggers Groq Llama-3-Vision to convert images to JSON holdings, running calculations to dispatch a dynamic HTML balance report straight to the user's inbox.</p>\n      "
+  }
+}

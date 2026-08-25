@@ -1,0 +1,15 @@
+{
+  "slug": "si-pi-impedance-basics",
+  "date": "2026-04-05",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "고주파 반도체 패키지의 Signal & Power Integrity (SI-PI) 입문",
+    "description": "반도체 동작 주파수가 GHz 영역에 접어들며 발생하는 신호 왜곡(Crosstalk)과 전원 노이즈(PDN Impedance)를 억제하는 PCB 패키지 설계 이론.",
+    "content": "\n        <h2>동작 속도가 올라갈 때 배선은 단순 도선이 아니다</h2>\n        <p>신호 클럭 주파수가 수백 MHz를 넘어 GHz 급에 이르면, 메탈 패턴 배선은 단순한 전선의 개념을 벗어나 저항, 인덕턴스, 캐패시턴스가 분포된 고주파 <strong>전송선로(Transmission Line)</strong>로 취급되어야 합니다. 임피던스 매칭이 깨지면 신호가 리시버 단에서 반사되어 파형이 깨지는 신호 무결성(Signal Integrity, SI) 붕괴가 일어납니다.</p>\n        <hr>\n        <h2>SI와 PI의 정의와 해결 방향</h2>\n        <ul>\n          <li><strong>Signal Integrity (SI):</strong> 인접 신호 라인 간의 전자기적 간섭(Crosstalk), 주파수 감쇠, 반사 노이즈를 억제해 수신 칩에 전송된 파형 눈 모양(Eye Diagram)의 마진을 확보하는 것입니다. 라우팅 배선 간격을 넓히고 50옴 임피던스 매칭을 준수합니다.</li>\n          <li><strong>Power Integrity (PI):</strong> 수백만 개의 트랜지스터가 동시에 온/오프 스위칭할 때 발생하는 전류 변동(di/dt)으로 전원 라인이 출렁이는 동적 전압 강하(IR Drop)를 막는 것입니다. 타겟 임피던스를 낮추기 위해 다이 및 패키지 내부에 디커플링 캐패시터(Decap)를 밀집 배치합니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Signal & Power Integrity (SI-PI) Design Foundations in High-Speed Packaging",
+    "description": "Understanding high-speed transmission lines, impedance matching, decoupling capacitor loops, and crosstalk reduction on package substrates.",
+    "content": "\n        <h2>Traces are Transmission Lines at GHz Speeds</h2>\n        <p>When system clocks scale into GHz bands, copper lines cease to act as simple wires; they behave as distributed <strong>transmission lines</strong>. Any impedance mismatch reflects signals, degrading signal integrity (SI).</p>\n        <hr>\n        <h2>Resolving SI & PI Issues</h2>\n        <ul>\n          <li><strong>Signal Integrity (SI):</strong> Focuses on securing high eye diagram margins. Guard traces and matching 50-ohm impedances limit Crosstalk.</li>\n          <li><strong>Power Integrity (PI):</strong> Suppresses transient IR drop from simultaneous switching. Placing Decoupling Capacitors (Decaps) near the die lowers Power Distribution Network (PDN) impedance.</li>\n        </ul>\n      "
+  }
+}

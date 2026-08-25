@@ -1,0 +1,15 @@
+{
+  "slug": "high-na-euv-anamorphic-lens",
+  "date": "2026-08-06",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "High-NA EUV (0.55 NA) 시대의 Anamorphic Lens와 패터닝 혁신",
+    "description": "0.55 NA 노광 장비 구경 확대와 마스크 차단 문제를 피하기 위한 아나모픽 렌즈의 도입 및 이점을 요약합니다.",
+    "content": "<h2>0.55 NA 장비의 기하학적 설계 혁신</h2><p>ASML의 High-NA EUV 노광 장비는 렌즈 구경(NA)을 0.33에서 0.55로 확대하여 해상도를 8nm 수준으로 끌어올렸습니다. 하지만 입사각이 커지면서 발생하는 마스크 광 차단(3D Shadowing) 문제를 피하기 위해, 축소 비율을 X축 4배, Y축 8배로 다르게 설계하는 <strong>아나모픽 렌즈(Anamorphic Lens)</strong>를 도입했습니다.</p><h2>인텔과 파운드리 업계의 도입 로드맵</h2><p>인텔은 오리건 Fab D1X에 High-NA 장비를 우선 배치하며 1.4nm(Intel 14A) 공정 개발에 속도를 내고 있습니다. 아나모픽 렌즈 적용으로 노광 필드 크기가 절반으로 줄어드는 제약이 있으나, 더블 패터닝 공정 횟수를 획기적으로 줄여 생산성을 확보하고 공정 단계를 단순화하는 가치를 제공합니다.</p>"
+  },
+  "en": {
+    "title": "Anamorphic Optics and Patterning Innovation in High-NA EUV (0.55 NA)",
+    "description": "Examining 0.55 NA numerical aperture changes and anamorphic lens designs utilized to bypass mask shadowing effects.",
+    "content": "<h2>Optics Re-engineering for 0.55 NA</h2><p>ASML's High-NA EUV scanners elevate numerical aperture from 0.33 to 0.55, improving physical resolution down to 8nm. To bypass extreme mask shadowing caused by high light incident angles, ASML engineered <strong>anamorphic lenses</strong> with unequal magnification ratios (4x in X, 8x in Y).</p><h2>Foundry Roadmaps and Implementation</h2><p>Intel led early installations at its D1X Oregon fab, accelerating its 1.4nm (Intel 14A) roadmap. Although the anamorphic lens restricts the exposure field to half-size, the elimination of complex multi-patterning passes stabilizes overall fab throughput and process simplicity.</p>"
+  }
+}

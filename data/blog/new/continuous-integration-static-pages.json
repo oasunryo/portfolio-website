@@ -1,0 +1,15 @@
+{
+  "slug": "continuous-integration-static-pages",
+  "date": "2026-06-08",
+  "category": "Insight",
+  "ko": {
+    "title": "GitHub Actions를 이용한 Zero-Dependency 정적 포트폴리오 사이트 자동 배포 파이프라인",
+    "description": "코드를 메인 브랜치에 푸시하면 빌드 검증을 거쳐 Vercel 또는 GitHub Pages 배포까지 1분 이내에 완료하는 CI/CD 가동 가이드.",
+    "content": "\n        <h2>수동 빌드의 귀찮음과 실수 방지</h2>\n        <p>블로그 글을 쓰고 <code>node build.js</code>를 로컬에서 일일이 실행한 뒤 git commit & push 하는 것은 은근히 귀찮은 작업이며, 빌드가 꼬인 채 배포되면 깨진 웹화면이 유출됩니다.</p>\n        <hr>\n        <h2>GitHub Actions 자동 컴파일 워크플로우</h2>\n        <p>프로젝트 루트의 <code>.github/workflows/deploy.yml</code>에 푸시 감지 트리거를 심어 깃허브 가상 러너 환경을 구축합니다. 코드 변경이 push 되면 러너가 자동으로 Node.js 런타임을 켜고 종속성을 로드한 뒤 <code>node build.js</code>를 실행해 문서를 빌드하고, 빌드가 정상 완료되었을 때에만 Vercel 프로덕션 릴리스를 수행하도록 설계해 안전한 상시 자동 배포 환경을 완성했습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Continuous Integration Pipelines for Static Sites via GitHub Actions",
+    "description": "Automating compile scripts and static file deployments through cloud runner workflows.",
+    "content": "\n        <h2>The Fragility of Manual Builds</h2>\n        <p>Running code builds manually before staging and deploying risks pushing broken links or uncompiled HTML files to production servers.</p>\n        <hr>\n        <h2>Automating the Pipeline</h2>\n        <p>We define a `.github/workflows/deploy.yml` config. Pushing to main prompts a GitHub runner to install dependencies, run `node build.js` tests, and deploy verified files to the hosting server automatically.</p>\n      "
+  }
+}

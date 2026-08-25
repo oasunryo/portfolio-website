@@ -1,0 +1,15 @@
+{
+  "slug": "layout-stability-scrollbar",
+  "date": "2026-05-24",
+  "category": "Architecture",
+  "ko": {
+    "title": "scrollbar-gutter를 활용한 레이아웃 깜빡임(Layout Shift) 방지 기법",
+    "description": "웹페이지 내용물이 길어져 스크롤바가 생성될 때 전체 화면 레이아웃이 미세하게 우측으로 밀리는 문제를 예방하는 법.",
+    "content": "\n        <h2>스크롤바 탄생이 만드는 레이아웃 뒤틀림</h2>\n        <p>본문 텍스트가 많아져 브라우저 우측에 스크롤바가 솟아나는 순간, 뷰포트의 실제 폭이 줄어들며 가운데 정렬되어 있던 헤더와 콘텐츠 박스들이 왼쪽으로 쿵 하고 밀리는 시각적 불쾌감을 줍니다.</p>\n        <hr>\n        <h2>scrollbar-gutter: stable 선언</h2>\n        <p>CSS 최신 속성인 <code>scrollbar-gutter: stable</code>을 html 또는 컨테이너에 심어두면, 스크롤바가 없는 상태여도 미리 스크롤바의 두께만큼 여백(Gutter)을 예약해 둡니다. 덕분에 글이 길어져 스크롤바가 튀어나와도 어떠한 미세한 레이아웃 밀림 현상도 없이 완벽한 정렬 상태를 유지하게 됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "Preventing Cumulative Layout Shifts via scrollbar-gutter: stable",
+    "description": "Reserving dedicated scrollbar tracks in modern CSS to stop annoying page jumps when dynamic content triggers overflow.",
+    "content": "\n        <h2>The Layout Shift Caused by Dynamic Scrollbars</h2>\n        <p>When page content scales vertically, the scrollbar appears, shrinking the available viewport width and nudging centered elements sideways.</p>\n        <hr>\n        <h2>The Solution: scrollbar-gutter: stable</h2>\n        <p>Declaring <code>scrollbar-gutter: stable</code> forces browsers to reserve empty scrollbar tracks. Layout columns remain locked, ensuring zero layout shift when users load long articles.</p>\n      "
+  }
+}

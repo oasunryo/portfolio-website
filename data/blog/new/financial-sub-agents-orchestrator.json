@@ -1,0 +1,15 @@
+{
+  "slug": "financial-sub-agents-orchestrator",
+  "date": "2026-04-30",
+  "category": "Insight",
+  "ko": {
+    "title": "4대 금융 분석 서브에이전트 병렬 구동 및 의사결정 알고리즘",
+    "description": "재무, 뉴스 감성, 업종 리서처, 공격적 전략가 등 4가지 특화 에이전트를 조율해 최적의 추천 포트폴리오를 도출하는 기술.",
+    "content": "\n        <h2>다각도 금융 의사결정의 필요성</h2>\n        <p>단순히 재무제표만 보거나 단발성 뉴스 소식만 믿고 투자하면 리스크를 분산하기 어렵습니다. 각 분야 전문가 에이전트를 모아 병렬 회의를 시켜야 합니다.</p>\n        <hr>\n        <h2>서브에이전트 오케스트레이션</h2>\n        <p>재무제표를 스캔하는 <strong>재무 분석 에이전트</strong>, 실시간 헤드라인 뉴스의 감정을 분류하는 <strong>뉴스 감성 분석 에이전트</strong>, 반도체 및 OSAT 동향을 추적하는 <strong>업종 리서치 에이전트</strong>를 가동합니다. 이 종합 보고서들을 취합하여 최종 <strong>공격적 전략 에이전트</strong>가 실제 계좌의 비중 차이를 상쇄하기 위한 매수 추천 수량을 정교하게 연산해 냅니다.</p>\n      "
+  },
+  "en": {
+    "title": "Orchestrating 4 Specialized Financial Sub-agents Parallelized",
+    "description": "How a financial orchestrator triggers financial, news sentiment, semiconductor industry, and trading strategy sub-agents.",
+    "content": "\n        <h2>The Need for Multi-faceted Market Research</h2>\n        <p>Trading based purely on news headlines is risky. We need concurrent pipelines checking technical and macro variables simultaneously.</p>\n        <hr>\n        <h2>Orchestrator and Sub-Agent Systems</h2>\n        <p>We trigger a <strong>Financial Analyst</strong>, <strong>Sentiment Analyst</strong>, and <strong>Industry Researcher</strong> in parallel. The aggregate results route to the <strong>Trading Strategist</strong>, calculating rebalancing orders.</p>\n      "
+  }
+}

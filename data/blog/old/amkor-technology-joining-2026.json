@@ -1,0 +1,15 @@
+{
+  "slug": "amkor-technology-joining-2026",
+  "date": "2026-05-20",
+  "category": "Insight",
+  "ko": {
+    "title": "글로벌 OSAT 앰코테크놀로지 합류를 준비하며",
+    "description": "2026년 7월 앰코테크놀로지 코리아 후공정(Packaging & Test) 분야에 입사하기 전, 학부생으로서 쌓아온 전/후공정 전공 지식과 성장 목표를 되돌아봅니다.",
+    "content": "\n        <h2>반도체 기술의 중심이 후공정으로 옮겨가고 있다</h2>\n        <p>미세 전공정(Front-end)이 물리적 한계에 봉착하면서, 적층과 물리적 연결을 최적화하는 후공정(Advanced Packaging) 기술이 반도체 패러다임을 이끄는 핵심 윈도우가 되었습니다. 저는 글로벌 OSAT 1티어인 앰코테크놀로지 합류를 결정하고, 현장 엔지니어가 되기 위한 실무적 기본기를 갖추기 위해 많이 노력했습니다.</p>\n        <p>학부 과정에서 와이어 본딩 캐필러리(Capillary) 형상 변수가 미세 단락(Short)과 First Bond 인장 성능에 미치는 영향력을 통계적으로 규명해보고, HBM 적층을 위한 TSV 기술, Warpage 휨 제어, SI-PI 임피던스 매칭 등을 개인 리서치로 공부했습니다.</p>\n        \n        <hr>\n        \n        <h2>입사 후 내가 채워가고 싶은 미션</h2>\n        <p>50μm 이하의 극미세 파인 피치(Fine-pitch) 본딩 라인에서 나타날 수 있는 기계적 불량 매커니즘을 빠르게 추적하고, Spotfire나 OriginPro 같은 데이터 툴을 적재적소에 활용해 전위/결함 상관관계를 시각화하는 데이터 기반의 후공정 트러블슈터가 되고 싶습니다. 단순 설비 관리자가 아닌, 공정 데이터를 읽고 아키텍처적 개선안을 제안하는 똑똑한 엔지니어로 성장할 생각입니다.</p>\n      "
+  },
+  "en": {
+    "title": "Preparing to Join Global OSAT Amkor Technology",
+    "description": "Reflecting on backend process packaging and testing knowledge built as an undergraduate before joining Amkor Technology Korea in July 2026.",
+    "content": "\n        <h2>Semiconductor packaging is now leading performance scaling</h2>\n        <p>As front-end lithography hits physical boundaries, packaging technologies hold the key to performance boosts. I chose to join Amkor Technology Korea, a premier global OSAT leader, and have focused on laying down practical backend fundamentals.</p>\n        <p>I researched capillary dimensions in wire bonding to see how variables affect first-bond reliability, studied TSV interconnections for HBM, and modeled high-frequency signal integrity impedance matchings on PCBs.</p>\n        \n        <hr>\n        \n        <h2>My Mission at Amkor</h2>\n        <p>I will target defect rates in ultra-fine pitch bond lines under 50μm. By utilizing statistics and data tools like Spotfire and OriginPro, I aim to map parameter correlations to improve manufacturing yields, growing into a data-driven troubleshooter.</p>\n      "
+  }
+}

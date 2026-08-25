@@ -1,0 +1,15 @@
+{
+  "slug": "fpga-bcd-counter-clock-divider",
+  "date": "2026-03-30",
+  "category": "Hardware",
+  "ko": {
+    "title": "FPGA FSM 설계 기초: 클럭 분주기(Clock Divider)와 BCD 카운터",
+    "description": "50MHz 기본 고속 클럭을 나누어 1Hz 타이머 이벤트를 발생시키고, 이를 7세그먼트 LED에 출력하기 위한 BCD 디코더 로직 설계 및 타이밍 시뮬레이션.",
+    "content": "\n        <h2>시스템 고속 클럭에서 인간의 시간으로</h2>\n        <p>반도체 논리 소자 설계 교육 보드의 클럭 주파수는 수십 MHz에 달하지만, 사람이 인지해야 하는 시계나 타이머 신호는 1초(1Hz) 혹은 1밀리초(ms) 단위여야 합니다. 고주파 클럭을 카운터 카운트로 감산하여 원하는 저주파 신호를 만들어내는 설계 모듈을 <strong>클럭 분주기(Clock Divider)</strong>라고 합니다.</p>\n        <hr>\n        <h2>Verilog BCD 카운터 및 7세그먼트 매핑</h2>\n        <p>1Hz 클럭 이벤트를 트리거로 삼아 0부터 9까지 카운트하고 캐리(Carry) 아웃을 방출하는 BCD(Binary Coded Decimal) 카운터 유닛을 설계합니다. 이 4비트 출력값을 7세그먼트 디스플레이 LED의 8핀 데이터(A~G, DP)로 디코딩하여 켜주는 Logic 회로를 Behavioral 모델로 Verilog 파일에 구현하고 실제 FPGA 하드웨어 핀 맵에 할당해 가동합니다.</p>\n      "
+  },
+  "en": {
+    "title": "FPGA Logic Foundations: Clock Dividers and BCD Counters in Verilog",
+    "description": "Slowing down 50MHz board clocks to 1Hz pulses using counter registers to drive a seven-segment digital display.",
+    "content": "\n        <h2>Scaling MHz Down to Human Time</h2>\n        <p>FPGA oscillators run in the megahertz range, but humans interact with seconds. A <strong>Clock Divider</strong> counts system pulses up to a threshold to emit a slower 1Hz trigger.</p>\n        <hr>\n        <h2>Verilog BCD Decoder & Seven-Segment Pin Maps</h2>\n        <p>We build a 4-bit Binary Coded Decimal (BCD) counter that increments on 1Hz signals. A combinational decoder routes the output to the cathode pins of seven-segment displays.</p>\n      "
+  }
+}

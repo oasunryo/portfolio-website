@@ -1,0 +1,15 @@
+{
+  "slug": "ai-wealth-manager-intro",
+  "date": "2026-05-02",
+  "category": "Insight",
+  "ko": {
+    "title": "구글 스프레드시트와 양방향 동기화되는 AI 자산 관리 비서 아키텍처",
+    "description": "20대 신입사원의 연간 장부 갱신 마찰을 줄이기 위해, 자연어 채팅만으로 가계부와 주식 계좌 잔고를 실시간 기록하는 시스템.",
+    "content": "\n        <h2>엑셀 수동 갱신의 귀찮음 해결</h2>\n        <p>재테크를 위해 열심히 구글 시트를 만들고 잔고 대시보드를 구축하지만, 바쁜 직장 생활 속에서 매번 거래가 있을 때마다 스프레드시트를 열고 숫자를 기입하는 일은 너무나 성가십니다.</p>\n        <hr>\n        <h2>양방향 동기화 에이전트 설계</h2>\n        <p>구글 API Credentials 연동 파이썬 브릿지(Bridge) 모듈을 구축하여, 대화형 AI 인터페이스와 스프레드시트를 실시간 양방향 동기화했습니다. 챗봇과의 메신저 대화로 \"삼성전자 10주 7만원에 매수했어\"라고 말하면 스프레드시트의 주식 수량과 평단, 예수금이 1초 만에 자동 계산되어 반영됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "Designing a Bidirectional Google Sheets Sync AI Financial Assistant",
+    "description": "How to build an automated asset ledger updated via interactive chat inputs, keeping spreadsheets synchronized.",
+    "content": "\n        <h2>The Friction of Manual Ledger Updates</h2>\n        <p>Logging transactions inside cell rows gets annoying after long work shifts. We want an assistant that updates the sheet for us.</p>\n        <hr>\n        <h2>Bidirectional Synchronization Bridge</h2>\n        <p>Wiring Google Sheets API credentials to a Python bridge module enables real-time edits. Saying \"bought 10 TSMC shares at 150\" updates the holdings and cash reserves instantly.</p>\n      "
+  }
+}

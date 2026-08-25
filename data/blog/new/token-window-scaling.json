@@ -1,0 +1,15 @@
+{
+  "slug": "token-window-scaling",
+  "date": "2026-05-10",
+  "category": "Insight",
+  "ko": {
+    "title": "RAG를 뛰어넘는 200만 토큰 컨텍스트를 활용한 전체 메모 통합 질의",
+    "description": "문서를 잘게 쪼개어 유사도로 검색(Vector Search)하는 RAG의 누수 현상을 극복하고, 메모들을 한 번에 적재해 AI에 질문하는 전략.",
+    "content": "\n        <h2>RAG(검색 증강 생성)의 맹점</h2>\n        <p>기존의 개인 RAG 시스템들은 문서를 조각조각 잘라 저장하므로, 전체적인 맥락을 관통하는 \"이번 학기 들었던 모든 반도체 수업 정리 노트에서, 불량 분석과 관련된 에피소드만 묶어서 흐름을 정리해줘\" 같은 거시적 질문에는 엉뚱한 답변을 뱉습니다.</p>\n        <hr>\n        <h2>초대형 컨텍스트 윈도우의 활용</h2>\n        <p>구글 Gemini API가 지원하는 200만 토큰의 컨텍스트 능력을 활용하면, 내 옵시디언 지식창고 내의 마크다운 메모 30~50개를 RAG 필터링 없이 한 번에 AI 프롬프트에 실어 보낼 수 있습니다. 누락과 환각(Hallucination) 없이 완벽한 컨텍스트 내 추론이 이루어지는 진짜 개인 비서가 탄생합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Context Window Scaling: Outperforming RAG in Personal Vaults",
+    "description": "Leveraging Gemini million-token context windows to upload complete markdown notes for holistic and accurate synthesis.",
+    "content": "\n        <h2>The Fragmented Limits of RAG Pipelines</h2>\n        <p>Chunking notes into vectorized bits misses global cross-references, failing when you ask to synthesize key concepts across all notebooks.</p>\n        <hr>\n        <h2>Harnessing Massive Context Windows</h2>\n        <p>Gemini's 2-million-token window lets you append dozens of markdown files as raw context directly. This ensures halluncination-free reasoning across your semester logs.</p>\n      "
+  }
+}

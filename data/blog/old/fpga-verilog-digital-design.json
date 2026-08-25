@@ -1,0 +1,15 @@
+{
+  "slug": "fpga-verilog-digital-design",
+  "date": "2026-04-18",
+  "category": "Hardware",
+  "ko": {
+    "title": "Verilog HDL 디바운싱 필터 설계와 게이트 딜레이 검증",
+    "description": "FPGA 보드 실습 시 기계적 노이즈인 Bouncing/Glitch 현상을 다단 시프트 플립플롭 Debouncer로 원천 제어하고 5ns의 배선 게이트 전파 지연을 ModelSim으로 검증해 봅니다.",
+    "content": "\n        <h2>물리적 스위치와 디지털 시스템의 마찰</h2>\n        <p>하드웨어 푸시 버튼은 누를 때 우리 눈엔 깔끔하게 작동하는 것 같아도, 실제 회로상으로는 접점이 닿으며 수 밀리초(ms) 간 무수히 튀는 바운싱(Bouncing/Glitch) 잡음을 만들어냅니다. 클럭 주파수가 50MHz에 이르는 FPGA 보드에서는 이 찰나의 흔들림을 여러 번 입력한 것으로 오작동해버리죠.</p>\n        <p>이를 막으려면 아날로그 노이즈를 걸러내는 디지털 필터링 회로가 필수적입니다.</p>\n        \n        <hr>\n        \n        <h2>디바운서 설계 및 게이트 전파 지연 검증</h2>\n        <p>이 문제를 해결하기 위해 Verilog HDL로 D플립플롭(D-FF)을 3단으로 연결한 시프트 레지스터 기반의 Debouncer를 구현했습니다. 입력 신호가 50클럭 이상 안정된 상태를 유지할 때에만 신호 레벨을 전환하도록 필터링해 스위칭 오작동을 완전히 잡았습니다.</p>\n        <p>Altera Cyclone II 보드와 ModelSim 환경에서 타이밍 시뮬레이션을 돌려, 물리적인 게이트와 배선 길이로 인해 발생하는 약 5ns의 게이트 전파 지연(Propagation Delay)을 포착하고 타이밍 마진을 정상 검증해냈습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Verilog HDL Debouncer Design & Gate Propagation Delay Verification",
+    "description": "Using a multi-stage shift register debouncer to eliminate switch bounce noise on a Cyclone II FPGA board and verifying a 5ns gate propagation delay with ModelSim.",
+    "content": "\n        <h2>Physical switches are incredibly noisy</h2>\n        <p>When you press a tactile switch, the metal contacts bounce rapidly for milliseconds. On a 50MHz FPGA, this mechanical chatter is read as hundreds of rapid inputs. An analog-to-digital filtering buffer is required.</p>\n        \n        <hr>\n        \n        <h2>Debouncer Architecture & ModelSim Timing</h2>\n        <p>I designed a 3-stage D-FF shift register debouncer in Verilog HDL. It delays the switch logic until the signal remains stable for a set clock duration, suppressing mechanical bounce.</p>\n        <p>Using gate-level simulations in ModelSim, I verified a 5ns wire propagation delay, confirming how physical lines affect digital signals.</p>\n      "
+  }
+}

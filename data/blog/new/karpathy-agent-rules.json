@@ -1,0 +1,15 @@
+{
+  "slug": "karpathy-agent-rules",
+  "date": "2026-06-01",
+  "category": "Architecture",
+  "ko": {
+    "title": "안드레이 카파시 스타일 AI 에이전트와의 3대 소통 수칙",
+    "description": "장황한 자연어 부탁을 걷어내고, 명확하고 예측 가능한 인터페이스로 에이전트의 생산성을 통제하는 방법.",
+    "content": "\n        <h2>부탁(Prompt)하지 말고 구조(Harness)를 정의하기</h2>\n        <p>\"예쁘게 잘 짜주세요\" 같은 친절한 문구는 기계인 LLM에게 불필요한 노이즈입니다. 명확한 규격을 지닌 인터페이스 형태로 요구사항을 구조화해야 합니다.</p>\n        <hr>\n        <h2>카파시 스타일 3대 수칙</h2>\n        <ul>\n          <li><strong>부탁 대신 명확한 제약 조건 지정:</strong> 줄 수 제한, 외부 라이브러리 사용 금지 등을 수치적 조건으로 기재합니다.</li>\n          <li><strong>단일 책임 목표(Single-Responsibility Goal):</strong> 한 번에 하나의 작은 목표만 수행하게 지시하여 대화가 꼬이는 현상을 막습니다.</li>\n          <li><strong>생각은 위임하고 결정은 직접 하기:</strong> 장황한 설명 대신 표 형식의 장단점 요약을 유도해 검토 시간을 단축합니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Andrej Karpathy-Style Rules for Communicating with AI Agents",
+    "description": "Stripping away conversational filler to command LLM agents via clean, structured, and predictable interfaces.",
+    "content": "\n        <h2>Define the Interface, Do Not Beg</h2>\n        <p>Polite prompts like \"please do your best\" add token noise. AI agents respond far better to clear, mathematical constraints.</p>\n        <hr>\n        <h2>Three Core Rules</h2>\n        <ul>\n          <li><strong>Hard Constraints:</strong> Specify max code lines or forbidden libraries in bullet points.</li>\n          <li><strong>Single-Responsibility Goal:</strong> Tackle one feature at a time to prevent compound logical mistakes.</li>\n          <li><strong>Orchestrate, Do Not Query:</strong> Ask for summaries and options instead of letting the AI make architect decisions.</li>\n        </ul>\n      "
+  }
+}

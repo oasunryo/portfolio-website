@@ -1,0 +1,15 @@
+{
+  "slug": "adc-input-driver-settling",
+  "date": "2026-06-02",
+  "category": "Hardware",
+  "ko": {
+    "title": "고정밀 SAR ADC 드라이버 OP-AMP 설계: 침강 시간(Settling Time)과 Charge-Kickback 필터",
+    "description": "ADC의 내부 캐패시터 충전 스위칭 시 발생하는 역전류 노이즈를 억제하고 샘플링 시간 내 전압 평형을 유도하는 드라이브 필터 설계 기법.",
+    "content": "\n        <h2>SAR ADC의 입력 구조와 전압 스위칭 격동</h2>\n        <p>고정밀 데이터 수집 장치(DAQ)에서 널리 쓰이는 SAR(逐차비교형) ADC는 내부에 샘플앤홀드 용도의 <strong>커패시터 전하 재분배(CDAC)</strong> 어레이를 품고 있습니다. 샘플링 스위치가 온(ON) 되는 순간, 내부 커패시터 전하와 외부 입력 전하 사이의 미세 격차가 맞부딪혀 입력 핀 밖으로 전류 서지 노이즈를 역으로 뱉어내는 <strong>Charge Kickback</strong> 현상이 일어납니다.</p>\n        <hr>\n        <h2>침강 시간 (Settling Time) 확보의 사투</h2>\n        <p>역반동 전류로 출렁인 전압이 다음 샘플링 주기가 시작되기 전까지 소수점 끝자리 전압 수준 이하로 평온하게 가라앉아 안착해야만 정확한 AD 변환 결과값을 얻습니다. OP-AMP 드라이버와 ADC 입력 핀 사이에 위치하는 RC 필터($R_{filt}$, $C_{filt}$) 시정수를 정밀 연산하여, OP-AMP의 피드백 응답 대역폭 내에서 빠른 안착을 돕는 보상 토폴로지를 정비합니다.</p>\n      "
+  },
+  "en": {
+    "title": "OP-AMP Input Driver Design for High-Precision SAR ADCs",
+    "description": "Calculating Charge-Kickback filter parameters and OP-AMP bandwidths to secure complete voltage settling before conversion.",
+    "content": "\n        <h2>The Mechanics of SAR ADC Charge Kickback</h2>\n        <p>High-resolution Successive Approximation Register (SAR) ADCs utilize a capacitive DAC (CDAC) network to sample signals. Toggling the sampling switch triggers a <strong>Charge Kickback</strong>—a transient current spike that destabilizes the input voltage.</p>\n        <hr>\n        <h2>Securing Signal Settling Times</h2>\n        <p>The input signal must settle back to within 1/2 LSB of its true value before the conversion window closes. Designers deploy an RC low-pass filter between the driver op-amp and the ADC to absorb this current kickback and stabilize the signal.</p>\n      "
+  }
+}

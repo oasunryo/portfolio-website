@@ -1,0 +1,15 @@
+{
+  "slug": "atomic-layer-etch-ale",
+  "date": "2026-08-22",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "원자층 식각(ALE, Atomic Layer Etching)을 이용한 무결점 패턴 제어",
+    "description": "원자층 수준에서 한 층씩 제어하는 자기제한적 식각 방식을 통해 극미세 패턴 조도를 낮추는 기술 동향을 해부합니다.",
+    "content": "<h2>원자 단위의 공정 정밀도 요구</h2><p>2nm 이하 공정의 패터닝에서는 한 층의 원자마저 패턴 품질을 훼손할 수 있습니다. 기존 플라즈마 식각은 이온의 강한 충격으로 표면 결함(damage)이 불가피했으나, 이제는 원자층 수준에서 한 층씩 식각하는 ALE 기술이 필요합니다.</p><h2>Applied Materials와 Lam의 ALE 경쟁</h2><p>ALE는 기판 표면에 화학 가스를 흡착시켜 반응층을 형성한 뒤, 약한 아르곤 이온 충격을 주어 표면의 한 원자 레이어만 떨어트리는 자기제한적(Self-limiting) 두 단계 공정입니다. Applied Materials와 Lam Research의 ALE 장비는 패턴 가장자리의 조도(LWR, LER)를 비약적으로 개선하여 미세 패터닝 수율을 혁신하고 있습니다.</p>"
+  },
+  "en": {
+    "title": "Achieving Atomic-Scale Precision via Atomic Layer Etching (ALE)",
+    "description": "Exploring self-limiting atomic layer etch concepts and surface roughness improvements by AMAT and Lam.",
+    "content": "<h2>The Atomic Tolerance Limit</h2><p>As device scaling reaches sub-2nm thresholds, traditional plasma etching damages delicate atomic grids. Precise thickness control at the monolayer level becomes mandatory, giving rise to Atomic Layer Etching (ALE).</p><h2>AMAT and Lam Research ALE Process</h2><p>ALE uses a self-limiting cyclic process: chemical adsorption of a reactant on the target surface, followed by mild physical sputtering to strip only the modified surface layer. Equipment from Applied Materials and Lam Research drastically reduces surface damage and line roughness, stabilizing sub-2nm patterning yields.</p>"
+  }
+}

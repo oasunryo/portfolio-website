@@ -1,0 +1,15 @@
+{
+  "slug": "wire-bonding-capillary-mechanism",
+  "date": "2026-05-10",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "와이어 본딩 공정에서 캐필러리 형상과 불량 제어 매커니즘",
+    "description": "금(Au) 또는 구리(Cu) 와이어를 본딩 패드에 접합할 때 사용되는 초음파 열압착 캐필러리(Capillary) 형상 변수와 본드 신뢰성 분석.",
+    "content": "\n        <h2>와이어 본딩의 핵심 툴, 캐필러리(Capillary)</h2>\n        <p>전통적인 반도체 패키징에서 와이어 본딩은 여전히 넓은 영역을 차지하고 있습니다. 이때 초음파 진동과 열, 압력을 동시에 전달하며 금속 와이어를 패드에 비벼 붙이는 정밀 세라믹 노즐을 <strong>캐필러리(Capillary)</strong>라고 부릅니다. 캐필러리의 내부 직경(Hole size), 챔퍼(Chamfer) 각도, 면면 반경 등 아주 미세한 기하학적 치수가 접합 신뢰성을 결정짓는 핵심 변수입니다.</p>\n        <hr>\n        <h2>초음파 열압착(Thermosonic) 접합 원리</h2>\n        <p>본딩 루프는 먼저 높은 전압으로 와이어 끝을 녹여 둥근 공 모양(Free Air Ball, FAB)을 만든 뒤, 캐필러리로 이를 누르며 초음파를 인가하여 패드의 Al 박막과 원자 간 확산(Intermetallic Compound, IMC) 접합을 형성합니다. 이를 First Bond(Ball Bond)라고 하며, 반대편 리드프레임에 와이어를 칼날 모양으로 끊어내 붙이는 과정을 Second Bond(Stitch Bond)라고 합니다.</p>\n        <hr>\n        <h2>캐필러리 마모와 불량 제어</h2>\n        <p>캐필러리가 마모되면 초음파 에너지가 FAB에 고르게 전달되지 않아 접합 강도가 약해지는 <strong>Non-Stick on Pad (NSOP)</strong> 불량이 생깁니다. 또한 챔퍼 내부 각도가 마모되면 루프 형상이 변형되어 인접 와이어끼리 쇼트(Short)를 일으킬 수 있습니다. 정기적인 캐필러리 팁 청소와 교체 주기 최적화, 그리고 공정 파라미터(Force, Time, Power)의 미세 조정이 수율 향상에 매우 직관적인 영향을 줍니다.</p>\n      "
+  },
+  "en": {
+    "title": "Capillary Geometry and Defect Mechanisms in Wire Bonding",
+    "description": "Analyzing capillary design parameters and thermosonic bonding process conditions for gold and copper wire interconnects.",
+    "content": "\n        <h2>The Core Tool: Capillary Ceramic Nozzle</h2>\n        <p>In traditional semiconductor packaging, wire bonding remains widely utilized. The <strong>capillary</strong> is a ceramic nozzle that transfers ultrasonic energy, force, and heat to bond wire onto metal pads. Geometric tolerances like hole size, inner chamfer, and face angle dictate contact quality.</p>\n        <hr>\n        <h2>Thermosonic Bonding Mechanism</h2>\n        <p>The wire bonder fires an electric flame-off to melt the wire tip into a Free Air Ball (FAB). The capillary presses the FAB onto the pad while applying ultrasonic vibration to form an Intermetallic Compound (IMC) junction. This is the First Bond. The wire is then dragged and sheared onto the leadframe to form the Second Bond.</p>\n        <hr>\n        <h2>Defect Control & Capillary Wear</h2>\n        <p>Wear on the capillary tip degrades ultrasonic energy transfer, causing <strong>Non-Stick on Pad (NSOP)</strong> failures. Worn chamfer angles alter looping heights, risking short circuits. Monitoring capillary life cycles and tuning force, time, and power parameters is critical for production yields.</p>\n      "
+  }
+}

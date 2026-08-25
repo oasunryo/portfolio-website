@@ -1,0 +1,15 @@
+{
+  "slug": "bom-unicode-strip-value-error",
+  "date": "2026-04-20",
+  "category": "Insight",
+  "ko": {
+    "title": "스프레드시트 파싱 중 유니코드 BOM 및 셀 미세 공백 제거 필터 설계",
+    "description": "정상 데이터임에도 파이썬 Pandas 로드 시 ValueError를 뱉는 BOM 문자(feff)와 가상 줄바꿈을 소스코드 단에서 필터링하는 전처리 기법.",
+    "content": "\n        <h2>보이지 않는 유령 문자, BOM</h2>\n        <p>구글 스프레드시트를 파이썬 데이터프레임으로 로드하여 컬럼명을 대조할 때, 문자열이 눈에는 분명 똑같은 '평균단가'로 보여도 <code>KeyError</code> 또는 <code>ValueError</code>가 나는 경우가 있습니다. 파일의 가장 앞에 보이지 않는 유니코드 BOM(Byte Order Mark, <code>\\ufeff</code>) 문자가 숨겨져 있기 때문입니다.</p>\n        <hr>\n        <h2>전처리 살균 모듈 탑재</h2>\n        <p>스프레드시트에서 가공 데이터를 긁어오는 첫 로드 라인에 <code>[h.strip().replace('\\ufeff', '').replace('﻿', '') for h in raw_headers]</code> 필터를 이식했습니다. 이 공백 및 특수 유령 문자 소독 장치를 통과하며 데이터 매칭 결함률을 제로로 고정시켰습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Filtering Out Unicode BOM and Whitespace from Sheet Parsers",
+    "description": "Stripping invisible BOM headers (feff) and whitespaces during dataframe conversion to avoid ValueError exceptions.",
+    "content": "\n        <h2>The Ghost in the Database: Unicode BOM</h2>\n        <p>Importing columns into Python Pandas dataframes occasionally causes KeyError, even though text in cell blocks looks identical. Invisible BOM bytes hide inside cell headers.</p>\n        <hr>\n        <h2>Implementing the Sanitize Function</h2>\n        <p>We deployed a header cleaning line: <code>[h.strip().replace('\\ufeff', '') for h in raw_headers]</code>. This cleans strings and stops value crashes.</p>\n      "
+  }
+}

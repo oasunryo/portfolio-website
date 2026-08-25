@@ -1,0 +1,15 @@
+{
+  "slug": "flip-chip-vs-mr-muf-bonding",
+  "date": "2026-07-15",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교",
+    "description": "전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.",
+    "content": "\n        <h2>칩 부착의 발전과 언더필 공정</h2>\n        <p>반도체 패키징에서 칩의 패드와 기판을 금속 범프로 직접 연결하는 플립칩(Flip Chip) 기술은 신호 거리를 줄이고 속도를 높이는 표준 공정입니다. 칩을 기판에 붙인 후에는 범프 사이의 빈 공간을 액체 에폭시 수지로 채워 보호하는 <strong>언더필(Underfill)</strong> 공정이 필수적입니다. 이 언더필은 열팽창 시 기계적 응력을 흡수하고 수분 침투를 막는 역할을 수행합니다.</p>\n        <hr>\n        <h2>전통적인 본딩의 한계와 MR-MUF의 등장</h2>\n        <p>기존 플립칩 공정은 칩을 개별적으로 눌러 붙이는 NCP(Non-Conductive Paste) 방식이나 필름(NCF) 방식을 주로 사용했습니다. 하지만 D램 다이를 8단, 12단 이상 쌓는 HBM에서는 적층 수가 늘어날수록 열 압착(Thermal Compression) 시간이 길어지고 칩이 휘는 현상이 심해집니다. 이를 극복하기 위해 제안된 것이 <strong>MR-MUF(Mass Reflow Molded Underfill)</strong> 기술입니다. MR-MUF는 적층된 칩들을 매스 리플로우로 한 번에 구워 붙인 후, 액체 몰딩재를 압력으로 주입해 칩 사이 공간 충진과 외부 성형을 단번에 처리합니다.</p>\n        <hr>\n        <h2>신뢰성과 열 배출 비교 분석</h2>\n        <p>MR-MUF는 필름형 접합재(NCF)에 비해 열 전도도가 매우 높은 실리카 에폭시 복합재를 칩 틈새로 원활히 투입할 수 있어 HBM의 열 방출 특성을 대폭 개선했습니다. 또한 칩 적층 시 얇은 보호 필름 레이어가 없어 칩 내부의 기포(Void) 불량이 현저히 줄고, 대량 리플로우 본딩 덕분에 공정 속도가 비약적으로 개선되어 고단 적층 패키지 신뢰성 향상의 핵심 기술로 인정받고 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Flip Chip Interconnects and the Rise of MR-MUF in HBM Stacking",
+    "description": "Comparing traditional flip-chip bonding limits with Mass Reflow Molded Underfill (MR-MUF) in terms of thermal dissipation and assembly yields.",
+    "content": "\n        <h2>Evolution of Die Interconnects and Underfill</h2>\n        <p>Flip-chip technology connects die pads to substrates directly using metal micro-bumps. After bonding, the narrow gap between the die and substrate must be filled with epoxy resin, a process known as <strong>underfill</strong>. Underfill absorbs thermomechanical stresses and shields active circuits from environmental degradation.</p>\n        <hr>\n        <h2>Limits of NCF/NCP and Rise of MR-MUF</h2>\n        <p>Conventional packaging relies on Non-Conductive Film (NCF) or paste (NCP) under thermal compression (TC) bonding. However, when stacking up to 12 DRAM layers for HBM, TC bonding extends cycle times and causes wafer warpage. <strong>Mass Reflow Molded Underfill (MR-MUF)</strong> solves this. MR-MUF stacks the dies first, melts all joints concurrently inside a mass reflow oven, and then injects a liquid compound to fill gaps and encapsulate the unit simultaneously.</p>\n        <hr>\n        <h2>Thermal Dissipation and Void Mitigation</h2>\n        <p>Compared to NCF, MR-MUF uses mold compounds blended with high-thermal-conductivity silica fillers, drastically enhancing heat dissipation. Eliminating film layering prevents micro-void formation and improves assembly throughput, making MR-MUF a dominant process for high-density stack reliability.</p>\n      "
+  }
+}

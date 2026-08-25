@@ -1,0 +1,15 @@
+{
+  "slug": "inbound-lead-magnet-strategy",
+  "date": "2026-03-30",
+  "category": "Insight",
+  "ko": {
+    "title": "취준생을 자석처럼 끌어당기는 무료 리드 마그넷(Lead Magnet) 기획서",
+    "description": "\"자소서 문장 튜닝용 AI 프롬프트북 + 경험 정리 노션 템플릿\"을 인바운드로 배포해 예비 팬덤의 연락처를 수집하는 퍼널 전략.",
+    "content": "\n        <h2>가장 강력한 인바운드 영업 무기, 무료 나눔</h2>\n        <p>대중에게 메일 주소나 소셜 계정 팔로우를 요구하기 전에, 그들이 도저히 거절할 수 없을 정도의 고가치 무료 사은품(Lead Magnet)을 먼저 쥐여주어야 합니다.</p>\n        <hr>\n        <h2>리드 마그넷 기획서</h2>\n        <p>앰코테크놀로지 입사 지원 시 직접 활용하여 서류 합격을 이끌어냈던 \"자소서 스토리 세공용 프롬프트 리스트\"와 \"대학 생활 프로젝트 이력 정리 노션 서식\"을 패키징합니다. 숏폼 영상 끝에 \"댓글로 링크를 요청하면 자소서 자동 튜너 양식을 무료로 즉시 발송해 드립니다\"로 연결해, 충성도 높은 커리어 독자 군단을 구축합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Crafting High-Value Free Lead Magnets for Tech Job Seekers",
+    "description": "Building audience lists by offering free resumes tuning prompts and structured Notion templates.",
+    "content": "\n        <h2>The Golden Rule of Funnel Entry: Give First</h2>\n        <p>Before asking viewers to register their email addresses, hand them an irresistible free resource (Lead Magnet).</p>\n        <hr>\n        <h2>The Lead Magnet Package</h2>\n        <p>Bundle your personal \"Resume Tuning Prompts\" alongside your \"Project Ledger Notion Template\". Call to action: \"Comment to receive the free template bundle instantly,\" converting viewers to subscribers.</p>\n      "
+  }
+}

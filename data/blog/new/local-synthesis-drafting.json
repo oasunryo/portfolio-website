@@ -1,0 +1,15 @@
+{
+  "slug": "local-synthesis-drafting",
+  "date": "2026-05-08",
+  "category": "Insight",
+  "ko": {
+    "title": "Zotero 리서치 노트에서 블로그 초안 작성까지의 논스톱 워크플로우",
+    "description": "수집한 서지 정보와 생각들을 조합하여, 옵시디언 Copilot을 조수 삼아 고품질 기술 글을 집필하는 3단계 실천 프로토콜.",
+    "content": "\n        <h2>기록의 고아 상태 방지하기</h2>\n        <p>수집해둔 수많은 자료들이 실제 내 글이나 성과물로 재탄생하지 못하고 외딴 폴더에 버려지는 현상을 막기 위해, 수집과 집필을 일원화하는 파이프라인을 가동해야 합니다.</p>\n        <hr>\n        <h2>3단계 집필 프로토콜</h2>\n        <ol>\n          <li><strong>문헌 정리:</strong> Zotero로 논문 정리 마크다운 카드를 뽑아와 옵시디언 <code>/literature/</code> 디렉토리에 안착시킵니다.</li>\n          <li><strong>스케치 아웃라인:</strong> 작업용 노트를 열고 <code>[[@vaswani2017]]</code> 등의 링크를 걸어 핵심 내용을 언급합니다.</li>\n          <li><strong>AI 드래프팅:</strong> Copilot 채팅을 열고 \"이 노트를 읽고, 내가 적어둔 내재적 스크롤 메커니즘을 결합해서 500자 분량의 포스팅 초안을 한글로 작성해줘\"라고 지시하여 글을 다듬습니다.</li>\n        </ol>\n      "
+  },
+  "en": {
+    "title": "From Literature Ingestion to Technical Drafting: A Complete Workflow",
+    "description": "A 3-step writing protocol integrating bibliography notes and Obsidian Copilot to draft polished technical posts.",
+    "content": "\n        <h2>Preventing the Orphan Note Problem</h2>\n        <p>Dozens of collected summaries are useless if they remain stored in isolated directories. We need to merge reading with immediate writing.</p>\n        <hr>\n        <h2>The Ingestion-to-Draft Protocol</h2>\n        <ol>\n          <li><strong>Extract:</strong> Pull structured literature notes directly into your Obsidian database.</li>\n          <li><strong>Link:</strong> Open your working draft and place bidirectional wiki-links like <code>[[@vaswani2017]]</code> to tie ideas together.</li>\n          <li><strong>Synthesize:</strong> Command Copilot: \"Read these references and outline a draft on semiconductor packaging trends.\" Copy the output and polish.</li>\n        </ol>\n      "
+  }
+}

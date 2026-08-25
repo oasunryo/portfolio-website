@@ -18,9 +18,23 @@ if (fs.existsSync(envPath)) {
   });
 }
 
-const newBlogPosts = require('./newBlogPosts');
-const blogPosts = require('./blogPosts');
-const projectProseData = require('./projectsData');
+const newBlogPosts = fs.readdirSync(path.join(__dirname, 'data', 'blog', 'new'))
+  .filter(file => file.endsWith('.json'))
+  .map(file => JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'blog', 'new', file), 'utf8')));
+
+const blogPosts = fs.readdirSync(path.join(__dirname, 'data', 'blog', 'old'))
+  .filter(file => file.endsWith('.json'))
+  .map(file => JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'blog', 'old', file), 'utf8')));
+
+const projectProseData = { ko: {}, en: {} };
+fs.readdirSync(path.join(__dirname, 'data', 'projects'))
+  .filter(file => file.endsWith('.json'))
+  .forEach(file => {
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'data', 'projects', file), 'utf8'));
+    const id = data.id;
+    if (data.ko) projectProseData.ko[id] = data.ko;
+    if (data.en) projectProseData.en[id] = data.en;
+  });
 const { computeRecommendations } = require('./embeddingHelper');
 
 // Ensure output directories exist for both Korean (ko) and English (en)

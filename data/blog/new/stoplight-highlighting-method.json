@@ -1,0 +1,15 @@
+{
+  "slug": "stoplight-highlighting-method",
+  "date": "2026-05-18",
+  "category": "Insight",
+  "ko": {
+    "title": "독서 수율을 극대화하는 PDF 형광펜 색상 표준화: 신호등 독서법",
+    "description": "빨강, 노랑, 초록의 세 가지 색상을 논문 독서 시 기하학적으로 분류 매핑하여 머릿속 지식의 인덱스를 단축하는 규칙.",
+    "content": "\n        <h2>아무 생각 없이 치는 형광펜의 함정</h2>\n        <p>책이나 논문을 읽을 때 하나의 노란색 형광펜만 칠해두면 나중에 문서를 열었을 때 어떤 문장이 핵심 주장이고 어떤 부분이 단순 사례 배경인지 알 수가 없어 다시 읽는 비용이 들어갑니다.</p>\n        <hr>\n        <h2>신호등 색상 매핑 가이드</h2>\n        <ul>\n          <li><strong>🔴 Red (핵심 가치):</strong> 저자의 핵심 주장, 새로운 공식, 가장 강력한 아키텍처 결론.</li>\n          <li><strong>🟡 Yellow (질문/인용 후보):</strong> 모호한 설명, 추가적인 리서치 필요, 타인에게 공유할 논평 거리.</li>\n          <li><strong>🟢 Green (배경 설명):</strong> 선행 연구 요약, 인트로덕션의 배경지식, 개념 보충용 사례.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "The Stoplight Annotation Method: Speed Reading PDFs via Color Taxonomy",
+    "description": "Mapping Red, Yellow, and Green highlighting markers to logical paper constructs for instant knowledge retrieval.",
+    "content": "\n        <h2>The Trap of Monolithic Highlighting</h2>\n        <p>Using a single yellow marker makes it hard to distinguish core thesis statements from baseline background context when reviewing notes.</p>\n        <hr>\n        <h2>Stoplight Color Classifications</h2>\n        <ul>\n          <li><strong>🔴 Red (Stop & Process):</strong> Core thesis statements, novel findings, and fundamental mathematical formulas.</li>\n          <li><strong>🟡 Yellow (Slow Down):</strong> Complex definitions, questions for follow-ups, and raw quotes for citation.</li>\n          <li><strong>🟢 Green (Smooth Reading):</strong> Background literature reviews, historical context, and supporting examples.</li>\n        </ul>\n      "
+  }
+}

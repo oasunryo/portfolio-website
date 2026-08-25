@@ -1,0 +1,15 @@
+{
+  "slug": "euv-stochastic-defects-dpt",
+  "date": "2026-08-08",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "EUV 확률적 결함(Stochastic Defects)과 DP 분할 노광 솔루션",
+    "description": "광자 부족으로 인해 생기는 무작위 결함을 더블 패터닝 선량 최적화 기법으로 관리하는 원리를 기술합니다.",
+    "content": "<h2>극자외선 노광의 아킬레스건, 확률적 결함</h2><p>EUV 공정이 미세화될수록 웨이퍼 표면에 도달하는 광자 수(Photon Density)가 부족해지는 현상이 발생합니다. 이로 인해 광자가 균일하게 흡수되지 않아 패턴 가장자리가 거칠어지는 LER(Line Edge Roughness)이나 회로가 끊어지는 Nano-bridging 등의 <strong>확률적 결함(Stochastic Defects)</strong>이 무작위로 발생하게 됩니다.</p><h2>DP 분할 노광을 통한 Defect 완화</h2><p>이 문제를 완화하기 위해 KLA나 Lasertec의 검사 장비 데이터를 기반으로 노광 선량(Dose)을 높이고, 이를 두 번의 DP 공정으로 쪼개어 빛을 충분히 조사하는 분할 노광 기법이 사용됩니다. 단일 고선량 노광보다 결함률을 낮추고 공정 마진(Process Window)을 확보할 수 있는 대안으로 자리잡고 있습니다.</p>"
+  },
+  "en": {
+    "title": "Mitigating EUV Stochastic Defects via DP Process Splitting",
+    "description": "How to handle random defect formation under photon shot noise using split double-patterning configurations.",
+    "content": "<h2>The Achilles' Heel of EUV: Stochastic Effects</h2><p>As EUV features shrink, the count of incoming photons per unit area drops. This photon shot noise causes stochastic defects like localized micro-bridging, line breaks, and elevated line edge roughness (LER) due to uneven photon distribution on the photoresist.</p><h2>Defect Control via DPT Dose Distribution</h2><p>To mitigate stochastics, foundries process defect telemetry via KLA and Lasertec tools. Splitting layouts into two exposures (DPT) allows engineers to increase the exposure dose per pass, ensuring sufficient photon density to smooth out resist profiles and expand yield margins.</p>"
+  }
+}

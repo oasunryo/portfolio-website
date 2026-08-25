@@ -1,0 +1,15 @@
+{
+  "slug": "keyboard-ergonomics-split-layout",
+  "date": "2026-06-07",
+  "category": "Insight",
+  "ko": {
+    "title": "장시간 타이핑 코더를 위한 인체공학 스플릿(Split) 키보드의 정형외과적 효과",
+    "description": "어깨 말림 현상과 손목 터널 증후군(RSI)을 물리적으로 방지하기 위해, 기판을 반으로 쪼개 배치하는 어골형 키보드 레이아웃의 해부학.",
+    "content": "\n        <h2>코더의 숙명, 손목 터널 증후군</h2>\n        <p>하루 10시간 이상 키보드를 치는 개발자와 엔지니어들은 손목이 저리고 손가락 마디가 찌릿한 터널 증후군이나 어깨 결림을 항상 달고 삽니다. 일반적인 일자형 키보드는 양손을 모아야 하므로 강제적으로 어깨가 안쪽으로 말리고 손목이 밖으로 꺾여 물리적 손상이 누적됩니다.</p>\n        <hr>\n        <h2>스플릿(Split) 키보드의 해부학적 해방</h2>\n        <p>이를 방지하기 위해 키보드 자판 기판이 완전히 물리적으로 두 조각 분리되어 어깨너비만큼 벌려 두는 <strong>Split Keyboard</strong>를 책상에 배치합니다. 자판을 어깨와 일직선으로 두어 어깨 근육 긴장이 즉시 완화되며, 좌우 판의 각도를 살짝 텐트 모양으로 세워주는 틸팅(Tilting) 각도를 추가해 손목 회외 회내 꺾임 현상을 원천 차단해 장기적 관절 건강을 지킵니다.</p>\n      "
+  },
+  "en": {
+    "title": "Split Ergonomic Keyboards: An Engineering Approach to RSI Prevention",
+    "description": "How split board physical layouts and tenting angles prevent shoulder rolling and carpal tunnel syndrome.",
+    "content": "\n        <h2>The Chronic Typing Strain of Engineers</h2>\n        <p>Programming long hours on standard keyboards forces hands inward, causing shoulder rolling and ulnar deviation of the wrist. This stress accumulates as Repetitive Strain Injury (RSI).</p>\n        <hr>\n        <h2>Anatomy of a Split Layout</h2>\n        <p>Split keyboards physically separate the left and right halves, allowing users to keep wrists straight and shoulders open. Tenting angles elevate the inner edges to match natural forearm resting angles, relieving muscle strain.</p>\n      "
+  }
+}

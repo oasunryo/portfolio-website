@@ -1,0 +1,15 @@
+{
+  "slug": "dividend-calendar-ocr-future",
+  "date": "2026-04-14",
+  "category": "Insight",
+  "ko": {
+    "title": "배당 캘린더 대시보드 자동화 및 MTS 스냅샷 OCR 분석 로드맵",
+    "description": "자산 관리 플랫폼의 최종 완성을 위해, 배당금 입금 내역을 자동 캘린더화하고 MTS 캡처 화면을 스캔해 동기화하는 비전.",
+    "content": "\n        <h2>미래를 준비하는 포트폴리오 로드맵</h2>\n        <p>현재 자산 장부가 성공적으로 안착된 이후, 사용자의 편의를 극한으로 끌어올리는 차세대 기능 개발 설계도를 공유합니다.</p>\n        <hr>\n        <h2>차세대 2대 개발 로드맵</h2>\n        <ul>\n          <li><strong>배당금 캘린더 시각화:</strong> 주식별 배당락일과 입금 장부 이력을 모아 월별로 내가 받을 배당금을 캘린더 카드 형태로 렌더링하는 대시보드.</li>\n          <li><strong>MTS 캡처 이미지 동기화 (OCR):</strong> 타이핑조차 귀찮을 때 증권사 자산 화면을 캡처해 대화방에 업로드하면 Llama-Vision API가 텍스트를 파싱하여 `sync_portfolio_snapshot`으로 즉시 자동 계좌를 갱신하는 기능.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Future Roadmap: Dividend Calendars and Mobile OCR Screenshot Ingestion",
+    "description": "Designing automated dividend trackers and leveraging Llama-Vision to sync portfolios directly from MTS screenshots.",
+    "content": "\n        <h2>Scaling the Asset Manager Capabilities</h2>\n        <p>With basic ledger sync running, we layout the blueprints for next-generation automated finance modules.</p>\n        <hr>\n        <h2>Two Key Roadmap Milestones</h2>\n        <ul>\n          <li><strong>Dividend Calendars:</strong> Processing payout records to plot monthly passive income dashboards automatically.</li>\n          <li><strong>MTS Screenshot OCR:</strong> Uploading account captures to chat, letting Llama-Vision parse stock values to run snapshot sync routines immediately.</li>\n        </ul>\n      "
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "ultimate-macos-research-pipeline",
+  "date": "2026-05-22",
+  "category": "Insight",
+  "ko": {
+    "title": "macOS 최강의 리서치 파이프라인: Zotero 7 ⇄ Safari ⇄ Obsidian",
+    "description": "논문 수집부터 독서 노트 정리, 그리고 AI 분석까지 이어지는 무부하 지식 관리 뉴런망을 연결하는 최적의 설계도.",
+    "content": "\n        <h2>정보 수집의 마찰 제로화</h2>\n        <p>훌륭한 리서처가 되기 위해서는 공부하고 수집하는 행위에 번거로운 마찰이 없어야 합니다. Zotero 7과 브라우저, 지식 허브인 옵시디언을 유기적으로 엮는 파이프라인을 소개합니다.</p>\n        <hr>\n        <h2>3단계 연결 흐름</h2>\n        <ol>\n          <li><strong>Safari Zotero Connector:</strong> 웹서핑 중 논문이나 해외 기사를 발견하면 클릭 한 번으로 메타데이터와 PDF를 로컬 서재에 수집합니다.</li>\n          <li><strong>Zotero 7 리더기 독서:</strong> PDF 내부 주요 포인트를 형광펜으로 분류 채색합니다.</li>\n          <li><strong>Obsidian Zotero Integration:</strong> 수집된 하이라이트와 서지 데이터를 미리 준비한 템플릿에 맞춰 옵시디언 노트로 1초 만에 마크다운 소환합니다.</li>\n        </ol>\n      "
+  },
+  "en": {
+    "title": "The Ultimate macOS Research Pipeline: Zotero 7 ⇄ Safari ⇄ Obsidian",
+    "description": "Bridging source collection, structured metadata indexing, and local markdown formatting into a zero-friction knowledge loop.",
+    "content": "\n        <h2>Zeroing Out Research Friction</h2>\n        <p>A high-performance research workflow requires seamless transitions between gathering papers and compiling study vaults. Here is our setup.</p>\n        <hr>\n        <h2>The 3-Step Pipeline</h2>\n        <ol>\n          <li><strong>Safari Zotero Connector:</strong> Save preprints and articles with metadata directly into local libraries via a single click.</li>\n          <li><strong>Zotero 7 Annotation:</strong> Read PDFs locally, highlighting concepts via categorized color tags.</li>\n          <li><strong>Obsidian Ingestion:</strong> Fetch highlights and bibliographic markdown formatted neatly through automated Zotero Integration rules.</li>\n        </ol>\n      "
+  }
+}

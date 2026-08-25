@@ -1,0 +1,15 @@
+{
+  "slug": "shorts-production-formula-students",
+  "date": "2026-04-04",
+  "category": "Insight",
+  "ko": {
+    "title": "대학생과 취준생의 시선을 빼앗는 숏폼(Shorts) 기획 및 대본 공식",
+    "description": "1초 단위로 이탈이 결정되는 스크롤 경쟁에서 살아남기 위한 첫 3초 오프닝 훅(Hook) 설계와 가독성 높은 2줄 자막 청킹 기하학.",
+    "content": "\n        <h2>숏폼은 가혹한 1초 싸움이다</h2>\n        <p>모바일 숏폼 시장에서는 첫 3초 이내에 시청자의 뇌에 도파민을 꽂아주지 못하거나 \"내 이야기다\" 하는 경각심을 주지 못하면 가차 없이 화면 밖으로 튕겨 나갑니다.</p>\n        <hr>\n        <h2>숏폼 대본 작법 공식</h2>\n        <ul>\n          <li><strong>첫 3초 후킹 질문:</strong> \"아직도 챗GPT한테 자소서 다 써달라고 부탁하시나요? 그거 무조건 광탈하는 지름길입니다.\"</li>\n          <li><strong>15초 실전 솔루션:</strong> 텍스트가 아닌 눈앞의 화면 변화로 결과물 가치를 시각적으로 입증.</li>\n          <li><strong>자막 청킹 기하학:</strong> 공백 포함 최대 10자 이내로 쪼개어, 텍스트가 화면 중앙에 2줄을 넘지 않게 CapCut 템플릿 스타일링 동기화.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Short-form Content Writing Formulas for Engineering Students",
+    "description": "Designing high-retention 1-minute video templates with strong opening hooks and clean subtitle chunks.",
+    "content": "\n        <h2>The Ruthless 1-Second Scrolling Filter</h2>\n        <p>If your shorts do not address the viewer's personal pain points within the first 3 seconds, they swipe away instantly.</p>\n        <hr>\n        <h2>The Video Layout Blueprint</h2>\n        <ul>\n          <li><strong>3-Second Opening Hook:</strong> \"Still letting ChatGPT draft your cover letters? Here is why recruiters bin them.\"</li>\n          <li><strong>15-Second Value Show:</strong> Display the working AI tool UI running in real-time.</li>\n          <li><strong>Caption Chunk Rules:</strong> Cap subtitle lengths under 10 characters per line, never exceeding two text lines on screen.</li>\n        </ul>\n      "
+  }
+}

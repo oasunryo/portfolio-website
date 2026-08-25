@@ -1,0 +1,15 @@
+{
+  "slug": "panel-level-packaging-panel-warpage",
+  "date": "2026-05-27",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "PLP(Panel Level Packaging) 생산성과 600mm 대형 패널 휨 제어",
+    "description": "원형 300mm 웨이퍼 공정 대비 3배 이상의 면적 생산성을 얻는 대형 사각형 패널 패키징(PLP)의 대면적 수축률 및 리플로우 휨 한계 극복 기법.",
+    "content": "\n        <h2>원가 혁신을 위한 원형에서 사각형 패널로의 전이</h2>\n        <p>반도체 패키징 시장은 웨이퍼 형태의 FOWLP를 넘어, 600mm 크기의 대형 사각형 패널을 사용하는 <strong>PLP(Panel Level Packaging)</strong> 기술 연구에 집중하고 있습니다. 원형 웨이퍼와 달리 사각형 패널은 엣지 영역 버려지는 면적이 없어 면적 가동률이 95%를 상회하며, 단번에 생산 가능한 다이 개수가 3배 이상 폭증하여 칩당 생산 비용을 극적으로 낮출 수 있습니다.</p>\n        <hr>\n        <h2>600mm 패널 휨(Warpage)의 억제 한계</h2>\n        <p>대형 기판 면적이 600mm x 600mm 스케일로 커짐에 따라, 이종 재료 간 온도 수축 차이로 생기는 열기계적 응력(CTE Mismatch Stress)은 웨이퍼 스케일에 비해 기하급수적으로 폭등합니다. 패널 가장자리 부분이 수 센티미터 수준으로 위아래로 말려 올라가면, 노광 장비 레지스터(Chamber Register)에 안착시킬 수조차 없어 장비 구동이 멈춥니다.</p>\n        <hr>\n        <h2>공정 극복 설계 전략</h2>\n        <p>패널용 EMC 성형 시 주입 압력을 순차적으로 제어하고, 가황(Curing) 전단에 패널을 상하 가열 가압기로 단단히 눌러주는 평탄 보정 툴을 추가합니다. 또한 기판 내부 배선 층별 구리 분포 편차를 1% 이내로 제어하는 미세 더미 패턴(Dummy Pattern) 보조 설계를 의무화하여 열적 안정성을 방어합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Panel Level Packaging (PLP): Warpage Control in 600mm Plates",
+    "description": "Overcoming the mechanical warpage limits of large square panels to capture 3x yield gains over 300mm wafer processes.",
+    "content": "\n        <h2>Transitioning to Square Form Factors for Cost Reduction</h2>\n        <p><strong>Panel Level Packaging (PLP)</strong> processes large 600mm square panels. This format utilizes 95%+ of the panel surface, eliminating edge wastage found on circular wafers and boosting chip counts over 3x.</p>\n        <hr>\n        <h2>The 600mm Panel Warpage Challenge</h2>\n        <p>Scaling packaging carriers to 600mm x 600mm amplifies CTE mismatch stress, which can cause panel edges to warp by centimeters, hindering handling tools and lithography systems.</p>\n        <hr>\n        <h2>Mitigating Warpage</h2>\n        <p>Process teams implement sequential pressure molding and apply post-mold flat curing. Adding dummy copper patterns to balance metal density within the panel layers helps suppress thermal deflections.</p>\n      "
+  }
+}

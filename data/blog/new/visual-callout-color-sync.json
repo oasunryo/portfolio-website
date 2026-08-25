@@ -1,0 +1,15 @@
+{
+  "slug": "visual-callout-color-sync",
+  "date": "2026-05-14",
+  "category": "Insight",
+  "ko": {
+    "title": "CSS Snippet을 이용한 Zotero 형광펜 색상의 Obsidian 콜아웃 연동",
+    "description": "Zotero에서 칠한 색상을 옵시디언이 완벽하게 인지하여 경고, 정보, 인용 등의 알록달록한 커스텀 콜아웃(Callouts)으로 매핑하는 CSS 튜닝.",
+    "content": "\n        <h2>텍스트 분류에서 시각적 계층화로</h2>\n        <p>가져온 하이라이트 문장들이 옵시디언 안에서 단순 목록으로만 노출되면 가독성이 현저히 떨어집니다. CSS 변수를 다뤄 시각적인 예쁜 카드 형태로 묶어줍니다.</p>\n        <hr>\n        <h2>Zotero-Colors CSS 스니펫</h2>\n        <p>옵시디언 테마 파일 내부에 <code>callout[data-callout=\"red-highlight\"]</code>처럼 빨강, 노랑, 초록 형광펜 데이터에 매칭될 CSS 클래스를 선언합니다. 테두리 컬러 변수와 좌측 Lucide Alert 아이콘을 결합하여, 마크다운 문서 로딩 시 리서처의 시선이 가장 중요도가 높은 빨간색 카드(🔴 Red)에 0.1초 만에 꽂히도록 가독성 디자인을 완성합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Visual Callout Syncing via Custom CSS Highlight Snippets",
+    "description": "Wiring raw HTML highlight colors to match custom Obsidian callouts with colored borders and relevant icons.",
+    "content": "\n        <h2>Enhancing Visual Hierarchies</h2>\n        <p>Importing annotated text as generic quotes leaves files looking unreadable. Categorizing them visually boosts scanning efficiency.</p>\n        <hr>\n        <h2>Zotero-Colors CSS Design</h2>\n        <p>Create a <code>callout[data-callout=\"red-highlight\"]</code> configuration using CSS styling. Mapping custom RGB values and warning icons ensures critical red annotations draw the eyes first.</p>\n      "
+  }
+}

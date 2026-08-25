@@ -1,0 +1,15 @@
+{
+  "slug": "single-responsibility-tasking",
+  "date": "2026-05-30",
+  "category": "Architecture",
+  "ko": {
+    "title": "단일 책임 원칙(SRP)에 기반한 테스크 분할 전략",
+    "description": "대형 개발 작업을 잘개 쪼개어 AI 에이전트가 한 턴에 완벽히 해결할 수 있도록 가이드를 좁히는 법.",
+    "content": "\n        <h2>거대한 지시가 불러오는 참사</h2>\n        <p>에이전트에게 \"로그인 화면을 만들고, 결제 모듈을 연동하고, 환영 메일 발송 로직까지 다 짜줘\"라고 대형 태스크를 한 번에 지시하면 높은 확률로 중간 코드들이 다 깨지거나 엉성한 결과가 나옵니다.</p>\n        <hr>\n        <h2>1단계 완벽 종결 후 리셋 루프</h2>\n        <p>각 단계별로 하나의 명확한 목표만 쥐여주어야 합니다. \"1단계: 로그인 UI 구성 및 Mocking 테스트 패스\"를 완벽히 마친 뒤, 대화 문맥을 한 번 비우고(Context Reset) \"2단계: 결제 모듈 API 연동\"으로 넘어가는 것이 토큰을 80% 이상 아끼며 안전하게 굴리는 핵심 비결입니다.</p>\n      "
+  },
+  "en": {
+    "title": "Single-Responsibility Tasking: Splitting Large Coding Missions",
+    "description": "How to divide complex developer requirements into isolated milestones, helping AI perform perfectly on each turn.",
+    "content": "\n        <h2>The Disaster of Massive Multi-tasking Prompts</h2>\n        <p>Commanding an agent to build a login page, integrate payment gateways, and setup notification hooks all in one go leads to bugs and messy outputs.</p>\n        <hr>\n        <h2>Isolate and Clean Context</h2>\n        <p>Divide tasks logically. Make the agent complete the UI mock-up first, run a compiler check, and reset the chat thread before introducing the backend integration. This saves token overhead and guarantees clean results.</p>\n      "
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "new-engineer-first-90-days",
+  "date": "2026-04-15",
+  "category": "Career",
+  "ko": {
+    "title": "신입 엔지니어가 회사 입사 직후 첫 90일 동안 존재감을 드러내는 3가지 습관",
+    "description": "부서 배치 이후 눈치만 보며 잡무에 지치기 쉬운 초년생들에게 현업 선배들이 강조하는 셀프 트래킹 업무법.",
+    "content": "\n        <h2>시키는 일만 해서는 아무것도 안 남는다</h2>\n        <p>인턴이나 신입 엔지니어로 입사하면 초반 3개월 동안은 어버버하며 대기하거나, 자료 복사, 포맷 변환 같은 단순 서류 정리성 작업 위주로 시간이 가버리기 일상입니다. 하지만 이 시기야말로 주니어 엔지니어의 커리어 성패와 부서 내 신뢰도를 결정짓는 골든 아워입니다.</p>\n        <hr>\n        <h2>첫 90일을 장악하는 주니어의 자세</h2>\n        <ol>\n          <li><strong>문서 정돈의 규칙 확립:</strong> 선배가 파일 하나 던져달라고 했을 때, 5초 만에 잘 정돈된 로컬 디렉토리에서 문서를 뽑아내 링크를 전달해주는 즉각적인 환경 정리 능력을 보여주세요. 신뢰의 절반은 정돈된 태도에서 나옵니다.</li>\n          <li><strong>질문은 옵션(Option) 형태로:</strong> 선배에게 \"이거 어떻게 해요?\"라고 단순 물어보는 것은 금물입니다. \"A와 B 안이 있는데, 장단점 비교해봤을 때 우리 공정 환경에선 A가 타당해 보입니다. 어떤 방향이 좋을까요?\" 형태로 본인의 생각(Thinking)을 덧붙여 질문해야 능력을 드러낼 수 있습니다.</li>\n          <li><strong>작업 로그(Log)의 매일 기록:</strong> 퇴근 전 15분, 오늘 만진 장비 파라미터나 발견된 불량 빈 코드를 비공개 로컬 위키에 기록해두세요. 시간이 흐르면 이것이 부서 내 독보적인 트러블슈팅 매뉴얼이 됩니다.</li>\n        </ol>\n      "
+  },
+  "en": {
+    "title": "First 90 Days: Habits for Rookie Engineers to Build Credibility",
+    "description": "Practical advice for newly hired engineers to manage task logs, structure questions, and optimize documentation.",
+    "content": "\n        <h2>Survival Guide for the Critical Onboarding Phase</h2>\n        <p>New engineers often get bogged down in simple file formatting. However, the first 90 days establish your reputation in the team.</p>\n        <hr>\n        <h2>Three Rules for Early Career Success</h2>\n        <ol>\n          <li><strong>Organized Repositories:</strong> Keep your internal project logs clean. Being able to retrieve references instantly signals competence.</li>\n          <li><strong>Structure Questions with Options:</strong> Don't just ask \"What do I do?\" Present options: \"I evaluated options A and B. I recommend A because of reason X. Do you agree?\"</li>\n          <li><strong>Document a Daily Worklog:</strong> Spend 10 minutes recording parameters adjusted or errors resolved. This becomes your personal handbook.</li>\n        </ol>\n      "
+  }
+}

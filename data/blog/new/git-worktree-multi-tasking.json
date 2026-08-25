@@ -1,0 +1,15 @@
+{
+  "slug": "git-worktree-multi-tasking",
+  "date": "2026-06-04",
+  "category": "Insight",
+  "ko": {
+    "title": "Git Worktree 활용법: 개발 흐름 끊김 없는 핫픽스 멀티태스킹",
+    "description": "작업 중인 브랜치에서 git stash 대신, 별도의 작업 디렉토리 폴더를 동적으로 생성해 병렬로 핫픽스 코딩을 수행하는 모던 깃 명령어.",
+    "content": "\n        <h2>Stash 명령의 번거로움과 컨텍스트 스위칭</h2>\n        <p>진행 중인 기능을 열심히 개발하던 도중, 긴급하게 운영 서버 버그를 수정(Hotfix)해야 하는 요청이 들어오면 골치가 아픕니다. 현재 수정 중인 지저분한 파일들을 임시 보관(<code>git stash</code>)하고 브랜치를 체크아웃했다가, 핫픽스를 마치고 다시 돌아와 Stash를 팝(Pop)하는 일련의 과정은 작업 중이던 터미널 화면 설정과 로컬 상태를 어지럽혀 실수하기 딱 좋습니다.</p>\n        <hr>\n        <h2>로컬 디렉토리 병렬화: git worktree</h2>\n        <p>이를 우아하게 극복하는 방법은 <code>git worktree</code> 명령어로 하나의 저장소(`.git`)에서 복수의 독립된 소스 디렉토리 폴더를 생성하는 것입니다.</p>\n        <pre><code>git worktree add ../hotfix-branch-dir hotfix-branch</code></pre>\n        <p>이 한 줄로 작업 폴더 상위 디렉토리에 핫픽스 브랜치만 깔끔하게 체크아웃된 독립된 개발 폴더가 생겨납니다. 현재 코딩을 멈추지 않고, 새 창에서 해당 디렉토리를 열어 핫픽스를 완성 후 푸시한 다음, 워크트리를 삭제하기만 하면 본래 작업 컨텍스트를 100% 완벽하게 보존하며 멀티태스킹할 수 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Leveraging Git Worktree to Handle Emergency Hotfixes Seamlessly",
+    "description": "How to create parallel working directories inside a single git repository to bypass git stash context-switching bottlenecks.",
+    "content": "\n        <h2>The Overhead of Git Stash Context Switching</h2>\n        <p>Interrupting a long-running feature branch to fix an urgent production bug often involves running `git stash`, checking out branches, and reloading local setups. This flow is prone to manual errors.</p>\n        <hr>\n        <h2>Parallel Workspaces: Git Worktree</h2>\n        <p>Using `git worktree` creates multiple checkout directories linked to the same local git repository.</p>\n        <pre><code>git worktree add ../hotfix-branch-dir hotfix-branch</code></pre>\n        <p>This command checks out the target branch to a parallel folder. You can fix the bug in a separate window, push the hotfix, and delete the worktree without stashing or disrupting your primary development workspace.</p>\n      "
+  }
+}

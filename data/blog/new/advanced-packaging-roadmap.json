@@ -1,0 +1,15 @@
+{
+  "slug": "advanced-packaging-roadmap",
+  "date": "2026-03-18",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "국제 반도체 로드맵(IRDS)으로 읽는 2030 후공정 기술 로드맵",
+    "description": "미세 피치 축소 한계와 이를 극복하기 위한 하이브리드 본딩(Hybrid Bonding)의 도입 일정 및 패키징 기판의 차세대 유리 기판(Glass Substrate) 전환 연구.",
+    "content": "\n        <h2>무어의 법칙 한계를 이어가는 패키징 혁신</h2>\n        <p>반도체 미세 패턴 형성이 나노미터 초반으로 들어서며 천문학적인 비용 상승을 초래하자, 대안으로 제시되는 첨단 패키징 로드맵(IRDS)이 매년 급변하고 있습니다. 2030년대를 내다보는 후공정의 최종 지향점은 기계적 범프를 아예 없애는 <strong>하이브리드 본딩(Cu-to-Cu Direct Bonding)</strong>과 유리기판입니다.</p>\n        <hr>\n        <h2>범프 없는 세상: 하이브리드 본딩</h2>\n        <p>기존 솔더볼 접합은 피치(Pitch)를 10μm 이하로 좁히면 솔더가 뭉쳐 합선이 일어납니다. 반면 하이브리드 본딩은 화학적으로 극도로 평탄화된 산화막과 구리 단면을 밀착하여 범프 없이 구리와 산화막을 원자간 접합합니다. 피치를 1μm 이하 수준으로 압축해 성능을 극대화합니다.</p>\n        <hr>\n        <h2>유리 기판(Glass Substrate)의 등장 배경</h2>\n        <p>전통적인 유기 기판(Organic Substrate)은 대형화될 때 열변형으로 휨 제어가 불가능해집니다. 유리는 표면 조도가 극도로 매끄럽고 물리적 열 변형률이 낮아 미세 선폭 RDL 형성이 쉽고, 두께가 얇아 고대역폭 신호 전송 효율이 우수하여 인텔, 삼성 등 메이저 제조사가 적극 개발 중입니다.</p>\n      "
+  },
+  "en": {
+    "title": "IRDS Roadmap: Emerging Packaging Milestones Towards 2030",
+    "description": "Understanding Hybrid Cu-to-Cu bonding integrations and the shift to Glass Substrates for ultra-dense packaging layers.",
+    "content": "\n        <h2>Continuing Moore's Law via Packaging Innovation</h2>\n        <p>With front-end lithography scaling costs soaring, the International Roadmap for Devices and Systems (IRDS) highlights advanced packaging. Key inflection points are <strong>Hybrid Bonding</strong> and <strong>Glass Substrates</strong>.</p>\n        <hr>\n        <h2>Bumpless Connectivity: Hybrid Bonding</h2>\n        <p>Solder ball connections fail when scaled below a 10μm pitch. Hybrid bonding directly joins dielectric oxide and copper surfaces atomically, bringing pitches sub-1μm for maximum density.</p>\n        <hr>\n        <h2>The Case for Glass Substrates</h2>\n        <p>Organic substrates suffer from warp deflections at scale. Glass offers excellent flatness and low thermal expansion coefficient (CTE), enabling ultra-fine line routing and thin, high-performance designs.</p>\n      "
+  }
+}

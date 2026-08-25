@@ -1,0 +1,15 @@
+{
+  "slug": "i2c-pullup-resistor-sizing",
+  "date": "2026-06-03",
+  "category": "Hardware",
+  "ko": {
+    "title": "I2C 통신 신뢰성 확보를 위한 풀업 저항(Pull-up Resistor) 계산 가이드",
+    "description": "버스 기생 정전용량(Cb)과 스펙상 상승 시간(Rise Time) 규격을 충족하여 통신 신호 왜곡을 방지하는 정량적 풀업 저항 계산 공식 및 검증.",
+    "content": "\n        <h2>오픈 드레인(Open-Drain) 통신의 물리적 구동 특성</h2>\n        <p>I2C는 배선을 공유하는 마스터-슬레이브 구조에서 충돌을 막기 위해 핀을 접지와 붙이거나 끊기만 하는 오픈 드레인 방식으로 통신합니다. 하이(High) 신호 레벨 전압을 위로 팽팽하게 잡아당겨주는 물리적인 <strong>풀업 저항(Pull-up Resistor)</strong>이 버스 라인(SDA, SCL)마다 무조건 있어야 동작합니다.</p>\n        <hr>\n        <h2>상승 시간(Rise Time)과 풀업 저항의 트레이드오프 관계</h2>\n        <p>풀업 저항 $R_{pullup}$이 너무 크면, 라인 전체의 기생 캐패시턴스 $C_{bus}$와 반응하는 RC 필터 지연에 의해 전압이 솟아오르는 속도(Rise Time)가 느려져 하이 레벨을 인지하지 못해 데이터 패킷이 깨집니다. 반대로 저항이 너무 작으면, 로우(Low) 신호를 유도할 때 흐르는 싱크 전류가 폭증하여 칩 포트가 감당하지 못하고 손상되거나 전력 소모가 극대화됩니다.</p>\n        <hr>\n        <h2>정량 계산식 매뉴얼</h2>\n        <p>공식 규격 스펙상 Fast Mode(400kHz) 기준 최대 상승 시간 $t_{r} \\le 300\\text{ns}$을 달성하기 위한 최대 저항식 $R_{max} = t_{r} / (0.8473 \\times C_{bus})$을 도출하여, 라인 배선 길이 기생용량 측정치에 매칭해 안전 마진 저항값(일반적으로 2.2k옴~4.7k옴)을 결정 설계합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Sizing Pull-up Resistors for Reliable I2C Bus Communication",
+    "description": "Calculating pull-up resistor boundaries using bus capacitance and I2C rise time limits.",
+    "content": "\n        <h2>Open-Drain Drivers and Bus Pull-ups</h2>\n        <p>The I2C protocol uses open-drain drivers to allow multi-device sharing of SDA and SCL lines. Because devices only pull the bus low, external <strong>pull-up resistors</strong> pull the lines high when released.</p>\n        <hr>\n        <h2>The Tradeoff Between Rise Time and Power</h2>\n        <p>A high pull-up resistance ($R_{pullup}$) slows signal rise times due to the bus capacitance ($C_{bus}$) RC time constant, causing bit errors. Conversely, low resistance drives excessive sink currents that overload pins and waste power.</p>\n        <hr>\n        <h2>Calculating Resistor Boundaries</h2>\n        <p>For Fast-Mode (400kHz) I2C, max rise times are capped at 300ns. The upper limit follows $R_{max} = t_{r} / (0.8473 \\times C_{bus})$. Balances typically place resistors between 2.2kΩ and 4.7kΩ depending on trace lengths.</p>\n      "
+  }
+}

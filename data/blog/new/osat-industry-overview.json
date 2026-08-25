@@ -1,0 +1,15 @@
+{
+  "slug": "osat-industry-overview",
+  "date": "2026-03-25",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "글로벌 OSAT 산업 생태계와 2.5D/3D 첨단 패키징 최신 동향",
+    "description": "ASE, Amkor, JCET 등 주요 OSAT 업체의 포지셔닝과 인공지능 가속기 칩 양산에 핵심이 된 CoWoS 형태의 이종 집적(Heterogeneous Integration) 트렌드.",
+    "content": "\n        <h2>반도체 가치사슬의 수직 분업과 OSAT</h2>\n        <p>종합 반도체 기업(IDM)과 파운드리가 전공정에 집중하는 사이, 조립과 최종 테스트를 대행하는 후공정 전문 기업인 <strong>OSAT(Outsourced Semiconductor Assembly and Test)</strong>의 역할이 비대하게 확대되었습니다. AI 칩 연산 파워 요구량의 폭발로 더는 칩 하나로 성능을 낼 수 없게 됨에 따라, 여러 다이를 한 패키지로 엮는 첨단 이종 집적 기술이 OSAT 생태계의 판도를 바꾸고 있습니다.</p>\n        <hr>\n        <h2>2.5D 실리콘 인터포저와 CoWoS</h2>\n        <p>가장 주목받는 아키텍처는 TSMC의 CoWoS(Chip-on-Wafer-on-Substrate)로 대변되는 2.5D 패키징입니다. 얇은 실리콘 인터포저(Silicon Interposer) 기판 위에 모듈러 칩렛(Chiplet)들과 HBM을 오밀조밀 배치하여 마이크로 범프로 상호 연결한 구조입니다. 이는 데이터 송수신 지연 시간을 나노초 단위 이하로 묶어 AI 데이터센터 카드 구축의 핵심 기둥이 되었습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Global OSAT Market Trends and 2.5D/3D Advanced Stacking Solutions",
+    "description": "Analyzing the OSAT supply chain landscape and 2.5D silicon interposer scaling critical for high-performance computing cards.",
+    "content": "\n        <h2>The Semiconductor Value Chain and OSAT</h2>\n        <p>As IDMs and Foundries offload final processing steps, <strong>OSAT (Outsourced Semiconductor Assembly and Test)</strong> suppliers have grown vital. Integrating multi-die modules inside a single package is key to AI scaling.</p>\n        <hr>\n        <h2>2.5D Stacking and Silicon Interposers</h2>\n        <p>2.5D packaging stacks functional chiplets and HBMs side-by-side over a micro-routed Silicon Interposer. By linking micro-bumps with high spatial density, physical routing delays drop, powering high-performance hardware.</p>\n      "
+  }
+}

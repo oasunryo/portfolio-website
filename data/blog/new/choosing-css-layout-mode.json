@@ -1,0 +1,15 @@
+{
+  "slug": "choosing-css-layout-mode",
+  "date": "2026-05-28",
+  "category": "Architecture",
+  "ko": {
+    "title": "현대 웹 CSS 레이아웃 모드 선택을 위한 의사결정 가이드",
+    "description": "Flexbox, Grid, Subgrid, Multi-column 등의 레이아웃 기법 중 내 화면 구조에 딱 맞는 기법을 도출하는 기준.",
+    "content": "\n        <h2>레이아웃 선택의 의사결정 나무</h2>\n        <p>브라우저의 자체 레이아웃 엔진을 최대로 활용하여 복잡하고 느린 미디어 쿼리를 최소화해야 합니다. 상황에 맞는 적절한 CSS 레이아웃 토폴로지를 선택하는 기준을 알아봅니다.</p>\n        <hr>\n        <h2>의사결정 프로세스</h2>\n        <ul>\n          <li><strong>단일 축(1차원) 흐름인가?</strong> ➡️ <strong>Flexbox</strong> (콘텐츠 중심의 부드러운 분배)</li>\n          <li><strong>자식 그리드가 조부모 그리드의 선에 칼같이 맞춰 정렬되어야 하는가?</strong> ➡️ <strong>Subgrid</strong> (카드 내부 내용물의 가로선 정렬)</li>\n          <li><strong>2차원 격자 형태의 복잡한 뼈대가 필요한가?</strong> ➡️ <strong>Grid</strong> (레이아웃 정의 우선)</li>\n          <li><strong>신문처럼 긴 글이 여러 열로 자연스럽게 흘러내려야 하는가?</strong> ➡️ <strong>Multi-column</strong></li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "A Decision Tree for Choosing Modern CSS Layout Modes",
+    "description": "When to choose Flexbox, Grid, Subgrid, or Multi-column architectures for responsive and performant web interfaces.",
+    "content": "\n        <h2>Leveraging the Browser Native Engines</h2>\n        <p>Avoid heavy media query calculations and hardcoded pixel sizes. Let the browser layout engines handle responsiveness dynamically.</p>\n        <hr>\n        <h2>Layout Selection Decision Tree</h2>\n        <ul>\n          <li><strong>1D single axis flows?</strong> ➡️ <strong>Flexbox</strong> (content-first distribution).</li>\n          <li><strong>Align nested elements across different columns/rows?</strong> ➡️ <strong>Subgrid</strong> (reconciles card contents).</li>\n          <li><strong>2D structural layouts?</strong> ➡️ <strong>Grid</strong> (skeleton-first definition).</li>\n          <li><strong>Flowing text like a newspaper?</strong> ➡️ <strong>Multi-column</strong>.</li>\n        </ul>\n      "
+  }
+}

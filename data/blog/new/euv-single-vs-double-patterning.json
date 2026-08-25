@@ -1,0 +1,15 @@
+{
+  "slug": "euv-single-vs-double-patterning",
+  "date": "2026-08-01",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "EUV 싱글 vs 더블 패터닝(DPT) 기술적 분기점",
+    "description": "0.33 NA EUV 싱글 패터닝의 한계와 High-NA EUV 지연에 따른 EUV-DPT(LELE, SADP) 도입 배경을 분석합니다.",
+    "content": "<h2>0.33 NA EUV 싱글 패터닝의 한계</h2><p>ASML의 0.33 NA EUV 노광 장비는 7nm 및 5nm 노드에서 단일 노광(Single Exposure)으로 미세 패턴을 형성하는 데 혁신적인 기여를 했습니다. 그러나 3nm 이하 공정으로 진입함에 따라 광학적 해상도 한계(Rayleigh Criterion)에 직면하여 피치(Pitch)가 30nm 이하로 줄어들 때 패턴이 붙거나 끊어지는 현상이 발생합니다.</p><h2>High-NA EUV 지연과 DPT의 대두</h2><p>차세대 0.55 NA High-NA EUV 장비의 높은 단가와 에코시스템 성숙 지연으로 인해, TSMC와 삼성전자 등 주요 파운드리는 기존 0.33 NA 장비를 활용한 <strong>EUV 더블 패터닝(EUV-DPT)</strong> 공정을 양산에 적극 도입하고 있습니다. 이는 한 번에 그릴 수 없는 미세 패스를 두 번 나누어 노광함으로써 물리적인 피치 한계를 극복하는 공정입니다.</p>"
+  },
+  "en": {
+    "title": "Technical Crossroads: EUV Single vs. Double Patterning (DPT)",
+    "description": "An analysis of the limits of 0.33 NA EUV single patterning and the transition to EUV-DPT (LELE, SADP) amid High-NA EUV delays.",
+    "content": "<h2>Limits of 0.33 NA EUV Single Exposure</h2><p>ASML's 0.33 NA EUV lithography enabled single exposure patterning down to 7nm and 5nm nodes. However, as scaling pushes below 3nm, physical resolution boundaries (Rayleigh Criterion) cause pattern bridging and necking when the metal pitch drops below 30nm.</p><h2>EUV-DPT and High-NA Delays</h2><p>With high acquisition costs and ecosystem delays for next-gen 0.55 NA High-NA systems, leading foundries like TSMC and Samsung are implementing <strong>EUV Double Patterning (EUV-DPT)</strong> on existing 0.33 NA scanners. By splitting dense layouts into two separate exposure passes, they successfully extend resolution limits.</p>"
+  }
+}

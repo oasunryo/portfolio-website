@@ -1,0 +1,15 @@
+{
+  "slug": "euv-pellicle-degradation-challenges",
+  "date": "2026-08-20",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "EUV 펠리클(Pellicle) 다회 노광 노출에 따른 열화 제어",
+    "description": "DP 공정 반복으로 가중된 노광 스트레스를 견뎌내는 CNT 및 SiC 기반 펠리클 신소재 개발 경쟁을 분석합니다.",
+    "content": "<h2>EUV 마스크의 파수꾼, 펠리클</h2><p>EUV 장비는 극도로 강력한 에너지를 마스크에 투사합니다. 이때 공기 중의 미세 파티클이 마스크에 안착해 오염시키는 것을 막아주는 얇은 보호막이 펠리클(Pellicle)입니다. 특히 DP 공정 도입으로 마스크를 여러 번 노광기에 통과시켜야 하므로 펠리클의 중요성이 더욱 급증했습니다.</p><h2>열화 극복을 위한 신소재 경쟁</h2><p>EUV 광은 대부분의 물질에 흡수되어 열로 변환되기 때문에, 펠리클은 80% 이상의 높은 투과율과 극심한 고온(1200도 이상)을 견디는 재료 특성을 만족해야 합니다. 에프에스티(FST), 미쓰이화학(Mitsui Chemicals) 등은 카본나노튜브(CNT)나 실리콘카바이드(SiC) 기반 차세대 펠리클을 상용화하며 열화 수명을 극대화하고 있습니다.</p>"
+  },
+  "en": {
+    "title": "EUV Pellicle Degradation and Reliability Under DPT Exposures",
+    "description": "How high-throughput double patterning loads affect pellicle degradation, and new material answers.",
+    "content": "<h2>Shielding Masks in EUV Scanners</h2><p>EUV masks are prone to particle contamination. The <strong>pellicle</strong>, a thin membrane suspended above the photomask, keeps contaminants out of focus. With DPT doubling the exposure frequency on a single mask, pellicle duty cycles have surged.</p><h2>Thermal Wear and Material Innovations</h2><p>EUV light generates intense heat (above 1200°C) on the membrane. FST and Mitsui Chemicals engineer silicon carbide (SiC) and carbon nanotube (CNT) pellicles. These achieve over 80% EUV transmissivity while mitigating thermal deformation and oxidation during high-throughput runs.</p>"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "simon-squibb-business-canvas",
+  "date": "2026-04-12",
+  "category": "Insight",
+  "ko": {
+    "title": "사이먼 스큅식 1인 지식 비즈니스 모델 캔버스 설계 기획",
+    "description": "타인의 가장 뼈아픈 문제를 내 기술력으로 해결해주고, 그 과정의 태도를 콘텐츠화하여 수익 퍼널을 설계하는 비즈니스 구조.",
+    "content": "\n        <h2>꿈이 무엇인지 묻는 사업가, 사이먼 스큅</h2>\n        <p>사이먼 스큅의 철학은 단순합니다. \"사람들의 꿈을 돕고 그 과정에서 겪는 사소한 고장과 문제점들을 비즈니스로 해결하라.\"</p>\n        <hr>\n        <h2>지식 창업 비즈니스 캔버스</h2>\n        <p>이를 엔지니어 커리어에 대입하여 1인 지식 창업 캔버스를 구축합니다. 내가 가진 반도체 기술 정리 및 자동화 능력(Technical Asset)을 바탕으로, 취업 준비생과 후배 전기공학도들이 겪는 막막함(Pain Point)을 해소해 주는 템플릿과 진로 로드맵 콘텐츠를 제작해 신뢰 자산을 쌓고 점진적인 수익 구조로 연결합니다.</p>\n      "
+  },
+  "en": {
+    "title": "Simon Squibb-Style One-Person Business Canvas Blueprint",
+    "description": "Designing knowledge business funnels by solving user career pain points and sharing the development process.",
+    "content": "\n        <h2>Simon Squibb's Dream-Driven Startup Philosophy</h2>\n        <p>Simon Squibb focuses on one rule: \"Help people achieve their dreams, and solve their daily struggles through smart businesses.\"</p>\n        <hr>\n        <h2>The Knowledge Business Canvas</h2>\n        <p>Applying this model to an engineering career path: package study assets to solve career anxiety for juniors, building credit and monetization funnels.</p>\n      "
+  }
+}

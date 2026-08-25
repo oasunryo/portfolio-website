@@ -1,0 +1,15 @@
+{
+  "slug": "battery-soc-ocv-ccv",
+  "date": "2026-04-25",
+  "category": "Hardware",
+  "ko": {
+    "title": "배터리 잔량 측정(SoC): OCV 방식과 쿨롱 카운팅 알고리즘의 결합",
+    "description": "배터리 무부하 개방 전압(OCV) 측정의 히스테리시스 문제를 극복하기 위해 전류 적산법(Coulomb Counting)을 함께 혼합하는 하이브리드 보정 방법.",
+    "content": "\n        <h2>정확한 배터리 퍼센트 측정의 어려움</h2>\n        <p>우리가 스마트폰 화면에서 흔히 보는 배터리 잔량(State of Charge, SoC)은 실시간 측정이 몹시 어렵습니다. 배터리 단자 전압은 충전이나 방전 부하가 걸리는 순간 급격하게 출렁이기 때문입니다. 전형적인 두 가지 잔량 산출 방식인 OCV와 쿨롱 카운팅은 각각 장단점이 명확합니다.</p>\n        <hr>\n        <h2>두 방식의 한계와 혼합형 보정 알고리즘</h2>\n        <ul>\n          <li><strong>개방 전압 (OCV, Open Circuit Voltage):</strong> 부하가 완전히 차단된 평형 상태의 전압으로 SoC 테이블과 매칭해 잔량을 예측합니다. 정확하지만 부하가 걸린 운전 상황에서는 전압 강하 때문에 사용이 불가능하며, 리튬 인산철(LFP)의 경우 OCV 곡선이 지나치게 평평해 오차가 극대화됩니다.</li>\n          <li><strong>쿨롱 카운팅 (Coulomb Counting):</strong> 배터리로 흐르는 실시간 입출력 전류량을 계속 적산(시간 곱)하여 충전량을 더하고 뺍니다. 반응 속도가 빠르지만, 전류 센서 오차가 시간 경과에 따라 누적되어 나중에는 실제 잔량과 크게 틀어집니다.</li>\n        </ul>\n        <p>따라서 상용 BMS에서는 전류량을 지속적으로 적산하다가, 부하가 낮아지는 무부하 정지(Rest) 시간이 생길 때 OCV 전압을 관측하여 적산 누적 오차를 제로 포인트로 자동 칼리브레이션해주는 결합형 알고리즘을 사용합니다.</p>\n      "
+  },
+  "en": {
+    "title": "State of Charge (SoC) Calculation: Hybrid OCV and Coulomb Counting",
+    "description": "Solving current sensor drift errors by combining Open-Circuit Voltage profiling with time-based charge integration.",
+    "content": "\n        <h2>Challenges of Real-Time SoC Estimation</h2>\n        <p>Estimating a cell's State of Charge (SoC) is tricky. Voltage drops dynamically under load, corrupting raw voltage readings. Engineers combine <strong>Open Circuit Voltage (OCV)</strong> lookup and <strong>Coulomb Counting</strong>.</p>\n        <hr>\n        <h2>Implementing Hybrid Correction Loops</h2>\n        <p>Integrating current over time tracks short-term capacity changes but drifts due to sensor resolution. When cells rest, the system measures stable OCV to reset the current accumulator, preventing offset drifts.</p>\n      "
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "emc-transfer-molding-parameters",
+  "date": "2026-05-24",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "EMC 트랜스퍼 몰딩(Transfer Molding) 주요 파라미터와 불량 해결 방안",
+    "description": "고온/고압 트랜스퍼 금형 장비에서 에폭시 몰드 수지(EMC) 충진 시 핀홀, 금형 오염, 와이어 쓸림(Wire Sweep)을 최소화하는 파라미터 제어 이론.",
+    "content": "\n        <h2>반도체를 보호하는 에폭시 갑옷, EMC 몰딩</h2>\n        <p>반도체 다이와 와이어가 실장된 기판 패키지 상단을 액상의 에폭시 밀봉재로 채워 굳히는 봉지 공정을 <strong>몰딩(Molding)</strong>이라고 합니다. 고체형 에폭시 펠릿(Pellet)을 금형 실린더에 넣고 가열하여 고압으로 주입하는 트랜스퍼 몰딩(Transfer Molding) 방식이 주로 채택됩니다.</p>\n        <hr>\n        <h2>트랜스퍼 몰딩 주요 제어 변수</h2>\n        <ul>\n          <li><strong>Transfer Pressure & Speed:</strong> 금형 캐비티 내로 에폭시를 밀어 넣는 유속과 가압 파워입니다. 속도가 너무 빠르면 미세 와이어가 밀려 휘어버리는 <strong>Wire Sweep</strong> 현상이 발생하고, 너무 느리면 용액이 충진 도중 굳어 미충진(Incomplete Fill) 불량이 발생합니다.</li>\n          <li><strong>Mold Temperature:</strong> 금형 온도는 보통 170°C~180°C 수준으로 관리되며, EMC의 가교 반응(Curing) 속도와 용융 점도에 직관적인 상관관계를 지닙니다.</li>\n          <li><strong>Clamping Force:</strong> 상부/하부 금형을 유압으로 눌러 결합하는 톤수(Tonnage)입니다. 형체력이 약하면 틈새로 에폭시가 삐져나오는 플래시(Flash) 불량이 생깁니다.</li>\n        </ul>\n        <hr>\n        <h2>정기적 Mold Release 에이전트 도포 관리</h2>\n        <p>금형 표면에 수지가 들러붙어 떨어지지 않는 점착 불량(Sticking)을 방지하기 위해 정기적으로 탈형 왁스 펠릿(Wax Pellet)을 흘려보내는 금형 청소 및 코팅 관리를 엄격히 가동해야 정밀 치수 수율이 제어됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "Epoxy Mold Compound (EMC) Transfer Molding: Defect Prevention and Parameters",
+    "description": "Controlling pressure, clamp forces, and viscosity limits to suppress wire sweep and void failures in mold processes.",
+    "content": "\n        <h2>Encapsulating Silicon via Transfer Molding</h2>\n        <p>Semiconductor packaging uses Epoxy Mold Compound (EMC) to seal silicon chips. In <strong>Transfer Molding</strong>, solid EMC pellets are liquefied under high heat and injected under pressure into mold cavities.</p>\n        <hr>\n        <h2>Key Mold Process Parameters</h2>\n        <ul>\n          <li><strong>Transfer Speed & Pressure:</strong> The rate at which liquid EMC is pushed into the cavity. Excessive speed causes wire deflection (<strong>Wire Sweep</strong>), while low speed risks pre-cure solidification.</li>\n          <li><strong>Mold Curing Temperature:</strong> Typically set between 170°C and 180°C, managing EMC cross-linking speeds and viscosity windows.</li>\n          <li><strong>Clamping Force:</strong> High mechanical clamping forces hold mold halves closed to prevent resin leaks (<strong>Flash</strong>).</li>\n        </ul>\n        <hr>\n        <h2>Preventing Sticking Defects</h2>\n        <p>Regular maintenance runs mold release pellets through cavities to clean metal surfaces, preventing epoxy adhesion failures during ejection cycles.</p>\n      "
+  }
+}

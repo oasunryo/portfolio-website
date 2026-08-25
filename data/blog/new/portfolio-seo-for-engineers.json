@@ -1,0 +1,15 @@
+{
+  "slug": "portfolio-seo-for-engineers",
+  "date": "2026-03-28",
+  "category": "Career",
+  "ko": {
+    "title": "취업 프리패스를 위한 엔지니어용 포트폴리오 웹사이트 SEO 최적화 가이드",
+    "description": "단순 링크 복사 전달용이 아닌, 채용 담당자가 구글 검색을 통해 내 기술 블로그와 포트폴리오를 직접 찾아 들어오게 만드는 SEO 기술.",
+    "content": "\n        <h2>인사담당자만 타겟으로 삼는 포트폴리오는 아깝다</h2>\n        <p>우리가 링크드인이나 구글에 내 이력서 링크를 뿌리는 것은 전형적인 아웃바운드 방식입니다. 하지만 내가 겪은 트러블슈팅 경험이나 반도체 전공 공부 기록을 검색 친화적으로 마크업해두면, 특정 에러 코드를 해결하려 구글을 헤매던 실무 팀장이나 리크루터가 내 사이트를 타고 들어와 제안을 건네는 인바운드 통로가 열립니다.</p>\n        <hr>\n        <h2>실무 키워드 SEO 공략법</h2>\n        <p>블로그 제목을 단순히 '실험 일지 1'로 짓지 마세요. <code>\"Cyclone II FPGA Verilog Debouncing Filter Design\"</code>처럼 구체적인 칩 모델명과 기술 표준 명칭을 제목(H1)과 메타 태그(Meta description)에 고스란히 노출시켜야 합니다. 이미지 마크업 시 alt 속성으로 키워드를 박아두고 검색 엔진이 내 사이트 사이트맵(sitemap.xml)을 긁어갈 수 있도록 간단히 정비해두는 것만으로도, 구글 검색 유입량이 3배 이상 폭증합니다.</p>\n      "
+  },
+  "en": {
+    "title": "SEO Strategy for Engineers: Getting Recruited via Organic Google Searches",
+    "description": "Configuring metadata, structured headers, and specific keyword taglines on your technical blog to attract engineering recruiters.",
+    "content": "\n        <h2>Turn Your Portfolio Into an Inbound Job Funnel</h2>\n        <p>Instead of cold-emailing links, optimize your tech blog so managers looking for solutions to niche errors find your write-ups.</p>\n        <hr>\n        <h2>Technical Keyword Optimization</h2>\n        <p>Avoid generic titles like \"My Project.\" Use exact terms such as \"Cyclone II FPGA Verilog Debouncing Filter Design\" in H1 headers and meta descriptions. Registering a sitemap.xml ensures search bots crawl your write-ups.</p>\n      "
+  }
+}

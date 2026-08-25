@@ -1,0 +1,15 @@
+{
+  "slug": "ald-3d-nand-deposition",
+  "date": "2026-07-01",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "3D NAND 채널 홀 형성의 핵심, ALD(원자층 증착) 공정 메커니즘",
+    "description": "3D NAND의 고단화에 따른 높은 종횡비 구조에서 나노미터 단위의 균일한 박막 증착을 실현하는 ALD 기술의 화학적 흡착 원리와 채널 홀 적용 공정을 분석합니다.",
+    "content": "\n        <h2>ALD 공정의 원리와 자기제한적 반응</h2>\n        <p>ALD(Atomic Layer Deposition, 원자층 증착)는 기판 표면에서 전구체(Precursor)와 반응 가스(Reactant)의 교차 유입을 통해 원자층 두께의 초미세 박막을 한 층씩 쌓아 올리는 기술입니다. 화학 기상 증착(CVD)과 달리, 기판 표면의 반응 활성기 수에 의해서만 화학 반응이 일어나는 <strong>자기제한적 반응(Self-Limiting Reaction)</strong> 메커니즘을 가집니다. 이를 통해 박막의 두께를 원자 단위로 정밀 제어할 수 있습니다.</p>\n        <hr>\n        <h2>3D NAND 고단화와 ALD의 역할</h2>\n        <p>3D NAND 플래시 메모리가 200단 이상으로 고단화되면서 채널 홀(Channel Hole)의 종횡비(Aspect Ratio)가 100:1을 초과하게 되었습니다. 이러한 깊고 좁은 홀 내벽에 균일한 두께로 전하 차단막, 전하 트랩막, 터널 절연막을 증착하는 것은 기존 CVD 기술로는 불가능합니다. ALD는 우수한 단차 피복성(Step Coverage)을 제공하여 종횡비가 극도로 높은 구조에서도 상부와 하부의 두께 편차가 없는 균일한 박막을 형성합니다.</p>\n        <hr>\n        <h2>ALD 공정의 극복 과제</h2>\n        <p>ALD의 가장 큰 약점은 박막을 한 층씩 증착하는 특성상 <strong>낮은 생산 속도(Throughput)</strong>입니다. 이를 해결하기 위해 배치 타입(Batch Type) 설비의 도입이나, 가스의 유입과 배기를 고속으로 반복하는 가스 제어 밸브의 하드웨어 개선이 계속되고 있습니다. 또한 저온 ALD 공정 시 전구체의 불완전 분해로 인한 불순물 잔류를 억제하는 유기 금속 전구체 설계 기술이 요구됩니다.</p>\n      "
+  },
+  "en": {
+    "title": "ALD (Atomic Layer Deposition) Process Mechanisms in 3D NAND Channel Hole Fabrication",
+    "description": "An analysis of Atomic Layer Deposition (ALD) chemistry, self-limiting reactions, and their critical application in high-aspect-ratio 3D NAND flash memory.",
+    "content": "\n        <h2>Self-Limiting Mechanisms in ALD Chemistry</h2>\n        <p>Atomic Layer Deposition (ALD) deposits ultra-thin films atomic layer by layer through sequential exposure of precursors and reactants. Unlike Chemical Vapor Deposition (CVD), ALD relies on <strong>self-limiting surface reactions</strong>, where the chemical reaction stops once all active surface sites are saturated. This enables precise thickness control at the angstrom scale.</p>\n        <hr>\n        <h2>3D NAND High-Aspect-Ratio Stacking & ALD</h2>\n        <p>As 3D NAND flash memory exceeds 200 vertical layers, the aspect ratio of memory channel holes surpasses 100:1. Depositing charge block layers, charge trap layers, and tunnel oxides inside these deep channels requires absolute thickness uniformity. ALD delivers exceptional step coverage, eliminating top-to-bottom thickness variations inside deep vias.</p>\n        <hr>\n        <h2>Process Challenges and Mitigation</h2>\n        <p>The primary constraint of ALD is its <strong>low throughput</strong> due to cyclic gas purging. Next-generation batch tools and high-speed gas delivery valves are utilized to reduce cycle time. Additionally, developing organometallic precursors that decompose fully at lower temperatures prevents impurity contamination within the films.</p>\n      "
+  }
+}

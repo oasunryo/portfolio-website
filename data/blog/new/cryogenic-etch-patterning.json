@@ -1,0 +1,15 @@
+{
+  "slug": "cryogenic-etch-patterning",
+  "date": "2026-08-18",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "극저온 식각(Cryogenic Etch)을 활용한 미세 패턴 프로파일 붕괴 방지",
+    "description": "영하 60도 이하 저온 영역에서 측벽 화학 반응을 동결하고 수직 이온 경로만 살리는 극저온 식각 장비의 원리를 분석합니다.",
+    "content": "<h2>미세 홀 식각의 왜곡 오류</h2><p>3D NAND 채널 홀이나 High-NA EUV의 고밀도 트렌치 공정에서는 100:1에 육박하는 종횡비를 파내야 합니다. 이 과정에서 고에너지 반응성 이온이 벽면을 공격해 항아리 모양으로 불룩해지는 보잉(Bowing)이나 패턴이 기우는 틸팅(Tilting) 불량이 심각해집니다.</p><h2>극저온 식각(Cryogenic Etch) 솔루션</h2><p>Lam Research와 Tokyo Electron(TEL)은 공정 챔버의 온도를 영하 60도에서 100도 이하 극저온으로 낮추는 <strong>극저온 식각(Cryogenic Etch)</strong> 장비를 개발했습니다. 저온 상태에서는 실리콘 벽면의 화학적 식각을 차단하는 동시에 이온의 충격을 수직 방향으로만 집중시켜, 왜곡 없는 매끄러운 수직 벽면 프로파일을 완성해 냅니다.</p>"
+  },
+  "en": {
+    "title": "Preventing Pattern Collapse via Advanced Cryogenic Etching",
+    "description": "Analyzing deep high-aspect ratio etching techniques and cryogenic freezing strategies by Lam and TEL.",
+    "content": "<h2>Aspect Ratio Limits in Dry Etch</h2><p>Etching deep 3D NAND holes or High-NA EUV logic lines demands extreme aspect ratios. High-energy ions scrape side walls, causing profile bowing, throat clogging, and pattern tilting.</p><h2>Cryogenic Etching by Lam and TEL</h2><p>Lam Research and Tokyo Electron (TEL) introduce <strong>cryogenic etching</strong>, cooling the wafer chuck below -60°C to -100°C. Lower temperatures suppress spontaneous chemical reactions at the sidewalls, focusing ion impacts vertically to achieve highly anisotropic vertical profiles.</p>"
+  }
+}

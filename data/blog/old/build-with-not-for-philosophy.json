@@ -1,0 +1,15 @@
+{
+  "slug": "build-with-not-for-philosophy",
+  "date": "2026-05-28",
+  "category": "Insight",
+  "ko": {
+    "title": "\"Build with, not for\" — 사람 중심의 공학 철학이 중요한 이유",
+    "description": "어떤 제품이나 아키텍처를 설계할 때 기술 자체의 화려함보다 실제 사용자의 가려운 곳을 긁어주는 공학적 태도에 대하여.",
+    "content": "\n        <h2>기술의 대단함보다 중요한 것은 사용자의 불편함 해결 속도다</h2>\n        <p>과거 스타트업이나 여러 제품 프로젝트를 기획하고 설계해보면서 절실히 배운 문장이 있습니다. <strong>\"Build with, not for (그들을 위해 만들지 말고, 그들과 함께 만들어라).\"</strong></p>\n        <p>엔지니어들은 종종 본인이 사용하는 기술이나 알고리즘의 세련됨에 도취해, 정작 최종 사용자가 느낄 복잡한 인터페이스나 불필요한 번거로움을 간과하고 '자신만의 세계'를 구축하곤 합니다. 하지만 기술이 진짜 가치를 발휘하는 시점은 그 복잡도를 꽁꽁 숨긴 채 사용자의 일상적인 문제나 고장 상황을 가장 직관적이고 빠르게 조율해줄 때입니다.</p>\n        \n        <hr>\n        \n        <h2>공학도의 진짜 태도</h2>\n        <p>현재 반도체 후공정 라인에서 나타나는 불량 데이터를 Spotfire로 분석할 때도, 대단한 AI 모형을 자랑하는 것보다 현장 오퍼레이터들과 라인 엔지니어들이 즉시 불량 요인을 파악하고 직관적으로 액션할 수 있는 대시보드 환경을 짜주는 것이 진짜 의미 있는 엔지니어링입니다. 사용자와 끊임없이 대화하며 그들의 사소한 가려움을 긁어주는 사람만이 세상을 바꿀 진짜 의미 있는 시스템을 탄생시킵니다.</p>\n      "
+  },
+  "en": {
+    "title": "\"Build with, not for\": Why Human-Centered Engineering Matters",
+    "description": "Focusing on solving real user inconveniences rather than showing off technical complexity.",
+    "content": "\n        <h2>Speed of solving pain points beats technology hype</h2>\n        <p>My guiding rule is: <strong>\"Build with, not for.\"</strong> Developers often fall in love with complex algorithms, ignoring the user's friction. Technology holds value only when complexity is hidden, delivering a fast solution to the operator.</p>\n        \n        <hr>\n        \n        <h2>The engineer's true mindset</h2>\n        <p>Whether tracing defect trends or visualizing yield diagnostics on a factory line, creating a dashboard that machine operators can action instantly is far more impactful than pitching deep neural networks. Engineering is always about human utility.</p>\n      "
+  }
+}

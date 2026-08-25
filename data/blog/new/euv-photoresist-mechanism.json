@@ -1,0 +1,15 @@
+{
+  "slug": "euv-photoresist-mechanism",
+  "date": "2026-04-20",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "EUV 노광 공정과 극미세 패턴 해상도를 위한 포토레지스트(PR) 메커니즘",
+    "description": "13.5nm 극자외선(EUV) 파장을 이용한 미세 패터닝 시 광학 한계 극복을 위한 화학 증폭형 PR(CAR)과 금속 산화물 PR(MOR)의 발전 방향.",
+    "content": "\n        <h2>EUV 노광의 도입과 파장의 한계 돌파</h2>\n        <p>반도체 집적도를 올리기 위한 노광 파장의 단축은 DUV(193nm)에서 마침내 EUV(13.5nm)까지 도달했습니다. 파장이 극도로 짧아짐에 따라 광자의 에너지는 매우 강해졌지만, 단위 면적당 도달하는 광자 수(Photon Shot Noise)가 줄어들어 패턴이 찌그러지거나 거칠어지는 Line Edge Roughness(LER) 불량이 핵심 이슈로 떠올랐습니다.</p>\n        <hr>\n        <h2>화학 증폭형 레지스트(CAR)의 한계</h2>\n        <p>기존에 사용되던 화학 증폭형 포토레지스트(CAR)는 빛을 받은 산 발생제(PAG)가 화학 반응을 증폭시켜 용해도를 바꾸는 원리입니다. 하지만 산의 확산 거리(Acid Diffusion Length)가 패턴 크기보다 커지면서, 10nm 이하 극미세 공정에서는 경계면이 뭉개지는 한계에 도달했습니다.</p>\n        <hr>\n        <h2>차세대 메탈 산화물 PR(MOR)의 부상</h2>\n        <p>이를 해결하기 위해 분자 크기가 작고 흡수 계수가 큰 주석(Sn) 기반의 <strong>금속 산화물 포토레지스트(Metal Oxide PR, MOR)</strong>가 급부상하고 있습니다. MOR은 산의 확산 공정이 없어 LER 특성이 매우 뛰어나고, 훨씬 얇은 두께로도 단단한 마스크 역할을 수행하여 초미세 회로 패턴의 수직 프로파일을 정교하게 세울 수 있게 해줍니다.</p>\n      "
+  },
+  "en": {
+    "title": "EUV Photolithography & Photoresist Molecular Processing Mechanisms",
+    "description": "Comparing Chemically Amplified Resists (CAR) and Tin-based Metal Oxide Resists (MOR) for high-resolution 13.5nm EUV patterning.",
+    "content": "\n        <h2>EUV Lithography Photon Shot Noise Limits</h2>\n        <p>Transitioning from 193nm DUV to 13.5nm Extreme Ultraviolet (EUV) light enabled sub-10nm circuit features. However, higher photon energy means fewer photons land per unit area, exacerbating Photon Shot Noise and causing Line Edge Roughness (LER) anomalies.</p>\n        <hr>\n        <h2>Limits of Chemically Amplified Resists (CAR)</h2>\n        <p>CAR relies on Photoacid Generators (PAG) to trigger a chemical reaction cascade. But as pattern sizes shrink below the acid diffusion length, the borders blur, hindering fine resolution.</p>\n        <hr>\n        <h2>Metal Oxide Resists (MOR) Resolution</h2>\n        <p>Tin (Sn)-based Metal Oxide Resists (MOR) offer a solution. Lacking acid diffusion steps, MOR molecules resolve finer boundaries, acting as a sturdy mask for vertical etching profiles.</p>\n      "
+  }
+}

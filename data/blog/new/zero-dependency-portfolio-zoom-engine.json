@@ -1,0 +1,15 @@
+{
+  "slug": "zero-dependency-portfolio-zoom-engine",
+  "date": "2026-05-24",
+  "category": "Architecture",
+  "ko": {
+    "title": "Zero-Dependency 포트폴리오 줌-스케일링 캔버스 렌더러 설계 백서",
+    "description": "React나 외부 캔버스 엔진 없이, 바닐라 Javascript와 CSS transform-matrix 연산만으로 피그마 스타일 줌 엔진을 브라우저에 이식한 과정.",
+    "content": "\n        <h2>외부 프레임워크에 대한 집착을 버릴 때 열리는 성능</h2>\n        <p>웹에서 피그마와 같은 3단 구성 인터랙티브 캔버스를 구현하겠다고 결심했을 때, 흔히 React Flow 같은 대형 라이브러리 도입을 검토하곤 합니다. 하지만 이들은 코어 번들 크기를 부풀리고 렌더링 프레임 레이트를 가라앉히는 주범입니다. 저는 어떠한 종속성도 없는 <strong>Zero-Dependency 바닐라 JS 스케일 엔진</strong>을 직접 구축하기로 결정했습니다.</p>\n        <hr>\n        <h2>수학적 transform-origin 보정과 줌 수식</h2>\n        <p>브라우저 리사이징 시 요소들의 겹침이나 마진 왜곡을 원천 봉쇄하기 위해, 뷰포트 너비와 높이를 고정된 가상의 캔버스 크기(1440x960)에 대응시켜 <code>ScaleRatio = Math.min(windowWidth/1440, windowHeight/960)</code> 공식을 연동했습니다. 이를 부모 랩 컨테이너의 <code>transform: scale()</code> 속성에 삽입하고 flex 정렬 마진을 동적 계산하여, 화면 크기가 급변해도 마치 피그마 뷰포트 내에서 줌 비율이 매끄럽게 조정되는 듯한 연출을 유도했습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Building a Zero-Dependency Zoom-Scaling Canvas Renderer from Scratch",
+    "description": "Implementing custom aspect-ratio scaling and transform-matrix properties using vanilla JavaScript without external web-flow engines.",
+    "content": "\n        <h2>Discarding Framework Bloat for Clean Performance</h2>\n        <p>Instead of loading third-party layout libraries that bloat your bundle size, writing a custom <strong>Zero-Dependency Scaling Engine</strong> yields instant page loads.</p>\n        <hr>\n        <h2>Mathematical Resizing and Center Proportions</h2>\n        <p>By mapping layout coordinates against a virtual 1440x960 canvas and applying `ScaleRatio = Math.min(width/1440, height/960)`, we dynamically compute CSS transforms in main.js, keeping the visual board aligned on any monitor.</p>\n      "
+  }
+}

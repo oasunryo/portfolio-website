@@ -1,0 +1,15 @@
+{
+  "slug": "chiplet-disaggregation-trend",
+  "date": "2026-03-08",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "모놀리식 다이의 해체: 칩렛(Chiplet) 아키텍처와 UCIe 표준 규격",
+    "description": "거대한 단일 칩 대신 저렴하고 수율이 우수한 소형 기능별 칩 조각(Chiplets)을 패키지 레벨에서 엮는 설계 기법과 다이 간 상호 연결 표준 UCIe의 중요성.",
+    "content": "\n        <h2>하나의 거대한 다이(Die)가 비효율적인 이유</h2>\n        <p>전체 회로를 단일 반도체 칩에 다 집어넣는 모놀리식(Monolithic) 공정은 칩 크기(Die Area)가 커질수록 결함 밀도에 따른 수율 저하가 지수함수적으로 늘어나는 심각한 물리적 단점이 있습니다. 칩 크기가 800mm²를 넘어가면 웨이퍼 한 장에서 건질 수 있는 정상 칩 개수가 급감합니다.</p>\n        <hr>\n        <h2>칩렛(Chiplet) 분할 전략</h2>\n        <p>성능에 민감한 코어(CPU) 부분만 최첨단 3nm 공정으로 칩을 작게 만들고, 성능 영향이 적은 I/O 컨트롤러나 메모리 채널은 가성비 좋은 7nm/14nm 공정으로 별도 칩렛을 구현한 뒤 이들을 후공정 패키지 레벨에서 엮으면 수율과 원가를 크게 개선할 수 있습니다.</p>\n        <hr>\n        <h2>UCIe(Universal Chiplet Interconnect Express) 표준</h2>\n        <p>제조사가 다른 칩렛들을 조립 장난감처럼 끼워 맞추기 위해서는 다이 간 인터페이스 표준 규격이 절대적으로 필요합니다. Intel, AMD, TSMC, Samsung 등 거물들이 뭉쳐 확립한 <strong>UCIe</strong>는 패키지 내부 다이 간 통신 지연 시간을 줄이고 넓은 전송 대역폭을 저전력으로 확보할 수 있는 상호 동기화 전용 표준 규약입니다.</p>\n      "
+  },
+  "en": {
+    "title": "De-aggregating Monolithic Silicon: Chiplet Design and UCIe Interconnect Standard",
+    "description": "Dividing silicon into optimized modular dies (chiplets) connected via the Universal Chiplet Interconnect Express (UCIe) standard.",
+    "content": "\n        <h2>Yield Challenges of Large Monolithic Dies</h2>\n        <p>In traditional monolithic designs, yield decreases exponentially as the die area expands. Manufacturing dies exceeding 800mm² is highly cost-inefficient due to defect distribution.</p>\n        <hr>\n        <h2>The Chiplet Disaggregation Strategy</h2>\n        <p>By routing core compute blocks on expensive 3nm nodes and keeping auxiliary I/O interfaces on cheaper 7nm processes, designers cut costs and boost production reliability.</p>\n        <hr>\n        <h2>Universal Chiplet Interconnect Express (UCIe)</h2>\n        <p>For chiplets from different fabs to talk, a common communication standard is needed. <strong>UCIe</strong> defines die-to-die signals inside the package, ensuring seamless, low-latency interoperability.</p>\n      "
+  }
+}

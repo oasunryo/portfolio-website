@@ -1,0 +1,15 @@
+{
+  "slug": "directed-self-assembly-dsa-dpt",
+  "date": "2026-08-11",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Directed Self-Assembly (DSA)와 DP 공정의 차세대 융합 트렌드",
+    "description": "블록 공중합체의 자기 조립 현상을 ArFi/EUV 기반 더블 패터닝과 혼합하여 한계를 돌파하는 하이브리드 공정을 설명합니다.",
+    "content": "<h2>고분자 자기조립(DSA) 기술의 부상</h2><p>노광 장비의 한계를 화학적 물질로 돌파하려는 시도 중 하나가 바로 DSA(Directed Self-Assembly)입니다. 이는 서로 섞이지 않는 두 가지 고분자 블록(Block Copolymer)이 나노미터 단위의 규칙적인 미세 구조를 자발적으로 형성하도록 유도하는 기술입니다.</p><h2>Tokyo Electron(TEL)의 하이브리드 공정 제안</h2><p>최근 TEL과 Brewer Science 등은 EUV 또는 ArFi 노광으로 가이드 패턴(DP)을 먼저 만든 뒤, 그 위에 DSA 물질을 도포하여 패턴 간격을 더욱 조밀하게 줄이는 하이브리드 패터닝을 제안하고 있습니다. 마스크 비용을 혁신적으로 절감하면서 10nm 이하의 규칙적인 나노 구조를 실현할 수 있어 주목받고 있습니다.</p>"
+  },
+  "en": {
+    "title": "Directed Self-Assembly (DSA) and DP Hybrid Patterning Trends",
+    "description": "Explaining the hybrid integration of block copolymers self-assembly guided by traditional lithographic templates.",
+    "content": "<h2>Breaking Physics via Chemistry: Directed Self-Assembly</h2><p>Directed Self-Assembly (DSA) uses block copolymers (BCPs) that phase-separate spontaneously into nanoscale patterns. Rather than relying solely on optical projection, chemical alignment shapes the target circuitry.</p><h2>TEL Hybrid Patterning Concept</h2><p>Leading equipment providers like Tokyo Electron (TEL) and Brewer Science deploy hybrid processes where coarse guide templates are defined by lithography (DP), and BCPs fill the template to double the density. This drastically offsets mask costs while achieving uniform sub-10nm pitch line-space arrays.</p>"
+  }
+}

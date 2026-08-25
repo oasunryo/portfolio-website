@@ -1,0 +1,15 @@
+{
+  "slug": "underfill-void-capillary-flow",
+  "date": "2026-05-23",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "플립칩 본딩에서 언더필(Underfill) 모세관 유동 동역학 및 Void 억제책",
+    "description": "칩 아래에 액상 봉지재를 밀어 넣는 Capillary Underfill 공정 시, 범프 배치 레이아웃과 액상 점도에 의해 발생하는 미세 기포(Void) 원인 분석.",
+    "content": "\n        <h2>칩 아랫공간을 채우는 모세관 언더필 (CUF)</h2>\n        <p>플립칩(Flip-Chip) 패키징에서 칩 패드와 기판 사이의 미세 범프들을 외부 물리 충격 및 습기로부터 보호하기 위해, 그 미세 틈새를 고분자 수지로 채워 넣는 공정을 <strong>언더필(Underfill)</strong>이라고 합니다. 액체 토출 노즐을 칩 테두리에 도포하면 중력과 모세관 현상(Capillary Action)에 의해 용액이 칩 안쪽으로 빨려 들어가게 되는 흐름을 이용합니다.</p>\n        <hr>\n        <h2>언더필 미세 기포 (Void) 발생 기작</h2>\n        <p>언더필 유동 전선(Flow Front)이 안쪽으로 균일하게 진입하지 못하고 특정 방향으로 먼저 빠르게 전진한 뒤 감싸 쥐는 형태가 되면, 내부에 미처 빠져나가지 못한 미세 공기가 갇혀 <strong>Void(기포)</strong>를 형성합니다. 특히 미세 범프가 조밀한 구역과 헐렁한 구역의 통과 유량 불균형으로 인해 공기 갇힘 현상이 집중됩니다.</p>\n        <hr>\n        <h2>Void 예방을 위한 공정 및 물리 설계 변수</h2>\n        <ul>\n          <li><strong>Pre-heat Temperature:</strong> 기판 온도를 사전 가열하여 에폭시 점도를 최적화하고 유동성을 극대화합니다.</li>\n          <li><strong>Dispensing Pattern:</strong> I자형 도포, L자형 도포 등 칩 형태에 맞는 도포 경로를 설계해 단방향 유동 전선을 유지시킵니다.</li>\n          <li><strong>Bump Array Offset:</strong> 범프 배치 설계 시 모세관 유로를 가로막지 않도록 유속 병목 지점을 미리 차단하는 범프 레이아웃 배치를 수행합니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Capillary Underfill Dynamics and Void Prevention in Flip-Chip Stacking",
+    "description": "Analyzing fluid viscosities, dispensing patterns, and bump arrays to prevent micro-void formation during capillary underfill (CUF) processes.",
+    "content": "\n        <h2>Capillary Underfill (CUF) Fluid Dynamics</h2>\n        <p>In flip-chip packages, the narrow gap between the die and substrate is filled with epoxy resin to secure micro-bumps. This is <strong>Capillary Underfill (CUF)</strong>, driven by capillary pressure that pulls liquid resins through micro-channels.</p>\n        <hr>\n        <h2>Void Formation Mechanisms</h2>\n        <p>If the fluid flow front advances unevenly, it loops back and traps pockets of air, forming <strong>Voids</strong>. Voids often form when high-density bump zones cause flow velocity imbalances, creating stagnation points.</p>\n        <hr>\n        <h2>Mitigating Void Defects</h2>\n        <ul>\n          <li><strong>DC Substrate Heating:</strong> Warming substrates lowers resin viscosity, improving flow speeds.</li>\n          <li><strong>Dispense Paths:</strong> Using I-shaped or L-shaped dispense patterns maintains a single, flat flow front.</li>\n          <li><strong>Bump Channel Tuning:</strong> Layout designs align bump grids to keep capillary paths clear.</li>\n        </ul>\n      "
+  }
+}

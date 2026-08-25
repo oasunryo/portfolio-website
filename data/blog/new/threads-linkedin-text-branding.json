@@ -1,0 +1,15 @@
+{
+  "slug": "threads-linkedin-text-branding",
+  "date": "2026-03-28",
+  "category": "Insight",
+  "ko": {
+    "title": "스레드와 링크드인 텍스트 미디어 전용 브랜딩 카피라이팅 가이드",
+    "description": "영상 촬영 없이 순수 텍스트만으로 기술적 전문성과 직장인 페르소나를 녹여내어 업계 사람들의 공유를 유도하는 텍스트 브랜딩 공식.",
+    "content": "\n        <h2>줄글 미디어의 호흡법</h2>\n        <p>인스타그램 스레드나 링크드인은 유튜브와 독자의 결이 완전히 다릅니다. 이들은 과시적이거나 감정적인 공감대를 자극하거나, 즉시 써먹을 수 있는 정갈한 기술 노하우 요약에 적극 반응합니다.</p>\n        <hr>\n        <h2>텍스트 브랜딩 공식</h2>\n        <ul>\n          <li><strong>가독성 높은 줄바꿈과 이모지 배제:</strong> 가벼워 보이는 형형색색의 이모지를 줄이고, 한 문장 단위로 엔터를 쳐서 모바일 가독성을 최대화합니다.</li>\n          <li><strong>날것의 조언(Raw Value):</strong> 반도체 현장에서 실제로 겪은 휨(Warpage) 불량 사례와 해결기 등 일기장 같으면서도 깊이가 확실한 경험담을 덤덤하게 내뱉습니다.</li>\n        </ul>\n      "
+  },
+  "en": {
+    "title": "Copywriting Rules for Threads and LinkedIn Tech Branding",
+    "description": "Writing high-engagement text posts that combine career realities with practical engineering insights to drive organic shares.",
+    "content": "\n        <h2>The Architecture of Text-Based Feeds</h2>\n        <p>LinkedIn and Threads audiences seek professional tips and career realities. Adapt your copywriting tone to match their reading habits.</p>\n        <hr>\n        <h2>The Copywriting Rules</h2>\n        <ul>\n          <li><strong>Clean Paragraph Splits:</strong> Eliminate excessive emoji spam. Keep lines spaced and tidy for mobile screens.</li>\n          <li><strong>Raw Real-World Value:</strong> Share daily learnings—such as OSAT warpage troubleshooting—packaged as personal tech notes.</li>\n        </ul>\n      "
+  }
+}

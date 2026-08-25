@@ -1,0 +1,15 @@
+{
+  "slug": "sheet-formula-division-error",
+  "date": "2026-04-22",
+  "category": "Insight",
+  "ko": {
+    "title": "실제비중(K열) 및 비중차이(M열) 수식 파싱 에러 격파 일지",
+    "description": "목표비중에 문자열 퍼센트가 주입되거나 대시보드 병합 셀 분모 위치가 바뀌어 수식이 터지는 분모 무적화(SUM 분모법) 처리기.",
+    "content": "\n        <h2>사칙 연산에 텍스트가 섞일 때의 붕괴</h2>\n        <p>구글 시트에서 비중을 뺄셈하는 수식을 가동할 때, 목표비중 셀에 숫자 대신 <code>\"10.0%\"</code>라는 텍스트 문자열이 들어가 있으면 스프레드시트는 계산을 포기하고 <code>#VALUE!</code> 에러를 유발합니다.</p>\n        <hr>\n        <h2>절대 깨지지 않는 SUM 분모법 도입</h2>\n        <p>첫째로, 모든 목표비중 데이터를 순수 소수점 실수(0.10, 0.15) 형태로 정규화했습니다. 둘째로, 실제비중 계산 시 대시보드 셀의 단독 총자산 좌표를 나누던 취약한 구조에서, <strong>현재 열려있는 모든 주식 평가합을 직접 계산하는 <code>=J6/SUM(J$6:J$23)</code> 수식으로 교체</strong>해 대시보드 병합이 어떻게 깨져도 평가비중 수식은 영원히 고장 나지 않는 무적 설계를 이룩했습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Fixing Division Parsing Errors in Asset Allocation Columns",
+    "description": "How to redesign division formulas in Excel/Google Sheets using sum vectors instead of static dashboard total variables.",
+    "content": "\n        <h2>The Fragility of Hardcoded Division Denominators</h2>\n        <p>If target weights are formatted as text string \"10.0%\" instead of decimal integers (0.10), subtraction equations fail with #VALUE! errors.</p>\n        <hr>\n        <h2>Dynamic SUM Denominator Method</h2>\n        <p>We normalized weight targets to clean floating numbers. Then, we updated the current weight column formula to divide by the vector sum <code>=J6/SUM(J$6:J$23)</code> instead of pointing to static dashboard cells.</p>\n      "
+  }
+}

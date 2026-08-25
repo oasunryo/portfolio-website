@@ -1,0 +1,15 @@
+{
+  "slug": "ai-tools-study-efficiency",
+  "date": "2026-04-30",
+  "category": "Career",
+  "ko": {
+    "title": "전공 공부의 치트키: AI 에이전트와 함께 10배 속도로 논문 공부하는 법",
+    "description": "단순 질답을 넘어 AI 에이전트에게 전공 텍스트북 피드들을 학습시키고, 가상 인터뷰 질문을 받으며 고체물리 학과 시험을 돌파한 비결.",
+    "content": "\n        <h2>더는 텍스트를 무식하게 읽지 마라</h2>\n        <p>전공 서적의 복잡한 수식과 수십 페이지의 영어 논문을 처음부터 끝까지 다 읽고 요약하는 구시대적 공부법은 이제 효율이 극도로 떨어집니다. AI 번역과 요약 기술을 나만의 맞춤형 교수진으로 구성하는 스마트한 파이프라인 설계법을 정착시켜야 합니다.</p>\n        <hr>\n        <h2>AI 페어 러닝(Pair Learning) 루틴</h2>\n        <p>저는 옵시디언 노트에 공부할 챕터 PDF를 업로드한 뒤, AI 비서에게 <strong>\"이 챕터에서 학과 시험에 출제될 만한 3대 킬러 개념을 뽑아내고, 내가 모순되게 설명하는 부분을 날카롭게 파고드는 면접관 모드로 내게 말을 걸어줘\"</strong>라고 가이드라인 프롬프트를 줍니다. 단순 내용을 요약해달라는 명령보다, 내 논리적 취약점을 공격하게 함으로써 메타인지(내가 아는 것과 모르는 것을 아는 능력)를 순식간에 깨우고 지식을 내 것으로 만들 수 있습니다.</p>\n      "
+  },
+  "en": {
+    "title": "Study Hack: Learning Complex Engineering Concepts 10x Faster with AI Agents",
+    "description": "How to use AI assistants to generate dynamic Q&As and run active recall loops for solid-state physics and packaging tests.",
+    "content": "\n        <h2>Ditch the Passive Reading Mentality</h2>\n        <p>Highlighting textbook pages blindly is inefficient. Instead, transform AI agents into personal interactive professors using structured prompts.</p>\n        <hr>\n        <h2>The AI Pair Learning Routine</h2>\n        <p>Provide the AI with your course syllabus and ask: \"Act as a strict professor. Probe my knowledge on chapter 3, flag my logical gaps, and challenge my answers.\" This active recall loop builds solid mental models fast.</p>\n      "
+  }
+}
