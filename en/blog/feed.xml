@@ -7,6 +7,76 @@
   <language>en-US</language>
   <atom:link href="https://junseo.site/en/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title><![CDATA[Achieving Atomic-Scale Precision via Atomic Layer Etching (ALE)]]></title>
+    <link>https://junseo.site/en/blog/atomic-layer-etch-ale/index.html</link>
+    <guid>https://junseo.site/en/blog/atomic-layer-etch-ale/index.html</guid>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Exploring self-limiting atomic layer etch concepts and surface roughness improvements by AMAT and Lam.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[EUV Pellicle Degradation and Reliability Under DPT Exposures]]></title>
+    <link>https://junseo.site/en/blog/euv-pellicle-degradation-challenges/index.html</link>
+    <guid>https://junseo.site/en/blog/euv-pellicle-degradation-challenges/index.html</guid>
+    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[How high-throughput double patterning loads affect pellicle degradation, and new material answers.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Preventing Pattern Collapse via Advanced Cryogenic Etching]]></title>
+    <link>https://junseo.site/en/blog/cryogenic-etch-patterning/index.html</link>
+    <guid>https://junseo.site/en/blog/cryogenic-etch-patterning/index.html</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Analyzing deep high-aspect ratio etching techniques and cryogenic freezing strategies by Lam and TEL.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Hardmask Material Innovations for High-Aspect-Ratio Etching]]></title>
+    <link>https://junseo.site/en/blog/hardmask-materials-innovation/index.html</link>
+    <guid>https://junseo.site/en/blog/hardmask-materials-innovation/index.html</guid>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Investigating carbon hardmask technology and material shifts driven by DuPont, Merck, and Dongjin Semichem.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[The Heart of Multi-Patterning: Diffraction-Based Overlay (DBO) and APC Control]]></title>
+    <link>https://junseo.site/en/blog/diffraction-based-overlay-metrology/index.html</link>
+    <guid>https://junseo.site/en/blog/diffraction-based-overlay-metrology/index.html</guid>
+    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Understanding overlay control limits and how DBO feedback loops drive scanner stage alignments.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Directed Self-Assembly (DSA) and DP Hybrid Patterning Trends]]></title>
+    <link>https://junseo.site/en/blog/directed-self-assembly-dsa-dpt/index.html</link>
+    <guid>https://junseo.site/en/blog/directed-self-assembly-dsa-dpt/index.html</guid>
+    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Explaining the hybrid integration of block copolymers self-assembly guided by traditional lithographic templates.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Mitigating EUV Stochastic Defects via DP Process Splitting]]></title>
+    <link>https://junseo.site/en/blog/euv-stochastic-defects-dpt/index.html</link>
+    <guid>https://junseo.site/en/blog/euv-stochastic-defects-dpt/index.html</guid>
+    <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[How to handle random defect formation under photon shot noise using split double-patterning configurations.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Anamorphic Optics and Patterning Innovation in High-NA EUV (0.55 NA)]]></title>
+    <link>https://junseo.site/en/blog/high-na-euv-anamorphic-lens/index.html</link>
+    <guid>https://junseo.site/en/blog/high-na-euv-anamorphic-lens/index.html</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Examining 0.55 NA numerical aperture changes and anamorphic lens designs utilized to bypass mask shadowing effects.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[LELE vs. SADP Multi-Patterning Process Comparison]]></title>
+    <link>https://junseo.site/en/blog/lele-vs-sadp-mechanism/index.html</link>
+    <guid>https://junseo.site/en/blog/lele-vs-sadp-mechanism/index.html</guid>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Comparing Litho-Etch-Litho-Etch (LELE) and Self-Aligned Double Patterning (SADP) mechanisms and their yield differences.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Technical Crossroads: EUV Single vs. Double Patterning (DPT)]]></title>
+    <link>https://junseo.site/en/blog/euv-single-vs-double-patterning/index.html</link>
+    <guid>https://junseo.site/en/blog/euv-single-vs-double-patterning/index.html</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[An analysis of the limits of 0.33 NA EUV single patterning and the transition to EUV-DPT (LELE, SADP) amid High-NA EUV delays.]]></description>
+  </item>
+  <item>
     <title><![CDATA[Building Offline-First Web Apps via Browser IndexedDB Architectures]]></title>
     <link>https://junseo.site/en/blog/indexeddb-offline-sync-caching/index.html</link>
     <guid>https://junseo.site/en/blog/indexeddb-offline-sync-caching/index.html</guid>
@@ -75,76 +145,6 @@
     <guid>https://junseo.site/en/blog/automated-session-handover/index.html</guid>
     <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[Compiling codebase audits and active task states into token-optimized briefing prompts for seamless sequential AI agent execution.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Optimizing Safari Viewport Overlays and iOS Safe-Area Headers]]></title>
-    <link>https://junseo.site/en/blog/safari-viewport-overlay-optimization/index.html</link>
-    <guid>https://junseo.site/en/blog/safari-viewport-overlay-optimization/index.html</guid>
-    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Resolving bounce scroll seam gaps in Safari overlays using negative margins and dynamically computing top safe-area boundaries.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Off-line Static Embedding Similarity Calculation and Standalone Blog Recommendation]]></title>
-    <link>https://junseo.site/en/blog/blog-embedding-recommendation-system/index.html</link>
-    <guid>https://junseo.site/en/blog/blog-embedding-recommendation-system/index.html</guid>
-    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Compiling sentence-transformer embedding matrices during build time to generate static similarity mapping for offline related posts navigation.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Building High-End Interactive Web Presentations with HTML/CSS]]></title>
-    <link>https://junseo.site/en/blog/interactive-web-slides-builder/index.html</link>
-    <guid>https://junseo.site/en/blog/interactive-web-slides-builder/index.html</guid>
-    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Explore designing a responsive, HTML/CSS-native slide builder with micro-animations and style presets, replacing heavy presentation files.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Wafer WAT Big Data Analysis via Spotfire Cobalt Grid Visualization]]></title>
-    <link>https://junseo.site/en/blog/spotfire-cobalt-grid-analysis/index.html</link>
-    <guid>https://junseo.site/en/blog/spotfire-cobalt-grid-analysis/index.html</guid>
-    <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Developing interactive Spotfire dashboards with cobalt grid parameters to isolate spatial yield failures and equipment anomalies.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Karpathy-Style LLM Wiki Synthesis: Ingest, Query, and Lint Automation for Obsidian PKM]]></title>
-    <link>https://junseo.site/en/blog/karpathy-style-wiki-synthesis/index.html</link>
-    <guid>https://junseo.site/en/blog/karpathy-style-wiki-synthesis/index.html</guid>
-    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Compounding local notes into an English knowledge base with a 3-layer structure using automated ingestion, validation, and semantic sync.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI Wealth Manager: Sheets API & Multi-Agent Portfolio Rebalancing]]></title>
-    <link>https://junseo.site/en/blog/google-sheets-api-asset-management/index.html</link>
-    <guid>https://junseo.site/en/blog/google-sheets-api-asset-management/index.html</guid>
-    <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Integrating 4 specialized agents (Finance, News, Industry, Strategy) to synchronize ledger balances and execute target weight rebalancing via Google Sheets API.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Semiconductor News Scraper & Discord Bot Orchestration]]></title>
-    <link>https://junseo.site/en/blog/discord-semiconductor-news-bot/index.html</link>
-    <guid>https://junseo.site/en/blog/discord-semiconductor-news-bot/index.html</guid>
-    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Structuring an automated pipeline to aggregate semiconductor industry developments and deliver daily summaries to Discord.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Hacking CapCut Local Project JSON for Automated Cuts and Subtitle Synchronization]]></title>
-    <link>https://junseo.site/en/blog/capcut-draft-json-automation/index.html</link>
-    <guid>https://junseo.site/en/blog/capcut-draft-json-automation/index.html</guid>
-    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Reverse engineering CapCut's draft metadata to programmatically align ASR transcripts, video segments, and styling for advanced automation.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Integrating Ponytail and Caveman Rules for AI Agent Optimization]]></title>
-    <link>https://junseo.site/en/blog/harness-ponytail-caveman-integration/index.html</link>
-    <guid>https://junseo.site/en/blog/harness-ponytail-caveman-integration/index.html</guid>
-    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[How merging YAGNI-centric code control with terse, token-efficient Korean Caveman style interactions stabilizes AI workspace collaboration.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Continuous Integration Pipelines for Static Sites via GitHub Actions]]></title>
-    <link>https://junseo.site/en/blog/continuous-integration-static-pages/index.html</link>
-    <guid>https://junseo.site/en/blog/continuous-integration-static-pages/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Automating compile scripts and static file deployments through cloud runner workflows.]]></description>
   </item>
 </channel>
 </rss>

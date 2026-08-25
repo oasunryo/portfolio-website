@@ -7,6 +7,76 @@
   <language>ko-KR</language>
   <atom:link href="https://junseo.site/ko/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
+    <title><![CDATA[원자층 식각(ALE, Atomic Layer Etching)을 이용한 무결점 패턴 제어]]></title>
+    <link>https://junseo.site/ko/blog/atomic-layer-etch-ale/index.html</link>
+    <guid>https://junseo.site/ko/blog/atomic-layer-etch-ale/index.html</guid>
+    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[원자층 수준에서 한 층씩 제어하는 자기제한적 식각 방식을 통해 극미세 패턴 조도를 낮추는 기술 동향을 해부합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[EUV 펠리클(Pellicle) 다회 노광 노출에 따른 열화 제어]]></title>
+    <link>https://junseo.site/ko/blog/euv-pellicle-degradation-challenges/index.html</link>
+    <guid>https://junseo.site/ko/blog/euv-pellicle-degradation-challenges/index.html</guid>
+    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[DP 공정 반복으로 가중된 노광 스트레스를 견뎌내는 CNT 및 SiC 기반 펠리클 신소재 개발 경쟁을 분석합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[극저온 식각(Cryogenic Etch)을 활용한 미세 패턴 프로파일 붕괴 방지]]></title>
+    <link>https://junseo.site/ko/blog/cryogenic-etch-patterning/index.html</link>
+    <guid>https://junseo.site/ko/blog/cryogenic-etch-patterning/index.html</guid>
+    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[영하 60도 이하 저온 영역에서 측벽 화학 반응을 동결하고 수직 이온 경로만 살리는 극저온 식각 장비의 원리를 분석합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[고종횡비 식각을 위한 하드마스크(Hardmask) 신소재 혁신]]></title>
+    <link>https://junseo.site/ko/blog/hardmask-materials-innovation/index.html</link>
+    <guid>https://junseo.site/ko/blog/hardmask-materials-innovation/index.html</guid>
+    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[식각 시 패턴 붕괴를 예방하기 위한 ACL막 및 스핀온 카본(SOC) 마스크 소재의 화학적 고도화 동향을 정리합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[다중 패터닝 핵심: DBO (Diffraction-Based Overlay) 계측과 APC 제어]]></title>
+    <link>https://junseo.site/ko/blog/diffraction-based-overlay-metrology/index.html</link>
+    <guid>https://junseo.site/ko/blog/diffraction-based-overlay-metrology/index.html</guid>
+    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[수 나노미터 오정렬을 회절 신호 데이터 분석으로 잡아내는 DBO 원리와 런투런 스테이지 동기화 기술을 살펴봅니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[Directed Self-Assembly (DSA)와 DP 공정의 차세대 융합 트렌드]]></title>
+    <link>https://junseo.site/ko/blog/directed-self-assembly-dsa-dpt/index.html</link>
+    <guid>https://junseo.site/ko/blog/directed-self-assembly-dsa-dpt/index.html</guid>
+    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[블록 공중합체의 자기 조립 현상을 ArFi/EUV 기반 더블 패터닝과 혼합하여 한계를 돌파하는 하이브리드 공정을 설명합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[EUV 확률적 결함(Stochastic Defects)과 DP 분할 노광 솔루션]]></title>
+    <link>https://junseo.site/ko/blog/euv-stochastic-defects-dpt/index.html</link>
+    <guid>https://junseo.site/ko/blog/euv-stochastic-defects-dpt/index.html</guid>
+    <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[광자 부족으로 인해 생기는 무작위 결함을 더블 패터닝 선량 최적화 기법으로 관리하는 원리를 기술합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[High-NA EUV (0.55 NA) 시대의 Anamorphic Lens와 패터닝 혁신]]></title>
+    <link>https://junseo.site/ko/blog/high-na-euv-anamorphic-lens/index.html</link>
+    <guid>https://junseo.site/ko/blog/high-na-euv-anamorphic-lens/index.html</guid>
+    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[0.55 NA 노광 장비 구경 확대와 마스크 차단 문제를 피하기 위한 아나모픽 렌즈의 도입 및 이점을 요약합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[LELE (Litho-Etch-Litho-Etch) vs SADP (Self-Aligned Double Patterning) 메커니즘 비교]]></title>
+    <link>https://junseo.site/ko/blog/lele-vs-sadp-mechanism/index.html</link>
+    <guid>https://junseo.site/ko/blog/lele-vs-sadp-mechanism/index.html</guid>
+    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[오버레이 마진 확보 관점에서 스페이서 증착 방식을 쓰는 SADP와 다중 노광/식각인 LELE의 장단점 및 수율 차이를 분석합니다.]]></description>
+  </item>
+  <item>
+    <title><![CDATA[EUV 싱글 vs 더블 패터닝(DPT) 기술적 분기점]]></title>
+    <link>https://junseo.site/ko/blog/euv-single-vs-double-patterning/index.html</link>
+    <guid>https://junseo.site/ko/blog/euv-single-vs-double-patterning/index.html</guid>
+    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[0.33 NA EUV 싱글 패터닝의 한계와 High-NA EUV 지연에 따른 EUV-DPT(LELE, SADP) 도입 배경을 분석합니다.]]></description>
+  </item>
+  <item>
     <title><![CDATA[IndexedDB와 브라우저 저장소를 활용한 오프라인 동작 웹 애플리케이션 구축]]></title>
     <link>https://junseo.site/ko/blog/indexeddb-offline-sync-caching/index.html</link>
     <guid>https://junseo.site/ko/blog/indexeddb-offline-sync-caching/index.html</guid>
@@ -75,76 +145,6 @@
     <guid>https://junseo.site/ko/blog/automated-session-handover/index.html</guid>
     <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
     <description><![CDATA[코드베이스 감사 및 활성 작업 상태를 토큰 최적화된 브리핑 프롬프트로 컴파일하여 AI 에이전트의 원활한 순차 실행을 지원합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Safari 뷰포트 오버레이 및 iOS 안전 영역 헤더 최적화]]></title>
-    <link>https://junseo.site/ko/blog/safari-viewport-overlay-optimization/index.html</link>
-    <guid>https://junseo.site/ko/blog/safari-viewport-overlay-optimization/index.html</guid>
-    <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Safari 오버레이의 바운스 스크롤 이음새 간격 해결 및 상단 안전 영역 경계 동적 계산.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[오프라인 정적 임베딩 유사성 계산 및 독립형 블로그 추천]]></title>
-    <link>https://junseo.site/ko/blog/blog-embedding-recommendation-system/index.html</link>
-    <guid>https://junseo.site/ko/blog/blog-embedding-recommendation-system/index.html</guid>
-    <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[빌드 타임에 sentence-transformer 임베딩 행렬을 계산하여 오프라인 관련 게시물 탐색을 위한 정적 유사성 매핑 생성.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[HTML/CSS 기반의 고성능 인터랙티브 웹 프레젠테이션 구축]]></title>
-    <link>https://junseo.site/ko/blog/interactive-web-slides-builder/index.html</link>
-    <guid>https://junseo.site/ko/blog/interactive-web-slides-builder/index.html</guid>
-    <pubDate>Tue, 16 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[반응형, HTML/CSS 네이티브 슬라이드 빌더를 마이크로 애니메이션 및 스타일 프리셋과 함께 설계하여, 무거운 프레젠테이션 파일을 대체하는 방법을 탐구합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[Spotfire 코발트 그리드 시각화를 통한 웨이퍼 WAT 빅데이터 분석]]></title>
-    <link>https://junseo.site/ko/blog/spotfire-cobalt-grid-analysis/index.html</link>
-    <guid>https://junseo.site/ko/blog/spotfire-cobalt-grid-analysis/index.html</guid>
-    <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[코발트 그리드 파라미터를 사용한 대화형 Spotfire 대시보드 개발로 공간적 수율 실패 및 장비 이상을 격리합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[카파티 스타일 LLM 위키 합성: 옵시디언 PKM을 위한 자동화된 수집, 질의 및 린트]]></title>
-    <link>https://junseo.site/ko/blog/karpathy-style-wiki-synthesis/index.html</link>
-    <guid>https://junseo.site/ko/blog/karpathy-style-wiki-synthesis/index.html</guid>
-    <pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[자동화된 수집, 검증, 시맨틱 동기화를 통해 3계층 구조의 로컬 노트를 영어 지식 베이스로 통합합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI 자산 관리자: Google Sheets API 및 다중 에이전트 포트폴리오 재조정]]></title>
-    <link>https://junseo.site/ko/blog/google-sheets-api-asset-management/index.html</link>
-    <guid>https://junseo.site/ko/blog/google-sheets-api-asset-management/index.html</guid>
-    <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[4개의 전문 에이전트(재무, 뉴스, 산업, 전략)를 통합하여 Google Sheets API를 통해 장부 잔액을 동기화하고 목표 비중 재조정을 실행합니다.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[반도체 뉴스 스크래퍼 및 디스코드 웹훅 봇 오케스트레이션]]></title>
-    <link>https://junseo.site/ko/blog/discord-semiconductor-news-bot/index.html</link>
-    <guid>https://junseo.site/ko/blog/discord-semiconductor-news-bot/index.html</guid>
-    <pubDate>Fri, 12 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[반도체 산업 동향을 집계하고 매일 디스코드에 요약을 전송하는 자동화된 봇 파이프라인 구축.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[CapCut 로컬 프로젝트 JSON 해킹: 자동화된 컷 및 자막 동기화]]></title>
-    <link>https://junseo.site/ko/blog/capcut-draft-json-automation/index.html</link>
-    <guid>https://junseo.site/ko/blog/capcut-draft-json-automation/index.html</guid>
-    <pubDate>Thu, 11 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[CapCut 초안 메타데이터 역설계를 통해 ASR 스크립트, 비디오 세그먼트 및 스타일링을 프로그램적으로 정렬하여 고급 자동화 구현.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[AI 에이전트 최적화를 위한 포니테일 및 케이브맨 규칙 통합]]></title>
-    <link>https://junseo.site/ko/blog/harness-ponytail-caveman-integration/index.html</link>
-    <guid>https://junseo.site/ko/blog/harness-ponytail-caveman-integration/index.html</guid>
-    <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[YAGNI 중심의 코드 제어와 간결하고 토큰 효율적인 한국형 케이브맨 스타일 상호작용을 결합하여 AI 작업 공간 협업을 안정화하는 방법.]]></description>
-  </item>
-  <item>
-    <title><![CDATA[GitHub Actions를 이용한 Zero-Dependency 정적 포트폴리오 사이트 자동 배포 파이프라인]]></title>
-    <link>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</link>
-    <guid>https://junseo.site/ko/blog/continuous-integration-static-pages/index.html</guid>
-    <pubDate>Mon, 08 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[코드를 메인 브랜치에 푸시하면 빌드 검증을 거쳐 Vercel 또는 GitHub Pages 배포까지 1분 이내에 완료하는 CI/CD 가동 가이드.]]></description>
   </item>
 </channel>
 </rss>

@@ -1634,5 +1634,155 @@ module.exports = [
       "description": "Architecting a lightweight Node.js compiler. It automatically parses `ko`/`en` subdirectories and resolves relative links for robust multilingual localization without frameworks.",
       "content": "<h2>Introduction: The Challenge of Multilingual Static Sites</h2><p>In an increasingly globalized digital landscape, delivering content in multiple languages is paramount. For static websites, lauded for their performance, security, and low operational overhead, achieving robust multilingual support can be surprisingly complex. Traditional approaches often involve client-side JavaScript for dynamic language switching, which can hinder SEO, or rely on server-side rewrites, adding deployment complexity. The core challenge lies in seamlessly managing locale-specific content while ensuring all internal relative links remain functional and correctly point to their respective localized resources, especially when dealing with deeply nested directory structures common in technical documentation or semiconductor product catalogs.</p><h2>Architectural Overview of the Compiler</h2><p>Our solution is a lightweight, custom-built static compiler, exemplified by a <code>build.js</code> script written in Node.js. This compiler operates on a structured source directory where each locale (e.g., <code>ko/</code>, <code>en/</code>) resides in its own top-level subdirectory. The build process is orchestrated through several distinct phases:</p><ul><li><strong>Phase 1: Source File Ingestion:</strong> The compiler recursively scans predefined locale directories (e.g., <code>src/en/</code>, <code>src/ko/</code>) to identify all relevant HTML files and static assets.</li><li><strong>Phase 2: HTML Parsing and Link Identification:</strong> For each HTML file, a DOM parsing library (such as <code>cheerio</code>) is employed to traverse the document tree. It identifies all attributes that contain path references, including <code>href</code> in <code>&lt;a&gt;</code> and <code>&lt;link&gt;</code> tags, <code>src</code> in <code>&lt;img&gt;</code> and <code>&lt;script&gt;</code> tags, and potentially <code>url()</code> in inline CSS.</li><li><strong>Phase 3: Dynamic Relative Path Resolution:</strong> This is the core innovation. Based on the source file's locale and its position within the source tree, the compiler dynamically re-evaluates and transforms all identified relative paths into root-relative paths appropriate for the final static output structure.</li><li><strong>Phase 4: Output Generation:</strong> The modified HTML content, along with copied and organized static assets, is written to a designated output directory (e.g., <code>dist/</code>), preserving the locale-based subdirectory structure.</li></ul><h2>Deep Dive: Dynamic Relative Path Swapping Logic</h2><p>The ingenuity of this approach lies in its ability to contextually resolve and swap relative paths during compilation. Consider a scenario where a source file <code>/src/ko/pages/product-spec.html</code> contains an internal link <code>&lt;a href=\"../assets/datasheet.pdf\"&gt;</code>. The <code>build.js</code> script leverages Node.js's <code>path</code> module:</p><ol><li>The compiler first determines the absolute path of the current source file being processed: <code>/project-root/src/ko/pages/product-spec.html</code>.</li><li>It then resolves the relative link against the directory of this current file: <code>path.resolve('/project-root/src/ko/pages/', '../assets/datasheet.pdf')</code>. This operation correctly yields the absolute path to the asset within the source tree: <code>/project-root/src/ko/assets/datasheet.pdf</code>.</li><li>To generate a consistent, deployment-ready link, the resolved absolute source path is then converted into a root-relative path based on the overall project's output structure. If our output directory is <code>/project-root/dist/</code> and it mirrors the locale-subdirectories, the final <code>href</code> becomes <code>/ko/assets/datasheet.pdf</code>.</li></ol><p>This mechanism dynamically adjusts link destinations for various linking scenarios:</p><ul><li><strong>Intra-locale Links:</strong> A link like <code>&lt;a href=\"details.html\"&gt;</code> within <code>/src/en/products/</code> is transformed to <code>/en/products/details.html</code>.</li><li><strong>Inter-locale Links:</strong> For a link spanning locales, such as <code>&lt;a href=\"../../ko/about.html\"&gt;</code> originating from <code>/src/en/products/</code>, the compiler correctly resolves it to <code>/ko/about.html</code>, ensuring seamless navigation between localized versions of content.</li><li><strong>Shared Assets:</strong> Assets located in a common directory (e.g., <code>/src/shared/images/logo.png</code>) are copied to a corresponding `dist/shared/` location, and links like <code>&lt;img src=\"../../shared/images/logo.png\"&gt;</code> from <code>/src/ko/docs/</code> are appropriately resolved to <code>/shared/images/logo.png</code>, maintaining single-source-of-truth for global resources.</li></ul><h2>Benefits and Conclusion</h2><p>Implementing this lightweight static compiler offers significant advantages. It ensures strong <a href=\"https://developers.google.com/search/docs/specialty/international/localized-versions\" target=\"_blank\" rel=\"noopener noreferrer\">SEO optimization</a> through consistent, crawlable URLs. Performance is maximized by serving purely static files, eliminating server-side rendering or complex client-side routing logic. This architecture provides a clear separation of concerns, simplifies deployment to any standard web server or CDN, and fosters a maintainable codebase. By meticulously managing relative paths at build-time, we achieve a highly efficient, scalable, and user-friendly multilingual static site solution, suitable for intricate technical documentation or high-traffic product landing pages in semiconductor or SaaS contexts where precision and speed are paramount.</p>"
     }
+  },
+  {
+    "slug": "euv-single-vs-double-patterning",
+    "date": "2026-08-01",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "EUV 싱글 vs 더블 패터닝(DPT) 기술적 분기점",
+      "description": "0.33 NA EUV 싱글 패터닝의 한계와 High-NA EUV 지연에 따른 EUV-DPT(LELE, SADP) 도입 배경을 분석합니다.",
+      "content": "<h2>0.33 NA EUV 싱글 패터닝의 한계</h2><p>ASML의 0.33 NA EUV 노광 장비는 7nm 및 5nm 노드에서 단일 노광(Single Exposure)으로 미세 패턴을 형성하는 데 혁신적인 기여를 했습니다. 그러나 3nm 이하 공정으로 진입함에 따라 광학적 해상도 한계(Rayleigh Criterion)에 직면하여 피치(Pitch)가 30nm 이하로 줄어들 때 패턴이 붙거나 끊어지는 현상이 발생합니다.</p><h2>High-NA EUV 지연과 DPT의 대두</h2><p>차세대 0.55 NA High-NA EUV 장비의 높은 단가와 에코시스템 성숙 지연으로 인해, TSMC와 삼성전자 등 주요 파운드리는 기존 0.33 NA 장비를 활용한 <strong>EUV 더블 패터닝(EUV-DPT)</strong> 공정을 양산에 적극 도입하고 있습니다. 이는 한 번에 그릴 수 없는 미세 패스를 두 번 나누어 노광함으로써 물리적인 피치 한계를 극복하는 공정입니다.</p>"
+    },
+    "en": {
+      "title": "Technical Crossroads: EUV Single vs. Double Patterning (DPT)",
+      "description": "An analysis of the limits of 0.33 NA EUV single patterning and the transition to EUV-DPT (LELE, SADP) amid High-NA EUV delays.",
+      "content": "<h2>Limits of 0.33 NA EUV Single Exposure</h2><p>ASML's 0.33 NA EUV lithography enabled single exposure patterning down to 7nm and 5nm nodes. However, as scaling pushes below 3nm, physical resolution boundaries (Rayleigh Criterion) cause pattern bridging and necking when the metal pitch drops below 30nm.</p><h2>EUV-DPT and High-NA Delays</h2><p>With high acquisition costs and ecosystem delays for next-gen 0.55 NA High-NA systems, leading foundries like TSMC and Samsung are implementing <strong>EUV Double Patterning (EUV-DPT)</strong> on existing 0.33 NA scanners. By splitting dense layouts into two separate exposure passes, they successfully extend resolution limits.</p>"
+    }
+  },
+  {
+    "slug": "lele-vs-sadp-mechanism",
+    "date": "2026-08-03",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "LELE (Litho-Etch-Litho-Etch) vs SADP (Self-Aligned Double Patterning) 메커니즘 비교",
+      "description": "오버레이 마진 확보 관점에서 스페이서 증착 방식을 쓰는 SADP와 다중 노광/식각인 LELE의 장단점 및 수율 차이를 분석합니다.",
+      "content": "<h2>다중 패터닝 구현을 위한 두 가지 경로</h2><p>더블 패터닝을 구현하는 대표적인 방식으로는 LELE와 SADP가 있습니다. LELE는 말 그대로 두 번의 노광과 두 번의 식각 공정을 순차 진행하는 방식으로, 레이아웃 설계의 유연성이 매우 높지만 두 번째 노광 시 첫 번째 패턴과의 정렬 오차(Overlay error)를 완벽하게 제어해야 하는 까다로운 마진 문제를 안고 있습니다.</p><h2>SADP의 자체 정렬(Self-Aligned) 강점</h2><p>반면, Applied Materials와 Lam Research의 식각 및 증착 장비를 활용하는 SADP 공정은 더미 패턴에 스페이서(Spacer)를 얇게 코팅한 뒤 이를 식각 마스크로 삼아 피치를 절반으로 줄입니다. 한 번의 노광만 필요하기 때문에 오버레이 오차가 원천 차단되며, 10nm 이하의 극미세 피치 공정에서 높은 수율을 확보할 수 있는 핵심적인 강점을 가집니다.</p>"
+    },
+    "en": {
+      "title": "LELE vs. SADP Multi-Patterning Process Comparison",
+      "description": "Comparing Litho-Etch-Litho-Etch (LELE) and Self-Aligned Double Patterning (SADP) mechanisms and their yield differences.",
+      "content": "<h2>Two Paths to Pitch Splitting</h2><p>Litho-Etch-Litho-Etch (LELE) and Self-Aligned Double Patterning (SADP) are the primary routes to double patterning. LELE runs two full lithography and etch steps sequentially, offering high layout design flexibility but demanding extreme overlay accuracy between the two exposures.</p><h2>The Self-Aligned Advantage of SADP</h2><p>SADP, enabled by advanced deposition and etching tools from Applied Materials and Lam Research, deposits conformable spacers on sacrificial mandrel patterns. The spacer acts as an etch mask to halve the pitch. Because it requires only a single lithography step, overlay errors are intrinsically mitigated, making SADP essential for sub-10nm pitch control.</p>"
+    }
+  },
+  {
+    "slug": "high-na-euv-anamorphic-lens",
+    "date": "2026-08-06",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "High-NA EUV (0.55 NA) 시대의 Anamorphic Lens와 패터닝 혁신",
+      "description": "0.55 NA 노광 장비 구경 확대와 마스크 차단 문제를 피하기 위한 아나모픽 렌즈의 도입 및 이점을 요약합니다.",
+      "content": "<h2>0.55 NA 장비의 기하학적 설계 혁신</h2><p>ASML의 High-NA EUV 노광 장비는 렌즈 구경(NA)을 0.33에서 0.55로 확대하여 해상도를 8nm 수준으로 끌어올렸습니다. 하지만 입사각이 커지면서 발생하는 마스크 광 차단(3D Shadowing) 문제를 피하기 위해, 축소 비율을 X축 4배, Y축 8배로 다르게 설계하는 <strong>아나모픽 렌즈(Anamorphic Lens)</strong>를 도입했습니다.</p><h2>인텔과 파운드리 업계의 도입 로드맵</h2><p>인텔은 오리건 Fab D1X에 High-NA 장비를 우선 배치하며 1.4nm(Intel 14A) 공정 개발에 속도를 내고 있습니다. 아나모픽 렌즈 적용으로 노광 필드 크기가 절반으로 줄어드는 제약이 있으나, 더블 패터닝 공정 횟수를 획기적으로 줄여 생산성을 확보하고 공정 단계를 단순화하는 가치를 제공합니다.</p>"
+    },
+    "en": {
+      "title": "Anamorphic Optics and Patterning Innovation in High-NA EUV (0.55 NA)",
+      "description": "Examining 0.55 NA numerical aperture changes and anamorphic lens designs utilized to bypass mask shadowing effects.",
+      "content": "<h2>Optics Re-engineering for 0.55 NA</h2><p>ASML's High-NA EUV scanners elevate numerical aperture from 0.33 to 0.55, improving physical resolution down to 8nm. To bypass extreme mask shadowing caused by high light incident angles, ASML engineered <strong>anamorphic lenses</strong> with unequal magnification ratios (4x in X, 8x in Y).</p><h2>Foundry Roadmaps and Implementation</h2><p>Intel led early installations at its D1X Oregon fab, accelerating its 1.4nm (Intel 14A) roadmap. Although the anamorphic lens restricts the exposure field to half-size, the elimination of complex multi-patterning passes stabilizes overall fab throughput and process simplicity.</p>"
+    }
+  },
+  {
+    "slug": "euv-stochastic-defects-dpt",
+    "date": "2026-08-08",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "EUV 확률적 결함(Stochastic Defects)과 DP 분할 노광 솔루션",
+      "description": "광자 부족으로 인해 생기는 무작위 결함을 더블 패터닝 선량 최적화 기법으로 관리하는 원리를 기술합니다.",
+      "content": "<h2>극자외선 노광의 아킬레스건, 확률적 결함</h2><p>EUV 공정이 미세화될수록 웨이퍼 표면에 도달하는 광자 수(Photon Density)가 부족해지는 현상이 발생합니다. 이로 인해 광자가 균일하게 흡수되지 않아 패턴 가장자리가 거칠어지는 LER(Line Edge Roughness)이나 회로가 끊어지는 Nano-bridging 등의 <strong>확률적 결함(Stochastic Defects)</strong>이 무작위로 발생하게 됩니다.</p><h2>DP 분할 노광을 통한 Defect 완화</h2><p>이 문제를 완화하기 위해 KLA나 Lasertec의 검사 장비 데이터를 기반으로 노광 선량(Dose)을 높이고, 이를 두 번의 DP 공정으로 쪼개어 빛을 충분히 조사하는 분할 노광 기법이 사용됩니다. 단일 고선량 노광보다 결함률을 낮추고 공정 마진(Process Window)을 확보할 수 있는 대안으로 자리잡고 있습니다.</p>"
+    },
+    "en": {
+      "title": "Mitigating EUV Stochastic Defects via DP Process Splitting",
+      "description": "How to handle random defect formation under photon shot noise using split double-patterning configurations.",
+      "content": "<h2>The Achilles' Heel of EUV: Stochastic Effects</h2><p>As EUV features shrink, the count of incoming photons per unit area drops. This photon shot noise causes stochastic defects like localized micro-bridging, line breaks, and elevated line edge roughness (LER) due to uneven photon distribution on the photoresist.</p><h2>Defect Control via DPT Dose Distribution</h2><p>To mitigate stochastics, foundries process defect telemetry via KLA and Lasertec tools. Splitting layouts into two exposures (DPT) allows engineers to increase the exposure dose per pass, ensuring sufficient photon density to smooth out resist profiles and expand yield margins.</p>"
+    }
+  },
+  {
+    "slug": "directed-self-assembly-dsa-dpt",
+    "date": "2026-08-11",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "Directed Self-Assembly (DSA)와 DP 공정의 차세대 융합 트렌드",
+      "description": "블록 공중합체의 자기 조립 현상을 ArFi/EUV 기반 더블 패터닝과 혼합하여 한계를 돌파하는 하이브리드 공정을 설명합니다.",
+      "content": "<h2>고분자 자기조립(DSA) 기술의 부상</h2><p>노광 장비의 한계를 화학적 물질로 돌파하려는 시도 중 하나가 바로 DSA(Directed Self-Assembly)입니다. 이는 서로 섞이지 않는 두 가지 고분자 블록(Block Copolymer)이 나노미터 단위의 규칙적인 미세 구조를 자발적으로 형성하도록 유도하는 기술입니다.</p><h2>Tokyo Electron(TEL)의 하이브리드 공정 제안</h2><p>최근 TEL과 Brewer Science 등은 EUV 또는 ArFi 노광으로 가이드 패턴(DP)을 먼저 만든 뒤, 그 위에 DSA 물질을 도포하여 패턴 간격을 더욱 조밀하게 줄이는 하이브리드 패터닝을 제안하고 있습니다. 마스크 비용을 혁신적으로 절감하면서 10nm 이하의 규칙적인 나노 구조를 실현할 수 있어 주목받고 있습니다.</p>"
+    },
+    "en": {
+      "title": "Directed Self-Assembly (DSA) and DP Hybrid Patterning Trends",
+      "description": "Explaining the hybrid integration of block copolymers self-assembly guided by traditional lithographic templates.",
+      "content": "<h2>Breaking Physics via Chemistry: Directed Self-Assembly</h2><p>Directed Self-Assembly (DSA) uses block copolymers (BCPs) that phase-separate spontaneously into nanoscale patterns. Rather than relying solely on optical projection, chemical alignment shapes the target circuitry.</p><h2>TEL Hybrid Patterning Concept</h2><p>Leading equipment providers like Tokyo Electron (TEL) and Brewer Science deploy hybrid processes where coarse guide templates are defined by lithography (DP), and BCPs fill the template to double the density. This drastically offsets mask costs while achieving uniform sub-10nm pitch line-space arrays.</p>"
+    }
+  },
+  {
+    "slug": "diffraction-based-overlay-metrology",
+    "date": "2026-08-14",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "다중 패터닝 핵심: DBO (Diffraction-Based Overlay) 계측과 APC 제어",
+      "description": "수 나노미터 오정렬을 회절 신호 데이터 분석으로 잡아내는 DBO 원리와 런투런 스테이지 동기화 기술을 살펴봅니다.",
+      "content": "<h2>1nm 이하 정밀도의 오버레이 장벽</h2><p>더블/쿼드러플 패터닝 공정은 수많은 레이어가 완벽하게 겹쳐야 완성됩니다. 오버레이(Overlay) 허용 오차가 1nm 수준으로 축소됨에 따라 전통적인 이미지 기반 계측(IBO)은 렌즈 수차와 해상도 한계로 인해 측정 한계에 도달했습니다.</p><h2>회절 기반 오버레이(DBO)와 실시간 보정</h2><p>ASML의 YieldStar와 KLA 계측 장비는 회절 광학 패턴을 분석하는 <strong>회절 기반 오버레이(DBO)</strong> 기술을 사용하여 정확한 물리적 틀어짐을 계산해 냅니다. 수집된 오버레이 오차 데이터는 노광기로 피드백되어 실시간 런투런(Run-to-Run) APC 알고리즘을 통해 렌즈 왜곡과 스테이지 정밀도를 매 프레임 제어합니다.</p>"
+    },
+    "en": {
+      "title": "The Heart of Multi-Patterning: Diffraction-Based Overlay (DBO) and APC Control",
+      "description": "Understanding overlay control limits and how DBO feedback loops drive scanner stage alignments.",
+      "content": "<h2>The Sub-Nanometer Overlay Challenge</h2><p>Multi-patterning hinges on alignment accuracy across several exposures. With overlay margins compressed down to 1nm, traditional Image-Based Overlay (IBO) struggles due to lens aberration and optical diffraction limits.</p><h2>DBO Metrology and Real-Time Corrections</h2><p>YieldStar scanners from ASML and overlay tools from KLA utilize <strong>Diffraction-Based Overlay (DBO)</strong> targets to resolve nano-scale alignment errors. The measured deviation is fed back to the scanner, allowing Advanced Process Control (APC) systems to adjust lens profiles and stage positioning dynamically.</p>"
+    }
+  },
+  {
+    "slug": "hardmask-materials-innovation",
+    "date": "2026-08-16",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "고종횡비 식각을 위한 하드마스크(Hardmask) 신소재 혁신",
+      "description": "식각 시 패턴 붕괴를 예방하기 위한 ACL막 및 스핀온 카본(SOC) 마스크 소재의 화학적 고도화 동향을 정리합니다.",
+      "content": "<h2>다중 패터닝 식각 장벽, 하드마스크</h2><p>DP 또는 QP 공정에서는 패턴을 웨이퍼 기판에 깊숙이 새기기 위해 감광막(PR) 하부에 강력한 식각 장벽 역할을 하는 하드마스크층이 필수적입니다. 종횡비가 극단적으로 늘어날수록 일반적인 이산화규소(SiO2)막은 견디지 못하고 무너집니다.</p><h2>ACL & SOC 신소재 도입과 DuPont/Merck 경쟁</h2><p>이를 해결하기 위해 탄소 함량이 극도로 높은 <strong>비정질 탄소막(ACL)</strong>과 스핀 코팅이 용이한 <strong>Spin-On Carbon (SOC)</strong> 물질이 도입되었습니다. DuPont과 Merck, 그리고 한국의 동진쎄미켐 등 소재 기업들은 더 단단하고 내화학성이 높은 탄소 하드마스크 재료를 제공하여 3D NAND 및 최첨단 로직 공정의 패턴 미세화를 지원하고 있습니다.</p>"
+    },
+    "en": {
+      "title": "Hardmask Material Innovations for High-Aspect-Ratio Etching",
+      "description": "Investigating carbon hardmask technology and material shifts driven by DuPont, Merck, and Dongjin Semichem.",
+      "content": "<h2>Etch Buffers in Multi-Patterning</h2><p>In DP or QP schemes, thin photoresists lack the etch selectivity to transfer deep layouts into substrates. A structural buffer, or hardmask, must be inserted beneath the resist to shield target features during prolonged plasma exposures.</p><h2>ACL and SOC Evolution by DuPont and Merck</h2><p>High-carbon <strong>Amorphous Carbon Layers (ACL)</strong> and spin-on carbon (SOC) compounds address this. Chem manufacturers like DuPont, Merck, and Dongjin Semichem formulate hardmasks with enhanced mechanical strength and etch resistance, maintaining fidelity in high-aspect structures.</p>"
+    }
+  },
+  {
+    "slug": "cryogenic-etch-patterning",
+    "date": "2026-08-18",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "극저온 식각(Cryogenic Etch)을 활용한 미세 패턴 프로파일 붕괴 방지",
+      "description": "영하 60도 이하 저온 영역에서 측벽 화학 반응을 동결하고 수직 이온 경로만 살리는 극저온 식각 장비의 원리를 분석합니다.",
+      "content": "<h2>미세 홀 식각의 왜곡 오류</h2><p>3D NAND 채널 홀이나 High-NA EUV의 고밀도 트렌치 공정에서는 100:1에 육박하는 종횡비를 파내야 합니다. 이 과정에서 고에너지 반응성 이온이 벽면을 공격해 항아리 모양으로 불룩해지는 보잉(Bowing)이나 패턴이 기우는 틸팅(Tilting) 불량이 심각해집니다.</p><h2>극저온 식각(Cryogenic Etch) 솔루션</h2><p>Lam Research와 Tokyo Electron(TEL)은 공정 챔버의 온도를 영하 60도에서 100도 이하 극저온으로 낮추는 <strong>극저온 식각(Cryogenic Etch)</strong> 장비를 개발했습니다. 저온 상태에서는 실리콘 벽면의 화학적 식각을 차단하는 동시에 이온의 충격을 수직 방향으로만 집중시켜, 왜곡 없는 매끄러운 수직 벽면 프로파일을 완성해 냅니다.</p>"
+    },
+    "en": {
+      "title": "Preventing Pattern Collapse via Advanced Cryogenic Etching",
+      "description": "Analyzing deep high-aspect ratio etching techniques and cryogenic freezing strategies by Lam and TEL.",
+      "content": "<h2>Aspect Ratio Limits in Dry Etch</h2><p>Etching deep 3D NAND holes or High-NA EUV logic lines demands extreme aspect ratios. High-energy ions scrape side walls, causing profile bowing, throat clogging, and pattern tilting.</p><h2>Cryogenic Etching by Lam and TEL</h2><p>Lam Research and Tokyo Electron (TEL) introduce <strong>cryogenic etching</strong>, cooling the wafer chuck below -60°C to -100°C. Lower temperatures suppress spontaneous chemical reactions at the sidewalls, focusing ion impacts vertically to achieve highly anisotropic vertical profiles.</p>"
+    }
+  },
+  {
+    "slug": "euv-pellicle-degradation-challenges",
+    "date": "2026-08-20",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "EUV 펠리클(Pellicle) 다회 노광 노출에 따른 열화 제어",
+      "description": "DP 공정 반복으로 가중된 노광 스트레스를 견뎌내는 CNT 및 SiC 기반 펠리클 신소재 개발 경쟁을 분석합니다.",
+      "content": "<h2>EUV 마스크의 파수꾼, 펠리클</h2><p>EUV 장비는 극도로 강력한 에너지를 마스크에 투사합니다. 이때 공기 중의 미세 파티클이 마스크에 안착해 오염시키는 것을 막아주는 얇은 보호막이 펠리클(Pellicle)입니다. 특히 DP 공정 도입으로 마스크를 여러 번 노광기에 통과시켜야 하므로 펠리클의 중요성이 더욱 급증했습니다.</p><h2>열화 극복을 위한 신소재 경쟁</h2><p>EUV 광은 대부분의 물질에 흡수되어 열로 변환되기 때문에, 펠리클은 80% 이상의 높은 투과율과 극심한 고온(1200도 이상)을 견디는 재료 특성을 만족해야 합니다. 에프에스티(FST), 미쓰이화학(Mitsui Chemicals) 등은 카본나노튜브(CNT)나 실리콘카바이드(SiC) 기반 차세대 펠리클을 상용화하며 열화 수명을 극대화하고 있습니다.</p>"
+    },
+    "en": {
+      "title": "EUV Pellicle Degradation and Reliability Under DPT Exposures",
+      "description": "How high-throughput double patterning loads affect pellicle degradation, and new material answers.",
+      "content": "<h2>Shielding Masks in EUV Scanners</h2><p>EUV masks are prone to particle contamination. The <strong>pellicle</strong>, a thin membrane suspended above the photomask, keeps contaminants out of focus. With DPT doubling the exposure frequency on a single mask, pellicle duty cycles have surged.</p><h2>Thermal Wear and Material Innovations</h2><p>EUV light generates intense heat (above 1200°C) on the membrane. FST and Mitsui Chemicals engineer silicon carbide (SiC) and carbon nanotube (CNT) pellicles. These achieve over 80% EUV transmissivity while mitigating thermal deformation and oxidation during high-throughput runs.</p>"
+    }
+  },
+  {
+    "slug": "atomic-layer-etch-ale",
+    "date": "2026-08-22",
+    "category": "Semiconductor",
+    "ko": {
+      "title": "원자층 식각(ALE, Atomic Layer Etching)을 이용한 무결점 패턴 제어",
+      "description": "원자층 수준에서 한 층씩 제어하는 자기제한적 식각 방식을 통해 극미세 패턴 조도를 낮추는 기술 동향을 해부합니다.",
+      "content": "<h2>원자 단위의 공정 정밀도 요구</h2><p>2nm 이하 공정의 패터닝에서는 한 층의 원자마저 패턴 품질을 훼손할 수 있습니다. 기존 플라즈마 식각은 이온의 강한 충격으로 표면 결함(damage)이 불가피했으나, 이제는 원자층 수준에서 한 층씩 식각하는 ALE 기술이 필요합니다.</p><h2>Applied Materials와 Lam의 ALE 경쟁</h2><p>ALE는 기판 표면에 화학 가스를 흡착시켜 반응층을 형성한 뒤, 약한 아르곤 이온 충격을 주어 표면의 한 원자 레이어만 떨어트리는 자기제한적(Self-limiting) 두 단계 공정입니다. Applied Materials와 Lam Research의 ALE 장비는 패턴 가장자리의 조도(LWR, LER)를 비약적으로 개선하여 미세 패터닝 수율을 혁신하고 있습니다.</p>"
+    },
+    "en": {
+      "title": "Achieving Atomic-Scale Precision via Atomic Layer Etching (ALE)",
+      "description": "Exploring self-limiting atomic layer etch concepts and surface roughness improvements by AMAT and Lam.",
+      "content": "<h2>The Atomic Tolerance Limit</h2><p>As device scaling reaches sub-2nm thresholds, traditional plasma etching damages delicate atomic grids. Precise thickness control at the monolayer level becomes mandatory, giving rise to Atomic Layer Etching (ALE).</p><h2>AMAT and Lam Research ALE Process</h2><p>ALE uses a self-limiting cyclic process: chemical adsorption of a reactant on the target surface, followed by mild physical sputtering to strip only the modified surface layer. Equipment from Applied Materials and Lam Research drastically reduces surface damage and line roughness, stabilizing sub-2nm patterning yields.</p>"
+    }
   }
 ];

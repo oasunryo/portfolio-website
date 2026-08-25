@@ -127,3 +127,63 @@
 *   **Automation Tools**: Utilize `./scripts/ingest.py` for compiling/propagating raw resources, `./scripts/query.py --save` for synthesizing queries into the permanent knowledge base (compounding), and `./scripts/lint.py` for health-checking link integrity and resolving contradictions.
 *   **Bookkeeping & Indexing**: Ensure every ingestion or synthesis updates `log.md` chronologically and indexes target files under content categories in `Index.md`.
 
+---
+
+## 6. Current Projects Reference List
+
+Here is the standardized list of projects implemented in the portfolio (`projectsData.js`):
+
+1. **Wire Bonding Capillary Reliability**
+   - **KO Meta**: 반도체 / 와이어 본딩 캐필러리 신뢰성
+   - **EN Meta**: SEMICONDUCTOR / WIRE BONDING CAPILLARY RELIABILITY
+   - **Title**: *Effect of Ceramic Capillary Geometry on 1st Bond Morphology and Strength in Wire Bonding*
+
+2. **Packaging & Test Theory Integration**
+   - **KO Meta**: 반도체 / 후공정 패키지 및 테스트 종합 이론
+   - **EN Meta**: SEMICONDUCTOR / PACKAGING & TEST THEORY INTEGRATION
+   - **Title**: *Semiconductor Packaging & Test Engineering Fundamentals*
+
+3. **FPGA & Verilog HDL System**
+   - **KO Meta**: 디지털 설계 / FPGA 및 Verilog HDL 시스템
+   - **EN Meta**: DIGITAL DESIGN / FPGA & VERILOG HDL SYSTEM
+   - **Title**: *FPGA & Verilog HDL Digital Logic Circuit Design & Verification*
+
+4. **EUV Inorganic Photoresist**
+   - **KO Meta**: 차세대 노광 / EUV 무기 포토레지스트 공정
+   - **EN Meta**: NEXT-GEN LITHOGRAPHY / EUV INORGANIC PHOTORESIST
+   - **Title**: *TinNO₃: Next-Gen EUV Photoresist Innovation by Integrating Photoactive Nitrate Anion*
+
+5. **Spotfire-based Yield Analysis**
+   - **KO Meta**: 빅데이터 분석 / Spotfire 기반 반도체 수율 분석
+   - **EN Meta**: BIG DATA / SPOTFIRE-BASED SEMICONDUCTOR YIELD ANALYSIS
+   - **Title**: *Spotfire-based Semiconductor Manufacturing Process Data Analytics for Yield & Defect Optimization*
+
+6. **MCU-based AC Power Meter**
+   - **KO Meta**: 임베디드 회로 / MCU 기반 AC 전력계 설계
+   - **EN Meta**: EMBEDDED CIRCUIT / MCU-BASED AC POWER METER DESIGN
+   - **Title**: *Development of a Microcontroller-based Digital Single-Phase AC Power Meter Board*
+
+7. **Active Filter Audio Level Meter**
+   - **KO Meta**: 아날로그 회로 / 능동 필터 오디오 레벨 미터
+   - **EN Meta**: ANALOG CIRCUIT / ACTIVE FILTER AUDIO LEVEL METER
+   - **Title**: *Design & Verification of a 3-Band Audio Level Meter with Sallen-Key Active Filters*
+
+8. **Smart Li-Ion Charger Design**
+   - **KO Meta**: 전력 제어 / 스마트 리튬이온 차저 설계
+   - **EN Meta**: POWER CONTROL / SMART LI-ION CHARGER DESIGN
+   - **Title**: *Design & Verification of a Smart CC-CV Li-Ion Battery Charger with Precision Telemetry*
+
+9. **Battery Capacity Tester Design**
+   - **KO Meta**: 배터리 텔레메트리 / 배터리 잔량 테스터 설계
+   - **EN Meta**: BATTERY TELEMETRY / BATTERY CAPACITY TESTER DESIGN
+   - **Title**: *Development of a Multi-Battery SOC Tester with OCV-CCV Dynamic Compensation*
+
+10. **OLED Fabrication & Characterization**
+    - **KO Meta**: 반도체 소자 / OLED 공정 및 전기광학 특성 분석
+    - **EN Meta**: Device Physics / OLED Fabrication & Characterization
+    - **Title**: *ITO-based OLED Device Fabrication & Optoelectronic Performance Analysis*
+
+11. **AI Context Management**
+    - **KO Meta**: 소프트웨어 / AI 컨텍스트 관리
+    - **EN Meta**: Software / AI Context Management
+    - **Title**: *Context Relay: Zero-Loss Handover System for AI Coding Assistants*
