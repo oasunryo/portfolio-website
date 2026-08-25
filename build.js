@@ -407,7 +407,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Amkor Technology</span>
+            <a href="https://amkor.com" target="_blank" rel="noopener noreferrer" class="item-title-link">Amkor Technology</a>
             <span class="status-badge">OSAT</span>
           </div>
           <span class="item-date-text">2026.07.27 ~ </span>
@@ -421,7 +421,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">광운대학교 (Kwangwoon University)</span>
+            <a href="https://www.kw.ac.kr" target="_blank" rel="noopener noreferrer" class="item-title-link">광운대학교 (Kwangwoon University)</a>
             <span class="status-badge">학사 (B.S.)</span>
           </div>
           <span class="item-date-text">2020.03 ~ 2027.02 (졸업 예정)</span>
@@ -451,7 +451,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Amkor Technology</span>
+            <a href="https://amkor.com" target="_blank" rel="noopener noreferrer" class="item-title-link">Amkor Technology</a>
             <span class="status-badge">OSAT</span>
           </div>
           <span class="item-date-text">2026.07.27 ~ </span>
@@ -465,7 +465,7 @@ const homeContentDict = {
       <div class="list-item">
         <div class="item-header-row">
           <div class="item-title-badge">
-            <span style="font-family: var(--font-sans); font-size: 1.15rem; font-weight: 600;">Kwangwoon University</span>
+            <a href="https://www.kw.ac.kr" target="_blank" rel="noopener noreferrer" class="item-title-link">Kwangwoon University</a>
             <span class="status-badge">B.S.</span>
           </div>
           <span class="item-date-text">2020.03 ~ 2027.02 (Candidate)</span>
