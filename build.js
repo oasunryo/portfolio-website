@@ -1024,17 +1024,32 @@ async function buildAll() {
   console.log(`Generated /${lang}/blog/index.html`);
 
 
+  // Helper function to format compact period dates per language
+  function formatCompactPeriod(periodStr, lang) {
+    if (!periodStr) return '';
+    const presentLabel = lang === 'ko' ? '현재' : 'Present';
+    let formatted = periodStr.replace(/현재/g, presentLabel);
+    
+    // Replace 2024. 09. 01. ~ 2024. 12. 31. -> 24.09 ~ 24.12
+    // If same year/month or compact format:
+    // Regex matches 20XX. MM. DD. -> XX.MM
+    formatted = formatted.replace(/20(\d{2})\.\s*(\d{2})\.\s*\d{2}\./g, '$1.$2');
+    formatted = formatted.replace(/\s*~\s*/g, ' – ');
+    return formatted;
+  }
+
   // 4. Projects Page (/lang/projects/index.html)
   let designGridContent = projectsMeta.map(p => {
     const trans = p[lang];
     const imgPath = p.image.startsWith('/') ? '../../' + p.image.substring(1) : p.image;
     const tagHTML = p.tags ? p.tags.map(t => `<span class="design-card-tag">${t.trim()}</span>`).join('') : '';
+    const formattedPeriod = formatCompactPeriod(p.period, lang);
     return `
     <a class="design-card-item" href="./${p.slug}/index.html" data-type="${p.type}" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
       <span class="recommended-card-category">${trans.category}</span>
       <h3 class="design-card-title">${trans.title}</h3>
       <div class="design-card-sub-info">
-        <span class="design-card-date">${p.period}</span>
+        <span class="design-card-date">${formattedPeriod}</span>
       </div>
     </a>
     `;
