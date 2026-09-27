@@ -1,0 +1,15 @@
+{
+  "slug": "engineer-portfolio-github-blog-personal-branding",
+  "date": "2026-08-30",
+  "category": "Career",
+  "ko": {
+    "title": "'기술을 글로 설명하는 엔지니어': 개인 블로그 운영이 가져다주는 퍼스널 브랜딩 효과",
+    "description": "단순히 이력서 한 장 제출하는 것을 넘어 깃허브 및 개인 기술 포트폴리오 웹사이트를 운영할 때 얻을 수 있는 서류/면접 검증의 압도적 우위.",
+    "content": "<h2>\"코드와 데이터만 만지는 엔지니어는 흔하다\"</h2>\n<p>많은 엔지니어링 지망생들이 자격증이나 토익 점수 올리기에 골몰합니다. 하지만 채용 면접관들이 가장 목말라하는 인재는 <strong>자신이 수행한 기술 문제를 논리적인 글로 정리하여 타인에게 명확히 전달할 수 있는 엔지니어</strong>입니다.</p>\n<hr>\n<h2>개인 포트폴리오 블로그가 만드는 3가지 임팩트</h2>\n<ol>\n  <li><strong>지식의 실체화 (Proof of Knowledge):</strong> 단순 자소서의 \"FC-BGA 공정을 압니다\"라는 주장보다, 본인이 직접 분석하고 작성한 20개의 기술 블로그 링크가 훨씬 강력한 증거가 됩니다.</li>\n  <li><strong>커뮤니케이션 역량 입증:</strong> 복잡한 반도체 불량 메커니즘을 깔끔한 단락과 가독성 높은 텍스트로 풀어내는 글쓰기 능력을 검증받습니다.</li>\n  <li><strong>검색엔진 노출을 통한 역제안:</strong> 구글 검색이나 LinkedIn을 통해 본인의 글을 읽은 헤드헌터나 현직 엔지니어들로부터 면접 및 채용 역제안이 들어옵니다.</li>\n</ol>\n<hr>\n<h2>작게 시작하는 엔지니어 글쓰기 노하우</h2>\n<p>거창한 학술 논문이 아니어도 좋습니다. 오늘 공부한 개념 1가지, 실험 중 겪은 에러 수정기 1개부터 기록하는 습관을 들여보세요.</p>"
+  },
+  "en": {
+    "title": "The Writing Engineer: How Personal Tech Blogs Drive Career Breakthroughs",
+    "description": "Why maintaining an open-source technical blog creates overwhelming credibility for engineering job candidates during resume reviews.",
+    "content": "<h2>Engineers Who Write Are Rare and Valuable</h2>\n<p>While many candidates stack certificates and test scores, hiring managers desperately seek engineers who can clearly translate complex technical problems into well-structured written documentation.</p>\n<hr>\n<h2>3 Major Impacts of an Engineering Portfolio Blog</h2>\n<ol>\n  <li><strong>Tangible Proof of Mastery:</strong> Linking 20 deep-dive technical articles carries far more weight than stating 'I understand FC-BGA processing' on a resume.</li>\n  <li><strong>Demonstrated Communication Skills:</strong> Clearly explaining intricate failure mechanisms proves your ability to collaborate with cross-functional engineering teams.</li>\n  <li><strong>Inbound Career Opportunities:</strong> Industry recruiters and engineering leads discovering your technical posts via Google or LinkedIn often reach out with direct job offers.</li>\n</ol>\n<hr>\n<h2>Starting Small with Technical Writing</h2>\n<p>You don't need to publish ground-breaking papers. Start by documenting a single engineering concept learned today or a quick debugging note from your lab workbench.</p>"
+  }
+}

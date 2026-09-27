@@ -1,0 +1,15 @@
+{
+  "slug": "osat-fcbga-substrate-supply-chain-market-analysis",
+  "date": "2026-09-25",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석",
+    "description": "Ibiden, Shinko, Unimicron, 삼성전기, 대덕전자 등 글로벌 FC-BGA 제조사들의 공정 캐파, 주요 고객사 및 기술 차별화 포인트.",
+    "content": "<h2>FC-BGA Substrate 시장의 과점적 구조</h2>\n<p>FC-BGA 기판은 수천억 원 규모의 설비 투자와 ABF 절연재 확보 능력이 필수적이어서 전 세계에서 단 10여 개 남짓한 글로벌 제조사만이 시장을 과점하고 있습니다.</p>\n<hr>\n<h2>주요 글로벌 기판 플레이어 분석</h2>\n<ul>\n  <li><strong>Ibiden & Shinko (일본):</strong> Intel 및 Nvidia 최첨단 서버용 FC-BGA 시장 점유율 1위. 20개 레이어 이상의 초고층 빌드업 및 미세 배선 독점적 기술력 보유.</li>\n  <li><strong>Unimicron & Nan Ya (대만):</strong> TSMC CoWoS 생태계와 긴밀히 연동된 대면적 FC-BGA 대량 생산 캐파 우위.</li>\n  <li><strong>삼성전기 & 대덕전자 (한국):</strong> 서버 및 네트워크용 FC-BGA 라인 증설을 통해 고부가 AI 기판 시장 점유율 급격히 확대 중.</li>\n</ul>\n<hr>\n<h2>OSAT 패키징 엔지니어에게 주는 시사점</h2>\n<p>패키징 엔지니어는 각 기판 공급사의 ABF 공정 특성과 휨(Warpage) 데이터를 사전에 파악하여 맞춤형 본딩 파라미터를 수립해야 조립 수율을 극대화할 수 있습니다.</p>"
+  },
+  "en": {
+    "title": "Global FC-BGA Substrate Supply Chain: Key Manufacturers and Tech Differentiation",
+    "description": "Analyzing technological competitive advantages and manufacturing capacities of Ibiden, Shinko, Unimicron, and Samsung Electro-Mechanics.",
+    "content": "<h2>The Oligopolistic FC-BGA Substrate Market</h2>\n<p>Because FC-BGA substrate manufacturing demands hundreds of millions of dollars in capital expenditure and secured ABF film supplies, less than a dozen global vendors control the market.</p>\n<hr>\n<h2>Key Global Substrate Manufacturers</h2>\n<ul>\n  <li><strong>Ibiden & Shinko (Japan):</strong> Industry leaders supplying top-tier AI server clients (Nvidia, Intel) with 20+ layer ultra-high-count build-up substrates.</li>\n  <li><strong>Unimicron & Nan Ya (Taiwan):</strong> Massive volume panel capacity tightly integrated into the Taiwanese foundry packaging ecosystem.</li>\n  <li><strong>Samsung Electro-Mechanics & Daeduck (Korea):</strong> Expanding high-value server/network FC-BGA lines to capture growing AI substrate demands.</li>\n</ul>\n<hr>\n<h2>Implications for OSAT Assembly Engineers</h2>\n<p>Assembly engineers must understand the specific CTE profiles and warpage metrics of each substrate vendor to tailor reflow and underfill parameters for maximum yield.</p>"
+  }
+}

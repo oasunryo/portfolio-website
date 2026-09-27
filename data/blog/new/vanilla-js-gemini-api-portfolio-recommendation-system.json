@@ -1,0 +1,15 @@
+{
+  "slug": "vanilla-js-gemini-api-portfolio-recommendation-system",
+  "date": "2026-09-26",
+  "category": "Career",
+  "ko": {
+    "title": "기술 포트폴리오 웹사이트 구축기: Vanilla JS와 Gemini API로 추천 시스템 만들기",
+    "description": "무거운 프레임워크 없이 순수 Vanilla JS와 Gemini Embeddings API로 포트폴리오 내 관련 포스트 자동 추천 시스템을 개발한 기술 회고.",
+    "content": "<h2>프레임워크 없이 순수 쌩 코딩으로 포트폴리오를 만드는 이유</h2>\n<p>React나 Next.js는 훌륭하지만, 개인 포트폴리오 웹사이트에서는 잦은 라이브러리 업데이트와 용량 최적화 문제가 생깁니다. HTML5, Vanilla CSS, Pure ES6+ JS만을 사용하여 <strong>로딩 속도가 극도로 빠르고 가벼운 정적 포트폴리오 웹사이트</strong>를 구축했습니다.</p>\n<hr>\n<h2>Gemini Embeddings 기반 연관 추천 엔진 구현</h2>\n<ul>\n  <li><strong>Gemini API 활용:</strong> 빌드 타임(build.js)에 각 포스트 본문 텍스트의 768차원 다차원 임베딩 벡터를 추출.</li>\n  <li><strong>Cosine Similarity 연산:</strong> 두 글 간의 임베딩 벡터 코사인 유사도를 계산하여 가장 관련 깊은 포스트 상위 3개를 자동 매칭.</li>\n  <li><strong>Rate Limit 극복 및 Caching:</strong> 650ms 호출 딜레이와 파일 시스템 Caching을 통해 API 제한 극복 및 빌드 100% 성공율 달성.</li>\n  <li><strong>TF-IDF Fallback:</strong> API 미연결 시 로컬 TF-IDF 연산으로 자동 전환되는 회복성 확보.</li>\n</ul>\n<hr>\n<h2>면접장에서 빛나는 나만의 프로젝트</h2>\n<p>이 포트폴리오 사이트 구동 자체가 하나의 훌륭한 소프트웨어 엔지니어링 프로젝트 사례가 되어 면접관들에게 강렬한 인상을 남겼습니다.</p>"
+  },
+  "en": {
+    "title": "Building a Static Portfolio Recommendation Engine with Vanilla JS and Gemini API",
+    "description": "A developer retrospective on creating a zero-framework static website equipped with a Gemini API embedding recommendation engine.",
+    "content": "<h2>Why Build a Portfolio Without Frameworks?</h2>\n<p>While React and Next.js are popular, static portfolios benefit greatly from lightweight speed. By relying strictly on HTML5, Vanilla CSS, and Pure ES6+ JS, I achieved blazing-fast load times and zero dependency bloat.</p>\n<hr>\n<h2>Building a Gemini Embeddings Recommendation Engine</h2>\n<ul>\n  <li><strong>Gemini Embedding Integration:</strong> During build time (build.js), extract 768-dimensional vector embeddings for all technical posts.</li>\n  <li><strong>Cosine Similarity Calculation:</strong> Compute vector similarities to surface the top 3 most relevant articles automatically.</li>\n  <li><strong>Rate-Limit Handling & Disk Caching:</strong> Implement 650ms delays and filesystem caching to guarantee 100% build reliability under free-tier limits.</li>\n  <li><strong>TF-IDF Fallback:</strong> Provide local TF-IDF vector fallback when API connections are unavailable.</li>\n</ul>\n<hr>\n<h2>A Live Demonstration of Engineering Rigor</h2>\n<p>The portfolio platform itself serves as a live demonstration of software engineering skills during technical job interviews.</p>"
+  }
+}

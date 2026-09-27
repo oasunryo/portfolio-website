@@ -1,0 +1,15 @@
+{
+  "slug": "semiconductor-interview-1st-party-reverse-question",
+  "date": "2026-08-25",
+  "category": "Career",
+  "ko": {
+    "title": "반도체 기술 면접관이 질문을 멈출 수 없게 만드는 '역질문' 및 논리 스크립트",
+    "description": "면접 말미 '마지막으로 질문 있나요?' 순간에 1st-Party 공정 데이터를 인용하여 깊이 있는 기술적 논의를 이끌어내는 역질문 스크립트.",
+    "content": "<h2>'마지막 역질문'은 기회인가 독인가?</h2>\n<p>대다수 면접자들은 \"회사 복지는 어떤가요?\", \"합격하면 어떤 부서로 가나요?\" 같은 무난한 질문으로 소중한 5분을 허비합니다. 기술 면접관에게 마지막 질문 기회는 <strong>본인의 기술적 아우라와 몰입도를 각인시킬 수 있는 최고의 필살기 타임</strong>입니다.</p>\n<hr>\n<h2>합격을 부르는 1st-Party 기반 역질문 구조</h2>\n<ol>\n  <li><strong>[1st-Party 스펙 인용]:</strong> \"최근 앰코/삼성전자 공식 백서에서 FC-BGA의 TIM2 열저항 개선 수치에 대해 발표하신 것을 확인했습니다.\"</li>\n  <li><strong>[본인의 분석 시도 덧붙이기]:</strong> \"제가 학부 시절 전열해석 과제를 수행할 때도 에폭시 두께가 얇아질수록 보이드 발생률이 늘어나는 트레이드오프가 있었습니다.\"</li>\n  <li><strong>[현직자 관점 질문 날리기]:</strong> \"실제 양산 라인에서는 TIM 도포 두께와 보이드 억제 사이의 최적 윈도우를 잡을 때 어떤 공정 인자를 우선시하시는지 궁금합니다.\"</li>\n</ol>\n<hr>\n<h2>면접관의 반응 변화</h2>\n<p>이러한 역질문을 받으면 면접관은 면접자를 단순 취준생이 아닌 <strong>당장 우리 팀에 들어와 같이 기술 문제를 논의할 수 있는 루키 엔지니어</strong>로 재평가하게 됩니다.</p>"
+  },
+  "en": {
+    "title": "Mastering Technical Reverse-Questions to Impress Semiconductor Interviewers",
+    "description": "How to use 1st-party engineering data to craft high-impact technical questions during the final minutes of engineering interviews.",
+    "content": "<h2>The 'Final Question' Opportunity</h2>\n<p>Most candidates waste the final 'Do you have any questions for us?' segment on generic topics like work culture or training programs. In a technical interview, this moment is your highest-leverage chance to prove engineering depth.</p>\n<hr>\n<h2>The 1st-Party Reverse Question Blueprint</h2>\n<ol>\n  <li><strong>[Cite 1st-Party Data]:</strong> \"I recently read your company's whitepaper highlighting the 2.5x thermal resistance drop in TIM2 materials for FC-BGA substrates.\"</li>\n  <li><strong>[Add Personal Technical Insight]:</strong> \"During my undergraduate thermal analysis projects, I noticed a distinct tradeoff where thinning thermal interface layers increased void formation risks.\"</li>\n  <li><strong>[Ask High-Level Engineering Question]:</strong> \"In mass production, which process parameter takes priority when balancing TIM thickness against void suppression?\"</li>\n</ol>\n<hr>\n<h2>Shifting the Interview Dynamic</h2>\n<p>Asking precise technical questions transforms you from an average candidate into a peer ready to solve real engineering bottlenecks on day one.</p>"
+  }
+}

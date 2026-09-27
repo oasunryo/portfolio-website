@@ -7,144 +7,144 @@
   <language>ko-KR</language>
   <atom:link href="https://junseo.site/ko/blog/feed.xml" rel="self" type="application/rss+xml" />
   <item>
-    <title><![CDATA[원자층 식각(ALE, Atomic Layer Etching)을 이용한 무결점 패턴 제어]]></title>
-    <link>https://junseo.site/ko/blog/atomic-layer-etch-ale/index.html</link>
-    <guid>https://junseo.site/ko/blog/atomic-layer-etch-ale/index.html</guid>
-    <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[원자층 수준에서 한 층씩 제어하는 자기제한적 식각 방식을 통해 극미세 패턴 조도를 낮추는 기술 동향을 해부합니다.]]></description>
+    <title><![CDATA[3D Chiplet 패키징에서의 Micro-Bump 접합 공정과 미세 정렬(Alignment) 기술]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-3d-chiplet-micro-bump-assembly-alignment/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-3d-chiplet-micro-bump-assembly-alignment/index.html</guid>
+    <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[40um 이하 미세 피치 마이크로 범프 본딩 시 발생하는 Thermal Expansion 정렬 오차와 TCB(Thermo-Compression Bonding) 정밀도 제어.]]></description>
   </item>
   <item>
-    <title><![CDATA[EUV 펠리클(Pellicle) 다회 노광 노출에 따른 열화 제어]]></title>
-    <link>https://junseo.site/ko/blog/euv-pellicle-degradation-challenges/index.html</link>
-    <guid>https://junseo.site/ko/blog/euv-pellicle-degradation-challenges/index.html</guid>
-    <pubDate>Thu, 20 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[DP 공정 반복으로 가중된 노광 스트레스를 견뎌내는 CNT 및 SiC 기반 펠리클 신소재 개발 경쟁을 분석합니다.]]></description>
+    <title><![CDATA[기술 포트폴리오 웹사이트 구축기: Vanilla JS와 Gemini API로 추천 시스템 만들기]]></title>
+    <link>https://junseo.site/ko/blog/vanilla-js-gemini-api-portfolio-recommendation-system/index.html</link>
+    <guid>https://junseo.site/ko/blog/vanilla-js-gemini-api-portfolio-recommendation-system/index.html</guid>
+    <pubDate>Sat, 26 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[무거운 프레임워크 없이 순수 Vanilla JS와 Gemini Embeddings API로 포트폴리오 내 관련 포스트 자동 추천 시스템을 개발한 기술 회고.]]></description>
   </item>
   <item>
-    <title><![CDATA[극저온 식각(Cryogenic Etch)을 활용한 미세 패턴 프로파일 붕괴 방지]]></title>
-    <link>https://junseo.site/ko/blog/cryogenic-etch-patterning/index.html</link>
-    <guid>https://junseo.site/ko/blog/cryogenic-etch-patterning/index.html</guid>
-    <pubDate>Tue, 18 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[영하 60도 이하 저온 영역에서 측벽 화학 반응을 동결하고 수직 이온 경로만 살리는 극저온 식각 장비의 원리를 분석합니다.]]></description>
+    <title><![CDATA[OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석]]></title>
+    <link>https://junseo.site/ko/blog/osat-fcbga-substrate-supply-chain-market-analysis/index.html</link>
+    <guid>https://junseo.site/ko/blog/osat-fcbga-substrate-supply-chain-market-analysis/index.html</guid>
+    <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Ibiden, Shinko, Unimicron, 삼성전기, 대덕전자 등 글로벌 FC-BGA 제조사들의 공정 캐파, 주요 고객사 및 기술 차별화 포인트.]]></description>
   </item>
   <item>
-    <title><![CDATA[고종횡비 식각을 위한 하드마스크(Hardmask) 신소재 혁신]]></title>
-    <link>https://junseo.site/ko/blog/hardmask-materials-innovation/index.html</link>
-    <guid>https://junseo.site/ko/blog/hardmask-materials-innovation/index.html</guid>
-    <pubDate>Sun, 16 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[식각 시 패턴 붕괴를 예방하기 위한 ACL막 및 스핀온 카본(SOC) 마스크 소재의 화학적 고도화 동향을 정리합니다.]]></description>
+    <title><![CDATA[엔지니어 취준생이 겪는 멘탈 관리와 일일 학습 리듬을 만드는 Notion 루틴]]></title>
+    <link>https://junseo.site/ko/blog/notion-habit-tracker-semiconductor-jobseeker-routine/index.html</link>
+    <guid>https://junseo.site/ko/blog/notion-habit-tracker-semiconductor-jobseeker-routine/index.html</guid>
+    <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[매일 논문 1편 스킴, 기술 자소서 1줄 수정, 전공 공부 스케줄을 노션 템플릿으로 구조화하여 슬럼프를 예방하는 실전 습관 가이드.]]></description>
   </item>
   <item>
-    <title><![CDATA[다중 패터닝 핵심: DBO (Diffraction-Based Overlay) 계측과 APC 제어]]></title>
-    <link>https://junseo.site/ko/blog/diffraction-based-overlay-metrology/index.html</link>
-    <guid>https://junseo.site/ko/blog/diffraction-based-overlay-metrology/index.html</guid>
-    <pubDate>Fri, 14 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[수 나노미터 오정렬을 회절 신호 데이터 분석으로 잡아내는 DBO 원리와 런투런 스테이지 동기화 기술을 살펴봅니다.]]></description>
+    <title><![CDATA[Deep Learning / Computer Vision 기반 FC-BGA 기판 자동 광학 검사(AOI)]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-aoi-computer-vision-ai-inspection/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-aoi-computer-vision-ai-inspection/index.html</guid>
+    <pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Line/Space 5um 미세 패턴과 레이저 비아 내부 미동금 결함을 실시간 검출하기 위한 AI 비전 알고리즘 및 룰 베이스 검사 한계 극복.]]></description>
   </item>
   <item>
-    <title><![CDATA[Directed Self-Assembly (DSA)와 DP 공정의 차세대 융합 트렌드]]></title>
-    <link>https://junseo.site/ko/blog/directed-self-assembly-dsa-dpt/index.html</link>
-    <guid>https://junseo.site/ko/blog/directed-self-assembly-dsa-dpt/index.html</guid>
-    <pubDate>Tue, 11 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[블록 공중합체의 자기 조립 현상을 ArFi/EUV 기반 더블 패터닝과 혼합하여 한계를 돌파하는 하이브리드 공정을 설명합니다.]]></description>
+    <title><![CDATA[비전공자/기계/재료공학도가 반도체 패키징 엔지니어로 합격하는 맞춤 전략]]></title>
+    <link>https://junseo.site/ko/blog/mechanical-materials-engineering-student-semiconductor-packaging-strategy/index.html</link>
+    <guid>https://junseo.site/ko/blog/mechanical-materials-engineering-student-semiconductor-packaging-strategy/index.html</guid>
+    <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[전자가 아닌 기계공학(열역학/유체역학/ANSYS)과 재료공학(신뢰성/금속상/CTE) 전공 지식을 FCBGA 패키징 자소서 및 면접 필살기로 변환하는 가이드.]]></description>
   </item>
   <item>
-    <title><![CDATA[EUV 확률적 결함(Stochastic Defects)과 DP 분할 노광 솔루션]]></title>
-    <link>https://junseo.site/ko/blog/euv-stochastic-defects-dpt/index.html</link>
-    <guid>https://junseo.site/ko/blog/euv-stochastic-defects-dpt/index.html</guid>
-    <pubDate>Sat, 08 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[광자 부족으로 인해 생기는 무작위 결함을 더블 패터닝 선량 최적화 기법으로 관리하는 원리를 기술합니다.]]></description>
+    <title><![CDATA[Solder Ball Joint Failure Mode: Thermal Cycling 및 Drop Shock 테스트 규격]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-solder-joint-thermal-cycling-drop-shock-test/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-solder-joint-thermal-cycling-drop-shock-test/index.html</guid>
+    <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[JEDEC 표준에 따른 열충격(-40°C ~ 125°C) 및 낙하 충격 시험 환경에서 FC-BGA 솔더볼 균열(Crack) 발생과 수명 예측 모델.]]></description>
   </item>
   <item>
-    <title><![CDATA[High-NA EUV (0.55 NA) 시대의 Anamorphic Lens와 패터닝 혁신]]></title>
-    <link>https://junseo.site/ko/blog/high-na-euv-anamorphic-lens/index.html</link>
-    <guid>https://junseo.site/ko/blog/high-na-euv-anamorphic-lens/index.html</guid>
-    <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[0.55 NA 노광 장비 구경 확대와 마스크 차단 문제를 피하기 위한 아나모픽 렌즈의 도입 및 이점을 요약합니다.]]></description>
+    <title><![CDATA[FC-BGA Substrate에서의 Thermal Interface Material (TIM1/TIM2) 방열 성능]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-tim1-tim2-thermal-interface-materials/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-tim1-tim2-thermal-interface-materials/index.html</guid>
+    <pubDate>Thu, 17 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[고발열 AI 실리콘 다이 상단과 히트싱크 사이의 열저항을 극소화하는 TIM1(Indium / Phase Change)과 TIM2 재료 분석.]]></description>
   </item>
   <item>
-    <title><![CDATA[LELE (Litho-Etch-Litho-Etch) vs SADP (Self-Aligned Double Patterning) 메커니즘 비교]]></title>
-    <link>https://junseo.site/ko/blog/lele-vs-sadp-mechanism/index.html</link>
-    <guid>https://junseo.site/ko/blog/lele-vs-sadp-mechanism/index.html</guid>
-    <pubDate>Mon, 03 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[오버레이 마진 확보 관점에서 스페이서 증착 방식을 쓰는 SADP와 다중 노광/식각인 LELE의 장단점 및 수율 차이를 분석합니다.]]></description>
+    <title><![CDATA[CapCut JSON 자동화와 AI 목소리로 제작하는 1분 반도체 기술 숏폼 템플릿]]></title>
+    <link>https://junseo.site/ko/blog/capcut-json-automation-semiconductor-shorts-workflow/index.html</link>
+    <guid>https://junseo.site/ko/blog/capcut-json-automation-semiconductor-shorts-workflow/index.html</guid>
+    <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[텍스트 대본만 입력하면 CapCut 자막 타임라인과 BGM 레벨이 자동 조절되는 기술 숏폼 비디오 생산성 오토메이션 노하우.]]></description>
   </item>
   <item>
-    <title><![CDATA[EUV 싱글 vs 더블 패터닝(DPT) 기술적 분기점]]></title>
-    <link>https://junseo.site/ko/blog/euv-single-vs-double-patterning/index.html</link>
-    <guid>https://junseo.site/ko/blog/euv-single-vs-double-patterning/index.html</guid>
-    <pubDate>Sat, 01 Aug 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[0.33 NA EUV 싱글 패터닝의 한계와 High-NA EUV 지연에 따른 EUV-DPT(LELE, SADP) 도입 배경을 분석합니다.]]></description>
+    <title><![CDATA[CoWoS & Chiplet 아키텍처에 필수적인 FC-BGA 멀티칩 모듈(MCM) 패키징]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-cowos-chiplet-multichip-module-thermal-dissipation/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-cowos-chiplet-multichip-module-thermal-dissipation/index.html</guid>
+    <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[단일 칩(Monolithic)의 한계를 넘어 GPU와 8개 이상의 HBM 다이를 FC-BGA 패키지 위에 이종 집적할 때 발생하는 열 방출 및 파워 전력 설계.]]></description>
   </item>
   <item>
-    <title><![CDATA[IndexedDB와 브라우저 저장소를 활용한 오프라인 동작 웹 애플리케이션 구축]]></title>
-    <link>https://junseo.site/ko/blog/indexeddb-offline-sync-caching/index.html</link>
-    <guid>https://junseo.site/ko/blog/indexeddb-offline-sync-caching/index.html</guid>
-    <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[네트워크 단절 상황에서도 사용자 경험을 저해하지 않고 로컬 상태를 유지하며 데이터 신뢰성을 보장하는 IndexedDB 트랜잭션 동기화 전략.]]></description>
+    <title><![CDATA[반도체 취준생이 꼭 읽어야 할 IEEE & ECTC 최신 논문 검색 및 압축 요약 노하우]]></title>
+    <link>https://junseo.site/ko/blog/ieee-ectc-paper-research-zotero-workflow-students/index.html</link>
+    <guid>https://junseo.site/ko/blog/ieee-ectc-paper-research-zotero-workflow-students/index.html</guid>
+    <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Google Scholar와 Zotero를 활용해 ECTC, IEEE CPMT 등 첨단 패키징 1차 논문에서 핵심 공정 인자와 실험 데이터를 빠르게 추출하는 가이드.]]></description>
   </item>
   <item>
-    <title><![CDATA[플립칩 본딩과 HBM의 혁신, MR-MUF 기술 설계 특징 비교]]></title>
-    <link>https://junseo.site/ko/blog/flip-chip-vs-mr-muf-bonding/index.html</link>
-    <guid>https://junseo.site/ko/blog/flip-chip-vs-mr-muf-bonding/index.html</guid>
-    <pubDate>Wed, 15 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[전통적인 플립칩 본딩 공정의 한계와 HBM 적층을 가속화한 MR-MUF(매스 리플로우 몰디드 언더필)의 열방출 및 기계적 신뢰성 비교 분석.]]></description>
+    <title><![CDATA[Large-Body FC-BGA (100x100mm+) 제조 공정상의 휨 방지 강인성 설계]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-large-body-100x100mm-stiffener-ring-design/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-large-body-100x100mm-stiffener-ring-design/index.html</guid>
+    <pubDate>Thu, 10 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[초대형 AI 칩 패키징에서 패키지 변형을 물리적으로 억제하는 Stiffener Ring 장착 공정 및 고내열 접착제(Adhesive) 선정 기준.]]></description>
   </item>
   <item>
-    <title><![CDATA[Git Hooks와 정적 분석을 통한 다국어 빌드 깨짐 방지 파이프라인 구축]]></title>
-    <link>https://junseo.site/ko/blog/git-hooks-multilingual-build-verification/index.html</link>
-    <guid>https://junseo.site/ko/blog/git-hooks-multilingual-build-verification/index.html</guid>
-    <pubDate>Wed, 08 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[다국어 정적 컴파일러 환경에서 커밋 시점에 다국어 템플릿의 상대 경로 변환 및 파일 무결성을 자동으로 검증하는 pre-commit 훅 구축 사례.]]></description>
+    <title><![CDATA[3학년/4학년 학부생을 위한 반도체 공정/설계 포트폴리오 1페이지 구성 표준]]></title>
+    <link>https://junseo.site/ko/blog/semiconductor-undergraduate-one-page-portfolio-template/index.html</link>
+    <guid>https://junseo.site/ko/blog/semiconductor-undergraduate-one-page-portfolio-template/index.html</guid>
+    <pubDate>Wed, 09 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[면접관이 10초 만에 파악할 수 있는 포트폴리오 1페이지 요약 서식: 프로젝트 목표, 공정/실험 조건, 데이터 시각화, 도출 인사이트.]]></description>
   </item>
   <item>
-    <title><![CDATA[3D NAND 채널 홀 형성의 핵심, ALD(원자층 증착) 공정 메커니즘]]></title>
-    <link>https://junseo.site/ko/blog/ald-3d-nand-deposition/index.html</link>
-    <guid>https://junseo.site/ko/blog/ald-3d-nand-deposition/index.html</guid>
-    <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[3D NAND의 고단화에 따른 높은 종횡비 구조에서 나노미터 단위의 균일한 박막 증착을 실현하는 ALD 기술의 화학적 흡착 원리와 채널 홀 적용 공정을 분석합니다.]]></description>
+    <title><![CDATA[Glass Substrate vs Organic Substrate: 차세대 AI 반도체 유리기판의 미래]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-glass-substrate-vs-organic-future/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-glass-substrate-vs-organic-future/index.html</guid>
+    <pubDate>Mon, 07 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[인텔, SKC, 삼성전기가 주목하는 Glass Substrate 유리기판의 초평탄성, 높은 열 안정성, TGV(Through Glass Via) 미세 가공 이점과 과제.]]></description>
   </item>
   <item>
-    <title><![CDATA[동적 상대 경로 교환을 통한 경량 다국어 정적 컴파일러 설계]]></title>
-    <link>https://junseo.site/ko/blog/multilingual-localization-compiler/index.html</link>
-    <guid>https://junseo.site/ko/blog/multilingual-localization-compiler/index.html</guid>
-    <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[경량 Node.js 컴파일러 아키텍처. `ko`/`en` 서브디렉토리를 자동으로 파싱하고 상대 링크를 해결하여, 프레임워크 없이 강력한 다국어 지역화를 제공합니다.]]></description>
+    <title><![CDATA[개발자/엔지니어의 LinkedIn 로드맵: 헤드헌터와 면접관의 눈에 띄는 프로필 설정]]></title>
+    <link>https://junseo.site/ko/blog/engineer-linkedin-profile-networking-roadmap/index.html</link>
+    <guid>https://junseo.site/ko/blog/engineer-linkedin-profile-networking-roadmap/index.html</guid>
+    <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[글로벌 반도체 기업 헤드헌터와 리크루터가 주목하는 LinkedIn 프로필 작성법, 헤드라인 설정, 개인 블로그 링크 연동 팁.]]></description>
   </item>
   <item>
-    <title><![CDATA[Zotero 7 Better BibTeX 인용 키 통합 및 로컬 Obsidian 논문 하이라이트 동기화]]></title>
-    <link>https://junseo.site/ko/blog/zotero-better-bibtex-obsidian/index.html</link>
-    <guid>https://junseo.site/ko/blog/zotero-better-bibtex-obsidian/index.html</guid>
-    <pubDate>Tue, 23 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[문헌 노트 구조화, 동기화 템플릿, 사용자 지정 CSS 콜아웃을 통해 Zotero 독서에서 로컬 지식 체계로 학술 정보를 연결합니다.]]></description>
+    <title><![CDATA[Ball Grid Array (BGA) Solder Joint 신뢰성 및 Electromigration (EM)]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-bga-solder-joint-electromigration-imc/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-bga-solder-joint-electromigration-imc/index.html</guid>
+    <pubDate>Fri, 04 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[고전류 밀도 환경에서 솔더 볼 계면에 형성되는 IMC(Intermetallic Compound) 상과 일렉트로마이그레이션(EM)으로 인한 금속 원자 이동 결함.]]></description>
   </item>
   <item>
-    <title><![CDATA[웹 오디오 API 실시간 신호 주파수 캔버스 밴드 레벨 미터 위젯 구축]]></title>
-    <link>https://junseo.site/ko/blog/audio-level-meter-widget/index.html</link>
-    <guid>https://junseo.site/ko/blog/audio-level-meter-widget/index.html</guid>
-    <pubDate>Mon, 22 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[고성능 CSS 및 JavaScript 루프를 사용하여 오디오 분석기 주파수를 나타내는 동적 캔버스 바 애니메이션 구현.]]></description>
+    <title><![CDATA[OSAT 기업(앰코, ASE 등) 기술 면접 완벽 대비: 전공정 vs 후공정 핵심 족보]]></title>
+    <link>https://junseo.site/ko/blog/osat-semiconductor-packaging-interview-questions/index.html</link>
+    <guid>https://junseo.site/ko/blog/osat-semiconductor-packaging-interview-questions/index.html</guid>
+    <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[글로벌 OSAT 파운드리 기업 채용 면접에서 자주 나오는 Bump, Wire Bonding, Underfill, FC-BGA 관련 실전 면접 질문 모음 및 답변 프레임워크.]]></description>
   </item>
   <item>
-    <title><![CDATA[데이터 파이프라인에서 BOM 및 캐리지 리턴 이상 현상 완화]]></title>
-    <link>https://junseo.site/ko/blog/bom-unicode-csv-preprocessing/index.html</link>
-    <guid>https://junseo.site/ko/blog/bom-unicode-csv-preprocessing/index.html</guid>
-    <pubDate>Sun, 21 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[숨겨진 BOM(<code>\ufeff</code>) 및 캐리지 리턴으로 인한 JSON/CSV 구조 손상을 해결하여 견고한 데이터 통합 및 파싱을 보장합니다.]]></description>
+    <title><![CDATA[Underfill Dispensing 공정에서의 Capillary Flow 및 Void 결함 분석]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-underfill-capillary-flow-void-analysis/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-underfill-capillary-flow-void-analysis/index.html</guid>
+    <pubDate>Mon, 31 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[Flip-Chip 본딩 후 다이와 기판 사이의 미세 갭을 메우는 언더필 수지의 모세관 유동 메커니즘과 보이드(Void) 발생 원인 규명.]]></description>
   </item>
   <item>
-    <title><![CDATA[AI 기반 반도체 콘텐츠 파이프라인: 니치 타겟팅 전략]]></title>
-    <link>https://junseo.site/ko/blog/single-creator-content-pipeline/index.html</link>
-    <guid>https://junseo.site/ko/blog/single-creator-content-pipeline/index.html</guid>
-    <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[Llama-Vision 및 API 오케스트레이션을 활용하여 단편 비디오를 통한 반도체 산업 교육 콘텐츠 생성을 자동화합니다.]]></description>
+    <title><![CDATA['기술을 글로 설명하는 엔지니어': 개인 블로그 운영이 가져다주는 퍼스널 브랜딩 효과]]></title>
+    <link>https://junseo.site/ko/blog/engineer-portfolio-github-blog-personal-branding/index.html</link>
+    <guid>https://junseo.site/ko/blog/engineer-portfolio-github-blog-personal-branding/index.html</guid>
+    <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[단순히 이력서 한 장 제출하는 것을 넘어 깃허브 및 개인 기술 포트폴리오 웹사이트를 운영할 때 얻을 수 있는 서류/면접 검증의 압도적 우위.]]></description>
   </item>
   <item>
-    <title><![CDATA[AI 기반 개발을 위한 자동 세션 핸드오버]]></title>
-    <link>https://junseo.site/ko/blog/automated-session-handover/index.html</link>
-    <guid>https://junseo.site/ko/blog/automated-session-handover/index.html</guid>
-    <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
-    <description><![CDATA[코드베이스 감사 및 활성 작업 상태를 토큰 최적화된 브리핑 프롬프트로 컴파일하여 AI 에이전트의 원활한 순차 실행을 지원합니다.]]></description>
+    <title><![CDATA[Signal Integrity (SI) 최적화: Crosstalk 및 Insertion Loss 감소 기법]]></title>
+    <link>https://junseo.site/ko/blog/fcbga-signal-integrity-crosstalk-insertion-loss/index.html</link>
+    <guid>https://junseo.site/ko/blog/fcbga-signal-integrity-crosstalk-insertion-loss/index.html</guid>
+    <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+    <description><![CDATA[PCIe Gen 6/7 및 112G SerDes 초고속 신호 전송 환경에서 FC-BGA 기판의 크로스토크 및 신호 감쇄(Insertion Loss) 최소화 기술.]]></description>
   </item>
 </channel>
 </rss>

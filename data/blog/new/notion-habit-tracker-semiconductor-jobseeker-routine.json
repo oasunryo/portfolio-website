@@ -1,0 +1,15 @@
+{
+  "slug": "notion-habit-tracker-semiconductor-jobseeker-routine",
+  "date": "2026-09-23",
+  "category": "Career",
+  "ko": {
+    "title": "엔지니어 취준생이 겪는 멘탈 관리와 일일 학습 리듬을 만드는 Notion 루틴",
+    "description": "매일 논문 1편 스킴, 기술 자소서 1줄 수정, 전공 공부 스케줄을 노션 템플릿으로 구조화하여 슬럼프를 예방하는 실전 습관 가이드.",
+    "content": "<h2>취준 슬럼프의 원인은 '불확실한 하루 목표'</h2>\n<p>서류 탈락 소식이 들려오면 불안감에 하루 루틴이 쉽게 무너집니다. 불확실한 결과에 연연하기보다 <strong>매일 내가 스스로 통제할 수 있는 정량적 학습 입력값(Input)을 노션에 기록하는 것</strong>이 멘탈 유지의 핵심입니다.</p>\n<hr>\n<h2>취준생 필수 Notion 데일리 루틴 템플릿</h2>\n<ul>\n  <li><strong>AM 09:00 - 1st-Party Data 스캐닝 (30분):</strong> 기업 뉴스룸 글 1개 스크랩 및 주요 키워드 정리.</li>\n  <li><strong>PM 02:00 - 논문 / 기술 문서 요약 (1시간):</strong> IEEE ECTC 논문 1편 3-Pass 읽기 후 Zotero 노션 DB 연동.</li>\n  <li><strong>PM 07:00 - 자소서 & 포트폴리오 1문장 보완 (45분):</strong> 경험 정리 매트릭스 업데이트.</li>\n</ul>\n<hr>\n<h2>대시보드 시각화가 주는 달성감</h2>\n<p>노션 습관 체크박스가 쌓여 지식 자산이 눈으로 보일 때, 불안감은 확신으로 바뀌고 면접장에서 당당한 태도로 표출됩니다.</p>"
+  },
+  "en": {
+    "title": "Building a High-Output Daily Routine with Notion for Semiconductor Candidates",
+    "description": "Structuring daily paper reading, cover letter polish, and technical study schedules inside Notion to combat burnout.",
+    "content": "<h2>Burnout Stems from Uncontrollable Uncertainty</h2>\n<p>Receiving rejection emails drains focus. Rather than obsessing over outcomes you cannot control, focus on logging daily quantifiable inputs inside a Notion dashboard to maintain ironclad mental momentum.</p>\n<hr>\n<h2>The Ideal Candidate Daily Notion Routine</h2>\n<ul>\n  <li><strong>09:00 AM - 1st-Party Data Scan (30 mins):</strong> Bookmark one official tech whitepaper and extract 3 core metrics.</li>\n  <li><strong>02:00 PM - Conference Paper Skimming (60 mins):</strong> Perform a 3-pass skim on an IEEE paper and log notes into your database.</li>\n  <li><strong>07:00 PM - Portfolio Polish (45 mins):</strong> Refine one sentence on your 1-page portfolio deck based on newly learned terms.</li>\n</ul>\n<hr>\n<h2>Visual Progress Defeats Anxiety</h2>\n<p>Watching your daily Notion task database fill up converts job search anxiety into undeniable confidence during high-stakes technical interviews.</p>"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "osat-semiconductor-packaging-interview-questions",
+  "date": "2026-09-02",
+  "category": "Career",
+  "ko": {
+    "title": "OSAT 기업(앰코, ASE 등) 기술 면접 완벽 대비: 전공정 vs 후공정 핵심 족보",
+    "description": "글로벌 OSAT 파운드리 기업 채용 면접에서 자주 나오는 Bump, Wire Bonding, Underfill, FC-BGA 관련 실전 면접 질문 모음 및 답변 프레임워크.",
+    "content": "<h2>OSAT(Outsourced Semiconductor Assembly and Test) 기술 면접의 결</h2>\n<p>삼성전자나 SK하이닉스 같은 IDM/파운드리 면접이 팹(Fab) 전공정 단위 소자에 집중한다면, <strong>앰코(Amkor), ASE, JCET 같은 OSAT 기업 면접은 이종 집적(Heterogeneous Integration), 열전도, 불량 분석(FA), 그리고 조립 수율</strong>에 기술 질문이 집중됩니다.</p>\n<hr>\n<h2>OSAT 단골 면접 질문 TOP 4 & 답변 팁</h2>\n<ol>\n  <li><strong>질문: Wire Bonding과 Flip-Chip 본딩의 구조적 차이와 한계는?</strong><br>\n  <em>답변 핵심:</em> 와이어 본딩은 다이 테두리 패드만 활용하지만 플립칩은 다이 전면 범프 배열을 활용해 I/O 밀도가 10배 이상 높고 배선 길실에 따른 신호 지연이 극도로 작음을 강조.</li>\n  <li><strong>질문: Reflow 공정 중 Warpage가 일어나는 메커니즘을 설명하시오.</strong><br>\n  <em>답변 핵심:</em> CTE Mismatch 개념과 상온/고온에서의 Smile/Crying 변형 패턴 구분을 명확히 설명.</li>\n  <li><strong>질문: Underfill 공정에서 Void가 발생하면 신뢰성에 어떤 영향을 미치는가?</strong><br>\n  <em>답변 핵심:</em> 보이드 내부 수분 팽창으로 인한 팝콘 현상(Popcorn Effect)과 솔더 범프 응력 집중으로 인한 균열(Crack) 유발 설명.</li>\n  <li><strong>질문: FC-BGA 기판에서 ABF 소재를 쓰는 이유는?</strong><br>\n  <em>답변 핵심:</em> 미세 레이저 비아 가공성, 뛰어난 절연 특성, 낮은 Dk/Df 수치 제시.</li>\n</ol>"
+  },
+  "en": {
+    "title": "OSAT Engineering Interview Prep: Core Packaging and Assembly Questions",
+    "description": "A complete guide to technical interview questions asked by top OSAT companies (Amkor, ASE) covering Bump, Underfill, and FC-BGA processes.",
+    "content": "<h2>The Distinct Focus of OSAT Technical Interviews</h2>\n<p>While IDM foundry interviews emphasize Fab front-end transistor physics, OSAT firms (Amkor, ASE, JCET) drill down on heterogeneous integration, thermal dissipation, failure analysis (FA), and assembly yield optimization.</p>\n<hr>\n<h2>TOP 4 OSAT Interview Questions & Answer Blueprints</h2>\n<ol>\n  <li><strong>Q: Differentiate Wire Bonding from Flip-Chip Interconnects.</strong><br>\n  <em>Key Points:</em> Highlight that wire bonding uses perimeter pads, while Flip-Chip utilizes area-array solder bumps, enabling 10x higher I/O density and lower signal latency.</li>\n  <li><strong>Q: Explain the Mechanism of Reflow Warpage.</strong><br>\n  <em>Key Points:</em> Frame the answer around CTE Mismatch across silicon and ABF layers, distinguishing dynamic Smile and Crying bowing shapes.</li>\n  <li><strong>Q: How Do Underfill Voids Impact Long-Term Reliability?</strong><br>\n  <em>Key Points:</em> Explain moisture trapping leading to Popcorn Effect delamination and stress concentration causing solder bump fatigue cracks.</li>\n  <li><strong>Q: Why Is ABF (Ajinomoto Build-up Film) Standard in FC-BGA Substrates?</strong><br>\n  <em>Key Points:</em> Cite superior laser micro-via drillability, high dielectric insulation, and stable low Dk/Df properties.</li>\n</ol>"
+  }
+}

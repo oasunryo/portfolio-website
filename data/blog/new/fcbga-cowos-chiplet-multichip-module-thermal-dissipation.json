@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-cowos-chiplet-multichip-module-thermal-dissipation",
+  "date": "2026-09-13",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "CoWoS & Chiplet 아키텍처에 필수적인 FC-BGA 멀티칩 모듈(MCM) 패키징",
+    "description": "단일 칩(Monolithic)의 한계를 넘어 GPU와 8개 이상의 HBM 다이를 FC-BGA 패키지 위에 이종 집적할 때 발생하는 열 방출 및 파워 전력 설계.",
+    "content": "<h2>Chiplet 시대로의 대전환</h2>\n<p>단일 실리콘 수율 한계(Reticle Limit)를 극복하기 위해 컴퓨팅 로직 다이와 메모리 다이를 쪼개어 패키지 레벨에서 재조합하는 <strong>Chiplet(칩렛) 아키텍처</strong>가 표준이 되었습니다. FC-BGA는 이러한 칩렛들을 받쳐주는 거대한 메인 무대입니다.</p>\n<hr>\n<h2>MCM FC-BGA 패키징의 기술적 3대 난제</h2>\n<ul>\n  <li><strong>Local Hotspot (국부 핫스팟):</strong> GPU 로직 다이 중앙부는 300W 이상 집중 발열되는 반면 주변 HBM은 열에 약하므로 다이 간 열 간섭 차단 필요.</li>\n  <li><strong>Non-Uniform Assembly Pressure:</strong> 서로 다른 높이와 면적을 가진 칩렛들을 한 번에 리플로우 본딩할 때 생기는 편하중 압력 문제.</li>\n  <li><strong>Micro-Bump Alignment:</strong> 55um 피치 이하의 미세 범프 수십만 개를 칩렛 간 오차 없이 정밀 얼라인먼트하는 조립 기술.</li>\n</ul>"
+  },
+  "en": {
+    "title": "Thermal Dissipation and Power Delivery in Chiplet-based MCM FC-BGA Packages",
+    "description": "Engineering challenges of heterogeneous integration uniting GPU logic and 8+ HBM stacks onto multi-chip module FC-BGA substrates.",
+    "content": "<h2>The Paradigm Shift to Chiplets</h2>\n<p>To bypass monolithic reticle limits, semiconductor designers disaggregate large dies into smaller functional Chiplets reassembled at the package level, positioning FC-BGA substrates as the ultimate integration host.</p>\n<hr>\n<h2>3 Technical Bottlenecks in MCM FC-BGA Packages</h2>\n<ul>\n  <li><strong>Localized Hotspots:</strong> GPU logic dies consume >300W, generating intense thermal gradients that risk degrading adjacent heat-sensitive HBM stacks.</li>\n  <li><strong>Non-Uniform Assembly Pressure:</strong> Bonding chiplets of varying silicon thicknesses risks uneven tilt and solder bridging.</li>\n  <li><strong>Micro-Bump Alignment:</strong> Aligning hundreds of thousands of sub-55um micro-bumps across multiple chiplets demands sub-micron placement accuracy.</li>\n</ul>"
+  }
+}

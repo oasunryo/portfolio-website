@@ -1,0 +1,15 @@
+{
+  "slug": "single-engineer-content-pipeline-osmu",
+  "date": "2026-08-22",
+  "category": "Career",
+  "ko": {
+    "title": "1인 엔지니어의 콘텐츠 파이프라인: 세컨드 브레인에서 숏폼과 블로그 자동화까지",
+    "description": "단 1개의 반도체 기술 개념을 연구하여 노션/옵시디언 메모, 깃허브 블로그 포스트, 유튜브 숏폼 대본, 링크드인 아티클로 동시 파생시키는 OSMU 생산성 가이드.",
+    "content": "<h2>시간이 부족한 엔지니어를 위한 One Source Multi-Use (OSMU)</h2>\n<p>현직 엔지니어나 취업준비생 모두 학업과 업무로 시간이 절대적으로 부족합니다. 세컨드 브레인에 기록한 기술 메모 1개를 다양한 소셜 채널 및 포트폴리오 자산으로 즉시 변환하는 <strong>콘텐츠 파이프라인</strong> 시스템이 구축되어야 지속 가능한 퍼스널 브랜딩이 가능합니다.</p>\n<hr>\n<h2>콘텐츠 생산 파이프라인 4단계 릴레이</h2>\n<ul>\n  <li><strong>1단계 (Source Markdown):</strong> Obsidian에 FC-BGA Warpage 메커니즘 노트를 요약 정리 (핵심 개념 + 원인 + 해결책).</li>\n  <li><strong>2단계 (Portfolio Blog):</strong> Node.js 빌더로 마크다운을 JSON 변환하여 개인 정적 사이트 포스트로 상시 게시.</li>\n  <li><strong>3단계 (LinkedIn Pulse & Post):</strong> 서술형 블로그 문장을 가독성 높은 3줄 요약 bullet point 형태의 링크드인 인사이팅 아티클로 재구성.</li>\n  <li><strong>4단계 (Shorts/Reels Script):</strong> \"FC-BGA 휨 현상 1분 만에 이해하기\" 형태의 자극적인 후킹 문장과 CapCut 대본으로 전환하여 비디오 제작.</li>\n</ul>\n<hr>\n<h2>시스템이 가져다주는 선순환 효과</h2>\n<p>하나의 공부가 4개의 디지털 자산으로 변환되어 면접관에게는 전문성을, 인맥 네트워크에는 기술적 영향력을 동시에 전달하는 강력한 브랜딩 선순환 구조를 만들어 냅니다.</p>"
+  },
+  "en": {
+    "title": "Single-Engineer OSMU Content Pipeline: From Second Brain to Shorts and Blog",
+    "description": "Maximizing productivity by converting one engineering note into blog articles, LinkedIn insights, and 1-minute video scripts.",
+    "content": "<h2>Squeezing Maximum Value from Limited Engineering Time</h2>\n<p>Engineers and students face tight time constraints. To build a strong digital presence without burning out, you must convert single study notes into multi-channel portfolio assets via a One Source Multi-Use (OSMU) pipeline.</p>\n<hr>\n<h2>The 4-Stage Content Cascade</h2>\n<ul>\n  <li><strong>Stage 1 (Source Markdown):</strong> Draft a technical summary on FC-BGA Warpage mechanics inside Obsidian.</li>\n  <li><strong>Stage 2 (Portfolio Blog):</strong> Run automated build scripts to render the markdown as a live post on your static portfolio site.</li>\n  <li><strong>Stage 3 (LinkedIn Insights):</strong> Refactor long-form paragraphs into high-impact 3-bullet points for professional networking feeds.</li>\n  <li><strong>Stage 4 (Short-form Video Script):</strong> Adapt the core takeaway into a 60-second CapCut hook script: \"Why Large Chiplet Substrates Warp During Reflow.\"</li>\n</ul>\n<hr>\n<h2>The Compound Branding Effect</h2>\n<p>A single technical study session compounds into four distinct digital assets, presenting verifiable expertise to hiring managers and industry peers alike.</p>"
+  }
+}

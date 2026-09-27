@@ -1,0 +1,15 @@
+{
+  "slug": "mechanical-materials-engineering-student-semiconductor-packaging-strategy",
+  "date": "2026-09-20",
+  "category": "Career",
+  "ko": {
+    "title": "비전공자/기계/재료공학도가 반도체 패키징 엔지니어로 합격하는 맞춤 전략",
+    "description": "전자가 아닌 기계공학(열역학/유체역학/ANSYS)과 재료공학(신뢰성/금속상/CTE) 전공 지식을 FCBGA 패키징 자소서 및 면접 필살기로 변환하는 가이드.",
+    "content": "<h2>\"반도체는 전자과만 가는 것 아닌가요?\"라는 오해</h2>\n<p>반도체 전공정 팹(Fab)이 물리/전자공학 중심이라면, <strong>후공정 패키징 분야는 기계공학(열/응력 해석)과 재료공학(고분자/금속 IMC)의 절대적인 독무대</strong>입니다. 기계/재료과 학생들의 전공 과목이야말로 패키징 기업이 가장 갈증을 느끼는 핵심 역량입니다.</p>\n<hr>\n<h2>전공별 패키징 직무 매칭 가이드</h2>\n<ul>\n  <li><strong>기계공학과:</strong> 고체역학/유체역학 지식을 FC-BGA Warpage CAE 구조 해석(ANSYS) 및 Underfill 액체 유동 시뮬레이션 직무로 매칭.</li>\n  <li><strong>재료/신소재공학과:</strong> 신뢰성 평가, 상평형도, 금속 조직학 지식을 Solder Joint IMC 화합물 분석 및 ABF 유전체 신소재 평가 직무로 매칭.</li>\n</ul>\n<hr>\n<h2>전공 강점을 극대화하는 면접 한 줄 정리</h2>\n<p>\"전자 회로적 신호 전달을 물리적으로 완벽히 지지하고 발열을 통제하는 기계/재료적 구조를 설계하는 후공정 최적화 엔지니어가 되겠습니다.\"</p>"
+  },
+  "en": {
+    "title": "How Mechanical and Materials Engineers Pass Semiconductor Packaging Interviews",
+    "description": "Leveraging Mechanical (ANSYS thermal/stress analysis) and Materials Science background to target high-demand packaging engineering roles.",
+    "content": "<h2>Debunking the 'Electronics-Only' Semiconductor Myth</h2>\n<p>While front-end Fab processing leans heavily on electrical physics, advanced packaging is driven primarily by Mechanical Engineering (thermal/stress modeling) and Materials Science (polymers, metallurgy, and IMC chemistry).</p>\n<hr>\n<h2>Major-to-Packaging Role Mapping</h2>\n<ul>\n  <li><strong>Mechanical Engineering:</strong> Map solid mechanics and fluid dynamics coursework to FC-BGA Warpage CAE modeling (ANSYS) and Underfill fluid flow simulation.</li>\n  <li><strong>Materials Science:</strong> Map phase diagrams and microstructural failure analysis to Solder Joint IMC metallurgy and novel ABF dielectric evaluation.</li>\n</ul>\n<hr>\n<h2>The High-Impact Pitch Statement</h2>\n<p>\"I bring the mechanical and materials rigor required to physically encapsulate silicon dies, suppress thermal warpage, and guarantee 10-year package reliability.\"</p>"
+  }
+}

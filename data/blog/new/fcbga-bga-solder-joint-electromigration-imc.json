@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-bga-solder-joint-electromigration-imc",
+  "date": "2026-09-04",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Ball Grid Array (BGA) Solder Joint 신뢰성 및 Electromigration (EM)",
+    "description": "고전류 밀도 환경에서 솔더 볼 계면에 형성되는 IMC(Intermetallic Compound) 상과 일렉트로마이그레이션(EM)으로 인한 금속 원자 이동 결함.",
+    "content": "<h2>고전류 패키지의 신뢰성 위협: Electromigration (EM)</h2>\n<p>FC-BGA 솔더 볼 계면에 10^4 A/cm^2 이상의 높은 전류 밀도가 지속적으로 흐르면, 전자들의 운동량 전달(Electron Wind Force)에 의해 솔더 내부 금속 원자(Sn, Cu)가 전자의 이동 방향을 따라 물리적으로 쏠리는 <strong>Electromigration (EM)</strong> 현상이 일어납니다.</p>\n<hr>\n<h2>Intermetallic Compound (IMC) 상과 계면 취성</h2>\n<p>솔더(Sn-Ag-Cu)와 기판 구리 패드가 접합할 때 계면에서 Cu6Sn5 및 Cu3Sn과 같은 <strong>금속간 화합물(IMC)</strong>이 형성됩니다.</p>\n<ul>\n  <li><strong>적정 두께의 IMC:</strong> 솔더와 구리 사이의 강한 화학적 결합을 형성하여 접합 유지.</li>\n  <li><strong>과도한 IMC 성장:</strong> 열화 지속 시 IMC층이 두꺼워지면서 강도는 세지지만 연성이 사라져 외부 충격에 과자처럼 깨지는 <strong>취성 파괴(Brittle Fracture)</strong> 유발.</li>\n</ul>\n<hr>\n<h2>EM 결함 극복을 위한 패드 구조 및 솔더 조성 최적화</h2>\n<p>패드 표면에 무전해 니켈 도금(ENEPIG) 층을 삽입하여 구리 원자의 확산을 막는 확산 방지막(Barrier Layer)을 구축하고, Ni/Bi 소량 첨가 솔더를 채택하여 EM 수명을 비약적으로 향상시킵니다.</p>"
+  },
+  "en": {
+    "title": "BGA Solder Joint Reliability: Electromigration and Intermetallic Compound Dynamics",
+    "description": "Analyzing high current-density electron wind forces causing Electromigration (EM) voiding and IMC brittle fracture in FC-BGA solder spheres.",
+    "content": "<h2>Electromigration Threat in High-Current Packages</h2>\n<p>When current densities across FC-BGA solder joints exceed 10^4 A/cm^2, momentum transfer from flowing electrons (Electron Wind Force) physically pushes Sn and Cu metal atoms along the current path—a failure mode known as Electromigration (EM).</p>\n<hr>\n<h2>Intermetallic Compound (IMC) Interfacial Dynamics</h2>\n<p>Solder-to-pad reflow forms Intermetallic Compounds (IMC) such as Cu6Sn5 and Cu3Sn at the interface.</p>\n<ul>\n  <li><strong>Optimal IMC Layer:</strong> Essential for establishing a strong chemical solder-to-pad bond.</li>\n  <li><strong>Excessive IMC Growth:</strong> Thermal aging thickens IMC layers, rendering the joint brittle and highly susceptible to Brittle Fracture under mechanical shock.</li>\n</ul>\n<hr>\n<h2>Mitigation via Barrier Metallurgy</h2>\n<p>Engineers apply ENEPIG (Electroless Nickel Electroless Palladium Immersion Gold) surface finishes on substrate pads to create a diffusion barrier against Cu migration, alongside Ni/Bi micro-alloyed solders to extend EM fatigue life.</p>"
+  }
+}

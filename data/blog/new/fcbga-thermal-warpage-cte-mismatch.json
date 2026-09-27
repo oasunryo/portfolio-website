@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-thermal-warpage-cte-mismatch",
+  "date": "2026-08-17",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Thermal Warpage 메커니즘과 CTE Mismatch 극복 전략",
+    "description": "Reflow 공정 중 실리콘 다이, ABF 절연재, 솔더 볼 간의 열팽창 계수 차이로 발생하는 휨 현상의 물리적 원인과 억제 공정.",
+    "content": "<h2>Warpage(휨 현상)의 주요 원인: CTE Mismatch</h2>\n<p>FC-BGA 패키지는 실리콘 다이(CTE 2.6 ppm/°C), 유기 서브스트레이트 절연재(CTE 10~15 ppm/°C), PCB(CTE 14~17 ppm/°C) 등 열팽창 계수가 완전히 다른 이종 재료들이 다층으로 결합되어 있습니다. 최고 260°C에 달하는 리플로우(Reflow) 솔더링 공정을 거칠 때 온도 변화에 따른 열변형률 차이로 인해 패키지 전체가 휘어지는 <strong>Thermal Warpage</strong>가 발생합니다.</p>\n<hr>\n<h2>Smile vs Crying Warpage 변형 패턴</h2>\n<ul>\n  <li><strong>Smile Shape:</strong> 상온으로 냉각 시 기판 절연층이 실리콘 다이보다 훨씬 많이 수축하면서 패키지 가장자리가 위로 말려 올라가는 모서리 수축 형태.</li>\n  <li><strong>Crying Shape:</strong> 고온 고가압 상태에서 다이 중앙부가 위로 볼록하게 솟아오르는 형태.</li>\n</ul>\n<hr>\n<h2>엔지니어링 차원의 Warpage 억제 솔루션</h2>\n<p>100x100mm 이상의 초대형 FC-BGA 기판에서 휨을 통제하기 위해 다음과 같은 기법이 적용됩니다.</p>\n<ol>\n  <li><strong>Low-CTE ABF 소재 적용:</strong> 절연 필름(ABF) 내부 실리카 파우더 충전재 비율을 높여 CTE를 8 ppm/°C 이하로 낮춤.</li>\n  <li><strong>Symmetrical Copper Layup:</strong> 기판 상부와 하부의 잔적층 구리 잔류 비율(Copper Density)을 상하 대칭으로 일치시켜 응력 균형 유지.</li>\n  <li><strong>Stiffener Ring 마운팅:</strong> 패키지 테두리에 강성 금속 링(Stiffener)을 고온 에폭시로 접착하여 구조적 변형 억제.</li>\n</ol>"
+  },
+  "en": {
+    "title": "FC-BGA Thermal Warpage Mechanics and CTE Mismatch Mitigation",
+    "description": "Examining thermal strain differentials during reflow between silicon dies and organic ABF layers, and structural remedies for warpage.",
+    "content": "<h2>Root Cause of Warpage: Coefficient of Thermal Expansion Mismatch</h2>\n<p>FC-BGA assemblies merge materials with vastly different thermal behavior: Silicon dies (CTE 2.6 ppm/°C), organic ABF dielectric layers (CTE 10-15 ppm/°C), and PCB motherboards (CTE 14-17 ppm/°C). Exposing this multi-material stack to peak 260°C reflow temperatures induces severe thermo-mechanical stress and dynamic warpage.</p>\n<hr>\n<h2>Warpage Deformation Modes: Smile vs Crying Shapes</h2>\n<ul>\n  <li><strong>Smile Warpage (Corners Up):</strong> Occurs during room-temperature cooling when the organic substrate shrinks faster than the silicon die, lifting package corners.</li>\n  <li><strong>Crying Warpage (Center Up):</strong> Convex bowing at elevated temperatures caused by thermal expansion gradients.</li>\n</ul>\n<hr>\n<h2>Engineering Solutions for Large-Body Substrates</h2>\n<p>To control warpage on >100x100mm FC-BGA substrates, packaging engineers implement three core design rules:</p>\n<ol>\n  <li><strong>Low-CTE ABF Formulations:</strong> Increasing silica filler content inside dielectric films to drop effective CTE below 8 ppm/°C.</li>\n  <li><strong>Symmetric Copper Distribution:</strong> Balancing copper trace densities across top and bottom build-up layers to equalize stress vectors.</li>\n  <li><strong>Stiffener Ring Attachment:</strong> Bonding a perimeter metal stiffener ring using high-Tg adhesive to mechanically reinforce package rigidity.</li>\n</ol>"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-underfill-capillary-flow-void-analysis",
+  "date": "2026-08-31",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Underfill Dispensing 공정에서의 Capillary Flow 및 Void 결함 분석",
+    "description": "Flip-Chip 본딩 후 다이와 기판 사이의 미세 갭을 메우는 언더필 수지의 모세관 유동 메커니즘과 보이드(Void) 발생 원인 규명.",
+    "content": "<h2>Underfill 공정의 중요성</h2>\n<p>플립칩(Flip-Chip) 패키징에서 실리콘 다이와 FC-BGA 기판 사이의 범프(Solder Bump) 갭은 불과 30~50um에 불과합니다. 열충격 시 솔더 범프에 가해지는 응력을 분산시키고 수분 침투를 막기 위해 에폭시 수지 액체인 <strong>Underfill</strong>을 주입하는 공정이 필수적입니다.</p>\n<hr>\n<h2>Capillary Underfill (CUF) 모세관 유동 메커니즘</h2>\n<p>액체 상태의 언더필 수지는 모세관 힘(Capillary Force)에 의해 다이 측면에서 반대편으로 스스로 흘러 들어갑니다. 유동 속도는 워시번 방정식(Washburn's Equation)에 의해 제어됩니다.</p>\n<ul>\n  <li><strong>점도 (Viscosity):</strong> 온도가 높을수록 점도가 낮아져 유동 속도가 빨라지지만, 에폭시 경화 반응이 일찍 시작될 위험 존재.</li>\n  <li><strong>표면 장력 및 접촉각 (Contact Angle):</strong> 기판 및 다이 표면의 청정도가 떨어지면 젖음성(Wettability)이 저하되어 충진 불량 발생.</li>\n</ul>\n<hr>\n<h2>Void(미채움 기포) 불량 유형과 해결책</h2>\n<ol>\n  <li><strong>Filler Trapping Void:</strong> 언더필 수지 내부의 실리카 필러 입자가 미세 범프 사이에 끼여 유동을 막으면서 기포 형성.</li>\n  <li><strong>Outgassing Void:</strong> 기판 잔류 수분이 유동 열처리 중 증발하며 기포 발생. (사전 백킹 Backing 공정으로 해결).</li>\n</ol>"
+  },
+  "en": {
+    "title": "Underfill Dispensing Mechanics: Capillary Flow Dynamics and Void Suppression",
+    "description": "Investigating fluid flow dynamics under Washburn equations and root causes of trapped air voids during Flip-Chip underfill encapsulation.",
+    "content": "<h2>The Essential Role of Underfill</h2>\n<p>In Flip-Chip assemblies, solder bump gaps between silicon dies and FC-BGA substrates measure a mere 30-50um. Injecting epoxy Underfill resin is mandatory to redistribute thermo-mechanical bump stresses and block moisture ingress.</p>\n<hr>\n<h2>Capillary Underfill (CUF) Flow Dynamics</h2>\n<p>Liquid underfill flows beneath the die driven by capillary pressure, governed by Washburn's Equation.</p>\n<ul>\n  <li><strong>Viscosity Dynamics:</strong> Higher dispense temperatures lower fluid viscosity, accelerating flow rates but risking premature epoxy gelation.</li>\n  <li><strong>Wettability & Contact Angle:</strong> Surface contamination on substrates degrades resin wettability, stalling fluid propagation.</li>\n</ul>\n<hr>\n<h2>Void Defect Categories and Remedies</h2>\n<ol>\n  <li><strong>Filler Trapping Voids:</strong> Silica filler particles within the resin clump around micro-bumps, blocking fluid fronts and trapping air pockets.</li>\n  <li><strong>Outgassing Voids:</strong> Residual substrate moisture vaporizes during dispense heating (prevented by mandatory pre-bake steps).</li>\n</ol>"
+  }
+}

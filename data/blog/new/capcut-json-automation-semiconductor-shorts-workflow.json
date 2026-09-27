@@ -1,0 +1,15 @@
+{
+  "slug": "capcut-json-automation-semiconductor-shorts-workflow",
+  "date": "2026-09-15",
+  "category": "Career",
+  "ko": {
+    "title": "CapCut JSON 자동화와 AI 목소리로 제작하는 1분 반도체 기술 숏폼 템플릿",
+    "description": "텍스트 대본만 입력하면 CapCut 자막 타임라인과 BGM 레벨이 자동 조절되는 기술 숏폼 비디오 생산성 오토메이션 노하우.",
+    "content": "<h2>숏폼 제작 편집 시간을 90% 줄이기</h2>\n<p>유튜브 숏폼이나 릴스를 매번 수동으로 컷 편집하고 자막 위치를 잡으려면 비디오 1개당 2시간 이상이 소요됩니다. 스크립트 기반 <strong>CapCut Draft JSON 자동화 스크립트</strong>를 활용하면 10분 만에 숏폼 비디오 생성이 완료됩니다.</p>\n<hr>\n<h2>자동화 숏폼 파이프라인 3단계</h2>\n<ol>\n  <li><strong>Script to Voice (AI 오디오):</strong> 작성한 기술 대본을 ElevenLabs 또는 Vrew AI 음성 모델로 고품질 오디오 파일 추출.</li>\n  <li><strong>JSON Draft Generation:</strong> Python 스크립트를 구동하여 AI 음성 오디오 길이와 자막 텍스트를 파싱하고, CapCut 타임라인 템플릿으로 출력.</li>\n  <li><strong>BGM & Graphic Mix:</strong> 배경 음악은 -25dB로 자동 레벨링되며, 반도체 파워포인트 이미지 카드가 음성 자막 시점에 맞춰 스위칭되도록 렌더링.</li>\n</ol>"
+  },
+  "en": {
+    "title": "Automating 1-Minute Semiconductor Tech Shorts via CapCut JSON and AI Voice",
+    "description": "A streamlined video generation workflow using Python draft scripts and AI voice generators to output technical short-form videos.",
+    "content": "<h2>Cutting Video Edit Times by 90%</h2>\n<p>Manually cutting clips and aligning subtitles for short-form videos takes over 2 hours per episode. By leveraging CapCut Draft JSON Automation scripts, engineers can generate polished short-form videos in under 10 minutes.</p>\n<hr>\n<h2>3-Step Video Pipeline</h2>\n<ol>\n  <li><strong>AI Voice Generation:</strong> Export clean audio tracks from tech scripts using ElevenLabs or Vrew text-to-speech models.</li>\n  <li><strong>JSON Draft Injection:</strong> Run Python scripts to parse audio timestamps and subtitle strings, auto-generating a CapCut project file (draft_content.json).</li>\n  <li><strong>Audio Mixing & Graphic Sync:</strong> BGM is auto-leveled to -25dB while technical slide graphics swap in sync with voiceovers.</li>\n</ol>"
+  }
+}

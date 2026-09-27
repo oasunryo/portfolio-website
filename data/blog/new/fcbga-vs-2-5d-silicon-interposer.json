@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-vs-2-5d-silicon-interposer",
+  "date": "2026-08-23",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "FC-BGA vs 2.5D Silicon Interposer: Cost-Performance 트레이드오프",
+    "description": "Nvidia H100/B200 등에 쓰이는 CoWoS 기술 기반 2.5D 실리콘 인터포저와 고성능 유기 FC-BGA 기판 간의 전기적 대역폭 및 제조 단가 비교 분석.",
+    "content": "<h2>AI 반도체 통합의 핵심 솔루션 두 축</h2>\n<p>AI 로직 다이와 HBM 메모리를 하나의 패키지 위에 고밀도로 배치하기 위해 <strong>2.5D Silicon Interposer (e.g., TSMC CoWoS)</strong>와 <strong>High-Density Organic FC-BGA Substrate</strong>가 경쟁 및 보완 관계를 형성하고 있습니다.</p>\n<hr>\n<h2>기술적 사양 및 수율/단가 비교</h2>\n<ul>\n  <li><strong>Line/Space 배선 미세도:</strong> Silicon Interposer는 0.8/0.8um 급 미세 배선이 가능하여 극초고밀도 I/O 지원. FC-BGA는 5/5um 수준으로 상대적으로 넓음.</li>\n  <li><strong>제조 단가 (Cost):</strong> Silicon Interposer는 8인치/12인치 웨이퍼 공정을 사용하여 제조 단가가 매우 비쌈. FC-BGA는 패널 대면적 제작으로 면적당 단가 경쟁력 우수.</li>\n  <li><strong>전기적 대역폭 및 기생 성분:</strong> 실리콘 인터포저는 TSV 관통 전극 및 얇은 RDL로 신호 지연이 극도로 낮음.</li>\n</ul>\n<hr>\n<h2>하이브리드 패키징의 미래: Organic Interposer (2.1D / 2.3D)</h2>\n<p>최근에는 비싼 실리콘 인터포저를 대체하기 위해 FC-BGA 기판 상단에만 초미세 유기 RDL 층을 통합하는 Organic Interposer(유기 인터포저) 기술이 실리콘 대역폭과 FC-BGA 비용 절감의 타협점으로 급부상하고 있습니다.</p>"
+  },
+  "en": {
+    "title": "FC-BGA vs 2.5D Silicon Interposer: Bandwidth and Cost-Performance Tradeoffs",
+    "description": "Comparing silicon interposer architectures (TSMC CoWoS) against high-density organic FC-BGA substrates for AI accelerators.",
+    "content": "<h2>Pillars of AI Processor Integration</h2>\n<p>Integrating AI logic dies alongside multi-stack HBM memories relies on two primary packaging backbones: 2.5D Silicon Interposers (e.g., TSMC CoWoS) and High-Density Organic FC-BGA Substrates.</p>\n<hr>\n<h2>Architectural and Cost Comparison</h2>\n<ul>\n  <li><strong>Line/Space Interconnect Pitch:</strong> Silicon interposers achieve sub-micron 0.8/0.8um features, supporting maximum I/O density. FC-BGA substrates operate around 5/5um limits.</li>\n  <li><strong>Manufacturing Cost:</strong> Silicon interposers require expensive wafer fab processing. FC-BGA substrates utilize large panel processing, offering superior cost-per-area scalability.</li>\n  <li><strong>Signal Delay & Parasitics:</strong> Silicon interposers minimize RC latency through ultra-short RDL runs and silicon TSVs.</li>\n</ul>\n<hr>\n<h2>Emergence of Organic Interposers (2.1D / 2.3D)</h2>\n<p>To bridge the cost gap of pure silicon interposers, manufacturers are deploying Organic Interposers—laminating micro-RDL layers directly onto FC-BGA substrates to balance high bandwidth with panel-level cost savings.</p>"
+  }
+}

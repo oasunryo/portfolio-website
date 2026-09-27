@@ -1,0 +1,15 @@
+{
+  "slug": "semiconductor-undergraduate-one-page-portfolio-template",
+  "date": "2026-09-09",
+  "category": "Career",
+  "ko": {
+    "title": "3학년/4학년 학부생을 위한 반도체 공정/설계 포트폴리오 1페이지 구성 표준",
+    "description": "면접관이 10초 만에 파악할 수 있는 포트폴리오 1페이지 요약 서식: 프로젝트 목표, 공정/실험 조건, 데이터 시각화, 도출 인사이트.",
+    "content": "<h2>분량이 길면 아무도 읽지 않는다</h2>\n<p>20장에 달하는 장황한 학부 프로젝트 PPT를 제출하면 면접관은 어디를 읽어야 할지 난감해합니다. 바쁜 현직 엔지니어 면접관을 사로잡으려면 <strong>핵심 수치와 그래픽 위주의 1페이지 기술 요약 포트폴리오</strong>가 필수적입니다.</p>\n<hr>\n<h2>1페이지 포트폴리오의 4대 핵심 블록</h2>\n<ol>\n  <li><strong>Header & Overview:</strong> 프로젝트명, 수행 기간, 본인 역할(기여도 %), 핵심 키워드 3개.</li>\n  <li><strong>Problem Statement & Goal:</strong> 해결하고자 했던 공학적 단점 (e.g., \"신호 노이즈 20% 발생 원인 규명 및 저감\").</li>\n  <li><strong>Experimental Setup & Data Plot:</strong> 실험 조건 장비 사진, OriginPro/Python 데이터 변환 그래프, SEM/Cadence 캡처 이미지.</li>\n  <li><strong>Engineering Insight & Outcome:</strong> 실험 결과 정량 수치(e.g., \"임피던스 매칭을 통해 반사 손실 -18dB 달성\") 및 한계점 극복 소회.</li>\n</ol>"
+  },
+  "en": {
+    "title": "The 1-Page Engineering Portfolio Standard for Undergraduate Students",
+    "description": "Designing a high-impact 1-page project summary deck for semiconductor job applications focused on data plots and engineering outcomes.",
+    "content": "<h2>Long Decks Get Ignored</h2>\n<p>Submitting a 20-slide presentation forces busy interviewers to skim aimlessly. To instantly capture attention, condense your engineering work into a 1-Page Technical Portfolio.</p>\n<hr>\n<h2>The 4 Essential Blocks of a 1-Page Portfolio</h2>\n<ol>\n  <li><strong>Header & Overview:</strong> Project title, timeline, individual contribution %, and 3 technical tags.</li>\n  <li><strong>Problem Statement & Goal:</strong> The specific engineering bottleneck targeted (e.g., 'Identifying root causes of 20% signal noise').</li>\n  <li><strong>Setup & Visual Data Plots:</strong> Equipment photos, OriginPro/Python analytical graphs, and SEM/Cadence screenshots.</li>\n  <li><strong>Outcome & Engineering Insights:</strong> Quantified achievements (e.g., 'Achieved -18dB return loss via trace tuning') and lessons learned.</li>\n</ol>"
+  }
+}

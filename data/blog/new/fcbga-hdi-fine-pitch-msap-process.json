@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-hdi-fine-pitch-msap-process",
+  "date": "2026-08-20",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "High-Density Interconnect (HDI)와 Fine Pitch Patterning 공정 이슈",
+    "description": "Line/Space 10um 이하의 극미세 배선을 형성하는 mSAP(Modified Semi-Additive Process) 기술과 에칭 언더컷(Undercut) 제어 방안.",
+    "content": "<h2>미세 회로 배선의 한계: Subtractive vs mSAP 공정</h2>\n<p>전통적인 서브트랙티브(Subtractive) 공정은 두꺼운 구리박을 화학 물질로 깎아내는 방식이어서 Line/Space가 20um 이하로 내려가면 동박 측면이 과도하게 깎이는 <strong>Undercut(언더컷)</strong> 현상이 발생해 배선이 유실됩니다. 이를 극복하기 위해 mSAP(Modified Semi-Additive Process) 공정이 FC-BGA 기판 미세 회로 제작의 표준으로 자리잡았습니다.</p>\n<hr>\n<h2>mSAP(Modified Semi-Additive Process) 핵심 단계</h2>\n<ol>\n  <li><strong>Seed Layer Deposition:</strong> ABF 절연재 표면에 화학동도금(Electroless Cu Plating)으로 얇은 무전해 구리 시드층(두께 ~1um)을 형성합니다.</li>\n  <li><strong>Dry Film Photolithography:</strong> 드라이 필름 레지스트(DFR)를 도포하고 노광/현상하여 배선이 형성될 부위만 구멍을 뚫습니다.</li>\n  <li><strong>Electro-plating Cu:</strong> 전해 구리 도금을 진행하여 패턴 홈 내부만 정밀하게 구리를 채워 올립니다.</li>\n  <li><strong>DFR Strip & Seed Etch:</strong> DFR을 제거한 후 노출된 얇은 시드층만 플래시 에칭(Flash Etching)으로 신속히 제거하여 미세 회로 패턴을 완성합니다.</li>\n</ol>\n<hr>\n<h2>L/S 5/5um 이하 진입 시 공정 도전 과제</h2>\n<p>배선 폭이 5um 이하로 좁아지면 절연재와의 밀착력(Adhesion) 저하로 회로가 뜯겨 나가는 Peeling 현상이 발생합니다. 이를 방지하기 위해 절연재 표면에 나노 미터 수준의 거칠기(Roughness)를 형성하는 화학 표면 처리 및 박막 시드층 컨트롤이 핵심 공정 파라미터로 작용합니다.</p>"
+  },
+  "en": {
+    "title": "Fine Pitch Patterning and mSAP Process Innovations in High-Density Substrates",
+    "description": "Analyzing Modified Semi-Additive Process (mSAP) techniques to overcome undercut defect limits on sub-10um Line/Space patterns.",
+    "content": "<h2>Overcoming Etch Undercut: Subtractive vs mSAP</h2>\n<p>Conventional subtractive processing etches thick copper foils, but fails below 20um Line/Space (L/S) due to severe <strong>Undercut defects</strong>. To fabricate fine-pitch interconnects on FC-BGA substrates, manufacturers rely on the Modified Semi-Additive Process (mSAP).</p>\n<hr>\n<h2>Step-by-Step mSAP Process Flow</h2>\n<ol>\n  <li><strong>Seed Layer Deposition:</strong> Thin electroless copper (~1um) is deposited over the ABF dielectric substrate.</li>\n  <li><strong>Dry Film Photolithography:</strong> Dry Film Resist (DFR) is laminated, exposed, and developed to define circuit channels.</li>\n  <li><strong>Copper Electroplating:</strong> High-purity copper is electroplated inside the photoresist trenches with micro-meter precision.</li>\n  <li><strong>DFR Stripping & Seed Etch:</strong> DFR is stripped away, followed by a rapid flash-etch to dissolve the thin seed layer without damaging circuit traces.</li>\n</ol>\n<hr>\n<h2>Scaling Challenges Below 5/5um Line/Space</h2>\n<p>Pushing circuit scaling below 5/5um risks trace delamination due to reduced interfacial adhesion. Engineering nanometer-scale surface roughness on ABF dielectrics while managing ultra-thin seed layer etching is critical to maintaining pattern integrity.</p>"
+  }
+}

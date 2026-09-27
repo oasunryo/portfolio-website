@@ -1,0 +1,15 @@
+{
+  "slug": "ieee-ectc-paper-research-zotero-workflow-students",
+  "date": "2026-09-12",
+  "category": "Career",
+  "ko": {
+    "title": "반도체 취준생이 꼭 읽어야 할 IEEE & ECTC 최신 논문 검색 및 압축 요약 노하우",
+    "description": "Google Scholar와 Zotero를 활용해 ECTC, IEEE CPMT 등 첨단 패키징 1차 논문에서 핵심 공정 인자와 실험 데이터를 빠르게 추출하는 가이드.",
+    "content": "<h2>논문 읽기는 학계가 아니라 면접 준비의 핵심 무기다</h2>\n<p>많은 학생들이 논문 읽기를 대학원생들의 전유물로 생각합니다.하지만 IEEE ECTC(Electronic Components and Technology Conference) 논문은 <strong>글로벌 패키징 기업 엔지니어들이 현업 불량 문제를 어떻게 해결했는지 담겨 있는 실전 문제풀이집</strong>입니다.</p>\n<hr>\n<h2>효율적인 논문 검색 및 압축 읽기 3단계</h2>\n<ol>\n  <li><strong>Zotero 브라우저 플러그인 활용:</strong> Google Scholar 검색 후 클릭 한 번으로 논문 PDF 및 메타데이터 자동 수집.</li>\n  <li><strong>3-Pass Reading 기법:</strong><br>\n      - 1st Pass (5분): Abstract + Conclusion만 읽고 해당 공정 변수(e.g., Reflow Temp, ABF Dk) 확인.<br>\n      - 2nd Pass (10분): 본문 내 Figure 그래프 데이터와 SEM 이미지 캡션 중심으로 읽기.<br>\n      - 3rd Pass: 필요한 수식 및 공정 조건 노트화.</li>\n  <li><strong>키워드 템플릿 정리:</strong> \"문제점 → 사용된 메커니즘 → 공정 개선 수치\" 형태로 3줄 요약 노트 작성.</li>\n</ol>"
+  },
+  "en": {
+    "title": "Streamlined Paper Research Workflow Using IEEE, ECTC, and Zotero for Candidates",
+    "description": "How engineering applicants can quickly skim and summarize top IEEE ECTC papers to extract high-value manufacturing insights.",
+    "content": "<h2>Conference Papers Are Real-World Problem Collections</h2>\n<p>Students often assume paper reading is reserved for academia. In reality, IEEE ECTC proceedings are real-world case studies detailing how foundry engineers solved packaging yield bottlenecks.</p>\n<hr>\n<h2>3-Step Efficient Paper Reading Strategy</h2>\n<ol>\n  <li><strong>Zotero One-Click Capture:</strong> Save paper PDFs and bibtex metadata directly from Google Scholar via Zotero browser extensions.</li>\n  <li><strong>3-Pass Reading Technique:</strong><br>\n      - Pass 1 (5 mins): Read Abstract + Conclusion to identify target variables (e.g., Reflow profiles).<br>\n      - Pass 2 (10 mins): Inspect figures, SEM cross-sections, and data plots.<br>\n      - Pass 3: Extract actionable equations and process parameters.</li>\n  <li><strong>3-Sentence Executive Summaries:</strong> Record notes following: 'Root Issue → Applied Mechanism → Numerical Yield Lift.'</li>\n</ol>"
+  }
+}

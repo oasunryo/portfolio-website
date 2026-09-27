@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-power-integrity-ir-drop-optimization",
+  "date": "2026-08-27",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "High-Count Pinout 패키징에서의 Power Integrity (PI) 및 IR-Drop 최적화",
+    "description": "수만 개의 핀을 가진 대형 FC-BGA 패키지에서 DC 전압 강하(IR-Drop)를 줄이고 전력 공급망(PDN) 안정성을 확보하는 가이드라인.",
+    "content": "<h2>전력 공급망(PDN)의 붕괴: IR-Drop 현상</h2>\n<p>최신 AI GPU 다이는 0.8V 이하의 저전압에서 500A 이상의 대전류를 순간적으로 소모합니다. FC-BGA Substrate 내부 구리 배선 저항으로 인해 전원 핀에서 다이 코어까지 도달하는 동안 전압이 떨어지는 <strong>IR-Drop</strong> 현상이 심화되면, 칩이 오작동하거나 동작 주파수(Clock Rate)가 급감합니다.</p>\n<hr>\n<h2>Power Integrity(PI) 최적화를 위한 3가지 설계 전략</h2>\n<ol>\n  <li><strong>Plane Layer 멀티플렉싱:</strong> 전원(VDD) 및 그라운드(GND) 층을 단일 선 배선이 아닌 넓은 면적의 Copper Plane 형태로 배치하여 기판 저항 극소화.</li>\n  <li><strong>Silicon/Substrate Decoupling Capacitor 통합:</strong> 기판 하단(BGA side) 또는 상단(Die side)에 초고용량 칩 캐패시터(MLCC / Landed Cap)를 밀착 배치하여 고주파 전력 루프 인덕턴스 제거.</li>\n  <li><strong>Pinout 핀배치 최적화:</strong> VDD 핀과 GND 핀을 체스판 패턴으로 교차 배치하여 상호 인덕턴스를 상쇄하고 전력 공급 균일도 향상.</li>\n</ol>\n<hr>\n<h2>시뮬레이션 기반 전전력망(PDN) 검증</h2>\n<p>기판 제조 전 Ansys SIwave나 Cadence Sigrity 도구를 사용하여 DC IR-Drop 맵과 AC 임피던스 프로파일을 수치적으로 검증하는 과정이 필수적입니다.</p>"
+  },
+  "en": {
+    "title": "Power Integrity and IR-Drop Suppression in High-Pinout FC-BGA Substrates",
+    "description": "Engineering low-impedance Power Delivery Networks (PDN) to curb DC IR-drop in high-current AI and server chip packages.",
+    "content": "<h2>The Threat of DC IR-Drop in High-Power Accelerators</h2>\n<p>Modern AI GPUs operate below 0.8V while drawing transient currents exceeding 500A. Resistance across FC-BGA copper planes induces severe DC IR-Drop, lowering supply voltages at the silicon die pads and triggering logic instability or clock throttling.</p>\n<hr>\n<h2>3 Core Power Integrity (PI) Strategies</h2>\n<ol>\n  <li><strong>Solid Power/Ground Copper Planes:</strong> Replacing discrete traces with continuous copper planes across build-up layers to minimize DC plane resistance.</li>\n  <li><strong>Embedded Decoupling Capacitors:</strong> Mounting ultra-low ESL MLCC capacitors directly beneath the substrate (Land-Side Caps) to suppress high-frequency transient noise loops.</li>\n  <li><strong>Interleaved Pinout Arrays:</strong> Alternating VDD and GND pins in a checkerboard configuration to mutual inductance cancellation and uniform current spreading.</li>\n</ol>\n<hr>\n<h2>PDN Impedance Validation via Simulation</h2>\n<p>Substrate layout engineers rely on Ansys SIwave or Cadence Sigrity to simulate DC voltage drops and AC PDN impedance profiles before releasing designs to panel fabrication.</p>"
+  }
+}

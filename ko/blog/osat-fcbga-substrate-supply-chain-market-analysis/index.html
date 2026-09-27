@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석  | 오준서</title>
+<meta name="description" content="Ibiden, Shinko, Unimicron, 삼성전기, 대덕전자 등 글로벌 FC-BGA 제조사들의 공정 캐파, 주요 고객사 및 기술 차별화 포인트.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석  | 오준서">
+<meta property="og:description" content="Ibiden, Shinko, Unimicron, 삼성전기, 대덕전자 등 글로벌 FC-BGA 제조사들의 공정 캐파, 주요 고객사 및 기술 차별화 포인트.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../ko/index.html" class="nav-link" id="nav-home">홈</a>
+      <a href="../../../ko/blog/index.html" class="nav-link" id="nav-blog">블로그</a>
+      <a href="../../../ko/projects/index.html" class="nav-link" id="nav-projects">프로젝트</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="화면 테마 변경 (다크/라이트)">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../en/blog/osat-fcbga-substrate-supply-chain-market-analysis/index.html" aria-label="Switch Language" data-tooltip="English 버전으로 변경">EN</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← 블로그 목록으로
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Semiconductor</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums" datetime="2026-09-25">2026-09-25</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">1분 분량</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="글 공유 및 마크다운 복사">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>공유 및 복사</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'osat-fcbga-substrate-supply-chain-market-analysis')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>페이지 복사 (LLM용)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fosat-fcbga-substrate-supply-chain-market-analysis%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>LinkedIn에 공유</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=OSAT%20%EC%97%94%EC%A7%80%EB%8B%88%EC%96%B4%EA%B0%80%20%EB%B0%94%EB%9D%BC%EB%B3%B8%20FC-BGA%20%EA%B3%B5%EA%B8%89%EB%A7%9D(Supply%20Chain)%EA%B3%BC%20%EA%B5%AD%EB%82%B4%EC%99%B8%20%EC%A0%9C%EC%A1%B0%EC%82%AC%20%EB%B6%84%EC%84%9D&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%EB%B8%94%EB%A1%9C%EA%B7%B8%20%EA%B8%80%EC%9D%84%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fko%2Fblog%2Fosat-fcbga-substrate-supply-chain-market-analysis%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>이메일로 글 보내기</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              <h2 id="toc-heading-0">FC-BGA Substrate 시장의 과점적 구조</h2>
+<p>FC-BGA 기판은 수천억 원 규모의 설비 투자와 ABF 절연재 확보 능력이 필수적이어서 전 세계에서 단 10여 개 남짓한 글로벌 제조사만이 시장을 과점하고 있습니다.</p>
+<hr>
+<h2 id="toc-heading-1">주요 글로벌 기판 플레이어 분석</h2>
+<ul>
+  <li><strong>Ibiden & Shinko (일본):</strong> Intel 및 Nvidia 최첨단 서버용 FC-BGA 시장 점유율 1위. 20개 레이어 이상의 초고층 빌드업 및 미세 배선 독점적 기술력 보유.</li>
+  <li><strong>Unimicron & Nan Ya (대만):</strong> TSMC CoWoS 생태계와 긴밀히 연동된 대면적 FC-BGA 대량 생산 캐파 우위.</li>
+  <li><strong>삼성전기 & 대덕전자 (한국):</strong> 서버 및 네트워크용 FC-BGA 라인 증설을 통해 고부가 AI 기판 시장 점유율 급격히 확대 중.</li>
+</ul>
+<hr>
+<h2 id="toc-heading-2">OSAT 패키징 엔지니어에게 주는 시사점</h2>
+<p>패키징 엔지니어는 각 기판 공급사의 ABF 공정 특성과 휨(Warpage) 데이터를 사전에 파악하여 맞춤형 본딩 파라미터를 수립해야 조립 수율을 극대화할 수 있습니다.</p>
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">목차</div><ul class="toc-list"><li class="toc-item "><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">FC-BGA Substrate 시장의 과점적 구조</a></li><li class="toc-item "><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">주요 글로벌 기판 플레이어 분석</a></li><li class="toc-item "><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">OSAT 패키징 엔지니어에게 주는 시사점</a></li></ul></nav>
+        </div>
+        
+        <!-- Recommended Posts Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">다른 글 읽어보기</h3>
+          <div class="recommended-grid" id="recommended-posts-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>연관도 계산 방식 알아보기</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>본 포트폴리오의 추천 콘텐츠는 <strong>Google Gemini API(gemini-embedding-2 모델)</strong>를 활용해 추출한 <strong>다차원 텍스트 임베딩 벡터 간의 코사인 유사도(Cosine Similarity)</strong>를 기준으로 정렬됩니다.</p>
+              <p>글의 제목, 카테고리, 요약 설명 및 전체 본문을 종합 분석하여 단순한 키워드 일치를 넘어선 의미론적 연관성(Semantic Similarity)을 판별합니다. API 호출이 불가한 환경에서는 <strong>로컬 TF-IDF 기반의 단어 빈도 분석 알고리즘</strong>으로 자동 전환(Fallback)되어 연관도를 계산합니다.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-osat-fcbga-substrate-supply-chain-market-analysis">
+          "# OSAT 엔지니어가 바라본 FC-BGA 공급망(Supply Chain)과 국내외 제조사 분석\n\nIbiden, Shinko, Unimicron, 삼성전기, 대덕전자 등 글로벌 FC-BGA 제조사들의 공정 캐파, 주요 고객사 및 기술 차별화 포인트.\n\nFC-BGA Substrate 시장의 과점적 구조 FC-BGA 기판은 수천억 원 규모의 설비 투자와 ABF 절연재 확보 능력이 필수적이어서 전 세계에서 단 10여 개 남짓한 글로벌 제조사만이 시장을 과점하고 있습니다. 주요 글로벌 기판 플레이어 분석 Ibiden & Shinko (일본): Intel 및 Nvidia 최첨단 서버용 FC-BGA 시장 점유율 1위. 20개 레이어 이상의 초고층 빌드업 및 미세 배선 독점적 기술력 보유. Unimicron & Nan Ya (대만): TSMC CoWoS 생태계와 긴밀히 연동된 대면적 FC-BGA 대량 생산 캐파 우위. 삼성전기 & 대덕전자 (한국): 서버 및 네트워크용 FC-BGA 라인 증설을 통해 고부가 AI 기판 시장 점유율 급격히 확대 중. OSAT 패키징 엔지니어에게 주는 시사점 패키징 엔지니어는 각 기판 공급사의 ABF 공정 특성과 휨(Warpage) 데이터를 사전에 파악하여 맞춤형 본딩 파라미터를 수립해야 조립 수율을 극대화할 수 있습니다."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"fcbga-substrate-coreless-architecture","category":"Semiconductor","title":"FC-BGA Substrate Fundamentals and Core-less Architectural Trends","description":"Analyzing the Build-up layers of FC-BGA substrates for AI server chips and the engineering tradeoffs of Core-less processing.","date":"2026-08-12","score":22},{"slug":"fcbga-glass-substrate-vs-organic-future","category":"Semiconductor","title":"Glass Substrates vs Organic Substrates: The Future of AI Chip Packaging","description":"Analyzing Glass Substrate innovations—ultra-flatness, low CTE matching, and Through Glass Vias (TGV)—over traditional ABF organic layers.","date":"2026-09-07","score":14},{"slug":"fcbga-signal-integrity-crosstalk-insertion-loss","category":"Semiconductor","title":"Signal Integrity Optimization: Curbing Crosstalk and Insertion Loss in FC-BGA","description":"Mitigating high-frequency attenuation and trace crosstalk in 112G SerDes and PCIe Gen 6 FC-BGA substrate designs.","date":"2026-08-28","score":12}];
+            const recommendedGrid = document.getElementById('recommended-posts-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">해당 글과의 연관성: ${p.score}%</span>
+                      </div>
+                    </div>
+                    <span class="recommended-card-date">${p.date}</span>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

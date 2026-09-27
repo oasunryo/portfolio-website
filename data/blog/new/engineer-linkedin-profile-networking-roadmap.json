@@ -1,0 +1,15 @@
+{
+  "slug": "engineer-linkedin-profile-networking-roadmap",
+  "date": "2026-09-05",
+  "category": "Career",
+  "ko": {
+    "title": "개발자/엔지니어의 LinkedIn 로드맵: 헤드헌터와 면접관의 눈에 띄는 프로필 설정",
+    "description": "글로벌 반도체 기업 헤드헌터와 리크루터가 주목하는 LinkedIn 프로필 작성법, 헤드라인 설정, 개인 블로그 링크 연동 팁.",
+    "content": "<h2>LinkedIn은 이력서가 아니라 '실시간 영업 창구'다</h2>\n<p>많은 주니어 엔지니어들이 링티드인을 가입만 해두고 방치합니다. 하지만 외국계 OSAT, 장비사(ASML, Lam Research, Applied Materials), 파운드리 리크루터들은 매일 LinkedIn 검색을 통해 능동적으로 채용 후보자를 찾아 나섭니다.</p>\n<hr>\n<h2>눈길을 사로잡는 엔지니어 LinkedIn 프로필 4가지 요소</h2>\n<ol>\n  <li><strong>Headline (한 줄 요약):</strong> 단순히 \"OO대학교 학생\" 대신 Junior Packaging Engineer | FC-BGA & SI/PI Analysis | Portfolio: junseo.site 와 같이 핵심 키워드와 포트폴리오 링크 배치.</li>\n  <li><strong>About (요약문):</strong> 본인이 보유한 핵심 기술 스택(ANSYS, Spotfire, Semiconductor Assembly)과 해결할 수 있는 공정 문제를 3단락으로 정리.</li>\n  <li><strong>Featured (추천 항목):</strong> 본인이 직접 운영하는 포트폴리오 웹사이트 링크, 인기 기술 블로그 포스트, 학술 발표 자료를 카드 형태로 시각적 고정.</li>\n  <li><strong>Experience & Skills:</strong> 학부 프로젝트 및 인턴 경험마다 구체적인 정량적 성과(e.g., \"회로 휨 수치 15% 개선\") 기재.</li>\n</ol>"
+  },
+  "en": {
+    "title": "The Engineer's LinkedIn Optimization Roadmap for Recruiter Visibility",
+    "description": "How junior engineers can optimize LinkedIn headlines, featured project cards, and portfolio links to attract top semiconductor recruiters.",
+    "content": "<h2>LinkedIn Is a Live Career Storefront</h2>\n<p>Many junior engineers create a LinkedIn account and leave it dormant. Meanwhile, global semiconductor recruiters (ASML, Lam, Applied Materials, Amkor) actively search LinkedIn daily for prospective talent.</p>\n<hr>\n<h2>4 Elements of a High-Converting Engineering Profile</h2>\n<ol>\n  <li><strong>Impactful Headline:</strong> Replace 'Student at XYZ University' with Junior Packaging Engineer | FC-BGA & SI/PI Analysis | Portfolio: junseo.site.</li>\n  <li><strong>Targeted About Section:</strong> Summarize your core skill matrix (ANSYS, Spotfire, Assembly Yield Analysis) and problem-solving focus in 3 tight paragraphs.</li>\n  <li><strong>Featured Cards:</strong> Pin direct links to your portfolio site, top technical blog articles, and presentation decks.</li>\n  <li><strong>Quantified Experience:</strong> Pair every project listing with numerical outcomes (e.g., 'Reduced simulated thermal warpage by 15%').</li>\n</ol>"
+  }
+}

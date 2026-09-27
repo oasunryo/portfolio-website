@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-aoi-computer-vision-ai-inspection",
+  "date": "2026-09-22",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Deep Learning / Computer Vision 기반 FC-BGA 기판 자동 광학 검사(AOI)",
+    "description": "Line/Space 5um 미세 패턴과 레이저 비아 내부 미동금 결함을 실시간 검출하기 위한 AI 비전 알고리즘 및 룰 베이스 검사 한계 극복.",
+    "content": "<h2>기존 Rule-based AOI 검사의 한계</h2>\n<p>기존 기판 검사는 밝기(Threshold) 및 패턴 템플릿 비교에 의존하는 룰 베이스(Rule-based) 광학 검사를 사용했습니다. 그러나 FC-BGA 기판 배선 피치가 5um 이하로 좁아지면서 ABF 표면 조도 패턴을 불량으로 오인하는 과검(False Alarm) 비율이 30%를 넘어서는 한계에 봉착했습니다.</p>\n<hr>\n<h2>Deep Learning 비전 알고리즘의 도입</h2>\n<ul>\n  <li><strong>Convolutional Neural Networks (CNN):</strong> 기판 오픈(Open), 쇼트(Short), 돌출(Protrusion), 피트(Pit) 4대 불량 이미지를 학습하여 99% 정밀 분류.</li>\n  <li><strong>Autoencoder 기반 이상 탐지 (Anomaly Detection):</strong> 불량 데이터가 드문 신규 공정에서 양품 패턴만 학습한 후 차이점을 실시간 탐지.</li>\n</ul>\n<hr>\n<h2>Laser Via Depth 3D 측정 검사 연동</h2>\n<p>2D 이미지뿐만 아니라 백색광 간섭계(WSI) 3D 데이터를 AI에 결합하여 Microvia 내부 구리 미채움(Unfilled Via) 결함까지 입체 검출합니다.</p>"
+  },
+  "en": {
+    "title": "Deep Learning and Computer Vision for Automated Optical Inspection in FC-BGA",
+    "description": "Deploying CNN anomaly detection models to replace rule-based AOI systems for inspecting sub-5um line/space substrate defects.",
+    "content": "<h2>The Limits of Rule-Based AOI Inspection</h2>\n<p>Traditional Automated Optical Inspection (AOI) relies on pixel intensity thresholding. However, on sub-5um FC-BGA patterns, microscopic ABF surface roughness causes false-alarm rates to exceed 30%, overwhelming quality control teams.</p>\n<hr>\n<h2>AI-Powered Computer Vision Defect Classification</h2>\n<ul>\n  <li><strong>CNN Defect Classifiers:</strong> Training Convolutional Neural Networks to categorize Open, Short, Protrusion, and Pit defects with >99% accuracy.</li>\n  <li><strong>Autoencoder Anomaly Detection:</strong> Training unsupervised models purely on good substrate patterns to flag rare, unseen manufacturing anomalies.</li>\n</ul>\n<hr>\n<h2>Integrating 3D White-Light Interferometry</h2>\n<p>Combining 2D computer vision with 3D White-Light Interferometry (WSI) allows AI models to verify copper plating fill depth inside micro-vias.</p>"
+  }
+}

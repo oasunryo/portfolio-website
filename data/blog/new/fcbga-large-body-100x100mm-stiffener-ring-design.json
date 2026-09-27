@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-large-body-100x100mm-stiffener-ring-design",
+  "date": "2026-09-10",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Large-Body FC-BGA (100x100mm+) 제조 공정상의 휨 방지 강인성 설계",
+    "description": "초대형 AI 칩 패키징에서 패키지 변형을 물리적으로 억제하는 Stiffener Ring 장착 공정 및 고내열 접착제(Adhesive) 선정 기준.",
+    "content": "<h2>100x100mm+ 대형 패키지의 거대한 휨 응력</h2>\n<p>서버용 AI 가속기 패키지 크기가 100x100mm를 넘어가면서, 리플로우 공정 시 발생하는 휨 모멘트(Bending Moment)가 기판 자체의 복원력을 압도하게 됩니다. 이를 제어하지 못하면 BGA 솔더볼 단락 및 다이 균열로 직결됩니다.</p>\n<hr>\n<h2>Stiffener Ring(스티프너 링) 장착 공정 요소</h2>\n<p>기판 외곽 둘레에 구리(Cu) 또는 구리-니켈 메탈 링을 마운팅하여 구조적 강성을 부여합니다.</p>\n<ul>\n  <li><strong>Stiffener Material:</strong> 기판 열팽창과 적절히 부합하며 열전도율이 높은 Cu 또는 Stainless Steel 소재 채택.</li>\n  <li><strong>Adhesive dispense (접착제 도포):</strong> Glass Transition Temperature(Tg)가 높고 열변형 시 유연성을 유지하는 에폭시 접착제 도포.</li>\n  <li><strong>Clamping Force & Cure Profile:</strong> 고온 경화 챔버에서 링을 균일한 압력으로 눌러주어 에폭시 내 보이드 유입 방지.</li>\n</ul>"
+  },
+  "en": {
+    "title": "Mechanical Stiffener Ring Engineering for Large-Body (>100x100mm) FC-BGA",
+    "description": "Mitigating massive bending moments on ultra-large AI server packages via perimeter metal stiffener rings and high-Tg dispensing.",
+    "content": "<h2>Massive Bending Moments in >100x100mm Substrates</h2>\n<p>As server AI accelerator packages expand beyond 100x100mm, thermal bending moments dwarf the intrinsic structural rigidity of organic substrates, risking total BGA solder joint shearing.</p>\n<hr>\n<h2>Perimeter Stiffener Ring Integration Steps</h2>\n<p>Mounting a solid copper or metal alloy perimeter ring provides essential mechanical reinforcement.</p>\n<ul>\n  <li><strong>Material Selection:</strong> Utilizing high thermal-conductivity Cu alloys matched to substrate expansion profiles.</li>\n  <li><strong>High-Tg Epoxy Dispensing:</strong> Applying high glass-transition temperature (Tg) structural adhesives.</li>\n  <li><strong>Thermal Curing Clamping:</strong> Applying uniform mechanical clamping force during thermal cure cycles to eliminate adhesive voids.</li>\n</ul>"
+  }
+}

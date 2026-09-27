@@ -1,0 +1,15 @@
+{
+  "slug": "fcbga-signal-integrity-crosstalk-insertion-loss",
+  "date": "2026-08-28",
+  "category": "Semiconductor",
+  "ko": {
+    "title": "Signal Integrity (SI) 최적화: Crosstalk 및 Insertion Loss 감소 기법",
+    "description": "PCIe Gen 6/7 및 112G SerDes 초고속 신호 전송 환경에서 FC-BGA 기판의 크로스토크 및 신호 감쇄(Insertion Loss) 최소화 기술.",
+    "content": "<h2>초고속 신호 전송의 적: Insertion Loss와 Crosstalk</h2>\n<p>신호 전송 속도가 112Gbps PAM4 이상으로 올라감에 따라 FC-BGA 기판 배선에서의 <strong>Insertion Loss (삽입 손실)</strong>과 인접 배선 간의 <strong>Crosstalk (신호 누설 및 간섭)</strong>이 신호 품질(Eye Diagram)을 무너뜨리는 주원인으로 작용합니다.</p>\n<hr>\n<h2>Signal Integrity(SI) 개선을 위한 기판 핵심 요소</h2>\n<ul>\n  <li><strong>Low Dk / Low Df 절연 재료:</strong> ABF 유전체의 유전율(Dk)과 유전손실율(Df)을 낮추어 고주파 감쇄 신호 방지.</li>\n  <li><strong>Differential Pair 쉴딩:</strong> 차동 신호선 사이 및 외곽에 Ground Via 펜스(Fence)를 배치하여 누설 전자기파 차단.</li>\n  <li><strong>Copper Roughness Control:</strong> 구리 배선 표면 거칠기가 심하면 표피 효과(Skin Effect)로 고주파 저항이 급증하므로 무거칠성(Smooth Cu) 도금 기술 적용.</li>\n</ul>\n<hr>\n<h2>Eye Diagram 둔화 극복과 SI/PI 시뮬레이션</h2>\n<p>Eye Height 및 Eye Width를 확보하기 위한 3D 전자기장(EM) 시뮬레이션과 S-파라미터 추출이 고성능 FC-BGA 기판 설계의 핵심 공정입니다.</p>"
+  },
+  "en": {
+    "title": "Signal Integrity Optimization: Curbing Crosstalk and Insertion Loss in FC-BGA",
+    "description": "Mitigating high-frequency attenuation and trace crosstalk in 112G SerDes and PCIe Gen 6 FC-BGA substrate designs.",
+    "content": "<h2>High-Speed Signal Degradation Bottlenecks</h2>\n<p>As transmission speeds reach 112Gbps PAM4, FC-BGA signal traces suffer from severe Insertion Loss (attenuation) and Crosstalk (electromagnetic interference), collapsing signal Eye Diagrams.</p>\n<hr>\n<h2>Key Substrate Signal Integrity (SI) Factors</h2>\n<ul>\n  <li><strong>Ultra-Low Dk/Df ABF Dielectrics:</strong> Lowering dielectric constant (Dk) and loss tangent (Df) to minimize high-frequency signal absorption.</li>\n  <li><strong>Differential Pair Shielding:</strong> Encasing differential traces with Ground Via Fences to isolate radiated EMI.</li>\n  <li><strong>Smooth Copper Profile Control:</strong> Reducing copper surface roughness to eliminate high-frequency resistance spikes caused by the Skin Effect.</li>\n</ul>\n<hr>\n<h2>Securing Eye Margin via 3D EM Simulation</h2>\n<p>Extracting accurate S-parameters and running 3D Electro-Magnetic (EM) simulations are essential steps to guarantee open Eye Margins prior to substrate manufacturing.</p>"
+  }
+}
