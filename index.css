@@ -748,17 +748,13 @@ html.dark .tag-filter-btn.active {
 }
 
 .design-card-item {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 180px 1fr 180px;
   align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 0.5rem;
-  border: none;
+  padding: 1.25rem 0.75rem;
   border-bottom: 1px solid var(--border-color);
   background: transparent;
-  box-shadow: none;
-  border-radius: 0;
-  gap: 2rem;
+  gap: 1.5rem;
   cursor: pointer;
   transition: background-color 0.2s ease, padding-left 0.2s ease;
   text-decoration: none;
@@ -775,51 +771,62 @@ html.dark .tag-filter-btn.active {
 }
 
 .design-card-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  gap: 2rem;
+  display: contents;
 }
 
 .design-card-main-info {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  min-width: 0;
 }
 
-.design-card-number {
-  font-size: 0.9rem;
-  color: var(--text-tertiary);
-  font-family: var(--font-sans);
-  font-weight: 500;
+.recommended-card-category {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 0.02em;
 }
 
 .design-card-title {
   font-family: var(--font-sans);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .design-card-sub-info {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  justify-content: flex-end;
   flex-shrink: 0;
 }
 
-.recommended-card-category {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--accent-color);
+.design-card-date {
+  font-size: 0.88rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.design-card-date {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  font-family: var(--font-sans);
+@media (max-width: 768px) {
+  .design-card-item {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+    padding: 1rem 0.5rem;
+  }
+
+  .design-card-sub-info {
+    justify-content: flex-start;
+  }
 }
 
 /* Floating Image Preview Container for Desktop */

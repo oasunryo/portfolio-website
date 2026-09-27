@@ -1031,21 +1031,10 @@ async function buildAll() {
     const tagHTML = p.tags ? p.tags.map(t => `<span class="design-card-tag">${t.trim()}</span>`).join('') : '';
     return `
     <a class="design-card-item" href="./${p.slug}/index.html" data-type="${p.type}" data-date="${p.date}" data-title="${trans.title.toLowerCase()}" data-image="${imgPath}" data-description="${trans.description}" data-tags="${p.tags.join(',')}" style="text-decoration: none; color: inherit;">
-      <div class="design-card-thumbnail" style="background-image: url(${imgPath});">
-        <img src="${imgPath}" alt="${trans.title}" loading="lazy">
-      </div>
-      <div class="design-card-content">
-        <div class="design-card-main-info">
-          <span class="recommended-card-category">${trans.category}</span>
-          <h3 class="design-card-title">${trans.title}</h3>
-          <p class="design-card-desc">${trans.description}</p>
-          <div class="design-card-tags">
-            ${tagHTML}
-          </div>
-        </div>
-        <div class="design-card-sub-info">
-          <span class="design-card-date">${p.period}</span>
-        </div>
+      <span class="recommended-card-category">${trans.category}</span>
+      <h3 class="design-card-title">${trans.title}</h3>
+      <div class="design-card-sub-info">
+        <span class="design-card-date">${p.period}</span>
       </div>
     </a>
     `;
