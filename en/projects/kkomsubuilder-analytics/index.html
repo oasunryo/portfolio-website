@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/svg+xml" href="../../../logo/favicon.svg?v=1.0.1">
+<link rel="alternate icon" type="image/png" href="../../../logo/favicon-32x32.png?v=1.0.1">
+<link rel="apple-touch-icon" sizes="180x180" href="../../../logo/apple-touch-icon.png?v=1.0.1">
+<link rel="manifest" href="../../../site.webmanifest">
+<meta name="theme-color" content="#c2410c">
+<title>Kkomsubuilder: Tech Career Content Creation & Analytics Automation Engine  | Junseo Oh</title>
+<meta name="description" content="Branding a tech career channel for semiconductor job seekers, implementing shorts/carousel rendering pipelines, and building Meta analytics engines.">
+<link rel="stylesheet" href="../../../index.css">
+
+<!-- Open Graph / Facebook / LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kkomsubuilder: Tech Career Content Creation & Analytics Automation Engine  | Junseo Oh">
+<meta property="og:description" content="Branding a tech career channel for semiconductor job seekers, implementing shorts/carousel rendering pipelines, and building Meta analytics engines.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80">
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<!-- MathJax for rendering LaTeX equations -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<!-- Theme toggle flash prevention script -->
+<script>
+  (function() {
+    var saved = localStorage.getItem("theme");
+    var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (saved === "dark" || (!saved && prefersDark)) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  })();
+</script>
+
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0">
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="matrix" values="1 0 0 0 0
+                                      0 1 0 0 0
+                                      0 0 1 0 0
+                                      0 0 0 0.05 0"></feColorMatrix>
+    <feBlend in="SourceGraphic" mode="overlay"></feBlend>
+  </filter>
+</svg>
+
+  <header class="sticky-nav">
+  <div class="w-full max-w-2xl mx-auto px-6 nav-container">
+    <nav class="flex items-center gap-6">
+      <a href="../../../en/index.html" class="nav-link" id="nav-home">Home</a>
+      <a href="../../../en/blog/index.html" class="nav-link" id="nav-blog">Blog</a>
+      <a href="../../../en/projects/index.html" class="nav-link" id="nav-projects">Projects</a>
+    </nav>
+    <div class="flex items-center gap-2">
+      <button class="icon-btn" id="theme-toggle-btn" aria-label="Toggle Dark Mode" data-tooltip="Toggle Dark/Light Theme">
+        <!-- Sun Icon (visible in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-light"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      </button>
+      <a class="lang-toggle-btn" id="lang-switch-btn" href="../../../ko/projects/kkomsubuilder-analytics/index.html" aria-label="Switch Language" data-tooltip="Switch to Korean">KO</a>
+    </div>
+  </div>
+</header>
+
+  <main class="w-full max-w-5xl mx-auto px-6 pt-24 pb-12 flex-grow">
+    
+      <article class="prose-article">
+        <a href="../index.html" class="blog-back-link">
+          ← Back to Projects list
+        </a>
+        <header class="article-header">
+          <h1 class="article-main-title">Kkomsubuilder: Tech Career Content Creation & Analytics Automation Engine</h1>
+          <div class="article-meta-row" style="margin-top: 1rem;">
+            <div class="article-meta-info">
+              <span class="article-category-badge">Creator Media / Semiconductor Career Hacking & Data Analytics</span>
+              <span class="divider-pipe">•</span>
+              <time class="tabular-nums">2026. 06. 01. ~ 2026. 09. 28.</time>
+              <span class="divider-pipe">•</span>
+              <span class="tabular-nums">2 min read</span>
+            </div>
+            
+            <div class="ai-dropdown-container">
+              <button class="icon-btn ai-dropdown-trigger" onclick="toggleAiDropdown(event)" data-tooltip="Share & Copy Markdown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span>Share & Copy</span>
+              </button>
+              <div class="ai-dropdown-menu">
+                <button class="ai-dropdown-item" onclick="copyPostMarkdown(event, 'kkomsubuilder-analytics')">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                  <span>Copy Page (for LLMs)</span>
+                </button>
+                <a class="ai-dropdown-item" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fkkomsubuilder-analytics%2F" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  <span>Share on LinkedIn</span>
+                </a>
+                <a class="ai-dropdown-item" href="mailto:?subject=Kkomsubuilder%3A%20Tech%20Career%20Content%20Creation%20%26%20Analytics%20Automation%20Engine&body=%EC%98%A4%EC%A4%80%EC%84%9C%20%EB%8B%98%EC%9D%98%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%A0%88%ED%8F%AC%ED%8A%B8%EB%A5%BC%20%EA%B3%B5%EC%9C%A0%ED%95%A9%EB%8B%88%EB%8B%A4%3A%20https%3A%2F%2Fjunseo.site%2Fen%2Fprojects%2Fkkomsubuilder-analytics%2F" style="text-decoration: none;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Send via Email</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </header>
+        <div class="article-layout-container">
+          <div class="article-body-wrapper">
+            <div class="article-body-content">
+              
+<p class="journal-p"><em>(Career hacking content creation for semiconductor job seekers, shorts/carousel automation pipeline, and Meta data analytics)</em></p>
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-0">1) Project Overview</h3>
+<ul class="journal-ul">
+  <li><strong>Period</strong>: 2026. 06. 01. ~ Present (Active)</li>
+  <li><strong>Type</strong>: IT/Semiconductor Tech Creator Channel Branding & Data Pipeline</li>
+  <li><strong>Channel Name</strong>: <strong>'Kkomsubuilder' (@kkomsubuilder)</strong></li>
+  <li><strong>Summary</strong>: Built a tech creator channel providing actionable career hacking tips, JD analysis, and fab data methodologies for semiconductor job seekers, backed by an automated performance analytics pipeline.</li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-1">2) Background & Objectives</h3>
+<ul class="journal-ul">
+  <li><strong>Background</strong>: Designed to solve the common issue where job applicants fail screening due to generic resume descriptions, by teaching them how to link fab data (Kaggle SECOM, Spotfire) and JD specs to actual GitHub projects.</li>
+  <li><strong>Core Objectives</strong>:
+    <ul>
+      <li><strong>Content Main Strategy</strong>: Deliver tailored short-form clips and Instagram carousel posts covering semiconductor process job analyses, portfolio differentiation, and GitHub project management.</li>
+      <li><strong>Analytics Automation</strong>: Replace manual logging with a Python pipeline that converts Meta metrics (PDT -> KST) and auto-syncs performance to a Google Sheets dashboard.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-2">3) Key Performance Metrics</h3>
+<ul class="journal-ul">
+  <li><strong>Viral Breakout</strong>: Achieved <strong>30,345 Reach, 591 Saves, 208 Shares, and +33 New Followers</strong> on a single post about fab data resume tips.</li>
+  <li><strong>User Behavior Pattern (KST Calibrated)</strong>:
+    <ul>
+      <li><strong>10:00 AM KST (Educational Content)</strong>: <strong>4x higher Save rate</strong> (Avg 10.1 saves/post) as users bookmark guides for studying.</li>
+      <li><strong>10:00 PM KST (Hiring News)</strong>: <strong>High Share and Reach</strong> (Avg 663 reach, 4.1 shares) as users pass news to peers.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-3">4) Tech Stack & Pipeline</h3>
+<table class="journal-table">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Content Creation</strong></td>
+      <td>CapCut 9:16 Shorts Generator, Python Draft Builder, Figma Carousel Automation</td>
+    </tr>
+    <tr>
+      <td><strong>Data Pipeline</strong></td>
+      <td>Python, Pandas, Meta Graph API Exporter, KST Timezone Calibration Engine</td>
+    </tr>
+    <tr>
+      <td><strong>Auto Sync</strong></td>
+      <td>Google Sheets API (gspread), Content Performance Automation Dashboard</td>
+    </tr>
+    <tr>
+      <td><strong>Domain Topics</strong></td>
+      <td>JD Analytics, Semiconductor Fab Data (Spotfire/Kaggle SECOM), GitHub Portfolio Branding</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-4">5) Implementation Steps</h3>
+<h4 class="journal-h4">1. Tailored Content Branding & Pipelines</h4>
+<p class="journal-p">Established the 'Kkomsubuilder' identity. Developed automated rendering scripts to slice long-form presentations into 10 CapCut short-form drafts (Shorts/Reels).</p>
+
+<h4 class="journal-h4">2. KST Timezone Calibration Engine (`sync_meta_performance_to_sheets.py`)</h4>
+<p class="journal-p">Converted Meta export CSV timestamps from PDT to KST (+16h), accurately mapping user engagement windows with upload time slots.</p>
+
+<h4 class="journal-h4">3. Automated Google Sheets Dashboard Sync</h4>
+<p class="journal-p">Integrated performance metrics directly into the Google Sheets 'Creator Content Calendar', updating visual guideline tabs automatically.</p>
+
+<hr class="journal-divider">
+
+<h3 class="journal-h3" id="toc-heading-5">6) Lessons Learned</h3>
+<p class="journal-p">Learned how to transform complex technical domain data into engaging, accessible storytelling for target audiences while establishing a data-driven creator growth workflow powered by automated analytics pipelines.</p>
+
+            </div>
+          </div>
+          <nav class="toc-sidebar-container" aria-label="Table of Contents"><div class="toc-title">Table of Contents</div><ul class="toc-list"><li class="toc-item toc-indent"><a href="#toc-heading-0" class="toc-link" data-heading-id="toc-heading-0">1) Project Overview</a></li><li class="toc-item toc-indent"><a href="#toc-heading-1" class="toc-link" data-heading-id="toc-heading-1">2) Background & Objectives</a></li><li class="toc-item toc-indent"><a href="#toc-heading-2" class="toc-link" data-heading-id="toc-heading-2">3) Key Performance Metrics</a></li><li class="toc-item toc-indent"><a href="#toc-heading-3" class="toc-link" data-heading-id="toc-heading-3">4) Tech Stack & Pipeline</a></li><li class="toc-item toc-indent"><a href="#toc-heading-4" class="toc-link" data-heading-id="toc-heading-4">5) Implementation Steps</a></li><li class="toc-item toc-indent"><a href="#toc-heading-5" class="toc-link" data-heading-id="toc-heading-5">6) Lessons Learned</a></li></ul></nav>
+        </div>
+
+        <!-- Recommended Projects Section -->
+        <hr style="margin: 4rem 0 2rem 0; border: 0; border-top: 1px solid var(--border-color);">
+        <section class="recommended-section">
+          <h3 class="recommended-title">Read More Projects</h3>
+          <div class="recommended-grid" id="recommended-projects-grid"></div>
+          
+          <details class="similarity-info-details">
+            <summary class="similarity-info-summary">
+              <svg class="info-icon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: relative; top: 1.5px; margin-right: 4px;"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              <span>How similarity is calculated</span>
+            </summary>
+            <div class="similarity-info-content">
+              <p>Recommended content on this portfolio is sorted based on the <strong>Cosine Similarity</strong> between <strong>multi-dimensional text embedding vectors</strong> extracted using the <strong>Google Gemini API (gemini-embedding-2 model)</strong>.</p>
+              <p>By analyzing the title, category, description, and full body text, it evaluates semantic relevance beyond simple keyword matching. If the API is unavailable, it automatically falls back to a <strong>local TF-IDF term frequency analysis algorithm</strong>.</p>
+            </div>
+          </details>
+        </section>
+
+        <!-- Embedded markdown database for LLM text copying -->
+        <script type="application/json" id="markdown-kkomsubuilder-analytics">
+          "# Kkomsubuilder: Tech Career Content Creation & Analytics Automation Engine\n\nCreator Media / Semiconductor Career Hacking & Data Analytics\n\n(Career hacking content creation for semiconductor job seekers, shorts/carousel automation pipeline, and Meta data analytics) 1) Project Overview Period: 2026. 06. 01. ~ Present (Active) Type: IT/Semiconductor Tech Creator Channel Branding & Data Pipeline Channel Name: 'Kkomsubuilder' (@kkomsubuilder) Summary: Built a tech creator channel providing actionable career hacking tips, JD analysis, and fab data methodologies for semiconductor job seekers, backed by an automated performance analytics pipeline. 2) Background & Objectives Background: Designed to solve the common issue where job applicants fail screening due to generic resume descriptions, by teaching them how to link fab data (Kaggle SECOM, Spotfire) and JD specs to actual GitHub projects. Core Objectives: Content Main Strategy: Deliver tailored short-form clips and Instagram carousel posts covering semiconductor process job analyses, portfolio differentiation, and GitHub project management. Analytics Automation: Replace manual logging with a Python pipeline that converts Meta metrics (PDT -> KST) and auto-syncs performance to a Google Sheets dashboard. 3) Key Performance Metrics Viral Breakout: Achieved 30,345 Reach, 591 Saves, 208 Shares, and +33 New Followers on a single post about fab data resume tips. User Behavior Pattern (KST Calibrated): 10:00 AM KST (Educational Content): 4x higher Save rate (Avg 10.1 saves/post) as users bookmark guides for studying. 10:00 PM KST (Hiring News): High Share and Reach (Avg 663 reach, 4.1 shares) as users pass news to peers. 4) Tech Stack & Pipeline Category Details Content Creation CapCut 9:16 Shorts Generator, Python Draft Builder, Figma Carousel Automation Data Pipeline Python, Pandas, Meta Graph API Exporter, KST Timezone Calibration Engine Auto Sync Google Sheets API (gspread), Content Performance Automation Dashboard Domain Topics JD Analytics, Semiconductor Fab Data (Spotfire/Kaggle SECOM), GitHub Portfolio Branding 5) Implementation Steps 1. Tailored Content Branding & Pipelines Established the 'Kkomsubuilder' identity. Developed automated rendering scripts to slice long-form presentations into 10 CapCut short-form drafts (Shorts/Reels). 2. KST Timezone Calibration Engine (`sync_meta_performance_to_sheets.py`) Converted Meta export CSV timestamps from PDT to KST (+16h), accurately mapping user engagement windows with upload time slots. 3. Automated Google Sheets Dashboard Sync Integrated performance metrics directly into the Google Sheets 'Creator Content Calendar', updating visual guideline tabs automatically. 6) Lessons Learned Learned how to transform complex technical domain data into engaging, accessible storytelling for target audiences while establishing a data-driven creator growth workflow powered by automated analytics pipelines."
+        </script>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const recommended = [{"slug":"spotfire-analytics","category":"Yield Analytics","title":"Spotfire Process Analytics","description":"Profiling equipment logs using Spotfire statistical EDA tools to map correlations between parameters and dislocation/defect occurrences.","date":"2025-10-20","score":8},{"slug":"packaging-test","category":"Semiconductor Theory","title":"Packaging & Test Fundamentals","description":"Comprehensive research covering WLCSP, Flip-Chip, TSV HBM stacking, warpage thermo-structural analysis, and SI impedance matching.","date":"2026-04-01","score":7},{"slug":"ito-oled-analysis","category":"Devices & Process","title":"ITO-based OLED Fabrication","description":"Fabricating ITO anodes, blade-coating emitting layers, and optimizing thermal annealing to profile J-V-L optoelectronic performance curves.","date":"2026-03-01","score":6}];
+            const recommendedGrid = document.getElementById('recommended-projects-grid');
+            
+            if (recommendedGrid) {
+              recommendedGrid.innerHTML = recommended.map(p => `
+                <a href="../${p.slug}/index.html" class="recommended-card">
+                  <div class="recommended-card-meta">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                      <span class="recommended-card-category">${p.category}</span>
+                      <div class="similarity-donut-wrapper">
+                        <svg class="similarity-donut" width="12" height="12" viewBox="0 0 20 20" style="vertical-align: middle; opacity: 0.85;">
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--border-color, #e5e7eb)" stroke-width="3"></circle>
+                          <circle cx="10" cy="10" r="8" fill="transparent" stroke="var(--accent-color)" stroke-width="3" 
+                                  stroke-dasharray="50.24" stroke-dashoffset="${50.24 - (50.24 * p.score) / 100}" stroke-linecap="round" transform="rotate(-90 10 10)"></circle>
+                        </svg>
+                        <span class="similarity-tooltip">Similarity: ${p.score}%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <h4 class="recommended-card-title">${p.title}</h4>
+                  <p class="recommended-card-desc">${p.description}</p>
+                </a>
+              `).join('');
+            }
+          });
+        </script>
+      </article>
+    
+  </main>
+  <footer class="global-footer">
+  <div class="max-w-2xl mx-auto px-6 footer-content">
+    <div>
+      © 2026 오준서 (Junseo Oh). All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="../../../main.js"></script>
+<script>
+  // Re-run lucide replacement if it is loaded
+  if (window.lucide) {
+    lucide.createIcons();
+  }
+</script>
+
+</body>
+</html>

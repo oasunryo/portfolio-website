@@ -300,6 +300,28 @@ const projectsMeta = [
       hostname: "Context Relayer",
       description: "Designing a framework-agnostic system prompt configuration to enable zero-loss context handovers and compress active tokens by 98%."
     }
+  },
+  {
+    id: 12,
+    slug: "kkomsubuilder-analytics",
+    type: "software",
+    initials: "12",
+    image: "/assets/projects/kkomsubuilder_analytics.png",
+    tags: ["Tech-Creator", "Job-Description", "Shorts-Automation", "Meta-Analytics"],
+    date: "2026-06-01",
+    period: "2026. 06. 01. ~ 현재",
+    ko: {
+      title: "Kkomsubuilder Content & Analytics Engine",
+      category: "크리에이터 & 데이터",
+      hostname: "Kkomsubuilder Creator",
+      description: "반도체/IT 취업준비생을 위한 커리어 꼼수 브랜딩 채널 운영, 숏폼/카드뉴스 파이프라인 구축 및 Meta 성과 분석 엔진 개발 프로젝트입니다."
+    },
+    en: {
+      title: "Kkomsubuilder Content & Analytics Engine",
+      category: "Creator & Analytics",
+      hostname: "Kkomsubuilder Creator",
+      description: "Branding a tech career channel for semiconductor job seekers, implementing shorts/carousel rendering pipelines, and building Meta analytics engines."
+    }
   }
 ];
 
